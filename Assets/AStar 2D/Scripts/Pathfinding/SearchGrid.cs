@@ -165,6 +165,7 @@ namespace AStar_2D.Pathfinding
 		/// <param name="callback">The <see cref="PathRequestDelegate"/> method to call on completion</param>
 		public void findPath (Index start, Index end, bool allowDiagonal, PathRequestDelegate callback)
 		{
+			//Debug.Log (end);			
 			// Already at the destination
 			if (start.Equals (end)) {
 				callback (null, PathRequestStatus.SameStartEnd);
@@ -200,9 +201,9 @@ namespace AStar_2D.Pathfinding
 					Path result = constructPath (searchGrid [endNode.Index.X, endNode.Index.Y]);
 
 					// Last node
-					//result.push (endNode, endNode.Index); Sandy edit
+					result.push (endNode, endNode.Index); //Sandy edit
 					//Debug.Log (endNode.Index);
-
+					//Debug.Log (result.NodeCount);
 					// Trigger the delegate with success
 					callback (result, PathRequestStatus.PathFound);
 

@@ -9,7 +9,7 @@ public class MoreInventoryButton : MonoBehaviour
 	public bool useLeftAnalogStick = false;
 	public RectTransform mainUIWindow;
 	public GameObject mainCanvas, inventoryMenu;
-	public GameObject leftStick, inventoryTab, craftingTab, settingsTab, infoTab, sortButton, runWalkButton, actionButton, inventoryUpButton, craftingUpButton, miniMapButton, closeInventoryButton;
+	public GameObject sortButton, inventoryUpButton, closeInventoryButton;
 	//public rightStick;
 	public GameObject craftingMenu;
 
@@ -27,8 +27,8 @@ public class MoreInventoryButton : MonoBehaviour
 	void Start ()
 	{		
 		tabIndex = inventoryMenu.GetComponent <RectTransform> ().GetSiblingIndex ();
-		heightAdjuster = ((mainCanvas.GetComponent <RectTransform> ().rect.height / 2) + 200) * -1;
-		//heightAdjuster = (mainUIWindow.GetComponent <RectTransform> ().rect.height + 120);
+		print (Screen.height);
+		heightAdjuster = Screen.height * 2;
 		ToggleInventorySize (true);
 	}
 
@@ -70,19 +70,19 @@ public class MoreInventoryButton : MonoBehaviour
 	void ToggleInventory (bool flag)
 	{
 		//if (Bronz.LocalStore.Instance.GetBool ("TouchControls")) {
-		leftStick.SetActive (flag);
+//		leftStick.SetActive (flag);
 		//}
 		closeInventoryButton.SetActive (!flag);
-		inventoryTab.SetActive (!flag);
+		//inventoryTab.SetActive (!flag);
 		sortButton.SetActive (!flag);
-		craftingTab.SetActive (!flag);
-		settingsTab.SetActive (!flag);
-		infoTab.SetActive (!flag);
-		runWalkButton.SetActive (flag);
-		actionButton.SetActive (flag);
+		//craftingTab.SetActive (!flag);
+		//settingsTab.SetActive (!flag);
+		//infoTab.SetActive (!flag);
+		//runWalkButton.SetActive (flag);
+		//actionButton.SetActive (flag);
 		inventoryUpButton.SetActive (flag);
-		craftingUpButton.SetActive (flag);
-		miniMapButton.SetActive (flag);
+		//craftingUpButton.SetActive (flag);
+		//miniMapButton.SetActive (flag);
 	}
 
 	public void ToggleCrafting ()

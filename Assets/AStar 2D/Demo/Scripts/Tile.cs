@@ -14,8 +14,10 @@ namespace AStar_2D.Demo
 	public class Tile : MonoBehaviour, IPathNode
 	{
 		public bool touchingPathFlag = false;
+		public Sprite[] tileSheet;
 		// Delegates
 		/// <summary>
+
 		/// Delegate used when tiles are selected by a mouse click.
 		/// </summary>
 		/// <param name="tile">The tile that was clicked.</param>
@@ -46,6 +48,7 @@ namespace AStar_2D.Demo
 		private bool walkable = true;
 		private bool canSend = true;
 		private float lastTime = 0;
+		private int hardness = 0;
 
 		// Public
 		/// <summary>
@@ -61,6 +64,11 @@ namespace AStar_2D.Demo
 		public bool IsWalkable {
 			get { return walkable; } // Only need to implement the get but set is useful
 			set { walkable = value; }
+		}
+
+		public int Hardness {
+			get { return hardness; } // Only need to implement the get but set is useful
+			set { hardness = value; }
 		}
 
 		/// <summary>
@@ -90,7 +98,8 @@ namespace AStar_2D.Demo
 			int random = Random.Range (0, 4);
 			if (random < 1) {
 				walkable = false;
-				this.gameObject.GetComponent <SpriteRenderer> ().color = new Color (1, 0, 0, 0.5f);
+				this.gameObject.GetComponent <SpriteRenderer> ().sprite = tileSheet [Random.Range (0, 4)];
+				//this.gameObject.GetComponent <SpriteRenderer> ().color = new Color (1, 0, 0, 0.5f);
 			}
 			// DO setup code for the tile
 		}
@@ -162,9 +171,9 @@ namespace AStar_2D.Demo
 
 			// Check if the tile is walkable
 			if (IsWalkable == true) {
-				renderer.color = new Color (1, 1, 1, 0.5f);
+				renderer.color = new Color (1, 1, 1, 0f);
 			} else {
-				renderer.color = new Color (1, 0, 0, 0.5f);
+				renderer.color = new Color (1, 0, 0, 0f);
 			}
 		}
 

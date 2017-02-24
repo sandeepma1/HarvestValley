@@ -88,6 +88,8 @@ namespace AStar_2D.Demo
 
 		private void onTileSelected (Tile tile, int mouseButton)
 		{
+			StopCoroutine ("RemoveTileAfterDelay");
+			selectedTile = null;
 			if (!tile.IsWalkable) {
 				selectedTile = tile;
 			} else {
@@ -96,21 +98,30 @@ namespace AStar_2D.Demo
 			// Check for button
 			if (mouseButton == 0) {				
 				// Set the destination
-				tile.IsWalkable = true;
+				//if stone tile is clicked
 				Agent[] agents = Component.FindObjectsOfType<Agent> ();
-
+				if (!tile.IsWalkable) {
+					tile.IsWalkable = true;					
+					foreach (Agent agent in agents) {				
+						agent.clickedBlank = false;
+					}
+					StopCoroutine (EnableTile (tile));
+					StartCoroutine (EnableTile (tile));
+				} else {
+					foreach (Agent agent in agents) {				
+						agent.clickedBlank = true;
+					}
+				}
 				// Set the target for all agents
-				foreach (Agent agent in agents)
+				foreach (Agent agent in agents) {					
 					agent.setDestination (tile.WorldPosition);
-
+				}
 				
 			} else if (mouseButton == 1) {
 				// Toggle the walkable status
 				//tile.toggleWalkable ();
 				SceneManager.LoadScene (0);
 			}
-			StartCoroutine (EnableTile (tile));
-			//tile.IsWalkable = false;
 		}
 
 		IEnumerator EnableTile (Tile tile)
@@ -120,12 +131,20 @@ namespace AStar_2D.Demo
 		}
 
 		public override void RemoveTile ()
-		{
-			
+		{			
 			if (selectedTile != null) {
-				selectedTile.toggleWalkable ();
-				print ("remove");
+				//start_UniqueSingularCoroutine_RemoveTileAfterDelay ();
+				StopCoroutine ("RemoveTileAfterDelay");
+				StartCoroutine ("RemoveTileAfterDelay");
 			}
+		}
+
+		public IEnumerator RemoveTileAfterDelay ()
+		{
+			print ("Removing Tile");
+			yield return new WaitForSeconds (1f);
+			selectedTile.toggleWalkable ();
+			print ("removed");
 		}
 
 		private void onTileHover (Tile tile)

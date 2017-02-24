@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 namespace AStar_2D.Demo
 {
 	/// <summary>
@@ -49,12 +50,10 @@ namespace AStar_2D.Demo
 		{
 			// Make sure we update our agents movement
 			base.Update ();
-
 			// Update the sprite animation so the character is facing the correct direction
-			updateAnimation ();
-
 			// Make our agent bob up and down as he walks
 			updateHeadBob ();
+			updateAnimation ();
 		}
 
 		/// <summary>
@@ -62,14 +61,17 @@ namespace AStar_2D.Demo
 		/// </summary>
 		public override void onDestinationUnreachable ()
 		{
+			print ("I can't reach that target");
 			Debug.LogWarning (string.Format ("Agent [{0}]: I can't reach that target", gameObject.name));
 		}
 
 		private void updateAnimation ()
 		{
-			
-			// Update our character sprite animation
-			anim.SetBool ("MoveForward", (direction & AgentDirection.Forward) != 0);
+			anim.SetBool ("isMoving", IsMoving);
+			anim.SetFloat ("Player_Forward", animDirection.y);
+			anim.SetFloat ("Player_Left", animDirection.x);	
+		
+			//debugText.text = animDirection.ToString ("F2");
 		}
 
 		private void updateHeadBob ()

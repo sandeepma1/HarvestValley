@@ -3,11 +3,10 @@ using System.Collections;
 
 public class FirstScript : MonoBehaviour
 {
-	public GameObject inventoryMenu, mainCanvas, mapReference, mainMap;
+	public GameObject inventoryMenu, mainCanvas;
 	// Use this for initialization
 	void Awake ()
-	{		
-		//mapReference.SetActive (false);
+	{	
 		mainCanvas.SetActive (true);
 		inventoryMenu.SetActive (true); 
 	}
@@ -16,7 +15,6 @@ public class FirstScript : MonoBehaviour
 	{
 		if (UnityEngine.SceneManagement.SceneManager.GetActiveScene ().name == "Main_SB") {
 			SetupCamera ();
-			mainMap.SetActive (false);
 		}
 	}
 

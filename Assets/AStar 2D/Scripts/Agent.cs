@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 namespace AStar_2D
 {
@@ -92,6 +93,7 @@ namespace AStar_2D
 		/// The current direction that the agent is heading in. This can be used as a bitmask and will always contain either <see cref="AgentDirection.Forward"/> or <see cref="AgentDirection.Backward"/>.
 		/// </summary>
 		protected AgentDirection direction = AgentDirection.Default;
+		protected Vector3 animDirection;
 
 		// Public
 		/// <summary>
@@ -106,7 +108,9 @@ namespace AStar_2D
 		/// Should the agent find a new path if the old one becomes unreachable.
 		/// </summary>
 		public bool dynamicRoutes = true;
+		public bool clickedBlank = true;
 
+		//public Text debugText;
 		// Properties
 		/// <summary>
 		/// Returns true if the agent is currently moving along a path.
@@ -152,6 +156,7 @@ namespace AStar_2D
 				// Check for error
 				if (searchGrid == null) {
 					// Print a warning
+					print ("Agent [{0}]: The are no AStar Grids in the scene. Pathfinding is not possible" + gameObject.name);
 					Debug.LogWarning (string.Format ("Agent [{0}]: The are no AStar Grids in the scene. Pathfinding is not possible", gameObject.name));
 				}
 			}                               
@@ -164,28 +169,30 @@ namespace AStar_2D
 		public virtual void Update ()
 		{
 			// Reset flag
-			isMoving = false;
-
+			//isMoving = false;
+			//animDirection = Vector3.zero;
 			switch (state) {
+				
 				default:
 				case AgentState.Idle:
 				case AgentState.AwaitingPath:
 					{
 						// Store the last position
 						lastPosition = transform.position;
-
+						//animDirection = Vector3.zero;
+						isMoving = false;
 					}
 					return;
-
+			//case AgentState.AwaitingPath:
 				case AgentState.FollowingPath:
-					{
+					{						
 						// Make sure our path is valid
 						if (path == null) {
 							// Go back to the idle state and do nothing
 							changeState (AgentState.Idle);
 							return;
 						}
-                        
+
 						// Check if we have arrived
 						if (target.hasArrived (transform) == true) {
 							
@@ -197,13 +204,12 @@ namespace AStar_2D
 								// We have completed the path
 								path = null;
 								target = null;
-
 								// Trigger message
 								onDestinationReached ();
-								print ("Reached Destination");
-								AStarGrid.m_instance.RemoveTile ();
+								print ("Reached Blank");
 								// Change to idle state
 								changeState (AgentState.Idle);
+								return;
 							} else {
 								// Make sure we can still reach the target
 								if (path.IsReachable == false) {
@@ -214,6 +220,11 @@ namespace AStar_2D
 									}
 								}
 
+								if (path.NodeCount == 1 && !clickedBlank) {
+//									print ("Reached Stone");
+									AStarGrid.m_instance.RemoveTile ();
+								}
+
 								// Get the next node in the path
 								target = path.getNextNode ();
 
@@ -221,7 +232,6 @@ namespace AStar_2D
 								if (dynamicRoutes == false) {
 									if (target.IsWalkable == false) {
 										Debug.LogWarning (string.Format ("Agent [{0}]: I cannot reach that destination anymore. The path has been blocked", gameObject.name));
-
 										// Stop walking
 										changeState (AgentState.Idle);
 									}
@@ -229,7 +239,12 @@ namespace AStar_2D
 							}
 						} else {
 							// Move towards our target
-							moveTowards ();
+							if (path.NodeCount > 0 && !clickedBlank) {
+								moveTowards ();
+							}
+							if (clickedBlank) {
+								moveTowards ();
+							} 
 						}
 					}
 					break;
@@ -268,7 +283,7 @@ namespace AStar_2D
 				// Find the current index if it is not already set
 				if (currentIndex == null)
 					currentIndex = searchGrid.findNearestIndex (transform.position);
-
+			
 				// Search for a path
 				searchGrid.findPath (currentIndex, target, onPathFound);
 			}
@@ -313,7 +328,6 @@ namespace AStar_2D
 			} else if (status == PathRequestStatus.PathNotFound) {
 				// Trigger the message
 				onDestinationUnreachable ();
-
 				// Go back to idle mode
 				changeState (AgentState.Idle);
 			} else { 
@@ -324,36 +338,29 @@ namespace AStar_2D
 
 		private void moveTowards ()
 		{
+			isMoving = true;
 			// Move the agent towards the node
+			//print (target.Index);
 			Vector3 update = Vector3.MoveTowards (lastPosition, target.WorldPosition, moveSpeed * Time.deltaTime);
-
-			// Get the movement vector only
-			Vector3 temp = update - lastPosition;
-            
-			// Make sure the vector is not zero
-			if (temp.sqrMagnitude != 0) {
-				// Check if the movement is up or down
-				if (temp.y <= 0.002f) {
-					// Moving downwards - Default to forward where possible
-					direction = AgentDirection.Forward;
-				} else {
-					// Moving upwards
-					direction = AgentDirection.Backward;
-				}
-
-				if (temp.x > 0) {
-					// Moiving right
-					direction |= AgentDirection.Right;
-				} else if (temp.x < 0) {
-					// Moving left
-					direction |= AgentDirection.Left;
-				}
-				//print (direction);
+			// Get the movement vector only	
+			animDirection = (update - lastPosition).normalized;
+			if (animDirection == Vector3.right) {
+				direction = AgentDirection.Right;
 			}
-
+			if (animDirection == Vector3.left) {
+				direction = AgentDirection.Left;
+			}
+			if (animDirection == Vector3.forward) {
+				direction = AgentDirection.Forward;
+			}
+			if (animDirection == Vector3.back) {
+				direction = AgentDirection.Backward;
+			}
 			// Set the moving flag
 			isMoving = (update != transform.position);
-
+			/*if (!isMoving) {
+				animDirection = Vector3.zero;
+			}*/
 			// Update the position            
 			transform.position = update;
 			lastPosition = transform.position;
