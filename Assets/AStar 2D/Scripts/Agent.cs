@@ -93,7 +93,7 @@ namespace AStar_2D
 		/// The current direction that the agent is heading in. This can be used as a bitmask and will always contain either <see cref="AgentDirection.Forward"/> or <see cref="AgentDirection.Backward"/>.
 		/// </summary>
 		protected AgentDirection direction = AgentDirection.Default;
-		protected Vector3 animDirection;
+		protected Vector3 animDirection, animDirection1;
 
 		// Public
 		/// <summary>
@@ -207,6 +207,7 @@ namespace AStar_2D
 								// Trigger message
 								onDestinationReached ();
 								print ("Reached Blank");
+
 								// Change to idle state
 								changeState (AgentState.Idle);
 								return;
@@ -302,6 +303,9 @@ namespace AStar_2D
 			if (IsPathfindingAvailable == true) {
 				// Get the nearest index
 				Index index = searchGrid.findNearestIndex (worldPosition);
+
+				animDirection1 = (worldPosition - lastPosition).normalized;
+				//DebugTextHandler.m_instance.DisplayDebugText (worldPosition.ToString ());
 				// Call through
 				setDestination (index);
 			}
@@ -344,6 +348,9 @@ namespace AStar_2D
 			Vector3 update = Vector3.MoveTowards (lastPosition, target.WorldPosition, moveSpeed * Time.deltaTime);
 			// Get the movement vector only	
 			animDirection = (update - lastPosition).normalized;
+
+			//DebugTextHandler.m_instance.DisplayDebugText (animDirection.ToString ());
+
 			if (animDirection == Vector3.right) {
 				direction = AgentDirection.Right;
 			}
@@ -358,9 +365,6 @@ namespace AStar_2D
 			}
 			// Set the moving flag
 			isMoving = (update != transform.position);
-			/*if (!isMoving) {
-				animDirection = Vector3.zero;
-			}*/
 			// Update the position            
 			transform.position = update;
 			lastPosition = transform.position;

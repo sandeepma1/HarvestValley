@@ -11,6 +11,8 @@ public static class GameEventManager
 	public static float dropItemSize = 0.4f;
 	public static float playerSpeedInDeepWater = 1.25f, playerSpeedInShallowWater = 1.75f;
 
+	public static int numberOfRocksInLevel = 0;
+
 	public delegate void GameEvent ();
 
 

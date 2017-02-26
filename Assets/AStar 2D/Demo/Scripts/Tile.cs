@@ -14,7 +14,6 @@ namespace AStar_2D.Demo
 	public class Tile : MonoBehaviour, IPathNode
 	{
 		public bool touchingPathFlag = false;
-		public Sprite[] tileSheet;
 		// Delegates
 		/// <summary>
 
@@ -49,6 +48,7 @@ namespace AStar_2D.Demo
 		private bool canSend = true;
 		private float lastTime = 0;
 		private int hardness = 0;
+		private bool ladder = false;
 
 		// Public
 		/// <summary>
@@ -64,6 +64,11 @@ namespace AStar_2D.Demo
 		public bool IsWalkable {
 			get { return walkable; } // Only need to implement the get but set is useful
 			set { walkable = value; }
+		}
+
+		public bool IsLadder {
+			get { return ladder; } // Only need to implement the get but set is useful
+			set { ladder = value; }
 		}
 
 		public int Hardness {
@@ -95,12 +100,13 @@ namespace AStar_2D.Demo
 		/// </summary>
 		public void Start ()
 		{
-			int random = Random.Range (0, 4);
+			/*int random = Random.Range (0, 4);
 			if (random < 1) {
 				walkable = false;
 				this.gameObject.GetComponent <SpriteRenderer> ().sprite = tileSheet [Random.Range (0, 4)];
+				GameEventManager.numberOfRocksInLevel = GameEventManager.numberOfRocksInLevel + 1;
 				//this.gameObject.GetComponent <SpriteRenderer> ().color = new Color (1, 0, 0, 0.5f);
-			}
+			}*/
 			// DO setup code for the tile
 		}
 
@@ -165,7 +171,7 @@ namespace AStar_2D.Demo
 		public void toggleWalkable ()
 		{
 			walkable = !walkable;
-
+/*
 			// Get the sprite renderer
 			SpriteRenderer renderer = GetComponent<SpriteRenderer> ();
 
@@ -174,7 +180,7 @@ namespace AStar_2D.Demo
 				renderer.color = new Color (1, 1, 1, 0f);
 			} else {
 				renderer.color = new Color (1, 0, 0, 0f);
-			}
+			}*/
 		}
 
 		public bool isTouchingPath (Path path)

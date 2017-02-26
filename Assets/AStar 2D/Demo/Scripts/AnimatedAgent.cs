@@ -68,8 +68,12 @@ namespace AStar_2D.Demo
 		private void updateAnimation ()
 		{
 			anim.SetBool ("isMoving", IsMoving);
+
 			anim.SetFloat ("Player_Forward", animDirection.y);
-			anim.SetFloat ("Player_Left", animDirection.x);	
+			anim.SetFloat ("Player_Left", animDirection.x);
+
+			//anim.SetFloat ("Player_Forward", animDirection1.y);
+			//	anim.SetFloat ("Player_Left", animDirection1.x);	
 		
 			//debugText.text = animDirection.ToString ("F2");
 		}

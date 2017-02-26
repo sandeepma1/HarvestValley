@@ -21,7 +21,7 @@ namespace AStar_2D.Demo
 		// Private
 		private Tile[,] tiles;
 		private Tile selectedTile = null;
-
+		private Tile[] rockTilesTemp, rockTiles;
 		// Public
 		/// <summary>
 		/// How many tiles to create in the X axis.
@@ -40,6 +40,8 @@ namespace AStar_2D.Demo
 		/// </summary>
 		public bool showPreviewPath = false;
 		public float tileSpacing = 0.5f;
+		public Sprite[] tileSheet;
+		int ladderSelectionNumber = 0, ladderTop, ladderBottom, ladderSpecific, tileRemovedCount = 0;
 		// Methods
 		/// <summary>
 		/// Called by Unity.
@@ -50,7 +52,9 @@ namespace AStar_2D.Demo
 			m_instance = this;
 			base.Awake ();
 
+			GameEventManager.numberOfRocksInLevel = 0;
 			tiles = new Tile[gridX, gridY];
+			rockTilesTemp = new Tile[gridX * gridY];
 
 			for (int i = 0; i < gridX; i++) {
 				for (int j = 0; j < gridY; j++) {
@@ -70,20 +74,96 @@ namespace AStar_2D.Demo
 
 					// Add the tile as a child to keep the scene view clean
 					obj.transform.SetParent (transform);
+
+					int random = Random.Range (0, 4);
+					if (random < 1) {
+						tiles [i, j].IsWalkable = false;
+						tiles [i, j].gameObject.GetComponent <SpriteRenderer> ().sprite = tileSheet [Random.Range (0, 4)];
+						rockTilesTemp [GameEventManager.numberOfRocksInLevel] = tiles [i, j];
+						GameEventManager.numberOfRocksInLevel = GameEventManager.numberOfRocksInLevel + 1;
+					}
+				}
+			}
+
+			int count = 0;
+			rockTiles = new Tile[GameEventManager.numberOfRocksInLevel];
+			for (int i = 0; i < rockTilesTemp.Length; i++) {
+				if (rockTilesTemp [i] != null) {
+					rockTiles [count] = rockTilesTemp [i];
+					count++;
 				}
 			}
 
 			// Pass the arry to the search grid
 			constructGrid (tiles);
+
+			//***********************Ladder Logic
+			ladderSelectionNumber = Random.Range (0, 3);
+			ladderTop = Random.Range (2, GameEventManager.numberOfRocksInLevel / 2);
+			ladderBottom = Random.Range (GameEventManager.numberOfRocksInLevel / 2, GameEventManager.numberOfRocksInLevel);
+			ladderSpecific = Random.Range (2, GameEventManager.numberOfRocksInLevel);		
+			print (GameEventManager.numberOfRocksInLevel + " Tiles**");
+			//************************
 		}
 
-		/// <summary>
-		/// Called by Unity.
-		/// Left blank for demonstration.
-		/// </summary>
-		public void Update ()
+		public void LadderLogic ()
 		{
-			// Do stuff
+			switch (ladderSelectionNumber) {
+				case 0:
+					print ("any top");
+					LadderLogic_TOP ();
+					break;
+				case 1:
+					print ("any bottom");
+					LadderLogic_BOTTOM ();
+					break;
+				case 2:
+					print ("Specific");
+					LadderLogic_SPECIFIC ();
+					break;
+				case 3:
+					print ("enemy");
+					LadderLogic_ENEMY ();
+					break;
+				default:
+					break;
+			} 
+		}
+
+		void LadderLogic_TOP ()
+		{
+			print (ladderTop);
+			if (tileRemovedCount == ladderTop) {
+				CreateLadder ();
+			}
+		}
+
+		void LadderLogic_BOTTOM ()
+		{
+			print (ladderBottom);
+			if (tileRemovedCount == ladderBottom) {
+				CreateLadder ();
+			}
+		}
+
+		void LadderLogic_SPECIFIC ()
+		{
+			print (ladderSpecific);
+			if (tileRemovedCount == ladderSpecific) {
+				CreateLadder ();
+			}
+		}
+
+		void LadderLogic_ENEMY ()
+		{
+
+		}
+
+		void CreateLadder ()
+		{
+			print ("Way to down!!!");
+			selectedTile.gameObject.GetComponent <SpriteRenderer> ().sprite = tileSheet [4];
+			selectedTile.IsLadder = true;
 		}
 
 		private void onTileSelected (Tile tile, int mouseButton)
@@ -95,11 +175,15 @@ namespace AStar_2D.Demo
 			} else {
 				selectedTile = null;
 			}
+
 			// Check for button
 			if (mouseButton == 0) {				
 				// Set the destination
 				//if stone tile is clicked
 				Agent[] agents = Component.FindObjectsOfType<Agent> ();
+				if (tile.IsLadder) {
+					SceneManager.LoadScene (0);
+				}
 				if (!tile.IsWalkable) {
 					tile.IsWalkable = true;					
 					foreach (Agent agent in agents) {				
@@ -141,9 +225,11 @@ namespace AStar_2D.Demo
 
 		public IEnumerator RemoveTileAfterDelay ()
 		{
-			print ("Removing Tile");
 			yield return new WaitForSeconds (1f);
 			selectedTile.toggleWalkable ();
+			selectedTile.gameObject.GetComponent <SpriteRenderer> ().sprite = tileSheet [5];
+			tileRemovedCount += 1;
+			LadderLogic ();
 			print ("removed");
 		}
 

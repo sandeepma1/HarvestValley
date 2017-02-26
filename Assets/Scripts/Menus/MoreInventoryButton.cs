@@ -27,7 +27,7 @@ public class MoreInventoryButton : MonoBehaviour
 	void Start ()
 	{		
 		tabIndex = inventoryMenu.GetComponent <RectTransform> ().GetSiblingIndex ();
-		print (Screen.height);
+//		print (Screen.height);
 		heightAdjuster = Screen.height * 2;
 		ToggleInventorySize (true);
 	}
@@ -49,6 +49,17 @@ public class MoreInventoryButton : MonoBehaviour
 			mainUIWindow.anchoredPosition = Vector3.zero;
 			GameEventManager.SetMenuState (GameEventManager.E_MenuState.e_menuUp);
 		}		
+	}
+
+	public void ToggleCameraTownMine (bool isTown)
+	{
+		if (isTown) {
+			Camera.main.transform.position = new Vector3 (12f, 0, -200);
+			Camera.main.orthographicSize = 9.5f;
+		} else {
+			Camera.main.transform.position = new Vector3 (0, 0, -200);
+			Camera.main.orthographicSize = 8f;
+		}
 	}
 
 	public void ShowCraftingMenu (bool isCraftingDown)

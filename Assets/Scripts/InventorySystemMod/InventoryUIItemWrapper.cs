@@ -33,7 +33,7 @@ namespace Devdog.InventorySystem
 		IEnumerator SetItem ()
 		{
 			yield return new WaitForSeconds (0.5f);
-			ActionManager.m_AC_instance.GetCurrentWeildedTool (itemCollection [PlayerPrefs.GetInt ("ItemSlotIndex")].item);	
+//			ActionManager.m_AC_instance.GetCurrentWeildedTool (itemCollection [PlayerPrefs.GetInt ("ItemSlotIndex")].item);	
 			if (item != null) {
 				if (item.itemDurability > 1) { // if item have uses
 					itemUseBar.gameObject.SetActive (true);
