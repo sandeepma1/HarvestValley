@@ -180,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
 		CalculateNearestItem (Mathf.RoundToInt (transform.position.x), Mathf.RoundToInt (transform.position.y), false);
 		if (nearestItemPosition != Vector3.zero) { //&& cols.Count > 0			
 			walkTowards = true;
-			GameEventManager.currentSelectedTilePosition = nearestItemPosition;
+			//	GameEventManager.currentSelectedTilePosition = nearestItemPosition;
 		}
 	}
 
@@ -197,14 +197,14 @@ public class PlayerMovement : MonoBehaviour
 
 	public void AutoPickUpCalculation ()
 	{
-		if (Vector3.Distance (transform.position, nearestItemPosition) <= GameEventManager.walkTowardsItemSafeDistance) {   //stop walking towards objects if less than 1 distance					
+		/*if (Vector3.Distance (transform.position, nearestItemPosition) <= GameEventManager.walkTowardsItemSafeDistance) {   //stop walking towards objects if less than 1 distance					
 			Vector3 dir = (nearestItemPosition - transform.position).normalized;
 			walkTowards = false;
 			ActionManager.m_AC_instance.ActionButtonPressed ();
 			return;
 		}
 		Vector3 playerDir = (nearestItemPosition - transform.position).normalized;
-		WalkingCalculation (playerDir.x, playerDir.y);
+		WalkingCalculation (playerDir.x, playerDir.y);*/
 	}
 
 	public void WalkingCalculation (float x, float y)
@@ -279,7 +279,7 @@ public class PlayerMovement : MonoBehaviour
 		cursorPosition.y += Mathf.Round (b);
 		cursorTile.transform.position = cursorPosition;
 		if (isRightStick) { //Modified this to place items on map
-			GameEventManager.currentSelectedTilePosition = cursorTile.transform.position;
+			//GameEventManager.currentSelectedTilePosition = cursorTile.transform.position;
 		}
 	}
 

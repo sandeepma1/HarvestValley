@@ -121,10 +121,10 @@ public class ActionManager : MonoBehaviour
 			currentWeildedItem.itemQuality = 1;
 			currentWeildedItem.itemID = "0,-1";*/			
 		} 
-		if (LoadMapFromSave_PG.m_instance.GetTile (GameEventManager.currentSelectedTilePosition).id > 0) {
+		/*if (LoadMapFromSave_PG.m_instance.GetTile (GameEventManager.currentSelectedTilePosition).id > 0) {
 			currentSelectedItem = LoadMapFromSave_PG.m_instance.GetTile (GameEventManager.currentSelectedTilePosition);
 			CalculateHardness ();
-		} else {
+		} */else {
 			//print ("No items nearby");
 			currentSelectedItem = new item ();
 			if (currentWeildedItem.isPlaceable && !PlayerMovement.m_instance.isRightStick && Devdog.InventorySystem.InventoryManager.FindAll (currentWeildedItem.ID, false).Count > 0) {
@@ -149,7 +149,7 @@ public class ActionManager : MonoBehaviour
 
 			if (currentWeildedItem.rarity.name == ItemDatabase.m_instance.items [currentSelectedItem.id].tool.ToString ()) { // if tool in hand and using tool but not bare hands as above
 				//*********************************Common for all tools********************************************
-				baseTime = (GameEventManager.baseStrengthWithTool * ItemDatabase.m_instance.items [currentSelectedItem.id].hardness) / currentWeildedItem.itemQuality;
+				//baseTime = (GameEventManager.baseStrengthWithTool * ItemDatabase.m_instance.items [currentSelectedItem.id].hardness) / currentWeildedItem.itemQuality;
 				baseTimeStatic = baseTime;
 				isReadyToAttack = true;
 				//*************************************************************************************************
@@ -320,13 +320,13 @@ public class ActionManager : MonoBehaviour
 		for (int i = 0; i < dropValue; i++) {
 			GameObject parent = new GameObject ();
 			parent.name = "parent";
-			Vector2 ran = GameEventManager.currentSelectedTilePosition + Random.insideUnitCircle;
-			parent.transform.position = new Vector3 (ran.x, ran.y, 0);
-			GameObject drop = GameObject.Instantiate (inventoryItems [id], new Vector3 (ran.x, ran.y, 0), Quaternion.identity) as GameObject;
-			drop.transform.localScale = new Vector3 (GameEventManager.dropItemSize, GameEventManager.dropItemSize, GameEventManager.dropItemSize);
-			drop.transform.parent = parent.transform;
-			drop.GetComponent<Devdog.InventorySystem.ObjectTriggererItem> ().isPickable = true;
-			drop.GetComponent<Animator> ().Play ("itemDrop");
+			//Vector2 ran = GameEventManager.currentSelectedTilePosition + Random.insideUnitCircle;
+			//	parent.transform.position = new Vector3 (ran.x, ran.y, 0);
+			//	GameObject drop = GameObject.Instantiate (inventoryItems [id], new Vector3 (ran.x, ran.y, 0), Quaternion.identity) as GameObject;
+			//drop.transform.localScale = new Vector3 (GameEventManager.dropItemSize, GameEventManager.dropItemSize, GameEventManager.dropItemSize);
+			//drop.transform.parent = parent.transform;
+			//drop.GetComponent<Devdog.InventorySystem.ObjectTriggererItem> ().isPickable = true;
+			//drop.GetComponent<Animator> ().Play ("itemDrop");
 			StartCoroutine (DropItemsLiveAfterSeconds (parent.gameObject));			
 		}
 	}
@@ -338,20 +338,20 @@ public class ActionManager : MonoBehaviour
 			
 			case 14: //Replace Tree with stump
 			case 15: //Replace Tree with stump
-				LoadMapFromSave_PG.m_instance.SaveMapItemData (currentSelectedItem.id, currentSelectedItem.age, GameEventManager.currentSelectedTilePosition, onHarvest.RegrowToStump);
+				//LoadMapFromSave_PG.m_instance.SaveMapItemData (currentSelectedItem.id, currentSelectedItem.age, GameEventManager.currentSelectedTilePosition, onHarvest.RegrowToStump);
 				break;
 			case 16: //Berry Bush
 				if (currentSelectedItem.age == ItemDatabase.m_instance.items [currentSelectedItem.id].maxAge) {
 					currentSelectedItem.age = 3;
-					LoadMapFromSave_PG.m_instance.SaveMapItemData (currentSelectedItem.id, currentSelectedItem.age, GameEventManager.currentSelectedTilePosition, onHarvest.Renewable);
+					//	LoadMapFromSave_PG.m_instance.SaveMapItemData (currentSelectedItem.id, currentSelectedItem.age, GameEventManager.currentSelectedTilePosition, onHarvest.Renewable);
 				} else { //Replace Stump with nothing
-					LoadMapFromSave_PG.m_instance.SaveMapItemData (currentSelectedItem.id, currentSelectedItem.age, GameEventManager.currentSelectedTilePosition, onHarvest.Destory);
+					//		LoadMapFromSave_PG.m_instance.SaveMapItemData (currentSelectedItem.id, currentSelectedItem.age, GameEventManager.currentSelectedTilePosition, onHarvest.Destory);
 				}
 				break;
 			default:
 				//Debug.Log ("destroying");
 				Destroy (currentSelectedItem.GO);
-				LoadMapFromSave_PG.m_instance.SaveMapItemData (currentSelectedItem.id, currentSelectedItem.age, GameEventManager.currentSelectedTilePosition, onHarvest.Destory);
+				//LoadMapFromSave_PG.m_instance.SaveMapItemData (currentSelectedItem.id, currentSelectedItem.age, GameEventManager.currentSelectedTilePosition, onHarvest.Destory);
 				break;
 		}
 	}

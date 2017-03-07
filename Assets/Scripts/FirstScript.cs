@@ -3,12 +3,19 @@ using System.Collections;
 
 public class FirstScript : MonoBehaviour
 {
-	public GameObject inventoryMenu, mainCanvas;
+	public GameObject inventoryMenu, mainCanvas, seedMenu;
 	// Use this for initialization
 	void Awake ()
 	{	
-		mainCanvas.SetActive (true);
-		inventoryMenu.SetActive (true); 
+		if (mainCanvas != null) {
+			mainCanvas.SetActive (true);
+		}
+		if (inventoryMenu != null) {
+			inventoryMenu.SetActive (true);
+		}
+		if (seedMenu != null) {
+			seedMenu.SetActive (false);
+		}
 	}
 
 	void Start ()

@@ -182,7 +182,7 @@ namespace AStar_2D.Demo
 				//if stone tile is clicked
 				Agent[] agents = Component.FindObjectsOfType<Agent> ();
 				if (tile.IsLadder) {
-					SceneManager.LoadScene (0);
+					SceneManager.LoadScene ("Mine");
 				}
 				if (!tile.IsWalkable) {
 					tile.IsWalkable = true;					

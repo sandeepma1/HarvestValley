@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class MoreInventoryButton : MonoBehaviour
 {
@@ -17,11 +18,14 @@ public class MoreInventoryButton : MonoBehaviour
 
 	float heightAdjuster;
 	int tabIndex = 0;
+	Hashtable linearEase = new Hashtable ();
 
 	// = FindObjectsOfType (typeof(Devdog.InventorySystem.InventoryUIItemWrapper)) as Devdog.InventorySystem.InventoryUIItemWrapper[];
 	void Awake ()
 	{
 		m_instance = this;
+		linearEase.Add ("ease", LeanTweenType.easeOutQuad);
+		//Camera.main.transform.position =
 	}
 
 	void Start ()
@@ -30,6 +34,16 @@ public class MoreInventoryButton : MonoBehaviour
 //		print (Screen.height);
 		heightAdjuster = Screen.height * 2;
 		ToggleInventorySize (true);
+	}
+
+	public void MoveCamera (float posX)
+	{
+		LeanTween.moveX (Camera.main.transform.gameObject, posX, 0.5f, linearEase);
+	}
+
+	public void LoadMainScene ()
+	{
+		SceneManager.LoadScene ("Main");
 	}
 
 	public void ToggleInventorySize (bool isInventoryDown)

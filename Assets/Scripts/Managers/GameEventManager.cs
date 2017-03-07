@@ -3,15 +3,17 @@ using System.Collections;
 
 public static class GameEventManager
 {
-	public static Vector2 currentSelectedTilePosition = Vector2.zero;
-	public const float baseStrengthWithTool = 1f;
-	public static float baseStrengthWithoutTool = 2.5f;
-	public static int numberOfislands = 0;
-	public static float walkTowardsItemSafeDistance = 0.75f;
-	public static float dropItemSize = 0.4f;
-	public static float playerSpeedInDeepWater = 1.25f, playerSpeedInShallowWater = 1.75f;
+	//public static Vector2 currentSelectedTilePosition = Vector2.zero;
+	//public const float baseStrengthWithTool = 1f;
+	//public static float baseStrengthWithoutTool = 2.5f;
+	//public static int numberOfislands = 0;
+	//public static float walkTowardsItemSafeDistance = 0.75f;
+	//public static float dropItemSize = 0.4f;
+	//public static float playerSpeedInDeepWater = 1.25f, playerSpeedInShallowWater = 1.75f;
 
 	public static int numberOfRocksInLevel = 0;
+	public static bool isSeedSelected = false;
+	public static int seedIndex = 0;
 
 	public delegate void GameEvent ();
 
