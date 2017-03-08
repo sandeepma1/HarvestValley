@@ -5,14 +5,6 @@ using TMPro;
 
 public class FarmLandManager : MonoBehaviour
 {
-	enum FARM_STATE
-	{
-		NONE,
-		GROWING,
-		WAITING_FOR_HARVEST}
-
-	;
-
 	public GameObject FarmLandMenu = null, FarmTimerText = null;
 	public float longPressTime = 0.5f;
 	float time = 0, harvestTime = 0;
@@ -21,23 +13,27 @@ public class FarmLandManager : MonoBehaviour
 	bool isSeedPlanted = false;
 	bool toggleFarmLandMenu = false;
 	int seedIndex = 1;
-	FARM_STATE farmState = FARM_STATE.NONE;
+	FARM_LAND_STATE farmState = FARM_LAND_STATE.NONE;
+	int index;
 
-
-
-
+	void ExtractGameObjectIndex ()
+	{
+		string s = gameObject.name.Replace ("FarmLand", "");
+		int.TryParse (s, out index);
+	}
 
 	void Start ()
 	{
-		farmState = LoadFarmState ();
+		ExtractGameObjectIndex ();
+
 		switch (farmState) {
-			case FARM_STATE.GROWING:
+			case FARM_LAND_STATE.GROWING:
 				PlantIsGrowing ();
 				break;
-			case FARM_STATE.WAITING_FOR_HARVEST:
+			case FARM_LAND_STATE.WAITING_FOR_HARVEST:
 				PlantIsWaitingForHarvest ();
 				break;
-			case FARM_STATE.NONE:
+			case FARM_LAND_STATE.NONE:
 
 				break;
 			default:
@@ -54,7 +50,7 @@ public class FarmLandManager : MonoBehaviour
 	{
 		GetComponent <SpriteRenderer> ().color = Color.green;
 		isSeedPlanted = true;
-		SaveFarmState (FARM_STATE.GROWING);
+		SaveFarmState (FARM_LAND_STATE.GROWING);
 	}
 
 	void PlantIsWaitingForHarvest ()
@@ -63,7 +59,7 @@ public class FarmLandManager : MonoBehaviour
 		GetComponent <SpriteRenderer> ().color = Color.white;
 		isSeedPlanted = false;
 		harvestTime = 0;
-		SaveFarmState (FARM_STATE.WAITING_FOR_HARVEST);
+		SaveFarmState (FARM_LAND_STATE.WAITING_FOR_HARVEST);
 	}
 
 	void OnMouseEnter ()
@@ -115,15 +111,15 @@ public class FarmLandManager : MonoBehaviour
 		}
 	}
 
-	void SaveFarmState (FARM_STATE fState)
+	void SaveFarmState (FARM_LAND_STATE fState)
 	{
 		farmState = fState;
-		ES2.Save (fState, "state");
+		//ES2.Save (fState, "state");
 	}
 
-	FARM_STATE LoadFarmState ()
+	FARM_LAND_STATE LoadFarmState ()
 	{
-		return ES2.Load<FARM_STATE> ("state");
+		return ES2.Load<FARM_LAND_STATE> ("state");
 	}
 }
 

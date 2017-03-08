@@ -182,7 +182,7 @@ namespace AStar_2D.Demo
 				//if stone tile is clicked
 				Agent[] agents = Component.FindObjectsOfType<Agent> ();
 				if (tile.IsLadder) {
-					SceneManager.LoadScene ("Mine");
+					SceneManager.LoadScene ("Mines");
 				}
 				if (!tile.IsWalkable) {
 					tile.IsWalkable = true;					
@@ -201,10 +201,10 @@ namespace AStar_2D.Demo
 					agent.setDestination (tile.WorldPosition);
 				}
 				
-			} else if (mouseButton == 1) {
+			} else if (mouseButton == 2) {
 				// Toggle the walkable status
 				//tile.toggleWalkable ();
-				SceneManager.LoadScene (0);
+				SceneManager.LoadScene ("Mines");
 			}
 		}
 

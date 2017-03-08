@@ -38,7 +38,7 @@ public static class GameEventManager
 
 	;
 
-
+	public static System.DateTime dateTime = System.DateTime.UtcNow;
 
 	static E_MenuState m_menuState = E_MenuState.e_menuDown;
 
@@ -58,7 +58,6 @@ public static class GameEventManager
 		e_menuDown}
 
 	;
-
 
 	static E_PlayerTerrianSTATES m_playerTerrianState = E_PlayerTerrianSTATES.land;
 

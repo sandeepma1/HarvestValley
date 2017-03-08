@@ -25,7 +25,7 @@ namespace Devdog.InventorySystem
 			}
 			if (Bronz.LocalStore.Instance.GetInt ("ItemSlotIndex") == (int)this.index) {				
 				border.gameObject.SetActive (true);
-				ActionManager.m_AC_instance.GetCurrentWeildedTool (item);
+				//ActionManager.m_AC_instance.GetCurrentWeildedTool (item);
 			}
 			StartCoroutine ("SetItem");
 		}
