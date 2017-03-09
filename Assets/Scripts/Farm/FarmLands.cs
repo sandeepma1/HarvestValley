@@ -9,14 +9,17 @@ public class FarmLands : MonoBehaviour
 	public sbyte tileIndex;
 	public sbyte level;
 	public sbyte seedIndex;
-	public sbyte state;
+	public FARM_LAND_STATE state;
 	public System.DateTime dateTime;
+	public string s_dateTime = "";
+	//TODO remove the s_dateTime variable
 
 	void Start ()
 	{
-		print (dateTime);
+		print (state);
 		string s = gameObject.name.Replace ("FarmLand", "");
 		int.TryParse (s, out index);
+		s_dateTime = dateTime.ToString ();
 	}
 
 	void OnMouseDown ()

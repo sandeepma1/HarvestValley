@@ -7,7 +7,7 @@ public class DisableAllMenusBackground : MonoBehaviour
 	public GameObject[] allMenus;
 	//Vector3 screenPoint, scanPos, offset;
 
-	void OnMouseDown ()
+	void OnMouseUp ()
 	{
 		for (int i = 0; i < allMenus.Length; i++) {
 			allMenus [i].SetActive (false);

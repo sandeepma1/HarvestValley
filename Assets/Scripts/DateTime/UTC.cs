@@ -5,17 +5,22 @@ using UnityEngine;
 public class UTC : MonoBehaviour
 {
 	public static UTC time = null;
-	public System.DateTime DateTimeNow;
+	public System.DateTime liveDateTime;
 
 	void Awake ()
 	{
-		DateTimeNow = System.DateTime.UtcNow;
+		liveDateTime = System.DateTime.UtcNow;
 		time = this;
-		InvokeRepeating ("MaintainDateTime", 0, 1);
+		//InvokeRepeating ("MaintainDateTime", 0, 0.25f);
 	}
 
 	void MaintainDateTime ()
 	{
-		DateTimeNow = System.DateTime.UtcNow;
+		liveDateTime = System.DateTime.UtcNow;
+	}
+
+	void FixedUpdate ()
+	{
+		liveDateTime = System.DateTime.UtcNow;
 	}
 }

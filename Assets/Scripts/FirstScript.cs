@@ -4,10 +4,14 @@ using UnityEngine.SceneManagement;
 
 public class FirstScript : MonoBehaviour
 {
+	public static FirstScript m_instance = null;
 	public GameObject inventoryMenu, mainCanvas, seedMenu;
 	// Use this for initialization
+	public Hashtable ease = new Hashtable ();
+
 	void Awake ()
-	{	
+	{
+		m_instance = this;
 		if (mainCanvas != null) {
 			mainCanvas.SetActive (true);
 		}
@@ -17,6 +21,8 @@ public class FirstScript : MonoBehaviour
 		if (seedMenu != null) {
 			seedMenu.SetActive (false);
 		}
+
+		ease.Add ("ease", LeanTweenType.easeOutExpo);
 	}
 
 	void Start ()
