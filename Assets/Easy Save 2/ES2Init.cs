@@ -60,8 +60,9 @@ public class ES2Init : MonoBehaviour
 		ES2TypeManager.types[typeof(UnityEngine.GradientColorKey)] = new ES2_GradientColorKey();
 		ES2TypeManager.types[typeof(UnityEngine.Gradient)] = new ES2_Gradient();
 		ES2TypeManager.types[typeof(UnityEngine.Sprite)] = new ES2_Sprite();
-		ES2TypeManager.types[typeof(UnityEngine.AudioClip)] = new ES2_AudioClip();
 		ES2TypeManager.types[typeof(SaveFarmLand)] = new ES2UserType_SaveFarmLand();
+		ES2TypeManager.types[typeof(UnityEngine.AudioClip)] = new ES2_AudioClip();
+		ES2TypeManager.types[typeof(Profile)] = new ES2UserType_Profile();
 
 		ES2.initialised = true;
 	}

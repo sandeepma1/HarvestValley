@@ -146,10 +146,10 @@ public class PlayerMovement : MonoBehaviour
 		if (colliders.Length > 0) {
 			foreach (var cols in colliders) {				
 				if (cols.tag == "Item") {
-					if (ItemDatabase.m_instance.items [GetItemID (cols.gameObject.name)].tool.ToString () == ActionManager.m_AC_instance.currentWeildedItem.rarity.name
+					/*if (ItemDatabase.m_instance.items [GetItemID (cols.gameObject.name)].tool.ToString () == ActionManager.m_AC_instance.currentWeildedItem.rarity.name
 					    || ItemDatabase.m_instance.items [GetItemID (cols.gameObject.name)].tool.ToString () == "Hand") {
 						sortedColliders.Add (cols);
-					}
+					}*/
 				}
 			}
 		} else {
@@ -317,9 +317,9 @@ public class PlayerMovement : MonoBehaviour
 
 		if (other.gameObject.transform.childCount > 0) {	
 			//print (ItemDatabase.m_instance.items [GetItemID (other.gameObject.name)].tool.ToString () + "==" + ActionManager.m_AC_instance.currentWeildedItem.rarity.name);	
-			if (ItemDatabase.m_instance.items [GetItemID (other.gameObject.name)].tool.ToString () == ActionManager.m_AC_instance.currentWeildedItem.rarity.name) {
+			/*if (ItemDatabase.m_instance.items [GetItemID (other.gameObject.name)].tool.ToString () == ActionManager.m_AC_instance.currentWeildedItem.rarity.name) {
 				other.gameObject.transform.GetChild (other.gameObject.transform.childCount - 1).gameObject.SetActive (true);
-			}
+			}*/
 		}
 	}
 

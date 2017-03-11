@@ -48,12 +48,23 @@ public class FirstScript : MonoBehaviour
 
 	void LateUpdate ()
 	{
-		if (Input.GetMouseButtonDown (1)) {
-			PlayerPrefs.SetInt ("firstFarms", 0);
-			print (PlayerPrefs.GetInt ("firstFarms"));
-			SceneManager.LoadScene ("Main");
+		if (Input.GetMouseButtonDown (2)) {
+			ResetGame ();
 		}
-		if (Input.GetMouseButtonDown (2))
+		if (Input.GetMouseButtonDown (1))
 			SceneManager.LoadScene ("Main");		
+	}
+
+	public void ResetGame ()
+	{
+		PlayerPrefs.SetInt ("firstFarms", 0);
+		PlayerPrefs.SetInt ("playerProfile", 0);
+		StartCoroutine ("RestartGame");
+	}
+
+	IEnumerator RestartGame ()
+	{
+		yield return new WaitForSeconds (1);
+		SceneManager.LoadScene ("Main");
 	}
 }

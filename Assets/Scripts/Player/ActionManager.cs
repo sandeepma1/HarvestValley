@@ -136,7 +136,7 @@ public class ActionManager : MonoBehaviour
 	void CalculateHardness ()
 	{
 		//print (currentWeildedItem.rarity.name);
-		if (currentSelectedItem.id > 0) {
+		/*if (currentSelectedItem.id > 0) {
 			if (ItemDatabase.m_instance.items [currentSelectedItem.id].isHandMined) {		
 				//print ("Using Bare Hands");
 				PlayerMovement.m_instance.SetPickUpAnimation ();
@@ -191,7 +191,7 @@ public class ActionManager : MonoBehaviour
 						break;
 				}
 			}
-		}
+		}*/
 	}
 
 	void PlaceItem ()
@@ -243,10 +243,10 @@ public class ActionManager : MonoBehaviour
 			for (int i = 0; i < currentWeildedItem.properties.Length; i++) {
 				switch (currentWeildedItem.properties [i].property.name) {
 					case "RestoreHealth":
-						Health.m_instance.modifyHealth (currentWeildedItem.properties [0].intValue);
+						//Health.m_instance.modifyHealth (currentWeildedItem.properties [0].intValue);
 						break;
 					case "RestoreHunger":
-						Food.m_instance.modifyHunger (currentWeildedItem.properties [0].intValue);
+						//Food.m_instance.modifyHunger (currentWeildedItem.properties [0].intValue);
 						break;
 					default:
 						break;
@@ -266,7 +266,7 @@ public class ActionManager : MonoBehaviour
 
 	void DropBreakedItem ()
 	{
-		PlayerMovement.m_instance.SetAttackAnimation (false);
+		/*PlayerMovement.m_instance.SetAttackAnimation (false);
 		int ran1 = 0;
 		int ran2 = 0;
 		int ran3 = 0;
@@ -311,7 +311,7 @@ public class ActionManager : MonoBehaviour
 		UpdateItemAndSaveToFile ();  //update Gameobject and save in file
 		currentSelectedItem = new item ();// set current tile position to -1 i.e. invalid
 		PlayerMovement.m_instance.CalculateNearestItem (0, 0, false);
-		UpdateAllItemsInInventory ();
+		UpdateAllItemsInInventory ();*/
 	}
 
 	public void InstansiateDropGameObject (int id, int dropValue)
@@ -333,7 +333,7 @@ public class ActionManager : MonoBehaviour
 
 	public void UpdateItemAndSaveToFile ()
 	{
-		//print (currentSelectedItem.id);
+		/*//print (currentSelectedItem.id);
 		switch (currentSelectedItem.id) {
 			
 			case 14: //Replace Tree with stump
@@ -353,7 +353,7 @@ public class ActionManager : MonoBehaviour
 				Destroy (currentSelectedItem.GO);
 				//LoadMapFromSave_PG.m_instance.SaveMapItemData (currentSelectedItem.id, currentSelectedItem.age, GameEventManager.currentSelectedTilePosition, onHarvest.Destory);
 				break;
-		}
+		}*/
 	}
 
 	IEnumerator DropItemsLiveAfterSeconds (GameObject go)

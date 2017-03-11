@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class FarmLands : MonoBehaviour
+public class FarmLands : MonoBehaviour, IPointerUpHandler, IPointerDownHandler, IPointerExitHandler, IPointerEnterHandler
 {
 	int objectID;
 	public int id;
@@ -23,35 +23,35 @@ public class FarmLands : MonoBehaviour
 		s_dateTime = dateTime.ToString ();
 	}
 
-	void OnMouseDown ()
+	public void OnPointerDown (PointerEventData eventData)//*
 	{	
 		PlacableTileManager.m_instance.CallParentOnMouseDown (objectID);
 	}
 
-	void OnMouseEnter ()
+	public void OnPointerEnter (PointerEventData eventData)
 	{
 		PlacableTileManager.m_instance.CallParentOnMouseEnter (objectID);
 	}
 
-	void OnMouseUp ()
+	public void OnPointerUp (PointerEventData eventData)
 	{
 		PlacableTileManager.m_instance.CallParentOnMouseUp (objectID);
 	}
 
-	void OnMouseDrag ()
+	/*public void OnMouseDrag (PointerEventData eventData)//*
 	{
 		PlacableTileManager.m_instance.CallParentOnMouseDrag (objectID);
-	}
+	}*/
 
-	void OnMouseExit ()
+	public void OnPointerExit (PointerEventData eventData)//*
 	{
 		PlacableTileManager.m_instance.CallParentOnMouseExit (objectID);
 	}
 
-	void OnMouseUpAsButton ()
+	/*void OnMouseUpAsButton (PointerEventData eventData)
 	{
 		PlacableTileManager.m_instance.CallParentOnMouseUpAsButton (objectID);
-	}
+	}*/
 
 }
 

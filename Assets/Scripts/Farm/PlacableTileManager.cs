@@ -162,11 +162,6 @@ public class PlacableTileManager : MonoBehaviour
 		FarmLands [farm.id].GetComponent <FarmLands> ().dateTime = System.DateTime.Parse (farm.dateTime);
 	}
 
-	void InitFarmLandsStates ()
-	{
-
-	}
-
 	public void CallParentOnMouseDown (int id)
 	{	
 //		print ("Farm " + id + " MouseDown");
@@ -238,7 +233,7 @@ public class PlacableTileManager : MonoBehaviour
 			item.state = (sbyte)FarmLands [item.id].GetComponent <FarmLands> ().state;
 		}		
 		ES2.Save (farmList, "farmList");
-		print ("gameSaved");
+//		print ("gameSaved");
 	}
 }
 

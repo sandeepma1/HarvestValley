@@ -147,12 +147,12 @@ public class LoadMapFromSave_PG : MonoBehaviour
 							case 14://trees
 							case 16://berries
 							case 22://carrots
-								if (mapItemGO [i] [x, y].age != ItemDatabase.m_instance.items [mapItemGO [i] [x, y].id].maxAge) {
+								/*if (mapItemGO [i] [x, y].age != ItemDatabase.m_instance.items [mapItemGO [i] [x, y].id].maxAge) {
 									mapItemGO [i] [x, y].age = (sbyte)(mapItemGO [i] [x, y].age + 1);
 								} else {
 									mapItemGO [i] [x, y].id = (sbyte)ItemDatabase.m_instance.items [mapItemGO [i] [x, y].id].nextStage;
 									mapItemGO [i] [x, y].age = 1;
-								}
+								}*/
 								mapItemsFromSave [i] [x, y] = mapItemGO [i] [x, y].id + "," + mapItemGO [i] [x, y].age;
 								break;
 							default:
@@ -229,14 +229,14 @@ public class LoadMapFromSave_PG : MonoBehaviour
 			switch (mapItemGO [islandIndex] [(int)pos.x, (int)pos.y].id) {
 				case 11: // Trees
 					spriteName = mapItemGO [islandIndex] [(int)pos.x, (int)pos.y].GO.transform.GetChild (1).GetComponent<SpriteRenderer> ().sprite.name;
-					if (itemAge < ItemDatabase.m_instance.items [mapItemGO [islandIndex] [(int)pos.x, (int)pos.y].id].maxAge) {
+			/*if (itemAge < ItemDatabase.m_instance.items [mapItemGO [islandIndex] [(int)pos.x, (int)pos.y].id].maxAge) {
 						mapItemGO [islandIndex] [(int)pos.x, (int)pos.y].GO.transform.GetChild (0).gameObject.SetActive (false);
 						mapItemGO [islandIndex] [(int)pos.x, (int)pos.y].GO.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.LoadAll<Sprite> ("Textures/Map/Items/Trees/" + spriteName) [itemAge];
 					}
 					if (itemAge == ItemDatabase.m_instance.items [mapItemGO [islandIndex] [(int)pos.x, (int)pos.y].id].maxAge) {
 						mapItemGO [islandIndex] [(int)pos.x, (int)pos.y].GO.transform.GetChild (0).gameObject.SetActive (true);
 						mapItemGO [islandIndex] [(int)pos.x, (int)pos.y].GO.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.LoadAll<Sprite> ("Textures/Map/Items/Trees/" + spriteName) [0];
-					}
+					}*/
 					break;
 				case 16:  //Berries
 					spriteName = mapItemGO [islandIndex] [(int)pos.x, (int)pos.y].GO.GetComponent<SpriteRenderer> ().sprite.name;
