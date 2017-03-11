@@ -13,9 +13,8 @@ public static class GameEventManager
 
 	public static int numberOfRocksInLevel = 0;
 	public static bool isSeedSelected = false;
-	public static int seedSelectedIndex = -1;
+	public static int seedSelectedID = -1;
 	public static bool isScytheSelected = false;
-	public static int seedIndex = 0;
 
 	public delegate void GameEvent ();
 

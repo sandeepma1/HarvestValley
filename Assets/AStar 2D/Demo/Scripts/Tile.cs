@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 // Import the AStar_2D namespace
 using AStar_2D;
 

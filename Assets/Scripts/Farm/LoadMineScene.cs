@@ -2,20 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
-public class LoadMineScene : MonoBehaviour
+public class LoadMineScene : MonoBehaviour, IPointerClickHandler
 {
-
-	void OnMouseUp ()
+	public void OnPointerClick (PointerEventData eventData)
 	{
 		SceneManager.LoadScene ("Mines");
 	}
 
-	void Update ()
-	{
-		if (Input.GetMouseButtonDown (1)) {
-			PlayerPrefs.SetInt ("firstFarms", 0);
-			print (PlayerPrefs.GetInt ("firstFarms"));
-		}
-	}
+
 }

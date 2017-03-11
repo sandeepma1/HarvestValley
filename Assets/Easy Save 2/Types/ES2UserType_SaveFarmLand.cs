@@ -10,9 +10,10 @@ public class ES2UserType_SaveFarmLand : ES2Type
 	{
 		SaveFarmLand data = (SaveFarmLand)obj;
 		// Add your writer.Write calls here.
-		writer.Write(data.tileIndex);
+		writer.Write(data.id);
+		writer.Write(data.pos);
 		writer.Write(data.level);
-		writer.Write(data.seedIndex);
+		writer.Write(data.seedID);
 		writer.Write(data.state);
 		writer.Write(data.dateTime);
 
@@ -29,10 +30,11 @@ public class ES2UserType_SaveFarmLand : ES2Type
 	{
 		SaveFarmLand data = (SaveFarmLand)c;
 		// Add your reader.Read calls here to read the data into the object.
-		data.tileIndex = reader.Read<System.SByte>();
-		data.level = reader.Read<System.SByte>();
-		data.seedIndex = reader.Read<System.SByte>();
-		data.state = reader.Read<System.SByte>();
+		data.id = reader.Read<System.Int32>();
+		data.pos = reader.Read<UnityEngine.Vector2>();
+		data.level = reader.Read<System.Int32>();
+		data.seedID = reader.Read<System.Int32>();
+		data.state = reader.Read<System.Int32>();
 		data.dateTime = reader.Read<System.String>();
 
 	}

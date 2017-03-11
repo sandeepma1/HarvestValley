@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class FirstScript : MonoBehaviour
 {
 	public static FirstScript m_instance = null;
-	public GameObject inventoryMenu, mainCanvas, seedMenu;
+	public GameObject inventoryMenu, mainCanvas, seedMenu, FarmlandTimer, DummyfarmLoand;
 	// Use this for initialization
 	public Hashtable ease = new Hashtable ();
 
@@ -20,6 +20,12 @@ public class FirstScript : MonoBehaviour
 		}
 		if (seedMenu != null) {
 			seedMenu.SetActive (false);
+		}
+		if (FarmlandTimer != null) {
+			FarmlandTimer.SetActive (false);
+		}
+		if (DummyfarmLoand != null) {
+			DummyfarmLoand.SetActive (false);
 		}
 
 		ease.Add ("ease", LeanTweenType.easeOutExpo);
@@ -42,7 +48,12 @@ public class FirstScript : MonoBehaviour
 
 	void LateUpdate ()
 	{
-		if (Input.GetMouseButtonDown (2))
+		if (Input.GetMouseButtonDown (1)) {
+			PlayerPrefs.SetInt ("firstFarms", 0);
+			print (PlayerPrefs.GetInt ("firstFarms"));
 			SceneManager.LoadScene ("Main");
+		}
+		if (Input.GetMouseButtonDown (2))
+			SceneManager.LoadScene ("Main");		
 	}
 }

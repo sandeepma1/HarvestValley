@@ -5,26 +5,29 @@ using UnityEngine;
 [System.Serializable]
 public class SaveFarmLand  // iLIST
 {
-	public sbyte tileIndex;
-	public sbyte level;
-	public sbyte seedIndex;
-	public sbyte state;
+	public int id;
+	public Vector2 pos;
+	public int level;
+	public int seedID;
+	public int state;
 	public string dateTime;
 
 	public SaveFarmLand ()
 	{		
-		tileIndex = -1;
+		id = -1;
+		pos = new Vector2 (0, 0);
 		level = -1;
-		seedIndex = -1;
+		seedID = -1;
 		state = -1;
 		dateTime = "";
 	}
 
-	public SaveFarmLand (sbyte f_tileIndex, sbyte f_level, sbyte f_seedIndex, sbyte f_state, string f_dateTime)
+	public SaveFarmLand (int f_id, Vector2 f_pos, int f_level, int f_seedID, int f_state, string f_dateTime)
 	{		
-		tileIndex = f_tileIndex;
+		id = f_id;
+		pos = f_pos;
 		level = f_level;
-		seedIndex = f_seedIndex;
+		seedID = f_seedID;
 		state = f_state;
 		dateTime = f_dateTime;
 	}
