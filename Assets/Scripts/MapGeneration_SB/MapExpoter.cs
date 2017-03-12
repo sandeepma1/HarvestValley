@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-public class MapExpoter : MonoBehaviour {
+public class MapXPoter : MonoBehaviour {
 	//public bool autoUpdate;
 	public GameObject[] mapChunks;
 	//public string path;
@@ -13,7 +13,7 @@ public class MapExpoter : MonoBehaviour {
 	string[,] mapObjects;
 	TextAsset[] mapItems;
 
-	public void ExportToCurrentMaps() {
+	public void XPortToCurrentMaps() {
 		mapItems = Resources.LoadAll<TextAsset>("Saves/");
 		for (int i = 0; i < mapItems.Length; i++) {
 			string[] array = mapItems[i].text.Split('\n');
@@ -31,14 +31,14 @@ public class MapExpoter : MonoBehaviour {
 		foreach (var maps in mapChunks) {
 			GameObject map = GameObject.Instantiate(maps);
 			map.name = maps.name;
-			ExportMap(map);
+			XPortMap(map);
 			print(map.name + " processed..");
 			DestroyImmediate(map);
 		}
 
 	}
 
-	public void ExportMap(GameObject map) {
+	public void XPortMap(GameObject map) {
 		int mapSize = (int)map.GetComponent<CreativeSpore.SuperTilemapEditor.Tilemap>().MapBounds.size.x;
 		mapObjects = new string[mapSize, mapSize];
 		for (int x = 0; x < mapSize; x++) {
@@ -56,7 +56,7 @@ public class MapExpoter : MonoBehaviour {
 		if (File.Exists("Assets/Resources/Saves/" + map.name + ".txt")) {
 			File.Delete("Assets/Resources/Saves/" + map.name + ".txt");
 			File.WriteAllLines("Assets/Resources/Saves/" + map.name + ".txt", MultiToSingle(mapObjects));
-			//ExportToCurrentMaps ();
+			//XPortToCurrentMaps ();
 		} else {
 			File.WriteAllLines("Assets/Resources/Saves/" + map.name + ".txt", MultiToSingle(mapObjects));
 		}

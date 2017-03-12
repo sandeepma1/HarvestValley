@@ -6,85 +6,72 @@ using UnityEngine.SceneManagement;
 public class IGMMenu : MonoBehaviour
 {
 	public static IGMMenu m_instance = null;
-	public GameObject playerGrid;
+
 	public GameObject loadingScreen, igmMenu;
+	public GameObject mainCanvas;
+	public GameObject[] disableAllMenus;
+	//public GameObject[] setPositionFar;
+	public Hashtable ease = new Hashtable ();
 
 	void Awake ()
 	{
 		m_instance = this;
-	}
-
-	void Update ()
-	{		
-		if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor) {
-			if (Input.GetKey (KeyCode.Escape)) {
-				print ("escape");
-				if (SceneManager.GetActiveScene ().name == "Menu") {
-					Application.Quit ();
-				} else {
-					ShowIGMMenu ();
-				}
-				return;
-			}
+		if (mainCanvas != null) {
+			mainCanvas.SetActive (true);
 		}
 	}
 
-	public void ShowIGMMenu ()
+	void Start ()
 	{
-		igmMenu.SetActive (true);
+		DisableAllMenus ();
+		ease.Add ("ease", LeanTweenType.easeOutSine);
 	}
 
-	public void HideIGMMenu ()
+	public void DisableAllMenus ()
 	{
-		igmMenu.SetActive (false);
+		PlacableTileManager.m_instance.isFarmTimerEnabled = false;
+		for (int i = 0; i < disableAllMenus.Length; i++) {			
+			disableAllMenus [i].transform.position = new Vector3 (-500, -500, 0);
+			disableAllMenus [i].SetActive (true);
+		}
 	}
 
-	public void LoadMainLevel ()
+	public void LoadMineScene ()
 	{
-		loadingScreen.SetActive (true);
-		SceneManager.LoadScene ("Main");
-	}
-
-	public void LoadMenuLevelDeleteSaves ()
-	{
-		loadingScreen.SetActive (true);
-		Bronz.LocalStore.Instance.DeleteAll ();
-		ES2.DeleteDefaultFolder ();
-		SceneManager.LoadScene ("Menu");
-	}
-
-	public void LoadMenuLevel ()
-	{
-		loadingScreen.SetActive (true);
-		SceneManager.LoadScene ("Menu");
-	}
-
-	public void LoadMenuLevel_Portrait ()
-	{
-		loadingScreen.SetActive (true);
-		SceneManager.LoadScene ("Menu_Portrait");
-	}
-
-	// Pause Menu
-	public void OpenPauseMenu ()
-	{
-		//pauseMenu.SetActive (true);
-	}
-
-	public void ClosePauseMenu ()
-	{
-		//pauseMenu.SetActive (false);
-	}
-	//Toggle Controls
-	public void ToggleGrid (bool flag)
-	{
-		print (flag);
-		playerGrid.GetComponent<SpriteRenderer> ().enabled = flag;		
+		SceneManager.LoadScene ("Mines");
 	}
 
 	public void QuitGame ()
 	{
 		Application.Quit ();
 	}
+
+	public void CloseGameObject (GameObject go)
+	{
+		go.SetActive (false);
+	}
+
+	public void OpenGameObject (GameObject go)
+	{
+		go.SetActive (true);
+	}
+
+	void Update ()
+	{		
+		/*if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor) {
+			if (Input.GetKey (KeyCode.Escape)) {
+				print ("escape");
+				if (SceneManager.GetActiveScene ().name == "Menu") {
+					Application.Quit ();
+				} else {
+					//ShowIGMMenu ();
+				}
+				return;
+			}
+		}*/
+	}
+
+
+
 
 }

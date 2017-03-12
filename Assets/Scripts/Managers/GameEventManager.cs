@@ -7,17 +7,15 @@ public static class GameEventManager
 	public static string playerName;
 	public static string playerFarmName;
 	public static int playerLevel;
-	public static int playerExpPoints;
+	public static int playerXPPoints;
 	public static int playerGold;
 	public static int playerGems;
 	public static int playerStamina;
 	public static string playerStaminaMaxDateTime;
 	//******end*************************************
 	public static int numberOfRocksInLevel = 0;
-	public static bool isSeedSelected = false;
-	public static int seedSelectedID = -1;
-	public static bool isScytheSelected = false;
-
+	//public static bool isSeedSelected = false;
+	//public static int seedSelectedID = -1;
 
 
 	public delegate void GameEvent ();
