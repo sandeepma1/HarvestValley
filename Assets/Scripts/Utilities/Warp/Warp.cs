@@ -8,13 +8,13 @@ public class Warp : MonoBehaviour
 	IEnumerator OnTriggerEnter2D (Collider2D other)
 	{
 		if (other.gameObject.tag == "Player") {
-			PlayerMovement.m_instance.StopPlayer ();
+			//PlayerMovement.m_instance.StopPlayer ();
 			ScreenFader sf = GameObject.FindGameObjectWithTag ("Fader").GetComponent<ScreenFader> ();
 			yield return StartCoroutine (sf.FadeToBlack ());
 
 			Bronz.LocalStore.Instance.SetInt ("mapChunkPosition", int.Parse (warpTarget.name.Substring (0, 1)));
 
-			LoadMapFromSave_PG.m_instance.DisableUnusedMapChunks ();
+			//LoadMapFromSave_PG.m_instance.DisableUnusedMapChunks ();
 
 			other.gameObject.transform.position = warpTarget.position;
 
@@ -26,7 +26,7 @@ public class Warp : MonoBehaviour
 			Camera.main.transform.GetComponent <CameraFollow> ().maxY = WarpManager.m_instance.warp [Bronz.LocalStore.Instance.GetInt ("mapChunkPosition")].camMaxY;
 		
 			yield return StartCoroutine (sf.FadeToClear ());
-			PlayerMovement.m_instance.StartPlayer ();
+			//PlayerMovement.m_instance.StartPlayer ();
 		}
 	}
 }

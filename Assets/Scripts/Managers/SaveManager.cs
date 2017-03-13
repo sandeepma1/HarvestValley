@@ -17,12 +17,12 @@ public class SaveManager : MonoBehaviour
 	void Start ()
 	{		
 		//touchToggleControlUI.GetComponent <Toggle> ().isOn = Bronz.LocalStore.Instance.GetBool ("TouchControls");
-		InvokeRepeating ("SaveInventory", 0, 2);
+		//InvokeRepeating ("SaveInventory", 0, 2);
 	}
 
 	void SaveInventory ()
 	{
-		inventorySave.GetComponent <Devdog.InventorySystem.CollectionSaverLoaderBase> ().Save ();
+		
 	}
 
 	public void SaveGameTime (int time)
