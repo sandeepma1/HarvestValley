@@ -7,7 +7,7 @@ public class IGMMenu : MonoBehaviour
 {
 	public static IGMMenu m_instance = null;
 
-	public GameObject loadingScreen, igmMenu;
+	public GameObject loadingScreen;
 	public GameObject mainCanvas;
 	public GameObject[] disableAllMenus;
 	//public GameObject[] setPositionFar;
@@ -36,10 +36,17 @@ public class IGMMenu : MonoBehaviour
 		}
 	}
 
-	public void LoadMineScene ()
+	public void ChangeCamera (int pos)
 	{
-		SceneManager.LoadScene ("Mines");
+		LeanTween.moveX (Camera.main.gameObject, pos, 0.5f, ease);
 	}
+
+	public void LoadScene (string sceneName)
+	{
+		SceneManager.LoadScene (sceneName);
+	}
+
+
 
 	public void QuitGame ()
 	{
