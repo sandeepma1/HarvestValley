@@ -36,6 +36,11 @@ public class PlayerProfileManager : MonoBehaviour
 			return true;
 	}
 
+	public int CurrentPlayerLevel ()
+	{
+		return player.level;
+	}
+
 	public void PlayerName (string value)
 	{			
 		player.name = value;
@@ -77,6 +82,8 @@ public class PlayerProfileManager : MonoBehaviour
 		player.stamina += value;
 		UpdateAll ();		
 	}
+
+
 
 	void UpdateAll ()
 	{

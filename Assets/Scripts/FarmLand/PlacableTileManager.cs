@@ -149,7 +149,6 @@ public class PlacableTileManager : MonoBehaviour
 			farmList.Add (new SaveFarmLand (5, new Vector2 (0, -1), 1, -1, 0, System.DateTime.UtcNow.ToString ()));
 			ES2.Save (farmList, "farmList");
 			PlayerPrefs.SetInt ("firstFarms", 1);
-			print (PlayerPrefs.GetInt ("firstFarms") + " only once");
 		}
 	}
 
@@ -183,7 +182,9 @@ public class PlacableTileManager : MonoBehaviour
 	{
 		switch (FarmLands [id].GetComponent <FarmLands> ().state) {
 			case FARM_LAND_STATE.NONE:
+				CropMenuManager.m_instance.UpdateSeedValue ();
 				ShowFarmLandMenu (id);
+
 				break;
 			case FARM_LAND_STATE.GROWING:
 				tempID = id;

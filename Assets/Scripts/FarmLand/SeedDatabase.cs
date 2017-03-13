@@ -12,10 +12,9 @@ public class SeedDatabase : MonoBehaviour
 		m_instance = this;
 		Initialize ();
 	}
-	
-	// Update is called once per frame
+
 	void Initialize ()
-	{
+	{//id, name, minsToGrow, XP, requiredLevel, gemCost, slotID
 		seeds = new Seeds[8];
 		seeds [0] = new Seeds (0, "Wheat", 1, 2, 1, 1, 1);
 		seeds [1] = new Seeds (1, "Corn", 2, 2, 1, 1, 1);

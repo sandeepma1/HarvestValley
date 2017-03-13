@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class PlayerLevelManager : MonoBehaviour
 {
+	public static PlayerLevelManager m_instance = null;
 
-	// Use this for initialization
-	void Start ()
+	void Awake ()
 	{
-		
+		m_instance = this;
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+	public void CurrentPlayerLevel ()
 	{
-		
+
+	}
+
+	public void CurrentPlayerXP ()
+	{
+
 	}
 }
 
