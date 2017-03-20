@@ -31,11 +31,12 @@ public class FarmItemsManager : MonoBehaviour
 		}
 	}
 
-	void UpdateScrollListItemCount ()
+	public void UpdateScrollListItemCount ()
 	{
 		for (int i = 0; i < playerItems.Count; i++) {			
 			listItem [i].transform.GetChild (0).GetComponent <TextMeshProUGUI> ().text = playerItems [i].count.ToString ();
 		}
+		ES2.Save (playerItems, "playerInventory");
 	}
 
 	public void AddFarmItems (int id, int value)
@@ -46,7 +47,6 @@ public class FarmItemsManager : MonoBehaviour
 			}
 		}
 		UpdateScrollListItemCount ();
-		ES2.Save (playerItems, "playerInventory");
 	}
 
 	#region Init FarmStorage

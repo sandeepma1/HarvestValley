@@ -2,9 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class SaveManager : MonoBehaviour
+public class GlobalUpdateSaveManager : MonoBehaviour
 {
-	public static SaveManager m_instance = null;
+	public static GlobalUpdateSaveManager m_instance = null;
 	public GameObject inventorySave;
 	//, touchToggleControlUI;
 	// Use this for initialization

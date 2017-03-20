@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.Text.RegularExpressions;
 
 public class ItemDatabase : MonoBehaviour
 {
@@ -16,7 +18,19 @@ public class ItemDatabase : MonoBehaviour
 
 	void Initialize ()
 	{
-		items = new Item[12];
+		string[] lines = new string[100];
+		string[] chars = new string[100];
+		TextAsset itemCSV =	Resources.Load ("CSVs/Items") as TextAsset;
+		lines = Regex.Split (itemCSV.text, "\r\n");
+		items = new Item[lines.Length - 2];
+		for (int i = 1; i < lines.Length - 1; i++) {			
+			chars = Regex.Split (lines [i], ",");
+			items [i - 1] = new Item (IntParse (chars [0]), chars [1], chars [2], IntParse (chars [3]), IntParse (chars [4]), 
+				IntParse (chars [5]), (ItemType)Enum.Parse (typeof(ItemType), chars [6]), IntParse (chars [7]), (ItemSource)Enum.Parse (typeof(ItemSource), chars [8]), IntParse (chars [9]), IntParse (chars [10]),
+				IntParse (chars [11]), IntParse (chars [12]), IntParse (chars [13]), IntParse (chars [14]), IntParse (chars [15]), IntParse (chars [16]), IntParse (chars [17]));
+		}
+
+		/*items = new Item[12];
 		items [0] = new Item (0, "Wheat", "Descriptions", 1, 2, 2, ItemType.Crops, 2, ItemSource.Field, 10, 0, 1, -1, 0, -1, 0, -1, 0);
 		items [1] = new Item (1, "Corn", "Descriptions", 1, 5, 3, ItemType.Crops, 3, ItemSource.Field, 15, 1, 1, -1, 0, -1, 0, -1, 0);
 		items [2] = new Item (2, "Soybean", "Descriptions", 1, 7, 4, ItemType.Crops, 4, ItemSource.Field, 20, 2, 1, -1, 0, -1, 0, -1, 0);
@@ -30,8 +44,26 @@ public class ItemDatabase : MonoBehaviour
 		items [8] = new Item (8, "Wheat", "Descriptions", 2, 7, 4, ItemType.Crops, 4, ItemSource.Field, 10, 2, 1, -1, 0, -1, 0, -1, 0);
 		items [9] = new Item (9, "Wheat", "Descriptions", 2, 7, 4, ItemType.Crops, 4, ItemSource.Field, 10, 2, 1, -1, 0, -1, 0, -1, 0);
 		items [10] = new Item (10, "Wheat", "Descriptions", 2, 7, 4, ItemType.Crops, 4, ItemSource.Field, 10, 2, 1, -1, 0, -1, 0, -1, 0);
-		items [11] = new Item (11, "Wheat", "Descriptions", 2, 7, 4, ItemType.Crops, 4, ItemSource.Field, 10, 2, 1, -1, 0, -1, 0, -1, 0);
+		items [11] = new Item (11, "Wheat", "Descriptions", 2, 7, 4, ItemType.Crops, 4, ItemSource.Field, 10, 2, 1, -1, 0, -1, 0, -1, 0);*/
 	}
+
+	int IntParse (string text)
+	{
+		int num;
+		if (int.TryParse (text, out num)) {
+			return num;
+		} else
+			return 0;
+	}
+
+	/*ItemType EnumParseItemType (string text)
+	{
+		ItemType item;
+		if (Enum.Parse (text, out item)) {
+			return item;
+		} else
+			return 0;
+	}*/
 }
 
 [System.Serializable]

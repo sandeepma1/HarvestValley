@@ -59,9 +59,7 @@ public class CropMenuManager : MonoBehaviour
 			seeds [i].name = "Seed" + i;
 			seeds [i].GetComponent <DraggableSeeds> ().seedID = unlockedSeedIDs [i];
 			seeds [i].transform.GetChild (0).GetComponent <SpriteRenderer> ().sprite = Resources.Load <Sprite> ("Textures/Crop/" + ItemDatabase.m_instance.items [unlockedSeedIDs [i]].name);
-//			print (FarmItemsManager.m_instance.playerItems [i]);
 			seeds [i].transform.GetChild (1).GetComponent<TextMeshPro> ().text = FarmItemsManager.m_instance.playerItems [i].count.ToString ();
-
 			seeds [i].transform.localPosition = pos [posCount];
 			posCount++;
 			if (posCount > pos.Length - 1) {
@@ -77,6 +75,7 @@ public class CropMenuManager : MonoBehaviour
 		for (int i = 0; i < unlockedSeedIDs.Count; i++) {
 			seeds [i].transform.GetChild (1).GetComponent<TextMeshPro> ().text = FarmItemsManager.m_instance.playerItems [i].count.ToString ();
 		}
+		FarmItemsManager.m_instance.UpdateScrollListItemCount ();
 	}
 
 	public void ToggleMenuPages ()
@@ -93,14 +92,11 @@ public class CropMenuManager : MonoBehaviour
 				break;
 			}
 		}
-
-
 		a++;
 		if (a >= maxPages) {
 			a = 0;
 		}
 	}
-
 
 	public void ChildCallingOnMouseUp (int id)
 	{
