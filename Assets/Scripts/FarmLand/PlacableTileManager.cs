@@ -16,8 +16,8 @@ public class PlacableTileManager : MonoBehaviour
 	System.TimeSpan remainingTime;
 	int tempID = -1;
 
-	public bool plantedOnSelectedFeild = false;
-	public int feildSelectedID = -1;
+	public bool plantedOnSelectedfield = false;
+	public int fieldSelectedID = -1;
 
 
 	void Awake ()
@@ -47,10 +47,10 @@ public class PlacableTileManager : MonoBehaviour
 		ES2.Save (farmList, "farmList");
 	}
 
-	public void ShowFarmLandMenu (int farmLandID) // Display Feild Crop Menu
+	public void ShowFarmLandMenu (int farmLandID) // Display field Crop Menu
 	{
 		IGMMenu.m_instance.DisableAllMenus ();
-		feildSelectedID = farmLandID;
+		fieldSelectedID = farmLandID;
 		CropMenu.transform.position = FarmLands [farmLandID].transform.position;
 		CropMenu.transform.localScale = new Vector3 (0.25f, 0.25f, 0.25f);
 		CropMenu.SetActive (true);
@@ -69,7 +69,7 @@ public class PlacableTileManager : MonoBehaviour
 	public void PlantSeedsOnFarmLand (int farmLandID) // Planting Seeds
 	{		
 		if (CropMenuManager.m_instance.isSeedSelected == true) {	
-			if (feildSelectedID == farmLandID || plantedOnSelectedFeild && FarmItemsManager.m_instance.playerItems [CropMenuManager.m_instance.seedSelectedID].count >= 1) {							
+			if (fieldSelectedID == farmLandID || plantedOnSelectedfield && FarmItemsManager.m_instance.playerItems [CropMenuManager.m_instance.seedSelectedID].count >= 1) {							
 				FarmLands [farmLandID].GetComponent <FarmLands> ().state = FARM_LAND_STATE.GROWING;
 				FarmLands [farmLandID].GetComponent <FarmLands> ().seedID = CropMenuManager.m_instance.seedSelectedID;
 				FarmLands [farmLandID].GetComponent <FarmLands> ().dateTime = UTC.time.liveDateTime.AddMinutes (ItemDatabase.m_instance.items [CropMenuManager.m_instance.seedSelectedID].timeRequiredInMins);
@@ -77,8 +77,8 @@ public class PlacableTileManager : MonoBehaviour
 				FarmItemsManager.m_instance.playerItems [CropMenuManager.m_instance.seedSelectedID].count--;
 				CropMenuManager.m_instance.UpdateSeedValue ();
 				SaveFarmLands ();
-				plantedOnSelectedFeild = true;
-				feildSelectedID = -1;
+				plantedOnSelectedfield = true;
+				fieldSelectedID = -1;
 				CropMenuManager.m_instance.ToggleDisplayCropMenu ();	
 			}
 		}
@@ -87,11 +87,11 @@ public class PlacableTileManager : MonoBehaviour
 	public void HarvestCropOnFarmLand (int farmLandID) // Harvesting Seeds
 	{
 		if (HarvestMenuManager.m_instance.isScytheSelected == true) {
-			// TODO Heavy update required for Feild Level Based cals*******************
+			// TODO Heavy update required for field Level Based cals*******************
 			// only 2 items are added in storage
-			print (FarmLands [farmLandID].GetComponent <FarmLands> ().seedID);
-			FarmItemsManager.m_instance.AddFarmItems (FarmLands [farmLandID].GetComponent <FarmLands> ().seedID, 2);
-			PlayerProfileManager.m_instance.PlayerXPPoints (ItemDatabase.m_instance.items [FarmLands [farmLandID].GetComponent <FarmLands> ().seedID].XP);
+//			print (FarmLands [farmLandID].GetComponent <FarmLands> ().seedID);
+			FarmItemsManager.m_instance.UpdateFarmItems (FarmLands [farmLandID].GetComponent <FarmLands> ().seedID, 2);
+			PlayerProfileManager.m_instance.PlayerXPPointsAdd (ItemDatabase.m_instance.items [FarmLands [farmLandID].GetComponent <FarmLands> ().seedID].XP);
 			FarmLands [farmLandID].GetComponent <FarmLands> ().state = FARM_LAND_STATE.NONE;
 			FarmLands [farmLandID].GetComponent <FarmLands> ().dateTime = new System.DateTime ();
 			FarmLands [farmLandID].GetComponent <SpriteRenderer> ().color = Color.white;

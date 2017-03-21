@@ -25,7 +25,7 @@ public class ItemDatabase : MonoBehaviour
 		items = new Item[lines.Length - 2];
 		for (int i = 1; i < lines.Length - 1; i++) {			
 			chars = Regex.Split (lines [i], ",");
-			items [i - 1] = new Item (IntParse (chars [0]), chars [1], chars [2], IntParse (chars [3]), IntParse (chars [4]), 
+			items [i - 1] = new Item (IntParse (chars [0]), chars [1], chars [2], IntParse (chars [3]), FloatParse (chars [4]), 
 				IntParse (chars [5]), (ItemType)Enum.Parse (typeof(ItemType), chars [6]), IntParse (chars [7]), (ItemSource)Enum.Parse (typeof(ItemSource), chars [8]), IntParse (chars [9]), IntParse (chars [10]),
 				IntParse (chars [11]), IntParse (chars [12]), IntParse (chars [13]), IntParse (chars [14]), IntParse (chars [15]), IntParse (chars [16]), IntParse (chars [17]));
 		}
@@ -56,6 +56,13 @@ public class ItemDatabase : MonoBehaviour
 			return 0;
 	}
 
+	float FloatParse (string text)
+	{
+		float result = 0.01f;
+		float.TryParse (text, out result);
+		return result;
+
+	}
 	/*ItemType EnumParseItemType (string text)
 	{
 		ItemType item;
@@ -75,7 +82,7 @@ public class Item
 	public string name;
 	public string description;
 	public int unlocksAtLevel;
-	public int timeRequiredInMins;
+	public float timeRequiredInMins;
 	public int XP;
 	public ItemType type;
 	public int gemCost;
@@ -91,7 +98,7 @@ public class Item
 	public int needAmount4;
 
 	public Item (int itemId, string itemName, string itemDescription, int itemUnlocksAtLevel, 
-	             int itemTimeRequiredInMins, int itemXP, ItemType itemType, int itemGemCost, ItemSource itemSource, 
+	             float itemTimeRequiredInMins, int itemXP, ItemType itemType, int itemGemCost, ItemSource itemSource, 
 	             int itemSellValueMax, int itemNeedID1, int itemNeedAmount1, int itemNeedID2, int itemNeedAmount2,
 	             int itemNeedID3, int itemNeedAmount3, int itemNeedID4, int itemNeedAmount4)
 	{

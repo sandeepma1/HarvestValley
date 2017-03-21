@@ -7,9 +7,9 @@ using System;
 public class PlayerProfileManager : MonoBehaviour
 {
 	public static PlayerProfileManager m_instance = null;
-	public TextMeshProUGUI gold, gems, stamina, level, XPPoints;
+	public TextMeshProUGUI coinsUIText, gemsUIText, staminaUIText, levelUIText, XPPointsUIText;
+	public GameObject levelUpUIMenu;
 	public PlayersProfile player = null;
-
 
 	void Awake ()
 	{
@@ -22,7 +22,7 @@ public class PlayerProfileManager : MonoBehaviour
 
 	public bool IsGoldAvailable (int value)
 	{
-		if (value <= player.gold)
+		if (value <= player.coins)
 			return false;
 		else
 			return true;
@@ -41,6 +41,22 @@ public class PlayerProfileManager : MonoBehaviour
 		return player.level;
 	}
 
+	public int CurrentPlayerXP ()
+	{
+		return player.XPPoints;
+	}
+
+	public void CheckForLevelUp ()
+	{
+		if (player.XPPoints >= LevelUpManager.m_instance.gameLevel [player.level].XPforNextLevel) {
+			IncrementPlayerLevel ();
+
+			FarmItemsManager.m_instance.AddNewFarmItem (LevelUpManager.m_instance.gameLevel [player.level].cropsUnlockID, LevelUpManager.m_instance.gameLevel [player.level].cropsRewardCount);
+			CropMenuManager.m_instance.CheckForUnlockedSeeds ();
+			levelUpUIMenu.SetActive (true);
+		}
+	}
+
 	public void PlayerName (string value)
 	{			
 		player.name = value;
@@ -55,7 +71,7 @@ public class PlayerProfileManager : MonoBehaviour
 
 	public void PlayerGold (int value)
 	{			
-		player.gold += value;
+		player.coins += value;
 		UpdateAll ();		
 	}
 
@@ -65,15 +81,16 @@ public class PlayerProfileManager : MonoBehaviour
 		UpdateAll ();		
 	}
 
-	public void  PlayerLevel (int value)
+	public void IncrementPlayerLevel ()
 	{			
-		player.level += value;
+		player.level++;
 		UpdateAll ();		
 	}
 
-	public void PlayerXPPoints (int value)
+	public void PlayerXPPointsAdd (int value)
 	{			
 		player.XPPoints += value;
+		CheckForLevelUp ();
 		UpdateAll ();		
 	}
 
@@ -83,15 +100,13 @@ public class PlayerProfileManager : MonoBehaviour
 		UpdateAll ();		
 	}
 
-
-
 	void UpdateAll ()
 	{
-		gold.text = String.Format ("{0:### ### ### ### ###}", player.gold);
-		gems.text = String.Format ("{0:### ### ### ### ###}", player.gems);
-		stamina.text = player.stamina.ToString ();
-		level.text = player.level.ToString ();
-		XPPoints.text = player.XPPoints.ToString ();
+		coinsUIText.text = String.Format ("{0:### ### ### ### ###}", player.coins);
+		gemsUIText.text = String.Format ("{0:### ### ### ### ###}", player.gems);
+		staminaUIText.text = player.stamina.ToString ();
+		levelUIText.text = player.level.ToString ();
+		XPPointsUIText.text = player.XPPoints.ToString () + "/" + LevelUpManager.m_instance.gameLevel [player.level].XPforNextLevel.ToString ();
 		ES2.Save (player, "playerProfile");
 	}
 
@@ -113,7 +128,7 @@ public class PlayerProfileManager : MonoBehaviour
 		GameEventManager.playerFarmName = player.farmName;
 		GameEventManager.playerLevel = player.level;
 		GameEventManager.playerXPPoints = player.XPPoints;
-		GameEventManager.playerGold = player.gold;
+		GameEventManager.playerGold = player.coins;
 		GameEventManager.playerGems = player.gems;
 		GameEventManager.playerStamina = player.stamina;
 		GameEventManager.playerStaminaMaxDateTime = player.staminaMaxDateTime;
@@ -131,18 +146,18 @@ public class PlayersProfile
 	public string farmName;
 	public int level;
 	public int XPPoints;
-	public int gold;
+	public int coins;
 	public int gems;
 	public int stamina;
 	public string staminaMaxDateTime;
 
-	public  PlayersProfile (string p_name, string p_farmName, int p_level, int p_XPPoints, int p_gold, int p_gems, int p_stamina, string p_staminaMaxDateTime)
+	public  PlayersProfile (string p_name, string p_farmName, int p_level, int p_XPPoints, int p_coins, int p_gems, int p_stamina, string p_staminaMaxDateTime)
 	{
 		name = p_name;
 		farmName = p_farmName;
 		level = p_level;
 		XPPoints = p_XPPoints;
-		gold = p_gold;
+		coins = p_coins;
 		gems = p_gems;
 		stamina = p_stamina;
 		staminaMaxDateTime = p_staminaMaxDateTime;
@@ -154,7 +169,7 @@ public class PlayersProfile
 		farmName = "Farm";
 		level = 1;
 		XPPoints = 0;
-		gold = 1000;
+		coins = 1000;
 		gems = 10;
 		stamina = 100;
 		staminaMaxDateTime = "";

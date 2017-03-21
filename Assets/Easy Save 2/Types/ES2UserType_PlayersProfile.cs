@@ -14,7 +14,7 @@ public class ES2UserType_PlayersProfile : ES2Type
 		writer.Write (data.farmName);
 		writer.Write (data.level);
 		writer.Write (data.XPPoints);
-		writer.Write (data.gold);
+		writer.Write (data.coins);
 		writer.Write (data.gems);
 		writer.Write (data.stamina);
 		writer.Write (data.staminaMaxDateTime);
@@ -36,7 +36,7 @@ public class ES2UserType_PlayersProfile : ES2Type
 		data.farmName = reader.Read<System.String> ();
 		data.level = reader.Read<System.Int32> ();
 		data.XPPoints = reader.Read<System.Int32> ();
-		data.gold = reader.Read<System.Int32> ();
+		data.coins = reader.Read<System.Int32> ();
 		data.gems = reader.Read<System.Int32> ();
 		data.stamina = reader.Read<System.Int32> ();
 		data.staminaMaxDateTime = reader.Read<System.String> ();
