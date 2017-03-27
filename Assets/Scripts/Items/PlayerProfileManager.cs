@@ -9,20 +9,23 @@ public class PlayerProfileManager : MonoBehaviour
 	public static PlayerProfileManager m_instance = null;
 	public TextMeshProUGUI coinsUIText, gemsUIText, staminaUIText, levelUIText, XPPointsUIText;
 	public GameObject levelUpUIMenu;
-	public PlayersProfile player = null;
+	public PlayersProfile playerProfile = null;
+
+	bool isUpdated = false;
+	float updateTimer = 1f;
 
 	void Awake ()
 	{
 		m_instance = this;
 		NewGameStart ();
-		player = ES2.Load<PlayersProfile> ("playerProfile");
-		IntiPlayerProfile ();
+		playerProfile = ES2.Load<PlayersProfile> ("playerProfile");
+		InitPlayerProfile ();
 		UpdateAll ();
 	}
 
 	public bool IsGoldAvailable (int value)
 	{
-		if (value <= player.coins)
+		if (value <= playerProfile.coins)
 			return false;
 		else
 			return true;
@@ -30,7 +33,7 @@ public class PlayerProfileManager : MonoBehaviour
 
 	public bool IsGemAvailable (int value)
 	{
-		if (value <= player.gems)
+		if (value <= playerProfile.gems)
 			return false;
 		else
 			return true;
@@ -38,76 +41,91 @@ public class PlayerProfileManager : MonoBehaviour
 
 	public int CurrentPlayerLevel ()
 	{
-		return player.level;
+		return playerProfile.level;
 	}
 
 	public int CurrentPlayerXP ()
 	{
-		return player.XPPoints;
+		return playerProfile.XPPoints;
 	}
 
 	public void CheckForLevelUp ()
 	{
-		if (player.XPPoints >= LevelUpManager.m_instance.gameLevel [player.level].XPforNextLevel) {
+		if (playerProfile.XPPoints >= LevelUpManager.m_instance.gameLevels [playerProfile.level].XPforNextLevel) {
 			IncrementPlayerLevel ();
+			if (LevelUpManager.m_instance.gameLevels [playerProfile.level].cropsUnlockID >= 0) {				
+				PlayerInventoryManager.m_instance.AddNewFarmItem (LevelUpManager.m_instance.gameLevels [playerProfile.level].cropsUnlockID,
+					LevelUpManager.m_instance.gameLevels [playerProfile.level].cropsRewardCount);
+				CropMenuManager.m_instance.CheckForUnlockedSeeds ();
+				PlayerGems (LevelUpManager.m_instance.gameLevels [playerProfile.level].gemsRewardCount);
+			}
 
-			FarmItemsManager.m_instance.AddNewFarmItem (LevelUpManager.m_instance.gameLevel [player.level].cropsUnlockID, LevelUpManager.m_instance.gameLevel [player.level].cropsRewardCount);
-			CropMenuManager.m_instance.CheckForUnlockedSeeds ();
+			PlayerXPPointsAdd (-CurrentPlayerXP ()); 
 			levelUpUIMenu.SetActive (true);
+			//MASTER_SaveEverything.m_instance.SaveGameDays (1);
 		}
+		UpdateAll ();
 	}
 
 	public void PlayerName (string value)
 	{			
-		player.name = value;
+		playerProfile.name = value;
 		UpdateAll ();		
 	}
 
 	public void FarmName (string value)
 	{			
-		player.farmName = value;
+		playerProfile.farmName = value;
 		UpdateAll ();		
 	}
 
 	public void PlayerGold (int value)
 	{			
-		player.coins += value;
+		playerProfile.coins += value;
 		UpdateAll ();		
 	}
 
 	public void PlayerGems (int value)
 	{			
-		player.gems += value;
+		playerProfile.gems += value;
 		UpdateAll ();		
 	}
 
 	public void IncrementPlayerLevel ()
 	{			
-		player.level++;
+		playerProfile.level++;
 		UpdateAll ();		
 	}
 
 	public void PlayerXPPointsAdd (int value)
 	{			
-		player.XPPoints += value;
+		playerProfile.XPPoints += value;
 		CheckForLevelUp ();
 		UpdateAll ();		
 	}
 
 	public void PlayerStamina (int value)
 	{			
-		player.stamina += value;
+		playerProfile.stamina += value;
 		UpdateAll ();		
 	}
 
 	void UpdateAll ()
 	{
-		coinsUIText.text = String.Format ("{0:### ### ### ### ###}", player.coins);
-		gemsUIText.text = String.Format ("{0:### ### ### ### ###}", player.gems);
-		staminaUIText.text = player.stamina.ToString ();
-		levelUIText.text = player.level.ToString ();
-		XPPointsUIText.text = player.XPPoints.ToString () + "/" + LevelUpManager.m_instance.gameLevel [player.level].XPforNextLevel.ToString ();
-		ES2.Save (player, "playerProfile");
+		coinsUIText.text = String.Format ("{0:### ### ### ### ###}", playerProfile.coins);
+		gemsUIText.text = String.Format ("{0:### ### ### ### ###}", playerProfile.gems);
+		staminaUIText.text = playerProfile.stamina.ToString ();
+		levelUIText.text = playerProfile.level.ToString ();
+		XPPointsUIText.text = playerProfile.XPPoints.ToString () + "/" + LevelUpManager.m_instance.gameLevels [playerProfile.level].XPforNextLevel.ToString ();
+		StopCoroutine ("SavePlayerProfile");
+		StartCoroutine ("SavePlayerProfile");
+	}
+
+	IEnumerator SavePlayerProfile ()
+	{
+		yield return new WaitForSeconds (1f);
+		ES2.Save (playerProfile, "playerProfile");
+		print ("saved player profile");
 	}
 
 	#region Init PlayerProfile
@@ -116,22 +134,22 @@ public class PlayerProfileManager : MonoBehaviour
 	{ 
 		if (PlayerPrefs.GetInt ("playerProfile") <= 0) {			
 			ES2.Delete ("playerProfile");
-			player = new PlayersProfile ("PlayerName", "MyFarm", 1, 0, 1000, 10, 50, System.DateTime.UtcNow.ToString ());
-			ES2.Save (player, "playerProfile");
+			playerProfile = new PlayersProfile ("PlayerName", "MyFarm", 1, 0, 1000, 10, 50, System.DateTime.UtcNow.ToString ());
+			ES2.Save (playerProfile, "playerProfile");
 			PlayerPrefs.SetInt ("playerProfile", 1);
 		}
 	}
 
-	void IntiPlayerProfile ()
+	void InitPlayerProfile ()
 	{
-		GameEventManager.playerName = player.name;
-		GameEventManager.playerFarmName = player.farmName;
-		GameEventManager.playerLevel = player.level;
-		GameEventManager.playerXPPoints = player.XPPoints;
-		GameEventManager.playerGold = player.coins;
-		GameEventManager.playerGems = player.gems;
-		GameEventManager.playerStamina = player.stamina;
-		GameEventManager.playerStaminaMaxDateTime = player.staminaMaxDateTime;
+		GameEventManager.playerName = playerProfile.name;
+		GameEventManager.playerFarmName = playerProfile.farmName;
+		GameEventManager.playerLevel = playerProfile.level;
+		GameEventManager.playerXPPoints = playerProfile.XPPoints;
+		GameEventManager.playerGold = playerProfile.coins;
+		GameEventManager.playerGems = playerProfile.gems;
+		GameEventManager.playerStamina = playerProfile.stamina;
+		GameEventManager.playerStaminaMaxDateTime = playerProfile.staminaMaxDateTime;
 	}
 
 	#endregion

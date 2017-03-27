@@ -1,13 +1,14 @@
 id,name,description,unlocksAtLevel,timeRequiredInMins,XP,type,gemCost,source,sellValueMax,needID1,needAmount1,needID2,needAmount2,needID3,needAmount3,needID4,needAmount4
-0,Wheat,Descriptions,1,2,2,Crops,2,Field,10,0,1,-1,0,-1,0,-1,0
-1,Corn,Descriptions,1,5,3,Crops,3,Field,15,1,1,-1,0,-1,0,-1,0
-2,Soybean,Descriptions,2,7,4,Crops,4,Field,20,2,1,-1,0,-1,0,-1,0
-3,Sugarcane,Descriptions,3,7,5,Crops,5,Field,25,3,1,-1,0,-1,0,-1,0
-4,Carrot,Descriptions,4,7,4,Crops,4,Field,10,2,1,-1,0,-1,0,-1,0
-5,Wheat,Descriptions,5,7,4,Crops,4,Field,10,2,1,-1,0,-1,0,-1,0
-6,Wheat,Descriptions,6,7,4,Crops,4,Field,10,2,1,-1,0,-1,0,-1,0
-7,Wheat,Descriptions,7,7,4,Crops,4,Field,10,2,1,-1,0,-1,0,-1,0
-8,Wheat,Descriptions,8,7,4,Crops,4,Field,10,2,1,-1,0,-1,0,-1,0
-9,Wheat,Descriptions,9,7,4,Crops,4,Field,10,2,1,-1,0,-1,0,-1,0
-10,Wheat,Descriptions,10,7,4,Crops,4,Field,10,2,1,-1,0,-1,0,-1,0
-11,Wheat,Descriptions,11,7,4,Crops,4,Field,10,2,1,-1,0,-1,0,-1,0
+0,Wheat,Descriptions,0,0.05,10,Crops,2,Field,3,0,1,-1,0,-1,0,-1,0
+1,Corn,Descriptions,1,0.05,10,Crops,3,Field,7,1,1,-1,0,-1,0,-1,0
+2,Carrot,Descriptions,2,0.05,20,Crops,4,Field,7,2,1,-1,0,-1,0,-1,0
+3,Soybean,Descriptions,3,0.05,10,Crops,5,Field,10,3,1,-1,0,-1,0,-1,0
+4,Sugarcane,Descriptions,4,0.05,30,Crops,4,Field,14,2,1,-1,0,-1,0,-1,0
+5,Indigo,Descriptions,5,0.05,5,Crops,4,Field,35,2,1,-1,0,-1,0,-1,0
+6,Pumpkin,Descriptions,6,0.05,6,Crops,4,Field,32,2,1,-1,0,-1,0,-1,0
+7,Cotton,Descriptions,7,0.05,6,Crops,4,Field,28,2,1,-1,0,-1,0,-1,0
+8,Chili Pepper,Descriptions,8,0.05,7,Crops,4,Field,36,2,1,-1,0,-1,0,-1,0
+9,Potatoes,Descriptions,9,0.05,7,Crops,4,Field,36,2,1,-1,0,-1,0,-1,0
+10,Tomato,Descriptions,10,0.05,8,Crops,4,Field,43,2,1,-1,0,-1,0,-1,0
+11,Strawberries,Descriptions,11,0.05,10,Crops,4,Field,50,2,1,-1,0,-1,0,-1,0
+,,,,,,,,,,,,,,,,,

@@ -61,7 +61,7 @@ public class ES2Init : MonoBehaviour
 		ES2TypeManager.types[typeof(UnityEngine.Gradient)] = new ES2_Gradient();
 		ES2TypeManager.types[typeof(UnityEngine.Sprite)] = new ES2_Sprite();
 		ES2TypeManager.types[typeof(PlayersProfile)] = new ES2UserType_PlayersProfile();
-		ES2TypeManager.types[typeof(SaveFarmLand)] = new ES2UserType_SaveFarmLand();
+		ES2TypeManager.types[typeof(FarmField)] = new ES2UserType_SaveFarmLand();
 		ES2TypeManager.types[typeof(UnityEngine.AudioClip)] = new ES2_AudioClip();
 		ES2TypeManager.types[typeof(FarmItems)] = new ES2UserType_FarmItems();
 

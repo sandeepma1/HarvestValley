@@ -8,7 +8,7 @@ public class ES2UserType_SaveFarmLand : ES2Type
 {
 	public override void Write(object obj, ES2Writer writer)
 	{
-		SaveFarmLand data = (SaveFarmLand)obj;
+		FarmField data = (FarmField)obj;
 		// Add your writer.Write calls here.
 		writer.Write(data.id);
 		writer.Write(data.pos);
@@ -21,14 +21,14 @@ public class ES2UserType_SaveFarmLand : ES2Type
 	
 	public override object Read(ES2Reader reader)
 	{
-		SaveFarmLand data = new SaveFarmLand();
+		FarmField data = new FarmField();
 		Read(reader, data);
 		return data;
 	}
 	
 	public override void Read(ES2Reader reader, object c)
 	{
-		SaveFarmLand data = (SaveFarmLand)c;
+		FarmField data = (FarmField)c;
 		// Add your reader.Read calls here to read the data into the object.
 		data.id = reader.Read<System.Int32>();
 		data.pos = reader.Read<UnityEngine.Vector2>();
@@ -40,5 +40,5 @@ public class ES2UserType_SaveFarmLand : ES2Type
 	}
 	
 	/* ! Don't modify anything below this line ! */
-	public ES2UserType_SaveFarmLand():base(typeof(SaveFarmLand)){}
+	public ES2UserType_SaveFarmLand():base(typeof(FarmField)){}
 }

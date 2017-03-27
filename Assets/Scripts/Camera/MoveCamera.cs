@@ -55,8 +55,6 @@ public class MoveCamera : MonoBehaviour
 		if (isPanning) {
 			posTemp = pos;
 			pos = Camera.main.ScreenToViewportPoint (Input.mousePosition - mouseOrigin);
-			DebugTextHandler.m_instance.DisplayDebugText (pos.ToString () + " " + posTemp.ToString ());	
-
 			if (posTemp == pos) {
 				return;
 			}

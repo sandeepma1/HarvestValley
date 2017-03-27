@@ -8,9 +8,9 @@ public class CropMenuManager : MonoBehaviour
 {
 	public static CropMenuManager m_instance = null;
 	public GameObject seedPrefab;
-	public GameObject[] seeds;
+	public List<GameObject> seeds;
 	//public GameObject[] menuPages;
-	public GameObject switchButton, fieldInfoButton;
+	public GameObject switchButton, fieldInfoButton, seedMenuBackground;
 	public bool isSeedSelected = false;
 	public int seedSelectedID = -1;
 
@@ -35,13 +35,22 @@ public class CropMenuManager : MonoBehaviour
 		CheckForUnlockedSeeds ();
 	}
 
-	public void CheckForUnlockedSeeds ()  // call on level change
+	void Update ()
+	{
+		/*DebugTextHandler.m_instance.DisplayDebugText ("seeds " + seeds.Count + " unlockedSeedID " + unlockedSeedIDs.Count +
+		" playerInv " + PlayerInventoryManager.m_instance.playerInventory.Count);*/
+	}
+
+	public void CheckForUnlockedSeeds ()  // call on level change & game start only
 	{
 		unlockedSeedIDs.Clear ();
-		foreach (var item in ItemDatabase.m_instance.items) {				
-			if (item.unlocksAtLevel <= PlayerProfileManager.m_instance.CurrentPlayerLevel ()) {					
-				unlockedSeedIDs.Add (item.id);
-			}
+		for (int i = 0; i <= PlayerProfileManager.m_instance.CurrentPlayerLevel (); i++) {
+			if (LevelUpManager.m_instance.gameLevels [i].cropsUnlockID >= 0) {
+				unlockedSeedIDs.Add (LevelUpManager.m_instance.gameLevels [i].cropsUnlockID);
+			}		
+		}
+		if (unlockedSeedIDs.Count > 4) {
+			switchButton.SetActive (true);
 		}
 		maxPages = unlockedSeedIDs.Count / maxSeedsOnceInMenu;
 		if (unlockedSeedIDs.Count % maxSeedsOnceInMenu >= 1) {
@@ -57,14 +66,16 @@ public class CropMenuManager : MonoBehaviour
 				Destroy (seed);
 			}
 		}
-		seeds = new GameObject[unlockedSeedIDs.Count];
+		//seeds = new GameObject[unlockedSeedIDs.Count];
+		seeds.Clear ();
 		int posCount = 0;
 		for (int i = 0; i < unlockedSeedIDs.Count; i++) {
-			seeds [i] = Instantiate (seedPrefab, this.gameObject.transform.GetChild (0).transform);
+			seeds.Add (Instantiate (seedPrefab, this.gameObject.transform.GetChild (0).transform));
+			//seeds [i] = Instantiate (seedPrefab, this.gameObject.transform.GetChild (0).transform);
 			seeds [i].name = "Seed" + i;
 			seeds [i].GetComponent <DraggableSeeds> ().seedID = unlockedSeedIDs [i];
 			seeds [i].transform.GetChild (0).GetComponent <SpriteRenderer> ().sprite = Resources.Load <Sprite> ("Textures/Crop/" + ItemDatabase.m_instance.items [unlockedSeedIDs [i]].name);
-			seeds [i].transform.GetChild (1).GetComponent<TextMeshPro> ().text = FarmItemsManager.m_instance.playerItems [i].count.ToString ();
+			seeds [i].transform.GetChild (1).GetComponent<TextMeshPro> ().text = PlayerInventoryManager.m_instance.playerInventory [i].count.ToString ();
 			seeds [i].transform.localPosition = pos [posCount];
 			posCount++;
 			if (posCount > pos.Length - 1) {
@@ -78,9 +89,9 @@ public class CropMenuManager : MonoBehaviour
 	public void UpdateSeedValue ()
 	{
 		for (int i = 0; i < unlockedSeedIDs.Count; i++) {
-			seeds [i].transform.GetChild (1).GetComponent<TextMeshPro> ().text = FarmItemsManager.m_instance.playerItems [i].count.ToString ();
+			seeds [i].transform.GetChild (1).GetComponent<TextMeshPro> ().text = PlayerInventoryManager.m_instance.playerInventory [i].count.ToString ();
 		}
-		FarmItemsManager.m_instance.UpdateScrollListItemCount ();
+		PlayerInventoryManager.m_instance.UpdateScrollListItemCount ();
 	}
 
 	public void ToggleMenuPages ()
@@ -108,20 +119,13 @@ public class CropMenuManager : MonoBehaviour
 		isSeedSelected = false;
 		PlacableTileManager.m_instance.plantedOnSelectedfield = false;
 		seedSelectedID = -1;
-		if (unlockedSeedIDs.Count >= 5) { // show switch page button only if seeds unlocked are more than 4
-			switchButton.SetActive (true);	
-		}
-		fieldInfoButton.SetActive (true);
 	}
 
 	public void ChildCallingOnMouseDrag (int id)
 	{
 		isSeedSelected = true;
-		seedSelectedID = id;
-		if (unlockedSeedIDs.Count >= 5) {// show switch page button only if seeds unlocked are more than 4
-			switchButton.SetActive (false);	
-		}
-		fieldInfoButton.SetActive (false);
+		seedSelectedID = id;	
+		ToggleDisplayCropMenu ();
 	}
 
 	public void ToggleDisplayCropMenu ()

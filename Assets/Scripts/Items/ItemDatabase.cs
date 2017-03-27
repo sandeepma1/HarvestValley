@@ -23,7 +23,7 @@ public class ItemDatabase : MonoBehaviour
 		TextAsset itemCSV =	Resources.Load ("CSVs/Items") as TextAsset;
 		lines = Regex.Split (itemCSV.text, "\r\n");
 		items = new Item[lines.Length - 2];
-		for (int i = 1; i < lines.Length - 1; i++) {			
+		for (int i = 1; i < items.Length; i++) {			
 			chars = Regex.Split (lines [i], ",");
 			items [i - 1] = new Item (IntParse (chars [0]), chars [1], chars [2], IntParse (chars [3]), FloatParse (chars [4]), 
 				IntParse (chars [5]), (ItemType)Enum.Parse (typeof(ItemType), chars [6]), IntParse (chars [7]), (ItemSource)Enum.Parse (typeof(ItemSource), chars [8]), IntParse (chars [9]), IntParse (chars [10]),
@@ -31,7 +31,7 @@ public class ItemDatabase : MonoBehaviour
 		}
 
 		/*items = new Item[12];
-		items [0] = new Item (0, "Wheat", "Descriptions", 1, 2, 2, ItemType.Crops, 2, ItemSource.Field, 10, 0, 1, -1, 0, -1, 0, -1, 0);
+		items [0] = new Item (0, "Wheat", "Descriptions", 1, 0.05f, 2, ItemType.Crops, 2, ItemSource.Field, 10, 0, 1, -1, 0, -1, 0, -1, 0);
 		items [1] = new Item (1, "Corn", "Descriptions", 1, 5, 3, ItemType.Crops, 3, ItemSource.Field, 15, 1, 1, -1, 0, -1, 0, -1, 0);
 		items [2] = new Item (2, "Soybean", "Descriptions", 1, 7, 4, ItemType.Crops, 4, ItemSource.Field, 20, 2, 1, -1, 0, -1, 0, -1, 0);
 		items [3] = new Item (3, "Sugarcane", "Descriptions", 2, 7, 5, ItemType.Crops, 5, ItemSource.Field, 25, 3, 1, -1, 0, -1, 0, -1, 0);
