@@ -1,8 +1,8 @@
-shopItemID,shopItemName,shopItemDesc
-0,Bakery,Production Buildings
-1,Feed_Mill,Production Buildings
-2,Dairy,Production Buildings
-3,Sugar_Mill,Production Buildings
-4,Popcorn_Pot,Production Buildings
-5,BBQ_Grill,Production Buildings
-6,Pie_Oven,Production Buildings
+shopItemID,shopItemName,shopItemDesc,shopItemCost
+0,Bakery,Production Buildings,20
+1,Feed_Mill,Production Buildings,50
+2,Dairy,Production Buildings,50
+3,Sugar_Mill,Production Buildings,350
+4,Popcorn_Pot,Production Buildings,650
+5,BBQ_Grill,Production Buildings,730
+6,Pie_Oven,Production Buildings,2200

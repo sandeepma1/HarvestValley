@@ -108,6 +108,7 @@ public class PlacableTileManager : MonoBehaviour
 	{
 		for (int i = 0; i < FarmLands.Length; i++) {
 			FarmLands [i].GetComponent <DraggableFarmLands> ().isSelected = false;
+			FeildDeSelected (i);
 		}
 		isLongPress = false;
 	}
@@ -158,10 +159,21 @@ public class PlacableTileManager : MonoBehaviour
 				mouseDownFarmID = -1;
 				isTilePressed = false;
 				FarmLands [longPressFarmID].GetComponent <DraggableFarmLands> ().isSelected = true;
+				FeildSelected (longPressFarmID);
 				return;
 			}
 			longPressTimer += Time.deltaTime;
 		}
+	}
+
+	void FeildSelected (int selectedFieldID)
+	{
+		FarmLands [selectedFieldID].GetComponent <Renderer> ().material.color = new Color (1, 1, 1, 1);
+	}
+
+	void FeildDeSelected (int selectedFieldID)
+	{
+		FarmLands [selectedFieldID].GetComponent <Renderer> ().material.color = new Color (1, 1, 1, 0);
 	}
 
 	#region OnMouse Functions
@@ -191,6 +203,7 @@ public class PlacableTileManager : MonoBehaviour
 		FarmLands [farm.id].GetComponent <DraggableFarmLands> ().level = farm.level;
 		FarmLands [farm.id].GetComponent <DraggableFarmLands> ().seedID = farm.seedID;
 		FarmLands [farm.id].GetComponent <DraggableFarmLands> ().state = (FARM_LAND_STATE)farm.state;
+		FeildDeSelected (farm.id);
 		switch (FarmLands [farm.id].GetComponent <DraggableFarmLands> ().state) {
 			case FARM_LAND_STATE.NONE:
 				FarmLands [farm.id].GetComponent<SpriteRenderer> ().color = Color.white;
@@ -212,11 +225,15 @@ public class PlacableTileManager : MonoBehaviour
 		isTilePressed = true;
 		longPressTimer = 0;
 		mouseDownFarmID = farmLandID;
+		if (farmLandID != longPressFarmID && longPressFarmID != -1) {
+			FarmLands [longPressFarmID].GetComponent <DraggableFarmLands> ().isSelected = false;
+			FeildDeSelected (longPressFarmID);
+			isLongPress = false;
+		}
 	}
 
 	public void CallParentOnMouseUp (int farmLandID)
 	{
-		print (farmLandID + " " + longPressFarmID);
 		isTilePressed = false;
 		mouseDownFarmID = -1;
 		if (!isLongPress) {			
@@ -241,6 +258,7 @@ public class PlacableTileManager : MonoBehaviour
 		} else {
 			if (farmLandID != longPressFarmID) {
 				FarmLands [longPressFarmID].GetComponent <DraggableFarmLands> ().isSelected = false;
+				FeildDeSelected (longPressFarmID);
 				isLongPress = false;
 			}
 		}

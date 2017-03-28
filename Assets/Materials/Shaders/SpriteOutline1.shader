@@ -2,8 +2,8 @@
 Properties 
        {
            _MainTex ("Base (RGB)", 2D) = "white" {}
-           _OutLineSpreadX ("Outline Spread", Range(0,0.03)) = 0.007
-           _OutLineSpreadY ("Outline Spread", Range(0,0.03)) = 0.007
+           _OutLineSpreadX ("Outline Spread", Range(0,0.1)) = 0.007
+           _OutLineSpreadY ("Outline Spread", Range(0,0.1)) = 0.007
            _Color("Outline Color", Color) = (1.0,1.0,1.0,1.0)
        }
     

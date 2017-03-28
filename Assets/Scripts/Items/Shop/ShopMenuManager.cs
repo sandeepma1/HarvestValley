@@ -34,7 +34,7 @@ public class ShopMenuManager : MonoBehaviour
 		shopItems = new ShopItem[lines.Length - 2];
 		for (int i = 1; i < lines.Length - 1; i++) {			
 			chars = Regex.Split (lines [i], ",");
-			shopItems [i - 1] = new ShopItem (IntParse (chars [0]), chars [1], chars [2]);
+			shopItems [i - 1] = new ShopItem (IntParse (chars [0]), chars [1], chars [2], IntParse (chars [3]));
 		}
 
 		print (shopItems.Length);
@@ -69,6 +69,7 @@ public class ShopMenuManager : MonoBehaviour
 			shopItemsGO [i].transform.GetChild (0).GetComponent<Image> ().overrideSprite = Resources.Load<Sprite> ("Textures/Buildings/" + shopItems [i].shopItemName);
 			shopItemsGO [i].transform.GetChild (2).GetComponent<TextMeshProUGUI> ().text = shopItems [i].shopItemName.ToString ();
 			shopItemsGO [i].transform.GetChild (3).GetComponent<TextMeshProUGUI> ().text = shopItems [i].shopItemDesc.ToString ();
+			shopItemsGO [i].transform.GetChild (4).GetComponent<TextMeshProUGUI> ().text = shopItems [i].shopItemCost.ToString ();
 		}
 	}
 
@@ -91,7 +92,7 @@ public class ShopMenuManager : MonoBehaviour
 			shopToggleButton.GetComponent <RectTransform> ().anchoredPosition = new Vector2 (-50, 50);
 		} else {
 			shopUIMenu.GetComponent <RectTransform> ().anchoredPosition = new Vector2 (0, -175);
-			shopToggleButton.GetComponent <RectTransform> ().anchoredPosition = new Vector2 (-50, 150);
+			shopToggleButton.GetComponent <RectTransform> ().anchoredPosition = new Vector2 (-50, 120);
 		}
 
 	}
@@ -102,14 +103,15 @@ public class ShopItem
 	public int	shopItemID;
 	public string shopItemName;
 	public string shopItemDesc;
-	//public int shopitemCost;
+	public int shopItemCost;
 	//shopItemType
 	//public int shopitemLimit
 
-	public ShopItem (int id, string name, string desc)
+	public ShopItem (int id, string name, string desc, int cost)
 	{
 		shopItemID = id;
 		shopItemName = name;
 		shopItemDesc = desc;
+		shopItemCost = cost;
 	}
 }

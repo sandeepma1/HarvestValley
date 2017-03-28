@@ -37,8 +37,8 @@ public class CropMenuManager : MonoBehaviour
 
 	void Update ()
 	{
-		/*DebugTextHandler.m_instance.DisplayDebugText ("seeds " + seeds.Count + " unlockedSeedID " + unlockedSeedIDs.Count +
-		" playerInv " + PlayerInventoryManager.m_instance.playerInventory.Count);*/
+		DebugTextHandler.m_instance.DisplayDebugText ("seeds " + seeds.Count + " unlockedSeedID " + unlockedSeedIDs.Count +
+		" playerInv " + PlayerInventoryManager.m_instance.playerInventory.Count);
 	}
 
 	public void CheckForUnlockedSeeds ()  // call on level change & game start only
