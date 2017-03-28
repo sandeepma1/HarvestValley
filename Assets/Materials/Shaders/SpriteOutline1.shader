@@ -12,7 +12,7 @@ Properties
        {
            Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
            ZWrite Off Blend SrcAlpha OneMinusSrcAlpha Cull Off
-           Lighting Off
+           Lighting On
            LOD 110
     
            CGPROGRAM

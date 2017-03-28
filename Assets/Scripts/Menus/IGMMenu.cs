@@ -34,6 +34,7 @@ public class IGMMenu : MonoBehaviour
 			disableAllMenus [i].transform.position = new Vector3 (-500, -500, 0);
 			disableAllMenus [i].SetActive (true);
 		}
+		PlacableTileManager.m_instance.DisableAnyOpenMenus ();
 	}
 
 	public void ChangeCamera (int pos)

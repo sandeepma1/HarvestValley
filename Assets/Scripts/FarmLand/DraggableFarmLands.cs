@@ -4,9 +4,10 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class FarmLands : MonoBehaviour, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler, IPointerDownHandler
+public class DraggableFarmLands : MonoBehaviour, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler, IPointerDownHandler
 {
 	int objectID;
+	public bool isSelected = false;
 	public int id;
 	public Vector2 pos;
 	public int level;
@@ -14,6 +15,7 @@ public class FarmLands : MonoBehaviour, IPointerUpHandler, IPointerExitHandler, 
 	public FARM_LAND_STATE state;
 	public System.DateTime dateTime;
 	public string s_dateTime = "";
+	Vector3 poss = Vector3.zero;
 	//TODO remove the s_dateTime variable
 
 	void Start ()
@@ -33,10 +35,12 @@ public class FarmLands : MonoBehaviour, IPointerUpHandler, IPointerExitHandler, 
 		PlacableTileManager.m_instance.CallParentOnMouseUp (objectID);
 	}
 
-	/*public void OnMouseDrag (PointerEventData eventData)//*
+	public void OnMouseDrag ()
 	{
 		PlacableTileManager.m_instance.CallParentOnMouseDrag (objectID);
-	}*/
+
+	}
+
 	public void OnPointerExit (PointerEventData eventData)//** not using
 	{
 		PlacableTileManager.m_instance.CallParentOnMouseExit (objectID);
