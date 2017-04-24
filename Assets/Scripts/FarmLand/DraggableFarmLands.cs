@@ -38,19 +38,17 @@ public class DraggableFarmLands : MonoBehaviour, IPointerUpHandler, IPointerExit
 	public void OnMouseDrag ()
 	{
 		PlacableTileManager.m_instance.CallParentOnMouseDrag (objectID);
-
 	}
 
-	public void OnPointerExit (PointerEventData eventData)//** not using
-	{
-		PlacableTileManager.m_instance.CallParentOnMouseExit (objectID);
-	}
-
-	public void OnPointerDown (PointerEventData eventData)//* IPointerDownHandler  //** not using
+	public void OnPointerDown (PointerEventData eventData)
 	{	
 		PlacableTileManager.m_instance.CallParentOnMouseDown (objectID);
 	}
 
+	public void OnPointerExit (PointerEventData eventData)//** not using
+	{
+		//PlacableTileManager.m_instance.CallParentOnMouseExit (objectID);
+	}
 	/*void OnMouseUpAsButton (PointerEventData eventData)
 	{
 		PlacableTileManager.m_instance.CallParentOnMouseUpAsButton (objectID);

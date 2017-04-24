@@ -4,11 +4,12 @@ using UnityEngine;
 using System;
 using System.Text.RegularExpressions;
 
-public class LevelUpManager : MonoBehaviour
+public class LevelUpDatabase: MonoBehaviour
 {
-	public static LevelUpManager m_instance = null;
+	public static LevelUpDatabase m_instance = null;
 	//public List<Level> gameLevel = new List<Level> ();
 	public Level[] gameLevels;
+	string folderName = "LevelUp";
 
 	void Awake ()
 	{
@@ -20,7 +21,7 @@ public class LevelUpManager : MonoBehaviour
 	{
 		string[] lines = new string[100];
 		string[] chars = new string[100];
-		TextAsset itemCSV =	Resources.Load ("CSVs/LevelUp") as TextAsset;
+		TextAsset itemCSV =	Resources.Load ("CSVs/" + folderName) as TextAsset;
 		lines = Regex.Split (itemCSV.text, "\r\n");
 		gameLevels = new Level[lines.Length - 2];
 		for (int i = 1; i < lines.Length - 1; i++) {			
@@ -54,9 +55,9 @@ public class Level
 	public int levelID;
 	public int XPforNextLevel;
 	public int fieldRewardCount;
-	public int cropsUnlockID;
+	public int itemUnlockID;
+	public int itemRewardCount;
 	public int buildingUnlockID;
-	public int cropsRewardCount;
 	public int gemsRewardCount;
 	/*public int coinsRewardCount;
 	public int animalsUnlockID;
@@ -67,14 +68,14 @@ public class Level
 	public int productionBuildingRewardCount;
 	public int decorID;*/
 
-	public Level (int id, int xp, int field, int cropID, int buildingID, int cropCount, int gem)
+	public Level (int id, int xp, int field, int itemID, int itemCount, int buildingID, int gem)
 	{
 		levelID = id;
 		XPforNextLevel = xp;
 		fieldRewardCount = field;
-		cropsUnlockID = cropID;
+		itemUnlockID = itemID;
 		buildingUnlockID = buildingID;
-		cropsRewardCount = cropCount;
+		itemRewardCount = itemCount;
 		gemsRewardCount = gem;
 	}
 }

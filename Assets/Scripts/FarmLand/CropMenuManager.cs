@@ -37,16 +37,16 @@ public class CropMenuManager : MonoBehaviour
 
 	void Update ()
 	{
-		DebugTextHandler.m_instance.DisplayDebugText ("seeds " + seeds.Count + " unlockedSeedID " + unlockedSeedIDs.Count +
-		" playerInv " + PlayerInventoryManager.m_instance.playerInventory.Count);
+		/*DebugTextHandler.m_instance.DisplayDebugText ("seeds " + seeds.Count + " unlockedSeedID " + unlockedSeedIDs.Count +
+		" playerInv " + PlayerInventoryManager.m_instance.playerInventory.Count);*/
 	}
 
 	public void CheckForUnlockedSeeds ()  // call on level change & game start only
 	{
 		unlockedSeedIDs.Clear ();
 		for (int i = 0; i <= PlayerProfileManager.m_instance.CurrentPlayerLevel (); i++) {
-			if (LevelUpManager.m_instance.gameLevels [i].cropsUnlockID >= 0) {
-				unlockedSeedIDs.Add (LevelUpManager.m_instance.gameLevels [i].cropsUnlockID);
+			if (LevelUpDatabase.m_instance.gameLevels [i].itemUnlockID >= 0) {
+				unlockedSeedIDs.Add (LevelUpDatabase.m_instance.gameLevels [i].itemUnlockID);
 			}		
 		}
 		if (unlockedSeedIDs.Count > 4) {

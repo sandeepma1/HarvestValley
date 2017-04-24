@@ -51,13 +51,14 @@ public class PlayerProfileManager : MonoBehaviour
 
 	public void CheckForLevelUp ()
 	{
-		if (playerProfile.XPPoints >= LevelUpManager.m_instance.gameLevels [playerProfile.level].XPforNextLevel) {
+		if (playerProfile.XPPoints >= LevelUpDatabase.m_instance.gameLevels [playerProfile.level].XPforNextLevel) {
 			IncrementPlayerLevel ();
-			if (LevelUpManager.m_instance.gameLevels [playerProfile.level].cropsUnlockID >= 0) {				
-				PlayerInventoryManager.m_instance.AddNewFarmItem (LevelUpManager.m_instance.gameLevels [playerProfile.level].cropsUnlockID,
-					LevelUpManager.m_instance.gameLevels [playerProfile.level].cropsRewardCount);
+			if (LevelUpDatabase.m_instance.gameLevels [playerProfile.level].itemUnlockID >= 0) {				
+				PlayerInventoryManager.m_instance.AddNewFarmItem (LevelUpDatabase.m_instance.gameLevels [playerProfile.level].itemUnlockID,
+					LevelUpDatabase.m_instance.gameLevels [playerProfile.level].itemRewardCount);
 				CropMenuManager.m_instance.CheckForUnlockedSeeds ();
-				PlayerGems (LevelUpManager.m_instance.gameLevels [playerProfile.level].gemsRewardCount);
+				MasterMenuManager.m_instance.CheckForUnlockedItems ();
+				PlayerGems (LevelUpDatabase.m_instance.gameLevels [playerProfile.level].gemsRewardCount);
 			}
 
 			PlayerXPPointsAdd (-CurrentPlayerXP ()); 
@@ -116,7 +117,7 @@ public class PlayerProfileManager : MonoBehaviour
 		gemsUIText.text = String.Format ("{0:### ### ### ### ###}", playerProfile.gems);
 		staminaUIText.text = playerProfile.stamina.ToString ();
 		levelUIText.text = playerProfile.level.ToString ();
-		XPPointsUIText.text = playerProfile.XPPoints.ToString () + "/" + LevelUpManager.m_instance.gameLevels [playerProfile.level].XPforNextLevel.ToString ();
+		XPPointsUIText.text = playerProfile.XPPoints.ToString () + "/" + LevelUpDatabase.m_instance.gameLevels [playerProfile.level].XPforNextLevel.ToString ();
 		StopCoroutine ("SavePlayerProfile");
 		StartCoroutine ("SavePlayerProfile");
 	}
@@ -125,7 +126,6 @@ public class PlayerProfileManager : MonoBehaviour
 	{
 		yield return new WaitForSeconds (1f);
 		ES2.Save (playerProfile, "playerProfile");
-		print ("saved player profile");
 	}
 
 	#region Init PlayerProfile

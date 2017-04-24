@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System;
 using System.Text.RegularExpressions;
 
-public class ItemDatabase : MonoBehaviour
+public class ItemDatabase: MonoBehaviour
 {
 	public static ItemDatabase m_instance = null;
 	//public List<Item> items = new List<Item> ();
 	public Item[] items;
+	string folderName = "Items";
 
 	void Awake ()
 	{
@@ -20,7 +21,7 @@ public class ItemDatabase : MonoBehaviour
 	{
 		string[] lines = new string[100];
 		string[] chars = new string[100];
-		TextAsset itemCSV =	Resources.Load ("CSVs/Items") as TextAsset;
+		TextAsset itemCSV =	Resources.Load ("CSVs/" + folderName) as TextAsset;
 		lines = Regex.Split (itemCSV.text, "\r\n");
 		items = new Item[lines.Length - 2];
 		for (int i = 1; i < items.Length; i++) {			
@@ -29,22 +30,6 @@ public class ItemDatabase : MonoBehaviour
 				IntParse (chars [5]), (ItemType)Enum.Parse (typeof(ItemType), chars [6]), IntParse (chars [7]), (ItemSource)Enum.Parse (typeof(ItemSource), chars [8]), IntParse (chars [9]), IntParse (chars [10]),
 				IntParse (chars [11]), IntParse (chars [12]), IntParse (chars [13]), IntParse (chars [14]), IntParse (chars [15]), IntParse (chars [16]), IntParse (chars [17]));
 		}
-
-		/*items = new Item[12];
-		items [0] = new Item (0, "Wheat", "Descriptions", 1, 0.05f, 2, ItemType.Crops, 2, ItemSource.Field, 10, 0, 1, -1, 0, -1, 0, -1, 0);
-		items [1] = new Item (1, "Corn", "Descriptions", 1, 5, 3, ItemType.Crops, 3, ItemSource.Field, 15, 1, 1, -1, 0, -1, 0, -1, 0);
-		items [2] = new Item (2, "Soybean", "Descriptions", 1, 7, 4, ItemType.Crops, 4, ItemSource.Field, 20, 2, 1, -1, 0, -1, 0, -1, 0);
-		items [3] = new Item (3, "Sugarcane", "Descriptions", 2, 7, 5, ItemType.Crops, 5, ItemSource.Field, 25, 3, 1, -1, 0, -1, 0, -1, 0);
-
-		items [4] = new Item (4, "Carrot", "Descriptions", 1, 7, 4, ItemType.Crops, 4, ItemSource.Field, 10, 2, 1, -1, 0, -1, 0, -1, 0);
-		items [5] = new Item (5, "Wheat", "Descriptions", 2, 7, 4, ItemType.Crops, 4, ItemSource.Field, 10, 2, 1, -1, 0, -1, 0, -1, 0);
-		items [6] = new Item (6, "Wheat", "Descriptions", 2, 7, 4, ItemType.Crops, 4, ItemSource.Field, 10, 2, 1, -1, 0, -1, 0, -1, 0);
-		items [7] = new Item (7, "Wheat", "Descriptions", 2, 7, 4, ItemType.Crops, 4, ItemSource.Field, 10, 2, 1, -1, 0, -1, 0, -1, 0);
-
-		items [8] = new Item (8, "Wheat", "Descriptions", 2, 7, 4, ItemType.Crops, 4, ItemSource.Field, 10, 2, 1, -1, 0, -1, 0, -1, 0);
-		items [9] = new Item (9, "Wheat", "Descriptions", 2, 7, 4, ItemType.Crops, 4, ItemSource.Field, 10, 2, 1, -1, 0, -1, 0, -1, 0);
-		items [10] = new Item (10, "Wheat", "Descriptions", 2, 7, 4, ItemType.Crops, 4, ItemSource.Field, 10, 2, 1, -1, 0, -1, 0, -1, 0);
-		items [11] = new Item (11, "Wheat", "Descriptions", 2, 7, 4, ItemType.Crops, 4, ItemSource.Field, 10, 2, 1, -1, 0, -1, 0, -1, 0);*/
 	}
 
 	int IntParse (string text)
@@ -61,16 +46,7 @@ public class ItemDatabase : MonoBehaviour
 		float result = 0.01f;
 		float.TryParse (text, out result);
 		return result;
-
 	}
-	/*ItemType EnumParseItemType (string text)
-	{
-		ItemType item;
-		if (Enum.Parse (text, out item)) {
-			return item;
-		} else
-			return 0;
-	}*/
 }
 
 [System.Serializable]

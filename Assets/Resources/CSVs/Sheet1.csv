@@ -8,6 +8,6 @@ id,name,description,unlocksAtLevel,timeRequiredInMins,XP,type,gemCost,source,sel
 6,Indigo,Descriptions,6,0.05,30,Crops,4,Field,32,6,1,-1,0,-1,0,-1,0
 7,Pumpkin,Descriptions,7,0.05,30,Crops,4,Field,28,7,1,-1,0,-1,0,-1,0
 8,Cotton,Descriptions,8,0.05,30,Crops,4,Field,36,8,1,-1,0,-1,0,-1,0
-9,ChiliPepper,Descriptions,9,0.05,30,Crops,4,Field,36,9,1,-1,0,-1,0,-1,0
-10,Potato,Descriptions,10,0.05,30,Crops,4,Field,43,10,1,-1,0,-1,0,-1,0
+9,Chili Pepper,Descriptions,9,0.05,30,Crops,4,Field,36,9,1,-1,0,-1,0,-1,0
+10,Potatoes,Descriptions,10,0.05,30,Crops,4,Field,43,10,1,-1,0,-1,0,-1,0
 11,Tomato,Descriptions,11,0.05,30,Crops,4,Field,50,11,1,-1,0,-1,0,-1,0
