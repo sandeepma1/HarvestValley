@@ -9,17 +9,18 @@ public class MasterMenuManager : MonoBehaviour
 	public GameObject menuItemPrefab;
 	public GameObject[] menuBackground = new GameObject[3];
 	public GameObject[] menuItems = new GameObject[12];
-	public GameObject switchButton, fieldInfoButton;
+	public GameObject switchButton, fieldInfoButton, queueItems;
+	public GameObject queueMainSlot, emptySlot, addSlot;
 	public bool isItemSelected = false;
 	public int itemSelectedID = -1;
 	public bool isMasterMenuUp = false;
-	Vector2[] pos = new Vector2[4];
+	Vector2[] itemPos = new Vector2[4];
+	Vector2[] queueSlotPos = new Vector2[4];
 	//number of items in menu => 4
 	int pageNumber = 0;
 	int maxItemsOnceInMenu = 4;
 	int maxPages = 0;
 	int unlockedItemCount = 0;
-
 
 	void Awake ()
 	{
@@ -28,10 +29,15 @@ public class MasterMenuManager : MonoBehaviour
 
 	void Start ()
 	{
-		pos [0] = new Vector2 (-0.5f, -0.6f);
-		pos [1] = new Vector2 (0.5f, -0.6f);
-		pos [2] = new Vector2 (-0.5f, 0.25f);
-		pos [3] = new Vector2 (0.5f, 0.25f);
+		itemPos [0] = new Vector2 (-0.5f, -0.6f);
+		itemPos [1] = new Vector2 (0.5f, -0.6f);
+		itemPos [2] = new Vector2 (-0.5f, 0.25f);
+		itemPos [3] = new Vector2 (0.5f, 0.25f);
+
+		queueSlotPos [0] = new Vector2 (0.15f, -0.375f);
+		queueSlotPos [1] = new Vector2 (0.68f, -0.375f);
+		queueSlotPos [1] = new Vector2 (0.15f, -0.9f);
+		queueSlotPos [1] = new Vector2 (0.68f, -0.9f);
 		SpwanMenuItems ();
 		//CheckForUnlockedItems ();
 	}
@@ -68,7 +74,6 @@ public class MasterMenuManager : MonoBehaviour
 			item.SetActive (false);
 			item.GetComponent <DraggableItems> ().itemID = -1;
 		}
-
 		int posCount = 0;
 		unlockedItemCount = 0;	
 		pageNumber = 0;
@@ -76,23 +81,28 @@ public class MasterMenuManager : MonoBehaviour
 		foreach (var item in ItemDatabase.m_instance.items) {
 			if (item != null && item.source == BuildingDatabase.m_instance.buildingInfo [buildingID].name) {
 				menuItems [unlockedItemCount].GetComponent <DraggableItems> ().itemID = item.id;
-				menuItems [unlockedItemCount].transform.localPosition = pos [posCount];
+				menuItems [unlockedItemCount].transform.localPosition = itemPos [posCount];
 				menuItems [unlockedItemCount].transform.GetChild (0).GetComponent <SpriteRenderer> ().sprite = Resources.Load <Sprite> ("Textures/Items/" + item.name);
 				//	menuItems [posCount].transform.GetChild (1).GetComponent<TextMeshPro> ().text = PlayerInventoryManager.m_instance.playerInventory [buildingID].count.ToString ();
 				posCount++;
 				unlockedItemCount++;
-				if (posCount > pos.Length - 1) {
+				if (posCount > itemPos.Length - 1) {
 					posCount = 0;
 				}
 				//menuItems [posCount].SetActive (false);
 			}
 		}
-		print (unlockedItemCount);
 		maxPages = unlockedItemCount / maxItemsOnceInMenu;
 		if (unlockedItemCount % maxItemsOnceInMenu >= 1) { //Calculate Max pages
 			maxPages++;
 		}
 		ToggleMenuPages ();
+	}
+
+	public void PopulateItemsInQueueMenu (int buildingID)
+	{
+		print (BuildingsManager.m_instance.buildings [buildingID].unlockedQueueSlots);
+
 	}
 
 	public void UpdateSeedValue ()
@@ -108,7 +118,6 @@ public class MasterMenuManager : MonoBehaviour
 		foreach (var items in menuItems) {
 			items.SetActive (false);
 		}
-		print ("pageCount" + pageNumber + " m " + maxPages);
 		int loopCount = 0;
 		for (int i = pageNumber * maxItemsOnceInMenu; i < unlockedItemCount; i++) {			
 			menuItems [i].SetActive (true);
@@ -133,8 +142,10 @@ public class MasterMenuManager : MonoBehaviour
 	public void ChildCallingOnMouseDrag (int id)
 	{
 		isItemSelected = true;
-		itemSelectedID = id;	
-		ToggleDisplayCropMenu ();
+		itemSelectedID = id;
+		if (id == 0) { // if feild building is selected only then hide the master menu
+			ToggleDisplayCropMenu ();
+		}
 	}
 
 	public void ToggleDisplayCropMenu ()

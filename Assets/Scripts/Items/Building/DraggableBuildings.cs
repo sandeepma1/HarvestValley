@@ -10,12 +10,17 @@ public class DraggableBuildings  : MonoBehaviour
 	public Vector2 pos;
 	public int level;
 	public BUILDINGS_STATE state;
+	public int unlockedQueueSlots;
 	public int itemID1;
 	public System.DateTime dateTime1;
 	public int itemID2;
 	public System.DateTime dateTime2;
 	public int itemID3;
 	public System.DateTime dateTime3;
+	public int itemID4;
+	public System.DateTime dateTime4;
+	public int itemID5;
+	public System.DateTime dateTime5;
 	public string s_dateTime = "";
 	Vector3 poss = Vector3.zero;
 	//TODO remove the s_dateTime variable
@@ -57,8 +62,7 @@ public class DraggableBuildings  : MonoBehaviour
 	}
 
 	public void OnClickEnter ()
-	{
-		
+	{		
 		BuildingsManager.m_instance.CallParentOnMouseEnter (id);
 	}
 

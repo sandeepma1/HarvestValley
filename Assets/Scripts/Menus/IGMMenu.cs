@@ -29,7 +29,7 @@ public class IGMMenu : MonoBehaviour
 
 	public void DisableAllMenus ()
 	{
-		print ("disabled");
+//		print ("disabled");
 //		PlacableTileManager.m_instance.isFarmTimerEnabled = false;
 		for (int i = 0; i < disableAllMenus.Length; i++) {			
 			disableAllMenus [i].transform.position = new Vector3 (-500, -500, 0);

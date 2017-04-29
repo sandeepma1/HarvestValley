@@ -22,7 +22,6 @@ public class DraggableItems : MonoBehaviour
 
 	void OnMouseUp ()
 	{
-		print ("OnMouseUp");
 		transform.localPosition = intialPosition;
 		MasterMenuManager.m_instance.ChildCallingOnMouseUp (itemID);
 		GetComponent <BoxCollider2D> ().enabled = true;
