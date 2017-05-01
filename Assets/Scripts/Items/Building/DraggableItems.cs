@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DraggableItems : MonoBehaviour
 {
-
 	public int itemID = 0;
 	Vector3 intialPosition;
 

@@ -29,17 +29,13 @@ public class IGMMenu : MonoBehaviour
 
 	public void DisableAllMenus ()
 	{
-//		print ("disabled");
-//		PlacableTileManager.m_instance.isFarmTimerEnabled = false;
 		for (int i = 0; i < disableAllMenus.Length; i++) {			
 			disableAllMenus [i].transform.position = new Vector3 (-500, -500, 0);
 			disableAllMenus [i].SetActive (true);
 		}
-//		PlacableTileManager.m_instance.DisableAnyOpenMenus ();
-		//	MasterMenuManager.m_instance.isMasterMenuUp = false;
 	}
 
-	public void ChangeCamera (int pos)
+	public void ChangeCamera (float pos)
 	{
 		LeanTween.moveX (Camera.main.gameObject, pos, 0.5f, ease);
 	}

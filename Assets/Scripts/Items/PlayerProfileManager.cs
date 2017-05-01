@@ -55,8 +55,7 @@ public class PlayerProfileManager : MonoBehaviour
 			IncrementPlayerLevel ();
 			if (LevelUpDatabase.m_instance.gameLevels [playerProfile.level].itemUnlockID >= 0) {				
 				PlayerInventoryManager.m_instance.AddNewFarmItem (LevelUpDatabase.m_instance.gameLevels [playerProfile.level].itemUnlockID,
-					LevelUpDatabase.m_instance.gameLevels [playerProfile.level].itemRewardCount);
-				CropMenuManager.m_instance.CheckForUnlockedSeeds ();
+					LevelUpDatabase.m_instance.gameLevels [playerProfile.level].itemRewardCount);				
 				MasterMenuManager.m_instance.CheckForUnlockedItems ();
 				PlayerGems (LevelUpDatabase.m_instance.gameLevels [playerProfile.level].gemsRewardCount);
 			}

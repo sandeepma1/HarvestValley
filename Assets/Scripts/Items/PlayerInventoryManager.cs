@@ -35,7 +35,7 @@ public class PlayerInventoryManager : MonoBehaviour
 		listItems.Add (Instantiate (ListPrefab, ScrollListGO.transform));
 		listItems [scrollListID].GetComponent <RectTransform> ().localScale = Vector3.one; //fixed some scaling bug
 		listItems [scrollListID].transform.GetChild (0).GetComponent <TextMeshProUGUI> ().text = playerInventory [scrollListID].count.ToString ();
-		listItems [scrollListID].GetComponent <Image> ().overrideSprite = Resources.Load<Sprite> ("Textures/Crop/" + ItemDatabase.m_instance.items [scrollListID].name);
+		listItems [scrollListID].GetComponent <Image> ().overrideSprite = Resources.Load<Sprite> ("Textures/Items/" + ItemDatabase.m_instance.items [scrollListID].name);
 		listItems [scrollListID].name = "Item" + scrollListID;
 	}
 
@@ -57,7 +57,8 @@ public class PlayerInventoryManager : MonoBehaviour
 	}
 
 	public void AddNewFarmItem (int id, int value)
-	{		
+	{
+		print (value + " id " + id);
 		playerInventory.Add (new FarmItems (id, value));
 		AddOneItemInScrollList (playerInventory.Count - 1);
 		UpdateScrollListItemCount ();
@@ -71,10 +72,11 @@ public class PlayerInventoryManager : MonoBehaviour
 	#region Init FarmStorage
 
 	void NewGameStart ()
-	{ 
+	{
 		if (PlayerPrefs.GetInt ("playerInventory") <= 0) {			
 			ES2.Delete ("playerInventory");		
 			playerInventory.Add (new FarmItems (0, 6)); //addding Wheat for the first level
+			//playerInventory.Add (new FarmItems (1, 3));
 			ES2.Save (playerInventory, "playerInventory");
 			PlayerPrefs.SetInt ("playerInventory", 1);
 		}

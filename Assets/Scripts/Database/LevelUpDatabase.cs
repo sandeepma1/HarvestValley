@@ -68,14 +68,14 @@ public class Level
 	public int productionBuildingRewardCount;
 	public int decorID;*/
 
-	public Level (int id, int xp, int field, int itemID, int itemCount, int buildingID, int gem)
+	public Level (int id, int xp, int field, int itemID, int buildingID, int itemCount, int gem)
 	{
 		levelID = id;
 		XPforNextLevel = xp;
 		fieldRewardCount = field;
 		itemUnlockID = itemID;
-		buildingUnlockID = buildingID;
 		itemRewardCount = itemCount;
+		buildingUnlockID = buildingID;
 		gemsRewardCount = gem;
 	}
 }

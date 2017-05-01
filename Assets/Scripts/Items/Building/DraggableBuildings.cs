@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class DraggableBuildings  : MonoBehaviour
 {
@@ -11,35 +12,26 @@ public class DraggableBuildings  : MonoBehaviour
 	public int level;
 	public BUILDINGS_STATE state;
 	public int unlockedQueueSlots;
-	public int itemID1;
-	public System.DateTime dateTime1;
-	public int itemID2;
-	public System.DateTime dateTime2;
-	public int itemID3;
-	public System.DateTime dateTime3;
-	public int itemID4;
-	public System.DateTime dateTime4;
-	public int itemID5;
-	public System.DateTime dateTime5;
-	public string s_dateTime = "";
-	Vector3 poss = Vector3.zero;
-	//TODO remove the s_dateTime variable
-
-	void Start ()
-	{
-		s_dateTime = dateTime1.ToString ();
-	}
+	public int itemID;
+	public System.DateTime dateTime;
+	//public string s_dateTime = "";
 
 	public void OnClickDrag ()
 	{
-		print (id);
 		BuildingsManager.m_instance.CallParentOnMouseDrag (id);
 	}
 
 	public void OnClickUp ()
-	{
-		BuildingsManager.m_instance.CallParentOnMouseUp (id);
+	{		
+		BuildingsManager.m_instance.CallParentOnMouseUp (id);	
 	}
+
+	public void OnClickEnter ()
+	{		
+		BuildingsManager.m_instance.CallParentOnMouseEnter (id);	
+	}
+
+	#region Unused
 
 	/*public void OnMouseUp ()
 	{
@@ -55,20 +47,16 @@ public class DraggableBuildings  : MonoBehaviour
 	{
 		BuildingsManager.m_instance.CallParentOnMouseDown (id);
 	}*/
+	public void OnClickDown ()//* IPointerDownHandler  //** not using
+	{	
+		//PlacableTileManager.m_instance.CallParentOnMouseDown (id);
+	}
 
 	public void OnClickExit () //** not using
 	{
 		//PlacableTileManager.m_instance.CallParentOnMouseExit (id);
 	}
 
-	public void OnClickEnter ()
-	{		
-		BuildingsManager.m_instance.CallParentOnMouseEnter (id);
-	}
-
-	public void OnClickDown ()//* IPointerDownHandler  //** not using
-	{	
-		//PlacableTileManager.m_instance.CallParentOnMouseDown (id);
-	}
+	#endregion
 }
 
