@@ -17,12 +17,15 @@ public class DraggableItemShopUIItem : MonoBehaviour
 	public void OnDrag ()
 	{	
 		ShopMenuManager.m_instance.ChildCallingOnMouseDrag (shopItemID);
-		transform.position = Input.mousePosition;
+		transform.position = Camera.main.ScreenToWorldPoint (Input.mousePosition) - BuildingsManager.m_instance.transform.position;
 	}
 
 	public void OnUp ()
 	{
 		transform.localPosition = intialPosition;
-		ShopMenuManager.m_instance.ChildCallingOnMouseUp (shopItemID);
+		print (Camera.main.ScreenToWorldPoint (new Vector3 (Mathf.RoundToInt (Input.mousePosition.x), Mathf.RoundToInt (Input.mousePosition.y)))
+		- BuildingsManager.m_instance.transform.position);
+		ShopMenuManager.m_instance.ChildCallingOnMouseUp (shopItemID, Camera.main.ScreenToWorldPoint (new Vector3 (Mathf.RoundToInt (Input.mousePosition.x), Mathf.RoundToInt (Input.mousePosition.y)))
+		- BuildingsManager.m_instance.transform.position);
 	}
 }

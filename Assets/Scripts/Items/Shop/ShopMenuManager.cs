@@ -10,7 +10,7 @@ public class ShopMenuManager : MonoBehaviour
 {
 	public static ShopMenuManager m_instance = null;
 	public GameObject shopUIMenu, shopToggleButton, shopitemPrefab, UIList;
-	public GameObject dragImageSprite;
+	public GameObject PlaceHolderSprite;
 
 	public GameObject[] shopItemsGO;
 	bool showShop = false;
@@ -37,13 +37,17 @@ public class ShopMenuManager : MonoBehaviour
 
 	public 	void ChildCallingOnMouseDrag (int shopItemID)
 	{
-		dragImageSprite.GetComponent <SpriteRenderer> ().sprite = Resources.Load<Sprite> ("Textures/Buildings/" + BuildingDatabase.m_instance.buildingInfo [shopItemID].name);
-		dragImageSprite.transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 10));
+		PlaceHolderSprite.GetComponent <SpriteRenderer> ().sprite = Resources.Load<Sprite> ("Textures/Buildings/" + BuildingDatabase.m_instance.buildingInfo [shopItemID].name);
+		PlaceHolderSprite.transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 10));
+		PlaceHolderSprite.transform.position = new Vector3 (Mathf.RoundToInt (PlaceHolderSprite.transform.position.x), Mathf.RoundToInt (PlaceHolderSprite.transform.position.y));
 	}
 
-	public void ChildCallingOnMouseUp (int shopItemID)
+	public void ChildCallingOnMouseUp (int shopItemID, Vector2 pos)
 	{
-		dragImageSprite.transform.position = new Vector3 (500, 500, 0);
+		pos = new Vector2 (Mathf.RoundToInt (pos.x), Mathf.RoundToInt (pos.y));
+		BuildingsManager.m_instance.AddNewBuilding (pos, shopItemID);
+		PlaceHolderSprite.transform.position = new Vector3 (500, 500, 0);
+
 	}
 
 	public void ToggleShopView ()

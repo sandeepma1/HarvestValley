@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 13efb733b7199ec40a8b4f01606a9aae
+timeCreated: 1489242787
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: SC CCBackBeat
+  fontNames:
+  - SC CCBackBeat
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c8c53bb44a1669d46b60cf47d52a437b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

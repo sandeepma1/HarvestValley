@@ -88,6 +88,14 @@ public class Item
 		gemCost = itemGemCost;
 		sellValueMax = itemSellValueMax;
 		source = itemSource;
+		needID1 = itemNeedID1;
+		needID2 = itemNeedID2;
+		needID3 = itemNeedID3;
+		needID4 = itemNeedID4;
+		needAmount1 = itemNeedAmount1;
+		needAmount2 = itemNeedAmount2;
+		needAmount3 = itemNeedAmount3;
+		needAmount4 = itemNeedAmount4;
 	}
 }
 

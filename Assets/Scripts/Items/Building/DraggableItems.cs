@@ -10,12 +10,15 @@ public class DraggableItems : MonoBehaviour
 	void OnMouseDown ()
 	{
 		intialPosition = transform.localPosition;
+		transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y + 30, 10));
+		MasterMenuManager.m_instance.ChildCallingOnMouseDown (itemID, transform.localPosition);	
+		GetComponent <BoxCollider2D> ().enabled = false;
 	}
 
 	void OnMouseDrag ()
 	{
-		MasterMenuManager.m_instance.ChildCallingOnMouseDrag (itemID);	
-		transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y + 10, 10));
+		transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y + 30, 10));
+		MasterMenuManager.m_instance.ChildCallingOnMouseDrag (itemID, transform.localPosition);	
 		GetComponent <BoxCollider2D> ().enabled = false;
 	}
 

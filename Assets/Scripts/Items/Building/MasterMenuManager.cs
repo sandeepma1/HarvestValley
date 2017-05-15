@@ -60,7 +60,7 @@ public class MasterMenuManager : MonoBehaviour
 			maxPages++;
 		}
 		foreach (var item in unlockedItemIDs) {
-			print ("unlocked items " + item);
+			//print ("unlocked items " + item);
 		}
 	}
 
@@ -142,15 +142,27 @@ public class MasterMenuManager : MonoBehaviour
 		isItemSelected = false;
 		BuildingsManager.m_instance.plantedOnSelectedfield = false;
 		itemSelectedID = -1;
+		ItemPopupProduction.m_instance.HideItemPopupProduction ();
 	}
 
-	public void ChildCallingOnMouseDrag (int id)
+	public void ChildCallingOnMouseDown (int id, Vector2 pos)
 	{
 		isItemSelected = true;
 		itemSelectedID = id;
-		//if (id == 0) { // if feild building is selected only then hide the master menu
+		if (BuildingsManager.m_instance.BuildingsGO [BuildingsManager.m_instance.buildingSelectedID].GetComponent <DraggableBuildings> ().buildingID > 0) {
+			ItemPopupProduction.m_instance.DisplayItemPopupProduction_DOWN (id, pos);	
+		}
+	}
+
+	public void ChildCallingOnMouseDrag (int id, Vector2 pos)
+	{
+		isItemSelected = true;
+		itemSelectedID = id;
 		ToggleDisplayCropMenu ();
-		//}
+		if (ItemDatabase.m_instance.items [MasterMenuManager.m_instance.itemSelectedID].source != ItemSource.Field) {
+			ItemPopupProduction.m_instance.DisplayItemPopupProduction_DRAG (pos);	
+		}
+				
 	}
 
 	public void ToggleDisplayCropMenu ()

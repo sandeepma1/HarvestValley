@@ -70,7 +70,7 @@ public class PlacableTileManager : MonoBehaviour
 
 	public void PlantSeedsOnFarmLand (int farmLandID) // Planting Seeds
 	{		
-		if (CropMenuManager.m_instance.isSeedSelected == true) {	
+		/*if (CropMenuManager.m_instance.isSeedSelected == true) {	
 			//if (fieldSelectedID == farmLandID || plantedOnSelectedfield && PlayerInventoryManager.m_instance.playerInventory [CropMenuManager.m_instance.seedSelectedID].count >= 1) {							
 			if (plantedOnSelectedfield || fieldSelectedID == farmLandID) {				
 				if (PlayerInventoryManager.m_instance.playerInventory [CropMenuManager.m_instance.seedSelectedID].count >= 1) {
@@ -86,7 +86,7 @@ public class PlacableTileManager : MonoBehaviour
 					//CropMenuManager.m_instance.ToggleDisplayCropMenu ();	
 				}				
 			}
-		}
+		}*/
 	}
 
 	public void HarvestCropOnFarmLand (int farmLandID) // Harvesting Seeds
@@ -239,7 +239,7 @@ public class PlacableTileManager : MonoBehaviour
 		if (!isLongPress) {			
 			switch (FarmLands [farmLandID].GetComponent <DraggableFarmLands> ().state) {
 				case FARM_LAND_STATE.NONE:
-					CropMenuManager.m_instance.UpdateSeedValue ();
+					//CropMenuManager.m_instance.UpdateSeedValue ();
 					ShowFarmLandMenu (farmLandID);
 					break;
 				case FARM_LAND_STATE.GROWING:

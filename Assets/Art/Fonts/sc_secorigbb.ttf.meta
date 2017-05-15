@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 2cc15047cb99d9444b8378fd3ebd6c25
+timeCreated: 1488392077
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: SC SecretOrigins BB
+  fontNames:
+  - SC SecretOrigins BB
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

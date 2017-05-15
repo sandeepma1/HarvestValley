@@ -43,10 +43,11 @@ public class DraggableBuildings  : MonoBehaviour
 		BuildingsManager.m_instance.CallParentOnMouseEnter (id);
 	}*/
 
-	/*	public void OnMouseDown ()
+	public void OnMouseDown ()
 	{
 		BuildingsManager.m_instance.CallParentOnMouseDown (id);
-	}*/
+	}
+
 	public void OnClickDown ()//* IPointerDownHandler  //** not using
 	{	
 		//PlacableTileManager.m_instance.CallParentOnMouseDown (id);
