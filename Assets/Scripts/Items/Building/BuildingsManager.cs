@@ -43,9 +43,11 @@ public class BuildingsManager : MonoBehaviour {
         IGMMenu.m_instance.DisableAllMenus();
         buildingSelectedID = b_ID;
         MasterMenuGO.transform.position = BuildingsGO[b_ID].transform.position;
-        MasterMenuGO.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
         MasterMenuGO.SetActive(true);
-        LeanTween.scale(MasterMenuGO, Vector3.one, 0.2f, IGMMenu.m_instance.ease);
+        //Animatin Stuff
+        //MasterMenuGO.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f); //
+
+        //LeanTween.scale(MasterMenuGO, Vector3.one, 0.2f, IGMMenu.m_instance.ease);
     }
 
     public void PlantItemsOnBuildings(int buildingID) // Planting Items
