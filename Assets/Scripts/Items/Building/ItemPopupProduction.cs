@@ -1,113 +1,103 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
-public class ItemPopupProduction : MonoBehaviour
-{
-	public static ItemPopupProduction m_instance = null;
-	public TextMeshPro itemName;
-	public TextMeshPro itemDuration;
-	public GameObject item1Icon, item2Icon, item3Icon, item4Icon;
-	public TextMeshPro item1Costing, item2Costing, item3Costing, item4Costing;
-	//public TextMeshPro item1Required, item2Required, item3Required, item4Required;
+public class ItemPopupProduction : MonoBehaviour {
+    public static ItemPopupProduction m_instance = null;
+    public TextMeshPro itemName;
+    public TextMeshPro itemDuration;
+    public GameObject item1Icon, item2Icon, item3Icon, item4Icon;
+    public TextMeshPro item1Costing, item2Costing, item3Costing, item4Costing;
+    //public TextMeshPro item1Required, item2Required, item3Required, item4Required;
 
-	int popupOffset = 135;
-	// Use this for initialization
-	void Awake ()
-	{
-		m_instance = this;		
-		HideItemPopupProduction ();
-	}
+    int popupOffset = 135;
+    // Use this for initialization
+    void Awake() {
+        m_instance = this;
+        HideItemPopupProduction();
+    }
 
-	public void DisplayItemPopupProduction_DOWN (int itemID, Vector2 pos)
-	{
-		transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y + popupOffset, 10));
+    public void DisplayItemPopupProduction_DOWN(int itemID, Vector2 pos) {
+        transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y + popupOffset, 10));
 
-		itemName.text = ItemDatabase.m_instance.items [itemID].name;
-		itemDuration.text = ItemDatabase.m_instance.items [itemID].timeRequiredInMins.ToString ();
-		if (ItemDatabase.m_instance.items [itemID].needID1 >= 0) {			
-			item1Icon.GetComponent <SpriteRenderer> ().sprite = Resources.Load <Sprite> ("Textures/Items/" + ItemDatabase.m_instance.items [ItemDatabase.m_instance.items [itemID].needID1].name);	
-			item1Costing.text = PlayerInventoryManager.m_instance.playerInventory [ItemDatabase.m_instance.items [itemID].needID1].count.ToString () + "/" + ItemDatabase.m_instance.items [itemID].needAmount1.ToString ();
-			if (QuickCheckItemAvaliable (PlayerInventoryManager.m_instance.playerInventory [ItemDatabase.m_instance.items [itemID].needID1].count, ItemDatabase.m_instance.items [itemID].needAmount1)) {
-				item1Costing.GetComponent <TextMeshPro> ().color = HexToColor ("A7630DFF");
-			} else {
-				item1Costing.GetComponent <TextMeshPro> ().color = Color.red;
-			}
-		}
-		if (ItemDatabase.m_instance.items [itemID].needID2 >= 0) {
-			item2Icon.GetComponent <SpriteRenderer> ().sprite = Resources.Load <Sprite> ("Textures/Items/" + ItemDatabase.m_instance.items [ItemDatabase.m_instance.items [itemID].needID2].name);	
-			item2Costing.text = PlayerInventoryManager.m_instance.playerInventory [ItemDatabase.m_instance.items [itemID].needID2].count.ToString () + "/" + ItemDatabase.m_instance.items [itemID].needAmount2.ToString ();
-			if (QuickCheckItemAvaliable (PlayerInventoryManager.m_instance.playerInventory [ItemDatabase.m_instance.items [itemID].needID2].count, ItemDatabase.m_instance.items [itemID].needAmount2)) {
-				item2Costing.GetComponent <TextMeshPro> ().color = HexToColor ("A7630DFF");
-			} else {
-				item2Costing.GetComponent <TextMeshPro> ().color = Color.red;
-			}
-		}
-		if (ItemDatabase.m_instance.items [itemID].needID3 >= 0) {
-			item3Icon.GetComponent <SpriteRenderer> ().sprite = Resources.Load <Sprite> ("Textures/Items/" + ItemDatabase.m_instance.items [ItemDatabase.m_instance.items [itemID].needID3].name);	
-			item3Costing.text = PlayerInventoryManager.m_instance.playerInventory [ItemDatabase.m_instance.items [itemID].needID3].count.ToString () + "/" + ItemDatabase.m_instance.items [itemID].needAmount3.ToString ();
-			if (QuickCheckItemAvaliable (PlayerInventoryManager.m_instance.playerInventory [ItemDatabase.m_instance.items [itemID].needID3].count, ItemDatabase.m_instance.items [itemID].needAmount3)) {
-				item3Costing.GetComponent <TextMeshPro> ().color = HexToColor ("A7630DFF");
-			} else {
-				item3Costing.GetComponent <TextMeshPro> ().color = Color.red;
-			}
-		}
-		if (ItemDatabase.m_instance.items [itemID].needID4 >= 0) {
-			item4Icon.GetComponent <SpriteRenderer> ().sprite = Resources.Load <Sprite> ("Textures/Items/" + ItemDatabase.m_instance.items [ItemDatabase.m_instance.items [itemID].needID4].name);
-			item4Costing.text = PlayerInventoryManager.m_instance.playerInventory [ItemDatabase.m_instance.items [itemID].needID4].count.ToString () + "/" + ItemDatabase.m_instance.items [itemID].needAmount4.ToString ();
-			if (QuickCheckItemAvaliable (PlayerInventoryManager.m_instance.playerInventory [ItemDatabase.m_instance.items [itemID].needID4].count, ItemDatabase.m_instance.items [itemID].needAmount4)) {
-				item4Costing.GetComponent <TextMeshPro> ().color = HexToColor ("A7630DFF");
-			} else {
-				item4Costing.GetComponent <TextMeshPro> ().color = Color.red;
-			}
-		}
-	}
+        itemName.text = ItemDatabase.m_instance.items[itemID].name;
+        itemDuration.text = ItemDatabase.m_instance.items[itemID].timeRequiredInMins.ToString();
+        if (ItemDatabase.m_instance.items[itemID].needID1 >= 0) {
+            item1Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.m_instance.items[ItemDatabase.m_instance.items[itemID].needID1].name);
+            item1Costing.text = PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[itemID].needID1].count.ToString() + "/" + ItemDatabase.m_instance.items[itemID].needAmount1.ToString();
+            if (QuickCheckItemAvaliable(PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[itemID].needID1].count, ItemDatabase.m_instance.items[itemID].needAmount1)) {
+                item1Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
+            } else {
+                item1Costing.GetComponent<TextMeshPro>().color = Color.red;
+            }
+        }
+        if (ItemDatabase.m_instance.items[itemID].needID2 >= 0) {
+            item2Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.m_instance.items[ItemDatabase.m_instance.items[itemID].needID2].name);
+            item2Costing.text = PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[itemID].needID2].count.ToString() + "/" + ItemDatabase.m_instance.items[itemID].needAmount2.ToString();
+            if (QuickCheckItemAvaliable(PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[itemID].needID2].count, ItemDatabase.m_instance.items[itemID].needAmount2)) {
+                item2Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
+            } else {
+                item2Costing.GetComponent<TextMeshPro>().color = Color.red;
+            }
+        }
+        if (ItemDatabase.m_instance.items[itemID].needID3 >= 0) {
+            item3Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.m_instance.items[ItemDatabase.m_instance.items[itemID].needID3].name);
+            item3Costing.text = PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[itemID].needID3].count.ToString() + "/" + ItemDatabase.m_instance.items[itemID].needAmount3.ToString();
+            if (QuickCheckItemAvaliable(PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[itemID].needID3].count, ItemDatabase.m_instance.items[itemID].needAmount3)) {
+                item3Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
+            } else {
+                item3Costing.GetComponent<TextMeshPro>().color = Color.red;
+            }
+        }
+        if (ItemDatabase.m_instance.items[itemID].needID4 >= 0) {
+            item4Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.m_instance.items[ItemDatabase.m_instance.items[itemID].needID4].name);
+            item4Costing.text = PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[itemID].needID4].count.ToString() + "/" + ItemDatabase.m_instance.items[itemID].needAmount4.ToString();
+            if (QuickCheckItemAvaliable(PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[itemID].needID4].count, ItemDatabase.m_instance.items[itemID].needAmount4)) {
+                item4Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
+            } else {
+                item4Costing.GetComponent<TextMeshPro>().color = Color.red;
+            }
+        }
+    }
 
-	bool QuickCheckItemAvaliable (int has, int required)
-	{
-		if (has >= required) {
-			return true;
-		} else {
-			return false;
-		}	
-	}
+    bool QuickCheckItemAvaliable(int has, int required) {
+        if (has >= required) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	public void DisplayItemPopupProduction_DRAG (Vector2 pos)
-	{
-		transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y + popupOffset, 10));
-	}
+    public void DisplayItemPopupProduction_DRAG(Vector2 pos) {
+        transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y + popupOffset, 10));
+    }
 
-	public void HideItemPopupProduction ()
-	{
-		transform.position = new Vector3 (-500, -500, 0);
-		itemName.text = "";
-		itemDuration.text = "";
-		item1Icon.GetComponent <SpriteRenderer> ().sprite = new Sprite ();
-		item1Costing.GetComponent <TextMeshPro> ().color = HexToColor ("A7630DFF");
-		item1Costing.text = "";	
-		item2Icon.GetComponent <SpriteRenderer> ().sprite = new Sprite ();
-		item2Costing.GetComponent <TextMeshPro> ().color = HexToColor ("A7630DFF");
-		item2Costing.text = "";			
-		item3Icon.GetComponent <SpriteRenderer> ().sprite = new Sprite ();
-		item3Costing.GetComponent <TextMeshPro> ().color = HexToColor ("A7630DFF");
-		item3Costing.text = "";		
-		item4Icon.GetComponent <SpriteRenderer> ().sprite = new Sprite ();
-		item4Costing.GetComponent <TextMeshPro> ().color = HexToColor ("A7630DFF");
-		item4Costing.text = "";
-	}
+    public void HideItemPopupProduction() {
+        transform.position = new Vector3(-500, -500, 0);
+        itemName.text = "";
+        itemDuration.text = "";
+        item1Icon.GetComponent<SpriteRenderer>().sprite = new Sprite();
+        item1Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
+        item1Costing.text = "";
+        item2Icon.GetComponent<SpriteRenderer>().sprite = new Sprite();
+        item2Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
+        item2Costing.text = "";
+        item3Icon.GetComponent<SpriteRenderer>().sprite = new Sprite();
+        item3Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
+        item3Costing.text = "";
+        item4Icon.GetComponent<SpriteRenderer>().sprite = new Sprite();
+        item4Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
+        item4Costing.text = "";
+    }
 
-	string ColorToHex (Color32 color)
-	{
-		string hex = color.r.ToString ("X2") + color.g.ToString ("X2") + color.b.ToString ("X2");
-		return hex;
-	}
+    string ColorToHex(Color32 color) {
+        string hex = color.r.ToString("X2") + color.g.ToString("X2") + color.b.ToString("X2");
+        return hex;
+    }
 
-	Color HexToColor (string hex)
-	{
-		byte r = byte.Parse (hex.Substring (0, 2), System.Globalization.NumberStyles.HexNumber);
-		byte g = byte.Parse (hex.Substring (2, 2), System.Globalization.NumberStyles.HexNumber);
-		byte b = byte.Parse (hex.Substring (4, 2), System.Globalization.NumberStyles.HexNumber);
-		return new Color32 (r, g, b, 255);
-	}
+    Color HexToColor(string hex) {
+        byte r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+        byte g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+        byte b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+        return new Color32(r, g, b, 255);
+    }
 }

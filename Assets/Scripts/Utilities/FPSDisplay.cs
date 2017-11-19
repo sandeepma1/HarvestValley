@@ -2,8 +2,7 @@
 using System.Collections;
 using TMPro;
 
-public class FPSDisplay : MonoBehaviour
-{
+public class FPSDisplay : MonoBehaviour {
     public bool enableFPS = true;
     public TextMeshProUGUI fpsText;
     float deltaTime = 0.0f;
@@ -11,11 +10,12 @@ public class FPSDisplay : MonoBehaviour
     float fps;
     string text;
 
+    void Start() {
+        fpsText = GetComponent<TextMeshProUGUI>();
+    }
 
-    void LateUpdate()
-    {
-        if (enableFPS && fpsText != null)
-        {
+    void LateUpdate() {
+        if (enableFPS && fpsText != null) {
             deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
             //msec = deltaTime * 1000.0f;
             fps = 1.0f / deltaTime;
