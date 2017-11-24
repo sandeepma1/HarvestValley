@@ -4,123 +4,146 @@ using UnityEngine;
 
 public class CameraHandler : MonoBehaviour
 {
-	public float PanSpeed = 20f;
-	public float ZoomSpeedTouch = 0.1f;
-	public float ZoomSpeedMouse = 0.5f;
-    
-	private static readonly float[] BoundsX = new float[]{ -10f, 15f };
-	private static readonly float[] BoundsZ = new float[]{ -18f, -4f };
-	private static readonly float[] ZoomBounds = new float[]{ 10f, 85f };
-    
-	private Camera cam;
-    
-	private Vector3 lastPanPosition;
-	private int panFingerId;
-	// Touch mode only
-    
-	private bool wasZoomingLastFrame;
-	// Touch mode only
-	private Vector2[] lastZoomPositions;
-	// Touch mode only
+    [SerializeField]
+    private float dragSpeed = 2;
+    private Vector3 dragOrigin;
+    private Vector3 position;
+    private Vector3 movePosition = Vector3.zero;
+    private Vector3 tempMovePosition = Vector3.zero;
 
-	void Awake ()
-	{
-		cam = GetComponent<Camera> ();
-	}
+    private enum SnapStates { left, right, center };
+    private int currentCameraPostion = 3;
+    private int snapThreshold = 6;
+    //Watch out for this is swipe/drag has issue as OnSwipeDetected is executed first
+    private bool isSwipeDetected;
 
-	void Update ()
-	{
-		if (Input.touchSupported && Application.platform != RuntimePlatform.WebGLPlayer) {
-			HandleTouch ();
-		} else {
-			HandleMouse ();
-		}
-	}
+    Hashtable ease = new Hashtable();
 
-	void HandleTouch ()
-	{
-		switch (Input.touchCount) {
-    
-			case 1: // Panning
-				wasZoomingLastFrame = false;
-            
-            // If the touch began, capture its position and its finger ID.
-            // Otherwise, if the finger ID of the touch doesn't match, skip it.
-				Touch touch = Input.GetTouch (0);
-				if (touch.phase == TouchPhase.Began) {
-					lastPanPosition = touch.position;
-					panFingerId = touch.fingerId;
-				} else if (touch.fingerId == panFingerId && touch.phase == TouchPhase.Moved) {
-					PanCamera (touch.position);
-				}
-				break;
-    
-			case 2: // Zooming
-				Vector2[] newPositions = new Vector2[]{ Input.GetTouch (0).position, Input.GetTouch (1).position };
-				if (!wasZoomingLastFrame) {
-					lastZoomPositions = newPositions;
-					wasZoomingLastFrame = true;
-				} else {
-					// Zoom based on the distance between the new positions compared to the 
-					// distance between the previous positions.
-					float newDistance = Vector2.Distance (newPositions [0], newPositions [1]);
-					float oldDistance = Vector2.Distance (lastZoomPositions [0], lastZoomPositions [1]);
-					float offset = newDistance - oldDistance;
-    
-					ZoomCamera (offset, ZoomSpeedTouch);
-    
-					lastZoomPositions = newPositions;
-				}
-				break;
-            
-			default: 
-				wasZoomingLastFrame = false;
-				break;
-		}
-	}
+    private void Start()
+    {
+        SwipeManager.OnSwipeDetected += OnSwipeDetected;
+        ease.Add("ease", LeanTweenType.easeOutSine);
+    }
 
-	void HandleMouse ()
-	{
-		// On mouse down, capture it's position.
-		// Otherwise, if the mouse is still down, pan the camera.
-		if (Input.GetMouseButtonDown (0)) {
-			lastPanPosition = Input.mousePosition;
-		} else if (Input.GetMouseButton (0)) {
-			PanCamera (Input.mousePosition);
-		}
-    
-		// Check for scrolling to zoom the camera
-		float scroll = Input.GetAxis ("Mouse ScrollWheel");
-		ZoomCamera (scroll, ZoomSpeedMouse);
-	}
+    private void Update()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            tempMovePosition = Vector3.zero;
+            if (isSwipeDetected == false)
+            {
+                SnapStates snapState = new SnapStates();
+                snapState = DetectDragMoveDirection();
+                SnapCamera(snapState);
+            }
+        }
 
-	void PanCamera (Vector3 newPanPosition)
-	{
-		// Determine how much to move the camera
-		Vector3 offset = cam.ScreenToViewportPoint (lastPanPosition - newPanPosition);
-		Vector3 move = new Vector3 (offset.x * PanSpeed, offset.y * PanSpeed, -200);
-        
-		// Perform the movement
-		//transform.Translate (move, Space.World);  
-		LeanTween.move (this.gameObject, move, 0.5f);
+        if (Input.GetMouseButtonDown(0))
+        {
+            isSwipeDetected = false;
+            dragOrigin = Input.mousePosition;
+            return;
+        }
 
-		// Ensure the camera remains within bounds.
-		Vector3 pos = transform.position;
-		pos.x = Mathf.Clamp (transform.position.x, BoundsX [0], BoundsX [1]);
-		pos.y = Mathf.Clamp (transform.position.y, BoundsZ [0], BoundsZ [1]);
-		transform.position = pos;
+        if (!Input.GetMouseButton(0)) return;
+        DetectSwipe();
+    }
 
-    
-		// Cache the position
-		lastPanPosition = newPanPosition;
-	}
+    private void DetectSwipe()
+    {
+        position = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
+        //use movePosition.y to control Y
+        movePosition = new Vector3(-position.x * dragSpeed, 0, 0);
+        DragCamera(movePosition - tempMovePosition);
+        tempMovePosition = movePosition;
+    }
 
-	void ZoomCamera (float offset, float speed)
-	{
-		if (offset == 0) {
-			return;
-		}
-    
-		cam.fieldOfView = Mathf.Clamp (cam.fieldOfView - (offset * speed), ZoomBounds [0], ZoomBounds [1]);
-	}
+    private void DragCamera(Vector3 position)
+    {
+        transform.position += position;
+    }
+
+    private void SnapCamera(SnapStates snapState)
+    {
+        if (currentCameraPostion == 1 && snapState == SnapStates.left)
+        {
+            snapState = SnapStates.center;
+        }
+
+        if (currentCameraPostion == 5 && snapState == SnapStates.right)
+        {
+            snapState = SnapStates.center;
+        }
+
+        switch (snapState)
+        {
+            case SnapStates.left:
+                currentCameraPostion--;
+                break;
+            case SnapStates.right:
+                currentCameraPostion++;
+                break;
+            case SnapStates.center:
+                break;
+            default:
+                break;
+        }
+
+        LeanTween.moveX(Camera.main.gameObject, GameEventManager.screensPositions[currentCameraPostion], 0.5f, ease);
+    }
+
+    private SnapStates DetectDragMoveDirection()
+    {
+        //move right
+        if (transform.position.x > GameEventManager.screensPositions[currentCameraPostion] + snapThreshold)
+        {
+            return SnapStates.right;
+        }
+
+        //Move Left
+        if (transform.position.x < GameEventManager.screensPositions[currentCameraPostion] - snapThreshold)
+        {
+            return SnapStates.left;
+        }
+
+        return SnapStates.center;
+    }
+
+    void OnSwipeDetected(Swipe direction, Vector2 swipeVelocity)
+    {
+        print(swipeVelocity);
+        if (swipeVelocity.x >= 30 || swipeVelocity.x <= -30)
+        {
+            return;
+        }
+        isSwipeDetected = true;
+
+        switch (direction)
+        {
+            case Swipe.None:
+                break;
+            case Swipe.Up:
+                break;
+            case Swipe.Down:
+                break;
+            case Swipe.Left:
+                SnapCamera(SnapStates.right);
+                print("Swiped left");
+                break;
+            case Swipe.Right:
+                SnapCamera(SnapStates.left);
+                print("Swiped left");
+                break;
+            case Swipe.UpLeft:
+                break;
+            case Swipe.UpRight:
+                break;
+            case Swipe.DownLeft:
+                break;
+            case Swipe.DownRight:
+                break;
+            default:
+                break;
+        }
+    }
 }
