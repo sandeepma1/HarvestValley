@@ -10,10 +10,6 @@ public class FPSDisplay : MonoBehaviour {
     float fps;
     string text;
 
-    void Start() {
-        fpsText = GetComponent<TextMeshProUGUI>();
-    }
-
     void LateUpdate() {
         if (enableFPS && fpsText != null) {
             deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
