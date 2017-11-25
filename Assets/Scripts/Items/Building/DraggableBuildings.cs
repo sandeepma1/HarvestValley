@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using System.Collections.Generic;
+﻿using UnityEngine;
 
-public class DraggableBuildings : MonoBehaviour {
+public class DraggableBuildings : MonoBehaviour
+{
     public bool isSelected = false;
     public bool isDraggable = false;
     public int id;
@@ -16,16 +14,27 @@ public class DraggableBuildings : MonoBehaviour {
     public System.DateTime dateTime;
     //public string s_dateTime = "";
 
-    public void OnClickDrag() {
+    public void OnClickDrag()
+    {
         BuildingsManager.m_instance.CallParentOnMouseDrag(id);
     }
 
-    public void OnClickUp() {
+    public void OnClickUp()
+    {
         BuildingsManager.m_instance.CallParentOnMouseUp(id);
+        GEM.isSwipeEnable = true;
     }
 
-    public void OnClickEnter() {
+    public void OnClickEnter()
+    {
+        GEM.isSwipeEnable = false;
         BuildingsManager.m_instance.CallParentOnMouseEnter(id);
+    }
+
+    public void OnMouseDown()
+    {
+        GEM.isSwipeEnable = false;
+        BuildingsManager.m_instance.CallParentOnMouseDown(id);
     }
 
     #region Unused
@@ -39,10 +48,6 @@ public class DraggableBuildings : MonoBehaviour {
 	{
 		BuildingsManager.m_instance.CallParentOnMouseEnter (id);
 	}*/
-
-    public void OnMouseDown() {
-        BuildingsManager.m_instance.CallParentOnMouseDown(id);
-    }
 
     public void OnClickDown()//* IPointerDownHandler  //** not using
     {

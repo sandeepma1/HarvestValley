@@ -141,14 +141,14 @@ public class PlayerProfileManager : MonoBehaviour
 
 	void InitPlayerProfile ()
 	{
-		GameEventManager.playerName = playerProfile.name;
-		GameEventManager.playerFarmName = playerProfile.farmName;
-		GameEventManager.playerLevel = playerProfile.level;
-		GameEventManager.playerXPPoints = playerProfile.XPPoints;
-		GameEventManager.playerGold = playerProfile.coins;
-		GameEventManager.playerGems = playerProfile.gems;
-		GameEventManager.playerStamina = playerProfile.stamina;
-		GameEventManager.playerStaminaMaxDateTime = playerProfile.staminaMaxDateTime;
+		GEM.playerName = playerProfile.name;
+		GEM.playerFarmName = playerProfile.farmName;
+		GEM.playerLevel = playerProfile.level;
+		GEM.playerXPPoints = playerProfile.XPPoints;
+		GEM.playerGold = playerProfile.coins;
+		GEM.playerGems = playerProfile.gems;
+		GEM.playerStamina = playerProfile.stamina;
+		GEM.playerStaminaMaxDateTime = playerProfile.staminaMaxDateTime;
 	}
 
 	#endregion

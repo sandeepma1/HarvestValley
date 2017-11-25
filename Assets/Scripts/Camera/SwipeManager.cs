@@ -89,6 +89,7 @@ public class SwipeManager : MonoBehaviour
     static Vector2 secondPressPos;
     static SwipeManager instance;
 
+    bool detectTap;
 
     void Awake()
     {
@@ -128,15 +129,18 @@ public class SwipeManager : MonoBehaviour
                 // Swipe was not long enough, abort
                 if (!instance.triggerSwipeAtMinLength)
                 {
+                    GEM.SetTouchState(GEM.TOUCH_STATES.e_touch);
                     if (Application.isEditor)
                     {
-                        //Debug.Log("[SwipeManager] Swipe was not long enough.");
+                        // Debug.Log("[SwipeManager] Swipe was not long enough.");
                     }
-
                     swipeDirection = Swipe.None;
+                    return;
                 }
-
                 return;
+            } else
+            {
+                GEM.SetTouchState(GEM.TOUCH_STATES.e_swipe);
             }
 
             swipeEndTime = Time.time;
@@ -144,7 +148,7 @@ public class SwipeManager : MonoBehaviour
             swipeDirection = GetSwipeDirByTouch(currentSwipe);
             swipeEnded = true;
 
-            if (_OnSwipeDetected != null)
+            if (_OnSwipeDetected != null && GEM.GetTouchState() != GEM.TOUCH_STATES.e_touch)
             {
                 _OnSwipeDetected(swipeDirection, swipeVelocity);
             }
@@ -168,13 +172,14 @@ public class SwipeManager : MonoBehaviour
 
     static bool GetTouchInput()
     {
+
         if (Input.touches.Length > 0)
         {
             Touch t = Input.GetTouch(0);
-
             // Swipe/Touch started
             if (t.phase == TouchPhase.Began)
             {
+                GEM.SetTouchState(GEM.TOUCH_STATES.e_none);
                 firstPressPos = t.position;
                 swipeStartTime = Time.time;
                 swipeEnded = false;
@@ -193,7 +198,6 @@ public class SwipeManager : MonoBehaviour
                 }
             }
         }
-
         return false;
     }
 
@@ -202,6 +206,7 @@ public class SwipeManager : MonoBehaviour
         // Swipe/Click started
         if (Input.GetMouseButtonDown(0))
         {
+            GEM.SetTouchState(GEM.TOUCH_STATES.e_none);
             firstPressPos = (Vector2)Input.mousePosition;
             swipeStartTime = Time.time;
             swipeEnded = false;
@@ -219,7 +224,6 @@ public class SwipeManager : MonoBehaviour
                 return true;
             }
         }
-
         return false;
     }
 

@@ -48,13 +48,14 @@ public class IGMMenu : MonoBehaviour
         {
             disableAllMenus[i].transform.position = new Vector3(-500, -500, 0);
             disableAllMenus[i].SetActive(true);
+            GEM.isSwipeEnable = true;
         }
         BuildingsManager.m_instance.DisableAnyOpenMenus();
     }
 
     public void ChangeCameraPosition(int number)
     {
-        LeanTween.moveX(Camera.main.gameObject, GameEventManager.screensPositions[number], 0.5f, ease);
+        LeanTween.moveX(Camera.main.gameObject, GEM.screensPositions[number], 0.5f, ease);
     }
 
     public void LoadScene(string sceneName)

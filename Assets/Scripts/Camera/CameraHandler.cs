@@ -1,12 +1,16 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
-public class CameraHandler : MonoBehaviour {
+public class CameraHandler : MonoBehaviour
+{
+    public Text dText;
     [SerializeField]
     private float dragSpeed = 2;
     [SerializeField]
-    private float minSwipeVelocity = 30;
+    private float maxSwipeVelocity = 30;
+    [SerializeField]
+    private float minDragDistance = 0.1f;
     private Vector3 dragOrigin;
     private Vector3 position;
     private Vector3 movePosition = Vector3.zero;
@@ -20,53 +24,82 @@ public class CameraHandler : MonoBehaviour {
 
     Hashtable ease = new Hashtable();
 
-    private void Start() {
+    private void Start()
+    {
         SwipeManager.OnSwipeDetected += OnSwipeDetected;
         ease.Add("ease", LeanTweenType.easeOutSine);
     }
 
-    private void Update() {
-        if (Input.GetMouseButtonUp(0)) {
+    private void Update()
+    {
+        dText.text = GEM.GetTouchState().ToString();
+        if (GEM.isSwipeEnable)
+        {
+            DetectInputs();
+        }
+    }
+
+    private void DetectInputs()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
             tempMovePosition = Vector3.zero;
-            if (isSwipeDetected == false) {
+            if (isSwipeDetected == false)
+            {
                 SnapStates snapState = new SnapStates();
                 snapState = DetectDragMoveDirection();
                 SnapCamera(snapState);
             }
+            GEM.SetTouchState(GEM.TOUCH_STATES.e_none);
         }
 
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0))
+        {
+            GEM.SetTouchState(GEM.TOUCH_STATES.e_none);
             isSwipeDetected = false;
             dragOrigin = Input.mousePosition;
             return;
         }
 
         if (!Input.GetMouseButton(0)) return;
-        DetectSwipe();
+        DetectDrag();
     }
 
-    private void DetectSwipe() {
+    private void DetectDrag()
+    {
+        float dragDistance = Input.mousePosition.x - dragOrigin.x;
         position = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
         //use movePosition.y to control Y
         movePosition = new Vector3(-position.x * dragSpeed, 0, 0);
-        DragCamera(movePosition - tempMovePosition);
+
+        if (dragDistance > minDragDistance || dragDistance < -minDragDistance)
+        {
+            DragCamera(movePosition - tempMovePosition);
+        }
+
         tempMovePosition = movePosition;
     }
 
-    private void DragCamera(Vector3 position) {
+    private void DragCamera(Vector3 position)
+    {
+        GEM.SetTouchState(GEM.TOUCH_STATES.e_drag);
         transform.position += position;
     }
 
-    private void SnapCamera(SnapStates snapState) {
-        if (currentCameraPostion == 1 && snapState == SnapStates.left) {
+    private void SnapCamera(SnapStates snapState)
+    {
+        if (currentCameraPostion == 1 && snapState == SnapStates.left)
+        {
             snapState = SnapStates.center;
         }
 
-        if (currentCameraPostion == 5 && snapState == SnapStates.right) {
+        if (currentCameraPostion == 5 && snapState == SnapStates.right)
+        {
             snapState = SnapStates.center;
         }
 
-        switch (snapState) {
+        switch (snapState)
+        {
             case SnapStates.left:
                 currentCameraPostion--;
                 break;
@@ -79,30 +112,36 @@ public class CameraHandler : MonoBehaviour {
                 break;
         }
 
-        LeanTween.moveX(Camera.main.gameObject, GameEventManager.screensPositions[currentCameraPostion], 0.35f, ease);
+        LeanTween.moveX(Camera.main.gameObject, GEM.screensPositions[currentCameraPostion], 0.35f, ease);
     }
 
-    private SnapStates DetectDragMoveDirection() {
+    private SnapStates DetectDragMoveDirection()
+    {
         //move right
-        if (transform.position.x > GameEventManager.screensPositions[currentCameraPostion] + snapThreshold) {
+        if (transform.position.x > GEM.screensPositions[currentCameraPostion] + snapThreshold)
+        {
             return SnapStates.right;
         }
 
         //Move Left
-        if (transform.position.x < GameEventManager.screensPositions[currentCameraPostion] - snapThreshold) {
+        if (transform.position.x < GEM.screensPositions[currentCameraPostion] - snapThreshold)
+        {
             return SnapStates.left;
         }
 
         return SnapStates.center;
     }
 
-    void OnSwipeDetected(Swipe direction, Vector2 swipeVelocity) {
-        if (swipeVelocity.x >= minSwipeVelocity || swipeVelocity.x <= -minSwipeVelocity) {
+    void OnSwipeDetected(Swipe direction, Vector2 swipeVelocity)
+    {
+        if (swipeVelocity.x >= maxSwipeVelocity || swipeVelocity.x <= -maxSwipeVelocity || !GEM.isSwipeEnable)
+        {
             return;
         }
         isSwipeDetected = true;
 
-        switch (direction) {
+        switch (direction)
+        {
             case Swipe.None:
                 break;
             case Swipe.Up:

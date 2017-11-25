@@ -52,16 +52,16 @@ public class MoreInventoryButton : MonoBehaviour
 
 		if (isInventoryDown) {
 			inventoryMenu.GetComponent <RectTransform> ().SetSiblingIndex (tabIndex);
-			GameEventManager.SetState (GameEventManager.E_STATES.e_game);
+			GEM.SetState (GEM.E_STATES.e_game);
 			mainUIWindow.anchoredPosition = new Vector3 (mainUIWindow.anchoredPosition.x, heightAdjuster);
 			//mainUIWindow.anchoredPosition = Vector3.zero;
-			GameEventManager.SetMenuState (GameEventManager.E_MenuState.e_menuDown);
+			GEM.SetMenuState (GEM.E_MenuState.e_menuDown);
 		} else {
 			inventoryMenu.GetComponent <RectTransform> ().SetSiblingIndex (tabIndex); 
-			GameEventManager.SetState (GameEventManager.E_STATES.e_pause);
+			GEM.SetState (GEM.E_STATES.e_pause);
 			//mainUIWindow.anchoredPosition = new Vector3 (mainUIWindow.anchoredPosition.x, heightAdjuster);
 			mainUIWindow.anchoredPosition = Vector3.zero;
-			GameEventManager.SetMenuState (GameEventManager.E_MenuState.e_menuUp);
+			GEM.SetMenuState (GEM.E_MenuState.e_menuUp);
 		}		
 	}
 
@@ -81,14 +81,14 @@ public class MoreInventoryButton : MonoBehaviour
 		ToggleInventory (isCraftingDown);
 		if (isCraftingDown) {
 			craftingMenu.GetComponent <RectTransform> ().SetSiblingIndex (tabIndex);
-			GameEventManager.SetState (GameEventManager.E_STATES.e_game);
+			GEM.SetState (GEM.E_STATES.e_game);
 			mainUIWindow.anchoredPosition = new Vector3 (mainUIWindow.anchoredPosition.x, heightAdjuster);
-			GameEventManager.SetMenuState (GameEventManager.E_MenuState.e_menuDown);
+			GEM.SetMenuState (GEM.E_MenuState.e_menuDown);
 		} else {
 			craftingMenu.GetComponent <RectTransform> ().SetSiblingIndex (tabIndex); 
-			GameEventManager.SetState (GameEventManager.E_STATES.e_pause);
+			GEM.SetState (GEM.E_STATES.e_pause);
 			mainUIWindow.anchoredPosition = Vector3.zero;
-			GameEventManager.SetMenuState (GameEventManager.E_MenuState.e_menuUp);
+			GEM.SetMenuState (GEM.E_MenuState.e_menuUp);
 		}		
 	}
 

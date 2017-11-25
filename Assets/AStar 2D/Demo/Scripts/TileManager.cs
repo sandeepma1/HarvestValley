@@ -52,7 +52,7 @@ namespace AStar_2D.Demo
 			m_instance = this;
 			base.Awake ();
 
-			GameEventManager.numberOfRocksInLevel = 0;
+			GEM.numberOfRocksInLevel = 0;
 			tiles = new Tile[gridX, gridY];
 			rockTilesTemp = new Tile[gridX * gridY];
 
@@ -79,14 +79,14 @@ namespace AStar_2D.Demo
 					if (random < 1) {
 						tiles [i, j].IsWalkable = false;
 						tiles [i, j].gameObject.GetComponent <SpriteRenderer> ().sprite = tileSheet [Random.Range (0, 4)];
-						rockTilesTemp [GameEventManager.numberOfRocksInLevel] = tiles [i, j];
-						GameEventManager.numberOfRocksInLevel = GameEventManager.numberOfRocksInLevel + 1;
+						rockTilesTemp [GEM.numberOfRocksInLevel] = tiles [i, j];
+						GEM.numberOfRocksInLevel = GEM.numberOfRocksInLevel + 1;
 					}
 				}
 			}
 
 			int count = 0;
-			rockTiles = new Tile[GameEventManager.numberOfRocksInLevel];
+			rockTiles = new Tile[GEM.numberOfRocksInLevel];
 			for (int i = 0; i < rockTilesTemp.Length; i++) {
 				if (rockTilesTemp [i] != null) {
 					rockTiles [count] = rockTilesTemp [i];
@@ -99,10 +99,10 @@ namespace AStar_2D.Demo
 
 			//***********************Ladder Logic
 			ladderSelectionNumber = Random.Range (0, 3);
-			ladderTop = Random.Range (2, GameEventManager.numberOfRocksInLevel / 2);
-			ladderBottom = Random.Range (GameEventManager.numberOfRocksInLevel / 2, GameEventManager.numberOfRocksInLevel);
-			ladderSpecific = Random.Range (2, GameEventManager.numberOfRocksInLevel);		
-			print (GameEventManager.numberOfRocksInLevel + " Tiles**");
+			ladderTop = Random.Range (2, GEM.numberOfRocksInLevel / 2);
+			ladderBottom = Random.Range (GEM.numberOfRocksInLevel / 2, GEM.numberOfRocksInLevel);
+			ladderSpecific = Random.Range (2, GEM.numberOfRocksInLevel);		
+			print (GEM.numberOfRocksInLevel + " Tiles**");
 			//************************
 		}
 
