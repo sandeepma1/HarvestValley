@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,6 +8,7 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerUp
     public bool isSelected = false;
     public bool isDraggable = false;
     public int id;
+    public SpriteRenderer spriteRenderer;
     public int buildingID;
     public Vector2 pos;
     public int level;
@@ -14,14 +16,31 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerUp
     public int unlockedQueueSlots;
     public int itemID;
     public System.DateTime dateTime;
-    //public string s_dateTime = "";
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
+    }
 
     public void OnClickDrag()
     {
+        if (!IsPointerOverUIObject())
+        {
+            BuildingsManager.m_instance.CallParentOnMouseDrag(id);
+        }
         //if (!EventSystem.current.IsPointerOverGameObject())
         //{
-        BuildingsManager.m_instance.CallParentOnMouseDrag(id);
-        // }
+
+        //}
     }
 
     public void OnPointerDown(PointerEventData eventData)

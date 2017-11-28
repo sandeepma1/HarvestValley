@@ -6,14 +6,14 @@ using TMPro;
 public class BuildingsManager : MonoBehaviour
 {
     public static BuildingsManager m_instance = null;
-    public GameObject buildingPrefab;
+    public DraggableBuildings buildingPrefab;
     public GameObject MasterMenuGO = null, TimeRemainingMenu = null, FarmHarvestingMenu = null;
     public bool isFarmTimerEnabled = false;
     public List<Buildings> buildings = new List<Buildings>();
     //public List<AAA> aaa = new List<AAA>();
     public bool plantedOnSelectedfield = false;
     public int buildingSelectedID = -1;
-    public GameObject[] BuildingsGO;
+    public DraggableBuildings[] BuildingsGO;
     System.TimeSpan remainingTime;
     int tempID = -1, longPressBuildingID = -1, mouseDownBuildingID = -1;
     bool isLongPress = false;
@@ -31,7 +31,7 @@ public class BuildingsManager : MonoBehaviour
     {
         buildings = ES2.LoadList<Buildings>("AllBuildings");
         //BuildingsGO = new GameObject[buildings.Count];
-        BuildingsGO = new GameObject[99];
+        BuildingsGO = new DraggableBuildings[99];
         foreach (var building in buildings)
         {
             InitBuildings(building);
@@ -42,7 +42,7 @@ public class BuildingsManager : MonoBehaviour
 
     public void DisplayMasterMenu(int b_ID) // Display field Crop Menu
     {
-        MasterMenuManager.m_instance.PopulateItemsInMasterMenu(BuildingsGO[b_ID].GetComponent<DraggableBuildings>().buildingID);
+        MasterMenuManager.m_instance.PopulateItemsInMasterMenu(BuildingsGO[b_ID].buildingID);
         IGMMenu.m_instance.DisableAllMenus();
         buildingSelectedID = b_ID;
 
@@ -57,17 +57,17 @@ public class BuildingsManager : MonoBehaviour
     {
         if (MasterMenuManager.m_instance.isItemSelected == true)
         {
-            if (BuildingsGO[buildingID].GetComponent<DraggableBuildings>().buildingID == 0)
+            if (BuildingsGO[buildingID].buildingID == 0)
             { // selected building is feild
                 if (plantedOnSelectedfield || buildingSelectedID == buildingID)
                 {
                     if (PlayerInventoryManager.m_instance.playerInventory[MasterMenuManager.m_instance.itemSelectedID].count >= 1)
                     {
-                        BuildingsGO[buildingID].GetComponent<DraggableBuildings>().state = BUILDINGS_STATE.GROWING;
-                        BuildingsGO[buildingID].GetComponent<DraggableBuildings>().itemID = MasterMenuManager.m_instance.itemSelectedID;
-                        BuildingsGO[buildingID].GetComponent<DraggableBuildings>().dateTime = UTC.time.liveDateTime.AddMinutes(
+                        BuildingsGO[buildingID].state = BUILDINGS_STATE.GROWING;
+                        BuildingsGO[buildingID].itemID = MasterMenuManager.m_instance.itemSelectedID;
+                        BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
                             ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].timeRequiredInMins);
-                        BuildingsGO[buildingID].GetComponent<SpriteRenderer>().color = Color.green;
+                        BuildingsGO[buildingID].spriteRenderer.color = Color.green;
                         PlayerInventoryManager.m_instance.playerInventory[MasterMenuManager.m_instance.itemSelectedID].count--;
                         MasterMenuManager.m_instance.UpdateSeedValue();
                         SaveBuildings();
@@ -80,11 +80,11 @@ public class BuildingsManager : MonoBehaviour
                 if (buildingSelectedID == buildingID && DoesInventoryHasItems(buildingID))
                 {
                     DecrementItemsFromInventory();
-                    BuildingsGO[buildingID].GetComponent<DraggableBuildings>().state = BUILDINGS_STATE.GROWING;
-                    BuildingsGO[buildingID].GetComponent<DraggableBuildings>().itemID = MasterMenuManager.m_instance.itemSelectedID;
-                    BuildingsGO[buildingID].GetComponent<DraggableBuildings>().dateTime = UTC.time.liveDateTime.AddMinutes(
+                    BuildingsGO[buildingID].state = BUILDINGS_STATE.GROWING;
+                    BuildingsGO[buildingID].itemID = MasterMenuManager.m_instance.itemSelectedID;
+                    BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
                         ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].timeRequiredInMins);
-                    BuildingsGO[buildingID].GetComponent<SpriteRenderer>().color = Color.green;
+                    BuildingsGO[buildingID].spriteRenderer.color = Color.green;
 
                 }
             }
@@ -183,14 +183,14 @@ public class BuildingsManager : MonoBehaviour
             // TODO Heavy update required for field Level Based cals*******************
             // only 2 items are added in storage
             //			print (FarmLands [buildingID].GetComponent <FarmLands> ().itemID);		 
-            PlayerInventoryManager.m_instance.UpdateFarmItems(Convert.ToInt32(BuildingsGO[buildingID].GetComponent<DraggableBuildings>().itemID), 2);
-            PlayerProfileManager.m_instance.PlayerXPPointsAdd(ItemDatabase.m_instance.items[BuildingsGO[buildingID].GetComponent<DraggableBuildings>().itemID].XP);
-            BuildingsGO[buildingID].GetComponent<DraggableBuildings>().state = BUILDINGS_STATE.NONE;
+            PlayerInventoryManager.m_instance.UpdateFarmItems(Convert.ToInt32(BuildingsGO[buildingID].itemID), 2);
+            PlayerProfileManager.m_instance.PlayerXPPointsAdd(ItemDatabase.m_instance.items[BuildingsGO[buildingID].itemID].XP);
+            BuildingsGO[buildingID].state = BUILDINGS_STATE.NONE;
 
-            BuildingsGO[buildingID].GetComponent<DraggableBuildings>().dateTime = new System.DateTime();
-            BuildingsGO[buildingID].GetComponent<DraggableBuildings>().itemID = -1;
+            BuildingsGO[buildingID].dateTime = new System.DateTime();
+            BuildingsGO[buildingID].itemID = -1;
 
-            BuildingsGO[buildingID].GetComponent<SpriteRenderer>().color = Color.white;
+            BuildingsGO[buildingID].spriteRenderer.color = Color.white;
             HarvestMenuManager.m_instance.ToggleDisplayHarvestingMenu();
         }
     }
@@ -206,12 +206,12 @@ public class BuildingsManager : MonoBehaviour
 
     public void CollectItemsOnBuildings(int buildingID) //Collecting Items on buildings
     {
-        PlayerInventoryManager.m_instance.UpdateFarmItems(BuildingsGO[buildingID].GetComponent<DraggableBuildings>().itemID, 1);
-        PlayerProfileManager.m_instance.PlayerXPPointsAdd(ItemDatabase.m_instance.items[BuildingsGO[buildingID].GetComponent<DraggableBuildings>().itemID].XP);
-        BuildingsGO[buildingID].GetComponent<DraggableBuildings>().state = BUILDINGS_STATE.NONE;
-        BuildingsGO[buildingID].GetComponent<DraggableBuildings>().dateTime = new System.DateTime();
-        BuildingsGO[buildingID].GetComponent<DraggableBuildings>().itemID = -1;
-        BuildingsGO[buildingID].GetComponent<SpriteRenderer>().color = Color.white;
+        PlayerInventoryManager.m_instance.UpdateFarmItems(BuildingsGO[buildingID].itemID, 1);
+        PlayerProfileManager.m_instance.PlayerXPPointsAdd(ItemDatabase.m_instance.items[BuildingsGO[buildingID].itemID].XP);
+        BuildingsGO[buildingID].state = BUILDINGS_STATE.NONE;
+        BuildingsGO[buildingID].dateTime = new System.DateTime();
+        BuildingsGO[buildingID].itemID = -1;
+        BuildingsGO[buildingID].spriteRenderer.color = Color.white;
     }
 
     public void DisableAnyOpenMenus()
@@ -220,7 +220,7 @@ public class BuildingsManager : MonoBehaviour
         {
             if (BuildingsGO[i] != null)
             {
-                BuildingsGO[i].GetComponent<DraggableBuildings>().isSelected = false;
+                BuildingsGO[i].isSelected = false;
                 DisableOutlineOnSprite(i);
             }
         }
@@ -229,7 +229,7 @@ public class BuildingsManager : MonoBehaviour
 
     public void ShowFarmLandTimeRemaining()
     {
-        remainingTime = BuildingsGO[tempID].GetComponent<DraggableBuildings>().dateTime.Subtract(UTC.time.liveDateTime);
+        remainingTime = BuildingsGO[tempID].dateTime.Subtract(UTC.time.liveDateTime);
         TimeRemainingMenu.transform.position = BuildingsGO[tempID].transform.position;
         if (remainingTime <= new System.TimeSpan(360, 0, 0, 0))
         { //> 1year
@@ -262,7 +262,6 @@ public class BuildingsManager : MonoBehaviour
         {
             tempID = -1;
         }
-
     }
 
     private void CheckForHarvest()
@@ -270,19 +269,19 @@ public class BuildingsManager : MonoBehaviour
         foreach (var item in BuildingsGO)
         {  //Main loop for checking all buildings time
             if (item != null &&
-                item.GetComponent<DraggableBuildings>().state == BUILDINGS_STATE.GROWING &&
-                item.GetComponent<DraggableBuildings>().dateTime.Subtract(UTC.time.liveDateTime) <= new System.TimeSpan(0, 0, 0))
+                item.state == BUILDINGS_STATE.GROWING &&
+                item.dateTime.Subtract(UTC.time.liveDateTime) <= new System.TimeSpan(0, 0, 0))
             {
-                item.GetComponent<DraggableBuildings>().state = BUILDINGS_STATE.WAITING_FOR_HARVEST;
-                item.GetComponent<DraggableBuildings>().dateTime = new System.DateTime();
-                item.GetComponent<SpriteRenderer>().color = Color.red;
+                item.state = BUILDINGS_STATE.WAITING_FOR_HARVEST;
+                item.dateTime = new System.DateTime();
+                item.spriteRenderer.color = Color.red;
             }
         }
     }
 
     void Update() // all long press logic	
     {
-        if (isTilePressed && BuildingsGO[mouseDownBuildingID].GetComponent<DraggableBuildings>().buildingID != 0)
+        if (isTilePressed && BuildingsGO[mouseDownBuildingID].buildingID != 0)
         {
             if (longPressTimer >= longPressTime)
             {
@@ -290,7 +289,7 @@ public class BuildingsManager : MonoBehaviour
                 longPressBuildingID = mouseDownBuildingID;
                 mouseDownBuildingID = -1;
                 isTilePressed = false;
-                BuildingsGO[longPressBuildingID].GetComponent<DraggableBuildings>().isSelected = true;
+                BuildingsGO[longPressBuildingID].isSelected = true;
                 EnableOutlineOnSprite(longPressBuildingID);
                 return;
             }
@@ -300,7 +299,7 @@ public class BuildingsManager : MonoBehaviour
 
     void EnableOutlineOnSprite(int selectedFieldID)
     {
-        if (BuildingsGO[selectedFieldID].GetComponent<DraggableBuildings>().buildingID != 0)
+        if (BuildingsGO[selectedFieldID].buildingID != 0)
         {
             BuildingsGO[selectedFieldID].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
         }
@@ -309,7 +308,7 @@ public class BuildingsManager : MonoBehaviour
 
     void DisableOutlineOnSprite(int selectedFieldID)
     {
-        if (BuildingsGO[selectedFieldID].GetComponent<DraggableBuildings>().buildingID != 0)
+        if (BuildingsGO[selectedFieldID].buildingID != 0)
         {
             BuildingsGO[selectedFieldID].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 0);
         }
@@ -345,33 +344,33 @@ public class BuildingsManager : MonoBehaviour
 
     public void InitBuildings(Buildings building)
     {
-        BuildingsGO[building.id] = Instantiate(buildingPrefab, this.transform);
+        BuildingsGO[building.id] = Instantiate(buildingPrefab, transform);
         BuildingsGO[building.id].transform.localPosition = building.pos;
         BuildingsGO[building.id].gameObject.name = "Building" + building.id;
-        BuildingsGO[building.id].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Buildings/" + building.name);
-        BuildingsGO[building.id].GetComponent<DraggableBuildings>().id = building.id;
-        BuildingsGO[building.id].GetComponent<DraggableBuildings>().buildingID = building.buildingID;
-        BuildingsGO[building.id].GetComponent<DraggableBuildings>().pos = building.pos;
-        BuildingsGO[building.id].GetComponent<DraggableBuildings>().level = building.level;
-        BuildingsGO[building.id].GetComponent<DraggableBuildings>().itemID = building.itemID;
-        BuildingsGO[building.id].GetComponent<DraggableBuildings>().state = (BUILDINGS_STATE)building.state;
-        BuildingsGO[building.id].GetComponent<DraggableBuildings>().unlockedQueueSlots = building.unlockedQueueSlots;
+        BuildingsGO[building.id].spriteRenderer.sprite = Resources.Load<Sprite>("Textures/Buildings/" + building.name);
+        BuildingsGO[building.id].id = building.id;
+        BuildingsGO[building.id].buildingID = building.buildingID;
+        BuildingsGO[building.id].pos = building.pos;
+        BuildingsGO[building.id].level = building.level;
+        BuildingsGO[building.id].itemID = building.itemID;
+        BuildingsGO[building.id].state = (BUILDINGS_STATE)building.state;
+        BuildingsGO[building.id].unlockedQueueSlots = building.unlockedQueueSlots;
         DisableOutlineOnSprite(building.id);
-        switch (BuildingsGO[building.id].GetComponent<DraggableBuildings>().state)
+        switch (BuildingsGO[building.id].state)
         {
             case BUILDINGS_STATE.NONE:
-                BuildingsGO[building.id].GetComponent<SpriteRenderer>().color = Color.white;
+                BuildingsGO[building.id].spriteRenderer.color = Color.white;
                 break;
             case BUILDINGS_STATE.GROWING:
-                BuildingsGO[building.id].GetComponent<SpriteRenderer>().color = Color.green;
+                BuildingsGO[building.id].spriteRenderer.color = Color.green;
                 break;
             case BUILDINGS_STATE.WAITING_FOR_HARVEST:
-                BuildingsGO[building.id].GetComponent<SpriteRenderer>().color = Color.red;
+                BuildingsGO[building.id].spriteRenderer.color = Color.red;
                 break;
             default:
                 break;
         }
-        BuildingsGO[building.id].GetComponent<DraggableBuildings>().dateTime = DateTime.Parse(building.dateTime);
+        BuildingsGO[building.id].dateTime = DateTime.Parse(building.dateTime);
     }
 
     public void CallParentOnMouseDown(int buildingID)
@@ -381,7 +380,7 @@ public class BuildingsManager : MonoBehaviour
         mouseDownBuildingID = buildingID;
         if (buildingID != longPressBuildingID && longPressBuildingID != -1)
         {
-            BuildingsGO[longPressBuildingID].GetComponent<DraggableBuildings>().isSelected = false;
+            BuildingsGO[longPressBuildingID].isSelected = false;
             DisableOutlineOnSprite(longPressBuildingID);
             isLongPress = false;
         }
@@ -393,7 +392,7 @@ public class BuildingsManager : MonoBehaviour
         mouseDownBuildingID = -1;
         if (!isLongPress)
         {
-            switch (BuildingsGO[buildingID].GetComponent<DraggableBuildings>().state)
+            switch (BuildingsGO[buildingID].state)
             {
                 case BUILDINGS_STATE.NONE:
                     DisplayMasterMenu(buildingID);
@@ -404,11 +403,11 @@ public class BuildingsManager : MonoBehaviour
                     TimeRemainingMenu.SetActive(true);
                     isFarmTimerEnabled = true;
                     TimeRemainingMenu.transform.GetChild(0).GetComponent<TextMeshPro>().text =
-                    ItemDatabase.m_instance.items[BuildingsGO[tempID].GetComponent<DraggableBuildings>().itemID].name.ToString();
+                    ItemDatabase.m_instance.items[BuildingsGO[tempID].itemID].name.ToString();
 
                     break;
                 case BUILDINGS_STATE.WAITING_FOR_HARVEST:
-                    if (BuildingsGO[buildingID].GetComponent<DraggableBuildings>().buildingID == 0)
+                    if (BuildingsGO[buildingID].buildingID == 0)
                     { // if field selected
                         ShowReadyToHarvestCropsMenu(buildingID);
                     } else
@@ -423,7 +422,7 @@ public class BuildingsManager : MonoBehaviour
         {
             if (buildingID != longPressBuildingID)
             {
-                BuildingsGO[longPressBuildingID].GetComponent<DraggableBuildings>().isSelected = false;
+                BuildingsGO[longPressBuildingID].isSelected = false;
                 DisableOutlineOnSprite(longPressBuildingID);
                 isLongPress = false;
             }
@@ -432,13 +431,13 @@ public class BuildingsManager : MonoBehaviour
 
     public void CallParentOnMouseEnter(int buildingID)
     {
-        switch (BuildingsGO[buildingID].GetComponent<DraggableBuildings>().state)
+        switch (BuildingsGO[buildingID].state)
         {
             case BUILDINGS_STATE.NONE:
                 PlantItemsOnBuildings(buildingID);
                 break;
             case BUILDINGS_STATE.WAITING_FOR_HARVEST:
-                if (BuildingsGO[buildingID].GetComponent<DraggableBuildings>().buildingID == 0)
+                if (BuildingsGO[buildingID].buildingID == 0)
                 { // if field selected
                     HarvestCropOnFarmLand(buildingID);
                 }
@@ -450,7 +449,7 @@ public class BuildingsManager : MonoBehaviour
 
     public void CallParentOnMouseDrag(int buildingID)
     {
-        if (BuildingsGO[buildingID].GetComponent<DraggableBuildings>().isSelected && BuildingsGO[buildingID].GetComponent<DraggableBuildings>().buildingID != 0)
+        if (BuildingsGO[buildingID].isSelected && BuildingsGO[buildingID].buildingID != 0)
         {
             BuildingsGO[buildingID].transform.position = new Vector3(Mathf.Round(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 0, 0)).x),
                 Mathf.Round(Camera.main.ScreenToWorldPoint(new Vector3(0, Input.mousePosition.y, 0)).y), 0);
@@ -464,13 +463,13 @@ public class BuildingsManager : MonoBehaviour
         foreach (var item in buildings)
         {
             item.pos = BuildingsGO[item.id].transform.localPosition;
-            item.id = BuildingsGO[item.id].GetComponent<DraggableBuildings>().id;
-            item.buildingID = BuildingsGO[item.id].GetComponent<DraggableBuildings>().buildingID;
-            item.level = BuildingsGO[item.id].GetComponent<DraggableBuildings>().level;
-            item.state = (sbyte)BuildingsGO[item.id].GetComponent<DraggableBuildings>().state;
-            item.unlockedQueueSlots = BuildingsGO[item.id].GetComponent<DraggableBuildings>().unlockedQueueSlots;
-            item.itemID = BuildingsGO[item.id].GetComponent<DraggableBuildings>().itemID;
-            item.dateTime = BuildingsGO[item.id].GetComponent<DraggableBuildings>().dateTime.ToString();
+            item.id = BuildingsGO[item.id].id;
+            item.buildingID = BuildingsGO[item.id].buildingID;
+            item.level = BuildingsGO[item.id].level;
+            item.state = (sbyte)BuildingsGO[item.id].state;
+            item.unlockedQueueSlots = BuildingsGO[item.id].unlockedQueueSlots;
+            item.itemID = BuildingsGO[item.id].itemID;
+            item.dateTime = BuildingsGO[item.id].dateTime.ToString();
         }
         ES2.Save(buildings, "AllBuildings");
     }
