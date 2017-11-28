@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class DraggableBuildings : MonoBehaviour
+public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler
 {
     public bool isSelected = false;
     public bool isDraggable = false;
@@ -16,49 +18,28 @@ public class DraggableBuildings : MonoBehaviour
 
     public void OnClickDrag()
     {
+        //if (!EventSystem.current.IsPointerOverGameObject())
+        //{
         BuildingsManager.m_instance.CallParentOnMouseDrag(id);
+        // }
     }
 
-    public void OnClickUp()
-    {
-        BuildingsManager.m_instance.CallParentOnMouseUp(id);
-        GEM.isSwipeEnable = true;
-    }
-
-    public void OnClickEnter()
-    {
-        GEM.isSwipeEnable = false;
-        BuildingsManager.m_instance.CallParentOnMouseEnter(id);
-    }
-
-    public void OnMouseDown()
+    public void OnPointerDown(PointerEventData eventData)
     {
         GEM.isSwipeEnable = false;
         BuildingsManager.m_instance.CallParentOnMouseDown(id);
     }
 
-    #region Unused
-
-    /*public void OnMouseUp ()
-	{
-		BuildingsManager.m_instance.CallParentOnMouseUp (id);
-	}*/
-
-    /*	public void OnMouseEnter ()
-	{
-		BuildingsManager.m_instance.CallParentOnMouseEnter (id);
-	}*/
-
-    public void OnClickDown()//* IPointerDownHandler  //** not using
+    public void OnPointerUp(PointerEventData eventData)
     {
-        //PlacableTileManager.m_instance.CallParentOnMouseDown (id);
+        BuildingsManager.m_instance.CallParentOnMouseUp(id);
+        GEM.isSwipeEnable = true;
     }
 
-    public void OnClickExit() //** not using
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        //PlacableTileManager.m_instance.CallParentOnMouseExit (id);
+        GEM.isSwipeEnable = false;
+        BuildingsManager.m_instance.CallParentOnMouseEnter(id);
     }
-
-    #endregion
 }
 

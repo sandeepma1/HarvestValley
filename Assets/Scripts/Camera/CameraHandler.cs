@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraHandler : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class CameraHandler : MonoBehaviour
     private void Update()
     {
         dText.text = GEM.GetTouchState().ToString();
-        if (GEM.isSwipeEnable)
+        if (GEM.isSwipeEnable && !EventSystem.current.IsPointerOverGameObject())
         {
             DetectInputs();
         }
@@ -134,7 +135,10 @@ public class CameraHandler : MonoBehaviour
 
     void OnSwipeDetected(Swipe direction, Vector2 swipeVelocity)
     {
-        if (swipeVelocity.x >= maxSwipeVelocity || swipeVelocity.x <= -maxSwipeVelocity || !GEM.isSwipeEnable)
+
+        if (swipeVelocity.x >= maxSwipeVelocity ||
+            swipeVelocity.x <= -maxSwipeVelocity ||
+            !GEM.isSwipeEnable && !EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }

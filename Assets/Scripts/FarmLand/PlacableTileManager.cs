@@ -2,7 +2,8 @@
 using UnityEngine;
 using TMPro;
 
-public class PlacableTileManager : MonoBehaviour {
+public class PlacableTileManager : MonoBehaviour
+{
     public static PlacableTileManager m_instance = null;
     public GameObject farmLandPrefab;
     public GameObject CropMenu = null, FarmTimerText = null, FarmHarvestingMenu = null;
@@ -18,22 +19,26 @@ public class PlacableTileManager : MonoBehaviour {
     public bool plantedOnSelectedfield = false;
     public int fieldSelectedID = -1;
 
-    void Awake() {
+    void Awake()
+    {
         m_instance = this;
         OneTimeOnly();
         Init();
     }
 
-    void Init() {
+    void Init()
+    {
         farmList = ES2.LoadList<FarmField>("FarmField");
         FarmLands = new GameObject[farmList.Count];
-        foreach (var farm in farmList) {
+        foreach (var farm in farmList)
+        {
             InitFarmLands(farm);
         }
         InvokeRepeating("SaveFarmLands", 0, 5);
     }
 
-    public void AddNewFarmLandInMap(int farmLandID) {
+    public void AddNewFarmLandInMap(int farmLandID)
+    {
         print(System.DateTime.UtcNow.ToString());
         //farmList.Add (new SaveFarmLand (id, 1, 0, 1, -1, 0, System.DateTime.UtcNow.ToString ()));
         GameObject FarmLand = Instantiate(farmLandPrefab, this.transform);
@@ -84,7 +89,8 @@ public class PlacableTileManager : MonoBehaviour {
 
     public void HarvestCropOnFarmLand(int farmLandID) // Harvesting Seeds
     {
-        if (HarvestMenuManager.m_instance.isScytheSelected == true) {
+        if (HarvestMenuManager.m_instance.isScytheSelected == true)
+        {
             // TODO Heavy update required for field Level Based cals*******************
             // only 2 items are added in storage
             //			print (FarmLands [farmLandID].GetComponent <FarmLands> ().seedID);
@@ -97,42 +103,55 @@ public class PlacableTileManager : MonoBehaviour {
         }
     }
 
-    public void DisableAnyOpenMenus() {
-        for (int i = 0; i < FarmLands.Length; i++) {
+    public void DisableAnyOpenMenus()
+    {
+        for (int i = 0; i < FarmLands.Length; i++)
+        {
             FarmLands[i].GetComponent<DraggableFarmLands>().isSelected = false;
             DisableOutlineOnSprite(i);
         }
         isLongPress = false;
     }
 
-    public void ShowFarmLandTimeRemaining() {
+    public void ShowFarmLandTimeRemaining()
+    {
         FarmTimerText.transform.position = FarmLands[tempID].transform.position;
         remainingTime = FarmLands[tempID].GetComponent<DraggableFarmLands>().dateTime.Subtract(UTC.time.liveDateTime);
-        if (remainingTime <= new System.TimeSpan(360, 0, 0, 0)) { //> 1year
+        if (remainingTime <= new System.TimeSpan(360, 0, 0, 0))
+        { //> 1year
             FarmTimerText.transform.GetChild(1).GetComponent<TextMeshPro>().text = remainingTime.Days.ToString() + "d " + remainingTime.Hours.ToString() + "h";
         }
-        if (remainingTime <= new System.TimeSpan(1, 0, 0, 0)) { //> 1day
+        if (remainingTime <= new System.TimeSpan(1, 0, 0, 0))
+        { //> 1day
             FarmTimerText.transform.GetChild(1).GetComponent<TextMeshPro>().text = remainingTime.Hours.ToString() + "h " + remainingTime.Minutes.ToString() + "m";
         }
-        if (remainingTime <= new System.TimeSpan(0, 1, 0, 0)) { //> 1hr
+        if (remainingTime <= new System.TimeSpan(0, 1, 0, 0))
+        { //> 1hr
             FarmTimerText.transform.GetChild(1).GetComponent<TextMeshPro>().text = remainingTime.Minutes.ToString() + "m " + remainingTime.Seconds.ToString() + "s";
         }
-        if (remainingTime <= new System.TimeSpan(0, 0, 1, 0)) { // 1min
+        if (remainingTime <= new System.TimeSpan(0, 0, 1, 0))
+        { // 1min
             FarmTimerText.transform.GetChild(1).GetComponent<TextMeshPro>().text = remainingTime.Seconds.ToString() + "s";
         }
-        if (remainingTime <= new System.TimeSpan(0, 0, 0, 0)) { // 1min
+        if (remainingTime <= new System.TimeSpan(0, 0, 0, 0))
+        { // 1min
             FarmTimerText.SetActive(false);
         }
     }
 
-    void LateUpdate() {
-        if (isFarmTimerEnabled) {
+    void LateUpdate()
+    {
+        if (isFarmTimerEnabled)
+        {
             ShowFarmLandTimeRemaining();
-        } else {
+        } else
+        {
             tempID = -1;
         }
-        foreach (var item in FarmLands) {
-            if (item.GetComponent<DraggableFarmLands>().state == FARM_LAND_STATE.GROWING && item.GetComponent<DraggableFarmLands>().dateTime.Subtract(UTC.time.liveDateTime) <= new System.TimeSpan(0, 0, 0)) {
+        foreach (var item in FarmLands)
+        {
+            if (item.GetComponent<DraggableFarmLands>().state == FARM_LAND_STATE.GROWING && item.GetComponent<DraggableFarmLands>().dateTime.Subtract(UTC.time.liveDateTime) <= new System.TimeSpan(0, 0, 0))
+            {
                 item.GetComponent<DraggableFarmLands>().state = FARM_LAND_STATE.WAITING_FOR_HARVEST;
                 item.GetComponent<DraggableFarmLands>().dateTime = new System.DateTime();
                 item.GetComponent<SpriteRenderer>().color = Color.red;
@@ -140,9 +159,12 @@ public class PlacableTileManager : MonoBehaviour {
         }
     }
 
-    void Update() {
-        if (isTilePressed) {
-            if (longPressTimer >= longPressTime) {
+    void Update()
+    {
+        if (isTilePressed)
+        {
+            if (longPressTimer >= longPressTime)
+            {
                 isLongPress = true;
                 longPressFarmID = mouseDownFarmID;
                 mouseDownFarmID = -1;
@@ -155,18 +177,22 @@ public class PlacableTileManager : MonoBehaviour {
         }
     }
 
-    void EnableOutlineOnSprite(int selectedFieldID) {
+    void EnableOutlineOnSprite(int selectedFieldID)
+    {
         FarmLands[selectedFieldID].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
     }
 
-    void DisableOutlineOnSprite(int selectedFieldID) {
+    void DisableOutlineOnSprite(int selectedFieldID)
+    {
         FarmLands[selectedFieldID].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 0);
     }
 
     #region OnMouse Functions
 
-    void OneTimeOnly() {
-        if (PlayerPrefs.GetInt("firstFarms") <= 0) {
+    void OneTimeOnly()
+    {
+        if (PlayerPrefs.GetInt("firstFarms") <= 0)
+        {
             ES2.Delete("FarmField");
             farmList.Add(new FarmField(0, new Vector2(0, 0), 1, -1, 0, System.DateTime.UtcNow.ToString()));
             farmList.Add(new FarmField(1, new Vector2(1, 0), 1, -1, 0, System.DateTime.UtcNow.ToString()));
@@ -179,7 +205,8 @@ public class PlacableTileManager : MonoBehaviour {
         }
     }
 
-    public void InitFarmLands(FarmField farm) {
+    public void InitFarmLands(FarmField farm)
+    {
         FarmLands[farm.id] = Instantiate(farmLandPrefab, this.transform);
         FarmLands[farm.id].transform.localPosition = farm.pos;
         FarmLands[farm.id].gameObject.name = "FarmLand" + farm.id;
@@ -189,57 +216,65 @@ public class PlacableTileManager : MonoBehaviour {
         FarmLands[farm.id].GetComponent<DraggableFarmLands>().seedID = farm.seedID;
         FarmLands[farm.id].GetComponent<DraggableFarmLands>().state = (FARM_LAND_STATE)farm.state;
         DisableOutlineOnSprite(farm.id);
-        switch (FarmLands[farm.id].GetComponent<DraggableFarmLands>().state) {
+        switch (FarmLands[farm.id].GetComponent<DraggableFarmLands>().state)
+        {
             case FARM_LAND_STATE.NONE:
-            FarmLands[farm.id].GetComponent<SpriteRenderer>().color = Color.white;
-            break;
+                FarmLands[farm.id].GetComponent<SpriteRenderer>().color = Color.white;
+                break;
             case FARM_LAND_STATE.GROWING:
-            FarmLands[farm.id].GetComponent<SpriteRenderer>().color = Color.green;
-            break;
+                FarmLands[farm.id].GetComponent<SpriteRenderer>().color = Color.green;
+                break;
             case FARM_LAND_STATE.WAITING_FOR_HARVEST:
-            FarmLands[farm.id].GetComponent<SpriteRenderer>().color = Color.red;
-            break;
+                FarmLands[farm.id].GetComponent<SpriteRenderer>().color = Color.red;
+                break;
             default:
-            break;
+                break;
         }
         FarmLands[farm.id].GetComponent<DraggableFarmLands>().dateTime = System.DateTime.Parse(farm.dateTime);
     }
 
-    public void CallParentOnMouseDown(int farmLandID) {
+    public void CallParentOnMouseDown(int farmLandID)
+    {
         isTilePressed = true;
         longPressTimer = 0;
         mouseDownFarmID = farmLandID;
-        if (farmLandID != longPressFarmID && longPressFarmID != -1) {
+        if (farmLandID != longPressFarmID && longPressFarmID != -1)
+        {
             FarmLands[longPressFarmID].GetComponent<DraggableFarmLands>().isSelected = false;
             DisableOutlineOnSprite(longPressFarmID);
             isLongPress = false;
         }
     }
 
-    public void CallParentOnMouseUp(int farmLandID) {
+    public void CallParentOnMouseUp(int farmLandID)
+    {
         isTilePressed = false;
         mouseDownFarmID = -1;
-        if (!isLongPress) {
-            switch (FarmLands[farmLandID].GetComponent<DraggableFarmLands>().state) {
+        if (!isLongPress)
+        {
+            switch (FarmLands[farmLandID].GetComponent<DraggableFarmLands>().state)
+            {
                 case FARM_LAND_STATE.NONE:
-                //CropMenuManager.m_instance.UpdateSeedValue ();
-                ShowFarmLandMenu(farmLandID);
-                break;
+                    //CropMenuManager.m_instance.UpdateSeedValue ();
+                    ShowFarmLandMenu(farmLandID);
+                    break;
                 case FARM_LAND_STATE.GROWING:
-                tempID = farmLandID;
-                IGMMenu.m_instance.DisableAllMenus();
-                FarmTimerText.SetActive(true);
-                isFarmTimerEnabled = true;
-                FarmTimerText.transform.GetChild(0).GetComponent<TextMeshPro>().text = ItemDatabase.m_instance.items[FarmLands[tempID].GetComponent<DraggableFarmLands>().seedID].name.ToString();
-                break;
+                    tempID = farmLandID;
+                    IGMMenu.m_instance.DisableAllMenus();
+                    FarmTimerText.SetActive(true);
+                    isFarmTimerEnabled = true;
+                    FarmTimerText.transform.GetChild(0).GetComponent<TextMeshPro>().text = ItemDatabase.m_instance.items[FarmLands[tempID].GetComponent<DraggableFarmLands>().seedID].name.ToString();
+                    break;
                 case FARM_LAND_STATE.WAITING_FOR_HARVEST:
-                ShowReadyToHarvestMenu(farmLandID);
-                break;
+                    ShowReadyToHarvestMenu(farmLandID);
+                    break;
                 default:
-                break;
+                    break;
             }
-        } else {
-            if (farmLandID != longPressFarmID) {
+        } else
+        {
+            if (farmLandID != longPressFarmID)
+            {
                 FarmLands[longPressFarmID].GetComponent<DraggableFarmLands>().isSelected = false;
                 DisableOutlineOnSprite(longPressFarmID);
                 isLongPress = false;
@@ -247,39 +282,47 @@ public class PlacableTileManager : MonoBehaviour {
         }
     }
 
-    public void CallParentOnMouseEnter(int farmLandID) {
-        switch (FarmLands[farmLandID].GetComponent<DraggableFarmLands>().state) {
+    public void CallParentOnMouseEnter(int farmLandID)
+    {
+        switch (FarmLands[farmLandID].GetComponent<DraggableFarmLands>().state)
+        {
             case FARM_LAND_STATE.NONE:
-            PlantSeedsOnFarmLand(farmLandID);
-            break;
+                PlantSeedsOnFarmLand(farmLandID);
+                break;
             case FARM_LAND_STATE.WAITING_FOR_HARVEST:
-            HarvestCropOnFarmLand(farmLandID);
-            break;
+                HarvestCropOnFarmLand(farmLandID);
+                break;
 
             default:
-            break;
+                break;
         }
     }
 
-    public void CallParentOnMouseDrag(int farmLandID) {
-        if (FarmLands[farmLandID].GetComponent<DraggableFarmLands>().isSelected) {
+    public void CallParentOnMouseDrag(int farmLandID)
+    {
+        if (FarmLands[farmLandID].GetComponent<DraggableFarmLands>().isSelected)
+        {
             FarmLands[farmLandID].transform.position = new Vector3(Mathf.Round(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 0, 0)).x),
                 Mathf.Round(Camera.main.ScreenToWorldPoint(new Vector3(0, Input.mousePosition.y, 0)).y), 0);
         }
     }
 
-    public void CallParentOnMouseExit(int farmLandID) {
+    public void CallParentOnMouseExit(int farmLandID)
+    {
         //print ("Farm " + id + " MouseExit");
     }
 
-    public void CallParentOnMouseUpAsButton(int farmLandID) {
+    public void CallParentOnMouseUpAsButton(int farmLandID)
+    {
         //print ("Farm " + id + " MouseUpAsButton");
     }
 
     #endregion
 
-    void SaveFarmLands() {
-        foreach (var item in farmList) {
+    void SaveFarmLands()
+    {
+        foreach (var item in farmList)
+        {
             item.dateTime = FarmLands[item.id].GetComponent<DraggableFarmLands>().dateTime.ToString();
             //item.pos = FarmLands [item.id].GetComponent <DraggableFarmLands> ().pos;
             item.pos = FarmLands[item.id].transform.localPosition;
@@ -303,7 +346,8 @@ public class FarmField  // iLIST
     public int state;
     public string dateTime;
 
-    public FarmField() {
+    public FarmField()
+    {
         id = -1;
         pos = new Vector2(0, 0);
         level = -1;
@@ -312,7 +356,8 @@ public class FarmField  // iLIST
         dateTime = "";
     }
 
-    public FarmField(int f_id, Vector2 f_pos, int f_level, int f_seedID, int f_state, string f_dateTime) {
+    public FarmField(int f_id, Vector2 f_pos, int f_level, int f_seedID, int f_state, string f_dateTime)
+    {
         id = f_id;
         pos = f_pos;
         level = f_level;
@@ -322,7 +367,8 @@ public class FarmField  // iLIST
     }
 }
 
-public enum FARM_LAND_STATE {
+public enum FARM_LAND_STATE
+{
     NONE,
     GROWING,
     WAITING_FOR_HARVEST

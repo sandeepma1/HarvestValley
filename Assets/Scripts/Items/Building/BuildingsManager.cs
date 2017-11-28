@@ -10,7 +10,7 @@ public class BuildingsManager : MonoBehaviour
     public GameObject MasterMenuGO = null, TimeRemainingMenu = null, FarmHarvestingMenu = null;
     public bool isFarmTimerEnabled = false;
     public List<Buildings> buildings = new List<Buildings>();
-    public List<AAA> aaa = new List<AAA>();
+    //public List<AAA> aaa = new List<AAA>();
     public bool plantedOnSelectedfield = false;
     public int buildingSelectedID = -1;
     public GameObject[] BuildingsGO;
@@ -37,9 +37,8 @@ public class BuildingsManager : MonoBehaviour
             InitBuildings(building);
         }
         InvokeRepeating("SaveBuildings", 0, 5);
+        InvokeRepeating("CheckForHarvest", 0, 1);
     }
-
-
 
     public void DisplayMasterMenu(int b_ID) // Display field Crop Menu
     {
@@ -48,10 +47,10 @@ public class BuildingsManager : MonoBehaviour
         buildingSelectedID = b_ID;
 
         //Animatin Stuff
-        MasterMenuGO.transform.GetChild(0).gameObject.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+        // MasterMenuGO.transform.GetChild(0).gameObject.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
         MasterMenuGO.transform.position = BuildingsGO[b_ID].transform.position;
         MasterMenuGO.SetActive(true);
-        LeanTween.scale(MasterMenuGO.transform.GetChild(0).gameObject, new Vector3(2, 2, 2), 0.2f, IGMMenu.m_instance.ease);
+        //LeanTween.scale(MasterMenuGO.transform.GetChild(0).gameObject, new Vector3(2, 2, 2), 0.2f, IGMMenu.m_instance.ease);
     }
 
     public void PlantItemsOnBuildings(int buildingID) // Planting Items
@@ -263,9 +262,16 @@ public class BuildingsManager : MonoBehaviour
         {
             tempID = -1;
         }
+
+    }
+
+    private void CheckForHarvest()
+    {
         foreach (var item in BuildingsGO)
         {  //Main loop for checking all buildings time
-            if (item != null && item.GetComponent<DraggableBuildings>().state == BUILDINGS_STATE.GROWING && item.GetComponent<DraggableBuildings>().dateTime.Subtract(UTC.time.liveDateTime) <= new System.TimeSpan(0, 0, 0))
+            if (item != null &&
+                item.GetComponent<DraggableBuildings>().state == BUILDINGS_STATE.GROWING &&
+                item.GetComponent<DraggableBuildings>().dateTime.Subtract(UTC.time.liveDateTime) <= new System.TimeSpan(0, 0, 0))
             {
                 item.GetComponent<DraggableBuildings>().state = BUILDINGS_STATE.WAITING_FOR_HARVEST;
                 item.GetComponent<DraggableBuildings>().dateTime = new System.DateTime();
@@ -276,8 +282,8 @@ public class BuildingsManager : MonoBehaviour
 
     void Update() // all long press logic	
     {
-        if (isTilePressed)
-        {    // all long press logic		
+        if (isTilePressed && BuildingsGO[mouseDownBuildingID].GetComponent<DraggableBuildings>().buildingID != 0)
+        {
             if (longPressTimer >= longPressTime)
             {
                 isLongPress = true;
@@ -294,12 +300,19 @@ public class BuildingsManager : MonoBehaviour
 
     void EnableOutlineOnSprite(int selectedFieldID)
     {
-        BuildingsGO[selectedFieldID].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
+        if (BuildingsGO[selectedFieldID].GetComponent<DraggableBuildings>().buildingID != 0)
+        {
+            BuildingsGO[selectedFieldID].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
+        }
+
     }
 
     void DisableOutlineOnSprite(int selectedFieldID)
     {
-        BuildingsGO[selectedFieldID].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 0);
+        if (BuildingsGO[selectedFieldID].GetComponent<DraggableBuildings>().buildingID != 0)
+        {
+            BuildingsGO[selectedFieldID].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 0);
+        }
     }
 
     public void AddNewBuilding(Vector2 pos, int buildingID)
@@ -317,14 +330,14 @@ public class BuildingsManager : MonoBehaviour
         if (PlayerPrefs.GetInt("firstBuilding") <= 0)
         {
             ES2.Delete("AllBuildings");
-            buildings.Add(new Buildings(0, 0, "Field", new Vector2(0, 0), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(1, 0, "Field", new Vector2(1, 0), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(2, 0, "Field", new Vector2(2, 0), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(3, 0, "Field", new Vector2(3, 0), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(4, 0, "Field", new Vector2(4, 0), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(5, 1, "Bakery", new Vector2(1, 1), 1, 0, 2, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(6, 2, "FeedMill", new Vector2(2, 1), 1, 0, 2, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(7, 3, "Dairy", new Vector2(3, 1), 1, 0, 2, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(0, 0, "Field", new Vector2(0, -4), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(1, 0, "Field", new Vector2(4, -4), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(2, 0, "Field", new Vector2(8, -4), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(3, 0, "Field", new Vector2(0, -8), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(4, 0, "Field", new Vector2(4, -8), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            //buildings.Add(new Buildings(5, 1, "Bakery", new Vector2(1, 1), 1, 0, 2, -1, System.DateTime.UtcNow.ToString()));
+            // buildings.Add(new Buildings(6, 2, "FeedMill", new Vector2(2, 1), 1, 0, 2, -1, System.DateTime.UtcNow.ToString()));
+            // buildings.Add(new Buildings(7, 3, "Dairy", new Vector2(3, 1), 1, 0, 2, -1, System.DateTime.UtcNow.ToString()));
             ES2.Save(buildings, "AllBuildings");
             PlayerPrefs.SetInt("firstBuilding", 1);
         }
@@ -437,7 +450,7 @@ public class BuildingsManager : MonoBehaviour
 
     public void CallParentOnMouseDrag(int buildingID)
     {
-        if (BuildingsGO[buildingID].GetComponent<DraggableBuildings>().isSelected)
+        if (BuildingsGO[buildingID].GetComponent<DraggableBuildings>().isSelected && BuildingsGO[buildingID].GetComponent<DraggableBuildings>().buildingID != 0)
         {
             BuildingsGO[buildingID].transform.position = new Vector3(Mathf.Round(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 0, 0)).x),
                 Mathf.Round(Camera.main.ScreenToWorldPoint(new Vector3(0, Input.mousePosition.y, 0)).y), 0);
@@ -500,9 +513,7 @@ public enum BUILDINGS_STATE
     NONE,
     GROWING,
     WAITING_FOR_HARVEST
-}
-
-;
+};
 
 [System.Serializable]
 public class AAA  // iLIST
