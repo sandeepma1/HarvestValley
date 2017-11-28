@@ -5,7 +5,7 @@ using TMPro;
 
 public class BuildingsManager : MonoBehaviour
 {
-    public static BuildingsManager m_instance = null;
+    public static BuildingsManager Instance = null;
     public DraggableBuildings buildingPrefab;
     public GameObject MasterMenuGO = null, TimeRemainingMenu = null, FarmHarvestingMenu = null;
     public bool isFarmTimerEnabled = false;
@@ -22,7 +22,7 @@ public class BuildingsManager : MonoBehaviour
 
     void Awake()
     {
-        m_instance = this;
+        Instance = this;
         OneTimeOnly();
         Init();
     }
@@ -42,8 +42,8 @@ public class BuildingsManager : MonoBehaviour
 
     public void DisplayMasterMenu(int b_ID) // Display field Crop Menu
     {
-        MasterMenuManager.m_instance.PopulateItemsInMasterMenu(BuildingsGO[b_ID].buildingID);
-        IGMMenu.m_instance.DisableAllMenus();
+        MasterMenuManager.Instance.PopulateItemsInMasterMenu(BuildingsGO[b_ID].buildingID);
+        MenuManager.Instance.DisableAllMenus();
         buildingSelectedID = b_ID;
 
         //Animatin Stuff
@@ -55,21 +55,21 @@ public class BuildingsManager : MonoBehaviour
 
     public void PlantItemsOnBuildings(int buildingID) // Planting Items
     {
-        if (MasterMenuManager.m_instance.isItemSelected == true)
+        if (MasterMenuManager.Instance.isItemSelected == true)
         {
             if (BuildingsGO[buildingID].buildingID == 0)
             { // selected building is feild
                 if (plantedOnSelectedfield || buildingSelectedID == buildingID)
                 {
-                    if (PlayerInventoryManager.m_instance.playerInventory[MasterMenuManager.m_instance.itemSelectedID].count >= 1)
+                    if (PlayerInventoryManager.Instance.playerInventory[MasterMenuManager.Instance.itemSelectedID].count >= 1)
                     {
                         BuildingsGO[buildingID].state = BUILDINGS_STATE.GROWING;
-                        BuildingsGO[buildingID].itemID = MasterMenuManager.m_instance.itemSelectedID;
+                        BuildingsGO[buildingID].itemID = MasterMenuManager.Instance.itemSelectedID;
                         BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
-                            ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].timeRequiredInMins);
+                            ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].timeRequiredInMins);
                         BuildingsGO[buildingID].spriteRenderer.color = Color.green;
-                        PlayerInventoryManager.m_instance.playerInventory[MasterMenuManager.m_instance.itemSelectedID].count--;
-                        MasterMenuManager.m_instance.UpdateSeedValue();
+                        PlayerInventoryManager.Instance.playerInventory[MasterMenuManager.Instance.itemSelectedID].count--;
+                        MasterMenuManager.Instance.UpdateSeedValue();
                         SaveBuildings();
                         plantedOnSelectedfield = true;
                         buildingSelectedID = -1;
@@ -81,9 +81,9 @@ public class BuildingsManager : MonoBehaviour
                 {
                     DecrementItemsFromInventory();
                     BuildingsGO[buildingID].state = BUILDINGS_STATE.GROWING;
-                    BuildingsGO[buildingID].itemID = MasterMenuManager.m_instance.itemSelectedID;
+                    BuildingsGO[buildingID].itemID = MasterMenuManager.Instance.itemSelectedID;
                     BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
-                        ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].timeRequiredInMins);
+                        ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].timeRequiredInMins);
                     BuildingsGO[buildingID].spriteRenderer.color = Color.green;
 
                 }
@@ -98,10 +98,10 @@ public class BuildingsManager : MonoBehaviour
         int needItems3 = -1;
         int needItems4 = -1;
 
-        if (ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID1 >= 0)
+        if (ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID1 >= 0)
         {
-            if (PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID1].count >=
-                ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needAmount1)
+            if (PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID1].count >=
+                ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needAmount1)
             {
                 needItems1 = 0;
                 print("1 ok");
@@ -110,10 +110,10 @@ public class BuildingsManager : MonoBehaviour
                 needItems1 = -2;
             }
         }
-        if (ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID2 >= 0)
+        if (ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID2 >= 0)
         {
-            if (PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID2].count >=
-                ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needAmount2)
+            if (PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID2].count >=
+                ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needAmount2)
             {
                 needItems2 = 0;
                 print("1 ok");
@@ -122,10 +122,10 @@ public class BuildingsManager : MonoBehaviour
                 needItems2 = -2;
             }
         }
-        if (ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID3 >= 0)
+        if (ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID3 >= 0)
         {
-            if (PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID3].count >=
-                ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needAmount3)
+            if (PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID3].count >=
+                ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needAmount3)
             {
                 needItems3 = 0;
                 print("1 ok");
@@ -134,10 +134,10 @@ public class BuildingsManager : MonoBehaviour
                 needItems3 = -2;
             }
         }
-        if (ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID4 >= 0)
+        if (ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID4 >= 0)
         {
-            if (PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID4].count >=
-                ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needAmount4)
+            if (PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID4].count >=
+                ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needAmount4)
             {
                 needItems4 = 0;
                 print("1 ok");
@@ -158,56 +158,56 @@ public class BuildingsManager : MonoBehaviour
 
     public void DecrementItemsFromInventory()
     {
-        if (ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID1 >= 0)
-            PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID1].count =
-            PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID1].count - ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needAmount1;
+        if (ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID1 >= 0)
+            PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID1].count =
+            PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID1].count - ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needAmount1;
 
-        if (ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID2 >= 0)
-            PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID2].count =
-            PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID2].count - ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needAmount2;
+        if (ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID2 >= 0)
+            PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID2].count =
+            PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID2].count - ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needAmount2;
 
-        if (ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID3 >= 0)
-            PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID3].count =
-            PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID3].count - ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needAmount3;
+        if (ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID3 >= 0)
+            PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID3].count =
+            PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID3].count - ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needAmount3;
 
-        if (ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID4 >= 0)
-            PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID4].count =
-            PlayerInventoryManager.m_instance.playerInventory[ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needID4].count - ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].needAmount4;
+        if (ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID4 >= 0)
+            PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID4].count =
+            PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needID4].count - ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].needAmount4;
 
     }
 
     public void HarvestCropOnFarmLand(int buildingID) // Harvesting Seeds calls only on farms
     {
-        if (HarvestMenuManager.m_instance.isScytheSelected == true)
+        if (HarvestMenuManager.Instance.isScytheSelected == true)
         {
             // TODO Heavy update required for field Level Based cals*******************
             // only 2 items are added in storage
             //			print (FarmLands [buildingID].GetComponent <FarmLands> ().itemID);		 
-            PlayerInventoryManager.m_instance.UpdateFarmItems(Convert.ToInt32(BuildingsGO[buildingID].itemID), 2);
-            PlayerProfileManager.m_instance.PlayerXPPointsAdd(ItemDatabase.m_instance.items[BuildingsGO[buildingID].itemID].XP);
+            PlayerInventoryManager.Instance.UpdateFarmItems(Convert.ToInt32(BuildingsGO[buildingID].itemID), 2);
+            PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.Instance.items[BuildingsGO[buildingID].itemID].XP);
             BuildingsGO[buildingID].state = BUILDINGS_STATE.NONE;
 
             BuildingsGO[buildingID].dateTime = new System.DateTime();
             BuildingsGO[buildingID].itemID = -1;
 
             BuildingsGO[buildingID].spriteRenderer.color = Color.white;
-            HarvestMenuManager.m_instance.ToggleDisplayHarvestingMenu();
+            HarvestMenuManager.Instance.ToggleDisplayHarvestingMenu();
         }
     }
 
     public void ShowReadyToHarvestCropsMenu(int buildingID) // Display Harvesting Menu
     {
-        IGMMenu.m_instance.DisableAllMenus();
+        MenuManager.Instance.DisableAllMenus();
         FarmHarvestingMenu.transform.position = BuildingsGO[buildingID].transform.position;
         FarmHarvestingMenu.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
         FarmHarvestingMenu.SetActive(true);
-        LeanTween.scale(FarmHarvestingMenu, Vector3.one, 0.2f, IGMMenu.m_instance.ease);
+        LeanTween.scale(FarmHarvestingMenu, Vector3.one, 0.2f, MenuManager.Instance.ease);
     }
 
     public void CollectItemsOnBuildings(int buildingID) //Collecting Items on buildings
     {
-        PlayerInventoryManager.m_instance.UpdateFarmItems(BuildingsGO[buildingID].itemID, 1);
-        PlayerProfileManager.m_instance.PlayerXPPointsAdd(ItemDatabase.m_instance.items[BuildingsGO[buildingID].itemID].XP);
+        PlayerInventoryManager.Instance.UpdateFarmItems(BuildingsGO[buildingID].itemID, 1);
+        PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.Instance.items[BuildingsGO[buildingID].itemID].XP);
         BuildingsGO[buildingID].state = BUILDINGS_STATE.NONE;
         BuildingsGO[buildingID].dateTime = new System.DateTime();
         BuildingsGO[buildingID].itemID = -1;
@@ -316,7 +316,7 @@ public class BuildingsManager : MonoBehaviour
 
     public void AddNewBuilding(Vector2 pos, int buildingID)
     {
-        buildings.Add(new Buildings(buildings.Count + 1, buildingID, BuildingDatabase.m_instance.buildingInfo[buildingID].name.ToString(), pos,
+        buildings.Add(new Buildings(buildings.Count + 1, buildingID, BuildingDatabase.Instance.buildingInfo[buildingID].name.ToString(), pos,
             1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
         ES2.Save(buildings, "AllBuildings");
         InitBuildings(buildings[buildings.Count - 1]);
@@ -399,11 +399,11 @@ public class BuildingsManager : MonoBehaviour
                     break;
                 case BUILDINGS_STATE.GROWING:
                     tempID = buildingID;
-                    IGMMenu.m_instance.DisableAllMenus();
+                    MenuManager.Instance.DisableAllMenus();
                     TimeRemainingMenu.SetActive(true);
                     isFarmTimerEnabled = true;
                     TimeRemainingMenu.transform.GetChild(0).GetComponent<TextMeshPro>().text =
-                    ItemDatabase.m_instance.items[BuildingsGO[tempID].itemID].name.ToString();
+                    ItemDatabase.Instance.items[BuildingsGO[tempID].itemID].name.ToString();
 
                     break;
                 case BUILDINGS_STATE.WAITING_FOR_HARVEST:

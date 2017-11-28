@@ -52,7 +52,7 @@ namespace AStar_2D
 	/// </summary>
 	public class AStarGrid : AStarGrid<SearchGrid>
 	{
-		public static AStarGrid m_instance = null;
+		public static AStarGrid Instance = null;
 
 		/*void Awake ()
 		{

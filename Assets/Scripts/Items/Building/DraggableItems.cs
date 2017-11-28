@@ -11,21 +11,21 @@ public class DraggableItems : MonoBehaviour
 	{
 		intialPosition = transform.localPosition;
 		transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y + 30, 10));
-		MasterMenuManager.m_instance.ChildCallingOnMouseDown (itemID, transform.localPosition);	
+		MasterMenuManager.Instance.ChildCallingOnMouseDown (itemID, transform.localPosition);	
 		GetComponent <BoxCollider2D> ().enabled = false;
 	}
 
 	void OnMouseDrag ()
 	{
 		transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y + 30, 10));
-		MasterMenuManager.m_instance.ChildCallingOnMouseDrag (itemID, transform.localPosition);	
+		MasterMenuManager.Instance.ChildCallingOnMouseDrag (itemID, transform.localPosition);	
 		GetComponent <BoxCollider2D> ().enabled = false;
 	}
 
 	void OnMouseUp ()
 	{
 		transform.localPosition = intialPosition;
-		MasterMenuManager.m_instance.ChildCallingOnMouseUp (itemID);
+		MasterMenuManager.Instance.ChildCallingOnMouseUp (itemID);
 		GetComponent <BoxCollider2D> ().enabled = true;
 	}
 }

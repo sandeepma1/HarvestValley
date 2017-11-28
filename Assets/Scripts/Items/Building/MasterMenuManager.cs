@@ -5,7 +5,7 @@ using TMPro;
 
 public class MasterMenuManager : MonoBehaviour
 {
-    public static MasterMenuManager m_instance = null;
+    public static MasterMenuManager Instance = null;
     public GameObject menuItemPrefab;
     public GameObject[] menuItems = new GameObject[12];
     public GameObject switchButton, fieldInfoButton;
@@ -21,7 +21,7 @@ public class MasterMenuManager : MonoBehaviour
 
     void Awake()
     {
-        m_instance = this;
+        Instance = this;
     }
 
     void Start()
@@ -46,11 +46,11 @@ public class MasterMenuManager : MonoBehaviour
     public void CheckForUnlockedItems()  // call on level change & game start only
     {
         unlockedItemIDs.Clear();
-        for (int i = 0; i <= PlayerProfileManager.m_instance.CurrentPlayerLevel(); i++)
+        for (int i = 0; i <= PlayerProfileManager.Instance.CurrentPlayerLevel(); i++)
         {
-            if (LevelUpDatabase.m_instance.gameLevels[i].itemUnlockID >= 0)
+            if (LevelUpDatabase.Instance.gameLevels[i].itemUnlockID >= 0)
             {
-                unlockedItemIDs.Add(LevelUpDatabase.m_instance.gameLevels[i].itemUnlockID);
+                unlockedItemIDs.Add(LevelUpDatabase.Instance.gameLevels[i].itemUnlockID);
             }
         }
 
@@ -83,12 +83,12 @@ public class MasterMenuManager : MonoBehaviour
         isMasterMenuUp = true;
         for (int i = 0; i < unlockedItemIDs.Count; i++)
         {
-            if (ItemDatabase.m_instance.items[i] != null && ItemDatabase.m_instance.items[i].source == BuildingDatabase.m_instance.buildingInfo[buildingID].name)
+            if (ItemDatabase.Instance.items[i] != null && ItemDatabase.Instance.items[i].source == BuildingDatabase.Instance.buildingInfo[buildingID].name)
             {
-                menuItems[unlockedItemCount].GetComponent<DraggableItems>().itemID = ItemDatabase.m_instance.items[i].id;
+                menuItems[unlockedItemCount].GetComponent<DraggableItems>().itemID = ItemDatabase.Instance.items[i].id;
                 menuItems[unlockedItemCount].transform.localPosition = itemPos[posCount];
-                menuItems[unlockedItemCount].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.m_instance.items[i].name);
-                menuItems[posCount].transform.GetChild(1).GetComponent<TextMeshPro>().text = PlayerInventoryManager.m_instance.playerInventory[i].count.ToString();
+                menuItems[unlockedItemCount].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[i].name);
+                menuItems[posCount].transform.GetChild(1).GetComponent<TextMeshPro>().text = PlayerInventoryManager.Instance.playerInventory[i].count.ToString();
                 posCount++;
                 unlockedItemCount++;
                 if (posCount > itemPos.Length - 1)
@@ -109,9 +109,9 @@ public class MasterMenuManager : MonoBehaviour
     {
         for (int i = 0; i < unlockedItemCount; i++)
         {
-            menuItems[i].transform.GetChild(1).GetComponent<TextMeshPro>().text = PlayerInventoryManager.m_instance.playerInventory[i].count.ToString();
+            menuItems[i].transform.GetChild(1).GetComponent<TextMeshPro>().text = PlayerInventoryManager.Instance.playerInventory[i].count.ToString();
         }
-        PlayerInventoryManager.m_instance.UpdateScrollListItemCount();
+        PlayerInventoryManager.Instance.UpdateScrollListItemCount();
     }
 
     public void ToggleMenuPages()
@@ -137,21 +137,26 @@ public class MasterMenuManager : MonoBehaviour
         }
     }
 
+    public void UpgradeBuildingPressed(int id)
+    {
+        MenuManager.Instance.IsBuildingUpgradeMenu(true);
+    }
+
     public void ChildCallingOnMouseUp(int id)
     {
         isItemSelected = false;
-        BuildingsManager.m_instance.plantedOnSelectedfield = false;
+        BuildingsManager.Instance.plantedOnSelectedfield = false;
         itemSelectedID = -1;
-        ItemPopupProduction.m_instance.HideItemPopupProduction();
+        ItemPopupProduction.Instance.HideItemPopupProduction();
     }
 
     public void ChildCallingOnMouseDown(int id, Vector2 pos)
     {
         isItemSelected = true;
         itemSelectedID = id;
-        if (BuildingsManager.m_instance.BuildingsGO[BuildingsManager.m_instance.buildingSelectedID].GetComponent<DraggableBuildings>().buildingID > 0)
+        if (BuildingsManager.Instance.BuildingsGO[BuildingsManager.Instance.buildingSelectedID].GetComponent<DraggableBuildings>().buildingID > 0)
         {
-            ItemPopupProduction.m_instance.DisplayItemPopupProduction_DOWN(id, pos);
+            ItemPopupProduction.Instance.DisplayItemPopupProduction_DOWN(id, pos);
         }
     }
 
@@ -160,9 +165,9 @@ public class MasterMenuManager : MonoBehaviour
         isItemSelected = true;
         itemSelectedID = id;
         ToggleDisplayCropMenu();
-        if (ItemDatabase.m_instance.items[MasterMenuManager.m_instance.itemSelectedID].source != ItemSource.Field)
+        if (ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].source != ItemSource.Field)
         {
-            ItemPopupProduction.m_instance.DisplayItemPopupProduction_DRAG(pos);
+            ItemPopupProduction.Instance.DisplayItemPopupProduction_DRAG(pos);
         }
 
     }

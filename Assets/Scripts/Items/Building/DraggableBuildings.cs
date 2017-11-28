@@ -35,7 +35,7 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerUp
     {
         if (!IsPointerOverUIObject())
         {
-            BuildingsManager.m_instance.CallParentOnMouseDrag(id);
+            BuildingsManager.Instance.CallParentOnMouseDrag(id);
         }
         //if (!EventSystem.current.IsPointerOverGameObject())
         //{
@@ -46,19 +46,19 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerUp
     public void OnPointerDown(PointerEventData eventData)
     {
         GEM.isSwipeEnable = false;
-        BuildingsManager.m_instance.CallParentOnMouseDown(id);
+        BuildingsManager.Instance.CallParentOnMouseDown(id);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        BuildingsManager.m_instance.CallParentOnMouseUp(id);
+        BuildingsManager.Instance.CallParentOnMouseUp(id);
         GEM.isSwipeEnable = true;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         GEM.isSwipeEnable = false;
-        BuildingsManager.m_instance.CallParentOnMouseEnter(id);
+        BuildingsManager.Instance.CallParentOnMouseEnter(id);
     }
 }
 

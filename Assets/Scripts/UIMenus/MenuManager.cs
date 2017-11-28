@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public static MenuManager m_instance = null;
+    public static MenuManager Instance = null;
     [SerializeField]
     private GameObject loadingScreen;
     [SerializeField]
@@ -27,7 +27,7 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        m_instance = this;
+        Instance = this;
         if (mainCanvas != null)
         {
             mainCanvas.SetActive(true);
@@ -83,7 +83,7 @@ public class MenuManager : MonoBehaviour
             disableAllMenus[i].SetActive(true);
             GEM.isSwipeEnable = true;
         }
-        BuildingsManager.m_instance.DisableAnyOpenMenus();
+        BuildingsManager.Instance.DisableAnyOpenMenus();
     }
 
     #region UI Button calls

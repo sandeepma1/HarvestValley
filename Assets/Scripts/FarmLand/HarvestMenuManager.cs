@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class HarvestMenuManager : MonoBehaviour
 {
-	public static HarvestMenuManager m_instance = null;
-	public bool isScytheSelected = false;
+    public static HarvestMenuManager Instance = null;
+    public bool isScytheSelected = false;
 
-	void Awake ()
-	{
-		m_instance = this;
-	}
+    void Awake()
+    {
+        Instance = this;
+    }
 
-	public void ToggleDisplayHarvestingMenu ()
-	{
-		transform.position = new Vector3 (-500, -500, 0);
-	}
+    public void ToggleDisplayHarvestingMenu()
+    {
+        transform.position = new Vector3(-500, -500, 0);
+    }
 }

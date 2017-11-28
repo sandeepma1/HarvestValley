@@ -4,30 +4,30 @@ using UnityEngine.UI;
 
 public class MASTER_SaveEverything : MonoBehaviour
 {
-	public static MASTER_SaveEverything m_instance = null;
+    public static MASTER_SaveEverything Instance = null;
 
-	void Awake ()
-	{
-		m_instance = this;
-	}
+    void Awake()
+    {
+        Instance = this;
+    }
 
-	public void SaveAll ()
-	{
-		
-	}
+    public void SaveAll()
+    {
 
-	void SavePlayerInventory <T> (T parm)
-	{
-		
-	}
+    }
 
-	void SavePlayerProfile ()
-	{
-		
-	}
+    void SavePlayerInventory<T>(T parm)
+    {
 
-	void SaveGameFarmFields ()
-	{
-		
-	}
+    }
+
+    void SavePlayerProfile()
+    {
+
+    }
+
+    void SaveGameFarmFields()
+    {
+
+    }
 }

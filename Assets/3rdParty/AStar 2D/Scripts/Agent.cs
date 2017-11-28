@@ -223,7 +223,7 @@ namespace AStar_2D
 
 								if (path.NodeCount == 1 && !clickedBlank) {
 //									print ("Reached Stone");
-									AStarGrid.m_instance.RemoveTile ();
+									AStarGrid.Instance.RemoveTile ();
 								}
 
 								// Get the next node in the path

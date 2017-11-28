@@ -8,6 +8,6 @@ public class StackitemReceiver : MonoBehaviour
 
 	public void OnClickEnter ()
 	{		
-		BuildingsManager.m_instance.CallParentOnMouseEnter (MasterMenuManager.m_instance.itemSelectedID);
+		BuildingsManager.Instance.CallParentOnMouseEnter (MasterMenuManager.Instance.itemSelectedID);
 	}
 }

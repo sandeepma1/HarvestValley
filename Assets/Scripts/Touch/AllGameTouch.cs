@@ -16,7 +16,7 @@ public class AllGameTouch : MonoBehaviour
 				Debug.Log ("Tag: " + hit.collider.tag);
 				switch (hit.collider.tag) {
 					case"DisableAllMenus":
-						IGMMenu.m_instance.DisableAllMenus ();
+						MenuManager.Instance.DisableAllMenus ();
 						break;
 					default:
 						break;

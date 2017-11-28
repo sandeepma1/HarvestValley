@@ -10,243 +10,265 @@ using AStar_2D.Pathfinding;
 // Namespace
 namespace AStar_2D.Demo
 {
-	/// <summary>
-	/// Inherits the AStar class that allows the user to specify what INode to use for pathfinding, in this case Tile.
-	/// By default, AIManager is a singleton which can be accessed anywhere in code using AIManager.Instance.
-	/// This allows access to the pathfinding methods within.
-	/// </summary>
-	public class TileManager : AStarGrid
-	{
-		
-		// Private
-		private Tile[,] tiles;
-		private Tile selectedTile = null;
-		private Tile[] rockTilesTemp, rockTiles;
-		// Public
-		/// <summary>
-		/// How many tiles to create in the X axis.
-		/// </summary>
-		public int gridX = 16;
-		/// <summary>
-		/// How many tiles to create in the Y axis.
-		/// </summary>
-		public int gridY = 16;
-		/// <summary>
-		/// The prefab that represents an individual tile.
-		/// </summary>
-		public GameObject tilePrefab;
-		/// <summary>
-		/// When true, a preview path will be shown when the mouse hovers over a tile.
-		/// </summary>
-		public bool showPreviewPath = false;
-		public float tileSpacing = 0.5f;
-		public Sprite[] tileSheet;
-		int ladderSelectionNumber = 0, ladderTop, ladderBottom, ladderSpecific, tileRemovedCount = 0;
-		// Methods
-		/// <summary>
-		/// Called by Unity.
-		/// Note that the base method is called. This is essential to ensure that the base class initializes correctly.
-		/// </summary>
-		public override void Awake ()
-		{
-			m_instance = this;
-			base.Awake ();
+    /// <summary>
+    /// Inherits the AStar class that allows the user to specify what INode to use for pathfinding, in this case Tile.
+    /// By default, AIManager is a singleton which can be accessed anywhere in code using AIManager.Instance.
+    /// This allows access to the pathfinding methods within.
+    /// </summary>
+    public class TileManager : AStarGrid
+    {
 
-			GEM.numberOfRocksInLevel = 0;
-			tiles = new Tile[gridX, gridY];
-			rockTilesTemp = new Tile[gridX * gridY];
+        // Private
+        private Tile[,] tiles;
+        private Tile selectedTile = null;
+        private Tile[] rockTilesTemp, rockTiles;
+        // Public
+        /// <summary>
+        /// How many tiles to create in the X axis.
+        /// </summary>
+        public int gridX = 16;
+        /// <summary>
+        /// How many tiles to create in the Y axis.
+        /// </summary>
+        public int gridY = 16;
+        /// <summary>
+        /// The prefab that represents an individual tile.
+        /// </summary>
+        public GameObject tilePrefab;
+        /// <summary>
+        /// When true, a preview path will be shown when the mouse hovers over a tile.
+        /// </summary>
+        public bool showPreviewPath = false;
+        public float tileSpacing = 0.5f;
+        public Sprite[] tileSheet;
+        int ladderSelectionNumber = 0, ladderTop, ladderBottom, ladderSpecific, tileRemovedCount = 0;
+        // Methods
+        /// <summary>
+        /// Called by Unity.
+        /// Note that the base method is called. This is essential to ensure that the base class initializes correctly.
+        /// </summary>
+        public override void Awake()
+        {
+            Instance = this;
+            base.Awake();
 
-			for (int i = 0; i < gridX; i++) {
-				for (int j = 0; j < gridY; j++) {
-					// Create the tile at its location
-					GameObject obj = MonoBehaviour.Instantiate (tilePrefab, new Vector3 ((i - (gridX / 2)), (j - (gridY / 2))), Quaternion.identity) as GameObject;
+            GEM.numberOfRocksInLevel = 0;
+            tiles = new Tile[gridX, gridY];
+            rockTilesTemp = new Tile[gridX * gridY];
 
-					// Add the tile script
-					tiles [i, j] = obj.GetComponent<Tile> ();
-					tiles [i, j].index = new Index (i, j);
+            for (int i = 0; i < gridX; i++)
+            {
+                for (int j = 0; j < gridY; j++)
+                {
+                    // Create the tile at its location
+                    GameObject obj = MonoBehaviour.Instantiate(tilePrefab, new Vector3((i - (gridX / 2)), (j - (gridY / 2))), Quaternion.identity) as GameObject;
 
-					// Add an event listener
-					tiles [i, j].onTileSelected += onTileSelected;
+                    // Add the tile script
+                    tiles[i, j] = obj.GetComponent<Tile>();
+                    tiles[i, j].index = new Index(i, j);
 
-					// Check for preview
-					if (showPreviewPath == true)
-						tiles [i, j].onTileHover += onTileHover;
+                    // Add an event listener
+                    tiles[i, j].onTileSelected += onTileSelected;
 
-					// Add the tile as a child to keep the scene view clean
-					obj.transform.SetParent (transform);
+                    // Check for preview
+                    if (showPreviewPath == true)
+                        tiles[i, j].onTileHover += onTileHover;
 
-					int random = Random.Range (0, 4);
-					if (random < 1) {
-						tiles [i, j].IsWalkable = false;
-						tiles [i, j].gameObject.GetComponent <SpriteRenderer> ().sprite = tileSheet [Random.Range (0, 4)];
-						rockTilesTemp [GEM.numberOfRocksInLevel] = tiles [i, j];
-						GEM.numberOfRocksInLevel = GEM.numberOfRocksInLevel + 1;
-					}
-				}
-			}
+                    // Add the tile as a child to keep the scene view clean
+                    obj.transform.SetParent(transform);
 
-			int count = 0;
-			rockTiles = new Tile[GEM.numberOfRocksInLevel];
-			for (int i = 0; i < rockTilesTemp.Length; i++) {
-				if (rockTilesTemp [i] != null) {
-					rockTiles [count] = rockTilesTemp [i];
-					count++;
-				}
-			}
+                    int random = Random.Range(0, 4);
+                    if (random < 1)
+                    {
+                        tiles[i, j].IsWalkable = false;
+                        tiles[i, j].gameObject.GetComponent<SpriteRenderer>().sprite = tileSheet[Random.Range(0, 4)];
+                        rockTilesTemp[GEM.numberOfRocksInLevel] = tiles[i, j];
+                        GEM.numberOfRocksInLevel = GEM.numberOfRocksInLevel + 1;
+                    }
+                }
+            }
 
-			// Pass the arry to the search grid
-			constructGrid (tiles);
+            int count = 0;
+            rockTiles = new Tile[GEM.numberOfRocksInLevel];
+            for (int i = 0; i < rockTilesTemp.Length; i++)
+            {
+                if (rockTilesTemp[i] != null)
+                {
+                    rockTiles[count] = rockTilesTemp[i];
+                    count++;
+                }
+            }
 
-			//***********************Ladder Logic
-			ladderSelectionNumber = Random.Range (0, 3);
-			ladderTop = Random.Range (2, GEM.numberOfRocksInLevel / 2);
-			ladderBottom = Random.Range (GEM.numberOfRocksInLevel / 2, GEM.numberOfRocksInLevel);
-			ladderSpecific = Random.Range (2, GEM.numberOfRocksInLevel);		
-			print (GEM.numberOfRocksInLevel + " Tiles**");
-			//************************
-		}
+            // Pass the arry to the search grid
+            constructGrid(tiles);
 
-		public void LadderLogic ()
-		{
-			switch (ladderSelectionNumber) {
-				case 0:
-					print ("any top");
-					LadderLogic_TOP ();
-					break;
-				case 1:
-					print ("any bottom");
-					LadderLogic_BOTTOM ();
-					break;
-				case 2:
-					print ("Specific");
-					LadderLogic_SPECIFIC ();
-					break;
-				case 3:
-					print ("enemy");
-					LadderLogic_ENEMY ();
-					break;
-				default:
-					break;
-			} 
-		}
+            //***********************Ladder Logic
+            ladderSelectionNumber = Random.Range(0, 3);
+            ladderTop = Random.Range(2, GEM.numberOfRocksInLevel / 2);
+            ladderBottom = Random.Range(GEM.numberOfRocksInLevel / 2, GEM.numberOfRocksInLevel);
+            ladderSpecific = Random.Range(2, GEM.numberOfRocksInLevel);
+            print(GEM.numberOfRocksInLevel + " Tiles**");
+            //************************
+        }
 
-		void LadderLogic_TOP ()
-		{
-			print (ladderTop);
-			if (tileRemovedCount == ladderTop) {
-				CreateLadder ();
-			}
-		}
+        public void LadderLogic()
+        {
+            switch (ladderSelectionNumber)
+            {
+                case 0:
+                    print("any top");
+                    LadderLogic_TOP();
+                    break;
+                case 1:
+                    print("any bottom");
+                    LadderLogic_BOTTOM();
+                    break;
+                case 2:
+                    print("Specific");
+                    LadderLogic_SPECIFIC();
+                    break;
+                case 3:
+                    print("enemy");
+                    LadderLogic_ENEMY();
+                    break;
+                default:
+                    break;
+            }
+        }
 
-		void LadderLogic_BOTTOM ()
-		{
-			print (ladderBottom);
-			if (tileRemovedCount == ladderBottom) {
-				CreateLadder ();
-			}
-		}
+        void LadderLogic_TOP()
+        {
+            print(ladderTop);
+            if (tileRemovedCount == ladderTop)
+            {
+                CreateLadder();
+            }
+        }
 
-		void LadderLogic_SPECIFIC ()
-		{
-			print (ladderSpecific);
-			if (tileRemovedCount == ladderSpecific) {
-				CreateLadder ();
-			}
-		}
+        void LadderLogic_BOTTOM()
+        {
+            print(ladderBottom);
+            if (tileRemovedCount == ladderBottom)
+            {
+                CreateLadder();
+            }
+        }
 
-		void LadderLogic_ENEMY ()
-		{
+        void LadderLogic_SPECIFIC()
+        {
+            print(ladderSpecific);
+            if (tileRemovedCount == ladderSpecific)
+            {
+                CreateLadder();
+            }
+        }
 
-		}
+        void LadderLogic_ENEMY()
+        {
 
-		void CreateLadder ()
-		{
-			print ("Way to down!!!");
-			selectedTile.gameObject.GetComponent <SpriteRenderer> ().sprite = tileSheet [4];
-			selectedTile.IsLadder = true;
-		}
+        }
 
-		private void onTileSelected (Tile tile, int mouseButton)
-		{
-			StopCoroutine ("RemoveTileAfterDelay");
-			selectedTile = null;
-			if (!tile.IsWalkable) {
-				selectedTile = tile;
-			} else {
-				selectedTile = null;
-			}
+        void CreateLadder()
+        {
+            print("Way to down!!!");
+            selectedTile.gameObject.GetComponent<SpriteRenderer>().sprite = tileSheet[4];
+            selectedTile.IsLadder = true;
+        }
 
-			// Check for button
-			if (mouseButton == 0) {				
-				// Set the destination
-				//if stone tile is clicked
-				Agent[] agents = Component.FindObjectsOfType<Agent> ();
-				if (tile.IsLadder) {
-					SceneManager.LoadScene ("Mines");
-				}
-				if (!tile.IsWalkable) {
-					tile.IsWalkable = true;					
-					foreach (Agent agent in agents) {				
-						agent.clickedBlank = false;
-					}
-					StopCoroutine (EnableTile (tile));
-					StartCoroutine (EnableTile (tile));
-				} else {
-					foreach (Agent agent in agents) {				
-						agent.clickedBlank = true;
-					}
-				}
-				// Set the target for all agents
-				foreach (Agent agent in agents) {					
-					agent.setDestination (tile.WorldPosition);
-				}
-				
-			} else if (mouseButton == 2) {
-				// Toggle the walkable status
-				//tile.toggleWalkable ();
-				SceneManager.LoadScene ("Mines");
-			}
-		}
+        private void onTileSelected(Tile tile, int mouseButton)
+        {
+            StopCoroutine("RemoveTileAfterDelay");
+            selectedTile = null;
+            if (!tile.IsWalkable)
+            {
+                selectedTile = tile;
+            } else
+            {
+                selectedTile = null;
+            }
 
-		IEnumerator EnableTile (Tile tile)
-		{
-			yield return new WaitForSeconds (0.1f);
-			tile.IsWalkable = false;
-		}
+            // Check for button
+            if (mouseButton == 0)
+            {
+                // Set the destination
+                //if stone tile is clicked
+                Agent[] agents = Component.FindObjectsOfType<Agent>();
+                if (tile.IsLadder)
+                {
+                    SceneManager.LoadScene("Mines");
+                }
+                if (!tile.IsWalkable)
+                {
+                    tile.IsWalkable = true;
+                    foreach (Agent agent in agents)
+                    {
+                        agent.clickedBlank = false;
+                    }
+                    StopCoroutine(EnableTile(tile));
+                    StartCoroutine(EnableTile(tile));
+                } else
+                {
+                    foreach (Agent agent in agents)
+                    {
+                        agent.clickedBlank = true;
+                    }
+                }
+                // Set the target for all agents
+                foreach (Agent agent in agents)
+                {
+                    agent.setDestination(tile.WorldPosition);
+                }
 
-		public override void RemoveTile ()
-		{			
-			if (selectedTile != null) {
-				//start_UniqueSingularCoroutine_RemoveTileAfterDelay ();
-				StopCoroutine ("RemoveTileAfterDelay");
-				StartCoroutine ("RemoveTileAfterDelay");
-			}
-		}
+            } else if (mouseButton == 2)
+            {
+                // Toggle the walkable status
+                //tile.toggleWalkable ();
+                SceneManager.LoadScene("Mines");
+            }
+        }
 
-		public IEnumerator RemoveTileAfterDelay ()
-		{
-			yield return new WaitForSeconds (1f);
-			selectedTile.toggleWalkable ();
-			selectedTile.gameObject.GetComponent <SpriteRenderer> ().sprite = tileSheet [5];
-			tileRemovedCount += 1;
-			LadderLogic ();
-			print ("removed");
-		}
+        IEnumerator EnableTile(Tile tile)
+        {
+            yield return new WaitForSeconds(0.1f);
+            tile.IsWalkable = false;
+        }
 
-		private void onTileHover (Tile tile)
-		{
-			// Find the first agent
-			Agent agent = Component.FindObjectOfType<Agent> ();
+        public override void RemoveTile()
+        {
+            if (selectedTile != null)
+            {
+                //start_UniqueSingularCoroutine_RemoveTileAfterDelay ();
+                StopCoroutine("RemoveTileAfterDelay");
+                StartCoroutine("RemoveTileAfterDelay");
+            }
+        }
 
-			if (agent != null) {
-				// Find the tile index
-				Index current = findNearestIndex (agent.transform.position);
+        public IEnumerator RemoveTileAfterDelay()
+        {
+            yield return new WaitForSeconds(1f);
+            selectedTile.toggleWalkable();
+            selectedTile.gameObject.GetComponent<SpriteRenderer>().sprite = tileSheet[5];
+            tileRemovedCount += 1;
+            LadderLogic();
+            print("removed");
+        }
 
-				// Request a path but dont assign it to the agent - this will allow the preview to be shown without the agent following it
-				findPath (current, tile.index, (Path result, PathRequestStatus status) => {
-					// Do nothing
-				});
-			}
-		}
-	}
+        private void onTileHover(Tile tile)
+        {
+            // Find the first agent
+            Agent agent = Component.FindObjectOfType<Agent>();
+
+            if (agent != null)
+            {
+                // Find the tile index
+                Index current = findNearestIndex(agent.transform.position);
+
+                // Request a path but dont assign it to the agent - this will allow the preview to be shown without the agent following it
+                findPath(current, tile.index, (Path result, PathRequestStatus status) =>
+                {
+                    // Do nothing
+                });
+            }
+        }
+    }
 }
