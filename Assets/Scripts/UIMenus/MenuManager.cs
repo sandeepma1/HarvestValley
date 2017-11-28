@@ -2,17 +2,30 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class IGMMenu : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
-    public static IGMMenu m_instance = null;
+    public static MenuManager m_instance = null;
+    [SerializeField]
+    private GameObject loadingScreen;
+    [SerializeField]
+    private GameObject mainCanvas;
 
-    public GameObject loadingScreen;
-    public GameObject mainCanvas;
-    public GameObject[] disableAllMenus;
-    //public GameObject[] setPositionFar;
+    //Add all types of menus here
+    [SerializeField]
+    private GameObject levelUpMenu;
+    [SerializeField]
+    private GameObject buildingUpgradeMenu;
+    [SerializeField]
+    private GameObject inventoryMenu;
+    [SerializeField]
+    private GameObject shopMenu;
+
+    [SerializeField]
+    private GameObject[] disableAllMenus;
+
     public Hashtable ease = new Hashtable();
 
-    void Awake()
+    private void Awake()
     {
         m_instance = this;
         if (mainCanvas != null)
@@ -21,13 +34,13 @@ public class IGMMenu : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         DisableAllMenus();
         ease.Add("ease", LeanTweenType.easeOutSine);
     }
 
-    void Update()
+    private void Update()
     {
         /*if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor) {
 			if (Input.GetKey (KeyCode.Escape)) {
@@ -42,6 +55,26 @@ public class IGMMenu : MonoBehaviour
 		}*/
     }
 
+    public void IsLevelUpMenu(bool flag)
+    {
+        levelUpMenu.SetActive(flag);
+    }
+
+    public void IsBuildingUpgradeMenu(bool flag)
+    {
+        buildingUpgradeMenu.SetActive(flag);
+    }
+
+    public void IsInventoryMenu(bool flag)
+    {
+        inventoryMenu.SetActive(flag);
+    }
+
+    public void IsShopMenu(bool flag)
+    {
+        shopMenu.SetActive(flag);
+    }
+
     public void DisableAllMenus()
     {
         for (int i = 0; i < disableAllMenus.Length; i++)
@@ -53,6 +86,7 @@ public class IGMMenu : MonoBehaviour
         BuildingsManager.m_instance.DisableAnyOpenMenus();
     }
 
+    #region UI Button calls
     public void ChangeCameraPosition(int number)
     {
         LeanTween.moveX(Camera.main.gameObject, GEM.screensPositions[number], 0.5f, ease);
@@ -77,10 +111,5 @@ public class IGMMenu : MonoBehaviour
     {
         go.SetActive(true);
     }
-
-
-
-
-
-
+    #endregion
 }
