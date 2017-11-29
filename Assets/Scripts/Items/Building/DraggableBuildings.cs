@@ -9,6 +9,7 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerUp
     public bool isDraggable = false;
     public int id;
     public SpriteRenderer spriteRenderer;
+    public SpriteRenderer plantsSprite;
     public int buildingID;
     public Vector2 pos;
     public int level;
@@ -20,6 +21,7 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerUp
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        plantsSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     private bool IsPointerOverUIObject()

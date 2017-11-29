@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class BuildingsManager : MonoBehaviour
 {
+
     public static BuildingsManager Instance = null;
     public DraggableBuildings buildingPrefab;
     public GameObject MasterMenuGO = null, TimeRemainingMenu = null, FarmHarvestingMenu = null;
@@ -19,15 +21,22 @@ public class BuildingsManager : MonoBehaviour
     bool isLongPress = false;
     bool isTilePressed = false;
     float longPressTime = 0.5f, longPressTimer = 0f;
+    public Sprite[] plantsSpriteBank;
+    private Sprite[] buildingSpriteBank;
 
-    void Awake()
+    private void Awake()
     {
         Instance = this;
+        //https://answers.unity.com/questions/1175266/getting-single-sprite-from-a-sprite-multiple.html
+        plantsSpriteBank = Resources.LoadAll<Sprite>("Textures/Plants"); // loads all sprite from Resource folder
+        buildingSpriteBank = Resources.LoadAll<Sprite>("Textures/Buildings");
+        // Sprite wheat_2 = plantsSpriteBank.Single(s => s.name == "Wheat_2"); // searches specific sprite by name
+
         OneTimeOnly();
         Init();
     }
 
-    void Init()
+    private void Init()
     {
         buildings = ES2.LoadList<Buildings>("AllBuildings");
         //BuildingsGO = new GameObject[buildings.Count];
@@ -38,6 +47,118 @@ public class BuildingsManager : MonoBehaviour
         }
         InvokeRepeating("SaveBuildings", 0, 5);
         InvokeRepeating("CheckForHarvest", 0, 1);
+    }
+
+    public void InitBuildings(Buildings building)
+    {
+        BuildingsGO[building.id] = Instantiate(buildingPrefab, transform);
+        BuildingsGO[building.id].transform.localPosition = building.pos;
+        BuildingsGO[building.id].gameObject.name = "Building" + building.id;
+        BuildingsGO[building.id].spriteRenderer.sprite = buildingSpriteBank.Single(s => s.name == building.name); //Resources.Load<Sprite>("Textures/Buildings/" + building.name);
+        BuildingsGO[building.id].id = building.id;
+        BuildingsGO[building.id].buildingID = building.buildingID;
+        BuildingsGO[building.id].pos = building.pos;
+        BuildingsGO[building.id].level = building.level;
+        BuildingsGO[building.id].itemID = building.itemID;
+        BuildingsGO[building.id].state = (BUILDINGS_STATE)building.state;
+        BuildingsGO[building.id].unlockedQueueSlots = building.unlockedQueueSlots;
+        DisableOutlineOnSprite(building.id);
+        switch (BuildingsGO[building.id].state)
+        {
+            case BUILDINGS_STATE.NONE:
+                //BuildingsGO[building.id].spriteRenderer.color = Color.white;
+                break;
+            case BUILDINGS_STATE.GROWING:
+                //BuildingsGO[building.id].spriteRenderer.color = Color.green;
+                break;
+            case BUILDINGS_STATE.WAITING_FOR_HARVEST:
+                //BuildingsGO[building.id].spriteRenderer.color = Color.red;
+                break;
+            default:
+                break;
+        }
+        BuildingsGO[building.id].dateTime = DateTime.Parse(building.dateTime);
+    }
+
+    private void Update() // all long press logic	
+    {
+        if (isTilePressed && BuildingsGO[mouseDownBuildingID].buildingID != 0)
+        {
+            if (longPressTimer >= longPressTime)
+            {
+                isLongPress = true;
+                longPressBuildingID = mouseDownBuildingID;
+                mouseDownBuildingID = -1;
+                isTilePressed = false;
+                BuildingsGO[longPressBuildingID].isSelected = true;
+                EnableOutlineOnSprite(longPressBuildingID);
+                return;
+            }
+            longPressTimer += Time.deltaTime;
+        }
+    }
+
+    private void LateUpdate() //Mainly used to show time remaining
+    {
+        if (isFarmTimerEnabled)
+        {
+            ShowFarmLandTimeRemaining();
+        } else
+        {
+            tempID = -1;
+        }
+    }
+
+    private void CheckForHarvest()
+    {
+        for (int i = 0; i < BuildingsGO.Length; i++)
+        {
+            if (BuildingsGO[i] != null && BuildingsGO[i].state == BUILDINGS_STATE.GROWING)
+            {
+                TimeSpan currentTime = BuildingsGO[i].dateTime.Subtract(UTC.time.liveDateTime);
+                float currentTimeInSeconds = currentTime.Seconds;
+                float totalSeconds = ItemDatabase.Instance.items[BuildingsGO[i].buildingID].timeRequiredInMins * 60;
+                float divisionFactor = totalSeconds / 4;
+
+                if (currentTimeInSeconds >= divisionFactor * 3) //22.5 seed
+                {
+                    ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.SEED);
+                } else if (currentTimeInSeconds >= divisionFactor * 2) //15 shrub
+                {
+                    ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.SHRUB);
+                } else if (currentTimeInSeconds >= divisionFactor) //7.5 plant
+                {
+                    ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.PLANT);
+                } else if (currentTimeInSeconds <= 0) // 0 mature
+                {
+                    ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.MATURE);
+                    BuildingsGO[i].state = BUILDINGS_STATE.WAITING_FOR_HARVEST;
+                    BuildingsGO[i].dateTime = new System.DateTime();
+                    //BuildingsGO[i].spriteRenderer.color = Color.red;
+                }
+            }
+        }
+    }
+
+    private void ChangeFarmPlantSprite(DraggableBuildings building, PLANT_STAGES stages)
+    {
+        switch (stages)
+        {
+            case PLANT_STAGES.SEED:
+                building.plantsSprite.sprite = plantsSpriteBank.Single(s => s.name == ItemDatabase.Instance.items[building.itemID].name + "_0");
+                break;
+            case PLANT_STAGES.SHRUB:
+                building.plantsSprite.sprite = plantsSpriteBank.Single(s => s.name == ItemDatabase.Instance.items[building.itemID].name + "_1");
+                break;
+            case PLANT_STAGES.PLANT:
+                building.plantsSprite.sprite = plantsSpriteBank.Single(s => s.name == ItemDatabase.Instance.items[building.itemID].name + "_2");
+                break;
+            case PLANT_STAGES.MATURE:
+                building.plantsSprite.sprite = plantsSpriteBank.Single(s => s.name == ItemDatabase.Instance.items[building.itemID].name + "_3");
+                break;
+            default:
+                break;
+        }
     }
 
     public void DisplayMasterMenu(int b_ID) // Display field Crop Menu
@@ -67,7 +188,9 @@ public class BuildingsManager : MonoBehaviour
                         BuildingsGO[buildingID].itemID = MasterMenuManager.Instance.itemSelectedID;
                         BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
                             ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].timeRequiredInMins);
-                        BuildingsGO[buildingID].spriteRenderer.color = Color.green;
+                        // BuildingsGO[buildingID].spriteRenderer.color = Color.green;
+                        string plantName = ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].name + "_0";
+                        BuildingsGO[buildingID].plantsSprite.sprite = plantsSpriteBank.Single(s => s.name == plantName);
                         PlayerInventoryManager.Instance.playerInventory[MasterMenuManager.Instance.itemSelectedID].count--;
                         MasterMenuManager.Instance.UpdateSeedValue();
                         SaveBuildings();
@@ -85,7 +208,6 @@ public class BuildingsManager : MonoBehaviour
                     BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
                         ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].timeRequiredInMins);
                     BuildingsGO[buildingID].spriteRenderer.color = Color.green;
-
                 }
             }
         }
@@ -189,8 +311,8 @@ public class BuildingsManager : MonoBehaviour
 
             BuildingsGO[buildingID].dateTime = new System.DateTime();
             BuildingsGO[buildingID].itemID = -1;
-
-            BuildingsGO[buildingID].spriteRenderer.color = Color.white;
+            //BuildingsGO[buildingID].spriteRenderer.color = Color.white;
+            BuildingsGO[buildingID].plantsSprite.sprite = new Sprite();
             HarvestMenuManager.Instance.ToggleDisplayHarvestingMenu();
         }
     }
@@ -211,7 +333,8 @@ public class BuildingsManager : MonoBehaviour
         BuildingsGO[buildingID].state = BUILDINGS_STATE.NONE;
         BuildingsGO[buildingID].dateTime = new System.DateTime();
         BuildingsGO[buildingID].itemID = -1;
-        BuildingsGO[buildingID].spriteRenderer.color = Color.white;
+        // BuildingsGO[buildingID].spriteRenderer.color = Color.white;
+        BuildingsGO[buildingID].plantsSprite.sprite = new Sprite();
     }
 
     public void DisableAnyOpenMenus()
@@ -253,51 +376,7 @@ public class BuildingsManager : MonoBehaviour
         }
     }
 
-    void LateUpdate() //Mainly used to show time remaining
-    {
-        if (isFarmTimerEnabled)
-        {
-            ShowFarmLandTimeRemaining();
-        } else
-        {
-            tempID = -1;
-        }
-    }
-
-    private void CheckForHarvest()
-    {
-        foreach (var item in BuildingsGO)
-        {  //Main loop for checking all buildings time
-            if (item != null &&
-                item.state == BUILDINGS_STATE.GROWING &&
-                item.dateTime.Subtract(UTC.time.liveDateTime) <= new System.TimeSpan(0, 0, 0))
-            {
-                item.state = BUILDINGS_STATE.WAITING_FOR_HARVEST;
-                item.dateTime = new System.DateTime();
-                item.spriteRenderer.color = Color.red;
-            }
-        }
-    }
-
-    void Update() // all long press logic	
-    {
-        if (isTilePressed && BuildingsGO[mouseDownBuildingID].buildingID != 0)
-        {
-            if (longPressTimer >= longPressTime)
-            {
-                isLongPress = true;
-                longPressBuildingID = mouseDownBuildingID;
-                mouseDownBuildingID = -1;
-                isTilePressed = false;
-                BuildingsGO[longPressBuildingID].isSelected = true;
-                EnableOutlineOnSprite(longPressBuildingID);
-                return;
-            }
-            longPressTimer += Time.deltaTime;
-        }
-    }
-
-    void EnableOutlineOnSprite(int selectedFieldID)
+    private void EnableOutlineOnSprite(int selectedFieldID)
     {
         if (BuildingsGO[selectedFieldID].buildingID != 0)
         {
@@ -306,7 +385,7 @@ public class BuildingsManager : MonoBehaviour
 
     }
 
-    void DisableOutlineOnSprite(int selectedFieldID)
+    private void DisableOutlineOnSprite(int selectedFieldID)
     {
         if (BuildingsGO[selectedFieldID].buildingID != 0)
         {
@@ -324,7 +403,7 @@ public class BuildingsManager : MonoBehaviour
 
     #region OnMouse Functions
 
-    void OneTimeOnly()
+    private void OneTimeOnly()
     {
         if (PlayerPrefs.GetInt("firstBuilding") <= 0)
         {
@@ -340,37 +419,6 @@ public class BuildingsManager : MonoBehaviour
             ES2.Save(buildings, "AllBuildings");
             PlayerPrefs.SetInt("firstBuilding", 1);
         }
-    }
-
-    public void InitBuildings(Buildings building)
-    {
-        BuildingsGO[building.id] = Instantiate(buildingPrefab, transform);
-        BuildingsGO[building.id].transform.localPosition = building.pos;
-        BuildingsGO[building.id].gameObject.name = "Building" + building.id;
-        BuildingsGO[building.id].spriteRenderer.sprite = Resources.Load<Sprite>("Textures/Buildings/" + building.name);
-        BuildingsGO[building.id].id = building.id;
-        BuildingsGO[building.id].buildingID = building.buildingID;
-        BuildingsGO[building.id].pos = building.pos;
-        BuildingsGO[building.id].level = building.level;
-        BuildingsGO[building.id].itemID = building.itemID;
-        BuildingsGO[building.id].state = (BUILDINGS_STATE)building.state;
-        BuildingsGO[building.id].unlockedQueueSlots = building.unlockedQueueSlots;
-        DisableOutlineOnSprite(building.id);
-        switch (BuildingsGO[building.id].state)
-        {
-            case BUILDINGS_STATE.NONE:
-                BuildingsGO[building.id].spriteRenderer.color = Color.white;
-                break;
-            case BUILDINGS_STATE.GROWING:
-                BuildingsGO[building.id].spriteRenderer.color = Color.green;
-                break;
-            case BUILDINGS_STATE.WAITING_FOR_HARVEST:
-                BuildingsGO[building.id].spriteRenderer.color = Color.red;
-                break;
-            default:
-                break;
-        }
-        BuildingsGO[building.id].dateTime = DateTime.Parse(building.dateTime);
     }
 
     public void CallParentOnMouseDown(int buildingID)
@@ -512,6 +560,14 @@ public enum BUILDINGS_STATE
     NONE,
     GROWING,
     WAITING_FOR_HARVEST
+};
+
+public enum PLANT_STAGES
+{
+    SEED,
+    SHRUB,
+    PLANT,
+    MATURE
 };
 
 [System.Serializable]

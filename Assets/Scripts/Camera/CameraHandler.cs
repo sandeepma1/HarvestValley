@@ -62,7 +62,10 @@ public class CameraHandler : MonoBehaviour
             return;
         }
 
-        if (!Input.GetMouseButton(0)) return;
+        if (!Input.GetMouseButton(0))
+        {
+            return;
+        }
         DetectDrag();
     }
 
@@ -154,11 +157,9 @@ public class CameraHandler : MonoBehaviour
                 break;
             case Swipe.Left:
                 SnapCamera(SnapStates.right);
-                print("Swiped left");
                 break;
             case Swipe.Right:
                 SnapCamera(SnapStates.left);
-                print("Swiped left");
                 break;
             case Swipe.UpLeft:
                 break;

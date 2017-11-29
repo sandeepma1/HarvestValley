@@ -139,7 +139,7 @@ public class MasterMenuManager : MonoBehaviour
 
     public void UpgradeBuildingPressed(int id)
     {
-        MenuManager.Instance.IsBuildingUpgradeMenu(true);
+        MenuManager.Instance.BuildingUpgradeMenuSetActive(true);
     }
 
     public void ChildCallingOnMouseUp(int id)

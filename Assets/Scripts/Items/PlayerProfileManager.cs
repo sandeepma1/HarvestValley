@@ -7,12 +7,10 @@ using System;
 public class PlayerProfileManager : MonoBehaviour
 {
     public static PlayerProfileManager Instance = null;
+    [SerializeField]
     public TextMeshProUGUI coinsUIText, gemsUIText, staminaUIText, levelUIText, XPPointsUIText;
-    public GameObject levelUpUIMenu;
-    public PlayersProfile playerProfile = null;
-
-    bool isUpdated = false;
-    float updateTimer = 1f;
+    private PlayersProfile playerProfile = null;
+    private bool isLevelUpReady;
 
     void Awake()
     {
@@ -21,6 +19,15 @@ public class PlayerProfileManager : MonoBehaviour
         playerProfile = ES2.Load<PlayersProfile>("playerProfile");
         InitPlayerProfile();
         UpdateAll();
+    }
+
+    void LateUpdate()
+    {
+        if (isLevelUpReady && !Input.anyKey)
+        {
+            isLevelUpReady = false;
+            MenuManager.Instance.LevelUpMenuSetActive(true);
+        }
     }
 
     public bool IsGoldAvailable(int value)
@@ -61,10 +68,8 @@ public class PlayerProfileManager : MonoBehaviour
                 MasterMenuManager.Instance.CheckForUnlockedItems();
                 PlayerGems(LevelUpDatabase.Instance.gameLevels[playerProfile.level].gemsRewardCount);
             }
-
             PlayerXPPointsAdd(-CurrentPlayerXP());
-            levelUpUIMenu.SetActive(true);
-            //MASTER_SaveEverything.m_instance.SaveGameDays (1);
+            isLevelUpReady = true;
         }
         UpdateAll();
     }

@@ -1,15 +1,19 @@
 fileFormatVersion: 2
-guid: 552dd52c85381ea4593f9282a57408cd
-timeCreated: 1511987500
+guid: 96d518e9d2a658544a3f1305e4b09adc
+timeCreated: 1511990163
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: bushes2_0
-    21300002: bushes2_1
-    21300004: bushes2_2
-    21300006: bushes2_3
-    21300008: bushes2_4
-    21300010: bushes2_5
+    21300000: Corn_0
+    21300002: bushes1_2
+    21300004: bushes1_1
+    21300006: bushes1_3
+    21300008: bushes1_4
+    21300010: Corn_1
+    21300012: bushes1_6
+    21300014: Corn_2
+    21300016: bushes1_8
+    21300018: Corn_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -34,7 +38,7 @@ TextureImporter:
   cubemapConvolution: 0
   seamlessCubemap: 0
   textureFormat: -3
-  maxTextureSize: 128
+  maxTextureSize: 256
   textureSettings:
     serializedVersion: 2
     filterMode: 0
@@ -63,7 +67,7 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 128
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -75,11 +79,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bushes2_0
+      name: Corn_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -89,47 +93,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: bushes2_2
+      name: Corn_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 16
+        y: 17
         width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 15
+      alignment: 9
+      pivot: {x: 0.4697771, y: 0.24478261}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: bushes2_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: bushes2_5
+      name: Corn_2
       rect:
         serializedVersion: 2
         x: 80
         y: 0
         width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 20
+      alignment: 9
+      pivot: {x: 0.46977663, y: 0.21590295}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
+    - serializedVersion: 2
+      name: Corn_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 

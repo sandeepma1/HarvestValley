@@ -9,7 +9,7 @@ public class LevelUpDatabase : MonoBehaviour
     public static LevelUpDatabase Instance = null;
     //public List<Level> gameLevel = new List<Level> ();
     public Level[] gameLevels;
-    string folderName = "LevelUp";
+    private string folderName = "LevelUp";
 
     void Awake()
     {

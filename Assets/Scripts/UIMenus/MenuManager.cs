@@ -55,22 +55,22 @@ public class MenuManager : MonoBehaviour
 		}*/
     }
 
-    public void IsLevelUpMenu(bool flag)
+    public void LevelUpMenuSetActive(bool flag)
     {
         levelUpMenu.SetActive(flag);
     }
 
-    public void IsBuildingUpgradeMenu(bool flag)
+    public void BuildingUpgradeMenuSetActive(bool flag)
     {
         buildingUpgradeMenu.SetActive(flag);
     }
 
-    public void IsInventoryMenu(bool flag)
+    public void InventoryMenuSetActive(bool flag)
     {
         inventoryMenu.SetActive(flag);
     }
 
-    public void IsShopMenu(bool flag)
+    public void ShopMenuSetActive(bool flag)
     {
         shopMenu.SetActive(flag);
     }
