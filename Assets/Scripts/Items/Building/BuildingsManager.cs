@@ -413,6 +413,11 @@ public class BuildingsManager : MonoBehaviour
             buildings.Add(new Buildings(2, 0, "Field", new Vector2(8, -4), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
             buildings.Add(new Buildings(3, 0, "Field", new Vector2(0, -8), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
             buildings.Add(new Buildings(4, 0, "Field", new Vector2(4, -8), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(5, 0, "Field", new Vector2(8, -8), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(6, 0, "Field", new Vector2(0, -12), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(7, 0, "Field", new Vector2(4, -12), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(8, 0, "Field", new Vector2(8, -12), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+
             //buildings.Add(new Buildings(5, 1, "Bakery", new Vector2(1, 1), 1, 0, 2, -1, System.DateTime.UtcNow.ToString()));
             // buildings.Add(new Buildings(6, 2, "FeedMill", new Vector2(2, 1), 1, 0, 2, -1, System.DateTime.UtcNow.ToString()));
             // buildings.Add(new Buildings(7, 3, "Dairy", new Vector2(3, 1), 1, 0, 2, -1, System.DateTime.UtcNow.ToString()));

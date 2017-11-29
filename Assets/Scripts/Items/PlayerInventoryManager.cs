@@ -80,7 +80,7 @@ public class PlayerInventoryManager : MonoBehaviour
         if (PlayerPrefs.GetInt("playerInventory") <= 0)
         {
             ES2.Delete("playerInventory");
-            playerInventory.Add(new FarmItems(0, 6)); //addding Wheat for the first level
+            playerInventory.Add(new FarmItems(0, 9)); //addding Wheat for the first level
                                                       //playerInventory.Add (new FarmItems (1, 3));
             ES2.Save(playerInventory, "playerInventory");
             PlayerPrefs.SetInt("playerInventory", 1);
