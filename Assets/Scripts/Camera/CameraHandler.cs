@@ -2,8 +2,9 @@
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
 
-public class CameraHandler : MonoBehaviour
+public class CameraHandler : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     public Text dText;
     [SerializeField]
@@ -33,16 +34,36 @@ public class CameraHandler : MonoBehaviour
 
     private void Update()
     {
-        dText.text = GEM.GetTouchState().ToString();
-        if (GEM.isSwipeEnable && !EventSystem.current.IsPointerOverGameObject())
+        dText.text = GEM.GetTouchState().ToString() + " " + GEM.isSwipeEnable;
+        if (GEM.isSwipeEnable)
         {
-            DetectInputs();
+            // DetectInputs();
         }
     }
 
-    private void DetectInputs()
+    public void OnDrag(PointerEventData eventData)
     {
-        if (Input.GetMouseButtonUp(0))
+        print("drag");
+        //if (GEM.isSwipeEnable)
+        //{
+        DetectDrag();
+        // }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (GEM.isSwipeEnable)
+        {
+            GEM.SetTouchState(GEM.TOUCH_STATES.e_none);
+            isSwipeDetected = false;
+            dragOrigin = Input.mousePosition;
+        }
+
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (GEM.isSwipeEnable)
         {
             tempMovePosition = Vector3.zero;
             if (isSwipeDetected == false)
@@ -53,20 +74,6 @@ public class CameraHandler : MonoBehaviour
             }
             GEM.SetTouchState(GEM.TOUCH_STATES.e_none);
         }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            GEM.SetTouchState(GEM.TOUCH_STATES.e_none);
-            isSwipeDetected = false;
-            dragOrigin = Input.mousePosition;
-            return;
-        }
-
-        if (!Input.GetMouseButton(0))
-        {
-            return;
-        }
-        DetectDrag();
     }
 
     private void DetectDrag()
@@ -141,7 +148,7 @@ public class CameraHandler : MonoBehaviour
 
         if (swipeVelocity.x >= maxSwipeVelocity ||
             swipeVelocity.x <= -maxSwipeVelocity ||
-            !GEM.isSwipeEnable && !EventSystem.current.IsPointerOverGameObject())
+            !GEM.isSwipeEnable)
         {
             return;
         }
@@ -173,4 +180,6 @@ public class CameraHandler : MonoBehaviour
                 break;
         }
     }
+
+
 }

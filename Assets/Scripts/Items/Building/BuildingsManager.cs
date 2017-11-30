@@ -30,8 +30,6 @@ public class BuildingsManager : MonoBehaviour
         //https://answers.unity.com/questions/1175266/getting-single-sprite-from-a-sprite-multiple.html
         plantsSpriteBank = Resources.LoadAll<Sprite>("Textures/Plants"); // loads all sprite from Resource folder
         buildingSpriteBank = Resources.LoadAll<Sprite>("Textures/Buildings");
-        // Sprite wheat_2 = plantsSpriteBank.Single(s => s.name == "Wheat_2"); // searches specific sprite by name
-
         OneTimeOnly();
         Init();
     }
@@ -145,19 +143,33 @@ public class BuildingsManager : MonoBehaviour
         switch (stages)
         {
             case PLANT_STAGES.SEED:
-                building.plantsSprite.sprite = plantsSpriteBank.Single(s => s.name == ItemDatabase.Instance.items[building.itemID].name + "_0");
+                building.plantsSprite.sprite = GetPlantSpriteFromBank(ItemDatabase.Instance.items[building.itemID].name + "_0");
                 break;
             case PLANT_STAGES.SHRUB:
-                building.plantsSprite.sprite = plantsSpriteBank.Single(s => s.name == ItemDatabase.Instance.items[building.itemID].name + "_1");
+                building.plantsSprite.sprite = GetPlantSpriteFromBank(ItemDatabase.Instance.items[building.itemID].name + "_1");
                 break;
             case PLANT_STAGES.PLANT:
-                building.plantsSprite.sprite = plantsSpriteBank.Single(s => s.name == ItemDatabase.Instance.items[building.itemID].name + "_2");
+                building.plantsSprite.sprite = GetPlantSpriteFromBank(ItemDatabase.Instance.items[building.itemID].name + "_2");
                 break;
             case PLANT_STAGES.MATURE:
-                building.plantsSprite.sprite = plantsSpriteBank.Single(s => s.name == ItemDatabase.Instance.items[building.itemID].name + "_3");
+                building.plantsSprite.sprite = GetPlantSpriteFromBank(ItemDatabase.Instance.items[building.itemID].name + "_3");
                 break;
             default:
                 break;
+        }
+    }
+
+    private Sprite GetPlantSpriteFromBank(string spriteName)
+    {
+        Sprite sprite = new Sprite();
+        sprite = plantsSpriteBank.Single(s => s.name == spriteName);
+        if (sprite != null)
+        {
+            return plantsSpriteBank.Single(s => s.name == spriteName);
+        } else
+        {
+            Debug.Log("Sprite Not Found " + spriteName);
+            return new Sprite();
         }
     }
 
@@ -189,8 +201,10 @@ public class BuildingsManager : MonoBehaviour
                         BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
                             ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].timeRequiredInMins);
                         // BuildingsGO[buildingID].spriteRenderer.color = Color.green;
+
                         string plantName = ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].name + "_0";
-                        BuildingsGO[buildingID].plantsSprite.sprite = plantsSpriteBank.Single(s => s.name == plantName);
+
+                        BuildingsGO[buildingID].plantsSprite.sprite = GetPlantSpriteFromBank(plantName);
                         PlayerInventoryManager.Instance.playerInventory[MasterMenuManager.Instance.itemSelectedID].count--;
                         MasterMenuManager.Instance.UpdateSeedValue();
                         SaveBuildings();
@@ -448,16 +462,22 @@ public class BuildingsManager : MonoBehaviour
             switch (BuildingsGO[buildingID].state)
             {
                 case BUILDINGS_STATE.NONE:
+                    //if (GEM.GetTouchState() == GEM.TOUCH_STATES.e_touch)
+                    // {
                     DisplayMasterMenu(buildingID);
+                    //}
+
                     break;
                 case BUILDINGS_STATE.GROWING:
                     tempID = buildingID;
                     MenuManager.Instance.DisableAllMenus();
                     TimeRemainingMenu.SetActive(true);
-                    isFarmTimerEnabled = true;
+                    if (GEM.GetTouchState() == GEM.TOUCH_STATES.e_none)
+                    {
+                        isFarmTimerEnabled = true;
+                    }
                     TimeRemainingMenu.transform.GetChild(0).GetComponent<TextMeshPro>().text =
                     ItemDatabase.Instance.items[BuildingsGO[tempID].itemID].name.ToString();
-
                     break;
                 case BUILDINGS_STATE.WAITING_FOR_HARVEST:
                     if (BuildingsGO[buildingID].buildingID == 0)

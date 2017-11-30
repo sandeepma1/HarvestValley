@@ -5,6 +5,6 @@ id,name,desc,type,cost,deployTime,slotsUnlocked,limit
 3,Dairy,Production buildings,Products,50,160,2,1
 4,SugarMill,Production buildings,Products,350,360,2,1
 5,PopcornPot,Production buildings,Products,650,480,2,1
-6,BbqGrill,Production buildings,Products,730,480,2,1
+6,BBQGrill,Production buildings,Products,730,480,2,1
 7,PieOven,Production buildings,Products,2200,720,2,1
 8,Loom,Production buildings,Products,3200,1440,2,1

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler
+public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IDragHandler, IPointerExitHandler
 {
     public bool isSelected = false;
     public bool isDraggable = false;
@@ -18,31 +18,12 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerUp
     public int itemID;
     public System.DateTime dateTime;
 
+    private bool isOnObject;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         plantsSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
-    }
-
-    private bool IsPointerOverUIObject()
-    {
-        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-        return results.Count > 0;
-    }
-
-    public void OnClickDrag()
-    {
-        if (!IsPointerOverUIObject())
-        {
-            BuildingsManager.Instance.CallParentOnMouseDrag(id);
-        }
-        //if (!EventSystem.current.IsPointerOverGameObject())
-        //{
-
-        //}
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -53,14 +34,34 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerUp
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        BuildingsManager.Instance.CallParentOnMouseUp(id);
-        GEM.isSwipeEnable = true;
+        if (isOnObject)
+        {
+            BuildingsManager.Instance.CallParentOnMouseUp(id);
+            GEM.isSwipeEnable = true;
+        } else
+        {
+            isOnObject = false;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        isOnObject = true;
         GEM.isSwipeEnable = false;
         BuildingsManager.Instance.CallParentOnMouseEnter(id);
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (GEM.isSwipeEnable == false)
+        {
+            BuildingsManager.Instance.CallParentOnMouseDrag(id);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        isOnObject = false;
     }
 }
 

@@ -1,30 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.U2D;
 
 public class MasterMenuManager : MonoBehaviour
 {
     public static MasterMenuManager Instance = null;
-    public GameObject menuItemPrefab;
-    public GameObject[] menuItems = new GameObject[12];
-    public GameObject switchButton, fieldInfoButton;
     public bool isItemSelected = false;
     public int itemSelectedID = -1;
-    public bool isMasterMenuUp = false;
-    Vector2[] itemPos = new Vector2[4];
-    int pageNumber = 0;
-    int maxItemsOnceInMenu = 4;
-    int maxPages = 0;
-    int unlockedItemCount = 0;
-    List<int> unlockedItemIDs = new List<int>();
 
-    void Awake()
+    [SerializeField]
+    private SpriteAtlas itemAtlas;
+    [SerializeField]
+    private GameObject switchButton;
+    [SerializeField]
+    private GameObject fieldInfoButton;
+    [SerializeField]
+    private DraggableItems menuItemPrefab;
+
+    private Vector2[] itemPos = new Vector2[4];
+    private int pageNumber = 0;
+    private int maxItemsOnceInMenu = 4;
+    private int maxPages = 0;
+    private int unlockedItemCount = 0;
+    private DraggableItems[] menuItems = new DraggableItems[12];
+    private List<int> unlockedItemIDs = new List<int>();
+
+    private void Awake()
     {
         Instance = this;
     }
 
-    void Start()
+    private void Start()
     {
         itemPos[0] = new Vector2(-0.5f, -0.6f);
         itemPos[1] = new Vector2(0.5f, -0.6f);
@@ -34,7 +41,7 @@ public class MasterMenuManager : MonoBehaviour
         CheckForUnlockedItems();
     }
 
-    void SpwanMenuItems()
+    private void SpwanMenuItems()
     {
         for (int i = 0; i < menuItems.Length; i++)
         {
@@ -72,22 +79,22 @@ public class MasterMenuManager : MonoBehaviour
     //PopulateItemsInMasterMenu
     public void PopulateItemsInMasterMenu(int buildingID)
     {
-        foreach (var item in menuItems)
+        for (int i = 0; i < menuItems.Length; i++)
         {
-            item.SetActive(false);
-            item.GetComponent<DraggableItems>().itemID = -1;
+            menuItems[i].gameObject.SetActive(false);
+            menuItems[i].itemID = -1;
         }
         int posCount = 0;
         unlockedItemCount = 0;
         pageNumber = 0;
-        isMasterMenuUp = true;
+        //isMasterMenuUp = true;
         for (int i = 0; i < unlockedItemIDs.Count; i++)
         {
             if (ItemDatabase.Instance.items[i] != null && ItemDatabase.Instance.items[i].source == BuildingDatabase.Instance.buildingInfo[buildingID].name)
             {
-                menuItems[unlockedItemCount].GetComponent<DraggableItems>().itemID = ItemDatabase.Instance.items[i].id;
+                menuItems[unlockedItemCount].itemID = ItemDatabase.Instance.items[i].id;
                 menuItems[unlockedItemCount].transform.localPosition = itemPos[posCount];
-                menuItems[unlockedItemCount].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[i].name);
+                menuItems[unlockedItemCount].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = itemAtlas.GetSprite(ItemDatabase.Instance.items[i].name);
                 menuItems[posCount].transform.GetChild(1).GetComponent<TextMeshPro>().text = PlayerInventoryManager.Instance.playerInventory[i].count.ToString();
                 posCount++;
                 unlockedItemCount++;
@@ -116,14 +123,14 @@ public class MasterMenuManager : MonoBehaviour
 
     public void ToggleMenuPages()
     {
-        foreach (var items in menuItems)
+        for (int i = 0; i < menuItems.Length; i++)
         {
-            items.SetActive(false);
+            menuItems[i].gameObject.SetActive(false);
         }
         int loopCount = 0;
         for (int i = pageNumber * maxItemsOnceInMenu; i < unlockedItemCount; i++)
         {
-            menuItems[i].SetActive(true);
+            menuItems[i].gameObject.SetActive(true);
             loopCount++;
             if (loopCount >= 4)
             {
