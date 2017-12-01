@@ -2,9 +2,8 @@
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using System;
 
-public class CameraHandler : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
+public class CameraHandler : MonoBehaviour
 {
     public Text dText;
     [SerializeField]
@@ -34,36 +33,16 @@ public class CameraHandler : MonoBehaviour, IDragHandler, IPointerDownHandler, I
 
     private void Update()
     {
-        dText.text = GEM.GetTouchState().ToString() + " " + GEM.isSwipeEnable;
+        //dText.text = GEM.GetTouchState().ToString() + " " + GEM.isSwipeEnable.ToString();
         if (GEM.isSwipeEnable)
         {
-            // DetectInputs();
+            DetectInputs();
         }
     }
 
-    public void OnDrag(PointerEventData eventData)
+    private void DetectInputs()
     {
-        print("drag");
-        //if (GEM.isSwipeEnable)
-        //{
-        DetectDrag();
-        // }
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (GEM.isSwipeEnable)
-        {
-            GEM.SetTouchState(GEM.TOUCH_STATES.e_none);
-            isSwipeDetected = false;
-            dragOrigin = Input.mousePosition;
-        }
-
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        if (GEM.isSwipeEnable)
+        if (Input.GetMouseButtonUp(0))
         {
             tempMovePosition = Vector3.zero;
             if (isSwipeDetected == false)
@@ -74,6 +53,20 @@ public class CameraHandler : MonoBehaviour, IDragHandler, IPointerDownHandler, I
             }
             GEM.SetTouchState(GEM.TOUCH_STATES.e_none);
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            GEM.SetTouchState(GEM.TOUCH_STATES.e_none);
+            isSwipeDetected = false;
+            dragOrigin = Input.mousePosition;
+            return;
+        }
+
+        if (!Input.GetMouseButton(0))
+        {
+            return;
+        }
+        DetectDrag();
     }
 
     private void DetectDrag()
@@ -87,7 +80,6 @@ public class CameraHandler : MonoBehaviour, IDragHandler, IPointerDownHandler, I
         {
             DragCamera(movePosition - tempMovePosition);
         }
-
         tempMovePosition = movePosition;
     }
 
@@ -180,6 +172,4 @@ public class CameraHandler : MonoBehaviour, IDragHandler, IPointerDownHandler, I
                 break;
         }
     }
-
-
 }
