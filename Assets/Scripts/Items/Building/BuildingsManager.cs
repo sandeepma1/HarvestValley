@@ -465,12 +465,10 @@ public class BuildingsManager : MonoBehaviour
             switch (BuildingsGO[buildingID].state)
             {
                 case BUILDINGS_STATE.NONE:
-                    print("BM");
                     if (GEM.GetTouchState() == GEM.TOUCH_STATES.e_none)
                     {
                         DisplayMasterMenu(buildingID);
                     }
-
                     break;
                 case BUILDINGS_STATE.GROWING:
                     tempID = buildingID;
@@ -598,23 +596,3 @@ public enum PLANT_STAGES
     PLANT,
     MATURE
 };
-
-[System.Serializable]
-public class AAA  // iLIST
-{
-    public int id;
-    public string name;
-    public Queue<int> aa;
-
-    public AAA()
-    {
-
-    }
-
-    public AAA(int _id, string _name, Queue<int> _aa)
-    {
-        id = _id;
-        name = _name;
-        aa = _aa;
-    }
-}

@@ -72,7 +72,7 @@ public class MasterMenuManager : MonoBehaviour
         }
         foreach (var item in unlockedItemIDs)
         {
-            print("unlocked items " + item);
+            //print("unlocked items " + item);
         }
     }
 

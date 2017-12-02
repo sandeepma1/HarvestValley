@@ -81,7 +81,7 @@ public class MenuManager : MonoBehaviour
         {
             disableAllMenus[i].transform.position = new Vector3(-500, -500, 0);
             disableAllMenus[i].SetActive(true);
-            GEM.isSwipeEnable = true;
+            //GEM.isDragging = false;
         }
         BuildingsManager.Instance.DisableAnyOpenMenus();
     }
