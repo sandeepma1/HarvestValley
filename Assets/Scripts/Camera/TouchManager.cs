@@ -106,11 +106,13 @@ namespace HarvestValley.TouchClickInput
         static OnSwipeDetectedHandler _OnSwipeDetected;
         public static event OnSwipeDetectedHandler OnSwipeDetected
         {
-            add {
+            add
+            {
                 _OnSwipeDetected += value;
                 autoDetectSwipes = true;
             }
-            remove {
+            remove
+            {
                 _OnSwipeDetected -= value;
             }
         }
@@ -119,10 +121,12 @@ namespace HarvestValley.TouchClickInput
         static OnTouchUp _OnTouchUp;
         public static event OnTouchUp OnTouchUpDetected
         {
-            add {
+            add
+            {
                 _OnTouchUp += value;
             }
-            remove {
+            remove
+            {
                 _OnTouchUp -= value;
             }
         }
@@ -131,10 +135,12 @@ namespace HarvestValley.TouchClickInput
         static OnTouchDown _OnTouchDown;
         public static event OnTouchDown OnTouchDownDetected
         {
-            add {
+            add
+            {
                 _OnTouchDown += value;
             }
-            remove {
+            remove
+            {
                 _OnTouchDown -= value;
             }
         }
@@ -143,10 +149,12 @@ namespace HarvestValley.TouchClickInput
         static OnScreenDrag _OnScreenDrag;
         public static event OnScreenDrag OnScreenDragDetected
         {
-            add {
+            add
+            {
                 _OnScreenDrag += value;
             }
-            remove {
+            remove
+            {
                 _OnScreenDrag -= value;
             }
         }
@@ -182,7 +190,6 @@ namespace HarvestValley.TouchClickInput
 
         void Update()
         {
-            //print(GEM.isDragging);
             if (autoDetectSwipes)
             {
                 //#if UNITY_EDITOR
@@ -193,19 +200,6 @@ namespace HarvestValley.TouchClickInput
                 {
                     swipeDirection = Swipe.None;
                 }
-                //#endif
-
-                //#if UNITY_ANDROID 
-
-                //                if (GetTouchInput())
-                //                {
-                //                    DetectSwipe();
-                //                } else
-                //                {
-                //                    swipeDirection = Swipe.None;
-                //                }
-                //# endif
-
             }
         }
 
@@ -226,18 +220,16 @@ namespace HarvestValley.TouchClickInput
                 }
                 return;
             }
-            if (!GEM.isDragging)
+            swipeEndTime = Time.time;
+            swipeVelocity = currentSwipe * (swipeEndTime - swipeStartTime);
+            swipeDirection = GetSwipeDirByTouch(currentSwipe);
+            swipeEnded = true;
+            print("Swipe");
+            if (_OnSwipeDetected != null)
             {
-                swipeEndTime = Time.time;
-                swipeVelocity = currentSwipe * (swipeEndTime - swipeStartTime);
-                swipeDirection = GetSwipeDirByTouch(currentSwipe);
-                swipeEnded = true;
-                print("Swipe");
-                if (_OnSwipeDetected != null)
-                {
-                    _OnSwipeDetected(swipeDirection, swipeVelocity);
-                }
+                _OnSwipeDetected(swipeDirection, swipeVelocity);
             }
+
         }
 
         #region Helper Functions
@@ -277,6 +269,15 @@ namespace HarvestValley.TouchClickInput
 
         static bool GetMouseInput()
         {
+
+            if (GEM.isDragging)
+            {
+                print("GEM.isDragging " + GEM.isDragging);
+                //swipeEnded = false;
+                secondPressPos = firstPressPos = Vector2.zero;
+                return false;
+            }
+            print("GetMouseInput");
             if (Input.GetMouseButtonDown(0))  // Swipe/Click started
             {
                 firstPressPos = Input.mousePosition;
@@ -298,7 +299,7 @@ namespace HarvestValley.TouchClickInput
                     return true;
                 }
             }
-            if (Input.GetMouseButton(0) && !GEM.isDragging)
+            if (Input.GetMouseButton(0))
             {
                 print("Drag");
                 float distance = Input.mousePosition.x - firstPressPos.x;

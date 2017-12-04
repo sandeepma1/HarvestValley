@@ -6,7 +6,6 @@ using System.Linq;
 
 public class BuildingsManager : MonoBehaviour
 {
-
     public static BuildingsManager Instance = null;
     public DraggableBuildings buildingPrefab;
     public GameObject MasterMenuGO = null, TimeRemainingMenu = null, FarmHarvestingMenu = null;
