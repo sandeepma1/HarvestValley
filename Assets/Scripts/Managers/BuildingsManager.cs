@@ -1,26 +1,32 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System.Linq;
 
-public class CoopGrassManager : MonoBehaviour
+public class BuildingsManager : MonoBehaviour
 {
-    public static CoopGrassManager Instance = null;
-    public DraggableGrass grassPrefab;
-    public GameObject MasterMenuGO = null;
-    public List<GrassTypes> grassSaved = new List<GrassTypes>();
+    public static BuildingsManager Instance = null;
+    public DraggableBuildings buildingPrefab;
+    public GameObject MasterMenuGO = null, TimeRemainingMenu = null, FarmHarvestingMenu = null;
+    public bool isFarmTimerEnabled = false;
+    public List<Buildings> buildings = new List<Buildings>();
+    public bool plantedOnSelectedfield = false;
     public int buildingSelectedID = -1;
-    public DraggableGrass[] grassPatches;
+    public DraggableBuildings[] BuildingsGO;
     System.TimeSpan remainingTime;
-    int tempID = -1, mouseDownBuildingID = -1;
+    int tempID = -1, longPressBuildingID = -1, mouseDownBuildingID = -1;
+    bool isLongPress = false;
     bool isTilePressed = false;
-    public Sprite[] grassSpriteBank;
+    float longPressTime = 0.5f, longPressTimer = 0f;
+    public Sprite[] plantsSpriteBank;
     private Sprite[] buildingSpriteBank;
 
     private void Awake()
     {
         Instance = this;
         //https://answers.unity.com/questions/1175266/getting-single-sprite-from-a-sprite-multiple.html
-        grassSpriteBank = Resources.LoadAll<Sprite>("Textures/Plants"); // loads all sprite from Resource folder
+        plantsSpriteBank = Resources.LoadAll<Sprite>("Textures/Plants"); // loads all sprite from Resource folder
         buildingSpriteBank = Resources.LoadAll<Sprite>("Textures/Buildings");
         OneTimeOnly();
         Init();
@@ -28,32 +34,32 @@ public class CoopGrassManager : MonoBehaviour
 
     private void Init()
     {
-        grassSaved = ES2.LoadList<GrassTypes>("AllGrass");
+        buildings = ES2.LoadList<Buildings>("AllBuildings");
         //BuildingsGO = new GameObject[buildings.Count];
-        grassPatches = new DraggableGrass[99];
-        foreach (var grass in grassSaved)
+        BuildingsGO = new DraggableBuildings[99];
+        foreach (var building in buildings)
         {
-            InitBuildings(grass);
+            InitBuildings(building);
         }
         InvokeRepeating("SaveBuildings", 0, 5);
         InvokeRepeating("CheckForHarvest", 0, 1);
     }
 
-    public void InitBuildings(GrassTypes grass)
+    public void InitBuildings(Buildings building)
     {
-        grassPatches[grass.id] = Instantiate(grassPrefab, transform);
-        grassPatches[grass.id].transform.localPosition = grass.pos;
-        grassPatches[grass.id].gameObject.name = "Grass" + grass.id;
-        grassPatches[grass.id].spriteRenderer.sprite = buildingSpriteBank.Single(s => s.name == grass.name); //Resources.Load<Sprite>("Textures/Buildings/" + building.name);
-        grassPatches[grass.id].id = grass.id;
-        grassPatches[grass.id].buildingID = grass.buildingID;
-        grassPatches[grass.id].pos = grass.pos;
-        grassPatches[grass.id].level = grass.level;
-        grassPatches[grass.id].itemID = grass.itemID;
-        grassPatches[grass.id].state = (BUILDINGS_STATE)grass.state;
-        grassPatches[grass.id].unlockedQueueSlots = grass.unlockedQueueSlots;
-        DisableOutlineOnSprite(grass.id);
-        switch (grassPatches[grass.id].state)
+        BuildingsGO[building.id] = Instantiate(buildingPrefab, transform);
+        BuildingsGO[building.id].transform.localPosition = building.pos;
+        BuildingsGO[building.id].gameObject.name = "Building" + building.id;
+        BuildingsGO[building.id].spriteRenderer.sprite = buildingSpriteBank.Single(s => s.name == building.name); //Resources.Load<Sprite>("Textures/Buildings/" + building.name);
+        BuildingsGO[building.id].id = building.id;
+        BuildingsGO[building.id].buildingID = building.buildingID;
+        BuildingsGO[building.id].pos = building.pos;
+        BuildingsGO[building.id].level = building.level;
+        BuildingsGO[building.id].itemID = building.itemID;
+        BuildingsGO[building.id].state = (BUILDINGS_STATE)building.state;
+        BuildingsGO[building.id].unlockedQueueSlots = building.unlockedQueueSlots;
+        DisableOutlineOnSprite(building.id);
+        switch (BuildingsGO[building.id].state)
         {
             case BUILDINGS_STATE.NONE:
                 //BuildingsGO[building.id].spriteRenderer.color = Color.white;
@@ -67,12 +73,12 @@ public class CoopGrassManager : MonoBehaviour
             default:
                 break;
         }
-        grassPatches[grass.id].dateTime = DateTime.Parse(grass.dateTime);
+        BuildingsGO[building.id].dateTime = DateTime.Parse(building.dateTime);
     }
 
     private void Update() // all long press logic	
     {
-        if (isTilePressed && grassPatches[mouseDownBuildingID].buildingID != 0)
+        if (isTilePressed && BuildingsGO[mouseDownBuildingID].buildingID != 0)
         {
             if (longPressTimer >= longPressTime)
             {
@@ -80,7 +86,7 @@ public class CoopGrassManager : MonoBehaviour
                 longPressBuildingID = mouseDownBuildingID;
                 mouseDownBuildingID = -1;
                 isTilePressed = false;
-                grassPatches[longPressBuildingID].isSelected = true;
+                BuildingsGO[longPressBuildingID].isSelected = true;
                 EnableOutlineOnSprite(longPressBuildingID);
                 return;
             }
@@ -101,29 +107,29 @@ public class CoopGrassManager : MonoBehaviour
 
     private void CheckForHarvest()
     {
-        for (int i = 0; i < grassPatches.Length; i++)
+        for (int i = 0; i < BuildingsGO.Length; i++)
         {
-            if (grassPatches[i] != null && grassPatches[i].state == BUILDINGS_STATE.GROWING)
+            if (BuildingsGO[i] != null && BuildingsGO[i].state == BUILDINGS_STATE.GROWING)
             {
-                TimeSpan currentTime = grassPatches[i].dateTime.Subtract(UTC.time.liveDateTime);
+                TimeSpan currentTime = BuildingsGO[i].dateTime.Subtract(UTC.time.liveDateTime);
                 float currentTimeInSeconds = currentTime.Seconds;
-                float totalSeconds = ItemDatabase.Instance.items[grassPatches[i].buildingID].timeRequiredInMins * 60;
+                float totalSeconds = ItemDatabase.Instance.items[BuildingsGO[i].buildingID].timeRequiredInMins * 60;
                 float divisionFactor = totalSeconds / 4;
 
                 if (currentTimeInSeconds >= divisionFactor * 3) //22.5 seed
                 {
-                    ChangeFarmPlantSprite(grassPatches[i], PLANT_STAGES.SEED);
+                    ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.SEED);
                 } else if (currentTimeInSeconds >= divisionFactor * 2) //15 shrub
                 {
-                    ChangeFarmPlantSprite(grassPatches[i], PLANT_STAGES.SHRUB);
+                    ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.SHRUB);
                 } else if (currentTimeInSeconds >= divisionFactor) //7.5 plant
                 {
-                    ChangeFarmPlantSprite(grassPatches[i], PLANT_STAGES.PLANT);
+                    ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.PLANT);
                 } else if (currentTimeInSeconds <= 0) // 0 mature
                 {
-                    ChangeFarmPlantSprite(grassPatches[i], PLANT_STAGES.MATURE);
-                    grassPatches[i].state = BUILDINGS_STATE.WAITING_FOR_HARVEST;
-                    grassPatches[i].dateTime = new System.DateTime();
+                    ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.MATURE);
+                    BuildingsGO[i].state = BUILDINGS_STATE.WAITING_FOR_HARVEST;
+                    BuildingsGO[i].dateTime = new System.DateTime();
                     //BuildingsGO[i].spriteRenderer.color = Color.red;
                 }
             }
@@ -154,10 +160,10 @@ public class CoopGrassManager : MonoBehaviour
     private Sprite GetPlantSpriteFromBank(string spriteName)
     {
         Sprite sprite = new Sprite();
-        sprite = grassSpriteBank.Single(s => s.name == spriteName);
+        sprite = plantsSpriteBank.Single(s => s.name == spriteName);
         if (sprite != null)
         {
-            return grassSpriteBank.Single(s => s.name == spriteName);
+            return plantsSpriteBank.Single(s => s.name == spriteName);
         } else
         {
             Debug.Log("Sprite Not Found " + spriteName);
@@ -167,13 +173,13 @@ public class CoopGrassManager : MonoBehaviour
 
     public void DisplayMasterMenu(int b_ID) // Display field Crop Menu
     {
-        MasterMenuManager.Instance.PopulateItemsInMasterMenu(grassPatches[b_ID].buildingID);
+        MasterMenuManager.Instance.PopulateItemsInMasterMenu(BuildingsGO[b_ID].buildingID);
         MenuManager.Instance.DisableAllMenus();
         buildingSelectedID = b_ID;
 
         //Animatin Stuff
         // MasterMenuGO.transform.GetChild(0).gameObject.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
-        MasterMenuGO.transform.position = grassPatches[b_ID].transform.position;
+        MasterMenuGO.transform.position = BuildingsGO[b_ID].transform.position;
         MasterMenuGO.SetActive(true);
         //LeanTween.scale(MasterMenuGO.transform.GetChild(0).gameObject, new Vector3(2, 2, 2), 0.2f, IGMMenu.m_instance.ease);
     }
@@ -182,21 +188,21 @@ public class CoopGrassManager : MonoBehaviour
     {
         if (MasterMenuManager.Instance.isItemSelected == true)
         {
-            if (grassPatches[buildingID].buildingID == 0)
+            if (BuildingsGO[buildingID].buildingID == 0)
             { // selected building is feild
                 if (plantedOnSelectedfield || buildingSelectedID == buildingID)
                 {
                     if (PlayerInventoryManager.Instance.playerInventory[MasterMenuManager.Instance.itemSelectedID].count >= 1)
                     {
-                        grassPatches[buildingID].state = BUILDINGS_STATE.GROWING;
-                        grassPatches[buildingID].itemID = MasterMenuManager.Instance.itemSelectedID;
-                        grassPatches[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
+                        BuildingsGO[buildingID].state = BUILDINGS_STATE.GROWING;
+                        BuildingsGO[buildingID].itemID = MasterMenuManager.Instance.itemSelectedID;
+                        BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
                             ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].timeRequiredInMins);
                         // BuildingsGO[buildingID].spriteRenderer.color = Color.green;
 
                         string plantName = ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].name + "_0";
 
-                        grassPatches[buildingID].plantsSprite.sprite = GetPlantSpriteFromBank(plantName);
+                        BuildingsGO[buildingID].plantsSprite.sprite = GetPlantSpriteFromBank(plantName);
                         PlayerInventoryManager.Instance.playerInventory[MasterMenuManager.Instance.itemSelectedID].count--;
                         MasterMenuManager.Instance.UpdateSeedValue();
                         SaveBuildings();
@@ -209,11 +215,11 @@ public class CoopGrassManager : MonoBehaviour
                 if (buildingSelectedID == buildingID && DoesInventoryHasItems(buildingID))
                 {
                     DecrementItemsFromInventory();
-                    grassPatches[buildingID].state = BUILDINGS_STATE.GROWING;
-                    grassPatches[buildingID].itemID = MasterMenuManager.Instance.itemSelectedID;
-                    grassPatches[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
+                    BuildingsGO[buildingID].state = BUILDINGS_STATE.GROWING;
+                    BuildingsGO[buildingID].itemID = MasterMenuManager.Instance.itemSelectedID;
+                    BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
                         ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].timeRequiredInMins);
-                    grassPatches[buildingID].spriteRenderer.color = Color.green;
+                    BuildingsGO[buildingID].spriteRenderer.color = Color.green;
                 }
             }
         }
@@ -311,14 +317,14 @@ public class CoopGrassManager : MonoBehaviour
             // TODO Heavy update required for field Level Based cals*******************
             // only 2 items are added in storage
             //			print (FarmLands [buildingID].GetComponent <FarmLands> ().itemID);		 
-            PlayerInventoryManager.Instance.UpdateFarmItems(Convert.ToInt32(grassPatches[buildingID].itemID), 2);
-            PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.Instance.items[grassPatches[buildingID].itemID].XP);
-            grassPatches[buildingID].state = BUILDINGS_STATE.NONE;
+            PlayerInventoryManager.Instance.UpdateFarmItems(Convert.ToInt32(BuildingsGO[buildingID].itemID), 2);
+            PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.Instance.items[BuildingsGO[buildingID].itemID].XP);
+            BuildingsGO[buildingID].state = BUILDINGS_STATE.NONE;
 
-            grassPatches[buildingID].dateTime = new System.DateTime();
-            grassPatches[buildingID].itemID = -1;
+            BuildingsGO[buildingID].dateTime = new System.DateTime();
+            BuildingsGO[buildingID].itemID = -1;
             //BuildingsGO[buildingID].spriteRenderer.color = Color.white;
-            grassPatches[buildingID].plantsSprite.sprite = new Sprite();
+            BuildingsGO[buildingID].plantsSprite.sprite = new Sprite();
             HarvestMenuManager.Instance.ToggleDisplayHarvestingMenu();
         }
     }
@@ -326,7 +332,7 @@ public class CoopGrassManager : MonoBehaviour
     public void ShowReadyToHarvestCropsMenu(int buildingID) // Display Harvesting Menu
     {
         MenuManager.Instance.DisableAllMenus();
-        FarmHarvestingMenu.transform.position = grassPatches[buildingID].transform.position;
+        FarmHarvestingMenu.transform.position = BuildingsGO[buildingID].transform.position;
         FarmHarvestingMenu.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
         FarmHarvestingMenu.SetActive(true);
         LeanTween.scale(FarmHarvestingMenu, Vector3.one, 0.2f, MenuManager.Instance.ease);
@@ -334,22 +340,22 @@ public class CoopGrassManager : MonoBehaviour
 
     public void CollectItemsOnBuildings(int buildingID) //Collecting Items on buildings
     {
-        PlayerInventoryManager.Instance.UpdateFarmItems(grassPatches[buildingID].itemID, 1);
-        PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.Instance.items[grassPatches[buildingID].itemID].XP);
-        grassPatches[buildingID].state = BUILDINGS_STATE.NONE;
-        grassPatches[buildingID].dateTime = new System.DateTime();
-        grassPatches[buildingID].itemID = -1;
+        PlayerInventoryManager.Instance.UpdateFarmItems(BuildingsGO[buildingID].itemID, 1);
+        PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.Instance.items[BuildingsGO[buildingID].itemID].XP);
+        BuildingsGO[buildingID].state = BUILDINGS_STATE.NONE;
+        BuildingsGO[buildingID].dateTime = new System.DateTime();
+        BuildingsGO[buildingID].itemID = -1;
         // BuildingsGO[buildingID].spriteRenderer.color = Color.white;
-        grassPatches[buildingID].plantsSprite.sprite = new Sprite();
+        BuildingsGO[buildingID].plantsSprite.sprite = new Sprite();
     }
 
     public void DisableAnyOpenMenus()
     {
-        for (int i = 0; i < grassPatches.Length; i++)
+        for (int i = 0; i < BuildingsGO.Length; i++)
         {
-            if (grassPatches[i] != null)
+            if (BuildingsGO[i] != null)
             {
-                grassPatches[i].isSelected = false;
+                BuildingsGO[i].isSelected = false;
                 DisableOutlineOnSprite(i);
             }
         }
@@ -358,8 +364,8 @@ public class CoopGrassManager : MonoBehaviour
 
     public void ShowFarmLandTimeRemaining()
     {
-        remainingTime = grassPatches[tempID].dateTime.Subtract(UTC.time.liveDateTime);
-        TimeRemainingMenu.transform.position = grassPatches[tempID].transform.position;
+        remainingTime = BuildingsGO[tempID].dateTime.Subtract(UTC.time.liveDateTime);
+        TimeRemainingMenu.transform.position = BuildingsGO[tempID].transform.position;
         if (remainingTime <= new System.TimeSpan(360, 0, 0, 0))
         { //> 1year
             TimeRemainingMenu.transform.GetChild(1).GetComponent<TextMeshPro>().text = remainingTime.Days.ToString() + "d " + remainingTime.Hours.ToString() + "h";
@@ -384,56 +390,56 @@ public class CoopGrassManager : MonoBehaviour
 
     private void EnableOutlineOnSprite(int selectedFieldID)
     {
-        if (grassPatches[selectedFieldID].buildingID != 0)
+        if (BuildingsGO[selectedFieldID].buildingID != 0)
         {
-            grassPatches[selectedFieldID].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
+            BuildingsGO[selectedFieldID].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
         }
 
     }
 
     private void DisableOutlineOnSprite(int selectedFieldID)
     {
-        if (grassPatches[selectedFieldID].buildingID != 0)
+        if (BuildingsGO[selectedFieldID].buildingID != 0)
         {
-            grassPatches[selectedFieldID].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 0);
+            BuildingsGO[selectedFieldID].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 0);
         }
     }
 
     public void AddNewBuilding(Vector2 pos, int buildingID)
     {
-        grassSaved.Add(new Buildings(grassSaved.Count + 1, buildingID, BuildingDatabase.Instance.buildingInfo[buildingID].name.ToString(), pos,
+        buildings.Add(new Buildings(buildings.Count + 1, buildingID, BuildingDatabase.Instance.buildingInfo[buildingID].name.ToString(), pos,
             1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-        ES2.Save(grassSaved, "AllBuildings");
-        InitBuildings(grassSaved[grassSaved.Count - 1]);
+        ES2.Save(buildings, "AllBuildings");
+        InitBuildings(buildings[buildings.Count - 1]);
     }
-
-    #region OnMouse Functions
 
     private void OneTimeOnly()
     {
         if (PlayerPrefs.GetInt("firstBuilding") <= 0)
         {
             ES2.Delete("AllBuildings");
-            grassSaved.Add(new Buildings(0, 0, "Field", new Vector2(0, 0), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            grassSaved.Add(new Buildings(1, 0, "Field", new Vector2(4, 0), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            grassSaved.Add(new Buildings(2, 0, "Field", new Vector2(8, 0), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            grassSaved.Add(new Buildings(3, 0, "Field", new Vector2(0, -4), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            grassSaved.Add(new Buildings(4, 0, "Field", new Vector2(4, -4), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            grassSaved.Add(new Buildings(5, 0, "Field", new Vector2(8, -4), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            grassSaved.Add(new Buildings(6, 0, "Field", new Vector2(0, -8), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            grassSaved.Add(new Buildings(7, 0, "Field", new Vector2(4, -8), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            grassSaved.Add(new Buildings(8, 0, "Field", new Vector2(8, -8), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            grassSaved.Add(new Buildings(9, 0, "Field", new Vector2(0, -12), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            grassSaved.Add(new Buildings(10, 0, "Field", new Vector2(4, -12), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            grassSaved.Add(new Buildings(11, 0, "Field", new Vector2(8, -12), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(0, 0, "Field", new Vector2(0, 0), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(1, 0, "Field", new Vector2(4, 0), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(2, 0, "Field", new Vector2(8, 0), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(3, 0, "Field", new Vector2(0, -4), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(4, 0, "Field", new Vector2(4, -4), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(5, 0, "Field", new Vector2(8, -4), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(6, 0, "Field", new Vector2(0, -8), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(7, 0, "Field", new Vector2(4, -8), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(8, 0, "Field", new Vector2(8, -8), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(9, 0, "Field", new Vector2(0, -12), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(10, 0, "Field", new Vector2(4, -12), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(11, 0, "Field", new Vector2(8, -12), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
 
             //buildings.Add(new Buildings(5, 1, "Bakery", new Vector2(1, 1), 1, 0, 2, -1, System.DateTime.UtcNow.ToString()));
             // buildings.Add(new Buildings(6, 2, "FeedMill", new Vector2(2, 1), 1, 0, 2, -1, System.DateTime.UtcNow.ToString()));
             // buildings.Add(new Buildings(7, 3, "Dairy", new Vector2(3, 1), 1, 0, 2, -1, System.DateTime.UtcNow.ToString()));
-            ES2.Save(grassSaved, "AllBuildings");
+            ES2.Save(buildings, "AllBuildings");
             PlayerPrefs.SetInt("firstBuilding", 1);
         }
     }
+
+    #region OnMouse Functions
 
     public void CallParentOnMouseDown(int buildingID)
     {
@@ -442,7 +448,7 @@ public class CoopGrassManager : MonoBehaviour
         mouseDownBuildingID = buildingID;
         if (buildingID != longPressBuildingID && longPressBuildingID != -1)
         {
-            grassPatches[longPressBuildingID].isSelected = false;
+            BuildingsGO[longPressBuildingID].isSelected = false;
             DisableOutlineOnSprite(longPressBuildingID);
             isLongPress = false;
         }
@@ -454,7 +460,7 @@ public class CoopGrassManager : MonoBehaviour
         mouseDownBuildingID = -1;
         if (!isLongPress)
         {
-            switch (grassPatches[buildingID].state)
+            switch (BuildingsGO[buildingID].state)
             {
                 case BUILDINGS_STATE.NONE:
                     if (GEM.GetTouchState() == GEM.TOUCH_STATES.e_none)
@@ -471,10 +477,10 @@ public class CoopGrassManager : MonoBehaviour
                         isFarmTimerEnabled = true;
                     }
                     TimeRemainingMenu.transform.GetChild(0).GetComponent<TextMeshPro>().text =
-                    ItemDatabase.Instance.items[grassPatches[tempID].itemID].name.ToString();
+                    ItemDatabase.Instance.items[BuildingsGO[tempID].itemID].name.ToString();
                     break;
                 case BUILDINGS_STATE.WAITING_FOR_HARVEST:
-                    if (grassPatches[buildingID].buildingID == 0)
+                    if (BuildingsGO[buildingID].buildingID == 0)
                     { // if field selected
                         ShowReadyToHarvestCropsMenu(buildingID);
                     } else
@@ -489,7 +495,7 @@ public class CoopGrassManager : MonoBehaviour
         {
             if (buildingID != longPressBuildingID)
             {
-                grassPatches[longPressBuildingID].isSelected = false;
+                BuildingsGO[longPressBuildingID].isSelected = false;
                 DisableOutlineOnSprite(longPressBuildingID);
                 isLongPress = false;
             }
@@ -498,13 +504,13 @@ public class CoopGrassManager : MonoBehaviour
 
     public void CallParentOnMouseEnter(int buildingID)
     {
-        switch (grassPatches[buildingID].state)
+        switch (BuildingsGO[buildingID].state)
         {
             case BUILDINGS_STATE.NONE:
                 PlantItemsOnBuildings(buildingID);
                 break;
             case BUILDINGS_STATE.WAITING_FOR_HARVEST:
-                if (grassPatches[buildingID].buildingID == 0)
+                if (BuildingsGO[buildingID].buildingID == 0)
                 { // if field selected
                     HarvestCropOnFarmLand(buildingID);
                 }
@@ -516,9 +522,9 @@ public class CoopGrassManager : MonoBehaviour
 
     public void CallParentOnMouseDrag(int buildingID)
     {
-        if (grassPatches[buildingID].isSelected && grassPatches[buildingID].buildingID != 0)
+        if (BuildingsGO[buildingID].isSelected && BuildingsGO[buildingID].buildingID != 0)
         {
-            grassPatches[buildingID].transform.position = new Vector3(Mathf.Round(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 0, 0)).x),
+            BuildingsGO[buildingID].transform.position = new Vector3(Mathf.Round(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 0, 0)).x),
                 Mathf.Round(Camera.main.ScreenToWorldPoint(new Vector3(0, Input.mousePosition.y, 0)).y), 0);
         }
     }
@@ -527,26 +533,26 @@ public class CoopGrassManager : MonoBehaviour
 
     void SaveBuildings()
     {
-        foreach (var item in grassSaved)
+        foreach (var item in buildings)
         {
-            item.pos = grassPatches[item.id].transform.localPosition;
-            item.id = grassPatches[item.id].id;
-            item.buildingID = grassPatches[item.id].buildingID;
-            item.level = grassPatches[item.id].level;
-            item.state = (sbyte)grassPatches[item.id].state;
-            item.unlockedQueueSlots = grassPatches[item.id].unlockedQueueSlots;
-            item.itemID = grassPatches[item.id].itemID;
-            item.dateTime = grassPatches[item.id].dateTime.ToString();
+            item.pos = BuildingsGO[item.id].transform.localPosition;
+            item.id = BuildingsGO[item.id].id;
+            item.buildingID = BuildingsGO[item.id].buildingID;
+            item.level = BuildingsGO[item.id].level;
+            item.state = (sbyte)BuildingsGO[item.id].state;
+            item.unlockedQueueSlots = BuildingsGO[item.id].unlockedQueueSlots;
+            item.itemID = BuildingsGO[item.id].itemID;
+            item.dateTime = BuildingsGO[item.id].dateTime.ToString();
         }
-        ES2.Save(grassSaved, "AllBuildings");
+        ES2.Save(buildings, "AllBuildings");
     }
 }
 
 [System.Serializable]
-public class GrassTypes  // iLIST
+public class Buildings  // iLIST
 {
     public int id;
-    public int grassID;
+    public int buildingID;
     public string name;
     public Vector2 pos;
     public int level;
@@ -555,14 +561,14 @@ public class GrassTypes  // iLIST
     public int itemID;
     public string dateTime;
 
-    public GrassTypes()
+    public Buildings()
     {
     }
 
-    public GrassTypes(int f_id, int f_grassID, string f_name, Vector2 f_pos, int f_level, int f_state, int f_unlockedQueueSlots, int f_itemID, string f_dateTime)//, Queue <int>  f_itemID, Queue <string>  f_dateTime)
+    public Buildings(int f_id, int f_buildingID, string f_name, Vector2 f_pos, int f_level, int f_state, int f_unlockedQueueSlots, int f_itemID, string f_dateTime)//, Queue <int>  f_itemID, Queue <string>  f_dateTime)
     {
         id = f_id;
-        grassID = f_grassID;
+        buildingID = f_buildingID;
         name = f_name;
         pos = f_pos;
         level = f_level;
@@ -574,11 +580,17 @@ public class GrassTypes  // iLIST
     }
 }
 
-public enum GRASS_STATE
+public enum BUILDINGS_STATE
 {
     NONE,
     GROWING,
     WAITING_FOR_HARVEST
 };
 
-
+public enum PLANT_STAGES
+{
+    SEED,
+    SHRUB,
+    PLANT,
+    MATURE
+};

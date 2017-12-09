@@ -106,13 +106,11 @@ namespace HarvestValley.TouchClickInput
         static OnSwipeDetectedHandler _OnSwipeDetected;
         public static event OnSwipeDetectedHandler OnSwipeDetected
         {
-            add
-            {
+            add {
                 _OnSwipeDetected += value;
                 autoDetectSwipes = true;
             }
-            remove
-            {
+            remove {
                 _OnSwipeDetected -= value;
             }
         }
@@ -121,12 +119,10 @@ namespace HarvestValley.TouchClickInput
         static OnTouchUp _OnTouchUp;
         public static event OnTouchUp OnTouchUpDetected
         {
-            add
-            {
+            add {
                 _OnTouchUp += value;
             }
-            remove
-            {
+            remove {
                 _OnTouchUp -= value;
             }
         }
@@ -135,12 +131,10 @@ namespace HarvestValley.TouchClickInput
         static OnTouchDown _OnTouchDown;
         public static event OnTouchDown OnTouchDownDetected
         {
-            add
-            {
+            add {
                 _OnTouchDown += value;
             }
-            remove
-            {
+            remove {
                 _OnTouchDown -= value;
             }
         }
@@ -149,12 +143,10 @@ namespace HarvestValley.TouchClickInput
         static OnScreenDrag _OnScreenDrag;
         public static event OnScreenDrag OnScreenDragDetected
         {
-            add
-            {
+            add {
                 _OnScreenDrag += value;
             }
-            remove
-            {
+            remove {
                 _OnScreenDrag -= value;
             }
         }
@@ -169,7 +161,7 @@ namespace HarvestValley.TouchClickInput
 
         void Start()
         {
-            ease.Add("ease", LeanTweenType.easeOutSine);
+            ease.Add("ease", LeanTweenType.easeOutQuint);
             OnSwipeDetected += OnSwipeDetectedFun;
         }
 
@@ -277,7 +269,7 @@ namespace HarvestValley.TouchClickInput
                 secondPressPos = firstPressPos = Vector2.zero;
                 return false;
             }
-            print("GetMouseInput");
+            //print("GetMouseInput");
             if (Input.GetMouseButtonDown(0))  // Swipe/Click started
             {
                 firstPressPos = Input.mousePosition;
