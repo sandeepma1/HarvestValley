@@ -21,28 +21,45 @@ public class GrassManager : MonoBehaviour
     {
         Instance = this;
         OneTimeOnly();
+    }
+
+    private void Start()
+    {
         //https://answers.unity.com/questions/1175266/getting-single-sprite-from-a-sprite-multiple.html
         grassSpriteBank = Resources.LoadAll<Sprite>("Textures/Plants"); // loads all sprite from Resource folder
         buildingSpriteBank = Resources.LoadAll<Sprite>("Textures/Buildings");
         Init();
     }
-
     private void Init()
     {
         grassSaved = ES2.LoadList<GrassTypes>("AllGrass");
-        //BuildingsGO = new GameObject[buildings.Count];
-        grassPatches = new DraggableGrass[99];
+        //Grass Patches increase based on levels and when unlocked with money
+        //int grassPatchLevel = PlayerProfileManager.Instance.CurrentPlayerLevel() * 11;
+        int grassPatchAmount = 33;
+        grassPatches = new DraggableGrass[grassPatchAmount]; //11* number of rows      
+        int posX = 0;
+        int posY = 0;
         foreach (var grass in grassSaved)
         {
-            InitBuildings(grass);
+            if (grass.id != -1)
+            {
+                InitGrass(grass, new Vector3(posX, posY, 0));
+                posX++;
+                if (posX > 10) // max columns in the view
+                {
+                    posX = 0;
+                    posY--;
+                }
+            }
         }
         //InvokeRepeating("SaveGrassPatch", 0, 5);
         InvokeRepeating("CheckForHarvest", 0, 1);
     }
 
-    public void InitBuildings(GrassTypes grass)
+    public void InitGrass(GrassTypes grass, Vector3 position)
     {
         grassPatches[grass.id] = Instantiate(grassPrefab, transform);
+        grassPatches[grass.id].transform.localPosition = position;
         grassPatches[grass.id].gameObject.name = "GrassPatch" + grass.id;
         grassPatches[grass.id].id = grass.id;
         grassPatches[grass.id].grassTypeID = grass.grassTypeID;
@@ -408,11 +425,10 @@ public class GrassManager : MonoBehaviour
         if (PlayerPrefs.GetInt("firstGrass") <= 0)
         {
             ES2.Delete("AllGrass");
-            grassSaved.Add(new GrassTypes(0, 0, 0, System.DateTime.UtcNow.ToString()));
-            grassSaved.Add(new GrassTypes(1, 0, 0, System.DateTime.UtcNow.ToString()));
-            grassSaved.Add(new GrassTypes(2, 0, 0, System.DateTime.UtcNow.ToString()));
-            grassSaved.Add(new GrassTypes(3, 0, 0, System.DateTime.UtcNow.ToString()));
-            grassSaved.Add(new GrassTypes(4, 0, 0, System.DateTime.UtcNow.ToString()));
+            for (int i = 0; i < 33; i++)
+            {
+                grassSaved.Add(new GrassTypes(i, 0, 0, System.DateTime.UtcNow.ToString()));
+            }
             ES2.Save(grassSaved, "AllGrass");
             PlayerPrefs.SetInt("firstGrass", 1);
         }

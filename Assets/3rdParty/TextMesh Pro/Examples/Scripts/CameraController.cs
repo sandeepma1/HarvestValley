@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace TMPro.Examples
 {
-    
+
     public class CameraController : MonoBehaviour
     {
         public enum CameraModes { Follow, Isometric, Free }
@@ -52,10 +52,10 @@ namespace TMPro.Examples
 
         void Awake()
         {
-            if (QualitySettings.vSyncCount > 0)
-                Application.targetFrameRate = 60;
-            else
-                Application.targetFrameRate = -1;
+            //if (QualitySettings.vSyncCount > 0)
+            //    Application.targetFrameRate = 60;
+            //else
+            //    Application.targetFrameRate = -1;
 
             if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.Android)
                 Input.simulateMouseWithTouches = false;
@@ -88,12 +88,10 @@ namespace TMPro.Examples
                 if (CameraMode == CameraModes.Isometric)
                 {
                     desiredPosition = CameraTarget.position + Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * new Vector3(0, 0, -FollowDistance);
-                }
-                else if (CameraMode == CameraModes.Follow)
+                } else if (CameraMode == CameraModes.Follow)
                 {
                     desiredPosition = CameraTarget.position + CameraTarget.TransformDirection(Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * (new Vector3(0, 0, -FollowDistance)));
-                }
-                else
+                } else
                 {
                     // Free Camera implementation
                 }
@@ -103,8 +101,7 @@ namespace TMPro.Examples
                     // Using Smoothing
                     cameraTransform.position = Vector3.SmoothDamp(cameraTransform.position, desiredPosition, ref currentVelocity, MovementSmoothingValue * Time.fixedDeltaTime);
                     //cameraTransform.position = Vector3.Lerp(cameraTransform.position, desiredPosition, Time.deltaTime * 5.0f);
-                }
-                else
+                } else
                 {
                     // Not using Smoothing
                     cameraTransform.position = desiredPosition;
@@ -206,8 +203,7 @@ namespace TMPro.Examples
                         {
                             // Reset Follow Position
                             OrbitalAngle = 0;
-                        }
-                        else
+                        } else
                         {
                             CameraTarget = hit.transform;
                             OrbitalAngle = 0;
@@ -229,8 +225,7 @@ namespace TMPro.Examples
                         CameraTarget = dummyTarget;
                         previousSmoothing = MovementSmoothing;
                         MovementSmoothing = false;
-                    }
-                    else if (dummyTarget != CameraTarget)
+                    } else if (dummyTarget != CameraTarget)
                     {
                         // Move DummyTarget to CameraTarget
                         dummyTarget.position = CameraTarget.position;
