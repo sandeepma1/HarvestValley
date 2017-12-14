@@ -76,7 +76,6 @@ public class MasterMenuManager : MonoBehaviour
         }
     }
 
-    //PopulateItemsInMasterMenu
     public void PopulateItemsInMasterMenu(int buildingID)
     {
         for (int i = 0; i < menuItems.Length; i++)
