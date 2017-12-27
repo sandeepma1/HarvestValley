@@ -43,7 +43,7 @@ namespace AStar_2D.Editor.Controls
             if (manager != null)
             {
                 // Check for change
-                if(Event.current.type == EventType.layout)
+                if(Event.current.type == EventType.Layout)
                     if (manager.ActiveThreads != views.Count)
                         updateCollection();
             }

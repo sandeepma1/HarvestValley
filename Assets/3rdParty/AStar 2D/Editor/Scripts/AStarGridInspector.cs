@@ -60,7 +60,7 @@ namespace AStar_2D.Editor
 		public override void onRender ()
 		{
 			// Check for state change
-			if (Event.current.type == EventType.layout)
+			if (Event.current.type == EventType.Layout)
 			if (targetState != state)
 				state = targetState;
 
