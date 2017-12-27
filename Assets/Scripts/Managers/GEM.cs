@@ -17,7 +17,7 @@ public static class GEM
     public static int numberOfRocksInLevel = 0;
     //public static bool isSeedSelected = false;
     //public static int seedSelectedID = -1;
-    public static int[] screensPositions = new int[] { 0, 13, 26, 39, 52, 65, 78 };
+    public static int[] screensPositions = new int[] { 0, 7, 24, 41, 58, 75, 92 };
     public static int[] farmLandUpgrade = new int[] { 1, 3, 5, 7, 9, 11, 13, 16 };
     public static bool isDragging = false;
 

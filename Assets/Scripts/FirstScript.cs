@@ -20,6 +20,7 @@ public class FirstScript : MonoBehaviour
         PlayerPrefs.SetInt("playerProfile", 0);
         PlayerPrefs.SetInt("playerInventory", 0);
         PlayerPrefs.SetInt("firstGrass", 0);
+        PlayerPrefs.SetInt("firstBuilding", 0);
         StartCoroutine("RestartGame");
     }
 

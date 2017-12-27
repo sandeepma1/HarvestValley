@@ -169,7 +169,7 @@ namespace HarvestValley.TouchClickInput
 
         void Start()
         {
-            ease.Add("ease", LeanTweenType.easeOutQuint);
+            //ease.Add("ease", LeanTweenType.easeOutQuint);
             OnSwipeDetected += OnSwipeDetectedFun;
         }
 
@@ -269,10 +269,8 @@ namespace HarvestValley.TouchClickInput
 
         static bool GetMouseInput()
         {
-
             if (GEM.isDragging)
             {
-                print("GEM.isDragging " + GEM.isDragging);
                 //swipeEnded = false;
                 secondPressPos = firstPressPos = Vector2.zero;
                 return false;
