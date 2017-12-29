@@ -269,7 +269,7 @@ namespace HarvestValley.TouchClickInput
 
         static bool GetMouseInput()
         {
-            if (GEM.isDragging)
+            if (GEM.isObjectDragging)
             {
                 //swipeEnded = false;
                 secondPressPos = firstPressPos = Vector2.zero;

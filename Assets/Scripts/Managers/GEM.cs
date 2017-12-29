@@ -19,7 +19,7 @@ public static class GEM
     //public static int seedSelectedID = -1;
     public static int[] screensPositions = new int[] { 0, 7, 24, 41, 58, 75, 92 };
     public static int[] farmLandUpgrade = new int[] { 1, 3, 5, 7, 9, 11, 13, 16 };
-    public static bool isDragging = false;
+    public static bool isObjectDragging = false;
 
     public delegate void GameEvent();
 

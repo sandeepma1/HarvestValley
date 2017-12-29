@@ -11,7 +11,7 @@ public class DraggableHarvesting : MonoBehaviour
 
     void OnMouseDrag()
     {
-        GEM.isDragging = true;
+        GEM.isObjectDragging = true;
         HarvestMenuManager.Instance.isScytheSelected = true;
         transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y + 10, 10));
         GetComponent<BoxCollider2D>().enabled = false;
@@ -19,7 +19,7 @@ public class DraggableHarvesting : MonoBehaviour
 
     void OnMouseUp()
     {
-        GEM.isDragging = false;
+        GEM.isObjectDragging = false;
         transform.localPosition = intialPosition;
         HarvestMenuManager.Instance.isScytheSelected = false;
         GetComponent<BoxCollider2D>().enabled = true;
