@@ -1,60 +1,51 @@
 fileFormatVersion: 2
-guid: 150a8d7474ff32e49a068ae179b8dfc1
-timeCreated: 1514394413
+guid: f2c196885d387cd44b7053883ecc5c89
+timeCreated: 1514571941
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: BuildingsTexture2_0
-    21300002: BuildingsTexture2_1
-    21300004: BuildingsTexture2_2
-    21300006: BuildingsTexture2_3
-    21300008: BuildingsTexture2_4
-    21300010: BuildingsTexture2_5
-    21300012: BuildingsTexture2_6
-    21300014: BuildingsTexture2_7
-    21300016: BuildingsTexture2_8
-    21300018: BuildingsTexture2_9
-    21300020: BuildingsTexture2_10
-    21300022: BuildingsTexture2_11
-    21300024: BuildingsTexture2_12
-    21300026: BuildingsTexture2_13
-    21300028: BuildingsTexture2_14
-    21300030: BuildingsTexture2_15
-    21300032: BuildingsTexture2_16
-    21300034: BuildingsTexture2_17
-    21300036: BuildingsTexture2_18
-    21300038: BuildingsTexture2_19
-    21300040: BuildingsTexture2_20
-    21300042: BuildingsTexture2_21
-    21300044: BuildingsTexture2_22
-    21300046: BuildingsTexture2_23
-    21300048: BuildingsTexture2_24
-    21300050: BuildingsTexture2_25
-    21300052: BuildingsTexture2_26
-    21300054: BuildingsTexture2_27
-    21300056: BuildingsTexture2_28
-    21300058: BuildingsTexture2_29
-    21300060: BuildingsTexture2_30
-    21300062: BuildingsTexture2_31
-    21300064: BuildingsTexture2_32
-    21300066: BuildingsTexture2_33
-    21300068: BuildingsTexture2_34
-    21300070: BuildingsTexture2_35
-    21300072: BuildingsTexture2_36
-    21300074: BuildingsTexture2_37
-    21300076: BuildingsTexture2_38
-    21300078: BuildingsTexture2_39
-    21300080: BuildingsTexture2_40
-    21300082: BuildingsTexture2_41
-    21300084: BuildingsTexture2_42
-    21300086: BuildingsTexture2_43
-    21300088: BuildingsTexture2_44
-    21300090: BuildingsTexture2_45
-    21300092: BuildingsTexture2_46
-    21300094: BuildingsTexture2_47
-    21300096: BuildingsTexture2_48
-    21300098: BuildingsTexture2_49
-    21300100: BuildingsTexture2_50
+    21300000: BuildingsTexture3_0
+    21300002: BuildingsTexture3_1
+    21300004: BuildingsTexture3_2
+    21300006: BuildingsTexture3_3
+    21300008: BuildingsTexture3_4
+    21300010: BuildingsTexture3_5
+    21300012: BuildingsTexture3_6
+    21300014: BuildingsTexture3_7
+    21300016: BuildingsTexture3_8
+    21300018: BuildingsTexture3_9
+    21300020: BuildingsTexture3_10
+    21300022: BuildingsTexture3_11
+    21300024: BuildingsTexture3_12
+    21300026: BuildingsTexture3_13
+    21300028: BuildingsTexture3_14
+    21300030: BuildingsTexture3_15
+    21300032: BuildingsTexture3_16
+    21300034: BuildingsTexture3_17
+    21300036: BuildingsTexture3_18
+    21300038: BuildingsTexture3_19
+    21300040: BuildingsTexture3_20
+    21300042: BuildingsTexture3_21
+    21300044: BuildingsTexture3_22
+    21300046: BuildingsTexture3_23
+    21300048: BuildingsTexture3_24
+    21300050: BuildingsTexture3_25
+    21300052: BuildingsTexture3_26
+    21300054: BuildingsTexture3_27
+    21300056: BuildingsTexture3_28
+    21300058: BuildingsTexture3_29
+    21300060: BuildingsTexture3_30
+    21300062: BuildingsTexture3_31
+    21300064: BuildingsTexture3_32
+    21300066: BuildingsTexture3_33
+    21300068: BuildingsTexture3_34
+    21300070: BuildingsTexture3_35
+    21300072: BuildingsTexture3_36
+    21300074: BuildingsTexture3_37
+    21300076: BuildingsTexture3_38
+    21300078: BuildingsTexture3_39
+    21300080: BuildingsTexture3_40
+    21300082: BuildingsTexture3_41
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -97,7 +88,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -141,669 +132,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BuildingsTexture2_0
+      name: BuildingsTexture3_0
       rect:
         serializedVersion: 2
-        x: 48
-        y: 1728
-        width: 362
-        height: 319
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_1
-      rect:
-        serializedVersion: 2
-        x: 462
-        y: 1728
-        width: 312
-        height: 319
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_2
-      rect:
-        serializedVersion: 2
-        x: 880
-        y: 1664
-        width: 345
-        height: 336
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_3
-      rect:
-        serializedVersion: 2
-        x: 1292
-        y: 1664
-        width: 284
-        height: 316
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_4
-      rect:
-        serializedVersion: 2
-        x: 1639
-        y: 1600
-        width: 395
-        height: 423
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_5
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 1254
-        width: 473
-        height: 425
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_6
-      rect:
-        serializedVersion: 2
-        x: 596
-        y: 1216
-        width: 277
-        height: 394
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_7
-      rect:
-        serializedVersion: 2
-        x: 898
-        y: 1434
-        width: 283
-        height: 222
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_8
-      rect:
-        serializedVersion: 2
-        x: 1232
-        y: 1344
-        width: 310
-        height: 319
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_9
-      rect:
-        serializedVersion: 2
-        x: 1617
-        y: 1216
-        width: 279
-        height: 340
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_10
-      rect:
-        serializedVersion: 2
-        x: 916
-        y: 1216
-        width: 160
-        height: 189
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_11
-      rect:
-        serializedVersion: 2
-        x: 1172
-        y: 963
-        width: 277
-        height: 349
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_12
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 1023
-        width: 144
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_13
-      rect:
-        serializedVersion: 2
-        x: 195
-        y: 1156
-        width: 60
-        height: 53
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_14
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 1152
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_15
-      rect:
-        serializedVersion: 2
-        x: 327
-        y: 1156
-        width: 118
-        height: 55
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_16
-      rect:
-        serializedVersion: 2
-        x: 450
-        y: 1155
-        width: 61
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_17
-      rect:
-        serializedVersion: 2
-        x: 457
-        y: 1189
-        width: 26
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_18
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 1164
-        width: 61
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_19
-      rect:
-        serializedVersion: 2
-        x: 928
-        y: 960
-        width: 192
-        height: 233
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_20
-      rect:
-        serializedVersion: 2
-        x: 1556
-        y: 1192
-        width: 4
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_21
-      rect:
-        serializedVersion: 2
-        x: 194
-        y: 1092
-        width: 62
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_22
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 1108
-        width: 54
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_23
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 1088
-        width: 64
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_24
-      rect:
-        serializedVersion: 2
-        x: 396
-        y: 1024
-        width: 44
-        height: 125
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_25
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 1096
-        width: 32
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_26
-      rect:
-        serializedVersion: 2
-        x: 456
-        y: 1112
-        width: 44
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_27
-      rect:
-        serializedVersion: 2
-        x: 484
-        y: 1088
-        width: 24
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_28
-      rect:
-        serializedVersion: 2
-        x: 513
-        y: 1024
-        width: 123
-        height: 120
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_29
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 876
-        width: 164
-        height: 297
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_30
-      rect:
-        serializedVersion: 2
-        x: 1534
-        y: 740
-        width: 463
-        height: 429
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_31
-      rect:
-        serializedVersion: 2
-        x: 285
-        y: 1088
-        width: 35
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_32
-      rect:
-        serializedVersion: 2
-        x: 199
-        y: 1031
-        width: 50
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_33
-      rect:
-        serializedVersion: 2
-        x: 257
-        y: 1058
-        width: 61
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_34
-      rect:
-        serializedVersion: 2
-        x: 328
-        y: 1024
-        width: 51
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_35
-      rect:
-        serializedVersion: 2
-        x: 452
-        y: 1024
-        width: 57
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_36
-      rect:
-        serializedVersion: 2
-        x: 259
-        y: 1026
-        width: 59
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_37
-      rect:
-        serializedVersion: 2
-        x: 18
-        y: 832
-        width: 159
-        height: 188
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_38
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 896
-        width: 126
-        height: 98
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_39
-      rect:
-        serializedVersion: 2
-        x: 334
-        y: 961
-        width: 35
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_40
-      rect:
-        serializedVersion: 2
-        x: 388
-        y: 960
-        width: 60
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_41
-      rect:
-        serializedVersion: 2
-        x: 452
-        y: 640
-        width: 220
-        height: 361
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_42
-      rect:
-        serializedVersion: 2
-        x: 1525
-        y: 953
-        width: 7
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_43
-      rect:
-        serializedVersion: 2
-        x: 324
-        y: 835
-        width: 124
-        height: 105
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_44
-      rect:
-        serializedVersion: 2
-        x: 10
-        y: 492
-        width: 298
-        height: 325
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_45
-      rect:
-        serializedVersion: 2
-        x: 323
-        y: 760
-        width: 121
-        height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_46
-      rect:
-        serializedVersion: 2
-        x: 724
-        y: 640
-        width: 160
-        height: 189
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BuildingsTexture2_47
-      rect:
-        serializedVersion: 2
-        x: 333
-        y: 660
+        x: 13
+        y: 1940
         width: 115
         height: 84
       alignment: 0
@@ -813,13 +146,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BuildingsTexture2_48
+      name: BuildingsTexture3_1
       rect:
         serializedVersion: 2
-        x: 1648
-        y: 396
-        width: 329
-        height: 324
+        x: 130
+        y: 1988
+        width: 62
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -827,13 +160,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BuildingsTexture2_49
+      name: BuildingsTexture3_2
       rect:
         serializedVersion: 2
-        x: 39
-        y: 0
-        width: 376
-        height: 406
+        x: 218
+        y: 1856
+        width: 144
+        height: 191
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -841,13 +174,545 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BuildingsTexture2_50
+      name: BuildingsTexture3_3
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1987
+        width: 60
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_4
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 2021
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_5
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 1920
+        width: 188
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_6
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 1856
+        width: 240
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_7
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 1856
+        width: 159
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_8
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1856
+        width: 240
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_9
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1792
+        width: 512
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_10
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1876
+        width: 54
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_12
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 1856
+        width: 35
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1856
+        width: 64
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_14
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 1860
+        width: 60
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_15
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 1856
+        width: 83
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_16
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 1856
+        width: 83
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_17
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1826
+        width: 61
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_18
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1727
+        width: 67
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_19
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1794
+        width: 59
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_20
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1730
+        width: 93
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_21
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 1728
+        width: 99
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1728
+        width: 255
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_23
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 1600
+        width: 181
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_24
+      rect:
+        serializedVersion: 2
+        x: 1412
+        y: 1606
+        width: 187
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_25
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 1312
+        width: 373
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_26
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 1669
+        width: 44
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_27
       rect:
         serializedVersion: 2
         x: 463
-        y: 320
-        width: 297
-        height: 320
+        y: 1315
+        width: 287
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_28
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 732
+        width: 556
+        height: 560
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_29
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 384
+        width: 620
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 473
+        height: 338
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_31
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 384
+        width: 302
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_32
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 383
+        width: 312
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_33
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 272
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_34
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 28
+        width: 370
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_35
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 473
+        height: 339
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_36
+      rect:
+        serializedVersion: 2
+        x: 1226
+        y: 0
+        width: 302
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_37
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 0
+        width: 296
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_38
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_39
+      rect:
+        serializedVersion: 2
+        x: 1996
+        y: 64
+        width: 39
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_40
+      rect:
+        serializedVersion: 2
+        x: 1928
+        y: 4
+        width: 48
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BuildingsTexture3_41
+      rect:
+        serializedVersion: 2
+        x: 1985
+        y: 4
+        width: 63
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

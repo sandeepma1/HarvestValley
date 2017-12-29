@@ -200,10 +200,10 @@ public class InputController : MonoBehaviour
         {
             return;
         }
-        if (swipeAction.direction == SwipeDirection.Right || swipeAction.direction == SwipeDirection.DownRight)
+        if (swipeAction.direction == SwipeDirection.Right)
         {
             SwipeCamera(-1);
-        } else if (swipeAction.direction == SwipeDirection.Left || swipeAction.direction == SwipeDirection.UpLeft)
+        } else if (swipeAction.direction == SwipeDirection.Left)
         {
             SwipeCamera(1);
         }
