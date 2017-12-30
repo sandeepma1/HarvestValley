@@ -41,10 +41,10 @@ public class SwipeManager : MonoBehaviour
     public System.Action<SwipeAction> onSwipe;
 
     [Range(0f, 200f), SerializeField]
-    private float minSwipeLength;
+    private float minSwipeLength = 100;
 
     [Range(0.1f, 1f), SerializeField]
-    private float minSwipeDuration;
+    private float minSwipeDuration = 0.4f;
 
     private Vector2 currentSwipe;
     private SwipeAction currentSwipeAction = new SwipeAction();

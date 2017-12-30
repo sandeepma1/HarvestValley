@@ -119,8 +119,8 @@ public class PlayerProfileManager : MonoBehaviour
 
     void UpdateAll()
     {
-        coinsUIText.text = String.Format("{0:### ### ### ### ###}", playerProfile.coins);
-        gemsUIText.text = String.Format("{0:### ### ### ### ###}", playerProfile.gems);
+        coinsUIText.text = String.Format("{0:###,###,###,###,###}", playerProfile.coins);
+        gemsUIText.text = String.Format("{0:###,###,###,###,###}", playerProfile.gems);
         staminaUIText.text = playerProfile.stamina.ToString();
         levelUIText.text = playerProfile.level.ToString();
         XPPointsUIText.text = playerProfile.XPPoints.ToString() + "/" + LevelUpDatabase.Instance.gameLevels[playerProfile.level].XPforNextLevel.ToString();
