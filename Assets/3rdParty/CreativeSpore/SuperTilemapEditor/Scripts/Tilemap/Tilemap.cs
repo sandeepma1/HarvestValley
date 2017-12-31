@@ -35,7 +35,7 @@ namespace CreativeSpore.SuperTilemapEditor
         /// The mesh vertices have a limit of 65535 62(width)*62(height)*4(subtiles)*4(vertices) = 61504
         /// Warning: changing this value will break the tilemaps made so far. Change this before creating them.
         /// </summary>
-        public const int k_chunkSize = 60; 
+        public const int k_chunkSize = 60;
         public const string k_UndoOpName = "Paint Op. ";
 
         #region Public Properties
@@ -131,7 +131,7 @@ namespace CreativeSpore.SuperTilemapEditor
         /// <summary>
         /// Return the maximum vertical grid position of the tilemap area
         /// </summary>
-        public int MaxGridY { get { return m_maxGridY; } }      
+        public int MaxGridY { get { return m_maxGridY; } }
         /// <summary>
         /// Return the horizontal size of the grid in tiles
         /// </summary>
@@ -139,7 +139,7 @@ namespace CreativeSpore.SuperTilemapEditor
         /// <summary>
         /// Return the vertical size of the grid in tiles
         /// </summary>
-        public int GridHeight { get { return m_maxGridY - m_minGridY + 1; } }  
+        public int GridHeight { get { return m_maxGridY - m_minGridY + 1; } }
         public bool IsUndoEnabled = false;
 
 
@@ -163,11 +163,11 @@ namespace CreativeSpore.SuperTilemapEditor
             {
                 m_sortingLayerName = value;
 #if UNITY_EDITOR
-                m_sortingLayer = EditorUtils.GetSortingLayerIdByName(m_sortingLayerName);                
+                m_sortingLayer = EditorUtils.GetSortingLayerIdByName(m_sortingLayerName);
 #endif
                 RefreshChunksSortingAttributes();
             }
-        }        
+        }
 
         public int OrderInLayer
         {
@@ -289,7 +289,7 @@ namespace CreativeSpore.SuperTilemapEditor
 
         public void OnDrawGizmosSelected()
         {
-            if(Selection.activeGameObject == this.gameObject)
+            if (Selection.activeGameObject == this.gameObject)
             {
                 DoDrawGizmos();
             }
@@ -300,7 +300,7 @@ namespace CreativeSpore.SuperTilemapEditor
             Rect rBound = new Rect(MapBounds.min, MapBounds.size);
             HandlesEx.DrawRectWithOutline(transform, rBound, new Color(0, 0, 0, 0), new Color(1, 1, 1, 0.5f));
 
-            if ( ShowGrid )
+            if (ShowGrid)
             {
                 Plane tilemapPlane = new Plane(this.transform.forward, this.transform.position);
                 float distCamToTilemap = 0f;
@@ -329,7 +329,7 @@ namespace CreativeSpore.SuperTilemapEditor
                             this.transform.TransformPoint(new Vector3(MapBounds.max.x, MapBounds.min.y + i * CellSize.y, 0))
                             );
                     }
-                }                
+                }
             }
 
             //Draw Chunk Colliders
@@ -389,8 +389,8 @@ namespace CreativeSpore.SuperTilemapEditor
                 if (chunk != null)
                 {
                     Bounds tilechunkBounds = chunk.MeshFilter.sharedMesh.bounds;
-                    Vector2 min = transform.InverseTransformPoint( chunk.transform.TransformPoint(tilechunkBounds.min) );
-                    Vector2 max = transform.InverseTransformPoint( chunk.transform.TransformPoint(tilechunkBounds.max) );
+                    Vector2 min = transform.InverseTransformPoint(chunk.transform.TransformPoint(tilechunkBounds.min));
+                    Vector2 max = transform.InverseTransformPoint(chunk.transform.TransformPoint(tilechunkBounds.max));
                     mapBounds.Encapsulate(min + halfCellSize);
                     mapBounds.Encapsulate(max - halfCellSize);
                 }
@@ -405,7 +405,7 @@ namespace CreativeSpore.SuperTilemapEditor
         /// <summary>
         /// Clear the tilemap from all tilechunks and also remove all objects in the hierarchy
         /// </summary>
-        [ContextMenu("Clear Map")]        
+        [ContextMenu("Clear Map")]
         public void ClearMap()
         {
             m_mapBounds = new Bounds();
@@ -416,8 +416,7 @@ namespace CreativeSpore.SuperTilemapEditor
                 if (IsUndoEnabled)
                 {
                     Undo.DestroyObjectImmediate(transform.GetChild(0).gameObject);
-                }
-                else
+                } else
                 {
                     DestroyImmediate(transform.GetChild(0).gameObject);
                 }
@@ -491,8 +490,7 @@ namespace CreativeSpore.SuperTilemapEditor
             if (chunk == null)
             {
                 return Tileset.k_TileData_Empty;
-            }
-            else
+            } else
             {
                 int chunkGridX = (gridX < 0 ? -gridX - 1 : gridX) % k_chunkSize;
                 int chunkGridY = (gridY < 0 ? -gridY - 1 : gridY) % k_chunkSize;
@@ -533,16 +531,14 @@ namespace CreativeSpore.SuperTilemapEditor
                         if (IsUndoEnabled)
                         {
                             Undo.DestroyObjectImmediate(chunk.gameObject);
-                        }
-                        else
+                        } else
                         {
                             DestroyImmediate(chunk.gameObject);
                         }
 #else
                         DestroyImmediate(chunk.gameObject);
 #endif
-                    }
-                    else
+                    } else
                     {
                         //chunk.UpdateColliderMesh();
                         chunkList.Add(chunk);
@@ -568,7 +564,7 @@ namespace CreativeSpore.SuperTilemapEditor
             m_minGridY = Mathf.Min(m_minGridY, 0);
             m_maxGridX = Mathf.Max(m_maxGridX, 0);
             m_maxGridY = Mathf.Max(m_maxGridY, 0);
-            
+
             Vector2 minTilePos = Vector2.Scale(new Vector2(m_minGridX, m_minGridY), CellSize);
             Vector2 maxTilePos = Vector2.Scale(new Vector2(m_maxGridX, m_maxGridY), CellSize);
             m_mapBounds.min = m_mapBounds.max = Vector2.zero;
@@ -601,7 +597,7 @@ namespace CreativeSpore.SuperTilemapEditor
                 {
                     uint flippedTileData = flippedList[idx];
                     if (
-                        changeFlags 
+                        changeFlags
                         && (flippedTileData != Tileset.k_TileData_Empty)
                         && (flippedTileData & Tileset.k_TileDataMask_BrushId) == 0 // don't activate flip flags on brushes
                         )
@@ -685,8 +681,7 @@ namespace CreativeSpore.SuperTilemapEditor
                         if (!rot90)
                         {
                             flippedTileData ^= Tileset.k_TileFlag_Rot90;
-                        }
-                        else
+                        } else
                         {
                             flippedTileData ^= Tileset.k_TileFlag_Rot90;
                             flippedTileData ^= Tileset.k_TileFlag_FlipH;

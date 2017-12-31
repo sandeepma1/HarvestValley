@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: HUD
+  m_EditorData:
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingParameters:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 9138713bb8274d44d87fb922c4d59501, type: 3}
+    - {fileID: 2800000, guid: bcb777f601fac8143a2e7970d644f307, type: 3}
+    - {fileID: 2800000, guid: 820186dae362d5d4a96f22b7bb17a2fb, type: 3}
+    - {fileID: 2800000, guid: 83610861c89df9d4d97b8e92df267b44, type: 3}
+    - {fileID: 2800000, guid: 1071336710b212e4896e7d9d866e24bc, type: 3}
+    - {fileID: 2800000, guid: 7630432e87ac47d48ab98f6d08eb4e67, type: 3}
+    - {fileID: 2800000, guid: 60726f580300e34479f26adc2acfb926, type: 3}
+    - {fileID: 2800000, guid: ca9cf7da1399f0b48a3b39bb95978662, type: 3}
+    - {fileID: 2800000, guid: caab4c5213945244aa705dc83d58bd68, type: 3}
+    - {fileID: 2800000, guid: 4f3c1e9b0eac421458b2e2736b20f40c, type: 3}
+    - {fileID: 2800000, guid: 50a37c96fbc7e434aabe51ebd952b0b2, type: 3}
+    - {fileID: 2800000, guid: 9f25c43dd2adce94b9d82ea82b304dbc, type: 3}
+    - {fileID: 2800000, guid: 094c4e671ff82b24598a222c83965995, type: 3}
+    - {fileID: 2800000, guid: cd7d41a654796a7488a87ee0057a90c2, type: 3}
+    - {fileID: 2800000, guid: f791e5215db20ed44b7d5335aa9420b0, type: 3}
+    - {fileID: 2800000, guid: d54fb0326145bfd4f9da73ba33ba313a, type: 3}
+    - {fileID: 2800000, guid: d05500668ffde564ca7c785bcf6b758e, type: 3}
+    - {fileID: 2800000, guid: d17316a0420829c4cb1ab8158dc6a4ca, type: 3}
+    - {fileID: 2800000, guid: a1ab328fcd125ba42b01c06fd4fb0cca, type: 3}
+    - {fileID: 2800000, guid: 1f9b774fc57b53f42805376876acbd97, type: 3}
+    - {fileID: 2800000, guid: a951ffc0fa2853f4dafbcc0b880f5042, type: 3}
+    - {fileID: 2800000, guid: 000537dfa8297b94dbba3f5058d1fc06, type: 3}
+    - {fileID: 2800000, guid: c62e9dce4c746134291bb99a98904685, type: 3}
+    - {fileID: 2800000, guid: c030231671f5d20458020d3678b5825f, type: 3}
+    - {fileID: 2800000, guid: 479e4fbeb0a1c384fa4c8f22e7265850, type: 3}
+    - {fileID: 2800000, guid: 67aac45fb683c9146a688efdb77317ac, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: d54fb0326145bfd4f9da73ba33ba313a, type: 3}
+  - {fileID: 21300000, guid: 67aac45fb683c9146a688efdb77317ac, type: 3}
+  - {fileID: 21300000, guid: a951ffc0fa2853f4dafbcc0b880f5042, type: 3}
+  - {fileID: 21300000, guid: bcb777f601fac8143a2e7970d644f307, type: 3}
+  - {fileID: 21300000, guid: f791e5215db20ed44b7d5335aa9420b0, type: 3}
+  - {fileID: 21300000, guid: 7630432e87ac47d48ab98f6d08eb4e67, type: 3}
+  - {fileID: 21300000, guid: 50a37c96fbc7e434aabe51ebd952b0b2, type: 3}
+  - {fileID: 21300000, guid: 1071336710b212e4896e7d9d866e24bc, type: 3}
+  - {fileID: 21300000, guid: 1f9b774fc57b53f42805376876acbd97, type: 3}
+  - {fileID: 21300000, guid: ca9cf7da1399f0b48a3b39bb95978662, type: 3}
+  - {fileID: 21300000, guid: 60726f580300e34479f26adc2acfb926, type: 3}
+  - {fileID: 21300000, guid: cd7d41a654796a7488a87ee0057a90c2, type: 3}
+  - {fileID: 21300000, guid: 9138713bb8274d44d87fb922c4d59501, type: 3}
+  - {fileID: 21300000, guid: 83610861c89df9d4d97b8e92df267b44, type: 3}
+  - {fileID: 21300000, guid: a1ab328fcd125ba42b01c06fd4fb0cca, type: 3}
+  - {fileID: 21300000, guid: 4f3c1e9b0eac421458b2e2736b20f40c, type: 3}
+  - {fileID: 21300000, guid: c030231671f5d20458020d3678b5825f, type: 3}
+  - {fileID: 21300000, guid: caab4c5213945244aa705dc83d58bd68, type: 3}
+  - {fileID: 21300000, guid: 9f25c43dd2adce94b9d82ea82b304dbc, type: 3}
+  - {fileID: 21300000, guid: 820186dae362d5d4a96f22b7bb17a2fb, type: 3}
+  - {fileID: 21300000, guid: 094c4e671ff82b24598a222c83965995, type: 3}
+  - {fileID: 21300000, guid: 479e4fbeb0a1c384fa4c8f22e7265850, type: 3}
+  - {fileID: 21300000, guid: 000537dfa8297b94dbba3f5058d1fc06, type: 3}
+  - {fileID: 21300000, guid: d17316a0420829c4cb1ab8158dc6a4ca, type: 3}
+  - {fileID: 21300000, guid: d05500668ffde564ca7c785bcf6b758e, type: 3}
+  - {fileID: 21300000, guid: c62e9dce4c746134291bb99a98904685, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - PopupMenuBackground
+  - tab
+  - shopBackground
+  - bar
+  - PlusButton
+  - CoinSmall
+  - Experience
+  - CloseButton
+  - SeedOptionsBackground
+  - EmbosedBoxBackground
+  - Diamond
+  - infoButton
+  - Additional
+  - Button_256px
+  - Scythe
+  - EmbosedRectBackground
+  - Stamina
+  - EmbosedBoxBackgroundTwoEdge
+  - fast-forward-xxl
+  - Button_128px
+  - Gold
+  - SwitchButton
+  - Shopicon
+  - rounded_rectangle_small1
+  - rounded_rectangle
+  - StackitemBG
+  m_Tag: HUD
+  m_IsVariant: 0
