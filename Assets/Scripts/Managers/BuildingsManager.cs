@@ -413,30 +413,22 @@ public class BuildingsManager : MonoBehaviour
         InitBuildings(buildings[buildings.Count - 1]);
     }
 
+    public int x, y, gap;
+
     private void OneTimeOnly()
     {
         if (PlayerPrefs.GetInt("firstBuilding") <= 0)
         {
             ES2.Delete("AllBuildings");
-            buildings.Add(new Buildings(0, 0, "Field", new Vector2(0, 0), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(1, 0, "Field", new Vector2(4, 0), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(2, 0, "Field", new Vector2(8, 0), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(3, 0, "Field", new Vector2(12, 0), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(4, 0, "Field", new Vector2(0, -4), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(5, 0, "Field", new Vector2(4, -4), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(6, 0, "Field", new Vector2(8, -4), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(7, 0, "Field", new Vector2(12, -4), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(8, 0, "Field", new Vector2(0, -8), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(9, 0, "Field", new Vector2(4, -8), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(10, 0, "Field", new Vector2(8, -8), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(11, 0, "Field", new Vector2(12, -8), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(12, 0, "Field", new Vector2(0, -12), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(13, 0, "Field", new Vector2(4, -12), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(14, 0, "Field", new Vector2(8, -12), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            buildings.Add(new Buildings(15, 0, "Field", new Vector2(12, -12), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-            //buildings.Add(new Buildings(5, 1, "Bakery", new Vector2(1, 1), 1, 0, 2, -1, System.DateTime.UtcNow.ToString()));
-            // buildings.Add(new Buildings(6, 2, "FeedMill", new Vector2(2, 1), 1, 0, 2, -1, System.DateTime.UtcNow.ToString()));
-            // buildings.Add(new Buildings(7, 3, "Dairy", new Vector2(3, 1), 1, 0, 2, -1, System.DateTime.UtcNow.ToString()));
+            int counter = 0;
+            for (int i = 0; i < x; i++)
+            {
+                for (int j = 0; j < y; j++)
+                {
+                    buildings.Add(new Buildings(counter, 0, "Field", new Vector2(i * gap, -j * gap), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+                    counter++;
+                }
+            }
             ES2.Save(buildings, "AllBuildings");
             PlayerPrefs.SetInt("firstBuilding", 1);
         }
@@ -486,6 +478,7 @@ public class BuildingsManager : MonoBehaviour
                     if (BuildingsGO[buildingID].buildingID == 0)
                     { // if field selected
                         ShowReadyToHarvestCropsMenu(buildingID);
+                        // CollectItemsOnBuildings(buildingID);
                     } else
                     {
                         CollectItemsOnBuildings(buildingID);

@@ -175,7 +175,6 @@ public class MasterMenuManager : MonoBehaviour
         {
             ItemPopupProduction.Instance.DisplayItemPopupProduction_DRAG(pos);
         }
-
     }
 
     public void ToggleDisplayCropMenu()

@@ -9,6 +9,6 @@ public class Toucher : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        print("OnTriggerEnter2D " + other.gameObject.name);
+        print("OnCollisionEnter2D " + other.gameObject.name);
     }
 }

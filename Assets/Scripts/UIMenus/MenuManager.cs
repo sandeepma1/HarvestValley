@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance = null;
-    [SerializeField]
-    private GameObject loadingScreen;
+    //[SerializeField]
+    // private GameObject loadingScreen;
     [SerializeField]
     private GameObject mainCanvas;
 
@@ -17,8 +17,8 @@ public class MenuManager : MonoBehaviour
     private GameObject buildingUpgradeMenu;
     [SerializeField]
     private GameObject inventoryMenu;
-    [SerializeField]
-    private GameObject shopMenu;
+    //[SerializeField]
+    //private GameObject shopMenu;
 
     [SerializeField]
     private GameObject[] disableAllMenus;
@@ -72,11 +72,12 @@ public class MenuManager : MonoBehaviour
 
     public void ShopMenuSetActive(bool flag)
     {
-        shopMenu.SetActive(flag);
+        //shopMenu.SetActive(flag);
     }
 
     public void DisableAllMenus()
     {
+        print("disable");
         for (int i = 0; i < disableAllMenus.Length; i++)
         {
             disableAllMenus[i].transform.position = new Vector3(-500, -500, 0);

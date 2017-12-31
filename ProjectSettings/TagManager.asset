@@ -13,6 +13,8 @@ TagManager:
   - FarmLand
   - MapChunks
   - PlacableTiles
+  - MasterMenuItem
+  - Harvest
   layers:
   - Default
   - TransparentFX

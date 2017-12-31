@@ -93,6 +93,9 @@ public class InputController : MonoBehaviour
             GameObject hitObject = hit.collider.gameObject;
             switch (hitObject.tag)
             {
+                case "DisableAllMenus":
+                    MenuManager.Instance.DisableAllMenus();
+                    break;
                 case "Toucher":
                     hitObject.GetComponent<Toucher>().TouchUp();
                     break;

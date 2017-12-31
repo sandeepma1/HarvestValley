@@ -52,5 +52,19 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerUp
         BuildingsManager.Instance.CallParentOnMouseDrag(id);
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        switch (other.tag)
+        {
+            case "MasterMenuItem":
+                BuildingsManager.Instance.CallParentOnMouseEnter(id);
+                break;
+            case "Harvest":
+                BuildingsManager.Instance.CallParentOnMouseEnter(id);
+                break;
+            default:
+                break;
+        }
+    }
 }
 
