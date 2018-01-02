@@ -184,7 +184,9 @@ public class BuildingsManager : MonoBehaviour
 
     public void DisplayMasterMenu(int b_ID) // Display field Crop Menu
     {
-        MasterMenuManager.Instance.PopulateItemsInMasterMenu(BuildingsGO[b_ID].buildingID, BuildingsGO[b_ID].transform.position);
+        MasterMenuManager.Instance.PopulateItemsInMasterMenu(BuildingsGO[b_ID].buildingID);
+        MasterMenuManager.Instance.transform.position = BuildingsGO[b_ID].transform.position;
+        print(MasterMenuManager.Instance.transform.position);
         buildingSelectedID = b_ID;
     }
 

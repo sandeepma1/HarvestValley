@@ -76,10 +76,8 @@ public class MasterMenuManager : MonoBehaviour
         }
     }
 
-    public void PopulateItemsInMasterMenu(int buildingID, Vector3 position)
+    public void PopulateItemsInMasterMenu(int buildingID)
     {
-        print(position);
-        transform.position = position;
         MenuManager.Instance.DisableAllMenus();
         for (int i = 0; i < menuItems.Length; i++)
         {

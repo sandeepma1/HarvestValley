@@ -104,7 +104,7 @@ public class InputController : MonoBehaviour
                     hitObject.GetComponent<DraggableBuildings>().TouchedUp();
                     break;
                 case "Grass":
-                    hitObject.GetComponent<DraggableGrass>().TouchedUp();
+                    //hitObject.GetComponent<DraggableGrass>().TouchedUp();
                     break;
                 default:
                     break;
