@@ -7,6 +7,7 @@ using System.Linq;
 public class BuildingsManager : MonoBehaviour
 {
     public static BuildingsManager Instance = null;
+    public int x = 5, y = 5, gap;
     public DraggableBuildings buildingPrefab;
     public GameObject MasterMenuGO = null, TimeRemainingMenu = null, FarmHarvestingMenu = null;
     public bool isFarmTimerEnabled = false;
@@ -28,21 +29,60 @@ public class BuildingsManager : MonoBehaviour
         //https://answers.unity.com/questions/1175266/getting-single-sprite-from-a-sprite-multiple.html
         plantsSpriteBank = Resources.LoadAll<Sprite>("Textures/Plants"); // loads all sprite from Resource folder
         buildingSpriteBank = Resources.LoadAll<Sprite>("Textures/Buildings");
+    }
+
+    private void Start()
+    {
+        DraggableBuildings.OnClicked += OnDraggableBuildingClicked;
         OneTimeOnly();
         Init();
+    }
+
+    private void Update() // all long press logic	
+    {
+        if (isTilePressed && BuildingsGO[mouseDownBuildingID].buildingID != 0)
+        {
+            if (longPressTimer >= longPressTime)
+            {
+                isLongPress = true;
+                longPressBuildingID = mouseDownBuildingID;
+                mouseDownBuildingID = -1;
+                isTilePressed = false;
+                BuildingsGO[longPressBuildingID].isSelected = true;
+                EnableOutlineOnSprite(longPressBuildingID);
+                return;
+            }
+            longPressTimer += Time.deltaTime;
+        }
+    }
+
+    private void LateUpdate() //Mainly used to show time remaining
+    {
+        if (isFarmTimerEnabled)
+        {
+            ShowFarmLandTimeRemaining();
+        } else
+        {
+            tempID = -1;
+        }
     }
 
     private void Init()
     {
         buildings = ES2.LoadList<Buildings>("AllBuildings");
         //BuildingsGO = new GameObject[buildings.Count];
-        BuildingsGO = new DraggableBuildings[99];
-        foreach (var building in buildings)
+        BuildingsGO = new DraggableBuildings[buildings.Count];
+        for (int i = 0; i < buildings.Count; i++)
         {
-            InitBuildings(building);
+            InitBuildings(buildings[i]);
         }
+        //foreach (var building in buildings)
+        //{
+
+        //}
         InvokeRepeating("SaveBuildings", 0, 5);
         InvokeRepeating("CheckForHarvest", 0, 1);
+        DisplayMasterMenu(1);
     }
 
     public void InitBuildings(Buildings building)
@@ -74,35 +114,6 @@ public class BuildingsManager : MonoBehaviour
                 break;
         }
         BuildingsGO[building.id].dateTime = DateTime.Parse(building.dateTime);
-    }
-
-    private void Update() // all long press logic	
-    {
-        if (isTilePressed && BuildingsGO[mouseDownBuildingID].buildingID != 0)
-        {
-            if (longPressTimer >= longPressTime)
-            {
-                isLongPress = true;
-                longPressBuildingID = mouseDownBuildingID;
-                mouseDownBuildingID = -1;
-                isTilePressed = false;
-                BuildingsGO[longPressBuildingID].isSelected = true;
-                EnableOutlineOnSprite(longPressBuildingID);
-                return;
-            }
-            longPressTimer += Time.deltaTime;
-        }
-    }
-
-    private void LateUpdate() //Mainly used to show time remaining
-    {
-        if (isFarmTimerEnabled)
-        {
-            ShowFarmLandTimeRemaining();
-        } else
-        {
-            tempID = -1;
-        }
     }
 
     private void CheckForHarvest()
@@ -173,15 +184,8 @@ public class BuildingsManager : MonoBehaviour
 
     public void DisplayMasterMenu(int b_ID) // Display field Crop Menu
     {
-        MasterMenuManager.Instance.PopulateItemsInMasterMenu(BuildingsGO[b_ID].buildingID);
-        MenuManager.Instance.DisableAllMenus();
+        MasterMenuManager.Instance.PopulateItemsInMasterMenu(BuildingsGO[b_ID].buildingID, BuildingsGO[b_ID].transform.position);
         buildingSelectedID = b_ID;
-
-        //Animatin Stuff
-        // MasterMenuGO.transform.GetChild(0).gameObject.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
-        MasterMenuGO.transform.position = BuildingsGO[b_ID].transform.position;
-        MasterMenuGO.SetActive(true);
-        //LeanTween.scale(MasterMenuGO.transform.GetChild(0).gameObject, new Vector3(2, 2, 2), 0.2f, IGMMenu.m_instance.ease);
     }
 
     public void PlantItemsOnBuildings(int buildingID) // Planting Items
@@ -413,13 +417,12 @@ public class BuildingsManager : MonoBehaviour
         InitBuildings(buildings[buildings.Count - 1]);
     }
 
-    public int x, y, gap;
-
     private void OneTimeOnly()
     {
-        if (PlayerPrefs.GetInt("firstBuilding") <= 0)
+        if (PlayerPrefs.GetInt("firstBuilding") == 0)
         {
             ES2.Delete("AllBuildings");
+            print(ES2.Exists("AllBuildings"));
             int counter = 0;
             for (int i = 0; i < x; i++)
             {
@@ -449,7 +452,7 @@ public class BuildingsManager : MonoBehaviour
         }
     }
 
-    public void CallParentOnMouseUp(int buildingID)
+    private void OnDraggableBuildingClicked(int buildingID)
     {
         isTilePressed = false;
         mouseDownBuildingID = -1;
@@ -458,19 +461,13 @@ public class BuildingsManager : MonoBehaviour
             switch (BuildingsGO[buildingID].state)
             {
                 case BUILDINGS_STATE.NONE:
-                    if (GEM.GetTouchState() == GEM.TOUCH_STATES.e_none)
-                    {
-                        DisplayMasterMenu(buildingID);
-                    }
+                    DisplayMasterMenu(buildingID);
                     break;
                 case BUILDINGS_STATE.GROWING:
                     tempID = buildingID;
                     MenuManager.Instance.DisableAllMenus();
                     TimeRemainingMenu.SetActive(true);
-                    if (GEM.GetTouchState() == GEM.TOUCH_STATES.e_none)
-                    {
-                        isFarmTimerEnabled = true;
-                    }
+                    isFarmTimerEnabled = true;
                     TimeRemainingMenu.transform.GetChild(0).GetComponent<TextMeshPro>().text =
                     ItemDatabase.Instance.items[BuildingsGO[tempID].itemID].name.ToString();
                     break;
@@ -478,7 +475,6 @@ public class BuildingsManager : MonoBehaviour
                     if (BuildingsGO[buildingID].buildingID == 0)
                     { // if field selected
                         ShowReadyToHarvestCropsMenu(buildingID);
-                        // CollectItemsOnBuildings(buildingID);
                     } else
                     {
                         CollectItemsOnBuildings(buildingID);

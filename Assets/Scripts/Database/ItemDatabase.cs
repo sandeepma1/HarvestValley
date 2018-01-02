@@ -28,8 +28,10 @@ public class ItemDatabase : MonoBehaviour
         {
             chars = Regex.Split(lines[i], ",");
             items[i - 1] = new Item(IntParse(chars[0]), chars[1], chars[2], IntParse(chars[3]), FloatParse(chars[4]),
-                IntParse(chars[5]), (ItemType)Enum.Parse(typeof(ItemType), chars[6]), IntParse(chars[7]), (ItemSource)Enum.Parse(typeof(ItemSource), chars[8]), IntParse(chars[9]), IntParse(chars[10]),
-                IntParse(chars[11]), IntParse(chars[12]), IntParse(chars[13]), IntParse(chars[14]), IntParse(chars[15]), IntParse(chars[16]), IntParse(chars[17]));
+                IntParse(chars[5]), (ItemType)Enum.Parse(typeof(ItemType), chars[6]), IntParse(chars[7]), IntParse(chars[8]),
+                (ItemSource)Enum.Parse(typeof(ItemSource), chars[9]), IntParse(chars[10]), IntParse(chars[11]),
+                IntParse(chars[12]), IntParse(chars[13]), IntParse(chars[14]), IntParse(chars[15]), IntParse(chars[16]),
+                IntParse(chars[17]), IntParse(chars[18]));
         }
     }
 
@@ -63,6 +65,7 @@ public class Item
     public float timeRequiredInMins;
     public int XP;
     public ItemType type;
+    public int coinCost;
     public int gemCost;
     public ItemSource source;
     public int sellValueMax;
@@ -76,7 +79,7 @@ public class Item
     public int needAmount4;
 
     public Item(int itemId, string itemName, string itemDescription, int itemUnlocksAtLevel,
-                 float itemTimeRequiredInMins, int itemXP, ItemType itemType, int itemGemCost, ItemSource itemSource,
+                 float itemTimeRequiredInMins, int itemXP, ItemType itemType, int itemCoinCost, int itemGemCost, ItemSource itemSource,
                  int itemSellValueMax, int itemNeedID1, int itemNeedAmount1, int itemNeedID2, int itemNeedAmount2,
                  int itemNeedID3, int itemNeedAmount3, int itemNeedID4, int itemNeedAmount4)
     {
@@ -87,6 +90,7 @@ public class Item
         timeRequiredInMins = itemTimeRequiredInMins;
         XP = itemXP;
         type = itemType;
+        coinCost = itemCoinCost;
         gemCost = itemGemCost;
         sellValueMax = itemSellValueMax;
         source = itemSource;
@@ -107,6 +111,7 @@ public enum ItemType
     AnimalGoods,
     Suppliers,
     Products,
+    Grass
 }
 
 public enum ItemSource
@@ -142,5 +147,6 @@ public enum ItemSource
     CacaoTree,
     Jeweler,
     BeehiveTree,
-    HoneyExtractor
+    HoneyExtractor,
+    GrassTile
 }

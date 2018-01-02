@@ -39,24 +39,6 @@ public static class GEM
         e_inventory
     };
 
-
-    static TOUCH_STATES m_touchState = TOUCH_STATES.e_none;
-    public static void SetTouchState(TOUCH_STATES state)
-    {
-        m_touchState = state;
-    }
-    public static TOUCH_STATES GetTouchState()
-    {
-        return m_touchState;
-    }
-    public enum TOUCH_STATES
-    {
-        e_none,
-        e_touch,
-        e_drag,
-        e_swipe
-    };
-
     public static System.DateTime dateTime = System.DateTime.UtcNow;
 
     static E_MenuState m_menuState = E_MenuState.e_menuDown;

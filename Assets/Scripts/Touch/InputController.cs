@@ -32,7 +32,7 @@ public class InputController : MonoBehaviour
     private float easeDuration = 0.5f;
 
     private int currPos;
-    private int[] cameraPositions;
+    private float[] cameraPositions;
     private float touchDeltaPosition;
     private float dragOffset;
 
@@ -75,7 +75,7 @@ public class InputController : MonoBehaviour
         mainCameraTransform.position = new Vector3(0, 0, -1);
         Camera camera = mainCameraTransform.GetComponent<Camera>();
         //camera.project
-        cameraPositions = new int[numberOfScreens];
+        cameraPositions = new float[numberOfScreens];
         for (int i = 0; i < numberOfScreens; i++)
         {
             cameraPositions[i] = gapBetweenScreens * i;
@@ -100,7 +100,11 @@ public class InputController : MonoBehaviour
                     hitObject.GetComponent<Toucher>().TouchUp();
                     break;
                 case "Field":
+                    print("ss");
                     hitObject.GetComponent<DraggableBuildings>().TouchedUp();
+                    break;
+                case "Grass":
+                    hitObject.GetComponent<DraggableGrass>().TouchedUp();
                     break;
                 default:
                     break;
@@ -195,20 +199,29 @@ public class InputController : MonoBehaviour
 
     public void SnapCameraOnButton(int pos)
     {
-        if (currPos != pos)
+        //if (currPos == pos)
+        //{
+        //    return;
+        //}
+        //currPos = pos;
+
+        //float posX = cameraPositions[pos];
+        //// mainCameraTransform.DOMoveX(posX, easeDuration).SetEase(snapEase);
+
+        ////Vector3 newLocation = new Vector3(cameraPositions[pos], mainCameraTransform.position.y, mainCameraTransform.position.z);
+        ////mainCameraTransform.DOMove(newLocation, easeDuration, true).SetEase(snapEase);
+        //currPos = pos;
+        //print(posX + " curpos " + currPos + " pos " + pos);
+    }
+
+    public void MoveCamera(int id, float position)
+    {
+        if (!isTouchingUI || currPos == id)
         {
-            currPos = pos;
-            DOTween.KillAll();
-
-            //mainCameraTransform.DOMoveX(cameraPositions[currPos], easeDuration).SetEase(snapEase);
-            Vector3 newLocation = new Vector3(cameraPositions[currPos], mainCameraTransform.position.y, mainCameraTransform.position.z);
-            print(newLocation);
-            // mainCameraTransform.DOMove(newLocation, easeDuration, true).SetEase(snapEase);
-
-            //print(cameraPositions[currPos]);
-            LeanTween.move(mainCameraTransform.gameObject, newLocation, 0f, ease);
+            return;
         }
-        //print(currPos + " nov " + cameraPositions[currPos]);
+        mainCameraTransform.DOMoveX(position, easeDuration * 2).SetEase(snapEase);
+        currPos = id;
     }
 
     #region Swipe

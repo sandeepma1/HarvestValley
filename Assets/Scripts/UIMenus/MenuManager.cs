@@ -9,7 +9,8 @@ public class MenuManager : MonoBehaviour
     // private GameObject loadingScreen;
     [SerializeField]
     private GameObject mainCanvas;
-
+    [SerializeField]
+    private GameObject MINEBUTTON;
     //Add all types of menus here
     [SerializeField]
     private GameObject levelUpMenu;
@@ -31,6 +32,10 @@ public class MenuManager : MonoBehaviour
         if (mainCanvas != null)
         {
             mainCanvas.SetActive(true);
+        }
+        if (Application.isEditor)
+        {
+            MINEBUTTON.SetActive(false);
         }
     }
 
@@ -77,7 +82,6 @@ public class MenuManager : MonoBehaviour
 
     public void DisableAllMenus()
     {
-        print("disable");
         for (int i = 0; i < disableAllMenus.Length; i++)
         {
             disableAllMenus[i].transform.position = new Vector3(-500, -500, 0);

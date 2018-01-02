@@ -8,7 +8,7 @@ public class BuildingDatabase : MonoBehaviour
 {
     public static BuildingDatabase Instance = null;
     public BuildingInfo[] buildingInfo;
-    string folderName = "Buildings";
+    string folderName = "Source";
 
     void Awake()
     {

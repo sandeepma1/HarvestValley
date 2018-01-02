@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using System;
 
 public class DraggableGrass : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IDragHandler
 {
     internal int id;
+    public int buildingID;
     internal int grassTypeID;
     internal SpriteRenderer grassSprite;
     internal System.DateTime dateTime;
     internal BUILDINGS_STATE state;
     internal bool isSelected;
+    public static event Action<int> OnClicked;
 
     void Start()
     {
@@ -25,6 +28,10 @@ public class DraggableGrass : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     {
         // GEM.isDragging = false;
         //BuildingsManager.Instance.CallParentOnMouseUp(id);
+        if (OnClicked != null)
+        {
+            OnClicked.Invoke(id);
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)

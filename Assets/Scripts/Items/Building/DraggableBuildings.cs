@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IDragHandler
+public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IDragHandler
 {
     public bool isSelected = false;
     public bool isDraggable = false;
@@ -18,11 +18,7 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerUp
     public int itemID;
     public System.DateTime dateTime;
 
-    public void TouchedUp()
-    {
-        // GEM.isDragging = false;
-        BuildingsManager.Instance.CallParentOnMouseUp(id);
-    }
+    public static event Action<int> OnClicked;
 
     private void Awake()
     {
@@ -35,21 +31,22 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerUp
         BuildingsManager.Instance.CallParentOnMouseDown(id);
     }
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-
-    }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //GEM.isSwipeEnable = false;
         BuildingsManager.Instance.CallParentOnMouseEnter(id);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        // GEM.isDragging = true;
         BuildingsManager.Instance.CallParentOnMouseDrag(id);
+    }
+
+    public void TouchedUp()
+    {
+        if (OnClicked != null)
+        {
+            OnClicked.Invoke(id);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -67,4 +64,3 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerUp
         }
     }
 }
-

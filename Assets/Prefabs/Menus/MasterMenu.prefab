@@ -514,6 +514,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemID: 0
+  itemIcon: {fileID: 0}
+  itemAmountText: {fileID: 0}
+  textBackground: {fileID: 0}
 --- !u!114 &114154180540383412
 MonoBehaviour:
   m_ObjectHideFlags: 1

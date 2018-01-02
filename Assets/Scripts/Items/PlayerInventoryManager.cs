@@ -62,7 +62,6 @@ public class PlayerInventoryManager : MonoBehaviour
 
     public void AddNewFarmItem(int id, int value)
     {
-        print(value + " id " + id);
         playerInventory.Add(new FarmItems(id, value));
         AddOneItemInScrollList(playerInventory.Count - 1);
         UpdateScrollListItemCount();

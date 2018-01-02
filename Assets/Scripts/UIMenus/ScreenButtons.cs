@@ -5,6 +5,8 @@ public class ScreenButtons : MonoBehaviour
 {
     [SerializeField]
     private int id;
+    [SerializeField]
+    private float position;
 
     private Button yourButton;
 
@@ -16,7 +18,6 @@ public class ScreenButtons : MonoBehaviour
 
     void TaskOnClick()
     {
-        Debug.Log("You have clicked the button!");
-        InputController.instance.SnapCameraOnButton(id);
+        InputController.instance.MoveCamera(id, position);
     }
 }

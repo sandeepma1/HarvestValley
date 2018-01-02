@@ -76,8 +76,11 @@ public class MasterMenuManager : MonoBehaviour
         }
     }
 
-    public void PopulateItemsInMasterMenu(int buildingID)
+    public void PopulateItemsInMasterMenu(int buildingID, Vector3 position)
     {
+        print(position);
+        transform.position = position;
+        MenuManager.Instance.DisableAllMenus();
         for (int i = 0; i < menuItems.Length; i++)
         {
             menuItems[i].gameObject.SetActive(false);
@@ -86,6 +89,7 @@ public class MasterMenuManager : MonoBehaviour
         int posCount = 0;
         unlockedItemCount = 0;
         pageNumber = 0;
+
         //isMasterMenuUp = true;
         for (int i = 0; i < unlockedItemIDs.Count; i++)
         {
@@ -93,8 +97,8 @@ public class MasterMenuManager : MonoBehaviour
             {
                 menuItems[unlockedItemCount].itemID = ItemDatabase.Instance.items[i].id;
                 menuItems[unlockedItemCount].transform.localPosition = itemPos[posCount];
-                menuItems[unlockedItemCount].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = itemAtlas.GetSprite(ItemDatabase.Instance.items[i].name);
-                menuItems[posCount].transform.GetChild(1).GetComponent<TextMeshPro>().text = PlayerInventoryManager.Instance.playerInventory[i].count.ToString();
+                menuItems[unlockedItemCount].ItemIcon.sprite = itemAtlas.GetSprite(ItemDatabase.Instance.items[i].name);
+                menuItems[unlockedItemCount].ItemAmountText = PlayerInventoryManager.Instance.playerInventory[i].count.ToString();
                 posCount++;
                 unlockedItemCount++;
                 if (posCount > itemPos.Length - 1)
@@ -109,6 +113,7 @@ public class MasterMenuManager : MonoBehaviour
             maxPages++;
         }
         ToggleMenuPages();
+        this.gameObject.SetActive(true);
     }
 
     public void UpdateSeedValue()
