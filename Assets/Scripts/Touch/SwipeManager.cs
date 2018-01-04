@@ -38,7 +38,7 @@ public enum SwipeDirection
 /// </summary>
 public class SwipeManager : MonoBehaviour
 {
-    public System.Action<SwipeAction> onSwipe;
+    public System.Action<SwipeAction> onSwipeEvent;
 
     [Range(0f, 200f), SerializeField]
     private float minSwipeLength = 100;
@@ -87,9 +87,9 @@ public class SwipeManager : MonoBehaviour
                     currentSwipeAction.direction = SwipeDirection.None; // Invalidate current swipe action
                     return;
                 }
-                if (onSwipe != null && currentSwipeAction.duration < minSwipeDuration && !isTouchingUI)
+                if (onSwipeEvent != null && currentSwipeAction.duration < minSwipeDuration && !isTouchingUI)
                 {
-                    onSwipe(currentSwipeAction); // Fire event
+                    onSwipeEvent(currentSwipeAction); // Fire event
                 }
                 isTouchingUI = false;
             }

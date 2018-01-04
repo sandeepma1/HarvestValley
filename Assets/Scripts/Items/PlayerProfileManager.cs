@@ -66,6 +66,7 @@ public class PlayerProfileManager : MonoBehaviour
                 PlayerInventoryManager.Instance.AddNewFarmItem(LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemUnlockID,
                     LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemRewardCount);
                 MasterMenuManager.Instance.CheckForUnlockedItems();
+                UIMasterMenuManager.Instance.CheckForUnlockedItems();
                 PlayerGems(LevelUpDatabase.Instance.gameLevels[playerProfile.level].gemsRewardCount);
             }
             PlayerXPPointsAdd(-CurrentPlayerXP());

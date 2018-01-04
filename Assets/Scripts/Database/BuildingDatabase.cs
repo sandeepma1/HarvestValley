@@ -26,8 +26,14 @@ public class BuildingDatabase : MonoBehaviour
         for (int i = 1; i < lines.Length - 1; i++)
         {
             chars = Regex.Split(lines[i], ",");
-            buildingInfo[i - 1] = new BuildingInfo(IntParse(chars[0]), (ItemSource)Enum.Parse(typeof(ItemSource), chars[1]), chars[2], (ItemType)Enum.Parse(typeof(ItemType), chars[3]),
-                IntParse(chars[4]), IntParse(chars[5]), IntParse(chars[6]), IntParse(chars[7]));
+            buildingInfo[i - 1] = new BuildingInfo(IntParse(chars[0]),
+                (ItemSource)Enum.Parse(typeof(ItemSource), chars[1]),
+                chars[2],
+                (ItemType)Enum.Parse(typeof(ItemType), chars[3]),
+                IntParse(chars[4]),
+                IntParse(chars[5]),
+                IntParse(chars[6]),
+                IntParse(chars[7]));
         }
     }
     //public BuildingInfo (int b_id, string b_name, string b_desc, ItemType b_type, int b_cost, int b_deployTime, int b_slotsUnlocked, int b_limit)

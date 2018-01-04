@@ -96,7 +96,8 @@ public class MasterMenuManager : MonoBehaviour
                 menuItems[unlockedItemCount].itemID = ItemDatabase.Instance.items[i].id;
                 menuItems[unlockedItemCount].transform.localPosition = itemPos[posCount];
                 menuItems[unlockedItemCount].ItemIcon.sprite = itemAtlas.GetSprite(ItemDatabase.Instance.items[i].name);
-                menuItems[unlockedItemCount].ItemAmountText = PlayerInventoryManager.Instance.playerInventory[i].count.ToString();
+                //menuItems[unlockedItemCount].ItemAmountText = PlayerInventoryManager.Instance.playerInventory[i].count.ToString();
+                menuItems[unlockedItemCount].ItemAmountText = ItemDatabase.Instance.items[i].coinCost.ToString();
                 posCount++;
                 unlockedItemCount++;
                 if (posCount > itemPos.Length - 1)
@@ -156,6 +157,7 @@ public class MasterMenuManager : MonoBehaviour
         isItemSelected = false;
         BuildingsManager.Instance.plantedOnSelectedfield = false;
         itemSelectedID = -1;
+        BuildingsManager.Instance.itemSelectedID = itemSelectedID;
         ItemPopupProduction.Instance.HideItemPopupProduction();
     }
 
@@ -163,6 +165,7 @@ public class MasterMenuManager : MonoBehaviour
     {
         isItemSelected = true;
         itemSelectedID = id;
+        BuildingsManager.Instance.itemSelectedID = itemSelectedID;
         if (BuildingsManager.Instance.BuildingsGO[BuildingsManager.Instance.buildingSelectedID].GetComponent<DraggableBuildings>().buildingID > 0)
         {
             ItemPopupProduction.Instance.DisplayItemPopupProduction_DOWN(id, pos);
@@ -173,6 +176,7 @@ public class MasterMenuManager : MonoBehaviour
     {
         isItemSelected = true;
         itemSelectedID = id;
+        BuildingsManager.Instance.itemSelectedID = itemSelectedID;
         ToggleDisplayCropMenu();
         if (ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].source != ItemSource.Field)
         {

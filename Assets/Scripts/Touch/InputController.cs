@@ -52,7 +52,7 @@ public class InputController : MonoBehaviour
     {
         CreateCameraPositions();
         SwipeManager swipeManager = GetComponent<SwipeManager>();
-        swipeManager.onSwipe += SwipeEvent;
+        swipeManager.onSwipeEvent += SwipeEventHandler;
         dragOffset = (cameraPositions[1] - cameraPositions[0]) / 3;
         ease.Add("ease", LeanTweenType.easeOutSine);
     }
@@ -100,7 +100,6 @@ public class InputController : MonoBehaviour
                     hitObject.GetComponent<Toucher>().TouchUp();
                     break;
                 case "Field":
-                    print("ss");
                     hitObject.GetComponent<DraggableBuildings>().TouchedUp();
                     break;
                 case "Grass":
@@ -237,7 +236,7 @@ public class InputController : MonoBehaviour
         mainCameraTransform.DOMoveX(cameraPositions[currPos], 0.5f).SetEase(snapEase);
     }
 
-    private void SwipeEvent(SwipeAction swipeAction)
+    private void SwipeEventHandler(SwipeAction swipeAction)
     {
         if (!enableSwipe)
         {
