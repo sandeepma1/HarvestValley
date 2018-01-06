@@ -324,6 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCostText: {fileID: 114351540867734318}
+  itemNameText: {fileID: 114586891031158034}
   itemImage: {fileID: 114251046372067080}
 --- !u!114 &114586891031158034
 MonoBehaviour:
@@ -471,7 +472,8 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   itemID: 0
   itemAmountText: {fileID: 114351540867734318}
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 114251046372067080}
+  selectedItemID: -1
 --- !u!222 &222009926439873608
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -539,7 +541,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 30}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 145, y: 145}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224248631646093842

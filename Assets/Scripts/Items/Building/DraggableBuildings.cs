@@ -7,10 +7,10 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerEn
 {
     public bool isSelected = false;
     public bool isDraggable = false;
-    public int id;
-    public SpriteRenderer spriteRenderer;
-    public SpriteRenderer plantsSprite;
     public int buildingID;
+    public SpriteRenderer buildingSprite;
+    public SpriteRenderer plantsSprite;
+    public int sourceID;
     public Vector2 pos;
     public int level;
     public BUILDINGS_STATE state;
@@ -18,34 +18,34 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerEn
     public int itemID;
     public System.DateTime dateTime;
 
-    public static Action<int, Vector2> OnClicked;
+    public static Action<int, int> OnClicked;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        plantsSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        //buildingSprite = GetComponent<SpriteRenderer>();
+        //plantsSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        BuildingsManager.Instance.CallParentOnMouseDown(id);
+        BuildingsManager.Instance.CallParentOnMouseDown(buildingID);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        BuildingsManager.Instance.CallParentOnMouseEnter(id);
+        BuildingsManager.Instance.CallParentOnMouseEnter(buildingID);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        BuildingsManager.Instance.CallParentOnMouseDrag(id);
+        BuildingsManager.Instance.CallParentOnMouseDrag(buildingID);
     }
 
     public void TouchedUp()
     {
         if (OnClicked != null)
         {
-            OnClicked.Invoke(id, transform.position);
+            OnClicked.Invoke(buildingID, sourceID);
         }
     }
 
@@ -54,10 +54,10 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerEn
         switch (other.tag)
         {
             case "MasterMenuItem":
-                BuildingsManager.Instance.CallParentOnMouseEnter(id);
+                BuildingsManager.Instance.CallParentOnMouseEnter(buildingID);
                 break;
             case "Harvest":
-                BuildingsManager.Instance.CallParentOnMouseEnter(id);
+                BuildingsManager.Instance.CallParentOnMouseEnter(buildingID);
                 break;
             default:
                 break;

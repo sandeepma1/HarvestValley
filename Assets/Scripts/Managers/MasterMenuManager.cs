@@ -91,9 +91,9 @@ public class MasterMenuManager : MonoBehaviour
         //isMasterMenuUp = true;
         for (int i = 0; i < unlockedItemIDs.Count; i++)
         {
-            if (ItemDatabase.Instance.items[i] != null && ItemDatabase.Instance.items[i].source == BuildingDatabase.Instance.buildingInfo[buildingID].name)
+            if (ItemDatabase.Instance.items[i] != null && ItemDatabase.Instance.items[i].sourceID == SourceDatabase.Instance.sources[buildingID].sourceID)
             {
-                menuItems[unlockedItemCount].itemID = ItemDatabase.Instance.items[i].id;
+                menuItems[unlockedItemCount].itemID = ItemDatabase.Instance.items[i].itemID;
                 menuItems[unlockedItemCount].transform.localPosition = itemPos[posCount];
                 menuItems[unlockedItemCount].ItemIcon.sprite = itemAtlas.GetSprite(ItemDatabase.Instance.items[i].name);
                 //menuItems[unlockedItemCount].ItemAmountText = PlayerInventoryManager.Instance.playerInventory[i].count.ToString();
@@ -166,7 +166,7 @@ public class MasterMenuManager : MonoBehaviour
         isItemSelected = true;
         itemSelectedID = id;
         BuildingsManager.Instance.itemSelectedID = itemSelectedID;
-        if (BuildingsManager.Instance.BuildingsGO[BuildingsManager.Instance.buildingSelectedID].GetComponent<DraggableBuildings>().buildingID > 0)
+        if (BuildingsManager.Instance.BuildingsGO[BuildingsManager.Instance.buildingSelectedID].GetComponent<DraggableBuildings>().sourceID > 0)
         {
             ItemPopupProduction.Instance.DisplayItemPopupProduction_DOWN(id, pos);
         }
@@ -178,10 +178,10 @@ public class MasterMenuManager : MonoBehaviour
         itemSelectedID = id;
         BuildingsManager.Instance.itemSelectedID = itemSelectedID;
         ToggleDisplayCropMenu();
-        if (ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].source != ItemSource.Field)
-        {
-            ItemPopupProduction.Instance.DisplayItemPopupProduction_DRAG(pos);
-        }
+        //if (ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].sourceID != ItemSource.Field)
+        //{
+        //    ItemPopupProduction.Instance.DisplayItemPopupProduction_DRAG(pos);
+        //}
     }
 
     public void ToggleDisplayCropMenu()

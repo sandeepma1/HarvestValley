@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
@@ -24,21 +20,21 @@ public class ShopMenuManager : MonoBehaviour
     public void PopulateScrollListAtStart()
     {
         // Image, background, name, desc
-        shopItemsGO = new GameObject[BuildingDatabase.Instance.buildingInfo.Length];
-        for (int i = 0; i < BuildingDatabase.Instance.buildingInfo.Length; i++)
+        shopItemsGO = new GameObject[SourceDatabase.Instance.sources.Length];
+        for (int i = 0; i < SourceDatabase.Instance.sources.Length; i++)
         {
             shopItemsGO[i] = Instantiate(shopitemPrefab, UIList.transform);
             shopItemsGO[i].transform.GetChild(0).GetComponent<DraggableItemShopUIItem>().shopItemID = i;
-            shopItemsGO[i].transform.GetChild(0).GetComponent<Image>().overrideSprite = Resources.Load<Sprite>("Textures/Buildings/" + BuildingDatabase.Instance.buildingInfo[i].name);
-            shopItemsGO[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = BuildingDatabase.Instance.buildingInfo[i].name.ToString();
-            shopItemsGO[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = BuildingDatabase.Instance.buildingInfo[i].desc.ToString();
-            shopItemsGO[i].transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = BuildingDatabase.Instance.buildingInfo[i].cost.ToString();
+            shopItemsGO[i].transform.GetChild(0).GetComponent<Image>().overrideSprite = Resources.Load<Sprite>("Textures/Buildings/" + SourceDatabase.Instance.sources[i].sourceID);
+            shopItemsGO[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = SourceDatabase.Instance.sources[i].sourceID.ToString();
+            shopItemsGO[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = SourceDatabase.Instance.sources[i].desc.ToString();
+            shopItemsGO[i].transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = SourceDatabase.Instance.sources[i].cost.ToString();
         }
     }
 
     public void ChildCallingOnMouseDrag(int shopItemID)
     {
-        PlaceHolderSprite.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Buildings/" + BuildingDatabase.Instance.buildingInfo[shopItemID].name);
+        PlaceHolderSprite.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Buildings/" + SourceDatabase.Instance.sources[shopItemID].sourceID);
         PlaceHolderSprite.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
         PlaceHolderSprite.transform.position = new Vector3(Mathf.RoundToInt(PlaceHolderSprite.transform.position.x), Mathf.RoundToInt(PlaceHolderSprite.transform.position.y));
     }

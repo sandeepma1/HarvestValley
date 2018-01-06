@@ -155,6 +155,10 @@ public class InputController : MonoBehaviour
                 }
                 isTouchingUI = false;
                 isDragging = false;
+                if (EventSystem.current.IsPointerOverGameObject(t.fingerId))
+                {
+                    print("touched");
+                }
             }
         }
     }

@@ -4,10 +4,10 @@ using UnityEngine;
 using System.Text.RegularExpressions;
 using System;
 
-public class BuildingDatabase : MonoBehaviour
+public class SourceDatabase : MonoBehaviour
 {
-    public static BuildingDatabase Instance = null;
-    public BuildingInfo[] buildingInfo;
+    public static SourceDatabase Instance = null;
+    public SourceInfo[] sources;
     string folderName = "Source";
 
     void Awake()
@@ -22,12 +22,13 @@ public class BuildingDatabase : MonoBehaviour
         string[] chars = new string[100];
         TextAsset itemCSV = Resources.Load("CSVs/" + folderName) as TextAsset;
         lines = Regex.Split(itemCSV.text, "\r\n");
-        buildingInfo = new BuildingInfo[lines.Length - 2];
+        sources = new SourceInfo[lines.Length - 2];
         for (int i = 1; i < lines.Length - 1; i++)
         {
             chars = Regex.Split(lines[i], ",");
-            buildingInfo[i - 1] = new BuildingInfo(IntParse(chars[0]),
-                (ItemSource)Enum.Parse(typeof(ItemSource), chars[1]),
+            sources[i - 1] = new SourceInfo(
+                IntParse(chars[0]),
+                chars[1],
                 chars[2],
                 (ItemType)Enum.Parse(typeof(ItemType), chars[3]),
                 IntParse(chars[4]),
@@ -36,7 +37,6 @@ public class BuildingDatabase : MonoBehaviour
                 IntParse(chars[7]));
         }
     }
-    //public BuildingInfo (int b_id, string b_name, string b_desc, ItemType b_type, int b_cost, int b_deployTime, int b_slotsUnlocked, int b_limit)
 
     int IntParse(string text)
     {
@@ -57,10 +57,10 @@ public class BuildingDatabase : MonoBehaviour
 }
 
 [System.Serializable]
-public class BuildingInfo
+public class SourceInfo
 {
-    public int id;
-    public ItemSource name;
+    public int sourceID;
+    public string name;
     public string desc;
     public ItemType type;
     public int cost;
@@ -70,9 +70,9 @@ public class BuildingInfo
     //shopItemType
     //public int shopitemLimit
 
-    public BuildingInfo(int b_id, ItemSource b_name, string b_desc, ItemType b_type, int b_cost, int b_deployTime, int b_slotsUnlocked, int b_limit)
+    public SourceInfo(int b_sourceID, string b_name, string b_desc, ItemType b_type, int b_cost, int b_deployTime, int b_slotsUnlocked, int b_limit)
     {
-        id = b_id;
+        sourceID = b_sourceID;
         name = b_name;
         desc = b_desc;
         type = b_type;

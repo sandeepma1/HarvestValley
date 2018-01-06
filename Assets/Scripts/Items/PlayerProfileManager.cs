@@ -30,7 +30,7 @@ public class PlayerProfileManager : MonoBehaviour
         }
     }
 
-    public bool IsGoldAvailable(int value)
+    public bool IsCoinsAvailable(int value)
     {
         if (value <= playerProfile.coins)
             return false;
@@ -87,7 +87,7 @@ public class PlayerProfileManager : MonoBehaviour
         UpdateAll();
     }
 
-    public void PlayerGold(int value)
+    public void PlayerCoins(int value)
     {
         playerProfile.coins += value;
         UpdateAll();
@@ -154,7 +154,7 @@ public class PlayerProfileManager : MonoBehaviour
         GEM.playerFarmName = playerProfile.farmName;
         GEM.playerLevel = playerProfile.level;
         GEM.playerXPPoints = playerProfile.XPPoints;
-        GEM.playerGold = playerProfile.coins;
+        GEM.playerCoins = playerProfile.coins;
         GEM.playerGems = playerProfile.gems;
         GEM.playerStamina = playerProfile.stamina;
         GEM.playerStaminaMaxDateTime = playerProfile.staminaMaxDateTime;

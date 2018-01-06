@@ -89,7 +89,7 @@ public class MenuManager : MonoBehaviour
             //GEM.isDragging = false;
         }
         BuildingsManager.Instance.DisableAnyOpenMenus();
-        UIMasterMenuManager.Instance.ToggleDisplayMenuUI(false);
+        //UIMasterMenuManager.Instance.ToggleDisplayMenuUI(false);
         // InputController.instance.ResetCameraAfterSnap();
     }
 

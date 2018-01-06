@@ -27,7 +27,8 @@ public class ItemDatabase : MonoBehaviour
         for (int i = 1; i < items.Length; i++)
         {
             chars = Regex.Split(lines[i], ",");
-            items[i - 1] = new Item(IntParse(chars[0]),
+            items[i - 1] = new Item(
+                IntParse(chars[0]),
                 chars[1],
                 chars[2],
                 IntParse(chars[3]),
@@ -36,7 +37,7 @@ public class ItemDatabase : MonoBehaviour
                 (ItemType)Enum.Parse(typeof(ItemType), chars[6]),
                 IntParse(chars[7]),
                 IntParse(chars[8]),
-                (ItemSource)Enum.Parse(typeof(ItemSource), chars[9]),
+                IntParse(chars[9]),
                 IntParse(chars[10]),
                 IntParse(chars[11]),
                 IntParse(chars[12]),
@@ -72,7 +73,7 @@ public class Item
 {
     //ID, Name, Level, Max. price, Time, XP, NeedsID1, NeedsAmount1, NeedsID2, NeedsAmount2, NeedsID3, NeedsAmount3, NeedsID4, NeedsAmount4, Source, PerBoatCrateMIN, PerBoatCrateMAX
 
-    public int id;
+    public int itemID;
     public string name;
     public string description;
     public int unlocksAtLevel;
@@ -81,7 +82,7 @@ public class Item
     public ItemType type;
     public int coinCost;
     public int gemCost;
-    public ItemSource source;
+    public int sourceID;
     public int sellValueMax;
     public int needID1;
     public int needAmount1;
@@ -93,11 +94,11 @@ public class Item
     public int needAmount4;
 
     public Item(int itemId, string itemName, string itemDescription, int itemUnlocksAtLevel,
-                 float itemTimeRequiredInMins, int itemXP, ItemType itemType, int itemCoinCost, int itemGemCost, ItemSource itemSource,
+                 float itemTimeRequiredInMins, int itemXP, ItemType itemType, int itemCoinCost, int itemGemCost, int itemSourceID,
                  int itemSellValueMax, int itemNeedID1, int itemNeedAmount1, int itemNeedID2, int itemNeedAmount2,
                  int itemNeedID3, int itemNeedAmount3, int itemNeedID4, int itemNeedAmount4)
     {
-        id = itemId;
+        itemID = itemId;
         name = itemName;
         description = itemDescription;
         unlocksAtLevel = itemUnlocksAtLevel;
@@ -106,15 +107,15 @@ public class Item
         type = itemType;
         coinCost = itemCoinCost;
         gemCost = itemGemCost;
+        sourceID = itemSourceID;
         sellValueMax = itemSellValueMax;
-        source = itemSource;
         needID1 = itemNeedID1;
-        needID2 = itemNeedID2;
-        needID3 = itemNeedID3;
-        needID4 = itemNeedID4;
         needAmount1 = itemNeedAmount1;
+        needID2 = itemNeedID2;
         needAmount2 = itemNeedAmount2;
+        needID3 = itemNeedID3;
         needAmount3 = itemNeedAmount3;
+        needID4 = itemNeedID4;
         needAmount4 = itemNeedAmount4;
     }
 }

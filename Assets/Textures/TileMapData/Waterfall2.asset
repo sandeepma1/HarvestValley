@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3539b2508428d264e86f4d5d56055574, type: 3}
+  m_Name: Waterfall2
+  m_EditorClassIdentifier: 
+  Tileset: {fileID: 11400000, guid: c0a8d3c77246bee45a24b674ba6fad86, type: 2}
+  Params:
+    m_paramList: []
+  m_group: 0
+  m_autotilingMode: 1
+  AnimFPS: 8
+  AnimFrames:
+  - tileId: 590
+    UVOffset: {x: 0, y: 0}
+  - tileId: 591
+    UVOffset: {x: 0, y: 0}
+  - tileId: 592
+    UVOffset: {x: 0, y: 0}
+  - tileId: 593
+    UVOffset: {x: 0, y: 0}
+  - tileId: 594
+    UVOffset: {x: 0, y: 0}
+  - tileId: 595
+    UVOffset: {x: 0, y: 0}
+  - tileId: 596
+    UVOffset: {x: 0, y: 0}
+  - tileId: 597
+    UVOffset: {x: 0, y: 0}
+  - tileId: 598
+    UVOffset: {x: 0, y: 0}
+  - tileId: 599
+    UVOffset: {x: 0, y: 0}
+  - tileId: 600
+    UVOffset: {x: 0, y: 0}
+  - tileId: 601
+    UVOffset: {x: 0, y: 0}
+  - tileId: 602
+    UVOffset: {x: 0, y: 0}
+  - tileId: 603
+    UVOffset: {x: 0, y: 0}
+  - tileId: 604
+    UVOffset: {x: 0, y: 0}
+  - tileId: 605
+    UVOffset: {x: 0, y: 0}

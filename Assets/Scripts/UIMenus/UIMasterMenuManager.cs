@@ -9,8 +9,6 @@ using UnityEngine.UI;
 public class UIMasterMenuManager : MonoBehaviour
 {
     public static UIMasterMenuManager Instance = null;
-    public bool isItemSelected = false;
-    private int itemSelectedID = -1;
 
     [SerializeField]
     private SpriteAtlas itemAtlas;
@@ -19,13 +17,17 @@ public class UIMasterMenuManager : MonoBehaviour
     [SerializeField]
     private Transform parentTransform;
     [SerializeField]
-    private GameObject scrollList;
+    private GameObject itemScrollList;
+    [SerializeField]
+    private GameObject objectInfoPopup;
 
-    public Action<int> ItemSelectedEvent;
+    public Action<int> DraggedItemEvent;
 
     private int unlockedItemCount = 0;
+    private int selectedBuildingID = -1;
     private DraggableUIItem[] menuItems = new DraggableUIItem[12];
     private List<int> unlockedItemIDs = new List<int>();
+    private bool isDropCompleted = false;
 
     private void Awake()
     {
@@ -39,19 +41,12 @@ public class UIMasterMenuManager : MonoBehaviour
         ToggleDisplayMenuUI(false);
     }
 
-    private void SelectedItemID(int id)
-    {
-        itemSelectedID = id;
-        BuildingsManager.Instance.itemSelectedID = id;
-    }
-
     private void SpwanMenuItems()
     {
         for (int i = 0; i < menuItems.Length; i++)
         {
             menuItems[i] = (Instantiate(menuItemPrefab, parentTransform));
             menuItems[i].name = "UIItemList" + i;
-            menuItems[i].SelectedItemID += SelectedItemID;
         }
     }
 
@@ -65,14 +60,21 @@ public class UIMasterMenuManager : MonoBehaviour
                 unlockedItemIDs.Add(LevelUpDatabase.Instance.gameLevels[i].itemUnlockID);
             }
         }
-        foreach (var item in unlockedItemIDs)
-        {
-            print("unlocked items " + item);
-        }
+        //foreach (var item in unlockedItemIDs)
+        //{
+        //    print("unlocked items " + item);
+        //}
     }
 
-    public void PopulateItemsInMasterMenu(int buildingID)
+    public void DisplayUIMasterMenu(int buildingID, int sourceID)
     {
+        PopulateItemsInMasterMenu(buildingID, sourceID);
+    }
+
+    private void PopulateItemsInMasterMenu(int buildingID, int sourceID)
+    {
+        //print(buildingID);
+        selectedBuildingID = buildingID;
         ToggleDisplayMenuUI(true);
         //MenuManager.Instance.DisableAllMenus();
         for (int i = 0; i < menuItems.Length; i++)
@@ -80,29 +82,58 @@ public class UIMasterMenuManager : MonoBehaviour
             menuItems[i].gameObject.SetActive(false);
             menuItems[i].itemID = -1;
         }
-        unlockedItemCount = 0;
+        //unlockedItemCount = 0;
 
         for (int i = 0; i < unlockedItemIDs.Count; i++)
         {
-            if (ItemDatabase.Instance.items[i] != null && ItemDatabase.Instance.items[i].source == BuildingDatabase.Instance.buildingInfo[buildingID].name)
+            if (ItemDatabase.Instance.items[unlockedItemIDs[i]].sourceID == sourceID)
             {
-                menuItems[unlockedItemCount].itemID = ItemDatabase.Instance.items[i].id;
-                //menuItems[unlockedItemCount].itemImage.sprite = itemAtlas.GetSprite(ItemDatabase.Instance.items[i].name);
-                menuItems[unlockedItemCount].itemAmountText.text = ItemDatabase.Instance.items[i].coinCost.ToString();
                 menuItems[i].gameObject.SetActive(true);
-                unlockedItemCount++;
+                menuItems[i].itemID = ItemDatabase.Instance.items[unlockedItemIDs[i]].itemID;
+                //menuItems[unlockedItemCount].itemImage.sprite = itemAtlas.GetSprite(ItemDatabase.Instance.items[i].name);
+                print(ItemDatabase.Instance.items[unlockedItemIDs[i]].coinCost.ToString());
+
+                menuItems[i].itemNameText.text = ItemDatabase.Instance.items[unlockedItemIDs[i]].name;
+                menuItems[i].itemCostText.text = ItemDatabase.Instance.items[unlockedItemIDs[i]].coinCost.ToString();
             }
         }
+
+        //for (int i = 0; i < unlockedItemIDs.Count; i++)
+        //{
+        //    if (ItemDatabase.Instance.items[i] != null)
+        //    {
+        //        if (ItemDatabase.Instance.items[i].sourceID == SourceDatabase.Instance.sources[i].sourceID)
+        //        {
+        //            menuItems[i].itemID = ItemDatabase.Instance.items[i].itemID;
+        //            //menuItems[unlockedItemCount].itemImage.sprite = itemAtlas.GetSprite(ItemDatabase.Instance.items[i].name);
+        //            menuItems[i].itemAmountText.text = ItemDatabase.Instance.items[i].coinCost.ToString();
+        //            menuItems[i].gameObject.SetActive(true);
+        //            unlockedItemCount++;
+        //        }
+        //    }
+        //}
         this.gameObject.SetActive(true);
     }
 
-    public void UpdateSeedValue()
+    public void OnDropComplete()
     {
-        for (int i = 0; i < unlockedItemCount; i++)
+        isDropCompleted = true;
+    }
+
+    public void OnDragComplete(int itemID)
+    {
+        if (isDropCompleted)
         {
-            //menuItems[i].transform.GetChild(1).GetComponent<TextMeshPro>().text = PlayerInventoryManager.Instance.playerInventory[i].count.ToString();
+            if (selectedBuildingID == -1)
+            {
+                return;
+            }
+            BuildingsManager.Instance.PlantItemOnBuilding(selectedBuildingID, itemID);
+            selectedBuildingID = -1;
+            ToggleDisplayMenuUI(false);
+            isDropCompleted = false;
+            print("OnDragComplete" + selectedBuildingID + " " + itemID);
         }
-        PlayerInventoryManager.Instance.UpdateScrollListItemCount();
     }
 
     public void UpgradeBuildingPressed(int id)
@@ -114,10 +145,12 @@ public class UIMasterMenuManager : MonoBehaviour
     {
         if (flag)
         {
-            scrollList.SetActive(true);
+            itemScrollList.SetActive(true);
+            objectInfoPopup.SetActive(true);
         } else
         {
-            scrollList.SetActive(false);
+            itemScrollList.SetActive(false);
+            objectInfoPopup.SetActive(false);
         }
     }
 }

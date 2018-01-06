@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
-using System;
 using UnityEngine.EventSystems;
+using System;
 using TMPro;
 
 /// <summary>
@@ -11,30 +10,51 @@ using TMPro;
 public class DraggableUIItem : ScrollRect
 {
     public int itemID;
-
     private bool routeToParent = false;
-    private Transform imageTransform;
+    private Transform imageImageTransform;
     private Canvas myCanvas;
     private Vector3 initialPosition;
     private Vector2 pos;
     private DraggableUIItemHelper helper;
-
-    public TextMeshProUGUI itemAmountText;
+    public TextMeshProUGUI itemCostText;
+    public TextMeshProUGUI itemNameText;
     public Image itemImage;
-    public Action<int> SelectedItemID;
+    public int selectedItemID;
 
-    protected override void Start()
+    protected override void Awake()
     {
         helper = GetComponent<DraggableUIItemHelper>();
-        itemAmountText = helper.itemCostText;
-        imageTransform = helper.itemImage.GetComponent<Transform>();
+        itemCostText = helper.itemCostText;
+        itemNameText = helper.itemNameText;
+        imageImageTransform = helper.itemImage.GetComponent<Transform>();
+        itemImage = imageImageTransform.GetComponent<Image>();
         myCanvas = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<Canvas>();
-        if (SelectedItemID != null)
-        {
-            SelectedItemID.Invoke(-1);
-        }
+        selectedItemID = -1;
     }
 
+    private void _OnBeginDrag()
+    {
+        itemImage.raycastTarget = false;
+        initialPosition = imageImageTransform.position;
+        selectedItemID = itemID;
+    }
+
+    private void _OnDrag()
+    {
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(myCanvas.transform as RectTransform, Input.mousePosition, myCanvas.worldCamera, out pos);
+        imageImageTransform.position = myCanvas.transform.TransformPoint(pos);
+    }
+
+    private void _OnEndDrag()
+    {
+        itemImage.raycastTarget = true;
+        imageImageTransform.position = initialPosition;
+        UIMasterMenuManager.Instance.OnDragComplete(selectedItemID);
+        selectedItemID = -1;
+        print("endDrag done");
+    }
+
+    #region ScrollRect Stuff DO NOT EDIT
     /// <summary>
     /// Do action for all parents
     /// </summary>
@@ -64,16 +84,14 @@ public class DraggableUIItem : ScrollRect
     /// <summary>
     /// Drag event
     /// </summary>
-    public override void OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
+    public override void OnDrag(PointerEventData eventData)
     {
-
         if (routeToParent)
         {
             DoForParents<IDragHandler>((parent) => { parent.OnDrag(eventData); });
         } else
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(myCanvas.transform as RectTransform, Input.mousePosition, myCanvas.worldCamera, out pos);
-            imageTransform.position = myCanvas.transform.TransformPoint(pos);
+            _OnDrag();
             base.OnDrag(eventData);
         }
     }
@@ -81,7 +99,7 @@ public class DraggableUIItem : ScrollRect
     /// <summary>
     /// Begin drag event
     /// </summary>
-    public override void OnBeginDrag(UnityEngine.EventSystems.PointerEventData eventData)
+    public override void OnBeginDrag(PointerEventData eventData)
     {
         if (!horizontal && Math.Abs(eventData.delta.x) > Math.Abs(eventData.delta.y))
             routeToParent = true;
@@ -94,11 +112,7 @@ public class DraggableUIItem : ScrollRect
             DoForParents<IBeginDragHandler>((parent) => { parent.OnBeginDrag(eventData); });
         else
         {
-            initialPosition = imageTransform.position;
-            if (SelectedItemID != null)
-            {
-                SelectedItemID.Invoke(itemID);
-            }
+            _OnBeginDrag();
             base.OnBeginDrag(eventData);
         }
     }
@@ -106,19 +120,16 @@ public class DraggableUIItem : ScrollRect
     /// <summary>
     /// End drag event
     /// </summary>
-    public override void OnEndDrag(UnityEngine.EventSystems.PointerEventData eventData)
+    public override void OnEndDrag(PointerEventData eventData)
     {
         if (routeToParent)
             DoForParents<IEndDragHandler>((parent) => { parent.OnEndDrag(eventData); });
         else
         {
-            imageTransform.position = initialPosition;
-            if (SelectedItemID != null)
-            {
-                SelectedItemID.Invoke(-1);
-            }
+            _OnEndDrag();
             base.OnEndDrag(eventData);
         }
         routeToParent = false;
     }
+    #endregion
 }

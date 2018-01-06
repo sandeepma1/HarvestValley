@@ -9,7 +9,7 @@ public static class GEM
     public static string playerFarmName;
     public static int playerLevel;
     public static int playerXPPoints;
-    public static int playerGold;
+    public static int playerCoins;
     public static int playerGems;
     public static int playerStamina;
     public static string playerStaminaMaxDateTime;
