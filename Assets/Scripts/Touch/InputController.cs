@@ -35,12 +35,18 @@ public class InputController : MonoBehaviour
     private float[] cameraPositions;
     private float touchDeltaPosition;
     private float dragOffset;
+    private readonly float cameraOrthSizeNormal = 16;
+    private readonly float cameraOrthSizeZoom = 12;
 
     private bool isTouchingUI;
     private bool isDragging;
     private bool isAlreadySnapped;
+    private bool isCameraZoomed;
+
+    private Vector3 tempCameraPosition;
 
     private Transform mainCameraTransform;
+    private Camera mainCamera;
     Hashtable ease = new Hashtable();
 
     private void Awake()
@@ -55,14 +61,12 @@ public class InputController : MonoBehaviour
         swipeManager.onSwipeEvent += SwipeEventHandler;
         dragOffset = (cameraPositions[1] - cameraPositions[0]) / 3;
         ease.Add("ease", LeanTweenType.easeOutSine);
+        tempCameraPosition = mainCameraTransform.position;
     }
 
     private void Update()
     {
-        if (enableDrag)
-        {
-            DragCamera();
-        }
+        DragCamera();
     }
 
     private void CreateCameraPositions()
@@ -72,9 +76,9 @@ public class InputController : MonoBehaviour
             Debug.LogError("@@-NO camera in scene or MainCamera tag not assigned");
         }
         mainCameraTransform = Camera.main.transform;
+        mainCamera = Camera.main;
+
         mainCameraTransform.position = new Vector3(0, 0, -1);
-        Camera camera = mainCameraTransform.GetComponent<Camera>();
-        //camera.project
         cameraPositions = new float[numberOfScreens];
         for (int i = 0; i < numberOfScreens; i++)
         {
@@ -117,24 +121,28 @@ public class InputController : MonoBehaviour
         if (touch.Count > 0)
         {
             Touch t = touch[0];
-            if (t.phase == TouchPhase.Began)
+            if (enableDrag)
             {
-                isAlreadySnapped = false;
-                if (EventSystem.current.IsPointerOverGameObject(t.fingerId))
+                if (t.phase == TouchPhase.Began)
                 {
-                    isTouchingUI = true;
-                    return;
+                    isAlreadySnapped = false;
+                    if (EventSystem.current.IsPointerOverGameObject(t.fingerId))
+                    {
+                        isTouchingUI = true;
+                        return;
+                    }
+                }
+                if (t.phase == TouchPhase.Moved && !isTouchingUI)
+                {
+                    touchDeltaPosition = t.deltaPosition.x;
+                    if (touchDeltaPosition > minDragDelta || touchDeltaPosition < -minDragDelta)
+                    {
+                        isDragging = true;
+                        mainCameraTransform.Translate(-touchDeltaPosition * dragSpeed, 0, 0);
+                    }
                 }
             }
-            if (t.phase == TouchPhase.Moved && !isTouchingUI)
-            {
-                touchDeltaPosition = t.deltaPosition.x;
-                if (touchDeltaPosition > minDragDelta || touchDeltaPosition < -minDragDelta)
-                {
-                    isDragging = true;
-                    mainCameraTransform.Translate(-touchDeltaPosition * dragSpeed, 0, 0);
-                }
-            }
+
             if (t.phase == TouchPhase.Ended)
             {
                 if (!isTouchingUI)
@@ -196,30 +204,35 @@ public class InputController : MonoBehaviour
         mainCameraTransform.DOMoveX(cameraPositions[currPos], easeDuration).SetEase(snapEase);
     }
 
-    public void SnapCameraOnButton(int pos)
+    public void ZoomCameraOnObject(Vector2 pos)
     {
-        //if (currPos == pos)
-        //{
-        //    return;
-        //}
-        //currPos = pos;
-
-        //float posX = cameraPositions[pos];
-        //// mainCameraTransform.DOMoveX(posX, easeDuration).SetEase(snapEase);
-
-        ////Vector3 newLocation = new Vector3(cameraPositions[pos], mainCameraTransform.position.y, mainCameraTransform.position.z);
-        ////mainCameraTransform.DOMove(newLocation, easeDuration, true).SetEase(snapEase);
-        //currPos = pos;
-        //print(posX + " curpos " + currPos + " pos " + pos);
+        enableSwipe = false;
+        enableDrag = false;
+        tempCameraPosition = mainCameraTransform.position;
+        Vector3 snapPosition = new Vector3(pos.x, pos.y, mainCameraTransform.position.z);
+        mainCameraTransform.DOMove(snapPosition, easeDuration).SetEase(snapEase).OnComplete(() => isCameraZoomed = true);
+        mainCamera.DOOrthoSize(cameraOrthSizeZoom, easeDuration).SetEase(snapEase);
     }
 
-    public void MoveCamera(int id, float position)
+    public void ResetCameraAfterSnap()
+    {
+        if (isCameraZoomed)
+        {
+            mainCameraTransform.DOMove(tempCameraPosition, easeDuration).SetEase(snapEase);
+            mainCamera.DOOrthoSize(cameraOrthSizeNormal, easeDuration).SetEase(snapEase);
+            enableSwipe = true;
+            enableDrag = true;
+            isCameraZoomed = false;
+        }
+    }
+
+    public void SnapCameraOnButton(int id)//, float position)
     {
         if (!isTouchingUI || currPos == id)
         {
             return;
         }
-        mainCameraTransform.DOMoveX(position, easeDuration * 2).SetEase(snapEase);
+        mainCameraTransform.DOMoveX(cameraPositions[id], easeDuration).SetEase(snapEase);
         currPos = id;
     }
 
@@ -233,7 +246,7 @@ public class InputController : MonoBehaviour
             return;
         }
         currPos += pos;
-        mainCameraTransform.DOMoveX(cameraPositions[currPos], 0.5f).SetEase(snapEase);
+        mainCameraTransform.DOMoveX(cameraPositions[currPos], easeDuration).SetEase(snapEase);
     }
 
     private void SwipeEventHandler(SwipeAction swipeAction)

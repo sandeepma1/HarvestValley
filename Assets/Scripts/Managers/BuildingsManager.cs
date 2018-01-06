@@ -41,20 +41,20 @@ public class BuildingsManager : MonoBehaviour
 
     private void Update() // all long press logic	
     {
-        if (isTilePressed && BuildingsGO[mouseDownBuildingID].buildingID != 0)
-        {
-            if (longPressTimer >= longPressTime)
-            {
-                isLongPress = true;
-                longPressBuildingID = mouseDownBuildingID;
-                mouseDownBuildingID = -1;
-                isTilePressed = false;
-                BuildingsGO[longPressBuildingID].isSelected = true;
-                EnableOutlineOnSprite(longPressBuildingID);
-                return;
-            }
-            longPressTimer += Time.deltaTime;
-        }
+        //if (isTilePressed && BuildingsGO[mouseDownBuildingID].buildingID != 0)
+        //{
+        //    if (longPressTimer >= longPressTime)
+        //    {
+        //        isLongPress = true;
+        //        longPressBuildingID = mouseDownBuildingID;
+        //        mouseDownBuildingID = -1;
+        //        isTilePressed = false;
+        //        BuildingsGO[longPressBuildingID].isSelected = true;
+        //        EnableOutlineOnSprite(longPressBuildingID);
+        //        return;
+        //    }
+        //    longPressTimer += Time.deltaTime;
+        //}
     }
 
     private void LateUpdate() //Mainly used to show time remaining
@@ -83,7 +83,7 @@ public class BuildingsManager : MonoBehaviour
         //}
         InvokeRepeating("SaveBuildings", 0, 5);
         InvokeRepeating("CheckForHarvest", 0, 1);
-        DisplayMasterMenu(1);
+        //DisplayMasterMenu(1);
     }
 
     public void InitBuildings(Buildings building)
@@ -183,8 +183,9 @@ public class BuildingsManager : MonoBehaviour
         }
     }
 
-    public void DisplayMasterMenu(int b_ID) // Display field Crop Menu
+    public void DisplayMasterMenu(int b_ID, Vector2 position) // Display field Crop Menu
     {
+        //InputController.instance.ZoomCameraOnObject(position);
         MasterMenuManager.Instance.PopulateItemsInMasterMenu(BuildingsGO[b_ID].buildingID);
         MasterMenuManager.Instance.transform.position = BuildingsGO[b_ID].transform.position;
 
@@ -447,9 +448,9 @@ public class BuildingsManager : MonoBehaviour
 
     public void CallParentOnMouseDown(int buildingID)
     {
-        isTilePressed = true;
+        // isTilePressed = true;
         longPressTimer = 0;
-        mouseDownBuildingID = buildingID;
+        // mouseDownBuildingID = buildingID;
         if (buildingID != longPressBuildingID && longPressBuildingID != -1)
         {
             BuildingsGO[longPressBuildingID].isSelected = false;
@@ -458,46 +459,46 @@ public class BuildingsManager : MonoBehaviour
         }
     }
 
-    private void OnDraggableBuildingClicked(int buildingID)
+    private void OnDraggableBuildingClicked(int buildingID, Vector2 position)
     {
-        isTilePressed = false;
-        mouseDownBuildingID = -1;
-        if (!isLongPress)
+        //isTilePressed = false;
+        // mouseDownBuildingID = -1;
+        //if (!isLongPress)
+        //{
+        switch (BuildingsGO[buildingID].state)
         {
-            switch (BuildingsGO[buildingID].state)
-            {
-                case BUILDINGS_STATE.NONE:
-                    DisplayMasterMenu(buildingID);
-                    break;
-                case BUILDINGS_STATE.GROWING:
-                    tempID = buildingID;
-                    MenuManager.Instance.DisableAllMenus();
-                    TimeRemainingMenu.SetActive(true);
-                    isFarmTimerEnabled = true;
-                    TimeRemainingMenu.transform.GetChild(0).GetComponent<TextMeshPro>().text =
-                    ItemDatabase.Instance.items[BuildingsGO[tempID].itemID].name.ToString();
-                    break;
-                case BUILDINGS_STATE.WAITING_FOR_HARVEST:
-                    if (BuildingsGO[buildingID].buildingID == 0)
-                    { // if field selected
-                        ShowReadyToHarvestCropsMenu(buildingID);
-                    } else
-                    {
-                        CollectItemsOnBuildings(buildingID);
-                    }
-                    break;
-                default:
-                    break;
-            }
-        } else
-        {
-            if (buildingID != longPressBuildingID)
-            {
-                BuildingsGO[longPressBuildingID].isSelected = false;
-                DisableOutlineOnSprite(longPressBuildingID);
-                isLongPress = false;
-            }
+            case BUILDINGS_STATE.NONE:
+                DisplayMasterMenu(buildingID, position);
+                break;
+            case BUILDINGS_STATE.GROWING:
+                tempID = buildingID;
+                MenuManager.Instance.DisableAllMenus();
+                TimeRemainingMenu.SetActive(true);
+                isFarmTimerEnabled = true;
+                TimeRemainingMenu.transform.GetChild(0).GetComponent<TextMeshPro>().text =
+                ItemDatabase.Instance.items[BuildingsGO[tempID].itemID].name.ToString();
+                break;
+            case BUILDINGS_STATE.WAITING_FOR_HARVEST:
+                if (BuildingsGO[buildingID].buildingID == 0)
+                { // if field selected
+                    ShowReadyToHarvestCropsMenu(buildingID);
+                } else
+                {
+                    CollectItemsOnBuildings(buildingID);
+                }
+                break;
+            default:
+                break;
         }
+        //} else
+        //{
+        //    if (buildingID != longPressBuildingID)
+        //    {
+        //        BuildingsGO[longPressBuildingID].isSelected = false;
+        //        DisableOutlineOnSprite(longPressBuildingID);
+        //        isLongPress = false;
+        //    }
+        //}
     }
 
     public void CallParentOnMouseEnter(int buildingID)

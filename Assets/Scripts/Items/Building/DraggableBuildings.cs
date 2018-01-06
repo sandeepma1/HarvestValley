@@ -18,7 +18,7 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerEn
     public int itemID;
     public System.DateTime dateTime;
 
-    public static event Action<int> OnClicked;
+    public static Action<int, Vector2> OnClicked;
 
     private void Awake()
     {
@@ -45,7 +45,7 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerEn
     {
         if (OnClicked != null)
         {
-            OnClicked.Invoke(id);
+            OnClicked.Invoke(id, transform.position);
         }
     }
 

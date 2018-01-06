@@ -89,6 +89,8 @@ public class MenuManager : MonoBehaviour
             //GEM.isDragging = false;
         }
         BuildingsManager.Instance.DisableAnyOpenMenus();
+        UIMasterMenuManager.Instance.ToggleDisplayMenuUI(false);
+        // InputController.instance.ResetCameraAfterSnap();
     }
 
     #region UI Button calls

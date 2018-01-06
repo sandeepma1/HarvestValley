@@ -50,6 +50,7 @@ public class SwipeManager : MonoBehaviour
     private SwipeAction currentSwipeAction = new SwipeAction();
 
     private bool isTouchingUI;
+    //public bool enableSwipe = false;
 
     private void Update()
     {
