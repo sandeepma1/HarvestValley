@@ -8,7 +8,7 @@ public class FirstScript : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Input.GetMouseButtonDown(2) || Input.GetKeyUp(KeyCode.Y))
+        if (Input.GetMouseButtonDown(2) || Input.GetKeyUp(KeyCode.R))
         {
             ResetGame();
         }

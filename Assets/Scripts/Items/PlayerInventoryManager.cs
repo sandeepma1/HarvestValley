@@ -37,7 +37,8 @@ public class PlayerInventoryManager : MonoBehaviour
         listItems[scrollListID].GetComponent<RectTransform>().localScale = Vector3.one; //fixed some scaling bug
         listItems[scrollListID].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = playerInventory[scrollListID].count.ToString();
         listItems[scrollListID].GetComponent<Image>().overrideSprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[scrollListID].name);
-        listItems[scrollListID].name = "Item" + scrollListID;
+        listItems[scrollListID].name = "InventoryListItem" + scrollListID;
+        print(listItems[scrollListID].name);
     }
 
     public void UpdateScrollListItemCount()

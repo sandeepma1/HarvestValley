@@ -10,16 +10,17 @@ using TMPro;
 public class DraggableUIItem : ScrollRect
 {
     public int itemID;
-    private bool routeToParent = false;
-    private Transform imageImageTransform;
-    private Canvas myCanvas;
-    private Vector3 initialPosition;
-    private Vector2 pos;
-    private DraggableUIItemHelper helper;
     public TextMeshProUGUI itemCostText;
     public TextMeshProUGUI itemNameText;
     public Image itemImage;
     public int selectedItemID;
+
+    private bool routeToParent = false;
+    private Transform imageImageTransform;
+    private Vector3 initialPosition;
+    private Vector2 pos;
+    private DraggableUIItemHelper helper;
+    private Canvas mainCanvas;
 
     protected override void Awake()
     {
@@ -28,7 +29,7 @@ public class DraggableUIItem : ScrollRect
         itemNameText = helper.itemNameText;
         imageImageTransform = helper.itemImage.GetComponent<Transform>();
         itemImage = imageImageTransform.GetComponent<Image>();
-        myCanvas = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<Canvas>();
+        mainCanvas = UIMasterMenuManager.Instance.mainCanvas;
         selectedItemID = -1;
     }
 
@@ -41,8 +42,10 @@ public class DraggableUIItem : ScrollRect
 
     private void _OnDrag()
     {
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(myCanvas.transform as RectTransform, Input.mousePosition, myCanvas.worldCamera, out pos);
-        imageImageTransform.position = myCanvas.transform.TransformPoint(pos);
+        if (Input.touchCount > 1) { return; }
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(mainCanvas.transform as RectTransform, Input.mousePosition, mainCanvas.worldCamera, out pos);
+        imageImageTransform.position = mainCanvas.transform.TransformPoint(pos);
     }
 
     private void _OnEndDrag()
@@ -51,7 +54,6 @@ public class DraggableUIItem : ScrollRect
         imageImageTransform.position = initialPosition;
         UIMasterMenuManager.Instance.OnDragComplete(selectedItemID);
         selectedItemID = -1;
-        print("endDrag done");
     }
 
     #region ScrollRect Stuff DO NOT EDIT

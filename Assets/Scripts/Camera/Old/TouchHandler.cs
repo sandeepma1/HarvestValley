@@ -39,7 +39,7 @@ namespace HarvestValley.TouchClickInput
             switch (obj.tag)
             {
                 case "Field":
-                    obj.GetComponent<DraggableBuildings>().TouchedUp();
+                    //obj.GetComponent<DraggableBuildings>().TouchedUp();
                     break;
                 case "Items":
                     break;

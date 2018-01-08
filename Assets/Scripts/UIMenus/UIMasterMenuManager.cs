@@ -9,22 +9,27 @@ using UnityEngine.UI;
 public class UIMasterMenuManager : MonoBehaviour
 {
     public static UIMasterMenuManager Instance = null;
+    public Canvas mainCanvas;
 
     [SerializeField]
     private SpriteAtlas itemAtlas;
     [SerializeField]
-    private DraggableUIItem menuItemPrefab;
+    private DraggableUIItem scrollListItemPrefab;
     [SerializeField]
-    private Transform parentTransform;
+    private Transform scrollListParentTransform;
     [SerializeField]
-    private GameObject itemScrollList;
+    private GameObject uiItemScrollList;
     [SerializeField]
-    private GameObject objectInfoPopup;
+    private GameObject uiObjectInfoMenu;
+    [SerializeField]
+    private GameObject uiHarvestMenu;
+    [SerializeField]
+    private GameObject navigationButtonsGroup;
 
     public Action<int> DraggedItemEvent;
 
-    private int unlockedItemCount = 0;
     private int selectedBuildingID = -1;
+    private int selectedSourceID = -1;
     private DraggableUIItem[] menuItems = new DraggableUIItem[12];
     private List<int> unlockedItemIDs = new List<int>();
     private bool isDropCompleted = false;
@@ -38,14 +43,16 @@ public class UIMasterMenuManager : MonoBehaviour
     {
         SpwanMenuItems();
         CheckForUnlockedItems();
-        ToggleDisplayMenuUI(false);
+        ToggleScrolItemlList(false);
+        ToggleHarvestMenu(false);
+        ToggleObjectInfoMenu(false);
     }
 
     private void SpwanMenuItems()
     {
         for (int i = 0; i < menuItems.Length; i++)
         {
-            menuItems[i] = (Instantiate(menuItemPrefab, parentTransform));
+            menuItems[i] = (Instantiate(scrollListItemPrefab, scrollListParentTransform));
             menuItems[i].name = "UIItemList" + i;
         }
     }
@@ -66,23 +73,34 @@ public class UIMasterMenuManager : MonoBehaviour
         //}
     }
 
-    public void DisplayUIMasterMenu(int buildingID, int sourceID)
+    public void DisplayUIMasterMenuToPlantSeed(int buildingID, int sourceID)
     {
+        selectedBuildingID = buildingID;
+        selectedSourceID = sourceID;
+
+        ToggleObjectInfoMenu(true);
+        ToggleScrolItemlList(true);
         PopulateItemsInMasterMenu(buildingID, sourceID);
+    }
+
+    public void DisplayUIMasterMenuToHarvest(int buildingID, int sourceID)
+    {
+        selectedBuildingID = buildingID;
+        selectedSourceID = sourceID;
+
+        ToggleObjectInfoMenu(true);
+        ToggleHarvestMenu(true); //TODO: send selected crop images
     }
 
     private void PopulateItemsInMasterMenu(int buildingID, int sourceID)
     {
-        //print(buildingID);
         selectedBuildingID = buildingID;
-        ToggleDisplayMenuUI(true);
-        //MenuManager.Instance.DisableAllMenus();
+        selectedSourceID = sourceID;
         for (int i = 0; i < menuItems.Length; i++)
         {
             menuItems[i].gameObject.SetActive(false);
             menuItems[i].itemID = -1;
         }
-        //unlockedItemCount = 0;
 
         for (int i = 0; i < unlockedItemIDs.Count; i++)
         {
@@ -91,31 +109,23 @@ public class UIMasterMenuManager : MonoBehaviour
                 menuItems[i].gameObject.SetActive(true);
                 menuItems[i].itemID = ItemDatabase.Instance.items[unlockedItemIDs[i]].itemID;
                 //menuItems[unlockedItemCount].itemImage.sprite = itemAtlas.GetSprite(ItemDatabase.Instance.items[i].name);
-                print(ItemDatabase.Instance.items[unlockedItemIDs[i]].coinCost.ToString());
 
                 menuItems[i].itemNameText.text = ItemDatabase.Instance.items[unlockedItemIDs[i]].name;
                 menuItems[i].itemCostText.text = ItemDatabase.Instance.items[unlockedItemIDs[i]].coinCost.ToString();
             }
+            this.gameObject.SetActive(true);
         }
-
-        //for (int i = 0; i < unlockedItemIDs.Count; i++)
-        //{
-        //    if (ItemDatabase.Instance.items[i] != null)
-        //    {
-        //        if (ItemDatabase.Instance.items[i].sourceID == SourceDatabase.Instance.sources[i].sourceID)
-        //        {
-        //            menuItems[i].itemID = ItemDatabase.Instance.items[i].itemID;
-        //            //menuItems[unlockedItemCount].itemImage.sprite = itemAtlas.GetSprite(ItemDatabase.Instance.items[i].name);
-        //            menuItems[i].itemAmountText.text = ItemDatabase.Instance.items[i].coinCost.ToString();
-        //            menuItems[i].gameObject.SetActive(true);
-        //            unlockedItemCount++;
-        //        }
-        //    }
-        //}
-        this.gameObject.SetActive(true);
     }
 
-    public void OnDropComplete()
+    public void OnHarvestComplete()
+    {
+        BuildingsManager.Instance.HarvestCropOnFarmLand(selectedBuildingID);
+        ToggleHarvestMenu(false);
+        ToggleScrolItemlList(true);
+        PopulateItemsInMasterMenu(selectedBuildingID, selectedSourceID);
+    }
+
+    public void OnItemDropComplete()
     {
         isDropCompleted = true;
     }
@@ -130,9 +140,9 @@ public class UIMasterMenuManager : MonoBehaviour
             }
             BuildingsManager.Instance.PlantItemOnBuilding(selectedBuildingID, itemID);
             selectedBuildingID = -1;
-            ToggleDisplayMenuUI(false);
+            ToggleScrolItemlList(false);
+            ToggleObjectInfoMenu(false);
             isDropCompleted = false;
-            print("OnDragComplete" + selectedBuildingID + " " + itemID);
         }
     }
 
@@ -141,18 +151,35 @@ public class UIMasterMenuManager : MonoBehaviour
         MenuManager.Instance.BuildingUpgradeMenuSetActive(true);
     }
 
-    public void ToggleDisplayMenuUI(bool flag)
+    private void ToggleObjectInfoMenu(bool flag)
     {
-        if (flag)
+        uiObjectInfoMenu.SetActive(flag);
+        navigationButtonsGroup.SetActive(!flag);
+        if (!flag)
         {
-            itemScrollList.SetActive(true);
-            objectInfoPopup.SetActive(true);
-        } else
-        {
-            itemScrollList.SetActive(false);
-            objectInfoPopup.SetActive(false);
+            selectedBuildingID = -1;
+            selectedSourceID = -1;
         }
     }
+
+    private void ToggleScrolItemlList(bool flag)
+    {
+        uiItemScrollList.SetActive(flag);
+    }
+
+    private void ToggleHarvestMenu(bool flag)
+    {
+        uiHarvestMenu.SetActive(flag);
+    }
+
+    #region UIbuttons functions
+    public void CloseUIMasterMenu()
+    {
+        ToggleScrolItemlList(false);
+        ToggleObjectInfoMenu(false);
+        ToggleHarvestMenu(false);
+    }
+    #endregion
 }
 
 //public void ChildCallingOnMouseUp(int id)

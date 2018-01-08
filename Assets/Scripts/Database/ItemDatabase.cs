@@ -46,7 +46,12 @@ public class ItemDatabase : MonoBehaviour
                 IntParse(chars[15]),
                 IntParse(chars[16]),
                 IntParse(chars[17]),
-                IntParse(chars[18]));
+                IntParse(chars[18]),
+                IntParse(chars[19]),
+                IntParse(chars[20]),
+                IntParse(chars[21]),
+                IntParse(chars[22]),
+                IntParse(chars[23]));
         }
     }
 
@@ -73,18 +78,25 @@ public class Item
 {
     //ID, Name, Level, Max. price, Time, XP, NeedsID1, NeedsAmount1, NeedsID2, NeedsAmount2, NeedsID3, NeedsAmount3, NeedsID4, NeedsAmount4, Source, PerBoatCrateMIN, PerBoatCrateMAX
 
-    public int itemID;
-    public string name;
+    public int itemID;                  //0
+    public string name;                 //1
     public string description;
     public int unlocksAtLevel;
     public float timeRequiredInMins;
-    public int XP;
+    public int XPperYield;
     public ItemType type;
     public int coinCost;
     public int gemCost;
     public int sourceID;
+
+    public int noOfWatering;            //10
+    public int baseYieldMin;
+    public int baseYieldMax;
+    public int sellValueMin;
     public int sellValueMax;
-    public int needID1;
+    public int noOfFertilizer;
+
+    public int needID1;                 //16
     public int needAmount1;
     public int needID2;
     public int needAmount2;
@@ -95,7 +107,8 @@ public class Item
 
     public Item(int itemId, string itemName, string itemDescription, int itemUnlocksAtLevel,
                  float itemTimeRequiredInMins, int itemXP, ItemType itemType, int itemCoinCost, int itemGemCost, int itemSourceID,
-                 int itemSellValueMax, int itemNeedID1, int itemNeedAmount1, int itemNeedID2, int itemNeedAmount2,
+                 int itemNoOfWatering, int itemBaseYieldMin, int itemBaseYieldMax, int itemSellValueMin, int itemSellValueMax,
+                 int itemNoOfFertilizer, int itemNeedID1, int itemNeedAmount1, int itemNeedID2, int itemNeedAmount2,
                  int itemNeedID3, int itemNeedAmount3, int itemNeedID4, int itemNeedAmount4)
     {
         itemID = itemId;
@@ -103,11 +116,19 @@ public class Item
         description = itemDescription;
         unlocksAtLevel = itemUnlocksAtLevel;
         timeRequiredInMins = itemTimeRequiredInMins;
-        XP = itemXP;
+        XPperYield = itemXP;
         type = itemType;
         coinCost = itemCoinCost;
         gemCost = itemGemCost;
         sourceID = itemSourceID;
+
+        noOfWatering = itemNoOfWatering;
+        baseYieldMin = itemBaseYieldMin;
+        baseYieldMax = itemBaseYieldMax;
+        sellValueMin = itemSellValueMin;
+        sellValueMax = itemSellValueMax;
+        noOfFertilizer = itemNoOfFertilizer;
+
         sellValueMax = itemSellValueMax;
         needID1 = itemNeedID1;
         needAmount1 = itemNeedAmount1;

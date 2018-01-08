@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IDragHandler
+public class DraggableBuildings : MouseUpBase
 {
+    public SpriteRenderer buildingSprite;
+    public SpriteRenderer plantsSprite;
+    public GameObject crowGO;
     public bool isSelected = false;
     public bool isDraggable = false;
     public int buildingID;
-    public SpriteRenderer buildingSprite;
-    public SpriteRenderer plantsSprite;
     public int sourceID;
     public Vector2 pos;
     public int level;
@@ -17,50 +18,59 @@ public class DraggableBuildings : MonoBehaviour, IPointerDownHandler, IPointerEn
     public int unlockedQueueSlots;
     public int itemID;
     public System.DateTime dateTime;
-
+    public bool isCrowPresent;
     public static Action<int, int> OnClicked;
 
-    private void Awake()
+    internal int baseYieldMin;
+    internal int baseYieldMax;
+    internal int noOfWatering;
+
+    public void CrowComes()
     {
-        //buildingSprite = GetComponent<SpriteRenderer>();
-        //plantsSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        crowGO.SetActive(true);
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void CrowGoes()
     {
-        BuildingsManager.Instance.CallParentOnMouseDown(buildingID);
+        crowGO.SetActive(false);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public override void TouchUp()
     {
-        BuildingsManager.Instance.CallParentOnMouseEnter(buildingID);
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        BuildingsManager.Instance.CallParentOnMouseDrag(buildingID);
-    }
-
-    public void TouchedUp()
-    {
+        base.TouchUp();
         if (OnClicked != null)
         {
             OnClicked.Invoke(buildingID, sourceID);
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        switch (other.tag)
-        {
-            case "MasterMenuItem":
-                BuildingsManager.Instance.CallParentOnMouseEnter(buildingID);
-                break;
-            case "Harvest":
-                BuildingsManager.Instance.CallParentOnMouseEnter(buildingID);
-                break;
-            default:
-                break;
-        }
-    }
+    // Old Code Remove later
+
+
+    //public void OnPointerDown(PointerEventData eventData)
+    //{
+    //    BuildingsManager.Instance.CallParentOnMouseDown(buildingID);
+    //}
+    //public void OnPointerEnter(PointerEventData eventData)
+    //{
+    //    BuildingsManager.Instance.CallParentOnMouseEnter(buildingID);
+    //}
+    //public void OnDrag(PointerEventData eventData)
+    //{
+    //    BuildingsManager.Instance.CallParentOnMouseDrag(buildingID);
+    //}
+    //void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    switch (other.tag)
+    //    {
+    //        case "MasterMenuItem":
+    //            BuildingsManager.Instance.CallParentOnMouseEnter(buildingID);
+    //            break;
+    //        case "Harvest":
+    //            BuildingsManager.Instance.CallParentOnMouseEnter(buildingID);
+    //            break;
+    //        default:
+    //            break;
+    //    }
+    //}
 }

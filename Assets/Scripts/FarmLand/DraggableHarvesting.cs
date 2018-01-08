@@ -1,16 +1,34 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class DraggableHarvesting : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    Vector3 intialPosition;
-    float zDistanceToCamera;
-    private BoxCollider2D boxCollider2d;
-    private Vector2 smallColliderSize = new Vector2(0.2f, 0.2f);
+    public static DraggableHarvesting Instance = null;
+    private Transform scytheImageTransform;
+    private Image scytheImage;
+
+    private Vector3 intialPosition;
+    private Canvas mainCanvas;
+    private Vector2 pos;
+
+    private bool isHarvestComplete;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
-        boxCollider2d = GetComponent<BoxCollider2D>();
+        scytheImageTransform = transform;
+        scytheImage = GetComponent<Image>();
+        mainCanvas = UIMasterMenuManager.Instance.mainCanvas;
+    }
+
+    public void OnHarvestComplete()
+    {
+        isHarvestComplete = true;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -18,22 +36,30 @@ public class DraggableHarvesting : MonoBehaviour, IBeginDragHandler, IDragHandle
         if (Input.touchCount > 1)
             return;
 
-        HarvestMenuManager.Instance.isScytheSelected = true;
-        transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y + 10, 10));
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(mainCanvas.transform as RectTransform, Input.mousePosition, mainCanvas.worldCamera, out pos);
+        scytheImageTransform.position = mainCanvas.transform.TransformPoint(pos);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        boxCollider2d.size = smallColliderSize;
-        intialPosition = transform.localPosition;
-        zDistanceToCamera = Mathf.Abs(intialPosition.z
-            - Camera.main.transform.position.z);
+        scytheImage.raycastTarget = false;
+        intialPosition = scytheImageTransform.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.localPosition = intialPosition;
-        boxCollider2d.size = Vector2.one;
-        HarvestMenuManager.Instance.isScytheSelected = false;
+        if (isHarvestComplete)
+        {
+            UIMasterMenuManager.Instance.OnHarvestComplete();
+            isHarvestComplete = false;
+        }
+        scytheImage.raycastTarget = true;
+        scytheImageTransform.position = intialPosition;
+        print("drag");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        collision.gameObject.SetActive(false);
     }
 }

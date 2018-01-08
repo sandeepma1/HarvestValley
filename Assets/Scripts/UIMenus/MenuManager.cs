@@ -36,6 +36,9 @@ public class MenuManager : MonoBehaviour
         if (Application.isEditor)
         {
             MINEBUTTON.SetActive(false);
+        } else
+        {
+            MINEBUTTON.SetActive(true);
         }
     }
 
@@ -89,6 +92,7 @@ public class MenuManager : MonoBehaviour
             //GEM.isDragging = false;
         }
         BuildingsManager.Instance.DisableAnyOpenMenus();
+        //BuildingsManager.Instance.isFarmTimerEnabled = false;
         //UIMasterMenuManager.Instance.ToggleDisplayMenuUI(false);
         // InputController.instance.ResetCameraAfterSnap();
     }

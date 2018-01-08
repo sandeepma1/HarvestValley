@@ -23,13 +23,15 @@ public class InputController : MonoBehaviour
 
     //To avoid minor drags and check click
     [Range(1f, 10f), SerializeField]
-    private float minDragDelta = 3;
+    private float minDragLength = 3;
 
     [SerializeField]
     private Ease snapEase = Ease.OutQuad;
 
     [SerializeField]
     private float easeDuration = 0.5f;
+
+    public bool isDragging { get; private set; }
 
     private int currPos;
     private float[] cameraPositions;
@@ -39,7 +41,7 @@ public class InputController : MonoBehaviour
     private readonly float cameraOrthSizeZoom = 12;
 
     private bool isTouchingUI;
-    private bool isDragging;
+
     private bool isAlreadySnapped;
     private bool isCameraZoomed;
 
@@ -103,9 +105,6 @@ public class InputController : MonoBehaviour
                 case "Toucher":
                     hitObject.GetComponent<Toucher>().TouchUp();
                     break;
-                case "Field":
-                    hitObject.GetComponent<DraggableBuildings>().TouchedUp();
-                    break;
                 case "Grass":
                     //hitObject.GetComponent<DraggableGrass>().TouchedUp();
                     break;
@@ -135,7 +134,7 @@ public class InputController : MonoBehaviour
                 if (t.phase == TouchPhase.Moved && !isTouchingUI)
                 {
                     touchDeltaPosition = t.deltaPosition.x;
-                    if (touchDeltaPosition > minDragDelta || touchDeltaPosition < -minDragDelta)
+                    if (touchDeltaPosition > minDragLength || touchDeltaPosition < -minDragLength)
                     {
                         isDragging = true;
                         mainCameraTransform.Translate(-touchDeltaPosition * dragSpeed, 0, 0);

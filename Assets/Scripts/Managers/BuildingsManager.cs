@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using System.Linq;
 using UnityEngine.U2D;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class BuildingsManager : MonoBehaviour
 {
@@ -86,7 +88,7 @@ public class BuildingsManager : MonoBehaviour
         //DisplayMasterMenu(1);
     }
 
-    public void InitBuildings(Buildings building)
+    private void InitBuildings(Buildings building)
     {
         BuildingsGO[building.id] = Instantiate(buildingPrefab, transform);
         BuildingsGO[building.id].transform.localPosition = building.pos;
@@ -123,26 +125,24 @@ public class BuildingsManager : MonoBehaviour
         {
             if (BuildingsGO[i] != null && BuildingsGO[i].state == BUILDINGS_STATE.GROWING)
             {
-                TimeSpan currentTime = BuildingsGO[i].dateTime.Subtract(UTC.time.liveDateTime);
-                float currentTimeInSeconds = currentTime.Seconds;
-                float totalSeconds = ItemDatabase.Instance.items[BuildingsGO[i].sourceID].timeRequiredInMins * 60;
-                float divisionFactor = totalSeconds / 4;
+                TimeSpan timeElapsed = BuildingsGO[i].dateTime - UTC.time.liveDateTime;
+                float timeElapsedInSeconds = (float)timeElapsed.TotalSeconds;
+                float divisionFactor = (ItemDatabase.Instance.items[BuildingsGO[i].sourceID].timeRequiredInMins * 60) / 4;
 
-                if (currentTimeInSeconds >= divisionFactor * 3) //22.5 seed
+                if (timeElapsedInSeconds >= divisionFactor * 3) //22.5 seed
                 {
                     ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.SEED);
-                } else if (currentTimeInSeconds >= divisionFactor * 2) //15 shrub
+                } else if (timeElapsedInSeconds >= divisionFactor * 2) //15 shrub
                 {
                     ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.SHRUB);
-                } else if (currentTimeInSeconds >= divisionFactor) //7.5 plant
+                } else if (timeElapsedInSeconds >= divisionFactor) //7.5 plant
                 {
                     ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.PLANT);
-                } else if (currentTimeInSeconds <= 0) // 0 mature
+                } else if (timeElapsedInSeconds <= 0) // 0 mature
                 {
                     ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.MATURE);
                     BuildingsGO[i].state = BUILDINGS_STATE.WAITING_FOR_HARVEST;
                     BuildingsGO[i].dateTime = new System.DateTime();
-                    //BuildingsGO[i].spriteRenderer.color = Color.red;
                 }
             }
         }
@@ -185,12 +185,7 @@ public class BuildingsManager : MonoBehaviour
 
     public void DisplayMasterMenu(int buildingID, int sourceID) // Display field Crop Menu
     {
-        //InputController.instance.ZoomCameraOnObject(position);
-        //MasterMenuManager.Instance.PopulateItemsInMasterMenu(BuildingsGO[b_ID].buildingID);
-        //MasterMenuManager.Instance.transform.position = BuildingsGO[b_ID].transform.position;
-
-        UIMasterMenuManager.Instance.DisplayUIMasterMenu(buildingID, BuildingsGO[buildingID].sourceID);
-
+        UIMasterMenuManager.Instance.DisplayUIMasterMenuToPlantSeed(buildingID, BuildingsGO[buildingID].sourceID);
         buildingSelectedID = buildingID;
     }
 
@@ -241,9 +236,10 @@ public class BuildingsManager : MonoBehaviour
         BuildingsGO[buildingID].itemID = itemID;
         BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
             ItemDatabase.Instance.items[itemID].timeRequiredInMins);
+
         string plantName = ItemDatabase.Instance.items[itemID].name + "_0";
         BuildingsGO[buildingID].plantsSprite.sprite = GetPlantSpriteFromBank(plantName);
-        PlayerProfileManager.Instance.PlayerCoins(-100);
+        PlayerProfileManager.Instance.PlayerCoins(-ItemDatabase.Instance.items[itemID].coinCost);
         SaveBuildings();
     }
 
@@ -334,21 +330,16 @@ public class BuildingsManager : MonoBehaviour
 
     public void HarvestCropOnFarmLand(int buildingID) // Harvesting Seeds calls only on farms
     {
-        if (HarvestMenuManager.Instance.isScytheSelected == true)
-        {
-            // TODO Heavy update required for field Level Based cals*******************
-            // only 2 items are added in storage
-            //			print (FarmLands [buildingID].GetComponent <FarmLands> ().itemID);		 
-            PlayerInventoryManager.Instance.UpdateFarmItems(Convert.ToInt32(BuildingsGO[buildingID].itemID), 2);
-            PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.Instance.items[BuildingsGO[buildingID].itemID].XP);
-            BuildingsGO[buildingID].state = BUILDINGS_STATE.NONE;
+        // TODO Heavy update required for field Level Based cals*******************
+        // only 2 items are added in storage
 
-            BuildingsGO[buildingID].dateTime = new System.DateTime();
-            BuildingsGO[buildingID].itemID = -1;
-            //BuildingsGO[buildingID].spriteRenderer.color = Color.white;
-            BuildingsGO[buildingID].plantsSprite.sprite = new Sprite();
-            HarvestMenuManager.Instance.ToggleDisplayHarvestingMenu();
-        }
+        PlayerInventoryManager.Instance.UpdateFarmItems(Convert.ToInt32(BuildingsGO[buildingID].itemID), 2);
+        PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.Instance.items[BuildingsGO[buildingID].itemID].XPperYield);
+        BuildingsGO[buildingID].state = BUILDINGS_STATE.NONE;
+
+        BuildingsGO[buildingID].dateTime = new System.DateTime();
+        BuildingsGO[buildingID].itemID = -1;
+        BuildingsGO[buildingID].plantsSprite.sprite = new Sprite();
     }
 
     public void ShowReadyToHarvestCropsMenu(int buildingID) // Display Harvesting Menu
@@ -363,7 +354,7 @@ public class BuildingsManager : MonoBehaviour
     public void CollectItemsOnBuildings(int buildingID) //Collecting Items on buildings
     {
         PlayerInventoryManager.Instance.UpdateFarmItems(BuildingsGO[buildingID].itemID, 1);
-        PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.Instance.items[BuildingsGO[buildingID].itemID].XP);
+        PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.Instance.items[BuildingsGO[buildingID].itemID].XPperYield);
         BuildingsGO[buildingID].state = BUILDINGS_STATE.NONE;
         BuildingsGO[buildingID].dateTime = new System.DateTime();
         BuildingsGO[buildingID].itemID = -1;
@@ -451,7 +442,14 @@ public class BuildingsManager : MonoBehaviour
             }
             ES2.Save(buildings, "AllBuildings");
             PlayerPrefs.SetInt("firstBuilding", 1);
+            StartCoroutine("RestartGame");
         }
+    }
+
+    IEnumerator RestartGame()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("Main");
     }
 
     #region OnMouse Functions
@@ -481,8 +479,9 @@ public class BuildingsManager : MonoBehaviour
                 break;
             case BUILDINGS_STATE.WAITING_FOR_HARVEST:
                 if (BuildingsGO[buildingID].sourceID == 0)
-                { // if field selected
-                    ShowReadyToHarvestCropsMenu(buildingID);
+                {
+                    UIMasterMenuManager.Instance.DisplayUIMasterMenuToHarvest(buildingID, sourceID);
+                    //ShowReadyToHarvestCropsMenu(buildingID);
                 } else
                 {
                     CollectItemsOnBuildings(buildingID);
@@ -576,7 +575,6 @@ public class Buildings  // iLIST
         unlockedQueueSlots = f_unlockedQueueSlots;
         itemID = f_itemID;
         dateTime = f_dateTime;
-
     }
 }
 
