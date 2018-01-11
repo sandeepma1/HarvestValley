@@ -6,7 +6,7 @@ using AStar_2D.Threading;
 
 namespace AStar_2D.Visualisation
 {
-    internal sealed class PerformanceSample
+    public sealed class PerformanceSample
     {
         // Private
         private List<float> samples = new List<float>();
@@ -45,11 +45,11 @@ namespace AStar_2D.Visualisation
         }
     }
 
-    internal static class Performance
+    public static class Performance
     {
         // Private
         private static PerformanceSample timing = new PerformanceSample();
-        private static List<PerformanceSample> threadUsage = new List<PerformanceSample>();        
+        private static List<PerformanceSample> threadUsage = new List<PerformanceSample>();
 
         // Properties
         public static IList<PerformanceSample> ThreadSamples
@@ -60,7 +60,7 @@ namespace AStar_2D.Visualisation
         public static void addTimingSample(float value)
         {
             // Lock the list
-            lock(timing)
+            lock (timing)
             {
                 // Add the sample
                 timing.addSample(value);
@@ -70,7 +70,7 @@ namespace AStar_2D.Visualisation
         public static void addUsageSample(int id, float normalizedUsage)
         {
             // Skip clamp because thread usage is normalized anyway
-            lock(threadUsage)
+            lock (threadUsage)
             {
                 // Add samples for the threads
                 while (id >= threadUsage.Count)
@@ -85,7 +85,7 @@ namespace AStar_2D.Visualisation
 
         public static float getAverageTimingValue()
         {
-            lock(timing)
+            lock (timing)
             {
                 return timing.getAverageUsage();
             }
@@ -93,7 +93,7 @@ namespace AStar_2D.Visualisation
 
         public static float getPeekTimingValue()
         {
-            lock(timing)
+            lock (timing)
             {
                 return timing.getHighestUsage();
             }
@@ -101,9 +101,9 @@ namespace AStar_2D.Visualisation
 
         public static float getUsageValue(int id)
         {
-            lock(threadUsage)
+            lock (threadUsage)
             {
-                if(id < threadUsage.Count && id >= 0)
+                if (id < threadUsage.Count && id >= 0)
                 {
                     // Get the value
                     return threadUsage[id].getHighestUsage();

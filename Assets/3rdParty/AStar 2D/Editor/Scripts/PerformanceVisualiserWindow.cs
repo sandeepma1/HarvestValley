@@ -67,10 +67,10 @@ namespace AStar_2D.Editor
             base.onRender();
 
             // Check for sample updates
-            if(Time.time > lastTime + updateRate)
+            if (Time.time > lastTime + updateRate)
             {
                 lastTime = Time.time;
-                
+
                 updateSamples();
             }
 
@@ -201,8 +201,7 @@ namespace AStar_2D.Editor
 
                 usageView.Manager = Manager;
                 usageView.Active = true;
-            }
-            else
+            } else
             {
                 // Disable the controls
                 parent.Enabled = false;
@@ -253,7 +252,7 @@ namespace AStar_2D.Editor
 
         private void setUpdateRate(int setting)
         {
-            switch(setting)
+            switch (setting)
             {
                 case -1:
                     {
@@ -267,29 +266,32 @@ namespace AStar_2D.Editor
 
                             // Load from settings
                             setUpdateRate(value);
-                        }
-                        else
+                        } else
                         {
                             // Set default
                             setUpdateRate(1);
                         }
-                    } return;
+                    }
+                    return;
 
                 case 0:
                     {
                         updateRate = 1.2f;
                         setActiveButton(0);
-                    } break;
+                    }
+                    break;
                 case 1:
                     {
                         updateRate = 0.6f;
                         setActiveButton(1);
-                    } break;
+                    }
+                    break;
                 case 2:
                     {
                         updateRate = 0.2f;
                         setActiveButton(2);
-                    } break;
+                    }
+                    break;
             }
 
             // Save the value

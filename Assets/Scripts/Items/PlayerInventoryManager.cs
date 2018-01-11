@@ -38,7 +38,7 @@ public class PlayerInventoryManager : MonoBehaviour
         listItems[scrollListID].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = playerInventory[scrollListID].count.ToString();
         listItems[scrollListID].GetComponent<Image>().overrideSprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[scrollListID].name);
         listItems[scrollListID].name = "InventoryListItem" + scrollListID;
-        print(listItems[scrollListID].name);
+        //print(listItems[scrollListID].name);
     }
 
     public void UpdateScrollListItemCount()

@@ -63,7 +63,6 @@ public class InputController : MonoBehaviour
         swipeManager.onSwipeEvent += SwipeEventHandler;
         dragOffset = (cameraPositions[1] - cameraPositions[0]) / 3;
         ease.Add("ease", LeanTweenType.easeOutSine);
-        tempCameraPosition = mainCameraTransform.position;
     }
 
     private void Update()
@@ -80,7 +79,7 @@ public class InputController : MonoBehaviour
         mainCameraTransform = Camera.main.transform;
         mainCamera = Camera.main;
 
-        mainCameraTransform.position = new Vector3(0, 0, -1);
+        mainCameraTransform.position = new Vector3(0, 0, mainCameraTransform.position.z);
         cameraPositions = new float[numberOfScreens];
         for (int i = 0; i < numberOfScreens; i++)
         {
@@ -88,6 +87,7 @@ public class InputController : MonoBehaviour
         }
         currPos = numberOfScreens / 2;
         mainCameraTransform.position = new Vector3(cameraPositions[currPos], mainCameraTransform.position.y, mainCameraTransform.position.z);
+        tempCameraPosition = mainCameraTransform.position;
     }
 
     private void DetectColliderTouch()

@@ -2,7 +2,7 @@
 
 namespace AStar_2D.Visualisation
 {
-    internal sealed class GridView : MonoBehaviour
+    public sealed class GridView : MonoBehaviour
     {
         // Public
         // Unity complains that this value is never set to anything other than null however it is meant to be set in the inspector.
@@ -68,7 +68,7 @@ namespace AStar_2D.Visualisation
                 nodes[3] = visualizeGrid[x, y - 1];
 
             // Diagonal neighbors
-            if(visualizeGrid.allowDiagonal == true)
+            if (visualizeGrid.allowDiagonal == true)
             {
                 // Top left
                 if (x - 1 > 0 && y + 1 < visualizeGrid.Height)
@@ -92,10 +92,10 @@ namespace AStar_2D.Visualisation
         public static GridView findViewForGrid(AStarAbstractGrid grid)
         {
             // Find all components
-            foreach(GridView view in Component.FindObjectsOfType<GridView>())
+            foreach (GridView view in Component.FindObjectsOfType<GridView>())
             {
                 // Check for observed grid
-                if(view.visualizeGrid == grid)
+                if (view.visualizeGrid == grid)
                 {
                     // Get the component
                     return view;

@@ -6,7 +6,7 @@ using AStar_2D.Pathfinding;
 
 namespace AStar_2D.Threading
 {
-    internal sealed class AsyncPathRequest
+    public sealed class AsyncPathRequest
     {
         // Private
         private SearchGrid grid = null;

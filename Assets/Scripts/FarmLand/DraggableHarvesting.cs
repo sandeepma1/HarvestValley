@@ -43,7 +43,7 @@ public class DraggableHarvesting : MonoBehaviour, IBeginDragHandler, IDragHandle
     public void OnBeginDrag(PointerEventData eventData)
     {
         scytheImage.raycastTarget = false;
-        intialPosition = scytheImageTransform.position;
+        intialPosition = scytheImageTransform.localPosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -54,7 +54,7 @@ public class DraggableHarvesting : MonoBehaviour, IBeginDragHandler, IDragHandle
             isHarvestComplete = false;
         }
         scytheImage.raycastTarget = true;
-        scytheImageTransform.position = intialPosition;
+        scytheImageTransform.localPosition = intialPosition;
         print("drag");
     }
 

@@ -5,7 +5,7 @@ using System;
 
 namespace AStar_2D.Threading
 {
-    internal sealed class ThreadManager : MonoBehaviour, IEnumerable<WorkerThread>
+    public sealed class ThreadManager : MonoBehaviour, IEnumerable<WorkerThread>
     {
         // Private
         private static readonly float threadSpawnThreshold = 0.6f;
@@ -57,8 +57,7 @@ namespace AStar_2D.Threading
 
                 // Dont destroy the object
                 DontDestroyOnLoad(go);
-            }
-            else
+            } else
             {
                 // Store a reference
                 manager = externalManager;
@@ -68,7 +67,7 @@ namespace AStar_2D.Threading
         public void Update()
         {
             // Make sure there is always atleast 1 thread
-            if(maxWorkerThreads <= 0)
+            if (maxWorkerThreads <= 0)
                 maxWorkerThreads = minWorkerThreads;
 
             // Process messages for this frame
@@ -81,7 +80,7 @@ namespace AStar_2D.Threading
         public void OnDestroy()
         {
             // Process each thread
-            foreach(WorkerThread thread in threads)
+            foreach (WorkerThread thread in threads)
             {
                 // Dispatch each message immediatley
                 while (thread.IsMessageQueueEmpty == false)
@@ -127,9 +126,9 @@ namespace AStar_2D.Threading
             WorkerThread candidate = threads[0];
             float best = 1;
 
-            foreach(WorkerThread thread in threads)
+            foreach (WorkerThread thread in threads)
             {
-                if(thread.ThreadLoad < best)
+                if (thread.ThreadLoad < best)
                 {
                     candidate = thread;
                     best = thread.ThreadLoad;
@@ -173,10 +172,10 @@ namespace AStar_2D.Threading
                 return;
 
             // Process the list of threads
-            for(int i = 0; i < threads.Count; i++)
+            for (int i = 0; i < threads.Count; i++)
             {
                 // Check if a thread is idleing
-                if(threads[i].ThreadLoad == 0)
+                if (threads[i].ThreadLoad == 0)
                 {
                     if (threads[i].IdleFrames > maxIdleFrames)
                     {
@@ -193,7 +192,7 @@ namespace AStar_2D.Threading
         private IEnumerator threadTerminateRoutine(WorkerThread thread)
         {
             // Make sure all messages are dispatched before killing the thread
-            while(thread.IsMessageQueueEmpty == false)
+            while (thread.IsMessageQueueEmpty == false)
             {
                 // Process thr threads messages
                 thread.processMessageQueue();

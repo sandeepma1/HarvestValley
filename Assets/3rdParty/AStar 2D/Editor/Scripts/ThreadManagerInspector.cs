@@ -10,7 +10,7 @@ using AStar_2D.Editor.Controls;
 using AStar_2D.Threading;
 
 namespace AStar_2D.Editor
-{    
+{
     [CustomEditor(typeof(ThreadManager))]
     internal sealed class ThreadManagerInspector : DesignerComponent
     {

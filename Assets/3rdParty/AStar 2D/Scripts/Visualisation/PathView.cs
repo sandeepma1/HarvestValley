@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace AStar_2D.Visualisation
 {
-    internal sealed class PathView : MonoBehaviour
+    public sealed class PathView : MonoBehaviour
     {
         // Private
         private LineRenderer line = null;
@@ -83,15 +83,15 @@ namespace AStar_2D.Visualisation
 
             // Udpate the render path
             view.setRenderPath(path);
-        }     
+        }
 
         public static PathView findViewForGrid(AStarAbstractGrid grid)
         {
             // Find all components
-            foreach(PathView view in Component.FindObjectsOfType<PathView>())
+            foreach (PathView view in Component.FindObjectsOfType<PathView>())
             {
                 // Check for observed grid
-                if(view.visualizeGrid == grid)
+                if (view.visualizeGrid == grid)
                 {
                     // Get the component
                     return view;

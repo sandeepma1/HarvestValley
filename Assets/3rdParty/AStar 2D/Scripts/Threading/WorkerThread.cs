@@ -8,7 +8,7 @@ using AStar_2D.Visualisation;
 
 namespace AStar_2D.Threading
 {
-    internal sealed class WorkerThread
+    public sealed class WorkerThread
     {
         // Private        
         private static readonly int averageRange = 8;
@@ -79,7 +79,7 @@ namespace AStar_2D.Threading
             thread.Join(timeout);
 
             // Check if the thread is still active
-            if(thread.IsAlive == true)
+            if (thread.IsAlive == true)
             {
                 // Force quit
                 thread.Abort();
@@ -89,7 +89,7 @@ namespace AStar_2D.Threading
         public void asyncRequest(AsyncPathRequest request)
         {
             // Lock the queue
-            lock(incoming)
+            lock (incoming)
             {
                 // Push the request
                 incoming.Enqueue(request);
@@ -104,7 +104,7 @@ namespace AStar_2D.Threading
             AsyncPathResult result = null;
 
             // Lock the output queue
-            lock(outgoing)
+            lock (outgoing)
             {
                 // Update the flag
                 isMessageQueueEmpty = (outgoing.Count == 0);
@@ -193,8 +193,7 @@ namespace AStar_2D.Threading
                     // Sleep based on the current thread load
                     Thread.Sleep(sleepDuration);
                 } // End while
-            }
-            catch(System.Exception e)
+            } catch (System.Exception e)
             {
                 UnityEngine.Debug.Log(e);
             }
@@ -215,20 +214,19 @@ namespace AStar_2D.Threading
 
             // Get the average time per task
             long estimatedCompletionTime = averageTime * awaiting;
-            
+
             // Check for excessive
-            if(estimatedCompletionTime > targetTime)
+            if (estimatedCompletionTime > targetTime)
             {
                 // Direct assign max load value
                 threadLoad = 1;
-            }
-            else
+            } else
             {
                 // Calcualte the load as a scalar
                 threadLoad = (float)estimatedCompletionTime / (float)targetTime;
             }
 
-            
+
         }
 
         private void calculateAverageTime(long addValue)

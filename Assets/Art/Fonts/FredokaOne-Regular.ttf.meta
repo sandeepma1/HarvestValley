@@ -1,21 +1,23 @@
 fileFormatVersion: 2
-guid: d9ce19d7c5b9a444cad1b93615005a9b
-timeCreated: 1490288975
+guid: 423cab0f5cda8fc4bbda9deb4a501a5a
+timeCreated: 1515682056
 licenseType: Free
 TrueTypeFontImporter:
+  externalObjects: {}
   serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Sigmar One
+  fontName: Fredoka One
   fontNames:
-  - Sigmar One
+  - Fredoka One
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
