@@ -38,12 +38,12 @@ public class FPSDisplay : MonoBehaviour
 
         w = Screen.width;
         h = Screen.height;
-        rect = new Rect(0, 0, w, h * 2 / 100);
+        rect = new Rect(0, 0, w, h);
         style = new GUIStyle();
-        style.fontSize = 20;
-        style.normal.textColor = Color.cyan;
+        style.fontSize = 30;
+        style.normal.textColor = Color.magenta;
         style.fontStyle = FontStyle.Bold;
-        style.alignment = TextAnchor.MiddleCenter;
+        style.alignment = TextAnchor.LowerCenter;
     }
     void Update()
     {
