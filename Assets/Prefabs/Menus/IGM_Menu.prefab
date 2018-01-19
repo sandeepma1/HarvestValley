@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4408720864649908}
-  - component: {fileID: 114223441190025742}
   - component: {fileID: 114902763009371518}
   m_Layer: 0
   m_Name: IGM_Menu
@@ -41,18 +40,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114223441190025742
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1448127112942902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e13a9337b38073459e7588198c38f04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 0}
 --- !u!114 &114902763009371518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -65,11 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCanvas: {fileID: 0}
+  MINEBUTTON: {fileID: 0}
   levelUpMenu: {fileID: 0}
   buildingUpgradeMenu: {fileID: 0}
   inventoryMenu: {fileID: 0}
-  disableAllMenus:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  disableAllMenus: []
