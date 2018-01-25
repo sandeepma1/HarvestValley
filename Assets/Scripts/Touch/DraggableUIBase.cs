@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DraggableBase : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DraggableUIBase : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField]
     private Image dragImage;

@@ -19,7 +19,8 @@ public class DraggableBuildings : MouseUpBase
     public int itemID;
     public System.DateTime dateTime;
     public bool isCrowPresent;
-    public static Action<int, int> OnClicked;
+    public static Action<int, int> OnBuildingClicked;
+    public static Action<int> OnBuildingHarvested;
 
     internal int baseYieldMin;
     internal int baseYieldMax;
@@ -38,9 +39,23 @@ public class DraggableBuildings : MouseUpBase
     public override void TouchUp()
     {
         base.TouchUp();
-        if (OnClicked != null)
+        if (OnBuildingClicked != null)
         {
-            OnClicked.Invoke(buildingID, sourceID);
+            OnBuildingClicked.Invoke(buildingID, sourceID);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (state == BUILDINGS_STATE.WAITING_FOR_HARVEST)
+        {
+            if (collision.CompareTag("Harvest"))
+            {
+                if (OnBuildingHarvested != null)
+                {
+                    OnBuildingHarvested.Invoke(buildingID);
+                }
+            }
         }
     }
 

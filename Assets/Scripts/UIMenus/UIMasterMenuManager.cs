@@ -6,15 +6,13 @@ using UnityEngine.U2D;
 using System;
 using UnityEngine.UI;
 
-public class UIMasterMenuManager : MonoBehaviour
+public class UIMasterMenuManager : Singleton<UIMasterMenuManager>
 {
-    public static UIMasterMenuManager Instance = null;
     public Canvas mainCanvas;
-
     [SerializeField]
     private SpriteAtlas itemAtlas;
     [SerializeField]
-    private DraggableUIItem scrollListItemPrefab;
+    private ClickableUIItems scrollListItemPrefab;
     [SerializeField]
     private Transform scrollListParentTransform;
     [SerializeField]
@@ -30,14 +28,9 @@ public class UIMasterMenuManager : MonoBehaviour
 
     private int selectedBuildingID = -1;
     private int selectedSourceID = -1;
-    private DraggableUIItem[] menuItems = new DraggableUIItem[12];
+    private ClickableUIItems[] menuItems = new ClickableUIItems[12];
     private List<int> unlockedItemIDs = new List<int>();
     private bool isDropCompleted = false;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
 
     private void Start()
     {
@@ -53,7 +46,7 @@ public class UIMasterMenuManager : MonoBehaviour
         for (int i = 0; i < menuItems.Length; i++)
         {
             menuItems[i] = (Instantiate(scrollListItemPrefab, scrollListParentTransform));
-            menuItems[i].name = "UIItemList" + i;
+            menuItems[i].name = "UIItemListClick" + i;
         }
     }
 
@@ -78,7 +71,7 @@ public class UIMasterMenuManager : MonoBehaviour
         selectedBuildingID = buildingID;
         selectedSourceID = sourceID;
 
-        ToggleObjectInfoMenu(true);
+        //ToggleObjectInfoMenu(true);
         ToggleScrolItemlList(true);
         PopulateItemsInMasterMenu(buildingID, sourceID);
     }
@@ -144,6 +137,16 @@ public class UIMasterMenuManager : MonoBehaviour
             ToggleObjectInfoMenu(false);
             isDropCompleted = false;
         }
+    }
+
+    public void OnUIItemClicked(int itemID)
+    {
+        if (selectedBuildingID == -1)
+        {
+            return;
+        }
+        BuildingsManager.Instance.PlantItemOnBuilding(selectedBuildingID, itemID);
+        selectedBuildingID = -1;
     }
 
     public void UpgradeBuildingPressed(int id)

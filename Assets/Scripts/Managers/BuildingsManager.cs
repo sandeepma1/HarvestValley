@@ -7,12 +7,13 @@ using UnityEngine.U2D;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class BuildingsManager : MonoBehaviour
+public class BuildingsManager : Singleton<BuildingsManager>
 {
     [SerializeField]
     private SpriteAtlas plantsAtlas;
-    public static BuildingsManager Instance = null;
     public int x = 5, y = 5, gap;
+    [SerializeField]
+    private Transform fieldSelector;
     public DraggableBuildings buildingPrefab;
     public GameObject MasterMenuGO = null, TimeRemainingMenu = null, FarmHarvestingMenu = null;
     public bool isFarmTimerEnabled = false;
@@ -28,7 +29,6 @@ public class BuildingsManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
         //https://answers.unity.com/questions/1175266/getting-single-sprite-from-a-sprite-multiple.html
         plantsSpriteBank = Resources.LoadAll<Sprite>("Textures/Plants"); // loads all sprite from Resource folder
         buildingSpriteBank = Resources.LoadAll<Sprite>("Textures/Buildings");
@@ -36,7 +36,8 @@ public class BuildingsManager : MonoBehaviour
 
     private void Start()
     {
-        DraggableBuildings.OnClicked += OnDraggableBuildingClicked;
+        DraggableBuildings.OnBuildingClicked += OnDraggableBuildingClicked;
+        DraggableBuildings.OnBuildingHarvested += OnDraggableBuildingHarvested;
         OneTimeOnly();
         Init();
     }
@@ -64,7 +65,8 @@ public class BuildingsManager : MonoBehaviour
         if (isFarmTimerEnabled)
         {
             ShowFarmLandTimeRemaining();
-        } else
+        }
+        else
         {
             tempID = -1;
         }
@@ -132,13 +134,16 @@ public class BuildingsManager : MonoBehaviour
                 if (timeElapsedInSeconds >= divisionFactor * 3) //22.5 seed
                 {
                     ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.SEED);
-                } else if (timeElapsedInSeconds >= divisionFactor * 2) //15 shrub
+                }
+                else if (timeElapsedInSeconds >= divisionFactor * 2) //15 shrub
                 {
                     ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.SHRUB);
-                } else if (timeElapsedInSeconds >= divisionFactor) //7.5 plant
+                }
+                else if (timeElapsedInSeconds >= divisionFactor) //7.5 plant
                 {
                     ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.PLANT);
-                } else if (timeElapsedInSeconds <= 0) // 0 mature
+                }
+                else if (timeElapsedInSeconds <= 0) // 0 mature
                 {
                     ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.MATURE);
                     BuildingsGO[i].state = BUILDINGS_STATE.WAITING_FOR_HARVEST;
@@ -176,14 +181,15 @@ public class BuildingsManager : MonoBehaviour
         if (sprite != null)
         {
             return plantsSpriteBank.Single(s => s.name == spriteName);
-        } else
+        }
+        else
         {
             Debug.Log("Sprite Not Found " + spriteName);
             return new Sprite();
         }
     }
 
-    public void DisplayMasterMenu(int buildingID, int sourceID) // Display field Crop Menu
+    public void DisplayUIMasterMenu(int buildingID, int sourceID) // Display field Crop Menu
     {
         UIMasterMenuManager.Instance.DisplayUIMasterMenuToPlantSeed(buildingID, BuildingsGO[buildingID].sourceID);
         buildingSelectedID = buildingID;
@@ -215,7 +221,8 @@ public class BuildingsManager : MonoBehaviour
                         buildingSelectedID = -1;
                     }
                 }
-            } else
+            }
+            else
             { // if selected building is NOT feild
                 if (buildingSelectedID == buildingID && DoesInventoryHasItems(buildingID))
                 {
@@ -257,7 +264,8 @@ public class BuildingsManager : MonoBehaviour
             {
                 needItems1 = 0;
                 print("1 ok");
-            } else
+            }
+            else
             {
                 needItems1 = -2;
             }
@@ -269,7 +277,8 @@ public class BuildingsManager : MonoBehaviour
             {
                 needItems2 = 0;
                 print("1 ok");
-            } else
+            }
+            else
             {
                 needItems2 = -2;
             }
@@ -281,7 +290,8 @@ public class BuildingsManager : MonoBehaviour
             {
                 needItems3 = 0;
                 print("1 ok");
-            } else
+            }
+            else
             {
                 needItems3 = -2;
             }
@@ -293,7 +303,8 @@ public class BuildingsManager : MonoBehaviour
             {
                 needItems4 = 0;
                 print("1 ok");
-            } else
+            }
+            else
             {
                 needItems4 = -2;
             }
@@ -302,7 +313,8 @@ public class BuildingsManager : MonoBehaviour
         if (needItems1 >= -1 && needItems2 >= -1 && needItems3 >= -1 && needItems4 >= -1)
         {
             return true;
-        } else
+        }
+        else
         {
             return false;
         }
@@ -344,11 +356,11 @@ public class BuildingsManager : MonoBehaviour
 
     public void ShowReadyToHarvestCropsMenu(int buildingID) // Display Harvesting Menu
     {
-        MenuManager.Instance.DisableAllMenus();
+        //MenuManager.Instance.DisableAllMenus();
         FarmHarvestingMenu.transform.position = BuildingsGO[buildingID].transform.position;
-        FarmHarvestingMenu.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+        //FarmHarvestingMenu.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
         FarmHarvestingMenu.SetActive(true);
-        LeanTween.scale(FarmHarvestingMenu, Vector3.one, 0.2f, MenuManager.Instance.ease);
+        //LeanTween.scale(FarmHarvestingMenu, Vector3.one, 0.2f, MenuManager.Instance.ease);
     }
 
     public void CollectItemsOnBuildings(int buildingID) //Collecting Items on buildings
@@ -460,14 +472,11 @@ public class BuildingsManager : MonoBehaviour
 
     private void OnDraggableBuildingClicked(int buildingID, int sourceID)
     {
-        //isTilePressed = false;
-        // mouseDownBuildingID = -1;
-        //if (!isLongPress)
-        //{
+        SelectBuilding(buildingID);
         switch (BuildingsGO[buildingID].state)
         {
             case BUILDINGS_STATE.NONE:
-                DisplayMasterMenu(buildingID, sourceID);
+                DisplayUIMasterMenu(buildingID, sourceID);
                 break;
             case BUILDINGS_STATE.GROWING:
                 tempID = buildingID;
@@ -480,9 +489,10 @@ public class BuildingsManager : MonoBehaviour
             case BUILDINGS_STATE.WAITING_FOR_HARVEST:
                 if (BuildingsGO[buildingID].sourceID == 0)
                 {
-                    UIMasterMenuManager.Instance.DisplayUIMasterMenuToHarvest(buildingID, sourceID);
-                    //ShowReadyToHarvestCropsMenu(buildingID);
-                } else
+                    //UIMasterMenuManager.Instance.DisplayUIMasterMenuToHarvest(buildingID, sourceID);
+                    ShowReadyToHarvestCropsMenu(buildingID);
+                }
+                else
                 {
                     CollectItemsOnBuildings(buildingID);
                 }
@@ -490,15 +500,17 @@ public class BuildingsManager : MonoBehaviour
             default:
                 break;
         }
-        //} else
-        //{
-        //    if (buildingID != longPressBuildingID)
-        //    {
-        //        BuildingsGO[longPressBuildingID].isSelected = false;
-        //        DisableOutlineOnSprite(longPressBuildingID);
-        //        isLongPress = false;
-        //    }
-        //}
+    }
+
+    private void SelectBuilding(int buildingID)
+    {
+        fieldSelector.SetParent(BuildingsGO[buildingID].transform);
+        fieldSelector.transform.localPosition = Vector3.zero;
+    }
+
+    private void OnDraggableBuildingHarvested(int buildingID)
+    {
+        HarvestCropOnFarmLand(buildingID);
     }
 
     public void CallParentOnMouseEnter(int buildingID)

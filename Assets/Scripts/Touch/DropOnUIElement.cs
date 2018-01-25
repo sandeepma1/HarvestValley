@@ -9,7 +9,7 @@ public class DropOnUIElement : MonoBehaviour, IDropHandler
         switch (eventData.pointerDrag.name)
         {
             case "ScytheImage":
-                DraggableHarvesting.Instance.OnHarvestComplete();
+                DraggableUIHarvesting.Instance.OnHarvestComplete();
                 print("drop");
                 break;
             default:

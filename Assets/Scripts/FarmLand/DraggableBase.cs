@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class DraggableHarvesting : MonoBehaviour
+public class DraggableBase : MonoBehaviour
 {
     private Vector2 touchPos;
     private Camera camera;

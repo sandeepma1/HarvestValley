@@ -91,7 +91,8 @@ public class DraggableUIItem : ScrollRect
         if (routeToParent)
         {
             DoForParents<IDragHandler>((parent) => { parent.OnDrag(eventData); });
-        } else
+        }
+        else
         {
             _OnDrag();
             base.OnDrag(eventData);

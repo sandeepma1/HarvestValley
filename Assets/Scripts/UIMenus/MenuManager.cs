@@ -2,9 +2,8 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour
+public class MenuManager : Singleton<MenuManager>
 {
-    public static MenuManager Instance = null;
     //[SerializeField]
     // private GameObject loadingScreen;
     [SerializeField]
@@ -28,7 +27,6 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
         if (mainCanvas != null)
         {
             mainCanvas.SetActive(true);
@@ -36,7 +34,8 @@ public class MenuManager : MonoBehaviour
         if (Application.isEditor)
         {
             MINEBUTTON.SetActive(false);
-        } else
+        }
+        else
         {
             MINEBUTTON.SetActive(true);
         }

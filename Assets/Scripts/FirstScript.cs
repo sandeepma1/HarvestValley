@@ -4,7 +4,18 @@ using UnityEngine.SceneManagement;
 
 public class FirstScript : MonoBehaviour
 {
-    public static FirstScript Instance = null;
+    private Canvas[] canvas;
+    private Camera camera;
+
+    private void Awake()
+    {
+        camera = Camera.main;
+        canvas = FindObjectsOfType<Canvas>();
+        for (int i = 0; i < canvas.Length; i++)
+        {
+            canvas[i].worldCamera = camera;
+        }
+    }
 
     void LateUpdate()
     {
