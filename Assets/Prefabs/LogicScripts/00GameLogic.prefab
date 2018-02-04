@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114072758492999254}
   - component: {fileID: 114770785557096028}
   - component: {fileID: 114187831897214272}
+  - component: {fileID: 114084501453809250}
   m_Layer: 0
   m_Name: 00GameLogic
   m_TagString: Untagged
@@ -102,6 +103,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSwipeLength: 50
   minSwipeDuration: 0.3
+--- !u!114 &114084501453809250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811772467946392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e76054f5f19f9b418eee09625833670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guiAtlas: {fileID: 4343727234628468602, guid: e16acd9cdbc691d4eb5c9c1a4dbb6516,
+    type: 2}
+  farmingAtlas: {fileID: 4343727234628468602, guid: a6f9fd5479ff6d942a3bcb25ae07b4f8,
+    type: 2}
+  buildingAtlas: {fileID: 4343727234628468602, guid: 4f77a449cdf44fe46a8dea119bba6e8f,
+    type: 2}
 --- !u!114 &114187831897214272
 MonoBehaviour:
   m_ObjectHideFlags: 1

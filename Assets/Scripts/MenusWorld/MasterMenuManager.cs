@@ -5,7 +5,6 @@ using UnityEngine.U2D;
 
 public class MasterMenuManager : MonoBehaviour
 {
-    public static MasterMenuManager Instance = null;
     public bool isItemSelected = false;
     public int itemSelectedID = -1;
 
@@ -25,11 +24,6 @@ public class MasterMenuManager : MonoBehaviour
     private int unlockedItemCount = 0;
     private DraggableItems[] menuItems = new DraggableItems[12];
     private List<int> unlockedItemIDs = new List<int>();
-
-    private void Awake()
-    {
-        Instance = this;
-    }
 
     private void Start()
     {

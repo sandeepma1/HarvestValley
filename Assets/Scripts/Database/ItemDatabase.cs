@@ -51,7 +51,8 @@ public class ItemDatabase : MonoBehaviour
                 IntParse(chars[20]),
                 IntParse(chars[21]),
                 IntParse(chars[22]),
-                IntParse(chars[23]));
+                IntParse(chars[23]),
+                chars[24]);
         }
     }
 
@@ -61,7 +62,8 @@ public class ItemDatabase : MonoBehaviour
         if (int.TryParse(text, out num))
         {
             return num;
-        } else
+        }
+        else
             return 0;
     }
 
@@ -105,11 +107,13 @@ public class Item
     public int needID4;
     public int needAmount4;
 
+    public string slug;
+
     public Item(int itemId, string itemName, string itemDescription, int itemUnlocksAtLevel,
                  float itemTimeRequiredInMins, int itemXP, ItemType itemType, int itemCoinCost, int itemGemCost, int itemSourceID,
                  int itemNoOfWatering, int itemBaseYieldMin, int itemBaseYieldMax, int itemSellValueMin, int itemSellValueMax,
                  int itemNoOfFertilizer, int itemNeedID1, int itemNeedAmount1, int itemNeedID2, int itemNeedAmount2,
-                 int itemNeedID3, int itemNeedAmount3, int itemNeedID4, int itemNeedAmount4)
+                 int itemNeedID3, int itemNeedAmount3, int itemNeedID4, int itemNeedAmount4, string itemSlug)
     {
         itemID = itemId;
         name = itemName;
@@ -138,6 +142,8 @@ public class Item
         needAmount3 = itemNeedAmount3;
         needID4 = itemNeedID4;
         needAmount4 = itemNeedAmount4;
+
+        slug = itemSlug;
     }
 }
 

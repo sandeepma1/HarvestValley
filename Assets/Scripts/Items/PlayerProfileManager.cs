@@ -4,9 +4,8 @@ using UnityEngine;
 using TMPro;
 using System;
 
-public class PlayerProfileManager : MonoBehaviour
+public class PlayerProfileManager : Singleton<PlayerProfileManager>
 {
-    public static PlayerProfileManager Instance = null;
     [SerializeField]
     public TextMeshProUGUI coinsUIText, gemsUIText, staminaUIText, levelUIText, XPPointsUIText;
     private PlayersProfile playerProfile = null;
@@ -14,7 +13,6 @@ public class PlayerProfileManager : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
         NewGameStart();
         playerProfile = ES2.Load<PlayersProfile>("playerProfile");
         InitPlayerProfile();
@@ -65,7 +63,6 @@ public class PlayerProfileManager : MonoBehaviour
             {
                 PlayerInventoryManager.Instance.AddNewFarmItem(LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemUnlockID,
                     LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemRewardCount);
-                MasterMenuManager.Instance.CheckForUnlockedItems();
                 UIMasterMenuManager.Instance.CheckForUnlockedItems();
                 PlayerGems(LevelUpDatabase.Instance.gameLevels[playerProfile.level].gemsRewardCount);
             }

@@ -1,19 +1,19 @@
 fileFormatVersion: 2
 guid: 96d518e9d2a658544a3f1305e4b09adc
-timeCreated: 1511990163
+timeCreated: 1517770150
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Corn_0
+    21300000: corn_0
     21300002: bushes1_2
     21300004: bushes1_1
     21300006: bushes1_3
     21300008: bushes1_4
-    21300010: Corn_1
+    21300010: corn_1
     21300012: bushes1_6
-    21300014: Corn_2
+    21300014: corn_2
     21300016: bushes1_8
-    21300018: Corn_3
+    21300018: corn_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -75,11 +75,12 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Corn_0
+      name: corn_0
       rect:
         serializedVersion: 2
         x: 0
@@ -93,7 +94,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Corn_1
+      name: corn_1
       rect:
         serializedVersion: 2
         x: 16
@@ -107,7 +108,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Corn_2
+      name: corn_2
       rect:
         serializedVersion: 2
         x: 80
@@ -121,7 +122,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Corn_3
+      name: corn_3
       rect:
         serializedVersion: 2
         x: 96
@@ -129,7 +130,7 @@ TextureImporter:
         width: 14
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

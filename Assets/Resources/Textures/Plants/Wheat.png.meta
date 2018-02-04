@@ -1,13 +1,13 @@
 fileFormatVersion: 2
 guid: dcbb08623d9c9f9409ffceb638811d75
-timeCreated: 1511988739
+timeCreated: 1517770169
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Wheat_0
-    21300002: Wheat_1
-    21300004: Wheat_2
-    21300006: Wheat_3
+    21300000: wheat_0
+    21300002: wheat_1
+    21300004: wheat_2
+    21300006: wheat_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -69,6 +69,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
   - buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -78,6 +79,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
   - buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -87,11 +89,12 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wheat_0
+      name: wheat_0
       rect:
         serializedVersion: 2
         x: 0
@@ -105,7 +108,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Wheat_1
+      name: wheat_1
       rect:
         serializedVersion: 2
         x: 33
@@ -113,13 +116,13 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Wheat_2
+      name: wheat_2
       rect:
         serializedVersion: 2
         x: 64
@@ -127,13 +130,13 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Wheat_3
+      name: wheat_3
       rect:
         serializedVersion: 2
         x: 80
@@ -141,7 +144,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

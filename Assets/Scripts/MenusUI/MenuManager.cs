@@ -28,8 +28,6 @@ public class MenuManager : Singleton<MenuManager>
     private GameObject inventoryMenu;
     [SerializeField]
     private GameObject uiItemScrollList;
-    [SerializeField]
-    private GameObject harvestMenu;
 
     private Stack<GameObject> openMenusStack = new Stack<GameObject>();
 
@@ -54,21 +52,6 @@ public class MenuManager : Singleton<MenuManager>
 
     }
 
-    private void Update()
-    {
-        /*if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor) {
-			if (Input.GetKey (KeyCode.Escape)) {
-				print ("escape");
-				if (SceneManager.GetActiveScene ().name == "Menu") {
-					Application.Quit ();
-				} else {
-					//ShowIGMMenu ();
-				}
-				return;
-			}
-		}*/
-    }
-
     #region Stack Stuff
 
     public void DisplayMenu(MenuNames menuName)
@@ -86,9 +69,6 @@ public class MenuManager : Singleton<MenuManager>
                 break;
             case MenuNames.UIItemScrollList:
                 AddInStack(uiItemScrollList);
-                break;
-            case MenuNames.Harvest:
-                AddInStack(harvestMenu);
                 break;
             default:
                 break;
@@ -174,7 +154,7 @@ public class MenuManager : Singleton<MenuManager>
 
             if (!InputController.Instance.IsDragging)
             {
-                RemoveFromStack();
+                UIMasterMenuManager.Instance.CloseUIMasterMenu();
             }
         }
     }

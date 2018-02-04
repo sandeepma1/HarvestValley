@@ -10,19 +10,17 @@ public class UIMasterMenuManager : Singleton<UIMasterMenuManager>
 {
     public Canvas mainCanvas;
     [SerializeField]
-    private SpriteAtlas itemAtlas;
-    [SerializeField]
     private ClickableUIItems scrollListItemPrefab;
     [SerializeField]
-    private Transform scrollListParentTransform;
+    private Transform scrollList;
     [SerializeField]
     private GameObject uiObjectInfoMenu;
-    [SerializeField]
-    private GameObject uiHarvestMenu;
     [SerializeField]
     private GameObject navigationButtonsGroup;
     [SerializeField]
     private GameObject uiItemScrollList;
+    [SerializeField]
+    private Button clickToFinishPlantingModeButton;
 
     public Action<int> DraggedItemEvent;
 
@@ -34,18 +32,20 @@ public class UIMasterMenuManager : Singleton<UIMasterMenuManager>
 
     private void Start()
     {
+        clickToFinishPlantingModeButton.onClick.AddListener(OnFinishButtonClicked);
         SpwanMenuItems();
         CheckForUnlockedItems();
         ToggleScrolItemlList(false);
-        ToggleHarvestMenu(false);
         ToggleObjectInfoMenu(false);
+        ToggleList(false);
+        ToggleFinishButton(false);
     }
 
     private void SpwanMenuItems()
     {
         for (int i = 0; i < menuItems.Length; i++)
         {
-            menuItems[i] = (Instantiate(scrollListItemPrefab, scrollListParentTransform));
+            menuItems[i] = (Instantiate(scrollListItemPrefab, scrollList));
             menuItems[i].name = "UIItemListClick" + i;
         }
     }
@@ -62,27 +62,46 @@ public class UIMasterMenuManager : Singleton<UIMasterMenuManager>
         }
     }
 
-    public void DisplayUIMasterMenuToPlantSeed(int buildingID, int sourceID)
+    #region Planting Mode Stuff
+
+    /// <summary>
+    /// Will Display Plant seed list as UI scroll list
+    /// </summary>
+    /// <param name="buildingID"></param>
+    /// <param name="sourceID"></param>
+    public void DisplayPlantSeedList(int buildingID, int sourceID)
     {
         selectedBuildingID = buildingID;
         selectedSourceID = sourceID;
-
-        MenuManager.Instance.DisplayMenu(MenuNames.UIItemScrollList);
-
-        PopulateItemsInMasterMenu(buildingID, sourceID);
+        ToggleScrolItemlList(true);
+        ToggleList(true);
+        PopulateItemList(buildingID, sourceID);
     }
 
-    public void DisplayUIMasterMenuToHarvest(int buildingID, int sourceID)
+    /// <summary>
+    /// Start Planting Mode.. Callback after any plant seed is selected from the UI scroll list
+    /// </summary>
+    /// <param name="itemID"></param>
+    public void OnUIItemClicked(int itemID)
     {
-        MenuManager.Instance.DisplayMenu(MenuNames.Harvest);
-        //FarmHarvestingMenu.transform.position = BuildingsGO[buildingID].transform.position;
-        //FarmHarvestingMenu.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);       
-        //LeanTween.scale(FarmHarvestingMenu, Vector3.one, 0.2f, MenuManager.Instance.ease);
-        selectedBuildingID = buildingID;
-        selectedSourceID = sourceID;
+        BuildingsManager.Instance.StartPlantingMode(itemID);
+        ToggleList(false);
+        ToggleFinishButton(true);
     }
 
-    private void PopulateItemsInMasterMenu(int buildingID, int sourceID)
+    /// <summary>
+    /// Finish planting mode
+    /// </summary>
+    private void OnFinishButtonClicked()
+    {
+        BuildingsManager.Instance.StopPlantingMode();
+        ToggleFinishButton(false);
+        ToggleScrolItemlList(false);
+    }
+
+    #endregion
+
+    private void PopulateItemList(int buildingID, int sourceID)
     {
         selectedBuildingID = buildingID;
         selectedSourceID = sourceID;
@@ -96,23 +115,16 @@ public class UIMasterMenuManager : Singleton<UIMasterMenuManager>
         {
             if (ItemDatabase.Instance.items[unlockedItemIDs[i]].sourceID == sourceID)
             {
-                menuItems[i].gameObject.SetActive(true);
-                menuItems[i].itemID = ItemDatabase.Instance.items[unlockedItemIDs[i]].itemID;
-                //menuItems[unlockedItemCount].itemImage.sprite = itemAtlas.GetSprite(ItemDatabase.Instance.items[i].name);
+                Item item = ItemDatabase.Instance.items[unlockedItemIDs[i]];
 
-                menuItems[i].itemNameText.text = ItemDatabase.Instance.items[unlockedItemIDs[i]].name;
-                menuItems[i].itemCostText.text = ItemDatabase.Instance.items[unlockedItemIDs[i]].coinCost.ToString();
+                menuItems[i].gameObject.SetActive(true);
+                menuItems[i].itemID = item.itemID;
+                menuItems[i].itemNameText.text = item.name;
+                menuItems[i].itemCostText.text = item.coinCost.ToString();
+                menuItems[i].itemImage.sprite = AtlasBank.Instance.GetSprite(item.slug, AtlasType.GUI);
             }
             this.gameObject.SetActive(true);
         }
-    }
-
-    public void OnHarvestComplete()
-    {
-        BuildingsManager.Instance.HarvestCropOnFarmLand(selectedBuildingID);
-        ToggleHarvestMenu(false);
-        ToggleScrolItemlList(true);
-        PopulateItemsInMasterMenu(selectedBuildingID, selectedSourceID);
     }
 
     public void OnItemDropComplete()
@@ -128,7 +140,7 @@ public class UIMasterMenuManager : Singleton<UIMasterMenuManager>
             {
                 return;
             }
-            BuildingsManager.Instance.PlantItemOnBuilding(selectedBuildingID, itemID);
+            //BuildingsManager.Instance.PlantItemOnBuilding(selectedBuildingID, itemID);
             selectedBuildingID = -1;
             ToggleScrolItemlList(false);
             ToggleObjectInfoMenu(false);
@@ -136,20 +148,13 @@ public class UIMasterMenuManager : Singleton<UIMasterMenuManager>
         }
     }
 
-    public void OnUIItemClicked(int itemID)
-    {
-        if (selectedBuildingID == -1)
-        {
-            return;
-        }
-        BuildingsManager.Instance.PlantItemOnBuilding(selectedBuildingID, itemID);
-        selectedBuildingID = -1;
-    }
-
     public void UpgradeBuildingPressed(int id)
     {
         MenuManager.Instance.BuildingUpgradeMenuSetActive(true);
     }
+
+
+    #region Toggle different UI Menus, Lsists, etc
 
     private void ToggleObjectInfoMenu(bool flag)
     {
@@ -167,17 +172,27 @@ public class UIMasterMenuManager : Singleton<UIMasterMenuManager>
         uiItemScrollList.SetActive(flag);
     }
 
-    private void ToggleHarvestMenu(bool flag)
+    private void ToggleList(bool flag)
     {
-        uiHarvestMenu.SetActive(flag);
+        scrollList.gameObject.SetActive(flag);
     }
+
+    private void ToggleFinishButton(bool flag)
+    {
+        clickToFinishPlantingModeButton.gameObject.SetActive(flag);
+    }
+
+    #endregion
+
 
     #region UIbuttons functions
     public void CloseUIMasterMenu()
     {
         ToggleScrolItemlList(false);
         ToggleObjectInfoMenu(false);
-        ToggleHarvestMenu(false);
+        ToggleList(false);
+        ToggleFinishButton(false);
+        OnFinishButtonClicked();
     }
     #endregion
 }

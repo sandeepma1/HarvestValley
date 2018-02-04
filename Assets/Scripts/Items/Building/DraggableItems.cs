@@ -53,7 +53,7 @@ public class DraggableItems : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         transform.position = Camera.main.ScreenToWorldPoint(
             new Vector3(Input.mousePosition.x,
             Input.mousePosition.y, zDistanceToCamera));// + offsetToMouse;
-        MasterMenuManager.Instance.ChildCallingOnMouseDrag(itemID, transform.localPosition);
+        //MasterMenuManager.Instance.ChildCallingOnMouseDrag(itemID, transform.localPosition);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -62,13 +62,13 @@ public class DraggableItems : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         boxCollider2d.size = smallColliderSize;
         zDistanceToCamera = Mathf.Abs(intialPosition.z
             - Camera.main.transform.position.z);
-        MasterMenuManager.Instance.ChildCallingOnMouseDown(itemID, transform.localPosition);
+        //MasterMenuManager.Instance.ChildCallingOnMouseDown(itemID, transform.localPosition);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.localPosition = intialPosition;
         boxCollider2d.size = Vector2.one;
-        MasterMenuManager.Instance.ChildCallingOnMouseUp(itemID);
+        //MasterMenuManager.Instance.ChildCallingOnMouseUp(itemID);
     }
 }

@@ -34,7 +34,8 @@ public class SourceDatabase : MonoBehaviour
                 IntParse(chars[4]),
                 IntParse(chars[5]),
                 IntParse(chars[6]),
-                IntParse(chars[7]));
+                IntParse(chars[7]),
+                chars[8]);
         }
     }
 
@@ -44,7 +45,8 @@ public class SourceDatabase : MonoBehaviour
         if (int.TryParse(text, out num))
         {
             return num;
-        } else
+        }
+        else
             return 0;
     }
 
@@ -67,10 +69,12 @@ public class SourceInfo
     public int deployTime;
     public int slotsUnlocked;
     public int limit;
+    public string slug;
     //shopItemType
     //public int shopitemLimit
 
-    public SourceInfo(int b_sourceID, string b_name, string b_desc, ItemType b_type, int b_cost, int b_deployTime, int b_slotsUnlocked, int b_limit)
+    public SourceInfo(int b_sourceID, string b_name, string b_desc, ItemType b_type, int b_cost,
+        int b_deployTime, int b_slotsUnlocked, int b_limit, string b_slug)
     {
         sourceID = b_sourceID;
         name = b_name;
@@ -80,5 +84,6 @@ public class SourceInfo
         deployTime = b_deployTime;
         slotsUnlocked = b_slotsUnlocked;
         limit = b_limit;
+        slug = b_slug;
     }
 }

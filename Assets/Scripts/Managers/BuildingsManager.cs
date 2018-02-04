@@ -9,8 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class BuildingsManager : Singleton<BuildingsManager>
 {
-    [SerializeField]
-    private SpriteAtlas plantsAtlas;
     public int x = 5, y = 5, gap;
     [SerializeField]
     private Transform fieldSelector;
@@ -37,9 +35,9 @@ public class BuildingsManager : Singleton<BuildingsManager>
     private void Start()
     {
         DraggableBuildings.OnBuildingClicked += OnDraggableBuildingClicked;
-        DraggableBuildings.OnBuildingHarvested += OnDraggableBuildingHarvested;
         OneTimeOnly();
         Init();
+        ToggleFieldSelector(false);
     }
 
     private void Update() // all long press logic	
@@ -103,6 +101,7 @@ public class BuildingsManager : Singleton<BuildingsManager>
         BuildingsGO[building.id].itemID = building.itemID;
         BuildingsGO[building.id].state = (BUILDINGS_STATE)building.state;
         BuildingsGO[building.id].unlockedQueueSlots = building.unlockedQueueSlots;
+
         switch (BuildingsGO[building.id].state)
         {
             case BUILDINGS_STATE.NONE:
@@ -154,19 +153,20 @@ public class BuildingsManager : Singleton<BuildingsManager>
 
     private void ChangeFarmPlantSprite(DraggableBuildings building, PLANT_STAGES stages)
     {
+        string itemSlug = ItemDatabase.Instance.items[building.itemID].slug;
         switch (stages)
         {
             case PLANT_STAGES.SEED:
-                building.plantsSprite.sprite = GetPlantSpriteFromBank(ItemDatabase.Instance.items[building.itemID].name + "_0");
+                building.plantsSprite.sprite = AtlasBank.Instance.GetSprite(itemSlug + "_0", AtlasType.Farming);
                 break;
             case PLANT_STAGES.SHRUB:
-                building.plantsSprite.sprite = GetPlantSpriteFromBank(ItemDatabase.Instance.items[building.itemID].name + "_1");
+                building.plantsSprite.sprite = AtlasBank.Instance.GetSprite(itemSlug + "_1", AtlasType.Farming);
                 break;
             case PLANT_STAGES.PLANT:
-                building.plantsSprite.sprite = GetPlantSpriteFromBank(ItemDatabase.Instance.items[building.itemID].name + "_2");
+                building.plantsSprite.sprite = AtlasBank.Instance.GetSprite(itemSlug + "_2", AtlasType.Farming);
                 break;
             case PLANT_STAGES.MATURE:
-                building.plantsSprite.sprite = GetPlantSpriteFromBank(ItemDatabase.Instance.items[building.itemID].name + "_3");
+                building.plantsSprite.sprite = AtlasBank.Instance.GetSprite(itemSlug + "_3", AtlasType.Farming); ;
                 break;
             default:
                 break;
@@ -190,58 +190,65 @@ public class BuildingsManager : Singleton<BuildingsManager>
 
     public void PlantItemsOnBuildings(int buildingID) // Planting Items
     {
-        if (MasterMenuManager.Instance.isItemSelected == true)
-        {
-            if (BuildingsGO[buildingID].sourceID == 0)
-            { // selected building is feild
-                if (plantedOnSelectedfield || buildingSelectedID == buildingID)
+        if (BuildingsGO[buildingID].sourceID == 0)
+        { // selected building is feild
+            if (plantedOnSelectedfield || buildingSelectedID == buildingID)
+            {
+                if (PlayerInventoryManager.Instance.playerInventory[itemSelectedID].count >= 1)
                 {
-                    if (PlayerInventoryManager.Instance.playerInventory[itemSelectedID].count >= 1)
-                    {
-                        BuildingsGO[buildingID].state = BUILDINGS_STATE.GROWING;
-                        BuildingsGO[buildingID].itemID = itemSelectedID;
-                        BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
-                            ItemDatabase.Instance.items[itemSelectedID].timeRequiredInMins);
-                        // BuildingsGO[buildingID].spriteRenderer.color = Color.green;
-
-                        string plantName = ItemDatabase.Instance.items[itemSelectedID].name + "_0";
-
-                        BuildingsGO[buildingID].plantsSprite.sprite = GetPlantSpriteFromBank(plantName);
-                        PlayerInventoryManager.Instance.playerInventory[itemSelectedID].count--;
-                        MasterMenuManager.Instance.UpdateSeedValue();
-                        SaveBuildings();
-                        plantedOnSelectedfield = true;
-                        buildingSelectedID = -1;
-                    }
-                }
-            }
-            else
-            { // if selected building is NOT feild
-                if (buildingSelectedID == buildingID && DoesInventoryHasItems(buildingID))
-                {
-                    DecrementItemsFromInventory();
                     BuildingsGO[buildingID].state = BUILDINGS_STATE.GROWING;
                     BuildingsGO[buildingID].itemID = itemSelectedID;
                     BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
                         ItemDatabase.Instance.items[itemSelectedID].timeRequiredInMins);
-                    BuildingsGO[buildingID].buildingSprite.color = Color.green;
+                    // BuildingsGO[buildingID].spriteRenderer.color = Color.green;
+
+                    string plantName = ItemDatabase.Instance.items[itemSelectedID].name + "_0";
+
+                    BuildingsGO[buildingID].plantsSprite.sprite = GetPlantSpriteFromBank(plantName);
+                    PlayerInventoryManager.Instance.playerInventory[itemSelectedID].count--;
+                    SaveBuildings();
+                    plantedOnSelectedfield = true;
+                    buildingSelectedID = -1;
                 }
             }
         }
+        else
+        { // if selected building is NOT feild
+            if (buildingSelectedID == buildingID && DoesInventoryHasItems(buildingID))
+            {
+                DecrementItemsFromInventory();
+                BuildingsGO[buildingID].state = BUILDINGS_STATE.GROWING;
+                BuildingsGO[buildingID].itemID = itemSelectedID;
+                BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
+                    ItemDatabase.Instance.items[itemSelectedID].timeRequiredInMins);
+                BuildingsGO[buildingID].buildingSprite.color = Color.green;
+            }
+        }
+
     }
 
-    public void PlantItemOnBuilding(int buildingID, int itemID)
+    #region Planting Mode
+
+    public void StartPlantingMode(int itemID)
     {
-        BuildingsGO[buildingID].state = BUILDINGS_STATE.GROWING;
-        BuildingsGO[buildingID].itemID = itemID;
-        BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
-            ItemDatabase.Instance.items[itemID].timeRequiredInMins);
-
-        string plantName = ItemDatabase.Instance.items[itemID].name + "_0";
-        BuildingsGO[buildingID].plantsSprite.sprite = GetPlantSpriteFromBank(plantName);
-        PlayerProfileManager.Instance.PlayerCoins(-ItemDatabase.Instance.items[itemID].coinCost);
+        for (int i = 0; i < BuildingsGO.Length; i++)
+        {
+            BuildingsGO[i].StartPlantingMode(itemID);
+        }
         SaveBuildings();
+        ToggleFieldSelector(false);
     }
+
+    public void StopPlantingMode()
+    {
+        for (int i = 0; i < BuildingsGO.Length; i++)
+        {
+            BuildingsGO[i].StopPlantingMode();
+        }
+        //ToggleFieldSelector(true);
+    }
+
+    #endregion
 
     public bool DoesInventoryHasItems(int itemID)
     {
@@ -333,27 +340,6 @@ public class BuildingsManager : Singleton<BuildingsManager>
 
     }
 
-    public void HarvestCropOnFarmLand(int buildingID) // Harvesting Seeds calls only on farms
-    {
-        // TODO Heavy update required for field Level Based cals*******************
-        // only 2 items are added in storage
-
-        PlayerInventoryManager.Instance.UpdateFarmItems(Convert.ToInt32(BuildingsGO[buildingID].itemID), 2);
-        PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.Instance.items[BuildingsGO[buildingID].itemID].XPperYield);
-        BuildingsGO[buildingID].state = BUILDINGS_STATE.NONE;
-
-        BuildingsGO[buildingID].dateTime = new System.DateTime();
-        BuildingsGO[buildingID].itemID = -1;
-        BuildingsGO[buildingID].plantsSprite.sprite = new Sprite();
-    }
-
-    public void ShowReadyToHarvestCropsMenu(int buildingID) // Display Harvesting Menu
-    {
-        //FarmHarvestingMenu.transform.position = BuildingsGO[buildingID].transform.position;
-        //FarmHarvestingMenu.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);       
-        //LeanTween.scale(FarmHarvestingMenu, Vector3.one, 0.2f, MenuManager.Instance.ease);
-    }
-
     public void CollectItemsOnBuildings(int buildingID) //Collecting Items on buildings
     {
         PlayerInventoryManager.Instance.UpdateFarmItems(BuildingsGO[buildingID].itemID, 1);
@@ -361,7 +347,6 @@ public class BuildingsManager : Singleton<BuildingsManager>
         BuildingsGO[buildingID].state = BUILDINGS_STATE.NONE;
         BuildingsGO[buildingID].dateTime = new System.DateTime();
         BuildingsGO[buildingID].itemID = -1;
-        // BuildingsGO[buildingID].spriteRenderer.color = Color.white;
         BuildingsGO[buildingID].plantsSprite.sprite = new Sprite();
     }
 
@@ -431,12 +416,29 @@ public class BuildingsManager : Singleton<BuildingsManager>
         }
     }
 
+    #region Field Selector
+
     private void SelectBuilding(int buildingID)
     {
-        fieldSelector.SetParent(BuildingsGO[buildingID].transform);
-        fieldSelector.transform.localPosition = Vector3.zero;
-        buildingSelectedID = buildingID;
+        if (BuildingsGO[buildingID].state == BUILDINGS_STATE.NONE)
+        {
+            ToggleFieldSelector(true);
+            fieldSelector.SetParent(BuildingsGO[buildingID].transform);
+            fieldSelector.transform.localPosition = Vector3.zero;
+            buildingSelectedID = buildingID;
+        }
+        else
+        {
+            ToggleFieldSelector(false);
+        }
     }
+
+    private void ToggleFieldSelector(bool flag)
+    {
+        fieldSelector.gameObject.SetActive(flag);
+    }
+
+    #endregion
 
     IEnumerator RestartGame()
     {
@@ -452,7 +454,7 @@ public class BuildingsManager : Singleton<BuildingsManager>
         switch (BuildingsGO[buildingID].state)
         {
             case BUILDINGS_STATE.NONE:
-                UIMasterMenuManager.Instance.DisplayUIMasterMenuToPlantSeed(buildingID, BuildingsGO[buildingID].sourceID);
+                UIMasterMenuManager.Instance.DisplayPlantSeedList(buildingID, BuildingsGO[buildingID].sourceID);
                 break;
             case BUILDINGS_STATE.GROWING:
                 tempID = buildingID;
@@ -462,55 +464,11 @@ public class BuildingsManager : Singleton<BuildingsManager>
                 ItemDatabase.Instance.items[BuildingsGO[tempID].itemID].name.ToString();
                 break;
             case BUILDINGS_STATE.WAITING_FOR_HARVEST:
-                if (BuildingsGO[buildingID].sourceID == 0)
-                {
-                    ShowReadyToHarvestCropsMenu(buildingID);
-                }
-                else
-                {
-                    CollectItemsOnBuildings(buildingID);
-                }
+                CollectItemsOnBuildings(buildingID); // Directly collect/harvest on feild click
                 break;
             default:
                 break;
         }
-    }
-
-    private void OnDraggableBuildingHarvested(int buildingID)
-    {
-        HarvestCropOnFarmLand(buildingID);
-    }
-
-    // Remove asap
-    public void CallParentOnMouseEnter(int buildingID)
-    {
-        switch (BuildingsGO[buildingID].state)
-        {
-            case BUILDINGS_STATE.NONE:
-                PlantItemsOnBuildings(buildingID);
-                break;
-            case BUILDINGS_STATE.WAITING_FOR_HARVEST:
-                if (BuildingsGO[buildingID].sourceID == 0)
-                { // if field selected
-                    HarvestCropOnFarmLand(buildingID);
-                }
-                break;
-            default:
-                break;
-        }
-    }
-
-    public void CallParentOnMouseDrag(int buildingID)
-    {
-        if (BuildingsGO[buildingID].isSelected && BuildingsGO[buildingID].sourceID != 0)
-        {
-            BuildingsGO[buildingID].transform.position = new Vector3(Mathf.Round(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 0, 0)).x),
-                Mathf.Round(Camera.main.ScreenToWorldPoint(new Vector3(0, Input.mousePosition.y, 0)).y), 0);
-        }
-    }
-
-    public void CallParentOnMouseDown(int buildingID)
-    {
     }
 
     #endregion

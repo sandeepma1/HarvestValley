@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using DG.Tweening;
 
 public class DraggableBuildings : MouseUpBase
 {
@@ -24,6 +25,16 @@ public class DraggableBuildings : MouseUpBase
     internal int baseYieldMax;
     internal int noOfWatering;
 
+    private SpriteRenderer fieldSprite;
+    private bool isGlowing;
+    private Tweener tweener;
+    private int itemIDToBePlaced = -1;
+
+    private void Start()
+    {
+        fieldSprite = GetComponent<SpriteRenderer>();
+    }
+
     public void CrowComes()
     {
         crowGO.SetActive(true);
@@ -37,53 +48,45 @@ public class DraggableBuildings : MouseUpBase
     public override void OnMouseTouchUp()
     {
         base.OnMouseTouchUp();
+        if (isGlowing && state == BUILDINGS_STATE.NONE)
+        {
+            PlantSeed();
+            return;
+        }
         if (OnBuildingClicked != null)
         {
             OnBuildingClicked.Invoke(buildingID, sourceID);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void PlantSeed()
     {
-        if (state == BUILDINGS_STATE.WAITING_FOR_HARVEST)
+        itemID = itemIDToBePlaced;
+        dateTime = UTC.time.liveDateTime.AddMinutes(ItemDatabase.Instance.items[itemIDToBePlaced].timeRequiredInMins);
+        state = BUILDINGS_STATE.GROWING;
+        //string plantName = ItemDatabase.Instance.items[itemIDToBePlaced].name + "_0";
+        //plantsSprite.sprite = GetPlantSpriteFromBank(plantName);
+        PlayerProfileManager.Instance.PlayerCoins(-ItemDatabase.Instance.items[itemIDToBePlaced].coinCost);
+        StopPlantingMode();
+
+        // TODO: Save on disk
+    }
+
+    internal void StartPlantingMode(int itemID)
+    {
+        if (state == BUILDINGS_STATE.NONE)
         {
-            if (collision.CompareTag("Harvest"))
-            {
-                if (OnBuildingHarvested != null)
-                {
-                    OnBuildingHarvested.Invoke(buildingID);
-                }
-            }
+            isGlowing = true;
+            itemIDToBePlaced = itemID;
+            tweener = fieldSprite.DOColor(ColorConstants.fieldGlow, 0.5f).SetLoops(-1, LoopType.Yoyo);
         }
     }
 
-    // Old Code Remove later
-
-
-    //public void OnPointerDown(PointerEventData eventData)
-    //{
-    //    BuildingsManager.Instance.CallParentOnMouseDown(buildingID);
-    //}
-    //public void OnPointerEnter(PointerEventData eventData)
-    //{
-    //    BuildingsManager.Instance.CallParentOnMouseEnter(buildingID);
-    //}
-    //public void OnDrag(PointerEventData eventData)
-    //{
-    //    BuildingsManager.Instance.CallParentOnMouseDrag(buildingID);
-    //}
-    //void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    switch (other.tag)
-    //    {
-    //        case "MasterMenuItem":
-    //            BuildingsManager.Instance.CallParentOnMouseEnter(buildingID);
-    //            break;
-    //        case "Harvest":
-    //            BuildingsManager.Instance.CallParentOnMouseEnter(buildingID);
-    //            break;
-    //        default:
-    //            break;
-    //    }
-    //}
+    internal void StopPlantingMode()
+    {
+        isGlowing = false;
+        itemIDToBePlaced = -1;
+        tweener.Kill();
+        fieldSprite.color = ColorConstants.fieldNormal;
+    }
 }
