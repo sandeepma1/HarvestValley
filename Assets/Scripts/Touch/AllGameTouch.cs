@@ -19,7 +19,7 @@ public class AllGameTouch : MonoBehaviour
                 switch (hit.collider.tag)
                 {
                     case "DisableAllMenus":
-                        MenuManager.Instance.DisableAllMenus();
+                        //MenuManager.Instance.DisableAllMenus();
                         break;
                     default:
                         break;

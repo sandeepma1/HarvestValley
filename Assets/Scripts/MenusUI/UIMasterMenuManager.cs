@@ -16,13 +16,13 @@ public class UIMasterMenuManager : Singleton<UIMasterMenuManager>
     [SerializeField]
     private Transform scrollListParentTransform;
     [SerializeField]
-    private GameObject uiItemScrollList;
-    [SerializeField]
     private GameObject uiObjectInfoMenu;
     [SerializeField]
     private GameObject uiHarvestMenu;
     [SerializeField]
     private GameObject navigationButtonsGroup;
+    [SerializeField]
+    private GameObject uiItemScrollList;
 
     public Action<int> DraggedItemEvent;
 
@@ -60,10 +60,6 @@ public class UIMasterMenuManager : Singleton<UIMasterMenuManager>
                 unlockedItemIDs.Add(LevelUpDatabase.Instance.gameLevels[i].itemUnlockID);
             }
         }
-        //foreach (var item in unlockedItemIDs)
-        //{
-        //    print("unlocked items " + item);
-        //}
     }
 
     public void DisplayUIMasterMenuToPlantSeed(int buildingID, int sourceID)
@@ -71,18 +67,19 @@ public class UIMasterMenuManager : Singleton<UIMasterMenuManager>
         selectedBuildingID = buildingID;
         selectedSourceID = sourceID;
 
-        //ToggleObjectInfoMenu(true);
-        ToggleScrolItemlList(true);
+        MenuManager.Instance.DisplayMenu(MenuNames.UIItemScrollList);
+
         PopulateItemsInMasterMenu(buildingID, sourceID);
     }
 
     public void DisplayUIMasterMenuToHarvest(int buildingID, int sourceID)
     {
+        MenuManager.Instance.DisplayMenu(MenuNames.Harvest);
+        //FarmHarvestingMenu.transform.position = BuildingsGO[buildingID].transform.position;
+        //FarmHarvestingMenu.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);       
+        //LeanTween.scale(FarmHarvestingMenu, Vector3.one, 0.2f, MenuManager.Instance.ease);
         selectedBuildingID = buildingID;
         selectedSourceID = sourceID;
-
-        ToggleObjectInfoMenu(true);
-        ToggleHarvestMenu(true); //TODO: send selected crop images
     }
 
     private void PopulateItemsInMasterMenu(int buildingID, int sourceID)

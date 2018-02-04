@@ -18,6 +18,6 @@ public class ScreenButtons : MonoBehaviour
 
     void TaskOnClick()
     {
-        InputController.instance.SnapCameraOnButton(id);//, position);
+        InputController.Instance.SnapCameraOnButton(id);//, position);
     }
 }

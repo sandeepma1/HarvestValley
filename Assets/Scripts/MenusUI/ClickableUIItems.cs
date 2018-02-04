@@ -10,7 +10,6 @@ public class ClickableUIItems : MonoBehaviour
     public TextMeshProUGUI itemCostText;
     public TextMeshProUGUI itemNameText;
     public Image itemImage;
-    public int selectedItemID;
 
     private Button button;
 
@@ -24,6 +23,5 @@ public class ClickableUIItems : MonoBehaviour
     private void ButtonClicked()
     {
         UIMasterMenuManager.Instance.OnUIItemClicked(itemID);
-        selectedItemID = -1;
     }
 }

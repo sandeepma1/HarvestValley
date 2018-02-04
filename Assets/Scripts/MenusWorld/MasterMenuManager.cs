@@ -78,7 +78,6 @@ public class MasterMenuManager : MonoBehaviour
 
     public void PopulateItemsInMasterMenu(int buildingID)
     {
-        MenuManager.Instance.DisableAllMenus();
         for (int i = 0; i < menuItems.Length; i++)
         {
             menuItems[i].gameObject.SetActive(false);

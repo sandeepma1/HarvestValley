@@ -1,18 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MouseUpBase : MonoBehaviour
 {
     private void OnMouseUpAsButton()
     {
-        if (!InputController.instance.isDragging)
+        var touch = InputHelper.GetTouches();
+        if (touch.Count > 0)
         {
-            TouchUp();
+            Touch t = touch[0];
+
+            if (Application.isEditor)
+            {
+                if (EventSystem.current.IsPointerOverGameObject())
+                {
+                    return;
+                }
+            }
+            else
+            {
+                if (EventSystem.current.IsPointerOverGameObject(t.fingerId))
+                {
+                    return;
+                }
+            }
+
+            OnMouseTouchUp();
         }
     }
 
-    public virtual void TouchUp()
+    public virtual void OnMouseTouchUp()
     {
 
     }

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class DraggableBuildings : MouseUpBase
 {
@@ -36,9 +34,9 @@ public class DraggableBuildings : MouseUpBase
         crowGO.SetActive(false);
     }
 
-    public override void TouchUp()
+    public override void OnMouseTouchUp()
     {
-        base.TouchUp();
+        base.OnMouseTouchUp();
         if (OnBuildingClicked != null)
         {
             OnBuildingClicked.Invoke(buildingID, sourceID);

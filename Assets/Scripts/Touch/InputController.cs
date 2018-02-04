@@ -4,9 +4,8 @@ using UnityEngine.EventSystems;
 using System.Collections;
 
 [RequireComponent(typeof(SwipeManager))]
-public class InputController : MonoBehaviour
+public class InputController : Singleton<InputController>
 {
-    public static InputController instance = null;
     [SerializeField]
     private bool enableSwipe = true;
     [SerializeField]
@@ -31,7 +30,7 @@ public class InputController : MonoBehaviour
     [SerializeField]
     private float easeDuration = 0.5f;
 
-    public bool isDragging { get; private set; }
+    public bool IsDragging { get; private set; }
 
     private int currPos;
     private float[] cameraPositions;
@@ -50,11 +49,6 @@ public class InputController : MonoBehaviour
     private Transform mainCameraTransform;
     private Camera mainCamera;
     Hashtable ease = new Hashtable();
-
-    private void Awake()
-    {
-        instance = this;
-    }
 
     private void Start()
     {
@@ -90,7 +84,7 @@ public class InputController : MonoBehaviour
         tempCameraPosition = mainCameraTransform.position;
     }
 
-    private void DetectColliderTouch()
+    private void DetectColliderTouch() // not using
     {
         Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
@@ -99,9 +93,6 @@ public class InputController : MonoBehaviour
             GameObject hitObject = hit.collider.gameObject;
             switch (hitObject.tag)
             {
-                case "DisableAllMenus":
-                    MenuManager.Instance.DisableAllMenus();
-                    break;
                 case "Toucher":
                     hitObject.GetComponent<Toucher>().TouchUp();
                     break;
@@ -136,7 +127,7 @@ public class InputController : MonoBehaviour
                     touchDeltaPosition = t.deltaPosition.x;
                     if (touchDeltaPosition > minDragLength || touchDeltaPosition < -minDragLength)
                     {
-                        isDragging = true;
+                        IsDragging = true;
                         mainCameraTransform.Translate(-touchDeltaPosition * dragSpeed, 0, 0);
                     }
                 }
@@ -147,13 +138,14 @@ public class InputController : MonoBehaviour
                 if (!isTouchingUI)
                 {
                     SnapCamera();
-                    if (!isDragging)
+                    if (!IsDragging)
                     {
-                        DetectColliderTouch();
+                        // print("not touching UI and touch on GO");
+                        // DetectColliderTouch();
                     }
                 }
                 isTouchingUI = false;
-                isDragging = false;
+                IsDragging = false;
                 if (EventSystem.current.IsPointerOverGameObject(t.fingerId))
                 {
                     print("touched");
@@ -169,10 +161,12 @@ public class InputController : MonoBehaviour
         if (posX > cameraPositions[currPos] + dragOffset)
         {
             SnapRight();
-        } else if (posX < cameraPositions[currPos] - dragOffset)
+        }
+        else if (posX < cameraPositions[currPos] - dragOffset)
         {
             SnapLeft();
-        } else
+        }
+        else
         {
             SnapCenter();
         }
@@ -261,7 +255,8 @@ public class InputController : MonoBehaviour
         if (swipeAction.direction == SwipeDirection.Right)
         {
             SwipeCamera(-1);
-        } else if (swipeAction.direction == SwipeDirection.Left)
+        }
+        else if (swipeAction.direction == SwipeDirection.Left)
         {
             SwipeCamera(1);
         }

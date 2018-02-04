@@ -1,8 +1,8 @@
 ﻿public class OpenPlayerHouse : MouseUpBase
 {
-    public override void TouchUp()
+    public override void OnMouseTouchUp()
     {
-        base.TouchUp();
+        base.OnMouseTouchUp();
         MenuManager.Instance.InventoryMenuSetActive(true);
     }
 }

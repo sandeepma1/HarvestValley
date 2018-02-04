@@ -25,6 +25,10 @@ public class DraggableHarvesting : MonoBehaviour
 
     private void OnMouseDrag()
     {
+        if (InputController.Instance.IsDragging)
+        {
+            return;
+        }
         if (Application.isEditor)
         {
             touchPos = camera.ScreenToWorldPoint(Input.mousePosition);

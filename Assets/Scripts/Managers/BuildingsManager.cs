@@ -103,7 +103,6 @@ public class BuildingsManager : Singleton<BuildingsManager>
         BuildingsGO[building.id].itemID = building.itemID;
         BuildingsGO[building.id].state = (BUILDINGS_STATE)building.state;
         BuildingsGO[building.id].unlockedQueueSlots = building.unlockedQueueSlots;
-        DisableOutlineOnSprite(building.id);
         switch (BuildingsGO[building.id].state)
         {
             case BUILDINGS_STATE.NONE:
@@ -187,12 +186,6 @@ public class BuildingsManager : Singleton<BuildingsManager>
             Debug.Log("Sprite Not Found " + spriteName);
             return new Sprite();
         }
-    }
-
-    public void DisplayUIMasterMenu(int buildingID, int sourceID) // Display field Crop Menu
-    {
-        UIMasterMenuManager.Instance.DisplayUIMasterMenuToPlantSeed(buildingID, BuildingsGO[buildingID].sourceID);
-        buildingSelectedID = buildingID;
     }
 
     public void PlantItemsOnBuildings(int buildingID) // Planting Items
@@ -356,10 +349,8 @@ public class BuildingsManager : Singleton<BuildingsManager>
 
     public void ShowReadyToHarvestCropsMenu(int buildingID) // Display Harvesting Menu
     {
-        //MenuManager.Instance.DisableAllMenus();
-        FarmHarvestingMenu.transform.position = BuildingsGO[buildingID].transform.position;
-        //FarmHarvestingMenu.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
-        FarmHarvestingMenu.SetActive(true);
+        //FarmHarvestingMenu.transform.position = BuildingsGO[buildingID].transform.position;
+        //FarmHarvestingMenu.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);       
         //LeanTween.scale(FarmHarvestingMenu, Vector3.one, 0.2f, MenuManager.Instance.ease);
     }
 
@@ -381,7 +372,6 @@ public class BuildingsManager : Singleton<BuildingsManager>
             if (BuildingsGO[i] != null)
             {
                 BuildingsGO[i].isSelected = false;
-                DisableOutlineOnSprite(i);
             }
         }
     }
@@ -409,23 +399,6 @@ public class BuildingsManager : Singleton<BuildingsManager>
         if (remainingTime <= new System.TimeSpan(0, 0, 0, 0))
         { // 1min
             TimeRemainingMenu.SetActive(false);
-        }
-    }
-
-    private void EnableOutlineOnSprite(int selectedFieldID)
-    {
-        if (BuildingsGO[selectedFieldID].sourceID != 0)
-        {
-            BuildingsGO[selectedFieldID].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
-        }
-
-    }
-
-    private void DisableOutlineOnSprite(int selectedFieldID)
-    {
-        if (BuildingsGO[selectedFieldID].sourceID != 0)
-        {
-            BuildingsGO[selectedFieldID].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 0);
         }
     }
 
@@ -458,6 +431,13 @@ public class BuildingsManager : Singleton<BuildingsManager>
         }
     }
 
+    private void SelectBuilding(int buildingID)
+    {
+        fieldSelector.SetParent(BuildingsGO[buildingID].transform);
+        fieldSelector.transform.localPosition = Vector3.zero;
+        buildingSelectedID = buildingID;
+    }
+
     IEnumerator RestartGame()
     {
         yield return new WaitForSeconds(2);
@@ -466,21 +446,16 @@ public class BuildingsManager : Singleton<BuildingsManager>
 
     #region OnMouse Functions
 
-    public void CallParentOnMouseDown(int buildingID)
-    {
-    }
-
     private void OnDraggableBuildingClicked(int buildingID, int sourceID)
     {
         SelectBuilding(buildingID);
         switch (BuildingsGO[buildingID].state)
         {
             case BUILDINGS_STATE.NONE:
-                DisplayUIMasterMenu(buildingID, sourceID);
+                UIMasterMenuManager.Instance.DisplayUIMasterMenuToPlantSeed(buildingID, BuildingsGO[buildingID].sourceID);
                 break;
             case BUILDINGS_STATE.GROWING:
                 tempID = buildingID;
-                MenuManager.Instance.DisableAllMenus();
                 TimeRemainingMenu.SetActive(true);
                 isFarmTimerEnabled = true;
                 TimeRemainingMenu.transform.GetChild(0).GetComponent<TextMeshPro>().text =
@@ -489,7 +464,6 @@ public class BuildingsManager : Singleton<BuildingsManager>
             case BUILDINGS_STATE.WAITING_FOR_HARVEST:
                 if (BuildingsGO[buildingID].sourceID == 0)
                 {
-                    //UIMasterMenuManager.Instance.DisplayUIMasterMenuToHarvest(buildingID, sourceID);
                     ShowReadyToHarvestCropsMenu(buildingID);
                 }
                 else
@@ -502,17 +476,12 @@ public class BuildingsManager : Singleton<BuildingsManager>
         }
     }
 
-    private void SelectBuilding(int buildingID)
-    {
-        fieldSelector.SetParent(BuildingsGO[buildingID].transform);
-        fieldSelector.transform.localPosition = Vector3.zero;
-    }
-
     private void OnDraggableBuildingHarvested(int buildingID)
     {
         HarvestCropOnFarmLand(buildingID);
     }
 
+    // Remove asap
     public void CallParentOnMouseEnter(int buildingID)
     {
         switch (BuildingsGO[buildingID].state)
@@ -538,6 +507,10 @@ public class BuildingsManager : Singleton<BuildingsManager>
             BuildingsGO[buildingID].transform.position = new Vector3(Mathf.Round(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 0, 0)).x),
                 Mathf.Round(Camera.main.ScreenToWorldPoint(new Vector3(0, Input.mousePosition.y, 0)).y), 0);
         }
+    }
+
+    public void CallParentOnMouseDown(int buildingID)
+    {
     }
 
     #endregion
