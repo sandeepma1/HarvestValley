@@ -9,10 +9,20 @@ public class AtlasBank : Singleton<AtlasBank>
     private SpriteAtlas farmingAtlas;
     [SerializeField]
     private SpriteAtlas buildingAtlas;
+    [SerializeField]
+    private Sprite missingSprite;
+
+    private void Start()
+    {
+        if (missingSprite == null)
+        {
+            Debug.LogError("Placeholder sprite in Atlas Banks is missing, assign in editor");
+        }
+    }
 
     public Sprite GetSprite(string name, AtlasType type)
     {
-        Sprite sprite;
+        Sprite sprite = null;
 
         switch (type)
         {
@@ -26,9 +36,13 @@ public class AtlasBank : Singleton<AtlasBank>
                 sprite = buildingAtlas.GetSprite(name);
                 break;
             default:
-                Debug.LogError("Sprite not found in Bank");
-                sprite = new Sprite();
                 break;
+        }
+
+        if (sprite == null)
+        {
+            Debug.Log("Sprite named " + name + " not found in Bank Type " + type);
+            sprite = missingSprite;
         }
         return sprite;
     }

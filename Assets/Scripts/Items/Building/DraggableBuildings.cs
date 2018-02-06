@@ -35,6 +35,11 @@ public class DraggableBuildings : MouseUpBase
         fieldSprite = GetComponent<SpriteRenderer>();
     }
 
+    private void InitField()
+    {
+
+    }
+
     public void CrowComes()
     {
         crowGO.SetActive(true);
@@ -64,11 +69,10 @@ public class DraggableBuildings : MouseUpBase
         itemID = itemIDToBePlaced;
         dateTime = UTC.time.liveDateTime.AddMinutes(ItemDatabase.Instance.items[itemIDToBePlaced].timeRequiredInMins);
         state = BUILDINGS_STATE.GROWING;
-        //string plantName = ItemDatabase.Instance.items[itemIDToBePlaced].name + "_0";
-        //plantsSprite.sprite = GetPlantSpriteFromBank(plantName);
+        string plantName = ItemDatabase.Instance.items[itemIDToBePlaced].slug + "_0";
+        plantsSprite.sprite = AtlasBank.Instance.GetSprite(plantName, AtlasType.Farming);
         PlayerProfileManager.Instance.PlayerCoins(-ItemDatabase.Instance.items[itemIDToBePlaced].coinCost);
         StopPlantingMode();
-
         // TODO: Save on disk
     }
 

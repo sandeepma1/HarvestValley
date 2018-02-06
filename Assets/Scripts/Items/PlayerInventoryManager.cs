@@ -4,10 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class PlayerInventoryManager : MonoBehaviour
+public class PlayerInventoryManager : Singleton<PlayerInventoryManager>
 {
     public GameObject ListPrefab, ScrollListGO;
-    public static PlayerInventoryManager Instance = null;
     public List<FarmItems> playerInventory = new List<FarmItems>();
     //public FarmItems[] playerInventory;
 
@@ -15,7 +14,6 @@ public class PlayerInventoryManager : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
         NewGameStart();
         //playerItems = ES2.LoadList<FarmItems> ("playerInventory");
         playerInventory = ES2.LoadList<FarmItems>("playerInventory");
@@ -36,7 +34,7 @@ public class PlayerInventoryManager : MonoBehaviour
         listItems.Add(Instantiate(ListPrefab, ScrollListGO.transform));
         listItems[scrollListID].GetComponent<RectTransform>().localScale = Vector3.one; //fixed some scaling bug
         listItems[scrollListID].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = playerInventory[scrollListID].count.ToString();
-        listItems[scrollListID].GetComponent<Image>().overrideSprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[scrollListID].name);
+        listItems[scrollListID].GetComponent<Image>().sprite = AtlasBank.Instance.GetSprite(ItemDatabase.Instance.items[scrollListID].slug, AtlasType.GUI);
         listItems[scrollListID].name = "InventoryListItem" + scrollListID;
         //print(listItems[scrollListID].name);
     }

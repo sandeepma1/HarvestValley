@@ -73,19 +73,13 @@ public class BuildingsManager : Singleton<BuildingsManager>
     private void Init()
     {
         buildings = ES2.LoadList<Buildings>("AllBuildings");
-        //BuildingsGO = new GameObject[buildings.Count];
         BuildingsGO = new DraggableBuildings[buildings.Count];
         for (int i = 0; i < buildings.Count; i++)
         {
             InitBuildings(buildings[i]);
         }
-        //foreach (var building in buildings)
-        //{
-
-        //}
         InvokeRepeating("SaveBuildings", 0, 5);
         InvokeRepeating("CheckForHarvest", 0, 1);
-        //DisplayMasterMenu(1);
     }
 
     private void InitBuildings(Buildings building)
@@ -93,7 +87,7 @@ public class BuildingsManager : Singleton<BuildingsManager>
         BuildingsGO[building.id] = Instantiate(buildingPrefab, transform);
         BuildingsGO[building.id].transform.localPosition = building.pos;
         BuildingsGO[building.id].gameObject.name = "Building" + building.id;
-        BuildingsGO[building.id].buildingSprite.sprite = buildingSpriteBank.Single(s => s.name == building.name); //Resources.Load<Sprite>("Textures/Buildings/" + building.name);
+        BuildingsGO[building.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.Instance.sources[building.buildingID].slug, AtlasType.Buildings);
         BuildingsGO[building.id].buildingID = building.id;
         BuildingsGO[building.id].sourceID = building.buildingID;
         BuildingsGO[building.id].pos = building.pos;
@@ -101,53 +95,60 @@ public class BuildingsManager : Singleton<BuildingsManager>
         BuildingsGO[building.id].itemID = building.itemID;
         BuildingsGO[building.id].state = (BUILDINGS_STATE)building.state;
         BuildingsGO[building.id].unlockedQueueSlots = building.unlockedQueueSlots;
-
-        switch (BuildingsGO[building.id].state)
-        {
-            case BUILDINGS_STATE.NONE:
-                //BuildingsGO[building.id].spriteRenderer.color = Color.white;
-                break;
-            case BUILDINGS_STATE.GROWING:
-                //BuildingsGO[building.id].spriteRenderer.color = Color.green;
-                break;
-            case BUILDINGS_STATE.WAITING_FOR_HARVEST:
-                //BuildingsGO[building.id].spriteRenderer.color = Color.red;
-                break;
-            default:
-                break;
-        }
         BuildingsGO[building.id].dateTime = DateTime.Parse(building.dateTime);
+        CalculateFeildCrop(BuildingsGO[building.id]);
     }
 
     private void CheckForHarvest()
     {
         for (int i = 0; i < BuildingsGO.Length; i++)
         {
-            if (BuildingsGO[i] != null && BuildingsGO[i].state == BUILDINGS_STATE.GROWING)
-            {
-                TimeSpan timeElapsed = BuildingsGO[i].dateTime - UTC.time.liveDateTime;
-                float timeElapsedInSeconds = (float)timeElapsed.TotalSeconds;
-                float divisionFactor = (ItemDatabase.Instance.items[BuildingsGO[i].sourceID].timeRequiredInMins * 60) / 4;
+            if (BuildingsGO[i] == null)
+                return;
 
-                if (timeElapsedInSeconds >= divisionFactor * 3) //22.5 seed
-                {
-                    ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.SEED);
-                }
-                else if (timeElapsedInSeconds >= divisionFactor * 2) //15 shrub
-                {
-                    ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.SHRUB);
-                }
-                else if (timeElapsedInSeconds >= divisionFactor) //7.5 plant
-                {
-                    ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.PLANT);
-                }
-                else if (timeElapsedInSeconds <= 0) // 0 mature
-                {
-                    ChangeFarmPlantSprite(BuildingsGO[i], PLANT_STAGES.MATURE);
-                    BuildingsGO[i].state = BUILDINGS_STATE.WAITING_FOR_HARVEST;
-                    BuildingsGO[i].dateTime = new System.DateTime();
-                }
+            switch (BuildingsGO[i].state)
+            {
+                case BUILDINGS_STATE.NONE:
+                    break;
+                case BUILDINGS_STATE.GROWING:
+                    CalculateFeildCrop(BuildingsGO[i]);
+                    break;
+                case BUILDINGS_STATE.WAITING_FOR_HARVEST:
+                    break;
+                default:
+                    break;
             }
+        }
+    }
+
+    private void CalculateFeildCrop(DraggableBuildings building)
+    {
+        if (building.itemID < 0)
+        {
+            return;
+        }
+
+        TimeSpan timeElapsed = building.dateTime - UTC.time.liveDateTime;
+        float timeElapsedInSeconds = (float)timeElapsed.TotalSeconds;
+        float divisionFactor = (ItemDatabase.Instance.items[building.sourceID].timeRequiredInMins * 60) / 4;
+
+        if (timeElapsedInSeconds >= divisionFactor * 3) //22.5 seed
+        {
+            ChangeFarmPlantSprite(building, PLANT_STAGES.SEED);
+        }
+        else if (timeElapsedInSeconds >= divisionFactor * 2) //15 shrub
+        {
+            ChangeFarmPlantSprite(building, PLANT_STAGES.SHRUB);
+        }
+        else if (timeElapsedInSeconds >= divisionFactor) //7.5 plant
+        {
+            ChangeFarmPlantSprite(building, PLANT_STAGES.PLANT);
+        }
+        else if (timeElapsedInSeconds <= 0) // 0 mature
+        {
+            ChangeFarmPlantSprite(building, PLANT_STAGES.MATURE);
+            building.state = BUILDINGS_STATE.WAITING_FOR_HARVEST;
+            building.dateTime = new System.DateTime();
         }
     }
 
@@ -157,16 +158,28 @@ public class BuildingsManager : Singleton<BuildingsManager>
         switch (stages)
         {
             case PLANT_STAGES.SEED:
-                building.plantsSprite.sprite = AtlasBank.Instance.GetSprite(itemSlug + "_0", AtlasType.Farming);
+                if (building.plantsSprite.sprite != AtlasBank.Instance.GetSprite(itemSlug + "_0", AtlasType.Farming))
+                {
+                    building.plantsSprite.sprite = AtlasBank.Instance.GetSprite(itemSlug + "_0", AtlasType.Farming);
+                }
                 break;
             case PLANT_STAGES.SHRUB:
-                building.plantsSprite.sprite = AtlasBank.Instance.GetSprite(itemSlug + "_1", AtlasType.Farming);
+                if (building.plantsSprite.sprite != AtlasBank.Instance.GetSprite(itemSlug + "_1", AtlasType.Farming))
+                {
+                    building.plantsSprite.sprite = AtlasBank.Instance.GetSprite(itemSlug + "_1", AtlasType.Farming);
+                }
                 break;
             case PLANT_STAGES.PLANT:
-                building.plantsSprite.sprite = AtlasBank.Instance.GetSprite(itemSlug + "_2", AtlasType.Farming);
+                if (building.plantsSprite.sprite != AtlasBank.Instance.GetSprite(itemSlug + "_2", AtlasType.Farming))
+                {
+                    building.plantsSprite.sprite = AtlasBank.Instance.GetSprite(itemSlug + "_2", AtlasType.Farming);
+                }
                 break;
             case PLANT_STAGES.MATURE:
-                building.plantsSprite.sprite = AtlasBank.Instance.GetSprite(itemSlug + "_3", AtlasType.Farming); ;
+                if (building.plantsSprite.sprite != AtlasBank.Instance.GetSprite(itemSlug + "_3", AtlasType.Farming))
+                {
+                    building.plantsSprite.sprite = AtlasBank.Instance.GetSprite(itemSlug + "_3", AtlasType.Farming);
+                }
                 break;
             default:
                 break;
@@ -188,44 +201,43 @@ public class BuildingsManager : Singleton<BuildingsManager>
         }
     }
 
-    public void PlantItemsOnBuildings(int buildingID) // Planting Items
-    {
-        if (BuildingsGO[buildingID].sourceID == 0)
-        { // selected building is feild
-            if (plantedOnSelectedfield || buildingSelectedID == buildingID)
-            {
-                if (PlayerInventoryManager.Instance.playerInventory[itemSelectedID].count >= 1)
-                {
-                    BuildingsGO[buildingID].state = BUILDINGS_STATE.GROWING;
-                    BuildingsGO[buildingID].itemID = itemSelectedID;
-                    BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
-                        ItemDatabase.Instance.items[itemSelectedID].timeRequiredInMins);
-                    // BuildingsGO[buildingID].spriteRenderer.color = Color.green;
+    //public void PlantItemsOnBuildings(int buildingID) // Planting Items
+    //{
+    //    if (BuildingsGO[buildingID].sourceID == 0)
+    //    { // selected building is feild
+    //        if (plantedOnSelectedfield || buildingSelectedID == buildingID)
+    //        {
+    //            if (PlayerInventoryManager.Instance.playerInventory[itemSelectedID].count >= 1)
+    //            {
+    //                BuildingsGO[buildingID].state = BUILDINGS_STATE.GROWING;
+    //                BuildingsGO[buildingID].itemID = itemSelectedID;
+    //                BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
+    //                    ItemDatabase.Instance.items[itemSelectedID].timeRequiredInMins);
+    //                // BuildingsGO[buildingID].spriteRenderer.color = Color.green;
 
-                    string plantName = ItemDatabase.Instance.items[itemSelectedID].name + "_0";
+    //                string plantName = ItemDatabase.Instance.items[itemSelectedID].name + "_0";
 
-                    BuildingsGO[buildingID].plantsSprite.sprite = GetPlantSpriteFromBank(plantName);
-                    PlayerInventoryManager.Instance.playerInventory[itemSelectedID].count--;
-                    SaveBuildings();
-                    plantedOnSelectedfield = true;
-                    buildingSelectedID = -1;
-                }
-            }
-        }
-        else
-        { // if selected building is NOT feild
-            if (buildingSelectedID == buildingID && DoesInventoryHasItems(buildingID))
-            {
-                DecrementItemsFromInventory();
-                BuildingsGO[buildingID].state = BUILDINGS_STATE.GROWING;
-                BuildingsGO[buildingID].itemID = itemSelectedID;
-                BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
-                    ItemDatabase.Instance.items[itemSelectedID].timeRequiredInMins);
-                BuildingsGO[buildingID].buildingSprite.color = Color.green;
-            }
-        }
-
-    }
+    //                BuildingsGO[buildingID].plantsSprite.sprite = GetPlantSpriteFromBank(plantName);
+    //                PlayerInventoryManager.Instance.playerInventory[itemSelectedID].count--;
+    //                SaveBuildings();
+    //                plantedOnSelectedfield = true;
+    //                buildingSelectedID = -1;
+    //            }
+    //        }
+    //    }
+    //    else
+    //    { // if selected building is NOT feild
+    //        if (buildingSelectedID == buildingID && DoesInventoryHasItems(buildingID))
+    //        {
+    //            DecrementItemsFromInventory();
+    //            BuildingsGO[buildingID].state = BUILDINGS_STATE.GROWING;
+    //            BuildingsGO[buildingID].itemID = itemSelectedID;
+    //            BuildingsGO[buildingID].dateTime = UTC.time.liveDateTime.AddMinutes(
+    //                ItemDatabase.Instance.items[itemSelectedID].timeRequiredInMins);
+    //            BuildingsGO[buildingID].buildingSprite.color = Color.green;
+    //        }
+    //    }
+    //}
 
     #region Planting Mode
 
