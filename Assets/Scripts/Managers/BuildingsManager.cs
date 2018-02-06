@@ -23,7 +23,7 @@ public class BuildingsManager : Singleton<BuildingsManager>
     int tempID = -1;
     public Sprite[] plantsSpriteBank;
     private Sprite[] buildingSpriteBank;
-    public int itemSelectedID = -1;
+    public int itemSelectedID = -1; // TODO: delete this asap
 
     private void Awake()
     {
@@ -245,7 +245,10 @@ public class BuildingsManager : Singleton<BuildingsManager>
     {
         for (int i = 0; i < BuildingsGO.Length; i++)
         {
-            BuildingsGO[i].StartPlantingMode(itemID);
+            if (BuildingsGO[i].state == BUILDINGS_STATE.NONE)
+            {
+                BuildingsGO[i].StartPlantingMode(itemID);
+            }
         }
         SaveBuildings();
         ToggleFieldSelector(false);

@@ -26,18 +26,13 @@ public class DraggableBuildings : MouseUpBase
     internal int noOfWatering;
 
     private SpriteRenderer fieldSprite;
-    private bool isGlowing;
-    private Tweener tweener;
+    private bool inPlantingMode;
+    private Tweener glowingTweener = null;
     private int itemIDToBePlaced = -1;
 
     private void Start()
     {
         fieldSprite = GetComponent<SpriteRenderer>();
-    }
-
-    private void InitField()
-    {
-
     }
 
     public void CrowComes()
@@ -53,7 +48,7 @@ public class DraggableBuildings : MouseUpBase
     public override void OnMouseTouchUp()
     {
         base.OnMouseTouchUp();
-        if (isGlowing && state == BUILDINGS_STATE.NONE)
+        if (inPlantingMode && state == BUILDINGS_STATE.NONE)
         {
             PlantSeed();
             return;
@@ -78,19 +73,34 @@ public class DraggableBuildings : MouseUpBase
 
     internal void StartPlantingMode(int itemID)
     {
-        if (state == BUILDINGS_STATE.NONE)
-        {
-            isGlowing = true;
-            itemIDToBePlaced = itemID;
-            tweener = fieldSprite.DOColor(ColorConstants.fieldGlow, 0.5f).SetLoops(-1, LoopType.Yoyo);
-        }
+        StopGlowing();
+        inPlantingMode = true;
+        itemIDToBePlaced = itemID;
+        StartGlowing();
     }
 
     internal void StopPlantingMode()
     {
-        isGlowing = false;
-        itemIDToBePlaced = -1;
-        tweener.Kill();
-        fieldSprite.color = ColorConstants.fieldNormal;
+        if (inPlantingMode)
+        {
+            inPlantingMode = false;
+            itemIDToBePlaced = -1;
+            StopGlowing();
+        }
+    }
+
+    private void StartGlowing()
+    {
+        glowingTweener = fieldSprite.DOColor(ColorConstants.fieldGlow, 0.5f).SetLoops(-1, LoopType.Yoyo);
+    }
+
+    private void StopGlowing()
+    {
+        if (glowingTweener != null)
+        {
+            glowingTweener.Kill();
+            glowingTweener = null;
+            fieldSprite.color = ColorConstants.fieldNormal;
+        }
     }
 }

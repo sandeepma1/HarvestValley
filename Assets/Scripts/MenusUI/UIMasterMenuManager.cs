@@ -85,7 +85,7 @@ public class UIMasterMenuManager : Singleton<UIMasterMenuManager>
     public void OnUIItemClicked(int itemID)
     {
         BuildingsManager.Instance.StartPlantingMode(itemID);
-        ToggleList(false);
+        //ToggleList(false);
         ToggleFinishButton(true);
     }
 
