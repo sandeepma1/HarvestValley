@@ -2,7 +2,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class DraggableBuildings : MouseUpBase
+public class ClickableField : MouseUpBase
 {
     public SpriteRenderer buildingSprite;
     public SpriteRenderer plantsSprite;

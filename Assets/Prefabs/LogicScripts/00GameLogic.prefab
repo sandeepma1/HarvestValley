@@ -120,6 +120,7 @@ MonoBehaviour:
     type: 2}
   buildingAtlas: {fileID: 4343727234628468602, guid: 4f77a449cdf44fe46a8dea119bba6e8f,
     type: 2}
+  missingSprite: {fileID: 21300000, guid: c44d54f5f270dbb418e836a2d425a282, type: 3}
 --- !u!114 &114187831897214272
 MonoBehaviour:
   m_ObjectHideFlags: 1

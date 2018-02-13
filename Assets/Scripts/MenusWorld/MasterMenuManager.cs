@@ -148,9 +148,9 @@ public class MasterMenuManager : MonoBehaviour
     public void ChildCallingOnMouseUp(int id)
     {
         isItemSelected = false;
-        BuildingsManager.Instance.plantedOnSelectedfield = false;
+        FieldManager.Instance.plantedOnSelectedfield = false;
         itemSelectedID = -1;
-        BuildingsManager.Instance.itemSelectedID = itemSelectedID;
+        FieldManager.Instance.itemSelectedID = itemSelectedID;
         ItemPopupProduction.Instance.HideItemPopupProduction();
     }
 
@@ -158,8 +158,8 @@ public class MasterMenuManager : MonoBehaviour
     {
         isItemSelected = true;
         itemSelectedID = id;
-        BuildingsManager.Instance.itemSelectedID = itemSelectedID;
-        if (BuildingsManager.Instance.BuildingsGO[BuildingsManager.Instance.buildingSelectedID].GetComponent<DraggableBuildings>().sourceID > 0)
+        FieldManager.Instance.itemSelectedID = itemSelectedID;
+        if (FieldManager.Instance.FieldGO[FieldManager.Instance.buildingSelectedID].GetComponent<ClickableField>().sourceID > 0)
         {
             ItemPopupProduction.Instance.DisplayItemPopupProduction_DOWN(id, pos);
         }
@@ -169,7 +169,7 @@ public class MasterMenuManager : MonoBehaviour
     {
         isItemSelected = true;
         itemSelectedID = id;
-        BuildingsManager.Instance.itemSelectedID = itemSelectedID;
+        FieldManager.Instance.itemSelectedID = itemSelectedID;
         ToggleDisplayCropMenu();
         //if (ItemDatabase.Instance.items[MasterMenuManager.Instance.itemSelectedID].sourceID != ItemSource.Field)
         //{

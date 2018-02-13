@@ -19,7 +19,7 @@ public class DraggableUIBase : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             Debug.LogError("Assign dragImage in editor");
         }
         dragTransform = dragImage.transform;
-        mainCanvas = UIMasterMenuManager.Instance.mainCanvas;
+        // mainCanvas = SeedListMenu.Instance.mainCanvas;
         mainCanvasRect = mainCanvas.GetComponent<RectTransform>();
     }
 

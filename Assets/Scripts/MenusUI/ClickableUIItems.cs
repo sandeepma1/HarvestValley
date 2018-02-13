@@ -8,7 +8,7 @@ public class ClickableUIItems : MonoBehaviour
     public TextMeshProUGUI itemCostText;
     public TextMeshProUGUI itemNameText;
     public Image itemImage;
-
+    internal bool isItemUnlocked;
     private Button button;
 
     // Use this for initialization
@@ -20,6 +20,9 @@ public class ClickableUIItems : MonoBehaviour
 
     private void ButtonClicked()
     {
-        UIMasterMenuManager.Instance.OnUIItemClicked(itemID);
+        if (isItemUnlocked)
+        {
+            SeedListMenu.Instance.StartPlantingMode(itemID);
+        }
     }
 }

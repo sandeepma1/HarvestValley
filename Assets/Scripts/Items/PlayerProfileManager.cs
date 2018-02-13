@@ -24,7 +24,7 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
         if (isLevelUpReady && !Input.anyKey)
         {
             isLevelUpReady = false;
-            MenuManager.Instance.LevelUpMenuSetActive(true);
+            MenuManager.Instance.DisplayMenu(MenuNames.LevelUp, MenuOpeningType.CloseAll);
         }
     }
 
@@ -63,7 +63,7 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
             {
                 PlayerInventoryManager.Instance.AddNewFarmItem(LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemUnlockID,
                     LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemRewardCount);
-                UIMasterMenuManager.Instance.CheckForUnlockedItems();
+                SeedListMenu.Instance.CheckForUnlockedItems();
                 PlayerGems(LevelUpDatabase.Instance.gameLevels[playerProfile.level].gemsRewardCount);
             }
             PlayerXPPointsAdd(-CurrentPlayerXP());

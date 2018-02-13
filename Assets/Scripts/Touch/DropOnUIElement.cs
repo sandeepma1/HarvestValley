@@ -12,7 +12,7 @@ public class DropOnUIElement : MonoBehaviour, IDropHandler
 
                 break;
             default:
-                UIMasterMenuManager.Instance.OnItemDropComplete();
+                //SeedListMenu.Instance.OnItemDropComplete();
                 break;
         }
     }

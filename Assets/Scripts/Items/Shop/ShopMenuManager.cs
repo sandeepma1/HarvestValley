@@ -42,7 +42,7 @@ public class ShopMenuManager : MonoBehaviour
     public void ChildCallingOnMouseUp(int shopItemID, Vector2 pos)
     {
         pos = new Vector2(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y));
-        BuildingsManager.Instance.AddNewBuilding(pos, shopItemID);
+        FieldManager.Instance.AddNewBuilding(pos, shopItemID);
         PlaceHolderSprite.transform.position = new Vector3(500, 500, 0);
 
     }

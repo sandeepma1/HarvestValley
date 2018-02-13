@@ -8,16 +8,20 @@ public enum MenuNames
     LevelUp,
     BuldingUpgrade,
     Inventory,
-    UIItemScrollList,
-    Harvest
+    SeedList,
+    Navigation
+}
+
+public enum MenuOpeningType
+{
+    CloseAll,
+    OnTop
 }
 
 public class MenuManager : Singleton<MenuManager>
 {
     [SerializeField]
     private GameObject mainCanvas;
-    [SerializeField]
-    private GameObject MINEBUTTON;
 
     //Add all types of menus here
     [SerializeField]
@@ -27,7 +31,9 @@ public class MenuManager : Singleton<MenuManager>
     [SerializeField]
     private GameObject inventoryMenu;
     [SerializeField]
-    private GameObject uiItemScrollList;
+    private GameObject seedList;
+    [SerializeField]
+    private GameObject navigation;
 
     private Stack<GameObject> openMenusStack = new Stack<GameObject>();
 
@@ -37,45 +43,60 @@ public class MenuManager : Singleton<MenuManager>
         {
             mainCanvas.SetActive(true);
         }
-        if (Application.isEditor)
-        {
-            MINEBUTTON.SetActive(false);
-        }
-        else
-        {
-            MINEBUTTON.SetActive(true);
-        }
     }
 
     private void Start()
     {
-
+        levelUpMenu.SetActive(false);
+        buildingUpgradeMenu.SetActive(false);
+        inventoryMenu.SetActive(false);
+        seedList.SetActive(false);
+        navigation.SetActive(false);
     }
 
     #region Stack Stuff
 
-    public void DisplayMenu(MenuNames menuName)
+    public void DisplayMenu(MenuNames menuName, MenuOpeningType openingType, int fieldID, int sourceID)
     {
+        DisplayMenu(menuName, openingType);
+    }
+
+    public void DisplayMenu(MenuNames menuName, MenuOpeningType openingType)
+    {
+        switch (openingType)
+        {
+            case MenuOpeningType.CloseAll:
+                DisableAllItemsInStack();
+                break;
+            case MenuOpeningType.OnTop:
+                break;
+            default:
+                break;
+        }
+
         switch (menuName)
         {
             case MenuNames.LevelUp:
-                AddInStack(levelUpMenu);
+                AddMenuInStack(levelUpMenu);
                 break;
             case MenuNames.BuldingUpgrade:
-                AddInStack(buildingUpgradeMenu);
+                AddMenuInStack(buildingUpgradeMenu);
                 break;
             case MenuNames.Inventory:
-                AddInStack(inventoryMenu);
+                AddMenuInStack(inventoryMenu);
                 break;
-            case MenuNames.UIItemScrollList:
-                AddInStack(uiItemScrollList);
+            case MenuNames.SeedList:
+                AddMenuInStack(seedList);
+                break;
+            case MenuNames.Navigation:
+                AddMenuInStack(navigation);
                 break;
             default:
                 break;
         }
     }
 
-    private void AddInStack(GameObject menu)
+    private void AddMenuInStack(GameObject menu)
     {
         if (openMenusStack.Contains(menu))
         {
@@ -86,15 +107,14 @@ public class MenuManager : Singleton<MenuManager>
         ShowAllStackItems();
     }
 
-    private void RemoveFromStack()
+    public void RemoveTopMenuFromStack()
     {
         if (openMenusStack.Count >= 1)
         {
             openMenusStack.Peek().SetActive(false);
             openMenusStack.Pop();
             ShowAllStackItems();
-        }
-        else
+        } else
         {
             Debug.LogWarning("No menus are open, stack is empty");
         }
@@ -105,11 +125,20 @@ public class MenuManager : Singleton<MenuManager>
         openMenusStack.Clear();
     }
 
+    private void DisableAllItemsInStack()
+    {
+        while (openMenusStack.Count == 1)
+        {
+            openMenusStack.Peek().SetActive(false);
+            openMenusStack.Pop();
+        }
+    }
+
     private void ShowAllStackItems()
     {
         foreach (var item in openMenusStack)
         {
-            print(item.name);
+            print(item.name + " count:" + openMenusStack.Count);
         }
     }
 
@@ -135,6 +164,12 @@ public class MenuManager : Singleton<MenuManager>
         //shopMenu.SetActive(flag);
     }
 
+    public void OnEmptyClicked() // This is called when empty land is clicked
+    {
+        RemoveTopMenuFromStack();
+        FieldManager.Instance.DeselectField();
+    }
+
     #region Touch stuff
     private void OnMouseUp() // TODO: somehow inherate from MouseUpBase
     {
@@ -146,15 +181,14 @@ public class MenuManager : Singleton<MenuManager>
             if (Application.isEditor && EventSystem.current.IsPointerOverGameObject())
             {
                 return;
-            }
-            else if (EventSystem.current.IsPointerOverGameObject(t.fingerId))
+            } else if (EventSystem.current.IsPointerOverGameObject(t.fingerId))
             {
                 return;
             }
 
             if (!InputController.Instance.IsDragging)
             {
-                UIMasterMenuManager.Instance.CloseUIMasterMenu();
+                OnEmptyClicked();
             }
         }
     }
@@ -172,12 +206,12 @@ public class MenuManager : Singleton<MenuManager>
         Application.Quit();
     }
 
-    public void CloseGameObject(GameObject go)
+    public void CloseMenu()
     {
-        go.SetActive(false);
+        RemoveTopMenuFromStack();
     }
 
-    public void OpenGameObject(GameObject go)
+    public void OpenMenu(GameObject go)
     {
         go.SetActive(true);
     }

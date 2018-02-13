@@ -29,7 +29,7 @@ public class DraggableUIItem : ScrollRect
         itemNameText = helper.itemNameText;
         imageImageTransform = helper.itemImage.GetComponent<Transform>();
         itemImage = imageImageTransform.GetComponent<Image>();
-        mainCanvas = UIMasterMenuManager.Instance.mainCanvas;
+        //mainCanvas = SeedListMenu.Instance.mainCanvas;
         selectedItemID = -1;
     }
 
@@ -52,7 +52,7 @@ public class DraggableUIItem : ScrollRect
     {
         itemImage.raycastTarget = true;
         imageImageTransform.position = initialPosition;
-        UIMasterMenuManager.Instance.OnDragComplete(selectedItemID);
+        //SeedListMenu.Instance.OnDragComplete(selectedItemID);
         selectedItemID = -1;
     }
 
@@ -91,8 +91,7 @@ public class DraggableUIItem : ScrollRect
         if (routeToParent)
         {
             DoForParents<IDragHandler>((parent) => { parent.OnDrag(eventData); });
-        }
-        else
+        } else
         {
             _OnDrag();
             base.OnDrag(eventData);

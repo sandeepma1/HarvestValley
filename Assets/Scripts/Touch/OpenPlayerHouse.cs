@@ -3,6 +3,6 @@
     public override void OnMouseTouchUp()
     {
         base.OnMouseTouchUp();
-        MenuManager.Instance.InventoryMenuSetActive(true);
+        MenuManager.Instance.DisplayMenu(MenuNames.Inventory, MenuOpeningType.CloseAll);
     }
 }
