@@ -12,15 +12,15 @@ public class FieldManager : ManagerBase
     private Transform fieldSelector;
     [SerializeField]
     private ClickableField buildingPrefab;
-    [SerializeField]
-    private GameObject TimeRemainingMenu = null;
+    // [SerializeField]
+    //private GameObject TimeRemainingMenu = null;
 
     public bool plantedOnSelectedfield = false;
     public int buildingSelectedID = -1;
     public ClickableField[] FieldGO;
     public int itemSelectedID = -1; // TODO: delete this asap
     public int currentSelectedFieldID = -1;
-    public int currentlySelectedSourceID = -1;
+    public int currentlSelectedSourceID = -1;
 
     private TimeSpan remainingTime;
     private int tempID = -1;
@@ -38,17 +38,6 @@ public class FieldManager : ManagerBase
         OneTimeOnly();
         Init();
         ToggleFieldSelector(false);
-    }
-
-    private void LateUpdate() //Mainly used to show time remaining
-    {
-        if (isFarmTimerEnabled)
-        {
-            ShowFarmLandTimeRemaining();
-        } else
-        {
-            tempID = -1;
-        }
     }
 
     private void Init()
@@ -296,32 +285,6 @@ public class FieldManager : ManagerBase
         }
     }
 
-    public void ShowFarmLandTimeRemaining()
-    {
-        remainingTime = FieldGO[tempID].dateTime.Subtract(UTC.time.liveDateTime);
-        TimeRemainingMenu.transform.position = FieldGO[tempID].transform.position;
-        if (remainingTime <= new System.TimeSpan(360, 0, 0, 0))
-        { //> 1year
-            TimeRemainingMenu.transform.GetChild(1).GetComponent<TextMeshPro>().text = remainingTime.Days.ToString() + "d " + remainingTime.Hours.ToString() + "h";
-        }
-        if (remainingTime <= new System.TimeSpan(1, 0, 0, 0))
-        { //> 1day
-            TimeRemainingMenu.transform.GetChild(1).GetComponent<TextMeshPro>().text = remainingTime.Hours.ToString() + "h " + remainingTime.Minutes.ToString() + "m";
-        }
-        if (remainingTime <= new System.TimeSpan(0, 1, 0, 0))
-        { //> 1hr
-            TimeRemainingMenu.transform.GetChild(1).GetComponent<TextMeshPro>().text = remainingTime.Minutes.ToString() + "m " + remainingTime.Seconds.ToString() + "s";
-        }
-        if (remainingTime <= new System.TimeSpan(0, 0, 1, 0))
-        { // 1min
-            TimeRemainingMenu.transform.GetChild(1).GetComponent<TextMeshPro>().text = remainingTime.Seconds.ToString() + "s";
-        }
-        if (remainingTime <= new System.TimeSpan(0, 0, 0, 0))
-        { // 1min
-            TimeRemainingMenu.SetActive(false);
-        }
-    }
-
     public void AddNewBuilding(Vector2 pos, int buildingID)
     {
         buildings.Add(new Buildings(buildings.Count + 1, buildingID, SourceDatabase.Instance.sources[buildingID].sourceID.ToString(), pos,
@@ -355,7 +318,8 @@ public class FieldManager : ManagerBase
 
     private void SelectField()
     {
-        if (FieldGO[currentSelectedFieldID].state == BUILDINGS_STATE.NONE)
+        if (FieldGO[currentSelectedFieldID].state == BUILDINGS_STATE.NONE ||
+            FieldGO[currentSelectedFieldID].state == BUILDINGS_STATE.GROWING)
         {
             ToggleFieldSelector(true);
             fieldSelector.SetParent(FieldGO[currentSelectedFieldID].transform);
@@ -389,22 +353,21 @@ public class FieldManager : ManagerBase
     private void OnClickableFieldClicked(int fieldID, int sourceID)
     {
         currentSelectedFieldID = fieldID;
-        currentlySelectedSourceID = sourceID;
+        currentlSelectedSourceID = sourceID;
 
         SelectField();
         switch (FieldGO[fieldID].state)
         {
             case BUILDINGS_STATE.NONE:
                 MenuManager.Instance.DisplayMenu(MenuNames.SeedList, MenuOpeningType.CloseAll);
+                MenuManager.Instance.DisplayMenu(MenuNames.FieldUpgrade, MenuOpeningType.OnTop);
                 break;
             case BUILDINGS_STATE.GROWING:
-                tempID = fieldID;
-                TimeRemainingMenu.SetActive(true);
-                isFarmTimerEnabled = true;
-                TimeRemainingMenu.transform.GetChild(0).GetComponent<TextMeshPro>().text =
-                ItemDatabase.Instance.items[FieldGO[tempID].itemID].name.ToString();
+                MenuManager.Instance.DisplayMenu(MenuNames.FieldProgress, MenuOpeningType.CloseAll);
+                MenuManager.Instance.DisplayMenu(MenuNames.FieldUpgrade, MenuOpeningType.OnTop);
                 break;
             case BUILDINGS_STATE.WAITING_FOR_HARVEST:
+                MenuManager.Instance.CloseAllMenu();
                 CollectItemsOnBuildings(fieldID); // Directly collect/harvest on feild click
                 break;
             default:

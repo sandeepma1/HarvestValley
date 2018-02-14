@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using Hv.Ui;
 
 public class PlayerProfileManager : Singleton<PlayerProfileManager>
 {

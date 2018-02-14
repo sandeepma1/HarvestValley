@@ -148,7 +148,7 @@ public class InputController : Singleton<InputController>
                 IsDragging = false;
                 if (EventSystem.current.IsPointerOverGameObject(t.fingerId))
                 {
-                    print("touched");
+                    // print("touched");
                 }
             }
         }
@@ -161,12 +161,10 @@ public class InputController : Singleton<InputController>
         if (posX > cameraPositions[currPos] + dragOffset)
         {
             SnapRight();
-        }
-        else if (posX < cameraPositions[currPos] - dragOffset)
+        } else if (posX < cameraPositions[currPos] - dragOffset)
         {
             SnapLeft();
-        }
-        else
+        } else
         {
             SnapCenter();
         }
@@ -183,6 +181,7 @@ public class InputController : Singleton<InputController>
             isAlreadySnapped = true;
             mainCameraTransform.DOMoveX(cameraPositions[currPos + 1], easeDuration).SetEase(snapEase);
             currPos++;
+            MenuManager.Instance.CloseAllMenu();
         }
     }
 
@@ -193,6 +192,7 @@ public class InputController : Singleton<InputController>
             isAlreadySnapped = true;
             mainCameraTransform.DOMoveX(cameraPositions[currPos - 1], easeDuration).SetEase(snapEase);
             currPos--;
+            MenuManager.Instance.CloseAllMenu();
         }
     }
 
@@ -244,6 +244,7 @@ public class InputController : Singleton<InputController>
         }
         currPos += pos;
         mainCameraTransform.DOMoveX(cameraPositions[currPos], easeDuration).SetEase(snapEase);
+        MenuManager.Instance.CloseAllMenu();
     }
 
     private void SwipeEventHandler(SwipeAction swipeAction)
@@ -255,8 +256,7 @@ public class InputController : Singleton<InputController>
         if (swipeAction.direction == SwipeDirection.Right)
         {
             SwipeCamera(-1);
-        }
-        else if (swipeAction.direction == SwipeDirection.Left)
+        } else if (swipeAction.direction == SwipeDirection.Left)
         {
             SwipeCamera(1);
         }
