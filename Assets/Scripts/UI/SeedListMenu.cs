@@ -18,7 +18,7 @@ namespace Hv.Ui
 
         private Transform topInfoParentTransform;
 
-        private int selectedBuildingID = -1;
+        private int selectedFieldID = -1;
         private int selectedSourceID = -1;
         private ClickableUIItems[] menuItems = new ClickableUIItems[12];
         private List<int> unlockedItemIDs = new List<int>();
@@ -36,10 +36,10 @@ namespace Hv.Ui
             {
                 return;
             }
-            selectedBuildingID = FieldManager.Instance.currentSelectedFieldID;
+            selectedFieldID = FieldManager.Instance.currentSelectedFieldID;
             selectedSourceID = FieldManager.Instance.currentlSelectedSourceID;
 
-            if (selectedBuildingID == -1 || selectedSourceID == -1)
+            if (selectedFieldID == -1 || selectedSourceID == -1)
             {
                 Debug.LogError("Selected field is -1");
                 return;
@@ -72,7 +72,8 @@ namespace Hv.Ui
                     menuItems[i].isItemUnlocked = true;
                     menuItems[i].itemNameText.text = item.name;
                     menuItems[i].itemCostText.text = item.coinCost.ToString();
-                } else                                      //Locked
+                }
+                else                                      //Locked
                 {
                     menuItems[i].itemImage.color = ColorConstants.dehighlightedUiItem;
                     menuItems[i].isItemUnlocked = false;
@@ -132,11 +133,6 @@ namespace Hv.Ui
         }
 
         #endregion
-
-        public void UpgradeBuildingPressed(int id)
-        {
-            MenuManager.Instance.BuildingUpgradeMenuSetActive(true);
-        }
 
     }
 }

@@ -220,12 +220,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c83dfa1c3670347b14f7b67431e7c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingSprite: {fileID: 212897162353708752}
+  fieldSprite: {fileID: 212897162353708752}
   plantsSprite: {fileID: 212774711379472096}
   crowGO: {fileID: 0}
   isSelected: 0
   isDraggable: 0
-  buildingID: 0
+  fieldID: 0
   sourceID: 0
   pos: {x: 0, y: 0}
   level: 0

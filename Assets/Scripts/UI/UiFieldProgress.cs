@@ -11,7 +11,7 @@ namespace Hv.Ui
         [SerializeField]
         private TextMeshProUGUI timeRemainingText;
 
-        private int selectedBuildingID = -1;
+        private int selectedFieldID = -1;
         private int selectedSourceID = -1;
         private TimeSpan remainingTime;
         private Item selectedItem;
@@ -28,15 +28,15 @@ namespace Hv.Ui
             {
                 return;
             }
-            selectedBuildingID = FieldManager.Instance.currentSelectedFieldID;
+            selectedFieldID = FieldManager.Instance.currentSelectedFieldID;
             selectedSourceID = FieldManager.Instance.currentlSelectedSourceID;
-            selectedItem = ItemDatabase.Instance.items[FieldManager.Instance.FieldGO[selectedBuildingID].itemID];
+            selectedItem = ItemDatabase.Instance.items[FieldManager.Instance.FieldGO[selectedFieldID].itemID];
             UpdateCropName();
         }
 
         private void Update()
         {
-            remainingTime = FieldManager.Instance.FieldGO[selectedBuildingID].dateTime.Subtract(UTC.time.liveDateTime);
+            remainingTime = FieldManager.Instance.FieldGO[selectedFieldID].dateTime.Subtract(UTC.time.liveDateTime);
 
             if (remainingTime <= new System.TimeSpan(360, 0, 0, 0))
             { //> 1year

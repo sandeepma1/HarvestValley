@@ -170,7 +170,7 @@ public class MenuManager : Singleton<MenuManager>
         levelUpMenu.SetActive(flag);
     }
 
-    public void BuildingUpgradeMenuSetActive(bool flag)
+    public void FieldUpgradeMenuSetActive(bool flag)
     {
         buildingUpgradeMenu.SetActive(flag);
     }

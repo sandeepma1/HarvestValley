@@ -4,28 +4,28 @@ using DG.Tweening;
 
 public class ClickableField : MouseUpBase
 {
-    public SpriteRenderer buildingSprite;
+    public SpriteRenderer fieldSprite;
     public SpriteRenderer plantsSprite;
     public GameObject crowGO;
     public bool isSelected = false;
     public bool isDraggable = false;
-    public int buildingID;
+    public int fieldID;
     public int sourceID;
     public Vector2 pos;
     public int level;
-    public BUILDINGS_STATE state;
+    public FieldState state;
     public int unlockedQueueSlots;
     public int itemID;
     public System.DateTime dateTime;
     public bool isCrowPresent;
-    public static Action<int, int> OnBuildingClicked;
-    public static Action<int> OnBuildingHarvested;
+    public static Action<int, int> OnFieldClicked;
+    public static Action<int> OnFieldHarvested;
 
     internal int baseYieldMin;
     internal int baseYieldMax;
     internal int noOfWatering;
 
-    private SpriteRenderer fieldSprite;
+    //private SpriteRenderer fieldSprite;
     private bool inPlantingMode;
     private Tweener glowingTweener = null;
     private int itemIDToBePlaced = -1;
@@ -48,14 +48,14 @@ public class ClickableField : MouseUpBase
     public override void OnMouseTouchUp()
     {
         base.OnMouseTouchUp();
-        if (inPlantingMode && state == BUILDINGS_STATE.NONE)
+        if (inPlantingMode && state == FieldState.NONE)
         {
             PlantSeed();
             return;
         }
-        if (OnBuildingClicked != null)
+        if (OnFieldClicked != null)
         {
-            OnBuildingClicked.Invoke(buildingID, sourceID);
+            OnFieldClicked.Invoke(fieldID, sourceID);
         }
     }
 
@@ -63,7 +63,7 @@ public class ClickableField : MouseUpBase
     {
         itemID = itemIDToBePlaced;
         dateTime = UTC.time.liveDateTime.AddMinutes(ItemDatabase.Instance.items[itemIDToBePlaced].timeRequiredInMins);
-        state = BUILDINGS_STATE.GROWING;
+        state = FieldState.GROWING;
         string plantName = ItemDatabase.Instance.items[itemIDToBePlaced].slug + "_0";
         plantsSprite.sprite = AtlasBank.Instance.GetSprite(plantName, AtlasType.Farming);
         PlayerProfileManager.Instance.PlayerCoins(-ItemDatabase.Instance.items[itemIDToBePlaced].coinCost);

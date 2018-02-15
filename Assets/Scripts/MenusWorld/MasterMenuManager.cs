@@ -70,7 +70,7 @@ public class MasterMenuManager : MonoBehaviour
         }
     }
 
-    public void PopulateItemsInMasterMenu(int buildingID)
+    public void PopulateItemsInMasterMenu(int fieldID)
     {
         for (int i = 0; i < menuItems.Length; i++)
         {
@@ -84,7 +84,7 @@ public class MasterMenuManager : MonoBehaviour
         //isMasterMenuUp = true;
         for (int i = 0; i < unlockedItemIDs.Count; i++)
         {
-            if (ItemDatabase.Instance.items[i] != null && ItemDatabase.Instance.items[i].sourceID == SourceDatabase.Instance.sources[buildingID].sourceID)
+            if (ItemDatabase.Instance.items[i] != null && ItemDatabase.Instance.items[i].sourceID == SourceDatabase.Instance.sources[fieldID].sourceID)
             {
                 menuItems[unlockedItemCount].itemID = ItemDatabase.Instance.items[i].itemID;
                 menuItems[unlockedItemCount].transform.localPosition = itemPos[posCount];
@@ -140,9 +140,9 @@ public class MasterMenuManager : MonoBehaviour
         }
     }
 
-    public void UpgradeBuildingPressed(int id)
+    public void UpgradeFieldPressed(int id)
     {
-        MenuManager.Instance.BuildingUpgradeMenuSetActive(true);
+        MenuManager.Instance.FieldUpgradeMenuSetActive(true);
     }
 
     public void ChildCallingOnMouseUp(int id)
@@ -159,7 +159,7 @@ public class MasterMenuManager : MonoBehaviour
         isItemSelected = true;
         itemSelectedID = id;
         FieldManager.Instance.itemSelectedID = itemSelectedID;
-        if (FieldManager.Instance.FieldGO[FieldManager.Instance.buildingSelectedID].GetComponent<ClickableField>().sourceID > 0)
+        if (FieldManager.Instance.FieldGO[FieldManager.Instance.fieldSelectedID].GetComponent<ClickableField>().sourceID > 0)
         {
             ItemPopupProduction.Instance.DisplayItemPopupProduction_DOWN(id, pos);
         }
