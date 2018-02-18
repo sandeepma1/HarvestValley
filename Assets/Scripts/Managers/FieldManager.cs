@@ -12,8 +12,6 @@ public class FieldManager : ManagerBase
     private Transform fieldSelector;
     [SerializeField]
     private ClickableField fieldPrefab;
-    // [SerializeField]
-    //private GameObject TimeRemainingMenu = null;
 
     public bool plantedOnSelectedfield = false;
     public int fieldSelectedID = -1;
@@ -22,10 +20,7 @@ public class FieldManager : ManagerBase
     public int currentSelectedFieldID = -1;
     public int currentlSelectedSourceID = -1;
 
-    private TimeSpan remainingTime;
-    private int tempID = -1;
     private List<Fields> fields = new List<Fields>();
-    private bool isFarmTimerEnabled = false;
 
     private void Awake()
     {
