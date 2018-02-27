@@ -9,7 +9,9 @@ public class BuildingManager : ManagerBase
 {
     public static BuildingManager Instance = null;
     private List<Buildings> buildings = new List<Buildings>();
-    public ClickableField[] FieldGO;
+    [SerializeField]
+    private ClickableBuilding buildingPrefab;
+    public ClickableBuilding[] buildingsGO;
 
     // Use this for initialization
     private void Awake()
@@ -19,24 +21,41 @@ public class BuildingManager : ManagerBase
 
     private void Start()
     {
-        //ClickableField.OnFieldClicked += OnClickableFieldClicked;
+        ClickableBuilding.OnBuildingClicked += OnClickableFieldClicked;
         OneTimeOnly();
         Init();
         //ToggleFieldSelector(false);
     }
 
-    private void Init()
+    private void OnClickableFieldClicked(int buildingID, int sourceID)
     {
-        buildings = ES2.LoadList<Fields>("AllFields");
-        FieldGO = new ClickableField[fields.Count];
-        for (int i = 0; i < fields.Count; i++)
-        {
-            InitFields(fields[i]);
-        }
-        InvokeRepeating("SaveFields", 0, 5);
-        InvokeRepeating("CheckForHarvest", 0, 1);
+        print("buildingID " + buildingID + " sourceID" + sourceID);
     }
 
+    private void Init()
+    {
+        buildings = ES2.LoadList<Buildings>("AllBuildings");
+        buildingsGO = new ClickableBuilding[buildings.Count];
+        for (int i = 0; i < buildings.Count; i++)
+        {
+            InitFields(buildings[i]);
+        }
+        ////InvokeRepeating("SaveFields", 0, 5);
+        //InvokeRepeating("CheckForHarvest", 0, 1);
+    }
+
+    private void InitFields(Buildings building)
+    {
+        buildingsGO[building.id] = Instantiate(buildingPrefab, transform);
+        buildingsGO[building.id].gameObject.name = "Building" + building.id;
+        buildingsGO[building.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.Instance.sources[building.buildingID].slug, AtlasType.Buildings);
+        buildingsGO[building.id].buildingID = building.id;
+        buildingsGO[building.id].sourceID = building.buildingID;
+        buildingsGO[building.id].itemID = building.itemID;
+        buildingsGO[building.id].state = (BuildingState)building.state;
+        buildingsGO[building.id].dateTime = DateTime.Parse(building.dateTime);
+        //CalculateFeildCrop(buildingsGO[building.id]);
+    }
 
     private void OneTimeOnly()
     {
@@ -45,10 +64,10 @@ public class BuildingManager : ManagerBase
             ES2.Delete("AllBuildings");
             print(ES2.Exists("AllBuildings"));
 
-            buildings.Add(new Buildings(0, 0, "Building", new Vector2(0, 0), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+            buildings.Add(new Buildings(0, 2, "Building", 0, 0, System.DateTime.UtcNow.ToString()));
 
             ES2.Save(buildings, "AllBuildings");
-            PlayerPrefs.SetInt("buildingField", 1);
+            PlayerPrefs.SetInt("firstBuilding", 1);
             StartCoroutine("RestartGame");
         }
     }
@@ -61,26 +80,19 @@ public class Buildings  // iLIST
     public int buildingID;
     public string name;
     public int state;
-    public int unlockedQueueSlots;
     public int itemID;
     public string dateTime;
-
-    public Vector2 pos;
-    public int level;
 
     public Buildings()
     {
     }
 
-    public Buildings(int f_id, int f_fieldID, string f_name, Vector2 f_pos, int f_level, int f_state, int f_unlockedQueueSlots, int f_itemID, string f_dateTime)//, Queue <int>  f_itemID, Queue <string>  f_dateTime)
+    public Buildings(int f_id, int f_fieldID, string f_name, int f_state, int f_itemID, string f_dateTime)//, Queue <int>  f_itemID, Queue <string>  f_dateTime)
     {
         id = f_id;
         buildingID = f_fieldID;
         name = f_name;
-        pos = f_pos;
-        level = f_level;
         state = f_state;
-        unlockedQueueSlots = f_unlockedQueueSlots;
         itemID = f_itemID;
         dateTime = f_dateTime;
     }

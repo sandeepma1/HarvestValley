@@ -55,13 +55,19 @@ namespace Hv.Ui
         {
             for (int i = 0; i < menuItems.Length; i++)
             {
+                Item item = ItemDatabase.Instance.items[i];
+
+                if (item.sourceID != 0) // Checks if it is a field
+                {
+                    continue;
+                }
+
                 if (menuItems[i] == null)
                 {
                     menuItems[i] = (Instantiate(scrollListItemPrefab, scrollListParent));
                     menuItems[i].name = "UIItemListClick" + i;
                 }
 
-                Item item = ItemDatabase.Instance.items[i];
                 menuItems[i].itemID = item.itemID;
                 menuItems[i].itemImage.sprite = AtlasBank.Instance.GetSprite(item.slug, AtlasType.GUI);
 
@@ -88,9 +94,14 @@ namespace Hv.Ui
             unlockedItemIDs.Clear();
             for (int i = 0; i <= PlayerProfileManager.Instance.CurrentPlayerLevel(); i++)
             {
-                if (LevelUpDatabase.Instance.gameLevels[i].itemUnlockID >= 0)
+                int unlockedId = LevelUpDatabase.Instance.gameLevels[i].itemUnlockID;
+
+                if (unlockedId >= 0)
                 {
-                    unlockedItemIDs.Add(LevelUpDatabase.Instance.gameLevels[i].itemUnlockID);
+                    if (ItemDatabase.Instance.items[unlockedId].sourceID == 0) // Checks if it is a field
+                    {
+                        unlockedItemIDs.Add(unlockedId);
+                    }
                 }
             }
             InitScrollListItems();

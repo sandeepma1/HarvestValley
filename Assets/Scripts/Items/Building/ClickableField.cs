@@ -30,7 +30,7 @@ public class ClickableField : MouseUpBase
     private Tweener glowingTweener = null;
     private int itemIDToBePlaced = -1;
 
-    private void Start()
+    private void Awake()
     {
         fieldSprite = GetComponent<SpriteRenderer>();
     }

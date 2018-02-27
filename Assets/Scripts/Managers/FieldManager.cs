@@ -47,6 +47,27 @@ public class FieldManager : ManagerBase
         InvokeRepeating("CheckForHarvest", 0, 1);
     }
 
+    private void OneTimeOnly()
+    {
+        if (PlayerPrefs.GetInt("firstField") == 0)
+        {
+            ES2.Delete("AllFields");
+            print(ES2.Exists("AllFields"));
+            int counter = 0;
+            for (int i = 0; i < x; i++)
+            {
+                for (int j = 0; j < y; j++)
+                {
+                    fields.Add(new Fields(counter, 0, "Field", new Vector2(i * gap, -j * gap), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+                    counter++;
+                }
+            }
+            ES2.Save(fields, "AllFields");
+            PlayerPrefs.SetInt("firstField", 1);
+            StartCoroutine("RestartGame");
+        }
+    }
+
     private void InitFields(Fields field)
     {
         FieldGO[field.id] = Instantiate(fieldPrefab, transform);
@@ -294,27 +315,6 @@ public class FieldManager : ManagerBase
             1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
         ES2.Save(fields, "AllFields");
         InitFields(fields[fields.Count - 1]);
-    }
-
-    private void OneTimeOnly()
-    {
-        if (PlayerPrefs.GetInt("firstField") == 0)
-        {
-            ES2.Delete("AllFields");
-            print(ES2.Exists("AllFields"));
-            int counter = 0;
-            for (int i = 0; i < x; i++)
-            {
-                for (int j = 0; j < y; j++)
-                {
-                    fields.Add(new Fields(counter, 0, "Field", new Vector2(i * gap, -j * gap), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
-                    counter++;
-                }
-            }
-            ES2.Save(fields, "AllFields");
-            PlayerPrefs.SetInt("firstField", 1);
-            StartCoroutine("RestartGame");
-        }
     }
 
     #region Field Selector
