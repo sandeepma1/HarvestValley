@@ -11,7 +11,8 @@ public enum MenuNames
     SeedList,
     Navigation,
     FieldProgress,
-    FieldUpgrade
+    FieldUpgrade,
+    BuildingMenu
 }
 
 public enum MenuOpeningType
@@ -40,6 +41,8 @@ public class MenuManager : Singleton<MenuManager>
     private GameObject fieldProgressPopup;
     [SerializeField]
     private GameObject fieldUpgradePopup;
+    [SerializeField]
+    private GameObject buildingMenu;
 
     private Stack<GameObject> openMenusStack = new Stack<GameObject>();
 
@@ -60,6 +63,7 @@ public class MenuManager : Singleton<MenuManager>
         //navigationBar.SetActive(false);
         fieldProgressPopup.SetActive(false);
         fieldUpgradePopup.SetActive(false);
+        buildingMenu.SetActive(false);
     }
 
     #region Stack Stuff
@@ -105,6 +109,9 @@ public class MenuManager : Singleton<MenuManager>
             case MenuNames.FieldUpgrade:
                 AddMenuInStack(fieldUpgradePopup);
                 break;
+            case MenuNames.BuildingMenu:
+                AddMenuInStack(buildingMenu);
+                break;
             default:
                 break;
         }
@@ -134,7 +141,8 @@ public class MenuManager : Singleton<MenuManager>
             openMenusStack.Peek().SetActive(false);
             openMenusStack.Pop();
             ShowAllStackItems();
-        } else
+        }
+        else
         {
             Debug.LogWarning("No menus are open, stack is empty");
         }
@@ -158,7 +166,7 @@ public class MenuManager : Singleton<MenuManager>
     {
         foreach (var item in openMenusStack)
         {
-            print(item.name + " count:" + openMenusStack.Count);
+            if (GEM.ShowDebugInfo) print(item.name + " count:" + openMenusStack.Count);
         }
     }
 
@@ -186,8 +194,6 @@ public class MenuManager : Singleton<MenuManager>
     }
     #endregion
 
-
-
     #region Touch stuff
     private void OnMouseUp() // TODO: somehow inherate from MouseUpBase
     {
@@ -199,7 +205,8 @@ public class MenuManager : Singleton<MenuManager>
             if (Application.isEditor && EventSystem.current.IsPointerOverGameObject())
             {
                 return;
-            } else if (EventSystem.current.IsPointerOverGameObject(t.fingerId))
+            }
+            else if (EventSystem.current.IsPointerOverGameObject(t.fingerId))
             {
                 return;
             }

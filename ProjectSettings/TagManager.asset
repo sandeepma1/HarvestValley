@@ -16,6 +16,7 @@ TagManager:
   - MasterMenuItem
   - Harvest
   - MainCanvas
+  - DragableUiItem
   layers:
   - Default
   - TransparentFX

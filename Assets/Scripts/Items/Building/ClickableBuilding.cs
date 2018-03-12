@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
-using DG.Tweening;
 
 public class ClickableBuilding : MouseUpBase
 {

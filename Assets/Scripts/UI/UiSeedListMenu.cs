@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using System;
 
-namespace Hv.Ui
+namespace HarvestValley.Ui
 {
-    public class SeedListMenu : Singleton<SeedListMenu>
+    public class UiSeedListMenu : BuildingMenuBase<UiSeedListMenu>
     {
         //public Canvas mainCanvas;
         [SerializeField]
@@ -18,32 +16,28 @@ namespace Hv.Ui
 
         private Transform topInfoParentTransform;
 
-        private int selectedFieldID = -1;
-        private int selectedSourceID = -1;
-        private ClickableUIItems[] menuItems = new ClickableUIItems[12];
-        private List<int> unlockedItemIDs = new List<int>();
 
-        private void Start()
+        private ClickableUIItems[] menuItems = new ClickableUIItems[12];
+
+        public override void Start()
         {
+            base.Start();
             topInfoParentTransform = topInfoText.transform.parent;
             CheckForUnlockedItems();
             OnDisable();
+            InitScrollListItems();
         }
 
-        private void OnEnable()
+        public override void OnEnable()
         {
             if (FieldManager.Instance == null)
             {
                 return;
             }
-            selectedFieldID = FieldManager.Instance.currentSelectedFieldID;
-            selectedSourceID = FieldManager.Instance.currentlSelectedSourceID;
+            base.OnEnable();
 
-            if (selectedFieldID == -1 || selectedSourceID == -1)
-            {
-                Debug.LogError("Selected field is -1");
-                return;
-            }
+            selectedBuildingID = FieldManager.Instance.currentSelectedBuildingID;
+            selectedSourceID = FieldManager.Instance.currentlSelectedSourceID;
         }
 
         private void OnDisable()
@@ -89,23 +83,23 @@ namespace Hv.Ui
             }
         }
 
-        public void CheckForUnlockedItems()  // call on level change & game start only
-        {
-            unlockedItemIDs.Clear();
-            for (int i = 0; i <= PlayerProfileManager.Instance.CurrentPlayerLevel(); i++)
-            {
-                int unlockedId = LevelUpDatabase.Instance.gameLevels[i].itemUnlockID;
+        //public void CheckForUnlockedItems()  // call on level change & game start only
+        //{
+        //    unlockedItemIDs.Clear();
+        //    for (int i = 0; i <= PlayerProfileManager.Instance.CurrentPlayerLevel(); i++)
+        //    {
+        //        int unlockedId = LevelUpDatabase.Instance.gameLevels[i].itemUnlockID;
 
-                if (unlockedId >= 0)
-                {
-                    if (ItemDatabase.Instance.items[unlockedId].sourceID == 0) // Checks if it is a field
-                    {
-                        unlockedItemIDs.Add(unlockedId);
-                    }
-                }
-            }
-            InitScrollListItems();
-        }
+        //        if (unlockedId >= 0)
+        //        {
+        //            if (ItemDatabase.Instance.items[unlockedId].sourceID == 0) // Checks if it is a field
+        //            {
+        //                unlockedItemIDs.Add(unlockedId);
+        //            }
+        //        }
+        //    }
+        //    InitScrollListItems();
+        //}
 
         #region Planting Mode Stuff
 

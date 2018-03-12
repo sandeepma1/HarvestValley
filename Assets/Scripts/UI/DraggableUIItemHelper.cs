@@ -2,9 +2,11 @@
 using UnityEngine.UI;
 using TMPro;
 
-public class DraggableUIItemHelper : MonoBehaviour
+namespace HarvestValley.Ui
 {
-    public TextMeshProUGUI itemCostText;
-    public TextMeshProUGUI itemNameText;
-    public Image itemImage;
+    public class DraggableUIItemHelper : MonoBehaviour
+    {
+        public TextMeshProUGUI itemNameText;
+        public Image itemImage;
+    }
 }

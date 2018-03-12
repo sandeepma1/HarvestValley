@@ -6,9 +6,9 @@ public class DropOnUIElement : MonoBehaviour, IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
-        switch (eventData.pointerDrag.name)
+        switch (eventData.pointerDrag.tag)
         {
-            case "ScytheImage":
+            case "DragableUiItem":
 
                 break;
             default:

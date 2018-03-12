@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 
-namespace Hv.Ui
+namespace HarvestValley.Ui
 {
     public class ClickableUIItems : MonoBehaviour
     {
@@ -24,7 +24,7 @@ namespace Hv.Ui
         {
             if (isItemUnlocked)
             {
-                SeedListMenu.Instance.StartPlantingMode(itemID);
+                UiSeedListMenu.Instance.StartPlantingMode(itemID);
             }
         }
     }

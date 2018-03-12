@@ -2,7 +2,7 @@
 using TMPro;
 using System;
 
-namespace Hv.Ui
+namespace HarvestValley.Ui
 {
     public class UiFieldProgress : Singleton<UiFieldProgress>
     {
@@ -28,7 +28,7 @@ namespace Hv.Ui
             {
                 return;
             }
-            selectedFieldID = FieldManager.Instance.currentSelectedFieldID;
+            selectedFieldID = FieldManager.Instance.currentSelectedBuildingID;
             selectedSourceID = FieldManager.Instance.currentlSelectedSourceID;
             selectedItem = ItemDatabase.Instance.items[FieldManager.Instance.FieldGO[selectedFieldID].itemID];
             UpdateCropName();

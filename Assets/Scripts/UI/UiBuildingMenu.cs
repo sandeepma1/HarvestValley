@@ -1,42 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UiBuildingMenu : Singleton<UiBuildingMenu>
+namespace HarvestValley.Ui
 {
-    [SerializeField]
-    private TextMeshProUGUI buildingName;
-    [SerializeField]
-    private Image buildingImage;
-    [SerializeField]
-    private Transform itemParent;
-    [SerializeField]
-    private Transform queueParent;
-
-    private int selectedBuildingID = -1;
-    private int selectedSourceID = -1;
-
-    private void OnEnable()
+    public class UiBuildingMenu : BuildingMenuBase<UiBuildingMenu>
     {
-        if (FieldManager.Instance == null)
-        {
-            return;
-        }
-        selectedBuildingID = FieldManager.Instance.currentSelectedFieldID;
-        selectedSourceID = FieldManager.Instance.currentlSelectedSourceID;
+        [SerializeField]
+        private TextMeshProUGUI buildingName;
+        [SerializeField]
+        private Image buildingImage;
+        [SerializeField]
+        private Transform itemParent;
+        [SerializeField]
+        private Transform queueParent;
 
-        if (selectedBuildingID == -1 || selectedSourceID == -1)
+        internal Canvas mainCanvas;
+
+        public override void Start()
         {
-            Debug.LogError("Selected field is -1");
-            return;
+            base.Start();
+            mainCanvas = GetComponent<Canvas>();
+        }
+
+        public override void OnEnable()
+        {
+            if (FieldManager.Instance == null)
+            {
+                return;
+            }
+            base.OnEnable();
+
+            selectedBuildingID = BuildingManager.Instance.currentSelectedBuildingID;
+            selectedSourceID = BuildingManager.Instance.currentlSelectedSourceID;
         }
     }
-
-    internal void ShowBuildingMenu()
-    {
-
-    }
-
 }

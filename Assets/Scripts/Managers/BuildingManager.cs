@@ -1,61 +1,69 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using System.Collections;
-using UnityEngine.SceneManagement;
 
-public class BuildingManager : ManagerBase
+public class BuildingManager : ManagerBase<BuildingManager>
 {
-    public static BuildingManager Instance = null;
     private List<Buildings> buildings = new List<Buildings>();
     [SerializeField]
     private ClickableBuilding buildingPrefab;
-    public ClickableBuilding[] buildingsGO;
-
-    // Use this for initialization
-    private void Awake()
-    {
-        Instance = this;
-    }
+    public ClickableBuilding[] BuildingsGO;
 
     private void Start()
     {
-        ClickableBuilding.OnBuildingClicked += OnClickableFieldClicked;
+        ClickableBuilding.OnBuildingClicked += OnBuildingClickedEventHandler;
         OneTimeOnly();
         Init();
         //ToggleFieldSelector(false);
     }
 
-    private void OnClickableFieldClicked(int buildingID, int sourceID)
+    public override void OnBuildingClickedEventHandler(int buildingID, int sourceID)
     {
-        print("buildingID " + buildingID + " sourceID" + sourceID);
+        base.OnBuildingClickedEventHandler(buildingID, sourceID);
+        MenuManager.Instance.DisplayMenu(MenuNames.BuildingMenu, MenuOpeningType.CloseAll);
+
+        switch (BuildingsGO[buildingID].state)
+        {
+            case BuildingState.IDLE:
+            case BuildingState.WORKING:
+                MenuManager.Instance.DisplayMenu(MenuNames.BuildingMenu, MenuOpeningType.CloseAll);
+                break;
+            case BuildingState.DONE:
+                MenuManager.Instance.CloseAllMenu();
+                //CollectItemsOnFields(buildingID); // TODO: Directly collect/harvest on feild click
+                break;
+            default:
+                break;
+        }
+
     }
 
+    #region Creating buildings from save
     private void Init()
     {
         buildings = ES2.LoadList<Buildings>("AllBuildings");
-        buildingsGO = new ClickableBuilding[buildings.Count];
+        BuildingsGO = new ClickableBuilding[buildings.Count];
         for (int i = 0; i < buildings.Count; i++)
         {
-            InitFields(buildings[i]);
+            InitBuildings(buildings[i]);
         }
-        ////InvokeRepeating("SaveFields", 0, 5);
+        InvokeRepeating("SaveBuildings", 0, 5);
         //InvokeRepeating("CheckForHarvest", 0, 1);
     }
 
-    private void InitFields(Buildings building)
+    private void InitBuildings(Buildings building)
     {
-        buildingsGO[building.id] = Instantiate(buildingPrefab, transform);
-        buildingsGO[building.id].gameObject.name = "Building" + building.id;
-        buildingsGO[building.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.Instance.sources[building.buildingID].slug, AtlasType.Buildings);
-        buildingsGO[building.id].buildingID = building.id;
-        buildingsGO[building.id].sourceID = building.buildingID;
-        buildingsGO[building.id].itemID = building.itemID;
-        buildingsGO[building.id].state = (BuildingState)building.state;
-        buildingsGO[building.id].dateTime = DateTime.Parse(building.dateTime);
+        BuildingsGO[building.id] = Instantiate(buildingPrefab, transform);
+        BuildingsGO[building.id].gameObject.name = "Building" + building.id;
+        BuildingsGO[building.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.Instance.sources[building.buildingID].slug, AtlasType.Buildings);
+        BuildingsGO[building.id].buildingID = building.id;
+        BuildingsGO[building.id].sourceID = building.buildingID;
+        BuildingsGO[building.id].itemID = building.itemID;
+        BuildingsGO[building.id].state = (BuildingState)building.state;
+        BuildingsGO[building.id].dateTime = DateTime.Parse(building.dateTime);
         //CalculateFeildCrop(buildingsGO[building.id]);
     }
+    #endregion
 
     private void OneTimeOnly()
     {
@@ -70,6 +78,22 @@ public class BuildingManager : ManagerBase
             PlayerPrefs.SetInt("firstBuilding", 1);
             StartCoroutine("RestartGame");
         }
+    }
+
+    private void SaveBuildings()
+    {
+        foreach (var item in buildings)
+        {
+            //item.pos = buildingsGO[item.id].transform.localPosition;
+            item.id = BuildingsGO[item.id].buildingID;
+            item.buildingID = BuildingsGO[item.id].sourceID;
+            //item.level = buildingsGO[item.id].level;
+            item.state = (sbyte)BuildingsGO[item.id].state;
+            //item.unlockedQueueSlots = buildingsGO[item.id].unlockedQueueSlots;
+            item.itemID = BuildingsGO[item.id].itemID;
+            item.dateTime = BuildingsGO[item.id].dateTime.ToString();
+        }
+        ES2.Save(buildings, "AllBuildings");
     }
 }
 

@@ -4,7 +4,7 @@ using System.Collections;
 
 public static class GEM
 {
-    //******Player Profile****************************
+    #region  Player Profile
     public static string playerName;
     public static string playerFarmName;
     public static int playerLevel;
@@ -13,7 +13,12 @@ public static class GEM
     public static int playerGems;
     public static int playerStamina;
     public static string playerStaminaMaxDateTime;
-    //******end*************************************
+    #endregion
+
+    #region Debug Stuff
+    public static bool ShowDebugInfo = false;
+    #endregion
+
     public static int numberOfRocksInLevel = 0;
     //public static bool isSeedSelected = false;
     //public static int seedSelectedID = -1;

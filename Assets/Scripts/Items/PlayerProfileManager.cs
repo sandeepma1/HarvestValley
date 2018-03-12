@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
-using Hv.Ui;
+using HarvestValley.Ui;
 
 public class PlayerProfileManager : Singleton<PlayerProfileManager>
 {
@@ -64,7 +64,8 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
             {
                 PlayerInventoryManager.Instance.AddNewFarmItem(LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemUnlockID,
                     LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemRewardCount);
-                SeedListMenu.Instance.CheckForUnlockedItems();
+                UiSeedListMenu.Instance.CheckForUnlockedItems();
+
                 PlayerGems(LevelUpDatabase.Instance.gameLevels[playerProfile.level].gemsRewardCount);
             }
             PlayerXPPointsAdd(-CurrentPlayerXP());

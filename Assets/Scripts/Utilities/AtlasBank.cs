@@ -41,7 +41,7 @@ public class AtlasBank : Singleton<AtlasBank>
 
         if (sprite == null)
         {
-            Debug.Log("Sprite named " + name + " not found in Bank Type " + type);
+            if (GEM.ShowDebugInfo) Debug.Log("Sprite named " + name + " not found in Bank Type " + type);
             sprite = missingSprite;
         }
         return sprite;

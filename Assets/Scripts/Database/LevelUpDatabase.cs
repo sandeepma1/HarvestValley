@@ -38,7 +38,8 @@ public class LevelUpDatabase : MonoBehaviour
         if (int.TryParse(text, out num))
         {
             return num;
-        } else
+        }
+        else
             return 0;
     }
 

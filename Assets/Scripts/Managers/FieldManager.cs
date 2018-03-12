@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class FieldManager : ManagerBase
+public class FieldManager : ManagerBase<FieldManager>
 {
-    public static FieldManager Instance = null;
     [SerializeField]
     private Transform fieldSelector;
     [SerializeField]
@@ -17,19 +15,12 @@ public class FieldManager : ManagerBase
     public int fieldSelectedID = -1;
     public ClickableField[] FieldGO;
     public int itemSelectedID = -1; // TODO: delete this asap
-    public int currentSelectedFieldID = -1;
-    public int currentlSelectedSourceID = -1;
 
     private List<Fields> fields = new List<Fields>();
 
-    private void Awake()
-    {
-        Instance = this;
-    }
-
     private void Start()
     {
-        ClickableField.OnFieldClicked += OnClickableFieldClicked;
+        ClickableField.OnFieldClicked += OnBuildingClickedEventHandler;
         OneTimeOnly();
         Init();
         ToggleFieldSelector(false);
@@ -321,13 +312,13 @@ public class FieldManager : ManagerBase
 
     private void SelectField()
     {
-        if (FieldGO[currentSelectedFieldID].state == FieldState.NONE ||
-            FieldGO[currentSelectedFieldID].state == FieldState.GROWING)
+        if (FieldGO[currentSelectedBuildingID].state == FieldState.NONE ||
+            FieldGO[currentSelectedBuildingID].state == FieldState.GROWING)
         {
             ToggleFieldSelector(true);
-            fieldSelector.SetParent(FieldGO[currentSelectedFieldID].transform);
+            fieldSelector.SetParent(FieldGO[currentSelectedBuildingID].transform);
             fieldSelector.transform.localPosition = Vector3.zero;
-            fieldSelectedID = currentSelectedFieldID;
+            fieldSelectedID = currentSelectedBuildingID;
         }
         else
         {
@@ -342,25 +333,23 @@ public class FieldManager : ManagerBase
 
     internal void DeselectField()
     {
-        if (currentSelectedFieldID == -1)
+        if (currentSelectedBuildingID == -1)
         {
             return;
         }
         ToggleFieldSelector(false);
-        currentSelectedFieldID = -1;
+        currentSelectedBuildingID = -1;
     }
 
     #endregion
 
     #region OnMouse Functions
 
-    private void OnClickableFieldClicked(int fieldID, int sourceID)
+    public override void OnBuildingClickedEventHandler(int buildingID, int sourceID)
     {
-        currentSelectedFieldID = fieldID;
-        currentlSelectedSourceID = sourceID;
-
+        base.OnBuildingClickedEventHandler(buildingID, sourceID);
         SelectField();
-        switch (FieldGO[fieldID].state)
+        switch (FieldGO[buildingID].state)
         {
             case FieldState.NONE:
                 MenuManager.Instance.DisplayMenu(MenuNames.SeedList, MenuOpeningType.CloseAll);
@@ -372,7 +361,7 @@ public class FieldManager : ManagerBase
                 break;
             case FieldState.WAITING_FOR_HARVEST:
                 MenuManager.Instance.CloseAllMenu();
-                CollectItemsOnFields(fieldID); // Directly collect/harvest on feild click
+                CollectItemsOnFields(buildingID); // Directly collect/harvest on feild click
                 break;
             default:
                 break;
