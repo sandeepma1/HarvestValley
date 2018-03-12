@@ -9,26 +9,43 @@ using TMPro;
 /// </summary>
 namespace HarvestValley.Ui
 {
-    public class DraggableUIItem : ScrollRect
+    public class UiDraggableItem : ScrollRect
     {
-        public int itemID;
-        public TextMeshProUGUI itemNameText;
-        public Image itemImage;
+        [SerializeField]
+        private TextMeshProUGUI itemNameText;
+
+        [SerializeField]
+        internal Image itemImage;
+
+        internal int itemID;
+        internal string itemName;
+        internal bool isItemUnlocked;
+
         public int selectedItemID;
 
+        #region Drag Variables
         private bool routeToParent = false;
         private Transform imageImageTransform;
         private Vector3 initialPosition;
         private Vector2 pos;
-        private DraggableUIItemHelper helper;
+        private UiDraggableItemHelper helper;
+        #endregion
 
         protected override void Awake()
         {
-            helper = GetComponent<DraggableUIItemHelper>();
+            helper = GetComponent<UiDraggableItemHelper>();
             itemNameText = helper.itemNameText;
             imageImageTransform = helper.itemImage.GetComponent<Transform>();
             itemImage = imageImageTransform.GetComponent<Image>();
             selectedItemID = -1;
+            itemImage.color = ColorConstants.dehighlightedUiItem;
+            itemNameText.text = "Locked";
+        }
+
+        public void ItemUnlocked()
+        {
+            itemImage.color = ColorConstants.normalUiItem;
+            itemNameText.text = itemName;
         }
 
         private void _OnBeginDrag()

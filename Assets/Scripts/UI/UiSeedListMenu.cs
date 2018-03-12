@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using HarvestValley.Managers;
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 namespace HarvestValley.Ui
 {
@@ -8,36 +9,32 @@ namespace HarvestValley.Ui
     {
         //public Canvas mainCanvas;
         [SerializeField]
-        private ClickableUIItems scrollListItemPrefab;
+        private UiClickableItems scrollListItemPrefab;
         [SerializeField]
         private Transform scrollListParent;
         [SerializeField]
         private TextMeshProUGUI topInfoText;
-
         private Transform topInfoParentTransform;
 
-
-        private ClickableUIItems[] menuItems = new ClickableUIItems[12];
+        private List<UiClickableItems> menuItems = new List<UiClickableItems>();
 
         public override void Start()
         {
+            CreateSeedItems();
             base.Start();
             topInfoParentTransform = topInfoText.transform.parent;
-            CheckForUnlockedItems();
             OnDisable();
-            InitScrollListItems();
         }
 
-        public override void OnEnable()
+        private void OnEnable()
         {
-            if (FieldManager.Instance == null)
+            selectedBuildingID = BuildingManager.Instance.currentSelectedBuildingID;
+            selectedSourceID = BuildingManager.Instance.currentlSelectedSourceID;
+
+            if (FieldManager.Instance == null || selectedBuildingID == -1 || selectedSourceID == -1)
             {
                 return;
             }
-            base.OnEnable();
-
-            selectedBuildingID = FieldManager.Instance.currentSelectedBuildingID;
-            selectedSourceID = FieldManager.Instance.currentlSelectedSourceID;
         }
 
         private void OnDisable()
@@ -45,61 +42,40 @@ namespace HarvestValley.Ui
             StopPlantingMode();
         }
 
-        private void InitScrollListItems()
+        public override void AddUnlockedItemsToList()  // call on level change & game start only
         {
-            for (int i = 0; i < menuItems.Length; i++)
+            base.AddUnlockedItemsToList();
+        }
+
+        private void CreateSeedItems()
+        {
+            for (int i = 0; i < ItemDatabase.Instance.items.Length; i++)
             {
                 Item item = ItemDatabase.Instance.items[i];
-
-                if (item.sourceID != 0) // Checks if it is a field
+                if (item != null && item.sourceID == 0)
                 {
-                    continue;
-                }
-
-                if (menuItems[i] == null)
-                {
-                    menuItems[i] = (Instantiate(scrollListItemPrefab, scrollListParent));
-                    menuItems[i].name = "UIItemListClick" + i;
-                }
-
-                menuItems[i].itemID = item.itemID;
-                menuItems[i].itemImage.sprite = AtlasBank.Instance.GetSprite(item.slug, AtlasType.GUI);
-
-                // TODO: may be expensive step, try to optimize            
-                if (unlockedItemIDs.Contains(item.itemID)) // Unlocked
-                {
-                    menuItems[i].itemImage.color = ColorConstants.white;
-                    menuItems[i].isItemUnlocked = true;
-                    menuItems[i].itemNameText.text = item.name;
-                    menuItems[i].itemCostText.text = item.coinCost.ToString();
-                }
-                else                                      //Locked
-                {
-                    menuItems[i].itemImage.color = ColorConstants.dehighlightedUiItem;
-                    menuItems[i].isItemUnlocked = false;
-                    menuItems[i].itemNameText.text = "Locked";
-                    menuItems[i].itemCostText.text = "";
+                    UiClickableItems menuItem = Instantiate(scrollListItemPrefab, scrollListParent);
+                    menuItem.name = "UIItemListClick" + i;
+                    menuItem.itemID = item.itemID;
+                    menuItem.itemImage.sprite = AtlasBank.Instance.GetSprite(item.slug, AtlasType.GUI);
+                    menuItem.itemName = item.name;
+                    menuItem.itemCost = item.coinCost;
+                    menuItem.isItemUnlocked = false;
+                    menuItems.Add(menuItem);
                 }
             }
         }
 
-        //public void CheckForUnlockedItems()  // call on level change & game start only
-        //{
-        //    unlockedItemIDs.Clear();
-        //    for (int i = 0; i <= PlayerProfileManager.Instance.CurrentPlayerLevel(); i++)
-        //    {
-        //        int unlockedId = LevelUpDatabase.Instance.gameLevels[i].itemUnlockID;
-
-        //        if (unlockedId >= 0)
-        //        {
-        //            if (ItemDatabase.Instance.items[unlockedId].sourceID == 0) // Checks if it is a field
-        //            {
-        //                unlockedItemIDs.Add(unlockedId);
-        //            }
-        //        }
-        //    }
-        //    InitScrollListItems();
-        //}
+        public override void UpdateSeedItems()
+        {
+            for (int i = 0; i < menuItems.Count; i++)
+            {
+                if (unlockedItemIDs.Contains(menuItems[i].itemID))
+                {
+                    menuItems[i].ItemIsUnlocked();
+                }
+            }
+        }
 
         #region Planting Mode Stuff
 
@@ -122,7 +98,10 @@ namespace HarvestValley.Ui
         {
             topInfoText.text = "";
             ToggleTopInfoAndUpgradeButton(false);
-            FieldManager.Instance.StopPlantingMode();
+            if (FieldManager.Instance != null)
+            {
+                FieldManager.Instance.StopPlantingMode();
+            }
         }
 
         #endregion

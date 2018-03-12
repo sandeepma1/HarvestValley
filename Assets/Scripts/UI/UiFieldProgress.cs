@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using System;
+using HarvestValley.Managers;
 
 namespace HarvestValley.Ui
 {

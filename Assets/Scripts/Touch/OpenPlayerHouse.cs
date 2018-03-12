@@ -1,4 +1,6 @@
-﻿public class OpenPlayerHouse : MouseUpBase
+﻿using HarvestValley.Ui;
+
+public class OpenPlayerHouse : MouseUpBase
 {
     public override void OnMouseTouchUp()
     {

@@ -2,6 +2,7 @@
 using DG.Tweening;
 using UnityEngine.EventSystems;
 using System.Collections;
+using HarvestValley.Ui;
 
 [RequireComponent(typeof(SwipeManager))]
 public class InputController : Singleton<InputController>
@@ -161,10 +162,12 @@ public class InputController : Singleton<InputController>
         if (posX > cameraPositions[currPos] + dragOffset)
         {
             SnapRight();
-        } else if (posX < cameraPositions[currPos] - dragOffset)
+        }
+        else if (posX < cameraPositions[currPos] - dragOffset)
         {
             SnapLeft();
-        } else
+        }
+        else
         {
             SnapCenter();
         }
@@ -256,7 +259,8 @@ public class InputController : Singleton<InputController>
         if (swipeAction.direction == SwipeDirection.Right)
         {
             SwipeCamera(-1);
-        } else if (swipeAction.direction == SwipeDirection.Left)
+        }
+        else if (swipeAction.direction == SwipeDirection.Left)
         {
             SwipeCamera(1);
         }

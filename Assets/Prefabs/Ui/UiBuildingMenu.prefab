@@ -40,8 +40,9 @@ GameObject:
   - component: {fileID: 114779989485060510}
   - component: {fileID: 114210256338055608}
   - component: {fileID: 225980836584170612}
+  - component: {fileID: 114061871125278728}
   m_Layer: 5
-  m_Name: BuildingMenu
+  m_Name: UiBuildingMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,6 +58,7 @@ GameObject:
   - component: {fileID: 224988186630016882}
   - component: {fileID: 222024367319682370}
   - component: {fileID: 114814343490272568}
+  - component: {fileID: 114128147191511772}
   m_Layer: 5
   m_Name: BuildingImage
   m_TagString: Untagged
@@ -196,6 +198,34 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114061871125278728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1476423274739704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc399f43dc8a8434e9f74ece71e7fab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiDraggableItemPrefab: {fileID: 114605468589363126, guid: 35f03df1bb145d04988de738109171be,
+    type: 2}
+  buildingName: {fileID: 114291090863807612}
+  buildingImage: {fileID: 114814343490272568}
+  itemParent: {fileID: 224158697917799176}
+  queueParent: {fileID: 224805547146456314}
+--- !u!114 &114128147191511772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1505522033326718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81bfc7b1d5427d644b8f5f55fec16f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114185350152756562
 MonoBehaviour:
   m_ObjectHideFlags: 1

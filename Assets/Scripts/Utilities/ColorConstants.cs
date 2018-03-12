@@ -14,5 +14,6 @@ public static class ColorConstants
     #region Menu UI
     //Menu UI
     public static readonly Color dehighlightedUiItem = new Color(0.25f, 0.25f, 0.25f);
+    public static readonly Color normalUiItem = new Color(1, 1, 1);
     #endregion
 }

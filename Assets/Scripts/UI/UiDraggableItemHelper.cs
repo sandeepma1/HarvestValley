@@ -4,7 +4,7 @@ using TMPro;
 
 namespace HarvestValley.Ui
 {
-    public class DraggableUIItemHelper : MonoBehaviour
+    public class UiDraggableItemHelper : MonoBehaviour
     {
         public TextMeshProUGUI itemNameText;
         public Image itemImage;

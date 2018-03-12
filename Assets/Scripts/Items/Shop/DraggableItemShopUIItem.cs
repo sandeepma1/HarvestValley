@@ -1,27 +1,31 @@
 ﻿using UnityEngine;
+using HarvestValley.Managers;
 
-public class DraggableItemShopUIItem : MonoBehaviour
+namespace HarvestValley.Ui
 {
-    public int shopItemID = 0;
-    Vector3 intialPosition;
-
-    public void OnDown()
+    public class DraggableItemShopUIItem : MonoBehaviour
     {
-        intialPosition = transform.localPosition;
-    }
+        public int shopItemID = 0;
+        Vector3 intialPosition;
 
-    public void OnDrag()
-    {
-        ShopMenuManager.Instance.ChildCallingOnMouseDrag(shopItemID);
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) - FieldManager.Instance.transform.position;
-    }
+        public void OnDown()
+        {
+            intialPosition = transform.localPosition;
+        }
 
-    public void OnUp()
-    {
-        transform.localPosition = intialPosition;
-        print(Camera.main.ScreenToWorldPoint(new Vector3(Mathf.RoundToInt(Input.mousePosition.x), Mathf.RoundToInt(Input.mousePosition.y)))
-        - FieldManager.Instance.transform.position);
-        ShopMenuManager.Instance.ChildCallingOnMouseUp(shopItemID, Camera.main.ScreenToWorldPoint(new Vector3(Mathf.RoundToInt(Input.mousePosition.x), Mathf.RoundToInt(Input.mousePosition.y)))
-        - FieldManager.Instance.transform.position);
+        public void OnDrag()
+        {
+            ShopMenuManager.Instance.ChildCallingOnMouseDrag(shopItemID);
+            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) - FieldManager.Instance.transform.position;
+        }
+
+        public void OnUp()
+        {
+            transform.localPosition = intialPosition;
+            print(Camera.main.ScreenToWorldPoint(new Vector3(Mathf.RoundToInt(Input.mousePosition.x), Mathf.RoundToInt(Input.mousePosition.y)))
+            - FieldManager.Instance.transform.position);
+            ShopMenuManager.Instance.ChildCallingOnMouseUp(shopItemID, Camera.main.ScreenToWorldPoint(new Vector3(Mathf.RoundToInt(Input.mousePosition.x), Mathf.RoundToInt(Input.mousePosition.y)))
+            - FieldManager.Instance.transform.position);
+        }
     }
 }
