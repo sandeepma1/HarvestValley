@@ -162,7 +162,7 @@ namespace HarvestValley.Ui
             isItemSelected = true;
             itemSelectedID = id;
             FieldManager.Instance.itemSelectedID = itemSelectedID;
-            if (FieldManager.Instance.FieldGO[FieldManager.Instance.fieldSelectedID].GetComponent<ClickableField>().sourceID > 0)
+            if (FieldManager.Instance.FieldGO[FieldManager.Instance.fieldSelectedID].GetComponent<ClickableField>().sourceId > 0)
             {
                 ItemPopupProduction.Instance.DisplayItemPopupProduction_DOWN(id, pos);
             }

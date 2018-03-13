@@ -19,6 +19,10 @@ public static class GEM
     public static bool ShowDebugInfo = false;
     #endregion
 
+    #region Building Variables
+    public static int maxQCount = 9;
+    #endregion
+
     public static int numberOfRocksInLevel = 0;
     //public static bool isSeedSelected = false;
     //public static int seedSelectedID = -1;

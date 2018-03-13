@@ -59,11 +59,17 @@ namespace HarvestValley.Managers
             BuildingsGO[building.id] = Instantiate(buildingPrefab, transform);
             BuildingsGO[building.id].gameObject.name = "Building" + building.id;
             BuildingsGO[building.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.Instance.sources[building.buildingID].slug, AtlasType.Buildings);
-            BuildingsGO[building.id].buildingID = building.id;
-            BuildingsGO[building.id].sourceID = building.buildingID;
-            BuildingsGO[building.id].itemID = building.itemID;
+            BuildingsGO[building.id].buildingId = building.id;
+            BuildingsGO[building.id].sourceId = building.buildingID;
+            BuildingsGO[building.id].itemId = building.itemID;
+            BuildingsGO[building.id].unlockedQueueSlots = building.unlockedQueueSlots;
             BuildingsGO[building.id].state = (BuildingState)building.state;
-            BuildingsGO[building.id].dateTime = DateTime.Parse(building.dateTime);
+            BuildingsGO[building.id].dateTime = new DateTime[GEM.maxQCount];
+            for (int i = 0; i < GEM.maxQCount; i++)
+            {
+                BuildingsGO[building.id].dateTime[i] = DateTime.Parse(building.dateTime[i]);
+            }
+
             //CalculateFeildCrop(buildingsGO[building.id]);
         }
         #endregion
@@ -73,10 +79,16 @@ namespace HarvestValley.Managers
             if (PlayerPrefs.GetInt("firstBuilding") == 0)
             {
                 ES2.Delete("AllBuildings");
-                print(ES2.Exists("AllBuildings"));
 
-                buildings.Add(new Buildings(0, 2, "Building", 0, 0, System.DateTime.UtcNow.ToString()));
-                //buildings.Add(new Buildings(0, 3, "Building", 0, 0, System.DateTime.UtcNow.ToString()));
+                string[] nowTime = new string[GEM.maxQCount];
+                int[] ids = new int[GEM.maxQCount];
+                for (int i = 0; i < GEM.maxQCount; i++)
+                {
+                    nowTime[i] = DateTime.UtcNow.ToString();
+                    ids[i] = -1;
+                }
+
+                buildings.Add(new Buildings(0, 2, "Building", 0, 2, ids, nowTime));
 
                 ES2.Save(buildings, "AllBuildings");
                 PlayerPrefs.SetInt("firstBuilding", 1);
@@ -89,13 +101,17 @@ namespace HarvestValley.Managers
             foreach (var item in buildings)
             {
                 //item.pos = buildingsGO[item.id].transform.localPosition;
-                item.id = BuildingsGO[item.id].buildingID;
-                item.buildingID = BuildingsGO[item.id].sourceID;
+                item.id = BuildingsGO[item.id].buildingId;
+                item.buildingID = BuildingsGO[item.id].sourceId;
                 //item.level = buildingsGO[item.id].level;
                 item.state = (sbyte)BuildingsGO[item.id].state;
-                //item.unlockedQueueSlots = buildingsGO[item.id].unlockedQueueSlots;
-                item.itemID = BuildingsGO[item.id].itemID;
-                item.dateTime = BuildingsGO[item.id].dateTime.ToString();
+                item.unlockedQueueSlots = BuildingsGO[item.id].unlockedQueueSlots;
+                item.itemID = BuildingsGO[item.id].itemId;
+                for (int i = 0; i < item.dateTime.Length; i++)
+                {
+                    item.dateTime[i] = BuildingsGO[item.id].dateTime[i].ToString();
+                }
+
             }
             ES2.Save(buildings, "AllBuildings");
         }
@@ -114,19 +130,21 @@ public class Buildings  // iLIST
     public int buildingID;
     public string name;
     public int state;
-    public int itemID;
-    public string dateTime;
+    public int unlockedQueueSlots;
+    public int[] itemID;
+    public string[] dateTime;
 
     public Buildings()
     {
     }
 
-    public Buildings(int f_id, int f_buildingID, string f_name, int f_state, int f_itemID, string f_dateTime)//, Queue <int>  f_itemID, Queue <string>  f_dateTime)
+    public Buildings(int f_id, int f_buildingID, string f_name, int f_state, int f_unlockedQueueSlots, int[] f_itemID, string[] f_dateTime)//, Queue <int>  f_itemID, Queue <string>  f_dateTime)
     {
         id = f_id;
         buildingID = f_buildingID;
         name = f_name;
         state = f_state;
+        unlockedQueueSlots = f_unlockedQueueSlots;
         itemID = f_itemID;
         dateTime = f_dateTime;
     }

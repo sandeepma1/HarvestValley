@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 using HarvestValley.Managers;
+using System;
 
 public class ClickableField : ClickableBase
 {
+    public int itemId;
+    public DateTime dateTime;
+
     public SpriteRenderer plantsSprite;
     public bool isCrowPresent;
 
@@ -23,12 +27,16 @@ public class ClickableField : ClickableBase
             AddToProductionQueue(itemIDToBePlaced);
             return;
         }
-        FieldManager.Instance.OnBuildingClicked(buildingID, sourceID);
+        FieldManager.Instance.OnBuildingClicked(buildingId, sourceId);
     }
 
     public override void AddToProductionQueue(int itemId)
     {
         base.AddToProductionQueue(itemId);
+        this.itemId = itemId;
+        dateTime = UTC.time.liveDateTime.AddMinutes(ItemDatabase.Instance.items[itemId].timeRequiredInMins);
+        state = BuildingState.WORKING;
+
         string plantName = ItemDatabase.Instance.items[itemId].slug + "_0";
         plantsSprite.sprite = AtlasBank.Instance.GetSprite(plantName, AtlasType.Farming);
         PlayerProfileManager.Instance.PlayerCoins(-ItemDatabase.Instance.items[itemId].coinCost);

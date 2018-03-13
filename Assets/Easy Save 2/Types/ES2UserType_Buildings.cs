@@ -14,6 +14,7 @@ public class ES2UserType_Buildings : ES2Type
         writer.Write(data.buildingID);
         writer.Write(data.name);
         writer.Write(data.state);
+        writer.Write(data.unlockedQueueSlots);
         writer.Write(data.itemID);
         writer.Write(data.dateTime);
 
@@ -34,8 +35,9 @@ public class ES2UserType_Buildings : ES2Type
         data.buildingID = reader.Read<System.Int32>();
         data.name = reader.Read<System.String>();
         data.state = reader.Read<System.Int32>();
-        data.itemID = reader.Read<System.Int32>();
-        data.dateTime = reader.Read<System.String>();
+        data.unlockedQueueSlots = reader.Read<System.Int32>();
+        data.itemID = reader.ReadArray<System.Int32>();
+        data.dateTime = reader.ReadArray<System.String>();
 
     }
 

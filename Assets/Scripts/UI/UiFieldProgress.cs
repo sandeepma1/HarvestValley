@@ -31,7 +31,7 @@ namespace HarvestValley.Ui
             }
             selectedFieldID = FieldManager.Instance.currentSelectedBuildingID;
             selectedSourceID = FieldManager.Instance.currentlSelectedSourceID;
-            selectedItem = ItemDatabase.Instance.items[FieldManager.Instance.FieldGO[selectedFieldID].itemID];
+            selectedItem = ItemDatabase.Instance.items[FieldManager.Instance.FieldGO[selectedFieldID].itemId];
             UpdateCropName();
         }
 

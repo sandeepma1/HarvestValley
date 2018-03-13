@@ -52,7 +52,7 @@ namespace HarvestValley.Managers
                 {
                     for (int j = 0; j < y; j++)
                     {
-                        fields.Add(new Fields(counter, 0, "Field", new Vector2(i * gap, -j * gap), 1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+                        fields.Add(new Fields(counter, 0, "Field", new Vector2(i * gap, -j * gap), 1, 0, -1, System.DateTime.UtcNow.ToString()));
                         counter++;
                     }
                 }
@@ -68,13 +68,12 @@ namespace HarvestValley.Managers
             FieldGO[field.id].transform.localPosition = field.pos;
             FieldGO[field.id].gameObject.name = "Field" + field.id;
             FieldGO[field.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.Instance.sources[field.fieldID].slug, AtlasType.Buildings);
-            FieldGO[field.id].buildingID = field.id;
-            FieldGO[field.id].sourceID = field.fieldID;
+            FieldGO[field.id].buildingId = field.id;
+            FieldGO[field.id].sourceId = field.fieldID;
             FieldGO[field.id].pos = field.pos;
             FieldGO[field.id].level = field.level;
-            FieldGO[field.id].itemID = field.itemID;
+            FieldGO[field.id].itemId = field.itemID;
             FieldGO[field.id].state = (BuildingState)field.state;
-            FieldGO[field.id].unlockedQueueSlots = field.unlockedQueueSlots;
             FieldGO[field.id].dateTime = DateTime.Parse(field.dateTime);
             CalculateFeildCrop(FieldGO[field.id]);
         }
@@ -103,14 +102,14 @@ namespace HarvestValley.Managers
 
         private void CalculateFeildCrop(ClickableField field)
         {
-            if (field.itemID < 0)
+            if (field.itemId < 0)
             {
                 return;
             }
 
             TimeSpan timeElapsed = field.dateTime - UTC.time.liveDateTime;
             float timeElapsedInSeconds = (float)timeElapsed.TotalSeconds;
-            float divisionFactor = (ItemDatabase.Instance.items[field.sourceID].timeRequiredInMins * 60) / 4;
+            float divisionFactor = (ItemDatabase.Instance.items[field.sourceId].timeRequiredInMins * 60) / 4;
 
             if (timeElapsedInSeconds >= divisionFactor * 3) //22.5 seed
             {
@@ -134,7 +133,7 @@ namespace HarvestValley.Managers
 
         private void ChangeFarmPlantSprite(ClickableField field, PlantStage stages)
         {
-            string itemSlug = ItemDatabase.Instance.items[field.itemID].slug;
+            string itemSlug = ItemDatabase.Instance.items[field.itemId].slug;
             switch (stages)
             {
                 case PlantStage.SEED:
@@ -284,18 +283,18 @@ namespace HarvestValley.Managers
 
         public void CollectItemsOnFields(int fieldID) //Collecting Items on fields
         {
-            PlayerInventoryManager.Instance.UpdateFarmItems(FieldGO[fieldID].itemID, 1);
-            PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.Instance.items[FieldGO[fieldID].itemID].XPperYield);
+            PlayerInventoryManager.Instance.UpdateFarmItems(FieldGO[fieldID].itemId, 1);
+            PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.Instance.items[FieldGO[fieldID].itemId].XPperYield);
             FieldGO[fieldID].state = BuildingState.IDLE;
             FieldGO[fieldID].dateTime = new System.DateTime();
-            FieldGO[fieldID].itemID = -1;
+            FieldGO[fieldID].itemId = -1;
             FieldGO[fieldID].plantsSprite.sprite = new Sprite();
         }
 
         public void AddNewField(Vector2 pos, int fieldID)
         {
             fields.Add(new Fields(fields.Count + 1, fieldID, SourceDatabase.Instance.sources[fieldID].sourceID.ToString(), pos,
-                1, 0, 0, -1, System.DateTime.UtcNow.ToString()));
+                1, 0, -1, System.DateTime.UtcNow.ToString()));
             ES2.Save(fields, "AllFields");
             InitFields(fields[fields.Count - 1]);
         }
@@ -367,12 +366,11 @@ namespace HarvestValley.Managers
             foreach (var item in fields)
             {
                 item.pos = FieldGO[item.id].transform.localPosition;
-                item.id = FieldGO[item.id].buildingID;
-                item.fieldID = FieldGO[item.id].sourceID;
+                item.id = FieldGO[item.id].buildingId;
+                item.fieldID = FieldGO[item.id].sourceId;
                 item.level = FieldGO[item.id].level;
                 item.state = (sbyte)FieldGO[item.id].state;
-                item.unlockedQueueSlots = FieldGO[item.id].unlockedQueueSlots;
-                item.itemID = FieldGO[item.id].itemID;
+                item.itemID = FieldGO[item.id].itemId;
                 item.dateTime = FieldGO[item.id].dateTime.ToString();
             }
             ES2.Save(fields, "AllFields");
@@ -395,7 +393,6 @@ public class Fields  // iLIST
     public Vector2 pos;
     public int level;
     public int state;
-    public int unlockedQueueSlots;
     public int itemID;
     public string dateTime;
 
@@ -403,7 +400,7 @@ public class Fields  // iLIST
     {
     }
 
-    public Fields(int f_id, int f_fieldID, string f_name, Vector2 f_pos, int f_level, int f_state, int f_unlockedQueueSlots, int f_itemID, string f_dateTime)//, Queue <int>  f_itemID, Queue <string>  f_dateTime)
+    public Fields(int f_id, int f_fieldID, string f_name, Vector2 f_pos, int f_level, int f_state, int f_itemID, string f_dateTime)//, Queue <int>  f_itemID, Queue <string>  f_dateTime)
     {
         id = f_id;
         fieldID = f_fieldID;
@@ -411,7 +408,6 @@ public class Fields  // iLIST
         pos = f_pos;
         level = f_level;
         state = f_state;
-        unlockedQueueSlots = f_unlockedQueueSlots;
         itemID = f_itemID;
         dateTime = f_dateTime;
     }

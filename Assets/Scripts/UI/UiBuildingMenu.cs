@@ -12,24 +12,31 @@ namespace HarvestValley.Ui
         [SerializeField]
         private UiDraggableItem uiDraggableItemPrefab;
         [SerializeField]
+        private UiQueueItem uiQueueItemPrefab;
+        [SerializeField]
         private TextMeshProUGUI buildingName;
         [SerializeField]
         private Image buildingImage;
         [SerializeField]
         private Transform itemParent;
         [SerializeField]
-        private Transform queueParent;
+        private TextMeshProUGUI currentTimerText;
+        [SerializeField]
+        private TextMeshProUGUI waitingText;
+
         internal Canvas mainCanvas;
 
         private UiDraggableItem[] menuItems; // making this array as not more than 8 items will be in building menu
+        [SerializeField]
+        private UiQueueItem[] queueItems;
         private List<int> unlockedBuildingItemID = new List<int>();
-
-        private const int maxItemsCount = 8;
+        private ClickableBuilding currentSelectedBuilding;
 
         public override void Start()
         {
-            menuItems = new UiDraggableItem[maxItemsCount];
+            menuItems = new UiDraggableItem[GEM.maxQCount];
             CreateItems();
+            //CreateQueueItems();
             base.Start();
             mainCanvas = GetComponent<Canvas>();
             // OnDisable();
@@ -40,7 +47,7 @@ namespace HarvestValley.Ui
             selectedBuildingID = BuildingManager.Instance.currentSelectedBuildingID;
             selectedSourceID = BuildingManager.Instance.currentlSelectedSourceID;
 
-            if (menuItems == null || BuildingManager.Instance == null || selectedBuildingID == -1 || selectedSourceID == -1)
+            if (menuItems == null || queueItems == null || BuildingManager.Instance == null || selectedBuildingID == -1 || selectedSourceID == -1)
             {
                 return;
             }
@@ -61,7 +68,7 @@ namespace HarvestValley.Ui
                 }
             }
 
-            for (int i = 0; i < maxItemsCount; i++)
+            for (int i = 0; i < GEM.maxQCount; i++)
             {
                 menuItems[i].gameObject.SetActive(false);
             }
@@ -79,12 +86,31 @@ namespace HarvestValley.Ui
 
         private void PopulateBuildingQueue()
         {
+            currentSelectedBuilding = BuildingManager.Instance.BuildingsGO[selectedBuildingID];
 
+            for (int i = 0; i < GEM.maxQCount; i++)
+            {
+                queueItems[i].gameObject.SetActive(false);
+            }
+
+            for (int i = 0; i < currentSelectedBuilding.unlockedQueueSlots; i++)
+            {
+                queueItems[i].gameObject.SetActive(true);
+            }
+        }
+
+        public void AddNewQueueItem(int itemIdToAdd, int position)
+        {
+            queueItems[position].itemImage.sprite = AtlasBank.Instance.GetSprite(ItemDatabase.Instance.items[itemIdToAdd].slug, AtlasType.GUI);
+            if (position == 0)
+            {
+                currentTimerText.text = currentSelectedBuilding.dateTime[0].ToString();
+            }
         }
 
         private void CreateItems()
         {
-            for (int i = 0; i < maxItemsCount; i++)
+            for (int i = 0; i < GEM.maxQCount; i++)
             {
                 menuItems[i] = Instantiate(uiDraggableItemPrefab, itemParent);
                 menuItems[i].name = "DraggableUIItem" + i;

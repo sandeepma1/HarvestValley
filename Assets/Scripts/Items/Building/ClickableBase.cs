@@ -1,18 +1,13 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ClickableBase : MouseUpBase
 {
     public SpriteRenderer buildingSprite;
-    public int buildingID;
-    public int sourceID;
+    public int buildingId;
+    public int sourceId;
     public Vector2 pos;
     public int level;
     public BuildingState state;
-    public int unlockedQueueSlots;
-
-    public int itemID;
-    public DateTime dateTime;
 
     protected int itemIDToBePlaced = -1;
 
@@ -28,11 +23,6 @@ public class ClickableBase : MouseUpBase
 
     public virtual void AddToProductionQueue(int itemId)
     {
-        itemID = itemId;
-        dateTime = UTC.time.liveDateTime.AddMinutes(ItemDatabase.Instance.items[itemId].timeRequiredInMins);
-        state = BuildingState.WORKING;
-
-        //string plantName = ItemDatabase.Instance.items[itemId].slug + "_0";
-        ////plantsSprite.sprite = AtlasBank.Instance.GetSprite(plantName, AtlasType.Farming);
+        //Nothing at the moment
     }
 }
