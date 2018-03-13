@@ -1,106 +1,68 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using DG.Tweening;
+using HarvestValley.Managers;
 
-public class ClickableField : MouseUpBase
+public class ClickableField : ClickableBase
 {
-    public SpriteRenderer fieldSprite;
     public SpriteRenderer plantsSprite;
-    public GameObject crowGO;
-    public bool isSelected = false;
-    public bool isDraggable = false;
-    public int fieldID;
-    public int sourceID;
-    public Vector2 pos;
-    public int level;
-    public FieldState state;
-    public int unlockedQueueSlots;
-    public int itemID;
-    public System.DateTime dateTime;
     public bool isCrowPresent;
-    public static Action<int, int> OnFieldClicked;
-    public static Action<int> OnFieldHarvested;
 
-    internal int baseYieldMin;
-    internal int baseYieldMax;
-    internal int noOfWatering;
-
-    //private SpriteRenderer fieldSprite;
     private bool inPlantingMode;
     private Tweener glowingTweener = null;
-    private int itemIDToBePlaced = -1;
 
     private void Awake()
     {
-        fieldSprite = GetComponent<SpriteRenderer>();
-    }
-
-    public void CrowComes()
-    {
-        crowGO.SetActive(true);
-    }
-
-    public void CrowGoes()
-    {
-        crowGO.SetActive(false);
+        buildingSprite = GetComponent<SpriteRenderer>();
     }
 
     public override void OnMouseTouchUp()
     {
         base.OnMouseTouchUp();
-        if (inPlantingMode && state == FieldState.NONE)
+        if (inPlantingMode && state == BuildingState.IDLE)
         {
-            PlantSeed();
+            AddToProductionQueue(itemIDToBePlaced);
             return;
         }
-        if (OnFieldClicked != null)
-        {
-            OnFieldClicked.Invoke(fieldID, sourceID);
-        }
+        FieldManager.Instance.OnBuildingClicked(buildingID, sourceID);
     }
 
-    private void PlantSeed()
+    public override void AddToProductionQueue(int itemId)
     {
-        itemID = itemIDToBePlaced;
-        dateTime = UTC.time.liveDateTime.AddMinutes(ItemDatabase.Instance.items[itemIDToBePlaced].timeRequiredInMins);
-        state = FieldState.GROWING;
-        string plantName = ItemDatabase.Instance.items[itemIDToBePlaced].slug + "_0";
+        base.AddToProductionQueue(itemId);
+        string plantName = ItemDatabase.Instance.items[itemId].slug + "_0";
         plantsSprite.sprite = AtlasBank.Instance.GetSprite(plantName, AtlasType.Farming);
-        PlayerProfileManager.Instance.PlayerCoins(-ItemDatabase.Instance.items[itemIDToBePlaced].coinCost);
+        PlayerProfileManager.Instance.PlayerCoins(-ItemDatabase.Instance.items[itemId].coinCost);
         StopPlantingMode();
-        // TODO: Save on disk
     }
 
-    internal void StartPlantingMode(int itemID)
+    internal void StartPlantingMode(int itemId)
     {
         StopGlowing();
         inPlantingMode = true;
-        itemIDToBePlaced = itemID;
+        itemIDToBePlaced = itemId;
         StartGlowing();
     }
 
     internal void StopPlantingMode()
     {
-        if (inPlantingMode)
-        {
-            inPlantingMode = false;
-            itemIDToBePlaced = -1;
-            StopGlowing();
-        }
+        if (!inPlantingMode) { return; }
+
+        inPlantingMode = false;
+        itemIDToBePlaced = -1;
+        StopGlowing();
     }
 
     private void StartGlowing()
     {
-        glowingTweener = fieldSprite.DOColor(ColorConstants.fieldGlow, 0.5f).SetLoops(-1, LoopType.Yoyo);
+        glowingTweener = buildingSprite.DOColor(ColorConstants.fieldGlow, 0.5f).SetLoops(-1, LoopType.Yoyo);
     }
 
     private void StopGlowing()
     {
-        if (glowingTweener != null)
-        {
-            glowingTweener.Kill();
-            glowingTweener = null;
-            fieldSprite.color = ColorConstants.fieldNormal;
-        }
+        if (glowingTweener == null) { return; }
+
+        glowingTweener.Kill();
+        glowingTweener = null;
+        buildingSprite.color = ColorConstants.fieldNormal;
     }
 }

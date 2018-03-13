@@ -23,7 +23,7 @@ namespace HarvestValley.Managers
 
         private void Start()
         {
-            ClickableField.OnFieldClicked += OnBuildingClickedEventHandler;
+            //ClickableField.OnBuildingClicked += OnBuildingClickedEventHandler;
             OneTimeOnly();
             Init();
             ToggleFieldSelector(false);
@@ -67,13 +67,13 @@ namespace HarvestValley.Managers
             FieldGO[field.id] = Instantiate(fieldPrefab, transform);
             FieldGO[field.id].transform.localPosition = field.pos;
             FieldGO[field.id].gameObject.name = "Field" + field.id;
-            FieldGO[field.id].fieldSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.Instance.sources[field.fieldID].slug, AtlasType.Buildings);
-            FieldGO[field.id].fieldID = field.id;
+            FieldGO[field.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.Instance.sources[field.fieldID].slug, AtlasType.Buildings);
+            FieldGO[field.id].buildingID = field.id;
             FieldGO[field.id].sourceID = field.fieldID;
             FieldGO[field.id].pos = field.pos;
             FieldGO[field.id].level = field.level;
             FieldGO[field.id].itemID = field.itemID;
-            FieldGO[field.id].state = (FieldState)field.state;
+            FieldGO[field.id].state = (BuildingState)field.state;
             FieldGO[field.id].unlockedQueueSlots = field.unlockedQueueSlots;
             FieldGO[field.id].dateTime = DateTime.Parse(field.dateTime);
             CalculateFeildCrop(FieldGO[field.id]);
@@ -88,12 +88,12 @@ namespace HarvestValley.Managers
 
                 switch (FieldGO[i].state)
                 {
-                    case FieldState.NONE:
+                    case BuildingState.IDLE:
                         break;
-                    case FieldState.GROWING:
+                    case BuildingState.WORKING:
                         CalculateFeildCrop(FieldGO[i]);
                         break;
-                    case FieldState.WAITING_FOR_HARVEST:
+                    case BuildingState.DONE:
                         break;
                     default:
                         break;
@@ -127,7 +127,7 @@ namespace HarvestValley.Managers
             else if (timeElapsedInSeconds <= 0) // 0 mature
             {
                 ChangeFarmPlantSprite(field, PlantStage.MATURE);
-                field.state = FieldState.WAITING_FOR_HARVEST;
+                field.state = BuildingState.DONE;
                 field.dateTime = new System.DateTime();
             }
         }
@@ -172,7 +172,7 @@ namespace HarvestValley.Managers
         {
             for (int i = 0; i < FieldGO.Length; i++)
             {
-                if (FieldGO[i].state == FieldState.NONE)
+                if (FieldGO[i].state == BuildingState.IDLE)
                 {
                     FieldGO[i].StartPlantingMode(itemID);
                 }
@@ -286,21 +286,10 @@ namespace HarvestValley.Managers
         {
             PlayerInventoryManager.Instance.UpdateFarmItems(FieldGO[fieldID].itemID, 1);
             PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.Instance.items[FieldGO[fieldID].itemID].XPperYield);
-            FieldGO[fieldID].state = FieldState.NONE;
+            FieldGO[fieldID].state = BuildingState.IDLE;
             FieldGO[fieldID].dateTime = new System.DateTime();
             FieldGO[fieldID].itemID = -1;
             FieldGO[fieldID].plantsSprite.sprite = new Sprite();
-        }
-
-        public void DisableAnyOpenMenus()
-        {
-            for (int i = 0; i < FieldGO.Length; i++)
-            {
-                if (FieldGO[i] != null)
-                {
-                    FieldGO[i].isSelected = false;
-                }
-            }
         }
 
         public void AddNewField(Vector2 pos, int fieldID)
@@ -315,8 +304,8 @@ namespace HarvestValley.Managers
 
         private void SelectField()
         {
-            if (FieldGO[currentSelectedBuildingID].state == FieldState.NONE ||
-                FieldGO[currentSelectedBuildingID].state == FieldState.GROWING)
+            if (FieldGO[currentSelectedBuildingID].state == BuildingState.IDLE ||
+                FieldGO[currentSelectedBuildingID].state == BuildingState.WORKING)
             {
                 ToggleFieldSelector(true);
                 fieldSelector.SetParent(FieldGO[currentSelectedBuildingID].transform);
@@ -344,25 +333,25 @@ namespace HarvestValley.Managers
             currentSelectedBuildingID = -1;
         }
 
-        #endregion
+        #endregion 
 
         #region OnMouse Functions
 
-        public override void OnBuildingClickedEventHandler(int buildingID, int sourceID)
+        public override void OnBuildingClicked(int buildingID, int sourceID)
         {
-            base.OnBuildingClickedEventHandler(buildingID, sourceID);
+            base.OnBuildingClicked(buildingID, sourceID);
             SelectField();
             switch (FieldGO[buildingID].state)
             {
-                case FieldState.NONE:
+                case BuildingState.IDLE:
                     MenuManager.Instance.DisplayMenu(MenuNames.SeedList, MenuOpeningType.CloseAll);
                     MenuManager.Instance.DisplayMenu(MenuNames.FieldUpgrade, MenuOpeningType.OnTop);
                     break;
-                case FieldState.GROWING:
+                case BuildingState.WORKING:
                     MenuManager.Instance.DisplayMenu(MenuNames.FieldProgress, MenuOpeningType.CloseAll);
                     MenuManager.Instance.DisplayMenu(MenuNames.FieldUpgrade, MenuOpeningType.OnTop);
                     break;
-                case FieldState.WAITING_FOR_HARVEST:
+                case BuildingState.DONE:
                     MenuManager.Instance.CloseAllMenu();
                     CollectItemsOnFields(buildingID); // Directly collect/harvest on feild click
                     break;
@@ -378,7 +367,7 @@ namespace HarvestValley.Managers
             foreach (var item in fields)
             {
                 item.pos = FieldGO[item.id].transform.localPosition;
-                item.id = FieldGO[item.id].fieldID;
+                item.id = FieldGO[item.id].buildingID;
                 item.fieldID = FieldGO[item.id].sourceID;
                 item.level = FieldGO[item.id].level;
                 item.state = (sbyte)FieldGO[item.id].state;
@@ -427,13 +416,6 @@ public class Fields  // iLIST
         dateTime = f_dateTime;
     }
 }
-
-public enum FieldState
-{
-    NONE,
-    GROWING,
-    WAITING_FOR_HARVEST
-};
 
 public enum PlantStage
 {

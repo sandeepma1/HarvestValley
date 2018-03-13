@@ -1,19 +1,20 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using HarvestValley.Managers;
 
-public class DropOnUIElement : MonoBehaviour, IDropHandler
+namespace HarvestValley.Ui
 {
-    public void OnDrop(PointerEventData eventData)
+    public class DropOnUIElement : MonoBehaviour, IDropHandler
     {
-        switch (eventData.pointerDrag.tag)
-        {
-            case "DragableUiItem":
+        private UiDraggableItem item;
 
-                break;
-            default:
-                //SeedListMenu.Instance.OnItemDropComplete();
-                break;
+        public void OnDrop(PointerEventData eventData)
+        {
+            item = eventData.pointerDrag.gameObject.GetComponent<UiDraggableItem>();
+
+            if (item == null) { return; }
+
+            BuildingManager.Instance.ItemDragged(item.itemID);
         }
     }
 }

@@ -14,15 +14,15 @@ namespace HarvestValley.Managers
 
         private void Start()
         {
-            ClickableBuilding.OnBuildingClicked += OnBuildingClickedEventHandler;
+            //ClickableBuilding.OnBuildingClicked += OnBuildingClickedEventHandler;
             OneTimeOnly();
             Init();
             //ToggleFieldSelector(false);
         }
 
-        public override void OnBuildingClickedEventHandler(int buildingID, int sourceID)
+        public override void OnBuildingClicked(int buildingID, int sourceID)
         {
-            base.OnBuildingClickedEventHandler(buildingID, sourceID);
+            base.OnBuildingClicked(buildingID, sourceID);
             MenuManager.Instance.DisplayMenu(MenuNames.BuildingMenu, MenuOpeningType.CloseAll);
 
             switch (BuildingsGO[buildingID].state)
@@ -76,6 +76,7 @@ namespace HarvestValley.Managers
                 print(ES2.Exists("AllBuildings"));
 
                 buildings.Add(new Buildings(0, 2, "Building", 0, 0, System.DateTime.UtcNow.ToString()));
+                //buildings.Add(new Buildings(0, 3, "Building", 0, 0, System.DateTime.UtcNow.ToString()));
 
                 ES2.Save(buildings, "AllBuildings");
                 PlayerPrefs.SetInt("firstBuilding", 1);
@@ -97,6 +98,11 @@ namespace HarvestValley.Managers
                 item.dateTime = BuildingsGO[item.id].dateTime.ToString();
             }
             ES2.Save(buildings, "AllBuildings");
+        }
+
+        public void ItemDragged(int itemId)
+        {
+            BuildingsGO[currentSelectedBuildingID].AddToProductionQueue(itemId);
         }
     }
 }

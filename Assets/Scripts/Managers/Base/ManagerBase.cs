@@ -7,7 +7,7 @@ namespace HarvestValley.Managers
         internal int currentSelectedBuildingID = -1;
         internal int currentlSelectedSourceID = -1;
 
-        public virtual void OnBuildingClickedEventHandler(int buildingID, int sourceID)
+        public virtual void OnBuildingClicked(int buildingID, int sourceID)
         {
             currentSelectedBuildingID = buildingID;
             currentlSelectedSourceID = sourceID;

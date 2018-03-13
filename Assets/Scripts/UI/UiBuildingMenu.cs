@@ -11,7 +11,6 @@ namespace HarvestValley.Ui
     {
         [SerializeField]
         private UiDraggableItem uiDraggableItemPrefab;
-
         [SerializeField]
         private TextMeshProUGUI buildingName;
         [SerializeField]
@@ -46,6 +45,7 @@ namespace HarvestValley.Ui
                 return;
             }
             PopulateBuildingItems();
+            PopulateBuildingQueue();
         }
 
         private void PopulateBuildingItems()
@@ -75,7 +75,11 @@ namespace HarvestValley.Ui
                 menuItems[i].itemID = item.itemID;
                 menuItems[i].itemName = item.name;
             }
-            print("PopulateBuildingItems" + unlockedBuildingItemID.Count);
+        }
+
+        private void PopulateBuildingQueue()
+        {
+
         }
 
         private void CreateItems()

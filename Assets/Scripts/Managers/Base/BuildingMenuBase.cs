@@ -26,7 +26,6 @@ namespace HarvestValley.Ui
                     unlockedItemIDs.Add(unlockedId);
                 }
             }
-            print("Checked all unlocked items " + unlockedItemIDs.Count);
             UpdateSeedItems();
         }
 
