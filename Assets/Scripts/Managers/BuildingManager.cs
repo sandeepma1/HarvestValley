@@ -61,18 +61,27 @@ namespace HarvestValley.Managers
             BuildingsGO[building.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.Instance.sources[building.buildingID].slug, AtlasType.Buildings);
             BuildingsGO[building.id].buildingId = building.id;
             BuildingsGO[building.id].sourceId = building.buildingID;
-            BuildingsGO[building.id].itemId = building.itemID;
+
+            BuildingsGO[building.id].PopulateBuildingQueueFromSave(building.itemID, building.dateTime);
             BuildingsGO[building.id].unlockedQueueSlots = building.unlockedQueueSlots;
+
             BuildingsGO[building.id].state = (BuildingState)building.state;
-            BuildingsGO[building.id].dateTime = new DateTime[GEM.maxQCount];
-            for (int i = 0; i < GEM.maxQCount; i++)
-            {
-                BuildingsGO[building.id].dateTime[i] = DateTime.Parse(building.dateTime[i]);
-            }
+
+            //BuildingsGO[building.id].dateTime = new DateTime[GEM.maxQCount];
+
+            //for (int i = 0; i < GEM.maxQCount; i++)
+            //{
+            //    BuildingsGO[building.id].dateTime[i] = DateTime.Parse(building.dateTime[i]);
+            //}
 
             //CalculateFeildCrop(buildingsGO[building.id]);
         }
         #endregion
+
+        public void ItemDroppedInZone(int itemId)
+        {
+            BuildingsGO[currentSelectedBuildingID].AddToProductionQueue(itemId);
+        }
 
         private void OneTimeOnly()
         {
@@ -106,24 +115,21 @@ namespace HarvestValley.Managers
                 //item.level = buildingsGO[item.id].level;
                 item.state = (sbyte)BuildingsGO[item.id].state;
                 item.unlockedQueueSlots = BuildingsGO[item.id].unlockedQueueSlots;
-                item.itemID = BuildingsGO[item.id].itemId;
-                for (int i = 0; i < item.dateTime.Length; i++)
-                {
-                    item.dateTime[i] = BuildingsGO[item.id].dateTime[i].ToString();
-                }
 
+                BuildingQueue[] currentQueue = BuildingsGO[item.id].CurrentItemsInQueue();
+
+                for (int i = 0; i < currentQueue.Length; i++)
+                {
+                    item.itemID[i] = currentQueue[i].id;
+                    item.dateTime[i] = currentQueue[i].dateTime.ToString();
+                }
             }
             ES2.Save(buildings, "AllBuildings");
-        }
-
-        public void ItemDragged(int itemId)
-        {
-            BuildingsGO[currentSelectedBuildingID].AddToProductionQueue(itemId);
         }
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class Buildings  // iLIST
 {
     public int id;
@@ -164,3 +170,10 @@ public enum BuildingStage
     PLANT,
     MATURE
 };
+
+[Serializable]
+public struct BuildingQueue
+{
+    public int id;
+    public DateTime dateTime;
+}

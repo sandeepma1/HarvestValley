@@ -14,7 +14,7 @@ namespace HarvestValley.Ui
 
             if (item == null) { return; }
 
-            BuildingManager.Instance.ItemDragged(item.itemID);
+            BuildingManager.Instance.ItemDroppedInZone(item.itemID);
         }
     }
 }

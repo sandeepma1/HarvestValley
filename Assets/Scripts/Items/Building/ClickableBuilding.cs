@@ -1,6 +1,7 @@
 ﻿using HarvestValley.Managers;
 using System;
 using HarvestValley.Ui;
+using System.Collections.Generic;
 
 public class ClickableBuilding : ClickableBase
 {
@@ -8,37 +9,45 @@ public class ClickableBuilding : ClickableBase
     public DateTime[] dateTime;
     public int unlockedQueueSlots;
 
+    private Queue<BuildingQueue> buildingQueue = new Queue<BuildingQueue>();
+
     public override void OnMouseTouchUp()
     {
         base.OnMouseTouchUp();
         BuildingManager.Instance.OnBuildingClicked(buildingId, sourceId);
     }
 
-    public override void AddToProductionQueue(int itemIdToAdd) // Todo: write better code :(
+    public override void AddToProductionQueue(int itemIdToAdd)
     {
         base.AddToProductionQueue(itemIdToAdd);
-
-        for (int i = 0; i < itemId.Length; i++)
+        if (buildingQueue.Count >= unlockedQueueSlots)
         {
-            if (i > unlockedQueueSlots)
-            {
-                print("Queue slots are full or");
-                break;
-            }
-            if (itemId[i] == -1)
-            {
-                itemId[i] = itemIdToAdd;
-                dateTime[i] = UTC.time.liveDateTime.AddMinutes(ItemDatabase.Instance.items[itemIdToAdd].timeRequiredInMins);
-                UiBuildingMenu.Instance.AddNewQueueItem(itemIdToAdd, i);
-                break;
-            }
-            else
-            {
-                print("Queue slots are full");
-            }
+            print("Queue slots are full unlock slots by gems!!");//TODO: Gems window popup
+            return;
         }
-        state = BuildingState.WORKING;
+        BuildingQueue queueItem = new BuildingQueue()
+        {
+            id = itemIdToAdd,
+            dateTime = UTC.time.liveDateTime.AddMinutes(ItemDatabase.Instance.items[itemIdToAdd].timeRequiredInMins)
+        };
 
-        //TODO: minus products required for this item not coins
+        buildingQueue.Enqueue(queueItem);
+        print("item added");
+        state = BuildingState.WORKING;
+        //TODO: minus products required for this item not coins       
+    }
+
+    public void PopulateBuildingQueueFromSave(int[] ids, string[] dateTime)
+    {
+        for (int i = 0; i < ids.Length; i++)
+        {
+            BuildingQueue queueItem = new BuildingQueue() { id = ids[i], dateTime = DateTime.Parse(dateTime[i]) };
+            buildingQueue.Enqueue(queueItem);
+        }
+    }
+
+    public BuildingQueue[] CurrentItemsInQueue()
+    {
+        return buildingQueue.ToArray();
     }
 }

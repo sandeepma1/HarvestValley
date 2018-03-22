@@ -46,7 +46,6 @@ namespace HarvestValley.Managers
             if (PlayerPrefs.GetInt("firstField") == 0)
             {
                 ES2.Delete("AllFields");
-                print(ES2.Exists("AllFields"));
                 int counter = 0;
                 for (int i = 0; i < x; i++)
                 {

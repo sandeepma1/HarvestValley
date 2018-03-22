@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using HarvestValley.Managers;
 using System.Collections.Generic;
-using System;
+using System.Collections;
 
 namespace HarvestValley.Ui
 {
@@ -26,7 +26,7 @@ namespace HarvestValley.Ui
 
         internal Canvas mainCanvas;
 
-        private UiDraggableItem[] menuItems; // making this array as not more than 8 items will be in building menu
+        private UiDraggableItem[] menuItems; // making this array as not more than 9 items will be in building menu
         [SerializeField]
         private UiQueueItem[] queueItems;
         private List<int> unlockedBuildingItemID = new List<int>();
