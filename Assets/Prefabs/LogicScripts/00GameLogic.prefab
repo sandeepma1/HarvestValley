@@ -38,13 +38,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4853374488713074}
   - component: {fileID: 114377816364355028}
+  - component: {fileID: 114084501453809250}
   - component: {fileID: 114063862326420810}
-  - component: {fileID: 114197911169573826}
   - component: {fileID: 114759121109180948}
   - component: {fileID: 114072758492999254}
   - component: {fileID: 114770785557096028}
   - component: {fileID: 114187831897214272}
-  - component: {fileID: 114084501453809250}
   m_Layer: 0
   m_Name: 00GameLogic
   m_TagString: Untagged
@@ -132,22 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e13a9337b38073459e7588198c38f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114197911169573826
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811772467946392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45a69780fb206c741a340d17878aa15e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinsUIText: {fileID: 0}
-  gemsUIText: {fileID: 0}
-  staminaUIText: {fileID: 0}
-  levelUIText: {fileID: 0}
-  XPPointsUIText: {fileID: 0}
 --- !u!114 &114377816364355028
 MonoBehaviour:
   m_ObjectHideFlags: 1

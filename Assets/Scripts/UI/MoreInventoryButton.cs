@@ -43,7 +43,7 @@ public class MoreInventoryButton : MonoBehaviour
 
     public void LoadMainScene()
     {
-        SceneManager.LoadScene("Main");
+        // SceneManager.LoadScene("Main");
     }
 
     public void ToggleInventorySize(bool isInventoryDown)
@@ -57,7 +57,8 @@ public class MoreInventoryButton : MonoBehaviour
             mainUIWindow.anchoredPosition = new Vector3(mainUIWindow.anchoredPosition.x, heightAdjuster);
             //mainUIWindow.anchoredPosition = Vector3.zero;
             GEM.SetMenuState(GEM.E_MenuState.e_menuDown);
-        } else
+        }
+        else
         {
             inventoryMenu.GetComponent<RectTransform>().SetSiblingIndex(tabIndex);
             GEM.SetState(GEM.E_STATES.e_pause);
@@ -73,7 +74,8 @@ public class MoreInventoryButton : MonoBehaviour
         {
             Camera.main.transform.position = new Vector3(12f, 0, -200);
             Camera.main.orthographicSize = 9.5f;
-        } else
+        }
+        else
         {
             Camera.main.transform.position = new Vector3(0, 0, -200);
             Camera.main.orthographicSize = 8f;
@@ -89,7 +91,8 @@ public class MoreInventoryButton : MonoBehaviour
             GEM.SetState(GEM.E_STATES.e_game);
             mainUIWindow.anchoredPosition = new Vector3(mainUIWindow.anchoredPosition.x, heightAdjuster);
             GEM.SetMenuState(GEM.E_MenuState.e_menuDown);
-        } else
+        }
+        else
         {
             craftingMenu.GetComponent<RectTransform>().SetSiblingIndex(tabIndex);
             GEM.SetState(GEM.E_STATES.e_pause);

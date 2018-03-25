@@ -101,7 +101,6 @@ namespace HarvestValley.Managers
 
                 ES2.Save(buildings, "AllBuildings");
                 PlayerPrefs.SetInt("firstBuilding", 1);
-                StartCoroutine("RestartGame");
             }
         }
 
@@ -117,7 +116,6 @@ namespace HarvestValley.Managers
                 item.unlockedQueueSlots = BuildingsGO[item.id].unlockedQueueSlots;
 
                 BuildingQueue[] currentQueue = BuildingsGO[item.id].CurrentItemsInQueue();
-
                 for (int i = 0; i < currentQueue.Length; i++)
                 {
                     item.itemID[i] = currentQueue[i].id;

@@ -57,7 +57,6 @@ namespace HarvestValley.Managers
                 }
                 ES2.Save(fields, "AllFields");
                 PlayerPrefs.SetInt("firstField", 1);
-                StartCoroutine("RestartGame");
             }
         }
 
@@ -377,7 +376,7 @@ namespace HarvestValley.Managers
 
         IEnumerator RestartGame()
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(5);
             SceneManager.LoadScene("Main");
         }
     }

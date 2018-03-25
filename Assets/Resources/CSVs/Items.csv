@@ -1,5 +1,5 @@
 id,name,description,unlocksAtLevel,timeRequiredInMins,XP,type,coinCost,gemCost,sourceID,noOfWatering,baseYieldMin,baseYieldMax,sellValueMin,sellValueMax,noOfFertilizer,needID1,needAmount1,needID2,needAmount2,needID3,needAmount3,needID4,needAmount4,slug
-0,Wheat,Descriptions,0,0.1,25,Crops,25,2,0,3,2,4,20,30,2,0,1,-1,0,-1,0,-1,0,wheat
+0,Wheat,Descriptions,0,0.01,150,Crops,25,2,0,3,2,4,20,30,2,0,1,-1,0,-1,0,-1,0,wheat
 1,Bread,Descriptions,1,0.1,25,Products,26,3,2,-1,1,1,21,31,-1,0,2,-1,0,-1,0,-1,0,bread
 2,Corn,Descriptions,2,0.15,35,Crops,26,3,0,4,2,4,21,31,3,1,1,-1,0,-1,0,-1,0,corn
 3,Butter,Descriptions,3,0.15,45,Products,27,4,3,5,1,1,50,60,4,0,3,-1,0,-1,0,-1,0,butter

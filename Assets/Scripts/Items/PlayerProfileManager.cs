@@ -12,7 +12,7 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
     private PlayersProfile playerProfile = null;
     private bool isLevelUpReady;
 
-    void Awake()
+    private void Awake()
     {
         NewGameStart();
         playerProfile = ES2.Load<PlayersProfile>("playerProfile");
@@ -20,7 +20,7 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
         UpdateAll();
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
         if (isLevelUpReady && !Input.anyKey)
         {

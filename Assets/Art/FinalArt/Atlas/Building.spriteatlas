@@ -41,6 +41,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 19ea9265f8a8fd041893108621ac92cf, type: 3}
     - {fileID: 2800000, guid: 6f15ee12a4bf68640ba6e5d880231527, type: 3}
     - {fileID: 2800000, guid: ed916683220211840ab1d7c7ba8972d1, type: 3}
+    - {fileID: 21300000, guid: c44d54f5f270dbb418e836a2d425a282, type: 3}
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -52,6 +53,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: bf96b63c16a5bb34c8e9f57984c1a75c, type: 3}
   - {fileID: 21300000, guid: 0a8717ab6e7be4a4790f45c4c5893679, type: 3}
   - {fileID: 21300000, guid: 6f15ee12a4bf68640ba6e5d880231527, type: 3}
+  - {fileID: 21300000, guid: c44d54f5f270dbb418e836a2d425a282, type: 3}
   - {fileID: 21300000, guid: 069787f60ef1750469ad4df0b7fba4eb, type: 3}
   - {fileID: 21300000, guid: c35b052e1a7883f4c875f37b0273044a, type: 3}
   - {fileID: 21300000, guid: 911f4861c12fa194d89e6eaa7b31c83d, type: 3}
@@ -66,6 +68,7 @@ SpriteAtlas:
   - loom
   - dairy
   - smelter
+  - Blockx100
   - popcornpot
   - bakery
   - bbqgrill

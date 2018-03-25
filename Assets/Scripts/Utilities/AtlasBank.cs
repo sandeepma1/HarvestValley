@@ -1,23 +1,21 @@
 ﻿using UnityEngine.U2D;
 using UnityEngine;
 
-public class AtlasBank : Singleton<AtlasBank>
+public class AtlasBank : MonoBehaviour
 {
+    public static AtlasBank Instance = null;
     [SerializeField]
     private SpriteAtlas guiAtlas;
     [SerializeField]
     private SpriteAtlas farmingAtlas;
     [SerializeField]
     private SpriteAtlas buildingAtlas;
-    [SerializeField]
     private Sprite missingSprite;
 
-    private void Start()
+    private void Awake()
     {
-        if (missingSprite == null)
-        {
-            Debug.LogError("Placeholder sprite in Atlas Banks is missing, assign in editor");
-        }
+        Instance = this;
+        missingSprite = GetSprite("Blockx100", AtlasType.Buildings);
     }
 
     public Sprite GetSprite(string name, AtlasType type)

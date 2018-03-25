@@ -44,6 +44,13 @@ namespace HarvestValley.Ui
 
         private void OnEnable()
         {
+            if (BuildingManager.Instance == null)
+            {
+                selectedBuildingID = -1;
+                selectedSourceID = -1;
+                return;
+            }
+
             selectedBuildingID = BuildingManager.Instance.currentSelectedBuildingID;
             selectedSourceID = BuildingManager.Instance.currentlSelectedSourceID;
 
