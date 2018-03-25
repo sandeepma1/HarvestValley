@@ -38,13 +38,13 @@ namespace HarvestValley.Ui
             imageImageTransform = helper.itemImage.GetComponent<Transform>();
             itemImage = imageImageTransform.GetComponent<Image>();
             selectedItemID = -1;
-            itemImage.color = ColorConstants.dehighlightedUiItem;
+            itemImage.color = ColorConstants.DehighlightedUiItem;
             itemNameText.text = "Locked";
         }
 
         public void ItemUnlocked()
         {
-            itemImage.color = ColorConstants.normalUiItem;
+            itemImage.color = ColorConstants.NormalUiItem;
             itemNameText.text = itemName;
         }
 

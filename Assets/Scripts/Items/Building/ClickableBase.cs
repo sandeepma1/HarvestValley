@@ -21,7 +21,7 @@ public class ClickableBase : MouseUpBase
         base.OnMouseTouchUp();
     }
 
-    public virtual void AddToProductionQueue(int itemId)
+    public virtual void AddItemToProductionQueue(int itemId)
     {
         //Nothing at the moment
     }

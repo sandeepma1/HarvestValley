@@ -84,7 +84,7 @@ public class Item
     public string name;                 //1
     public string description;
     public int unlocksAtLevel;
-    public float timeRequiredInMins;
+    public float timeRequiredInSeconds;
     public int XPperYield;
     public ItemType type;
     public int coinCost;
@@ -110,7 +110,7 @@ public class Item
     public string slug;
 
     public Item(int itemId, string itemName, string itemDescription, int itemUnlocksAtLevel,
-                 float itemTimeRequiredInMins, int itemXP, ItemType itemType, int itemCoinCost, int itemGemCost, int itemSourceID,
+                 float itemTimeRequiredInSeconds, int itemXP, ItemType itemType, int itemCoinCost, int itemGemCost, int itemSourceID,
                  int itemNoOfWatering, int itemBaseYieldMin, int itemBaseYieldMax, int itemSellValueMin, int itemSellValueMax,
                  int itemNoOfFertilizer, int itemNeedID1, int itemNeedAmount1, int itemNeedID2, int itemNeedAmount2,
                  int itemNeedID3, int itemNeedAmount3, int itemNeedID4, int itemNeedAmount4, string itemSlug)
@@ -119,7 +119,7 @@ public class Item
         name = itemName;
         description = itemDescription;
         unlocksAtLevel = itemUnlocksAtLevel;
-        timeRequiredInMins = itemTimeRequiredInMins;
+        timeRequiredInSeconds = itemTimeRequiredInSeconds;
         XPperYield = itemXP;
         type = itemType;
         coinCost = itemCoinCost;

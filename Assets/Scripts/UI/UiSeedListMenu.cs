@@ -15,19 +15,25 @@ namespace HarvestValley.Ui
         [SerializeField]
         private TextMeshProUGUI topInfoText;
         private Transform topInfoParentTransform;
-
         private List<UiClickableItems> menuItems = new List<UiClickableItems>();
+        private bool objectInitialized;
 
         public override void Start()
         {
             CreateSeedItems();
             base.Start();
             topInfoParentTransform = topInfoText.transform.parent;
-            OnDisable();
+            objectInitialized = true;
+            transform.GetChild(0).gameObject.SetActive(false);
         }
 
         private void OnEnable()
         {
+            if (!objectInitialized)
+            {
+                return;
+            }
+
             if (BuildingManager.Instance == null)
             {
                 selectedBuildingID = -1;

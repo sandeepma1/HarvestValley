@@ -66,21 +66,12 @@ namespace HarvestValley.Managers
             BuildingsGO[building.id].unlockedQueueSlots = building.unlockedQueueSlots;
 
             BuildingsGO[building.id].state = (BuildingState)building.state;
-
-            //BuildingsGO[building.id].dateTime = new DateTime[GEM.maxQCount];
-
-            //for (int i = 0; i < GEM.maxQCount; i++)
-            //{
-            //    BuildingsGO[building.id].dateTime[i] = DateTime.Parse(building.dateTime[i]);
-            //}
-
-            //CalculateFeildCrop(buildingsGO[building.id]);
         }
         #endregion
 
         public void ItemDroppedInZone(int itemId)
         {
-            BuildingsGO[currentSelectedBuildingID].AddToProductionQueue(itemId);
+            BuildingsGO[currentSelectedBuildingID].AddItemToProductionQueue(itemId);
         }
 
         private void OneTimeOnly()

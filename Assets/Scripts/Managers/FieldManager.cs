@@ -107,7 +107,7 @@ namespace HarvestValley.Managers
 
             TimeSpan timeElapsed = field.dateTime - DateTime.UtcNow;
             float timeElapsedInSeconds = (float)timeElapsed.TotalSeconds;
-            float divisionFactor = (ItemDatabase.Instance.items[field.sourceId].timeRequiredInMins * 60) / 4;
+            float divisionFactor = (ItemDatabase.Instance.items[field.sourceId].timeRequiredInSeconds) / 4;
 
             if (timeElapsedInSeconds >= divisionFactor * 3) //22.5 seed
             {

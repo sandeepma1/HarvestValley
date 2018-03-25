@@ -10,6 +10,7 @@ public class ClickableBuilding : ClickableBase
     private int timeCompareResult;
     internal Queue<BuildingQueue> buildingQueue = new Queue<BuildingQueue>();
     private DateTime topInQueue = DateTime.UtcNow;
+    private DateTime lastInQueue = DateTime.UtcNow;
 
     private DateTime TopInQueueDateTime
     {
@@ -51,9 +52,9 @@ public class ClickableBuilding : ClickableBase
         BuildingManager.Instance.OnBuildingClicked(buildingId, sourceId);
     }
 
-    public override void AddToProductionQueue(int itemIdToAdd)
+    public override void AddItemToProductionQueue(int itemIdToAdd)
     {
-        base.AddToProductionQueue(itemIdToAdd);
+        base.AddItemToProductionQueue(itemIdToAdd);
 
         if (buildingQueue.Count >= unlockedQueueSlots)
         {
@@ -67,16 +68,16 @@ public class ClickableBuilding : ClickableBase
 
         if (buildingQueue.Count != 0)
         {
-            float seconds = buildingQueue.Peek().dateTime.Second - DateTime.UtcNow.Second;
-            queueItem.dateTime = DateTime.UtcNow.AddSeconds(ItemDatabase.Instance.items[itemIdToAdd].timeRequiredInMins + seconds);
+            queueItem.dateTime = lastInQueue.AddSeconds(ItemDatabase.Instance.items[itemIdToAdd].timeRequiredInSeconds);
         }
         else
         {
-            queueItem.dateTime = DateTime.UtcNow.AddSeconds(ItemDatabase.Instance.items[itemIdToAdd].timeRequiredInMins);
+            queueItem.dateTime = DateTime.UtcNow.AddSeconds(ItemDatabase.Instance.items[itemIdToAdd].timeRequiredInSeconds);
         }
 
         buildingQueue.Enqueue(queueItem);
-        print("item added, in queue " + buildingQueue.Count);
+        lastInQueue = queueItem.dateTime;
+        print("item added, in queue " + " NOW " + DateTime.UtcNow + " ADD " + queueItem.dateTime + " CNT " + buildingQueue.Count);
         state = BuildingState.WORKING;
         TopInQueueDateTime = buildingQueue.Peek().dateTime;
         ChangedInBuilding();
@@ -104,10 +105,16 @@ public class ClickableBuilding : ClickableBase
         return buildingQueue.ToArray();
     }
 
+    public void NewQueueSlotButtonPressed()
+    {
+        unlockedQueueSlots++;
+        ChangedInBuilding();
+    }
+
     private void ChangedInBuilding()
     {
         BuildingManager.Instance.SaveBuildings();
-        if (UiBuildingMenu.Instance.gameObject.activeInHierarchy)
+        if (UiBuildingMenu.Instance.isActiveAndEnabled)
         {
             UiBuildingMenu.Instance.UpdateUiBuildingQueue();
         }

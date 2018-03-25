@@ -29,7 +29,7 @@ namespace HarvestValley.Ui
         internal void ItemIsUnlocked()
         {
             isItemUnlocked = true;
-            itemImage.color = ColorConstants.normalUiItem;
+            itemImage.color = ColorConstants.NormalUiItem;
             itemNameText.text = itemName;
             itemCostText.text = itemCost.ToString();
         }

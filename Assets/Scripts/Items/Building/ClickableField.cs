@@ -2,6 +2,7 @@
 using DG.Tweening;
 using HarvestValley.Managers;
 using System;
+using HarvestValley.Ui;
 
 public class ClickableField : ClickableBase
 {
@@ -24,17 +25,17 @@ public class ClickableField : ClickableBase
         base.OnMouseTouchUp();
         if (inPlantingMode && state == BuildingState.IDLE)
         {
-            AddToProductionQueue(itemIDToBePlaced);
+            AddItemToProductionQueue(itemIDToBePlaced);
             return;
         }
         FieldManager.Instance.OnBuildingClicked(buildingId, sourceId);
     }
 
-    public override void AddToProductionQueue(int itemId)
+    public override void AddItemToProductionQueue(int itemId)
     {
-        base.AddToProductionQueue(itemId);
+        base.AddItemToProductionQueue(itemId);
         this.itemId = itemId;
-        dateTime = DateTime.UtcNow.AddSeconds(ItemDatabase.Instance.items[itemId].timeRequiredInMins);
+        dateTime = DateTime.UtcNow.AddSeconds(ItemDatabase.Instance.items[itemId].timeRequiredInSeconds);
         state = BuildingState.WORKING;
 
         string plantName = ItemDatabase.Instance.items[itemId].slug + "_0";
@@ -62,7 +63,7 @@ public class ClickableField : ClickableBase
 
     private void StartGlowing()
     {
-        glowingTweener = buildingSprite.DOColor(ColorConstants.fieldGlow, 0.5f).SetLoops(-1, LoopType.Yoyo);
+        glowingTweener = buildingSprite.DOColor(ColorConstants.FieldGlow, 0.5f).SetLoops(-1, LoopType.Yoyo);
     }
 
     private void StopGlowing()
@@ -71,6 +72,6 @@ public class ClickableField : ClickableBase
 
         glowingTweener.Kill();
         glowingTweener = null;
-        buildingSprite.color = ColorConstants.fieldNormal;
+        buildingSprite.color = ColorConstants.FieldNormal;
     }
 }

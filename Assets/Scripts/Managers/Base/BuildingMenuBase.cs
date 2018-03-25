@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace HarvestValley.Ui
@@ -31,5 +32,34 @@ namespace HarvestValley.Ui
 
         public virtual void UpdateSeedItems()
         { }
+
+        protected string TimeRemaining(DateTime dateTime)
+        {
+            string timeRemaining = "";
+            TimeSpan timeSpan;
+            timeSpan = dateTime.Subtract(DateTime.UtcNow);
+
+            if (timeSpan <= new TimeSpan(360, 0, 0, 0))
+            { //> 1year
+                timeRemaining = timeSpan.Days.ToString() + "d " + timeSpan.Hours.ToString() + "h";
+            }
+            if (timeSpan <= new TimeSpan(1, 0, 0, 0))
+            { //> 1day
+                timeRemaining = timeSpan.Hours.ToString() + "h " + timeSpan.Minutes.ToString() + "m";
+            }
+            if (timeSpan <= new TimeSpan(0, 1, 0, 0))
+            { //> 1hr
+                timeRemaining = timeSpan.Minutes.ToString() + "m " + timeSpan.Seconds.ToString() + "s";
+            }
+            if (timeSpan <= new TimeSpan(0, 0, 1, 0))
+            { // 1min
+                timeRemaining = timeSpan.Seconds.ToString() + "s";
+            }
+            if (timeSpan <= new TimeSpan(0, 0, 0, 0))
+            {
+                timeRemaining = "";
+            }
+            return timeRemaining;
+        }
     }
 }

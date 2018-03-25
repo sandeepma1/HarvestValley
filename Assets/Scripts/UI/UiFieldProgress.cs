@@ -5,7 +5,7 @@ using HarvestValley.Managers;
 
 namespace HarvestValley.Ui
 {
-    public class UiFieldProgress : Singleton<UiFieldProgress>
+    public class UiFieldProgress : BuildingMenuBase<UiBuildingMenu>
     {
         [SerializeField]
         private TextMeshProUGUI cropNameText;
@@ -13,11 +13,9 @@ namespace HarvestValley.Ui
         private TextMeshProUGUI timeRemainingText;
 
         private int selectedFieldID = -1;
-        private int selectedSourceID = -1;
-        private TimeSpan remainingTime;
         private Item selectedItem;
 
-        private void Start()
+        public override void Start()
         {
             Debug.Assert(cropNameText != null);
             Debug.Assert(timeRemainingText != null);
@@ -37,28 +35,7 @@ namespace HarvestValley.Ui
 
         private void Update()
         {
-            remainingTime = FieldManager.Instance.FieldGO[selectedFieldID].dateTime.Subtract(System.DateTime.UtcNow);
-
-            if (remainingTime <= new System.TimeSpan(360, 0, 0, 0))
-            { //> 1year
-                timeRemainingText.text = remainingTime.Days.ToString() + "d " + remainingTime.Hours.ToString() + "h";
-            }
-            if (remainingTime <= new System.TimeSpan(1, 0, 0, 0))
-            { //> 1day
-                timeRemainingText.text = remainingTime.Hours.ToString() + "h " + remainingTime.Minutes.ToString() + "m";
-            }
-            if (remainingTime <= new System.TimeSpan(0, 1, 0, 0))
-            { //> 1hr
-                timeRemainingText.text = remainingTime.Minutes.ToString() + "m " + remainingTime.Seconds.ToString() + "s";
-            }
-            if (remainingTime <= new System.TimeSpan(0, 0, 1, 0))
-            { // 1min
-                timeRemainingText.text = remainingTime.Seconds.ToString() + "s";
-            }
-            if (remainingTime <= new System.TimeSpan(0, 0, 0, 0))
-            { // 1min
-                MenuManager.Instance.CloseAllMenu();
-            }
+            timeRemainingText.text = TimeRemaining(FieldManager.Instance.FieldGO[selectedFieldID].dateTime);
         }
 
         private void UpdateCropName()

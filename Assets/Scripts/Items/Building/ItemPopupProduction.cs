@@ -23,7 +23,7 @@ public class ItemPopupProduction : MonoBehaviour
         transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y + popupOffset, 10));
 
         itemName.text = ItemDatabase.Instance.items[itemID].name;
-        itemDuration.text = ItemDatabase.Instance.items[itemID].timeRequiredInMins.ToString();
+        itemDuration.text = ItemDatabase.Instance.items[itemID].timeRequiredInSeconds.ToString();
         if (ItemDatabase.Instance.items[itemID].needID1 >= 0)
         {
             item1Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[ItemDatabase.Instance.items[itemID].needID1].name);

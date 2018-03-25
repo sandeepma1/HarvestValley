@@ -3,8 +3,6 @@ using UnityEngine.UI;
 using TMPro;
 using HarvestValley.Managers;
 using System.Collections.Generic;
-using System.Collections;
-using System;
 
 namespace HarvestValley.Ui
 {
@@ -12,8 +10,6 @@ namespace HarvestValley.Ui
     {
         [SerializeField]
         private UiDraggableItem uiDraggableItemPrefab;
-        [SerializeField]
-        private UiQueueItem uiQueueItemPrefab;
         [SerializeField]
         private TextMeshProUGUI buildingName;
         [SerializeField]
@@ -24,17 +20,20 @@ namespace HarvestValley.Ui
         private TextMeshProUGUI currentTimerText;
         [SerializeField]
         private TextMeshProUGUI waitingText;
-
-        internal Canvas mainCanvas;
-
-        private UiDraggableItem[] menuItems; // making this array as not more than 9 items will be in building menu
+        [SerializeField]
+        private Button unlockNewSlotButton;
+        [SerializeField]
+        private TextMeshProUGUI unlockSlotGemCostText;
         [SerializeField]
         private UiQueueItem[] queueItems;
+
+        internal Canvas mainCanvas;
+        private UiDraggableItem[] menuItems; // making this array as not more than 9 items will be in building menu       
         private List<int> unlockedBuildingItemID = new List<int>();
-        private ClickableBuilding currentSelectedBuilding;
+        private int selectedBuilUnlQuSlots;
         private bool showTimer;
         BuildingQueue[] buildingQueue;
-        private TimeSpan remainingTime;
+        private bool objectInitialized;
 
         public override void Start()
         {
@@ -44,6 +43,9 @@ namespace HarvestValley.Ui
             base.Start();
             mainCanvas = GetComponent<Canvas>();
             // OnDisable();
+            unlockNewSlotButton.onClick.AddListener(UnlockNewSlotButtonPressed);
+            objectInitialized = true;
+            transform.GetChild(0).gameObject.SetActive(false);
         }
 
         private void Update()
@@ -53,6 +55,13 @@ namespace HarvestValley.Ui
 
         private void OnEnable()
         {
+            if (!objectInitialized)
+            {
+                return;
+            }
+
+            print("UiBuildingMenu");
+
             if (BuildingManager.Instance == null)
             {
                 selectedBuildingID = -1;
@@ -69,7 +78,15 @@ namespace HarvestValley.Ui
             }
             PopulateBuildingItems();
             PopulateBuildingQueue();
+            AddNewSlotForPurchase();
             UpdateUiBuildingQueue();
+        }
+
+        private void UnlockNewSlotButtonPressed()
+        {
+            print("Unlock new slot");
+            BuildingManager.Instance.BuildingsGO[selectedBuildingID].NewQueueSlotButtonPressed();
+            AddNewSlotForPurchase();
         }
 
         public void PopulateBuildingItems()
@@ -103,16 +120,34 @@ namespace HarvestValley.Ui
 
         private void PopulateBuildingQueue()
         {
-            currentSelectedBuilding = BuildingManager.Instance.BuildingsGO[selectedBuildingID];
+            selectedBuilUnlQuSlots = BuildingManager.Instance.BuildingsGO[selectedBuildingID].unlockedQueueSlots;
 
             for (int i = 0; i < GEM.maxQCount; i++)
             {
                 queueItems[i].gameObject.SetActive(false);
             }
 
-            for (int i = 0; i < currentSelectedBuilding.unlockedQueueSlots; i++)
+            for (int i = 0; i < selectedBuilUnlQuSlots; i++)
             {
                 queueItems[i].gameObject.SetActive(true);
+            }
+        }
+
+        //Showing +1 slot to unlock slot by gems
+        private void AddNewSlotForPurchase()
+        {
+            selectedBuilUnlQuSlots = BuildingManager.Instance.BuildingsGO[selectedBuildingID].unlockedQueueSlots;
+
+            if (selectedBuilUnlQuSlots == GEM.maxQCount)
+            {
+                unlockNewSlotButton.transform.SetParent(this.transform);
+                unlockNewSlotButton.gameObject.SetActive(false);
+            }
+            else
+            {
+                queueItems[selectedBuilUnlQuSlots].gameObject.SetActive(true);
+                unlockNewSlotButton.transform.SetParent(queueItems[selectedBuilUnlQuSlots].transform);
+                unlockNewSlotButton.GetComponent<RectTransform>().anchoredPosition3D = Vector3.zero;
             }
         }
 
@@ -120,9 +155,9 @@ namespace HarvestValley.Ui
         {
             buildingQueue = BuildingManager.Instance.BuildingsGO[selectedBuildingID].CurrentItemsInQueue();
 
-            for (int i = 0; i < currentSelectedBuilding.unlockedQueueSlots; i++)
+            for (int i = 0; i < selectedBuilUnlQuSlots; i++)
             {
-                queueItems[i].itemImage.sprite = null;
+                queueItems[i].itemImage.sprite = AtlasBank.Instance.GetSprite("Transperent", AtlasType.GUI);
             }
 
             for (int i = 0; i < buildingQueue.Length; i++)
@@ -152,28 +187,7 @@ namespace HarvestValley.Ui
 
         private void UpdateTimer()
         {
-            remainingTime = buildingQueue[0].dateTime.Subtract(DateTime.UtcNow);
-
-            if (remainingTime <= new TimeSpan(360, 0, 0, 0))
-            { //> 1year
-                currentTimerText.text = remainingTime.Days.ToString() + "d " + remainingTime.Hours.ToString() + "h";
-            }
-            if (remainingTime <= new TimeSpan(1, 0, 0, 0))
-            { //> 1day
-                currentTimerText.text = remainingTime.Hours.ToString() + "h " + remainingTime.Minutes.ToString() + "m";
-            }
-            if (remainingTime <= new TimeSpan(0, 1, 0, 0))
-            { //> 1hr
-                currentTimerText.text = remainingTime.Minutes.ToString() + "m " + remainingTime.Seconds.ToString() + "s";
-            }
-            if (remainingTime <= new TimeSpan(0, 0, 1, 0))
-            { // 1min
-                currentTimerText.text = remainingTime.Seconds.ToString() + "s";
-            }
-            if (remainingTime <= new TimeSpan(0, 0, 0, 0))
-            {
-                currentTimerText.text = "";
-            }
+            currentTimerText.text = TimeRemaining(buildingQueue[0].dateTime);
         }
 
         private void CreateItems()

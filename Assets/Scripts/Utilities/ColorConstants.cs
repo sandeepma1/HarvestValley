@@ -1,19 +1,43 @@
 ﻿using UnityEngine;
+using HarvestValley.Utilities;
 
-public static class ColorConstants
+namespace HarvestValley.Ui
 {
-    #region World space
-    //Feild
-    public static readonly Color fieldGlow = new Color(0.75f, 1, 0);
-    public static readonly Color fieldNormal = new Color(1, 1, 1);
+    [CreateAssetMenu(fileName = "ColorConstants", menuName = "HarvestValley/Singletons/ColorConstants")]
+    public class ColorConstants : ScriptableSingleton<ColorConstants>
+    {
+#if UNITY_EDITOR
+        [UnityEditor.MenuItem("HarvestValley/ColorConstants")]
+        public static void ShowInEditor()
+        {
+            UnityEditor.Selection.activeObject = Instance;
+        }
+#endif
+        #region World space
+        // basic Colors
+        [SerializeField]
+        private Color white = new Color(1, 1, 1);
+        public static Color White { get { return Instance.white; } }
+        #endregion
 
-    // basic Colors
-    public static readonly Color white = new Color(1, 1, 1);
-    #endregion
+        //Feild
+        [SerializeField]
+        private Color fieldGlow = new Color(0.75f, 1, 0);
+        public static Color FieldGlow { get { return Instance.fieldGlow; } }
 
-    #region Menu UI
-    //Menu UI
-    public static readonly Color dehighlightedUiItem = new Color(0.25f, 0.25f, 0.25f);
-    public static readonly Color normalUiItem = new Color(1, 1, 1);
-    #endregion
+        [SerializeField]
+        private Color fieldNormal = new Color(1, 1, 1);
+        public static Color FieldNormal { get { return Instance.fieldNormal; } }
+
+        #region Menu UI
+        //Menu UI
+        [SerializeField]
+        private Color dehighlightedUiItem = new Color(0.25f, 0.25f, 0.25f);
+        public static Color DehighlightedUiItem { get { return Instance.dehighlightedUiItem; } }
+
+        [SerializeField]
+        private Color normalUiItem = new Color(1, 1, 1);
+        public static Color NormalUiItem { get { return Instance.normalUiItem; } }
+        #endregion
+    }
 }

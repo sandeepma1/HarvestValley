@@ -62,11 +62,12 @@ namespace HarvestValley.Ui
             levelUpMenu.SetActive(false);
             buildingUpgradeMenu.SetActive(false);
             inventoryMenu.SetActive(false);
-            seedListMenu.SetActive(false);
+            seedListMenu.transform.GetChild(0).gameObject.SetActive(false);
             //navigationBar.SetActive(false);
             fieldProgressPopup.SetActive(false);
             fieldUpgradePopup.SetActive(false);
-            buildingMenu.SetActive(false);
+            buildingMenu.transform.GetChild(0).gameObject.SetActive(false);
+            //transform.GetChild(0).gameObject.SetActive(false);
         }
 
         #region Stack Stuff
@@ -132,7 +133,7 @@ namespace HarvestValley.Ui
             {
                 return;
             }
-            menu.SetActive(true);
+            menu.transform.GetChild(0).gameObject.SetActive(true);
             openMenusStack.Push(menu);
             ShowAllStackItems();
         }
@@ -141,7 +142,7 @@ namespace HarvestValley.Ui
         {
             if (openMenusStack.Count >= 1)
             {
-                openMenusStack.Peek().SetActive(false);
+                openMenusStack.Peek().transform.GetChild(0).gameObject.SetActive(false);
                 openMenusStack.Pop();
                 ShowAllStackItems();
             }
@@ -160,7 +161,7 @@ namespace HarvestValley.Ui
         {
             while (openMenusStack.Count > 0)
             {
-                openMenusStack.Peek().SetActive(false);
+                openMenusStack.Peek().transform.GetChild(0).gameObject.SetActive(false);
                 openMenusStack.Pop();
             }
         }

@@ -55,6 +55,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 67aac45fb683c9146a688efdb77317ac, type: 3}
     - {fileID: 2800000, guid: 69d1fbf9cbf8faa4a9c54e08dbb9c308, type: 3}
     - {fileID: 2800000, guid: 19edc2c91e3846849a8fc2b3413e9bc6, type: 3}
+    - {fileID: 21300000, guid: b2d693e5c82e09c419d50aef305aaf9d, type: 3}
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -92,6 +93,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d17316a0420829c4cb1ab8158dc6a4ca, type: 3}
   - {fileID: 21300000, guid: d05500668ffde564ca7c785bcf6b758e, type: 3}
   - {fileID: 21300000, guid: c62e9dce4c746134291bb99a98904685, type: 3}
+  - {fileID: 21300000, guid: b2d693e5c82e09c419d50aef305aaf9d, type: 3}
   m_PackedSpriteNamesToIndex:
   - Button_256px
   - PopupMenuBackground
@@ -127,5 +129,6 @@ SpriteAtlas:
   - rounded_rectangle_small1
   - rounded_rectangle
   - StackitemBG
+  - Transperent
   m_Tag: GUI
   m_IsVariant: 0
