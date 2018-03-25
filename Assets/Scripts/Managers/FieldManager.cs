@@ -105,7 +105,7 @@ namespace HarvestValley.Managers
                 return;
             }
 
-            TimeSpan timeElapsed = field.dateTime - UTC.time.liveDateTime;
+            TimeSpan timeElapsed = field.dateTime - DateTime.UtcNow;
             float timeElapsedInSeconds = (float)timeElapsed.TotalSeconds;
             float divisionFactor = (ItemDatabase.Instance.items[field.sourceId].timeRequiredInMins * 60) / 4;
 
@@ -359,7 +359,7 @@ namespace HarvestValley.Managers
 
         #endregion
 
-        private void SaveFields()
+        public void SaveFields()
         {
             foreach (var item in fields)
             {

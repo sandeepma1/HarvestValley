@@ -50,7 +50,7 @@ namespace HarvestValley.Managers
             {
                 InitBuildings(buildings[i]);
             }
-            InvokeRepeating("SaveBuildings", 0, 5);
+            //InvokeRepeating("SaveBuildings", 0, 1);
             //InvokeRepeating("CheckForHarvest", 0, 1);
         }
 
@@ -104,7 +104,7 @@ namespace HarvestValley.Managers
             }
         }
 
-        private void SaveBuildings()
+        public void SaveBuildings()
         {
             foreach (var item in buildings)
             {
@@ -116,10 +116,17 @@ namespace HarvestValley.Managers
                 item.unlockedQueueSlots = BuildingsGO[item.id].unlockedQueueSlots;
 
                 BuildingQueue[] currentQueue = BuildingsGO[item.id].CurrentItemsInQueue();
+
                 for (int i = 0; i < currentQueue.Length; i++)
                 {
                     item.itemID[i] = currentQueue[i].id;
                     item.dateTime[i] = currentQueue[i].dateTime.ToString();
+                }
+
+                for (int i = currentQueue.Length; i < GEM.maxQCount; i++)
+                {
+                    item.itemID[i] = -1;
+                    item.dateTime[i] = DateTime.UtcNow.ToString();
                 }
             }
             ES2.Save(buildings, "AllBuildings");

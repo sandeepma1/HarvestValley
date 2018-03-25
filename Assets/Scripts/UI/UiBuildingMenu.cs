@@ -4,6 +4,7 @@ using TMPro;
 using HarvestValley.Managers;
 using System.Collections.Generic;
 using System.Collections;
+using System;
 
 namespace HarvestValley.Ui
 {
@@ -31,6 +32,9 @@ namespace HarvestValley.Ui
         private UiQueueItem[] queueItems;
         private List<int> unlockedBuildingItemID = new List<int>();
         private ClickableBuilding currentSelectedBuilding;
+        private bool showTimer;
+        BuildingQueue[] buildingQueue;
+        private TimeSpan remainingTime;
 
         public override void Start()
         {
@@ -40,6 +44,11 @@ namespace HarvestValley.Ui
             base.Start();
             mainCanvas = GetComponent<Canvas>();
             // OnDisable();
+        }
+
+        private void Update()
+        {
+            if (showTimer) { UpdateTimer(); }
         }
 
         private void OnEnable()
@@ -60,9 +69,10 @@ namespace HarvestValley.Ui
             }
             PopulateBuildingItems();
             PopulateBuildingQueue();
+            UpdateUiBuildingQueue();
         }
 
-        private void PopulateBuildingItems()
+        public void PopulateBuildingItems()
         {
             unlockedBuildingItemID.Clear();
 
@@ -106,12 +116,63 @@ namespace HarvestValley.Ui
             }
         }
 
-        public void AddNewQueueItem(int itemIdToAdd, int position)
+        public void UpdateUiBuildingQueue()
         {
-            queueItems[position].itemImage.sprite = AtlasBank.Instance.GetSprite(ItemDatabase.Instance.items[itemIdToAdd].slug, AtlasType.GUI);
-            if (position == 0)
+            buildingQueue = BuildingManager.Instance.BuildingsGO[selectedBuildingID].CurrentItemsInQueue();
+
+            for (int i = 0; i < currentSelectedBuilding.unlockedQueueSlots; i++)
             {
-                currentTimerText.text = currentSelectedBuilding.dateTime[0].ToString();
+                queueItems[i].itemImage.sprite = null;
+            }
+
+            for (int i = 0; i < buildingQueue.Length; i++)
+            {
+                queueItems[i].itemImage.sprite = AtlasBank.Instance.GetSprite(ItemDatabase.Instance.items[buildingQueue[i].id].slug, AtlasType.GUI);
+            }
+
+            if (buildingQueue.Length > 0)
+            {
+                showTimer = true;
+            }
+            else
+            {
+                showTimer = false;
+                currentTimerText.text = "";
+            }
+
+            if (buildingQueue.Length > 1)
+            {
+                waitingText.text = "Waiting";
+            }
+            else
+            {
+                waitingText.text = "";
+            }
+        }
+
+        private void UpdateTimer()
+        {
+            remainingTime = buildingQueue[0].dateTime.Subtract(DateTime.UtcNow);
+
+            if (remainingTime <= new TimeSpan(360, 0, 0, 0))
+            { //> 1year
+                currentTimerText.text = remainingTime.Days.ToString() + "d " + remainingTime.Hours.ToString() + "h";
+            }
+            if (remainingTime <= new TimeSpan(1, 0, 0, 0))
+            { //> 1day
+                currentTimerText.text = remainingTime.Hours.ToString() + "h " + remainingTime.Minutes.ToString() + "m";
+            }
+            if (remainingTime <= new TimeSpan(0, 1, 0, 0))
+            { //> 1hr
+                currentTimerText.text = remainingTime.Minutes.ToString() + "m " + remainingTime.Seconds.ToString() + "s";
+            }
+            if (remainingTime <= new TimeSpan(0, 0, 1, 0))
+            { // 1min
+                currentTimerText.text = remainingTime.Seconds.ToString() + "s";
+            }
+            if (remainingTime <= new TimeSpan(0, 0, 0, 0))
+            {
+                currentTimerText.text = "";
             }
         }
 

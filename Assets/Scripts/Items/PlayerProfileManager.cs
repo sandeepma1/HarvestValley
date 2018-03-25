@@ -65,6 +65,7 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
                 PlayerInventoryManager.Instance.AddNewFarmItem(LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemUnlockID,
                     LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemRewardCount);
                 UiSeedListMenu.Instance.AddUnlockedItemsToList();
+                // UiBuildingMenu.Instance.PopulateBuildingItems();
 
                 PlayerGems(LevelUpDatabase.Instance.gameLevels[playerProfile.level].gemsRewardCount);
             }

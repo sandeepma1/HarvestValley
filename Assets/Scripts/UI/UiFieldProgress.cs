@@ -37,7 +37,7 @@ namespace HarvestValley.Ui
 
         private void Update()
         {
-            remainingTime = FieldManager.Instance.FieldGO[selectedFieldID].dateTime.Subtract(UTC.time.liveDateTime);
+            remainingTime = FieldManager.Instance.FieldGO[selectedFieldID].dateTime.Subtract(System.DateTime.UtcNow);
 
             if (remainingTime <= new System.TimeSpan(360, 0, 0, 0))
             { //> 1year
