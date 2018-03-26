@@ -5,7 +5,7 @@ using HarvestValley.Managers;
 
 namespace HarvestValley.Ui
 {
-    public class UiFieldProgress : BuildingMenuBase<UiBuildingMenu>
+    public class UiFieldProgress : BuildingMenuBase<UiFieldProgress>
     {
         [SerializeField]
         private TextMeshProUGUI cropNameText;
@@ -21,9 +21,9 @@ namespace HarvestValley.Ui
             Debug.Assert(timeRemainingText != null);
         }
 
-        private void OnEnable()
+        internal void EnableMenu()
         {
-            if (FieldManager.Instance == null)
+            if (FieldManager.Instance == null || ItemDatabase.Instance == null)
             {
                 return;
             }
@@ -35,6 +35,10 @@ namespace HarvestValley.Ui
 
         private void Update()
         {
+            if (selectedFieldID == -1)
+            {
+                return;
+            }
             timeRemainingText.text = TimeRemaining(FieldManager.Instance.FieldGO[selectedFieldID].dateTime);
         }
 

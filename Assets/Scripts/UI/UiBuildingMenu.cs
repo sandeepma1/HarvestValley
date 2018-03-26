@@ -33,7 +33,6 @@ namespace HarvestValley.Ui
         private int selectedBuilUnlQuSlots;
         private bool showTimer;
         BuildingQueue[] buildingQueue;
-        private bool objectInitialized;
 
         public override void Start()
         {
@@ -42,10 +41,7 @@ namespace HarvestValley.Ui
             //CreateQueueItems();
             base.Start();
             mainCanvas = GetComponent<Canvas>();
-            // OnDisable();
             unlockNewSlotButton.onClick.AddListener(UnlockNewSlotButtonPressed);
-            objectInitialized = true;
-            transform.GetChild(0).gameObject.SetActive(false);
         }
 
         private void Update()
@@ -53,15 +49,8 @@ namespace HarvestValley.Ui
             if (showTimer) { UpdateTimer(); }
         }
 
-        private void OnEnable()
+        internal void EnableMenu()
         {
-            if (!objectInitialized)
-            {
-                return;
-            }
-
-            print("UiBuildingMenu");
-
             if (BuildingManager.Instance == null)
             {
                 selectedBuildingID = -1;
@@ -153,6 +142,11 @@ namespace HarvestValley.Ui
 
         public void UpdateUiBuildingQueue()
         {
+            if (selectedBuildingID == -1)
+            {
+                return;
+            }
+
             buildingQueue = BuildingManager.Instance.BuildingsGO[selectedBuildingID].CurrentItemsInQueue();
 
             for (int i = 0; i < selectedBuilUnlQuSlots; i++)

@@ -14,45 +14,32 @@ namespace HarvestValley.Ui
         private Transform scrollListParent;
         [SerializeField]
         private TextMeshProUGUI topInfoText;
+        [SerializeField]
         private Transform topInfoParentTransform;
         private List<UiClickableItems> menuItems = new List<UiClickableItems>();
-        private bool objectInitialized;
 
         public override void Start()
         {
             CreateSeedItems();
             base.Start();
-            topInfoParentTransform = topInfoText.transform.parent;
-            objectInitialized = true;
-            transform.GetChild(0).gameObject.SetActive(false);
         }
 
-        private void OnEnable()
+        internal void EnableMenu()
         {
-            if (!objectInitialized)
-            {
-                return;
-            }
+            //if (BuildingManager.Instance == null)
+            //{
+            //    selectedBuildingID = -1;
+            //    selectedSourceID = -1;
+            //    return;
+            //}
 
-            if (BuildingManager.Instance == null)
-            {
-                selectedBuildingID = -1;
-                selectedSourceID = -1;
-                return;
-            }
+            //selectedBuildingID = BuildingManager.Instance.currentSelectedBuildingID;
+            //selectedSourceID = BuildingManager.Instance.currentlSelectedSourceID;
 
-            selectedBuildingID = BuildingManager.Instance.currentSelectedBuildingID;
-            selectedSourceID = BuildingManager.Instance.currentlSelectedSourceID;
-
-            if (FieldManager.Instance == null || selectedBuildingID == -1 || selectedSourceID == -1)
-            {
-                return;
-            }
-        }
-
-        private void OnDisable()
-        {
-            StopPlantingMode();
+            //if (FieldManager.Instance == null || selectedBuildingID == -1 || selectedSourceID == -1)
+            //{
+            //    return;
+            //}
         }
 
         public override void AddUnlockedItemsToList()  // call on level change & game start only
@@ -107,7 +94,7 @@ namespace HarvestValley.Ui
         /// <summary>
         /// Finish planting mode
         /// </summary>
-        private void StopPlantingMode()
+        internal void StopPlantingMode()
         {
             topInfoText.text = "";
             ToggleTopInfoAndUpgradeButton(false);
@@ -123,13 +110,9 @@ namespace HarvestValley.Ui
 
         private void ToggleTopInfoAndUpgradeButton(bool flag)
         {
-            if (topInfoParentTransform != null)
-            {
-                topInfoParentTransform.gameObject.SetActive(flag);
-            }
+            topInfoParentTransform.gameObject.SetActive(flag);
         }
 
         #endregion
-
     }
 }

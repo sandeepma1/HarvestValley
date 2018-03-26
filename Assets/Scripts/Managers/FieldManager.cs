@@ -19,6 +19,8 @@ namespace HarvestValley.Managers
         public ClickableField[] FieldGO;
         public int itemSelectedID = -1; // TODO: delete this asap
 
+        private bool isInPlantingMode;
+
         private List<Fields> fields = new List<Fields>();
 
         private void Start()
@@ -167,6 +169,7 @@ namespace HarvestValley.Managers
 
         public void StartPlantingMode(int itemID)
         {
+            isInPlantingMode = true;
             for (int i = 0; i < FieldGO.Length; i++)
             {
                 if (FieldGO[i].state == BuildingState.IDLE)
@@ -180,11 +183,17 @@ namespace HarvestValley.Managers
 
         public void StopPlantingMode()
         {
+            if (!isInPlantingMode)
+            {
+                return;
+            }
+
+            isInPlantingMode = false;
             for (int i = 0; i < FieldGO.Length; i++)
             {
                 FieldGO[i].StopPlantingMode();
             }
-            //ToggleFieldSelector(true);
+            UiSeedListMenu.Instance.StopPlantingMode();
         }
 
         #endregion
@@ -346,6 +355,7 @@ namespace HarvestValley.Managers
                     break;
                 case BuildingState.WORKING:
                     MenuManager.Instance.DisplayMenu(MenuNames.FieldProgress, MenuOpeningType.CloseAll);
+                    UiFieldProgress.Instance.EnableMenu();
                     MenuManager.Instance.DisplayMenu(MenuNames.FieldUpgrade, MenuOpeningType.OnTop);
                     break;
                 case BuildingState.DONE:

@@ -26,9 +26,6 @@ namespace HarvestValley.Ui
 {
     public class MenuManager : Singleton<MenuManager>
     {
-        [SerializeField]
-        private GameObject mainCanvas;
-
         //Add all types of menus here
         [SerializeField]
         private GameObject levelUpMenu;
@@ -51,23 +48,24 @@ namespace HarvestValley.Ui
 
         private void Awake()
         {
-            if (mainCanvas != null)
-            {
-                mainCanvas.SetActive(true);
-            }
+            levelUpMenu.SetActive(true);
+            buildingUpgradeMenu.SetActive(true);
+            inventoryMenu.SetActive(true);
+            seedListMenu.SetActive(true);
+            fieldProgressPopup.SetActive(true);
+            fieldUpgradePopup.SetActive(true);
+            buildingMenu.SetActive(true);
         }
 
         private void Start()
         {
-            levelUpMenu.SetActive(false);
-            buildingUpgradeMenu.SetActive(false);
-            inventoryMenu.SetActive(false);
+            levelUpMenu.transform.GetChild(0).gameObject.SetActive(false);
+            buildingUpgradeMenu.transform.GetChild(0).gameObject.SetActive(false);
+            inventoryMenu.transform.GetChild(0).gameObject.SetActive(false);
             seedListMenu.transform.GetChild(0).gameObject.SetActive(false);
-            //navigationBar.SetActive(false);
-            fieldProgressPopup.SetActive(false);
-            fieldUpgradePopup.SetActive(false);
+            fieldProgressPopup.transform.GetChild(0).gameObject.SetActive(false);
+            fieldUpgradePopup.transform.GetChild(0).gameObject.SetActive(false);
             buildingMenu.transform.GetChild(0).gameObject.SetActive(false);
-            //transform.GetChild(0).gameObject.SetActive(false);
         }
 
         #region Stack Stuff
@@ -123,26 +121,30 @@ namespace HarvestValley.Ui
 
         public void OnEmptyClicked() // This is called when empty land is clicked
         {
+            print("OnEmptyClicked");
             DisableAllItemsInStack();
             FieldManager.Instance.DeselectField();
+            FieldManager.Instance.StopPlantingMode();
         }
 
         private void AddMenuInStack(GameObject menu)
         {
-            if (openMenusStack.Contains(menu))
+            GameObject child = menu.transform.GetChild(0).gameObject;
+            if (openMenusStack.Contains(child))
             {
                 return;
             }
-            menu.transform.GetChild(0).gameObject.SetActive(true);
-            openMenusStack.Push(menu);
+            child.SetActive(true);
+            openMenusStack.Push(child);
             ShowAllStackItems();
         }
 
         public void RemoveTopMenuFromStack()
         {
-            if (openMenusStack.Count >= 1)
+            if (openMenusStack.Count > 0)
             {
-                openMenusStack.Peek().transform.GetChild(0).gameObject.SetActive(false);
+                print("popped " + openMenusStack.Peek().gameObject.name);
+                openMenusStack.Peek().SetActive(false);
                 openMenusStack.Pop();
                 ShowAllStackItems();
             }
@@ -159,11 +161,19 @@ namespace HarvestValley.Ui
 
         private void DisableAllItemsInStack()
         {
+            if (openMenusStack.Count <= 0)
+            {
+                return;
+            }
             while (openMenusStack.Count > 0)
             {
-                openMenusStack.Peek().transform.GetChild(0).gameObject.SetActive(false);
+                openMenusStack.Peek().SetActive(false);
                 openMenusStack.Pop();
             }
+            FieldManager.Instance.StopPlantingMode();
+
+            ShowAllStackItems();
+            print("DisableAllItemsInStack");
         }
 
         private void ShowAllStackItems()
@@ -245,6 +255,10 @@ namespace HarvestValley.Ui
             DisableAllItemsInStack();
         }
 
+        public void CloseThisMenu(GameObject go)
+        {
+            go.SetActive(false);
+        }
         public void OpenMenu(GameObject go)
         {
             go.SetActive(true);

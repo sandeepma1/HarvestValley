@@ -23,16 +23,17 @@ namespace HarvestValley.Managers
         public override void OnBuildingClicked(int buildingID, int sourceID)
         {
             base.OnBuildingClicked(buildingID, sourceID);
-            MenuManager.Instance.DisplayMenu(MenuNames.BuildingMenu, MenuOpeningType.CloseAll);
+            // MenuManager.Instance.DisplayMenu(MenuNames.BuildingMenu, MenuOpeningType.CloseAll);
 
             switch (BuildingsGO[buildingID].state)
             {
                 case BuildingState.IDLE:
                 case BuildingState.WORKING:
                     MenuManager.Instance.DisplayMenu(MenuNames.BuildingMenu, MenuOpeningType.CloseAll);
+                    UiBuildingMenu.Instance.EnableMenu();
                     break;
                 case BuildingState.DONE:
-                    MenuManager.Instance.CloseAllMenu();
+                    //MenuManager.Instance.CloseAllMenu();
                     //CollectItemsOnFields(buildingID); // TODO: Directly collect/harvest on feild click
                     break;
                 default:

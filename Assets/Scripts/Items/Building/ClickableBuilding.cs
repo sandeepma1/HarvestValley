@@ -77,7 +77,7 @@ public class ClickableBuilding : ClickableBase
 
         buildingQueue.Enqueue(queueItem);
         lastInQueue = queueItem.dateTime;
-        print("item added, in queue " + " NOW " + DateTime.UtcNow + " ADD " + queueItem.dateTime + " CNT " + buildingQueue.Count);
+        if (GEM.ShowDebugInfo) print("item added, in queue " + " NOW " + DateTime.UtcNow + " ADD " + queueItem.dateTime + " CNT " + buildingQueue.Count);
         state = BuildingState.WORKING;
         TopInQueueDateTime = buildingQueue.Peek().dateTime;
         ChangedInBuilding();
@@ -114,9 +114,6 @@ public class ClickableBuilding : ClickableBase
     private void ChangedInBuilding()
     {
         BuildingManager.Instance.SaveBuildings();
-        if (UiBuildingMenu.Instance.isActiveAndEnabled)
-        {
-            UiBuildingMenu.Instance.UpdateUiBuildingQueue();
-        }
+        UiBuildingMenu.Instance.UpdateUiBuildingQueue();
     }
 }
