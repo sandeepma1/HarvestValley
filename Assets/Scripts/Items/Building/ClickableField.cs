@@ -15,11 +15,6 @@ public class ClickableField : ClickableBase
     private bool inPlantingMode;
     private Tweener glowingTweener = null;
 
-    private void Awake()
-    {
-        buildingSprite = GetComponent<SpriteRenderer>();
-    }
-
     public override void OnMouseTouchUp()
     {
         base.OnMouseTouchUp();

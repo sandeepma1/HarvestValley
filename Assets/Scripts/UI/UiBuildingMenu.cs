@@ -38,7 +38,6 @@ namespace HarvestValley.Ui
         {
             menuItems = new UiDraggableItem[GEM.maxQCount];
             CreateItems();
-            //CreateQueueItems();
             base.Start();
             mainCanvas = GetComponent<Canvas>();
             unlockNewSlotButton.onClick.AddListener(UnlockNewSlotButtonPressed);
@@ -78,7 +77,7 @@ namespace HarvestValley.Ui
             AddNewSlotForPurchase();
         }
 
-        public void PopulateBuildingItems()
+        public override void PopulateBuildingItems()
         {
             unlockedBuildingItemID.Clear();
 
@@ -101,9 +100,9 @@ namespace HarvestValley.Ui
                 Item item = ItemDatabase.Instance.items[unlockedBuildingItemID[i]];
                 menuItems[i].gameObject.SetActive(true);
                 menuItems[i].itemImage.sprite = AtlasBank.Instance.GetSprite(item.slug, AtlasType.GUI);
-                menuItems[i].ItemUnlocked();
                 menuItems[i].itemID = item.itemID;
                 menuItems[i].itemName = item.name;
+                menuItems[i].ItemUnlocked();
             }
         }
 
@@ -186,6 +185,7 @@ namespace HarvestValley.Ui
 
         private void CreateItems()
         {
+            print("CreateItems");
             for (int i = 0; i < GEM.maxQCount; i++)
             {
                 menuItems[i] = Instantiate(uiDraggableItemPrefab, itemParent);

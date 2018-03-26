@@ -72,7 +72,7 @@ namespace HarvestValley.Ui
             {
                 if (unlockedItemIDs.Contains(menuItems[i].itemID))
                 {
-                    menuItems[i].ItemIsUnlocked();
+                    menuItems[i].UnlockItem();
                 }
             }
         }

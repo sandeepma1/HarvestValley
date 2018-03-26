@@ -50,7 +50,7 @@ namespace HarvestValley.Ui
         public void CheckForUnlockedItems()  // call on level change & game start only
         {
             unlockedItemIDs.Clear();
-            for (int i = 0; i <= PlayerProfileManager.Instance.CurrentPlayerLevel(); i++)
+            for (int i = 0; i <= PlayerProfileManager.Instance.CurrentPlayerLevel; i++)
             {
                 if (LevelUpDatabase.Instance.gameLevels[i].itemUnlockID >= 0)
                 {

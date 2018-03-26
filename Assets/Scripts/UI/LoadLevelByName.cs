@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class LoadLevelByName : MonoBehaviour
 {
-	public string levelName = "Menu";
+    public string levelName = "Menu";
 
-	void Awake ()
-	{
-		SceneManager.LoadScene (levelName);
-	}
+    void Start()
+    {
+        SceneManager.LoadScene(levelName);
+    }
 }

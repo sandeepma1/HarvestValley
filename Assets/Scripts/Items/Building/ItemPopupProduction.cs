@@ -12,7 +12,7 @@ public class ItemPopupProduction : MonoBehaviour
 
     int popupOffset = 135;
     // Use this for initialization
-    void Awake()
+    void Start()
     {
         Instance = this;
         HideItemPopupProduction();
@@ -31,7 +31,8 @@ public class ItemPopupProduction : MonoBehaviour
             if (QuickCheckItemAvaliable(PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID1].count, ItemDatabase.Instance.items[itemID].needAmount1))
             {
                 item1Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
-            } else
+            }
+            else
             {
                 item1Costing.GetComponent<TextMeshPro>().color = Color.red;
             }
@@ -43,7 +44,8 @@ public class ItemPopupProduction : MonoBehaviour
             if (QuickCheckItemAvaliable(PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID2].count, ItemDatabase.Instance.items[itemID].needAmount2))
             {
                 item2Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
-            } else
+            }
+            else
             {
                 item2Costing.GetComponent<TextMeshPro>().color = Color.red;
             }
@@ -55,7 +57,8 @@ public class ItemPopupProduction : MonoBehaviour
             if (QuickCheckItemAvaliable(PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID3].count, ItemDatabase.Instance.items[itemID].needAmount3))
             {
                 item3Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
-            } else
+            }
+            else
             {
                 item3Costing.GetComponent<TextMeshPro>().color = Color.red;
             }
@@ -67,7 +70,8 @@ public class ItemPopupProduction : MonoBehaviour
             if (QuickCheckItemAvaliable(PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID4].count, ItemDatabase.Instance.items[itemID].needAmount4))
             {
                 item4Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
-            } else
+            }
+            else
             {
                 item4Costing.GetComponent<TextMeshPro>().color = Color.red;
             }
@@ -79,7 +83,8 @@ public class ItemPopupProduction : MonoBehaviour
         if (has >= required)
         {
             return true;
-        } else
+        }
+        else
         {
             return false;
         }

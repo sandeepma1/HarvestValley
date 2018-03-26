@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,8 +18,7 @@ namespace HarvestValley.Ui
 
         public virtual void AddUnlockedItemsToList()  // call on level change & game start only
         {
-            unlockedItemIDs.Clear();
-            for (int i = 0; i <= PlayerProfileManager.Instance.CurrentPlayerLevel(); i++)
+            for (int i = 0; i <= PlayerProfileManager.Instance.CurrentPlayerLevel; i++)
             {
                 int unlockedId = LevelUpDatabase.Instance.gameLevels[i].itemUnlockID;
 
@@ -28,9 +28,13 @@ namespace HarvestValley.Ui
                 }
             }
             UpdateSeedItems();
+            PopulateBuildingItems();
         }
 
         public virtual void UpdateSeedItems()
+        { }
+
+        public virtual void PopulateBuildingItems()
         { }
 
         protected string TimeRemaining(DateTime dateTime)

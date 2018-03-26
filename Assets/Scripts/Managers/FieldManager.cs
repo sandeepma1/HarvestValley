@@ -25,8 +25,6 @@ namespace HarvestValley.Managers
 
         private void Start()
         {
-            //ClickableField.OnBuildingClicked += OnBuildingClickedEventHandler;
-            OneTimeOnly();
             Init();
             ToggleFieldSelector(false);
         }
@@ -39,27 +37,8 @@ namespace HarvestValley.Managers
             {
                 InitFields(fields[i]);
             }
-            InvokeRepeating("SaveFields", 0, 5);
-            InvokeRepeating("CheckForHarvest", 0, 1);
-        }
-
-        private void OneTimeOnly()
-        {
-            if (PlayerPrefs.GetInt("firstField") == 0)
-            {
-                ES2.Delete("AllFields");
-                int counter = 0;
-                for (int i = 0; i < x; i++)
-                {
-                    for (int j = 0; j < y; j++)
-                    {
-                        fields.Add(new Fields(counter, 0, "Field", new Vector2(i * gap, -j * gap), 1, 0, -1, System.DateTime.UtcNow.ToString()));
-                        counter++;
-                    }
-                }
-                ES2.Save(fields, "AllFields");
-                PlayerPrefs.SetInt("firstField", 1);
-            }
+            InvokeRepeating("SaveFields", 5, 5);
+            InvokeRepeating("CheckForHarvest", 5, 1);
         }
 
         private void InitFields(Fields field)

@@ -121,7 +121,6 @@ namespace HarvestValley.Ui
 
         public void OnEmptyClicked() // This is called when empty land is clicked
         {
-            print("OnEmptyClicked");
             DisableAllItemsInStack();
             FieldManager.Instance.DeselectField();
             FieldManager.Instance.StopPlantingMode();
@@ -143,7 +142,7 @@ namespace HarvestValley.Ui
         {
             if (openMenusStack.Count > 0)
             {
-                print("popped " + openMenusStack.Peek().gameObject.name);
+                //print("popped " + openMenusStack.Peek().gameObject.name);
                 openMenusStack.Peek().SetActive(false);
                 openMenusStack.Pop();
                 ShowAllStackItems();
@@ -173,7 +172,7 @@ namespace HarvestValley.Ui
             FieldManager.Instance.StopPlantingMode();
 
             ShowAllStackItems();
-            print("DisableAllItemsInStack");
+            // print("DisableAllItemsInStack");
         }
 
         private void ShowAllStackItems()

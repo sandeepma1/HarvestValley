@@ -42,7 +42,7 @@ public class ClickableBuilding : ClickableBase
                 TopInQueueDateTime = buildingQueue.Peek().dateTime;
             }
             ChangedInBuilding();
-            print("item done, in queue " + buildingQueue.Count);
+            //print("item done, in queue " + buildingQueue.Count);
         }
     }
 

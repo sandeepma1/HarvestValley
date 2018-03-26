@@ -9,15 +9,24 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
 {
     [SerializeField]
     public TextMeshProUGUI coinsUIText, gemsUIText, staminaUIText, levelUIText, XPPointsUIText;
-    private PlayersProfile playerProfile = null;
+    public PlayersProfile playerProfile;
     private bool isLevelUpReady;
 
-    private void Awake()
+    private void Start()
     {
-        NewGameStart();
-        playerProfile = ES2.Load<PlayersProfile>("playerProfile");
+        playerProfile = ES2.Load<PlayersProfile>("PlayerProfile");
         InitPlayerProfile();
         UpdateAll();
+    }
+
+    public int CurrentPlayerLevel
+    {
+        get { return playerProfile.level; }
+    }
+
+    public int CurrentPlayerXP
+    {
+        get { return playerProfile.XPPoints; }
     }
 
     private void LateUpdate()
@@ -45,15 +54,15 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
             return true;
     }
 
-    public int CurrentPlayerLevel()
-    {
-        return playerProfile.level;
-    }
+    //public int CurrentPlayerLevel()
+    //{
+    //    return playerProfile.level;
+    //}
 
-    public int CurrentPlayerXP()
-    {
-        return playerProfile.XPPoints;
-    }
+    //public int CurrentPlayerXP()
+    //{
+    //    return playerProfile.XPPoints;
+    //}
 
     public void CheckForLevelUp()
     {
@@ -65,11 +74,11 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
                 PlayerInventoryManager.Instance.AddNewFarmItem(LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemUnlockID,
                     LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemRewardCount);
                 UiSeedListMenu.Instance.AddUnlockedItemsToList();
-                // UiBuildingMenu.Instance.PopulateBuildingItems();
+                UiBuildingMenu.Instance.AddUnlockedItemsToList();
 
                 PlayerGems(LevelUpDatabase.Instance.gameLevels[playerProfile.level].gemsRewardCount);
             }
-            PlayerXPPointsAdd(-CurrentPlayerXP());
+            PlayerXPPointsAdd(-CurrentPlayerXP);
             isLevelUpReady = true;
         }
         UpdateAll();
@@ -132,21 +141,10 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
     IEnumerator SavePlayerProfile()
     {
         yield return new WaitForSeconds(1f);
-        ES2.Save(playerProfile, "playerProfile");
+        ES2.Save(playerProfile, "PlayerProfile");
     }
 
     #region Init PlayerProfile
-
-    void NewGameStart()
-    {
-        if (PlayerPrefs.GetInt("playerProfile") <= 0)
-        {
-            ES2.Delete("playerProfile");
-            playerProfile = new PlayersProfile("PlayerName", "MyFarm", 1, 0, 1000, 10, 50, System.DateTime.UtcNow.ToString());
-            ES2.Save(playerProfile, "playerProfile");
-            PlayerPrefs.SetInt("playerProfile", 1);
-        }
-    }
 
     void InitPlayerProfile()
     {

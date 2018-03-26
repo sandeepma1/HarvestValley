@@ -26,7 +26,7 @@ namespace HarvestValley.Ui
             button.onClick.AddListener(ButtonClicked);
         }
 
-        internal void ItemIsUnlocked()
+        internal void UnlockItem()
         {
             isItemUnlocked = true;
             itemImage.color = ColorConstants.NormalUiItem;

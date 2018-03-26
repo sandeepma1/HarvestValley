@@ -3,12 +3,12 @@
 public class DraggableBase : MonoBehaviour
 {
     private Vector2 touchPos;
-    private Camera camera;
+    private Camera mainCamera;
     private Vector3 iniPosition;
 
-    private void Awake()
+    private void Start()
     {
-        camera = Camera.main;
+        mainCamera = Camera.main;
     }
 
     private void OnMouseDown()
@@ -25,11 +25,11 @@ public class DraggableBase : MonoBehaviour
     {
         if (Application.isEditor)
         {
-            touchPos = camera.ScreenToWorldPoint(Input.mousePosition);
+            touchPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         }
         else
         {
-            touchPos = camera.ScreenToWorldPoint(Input.touches[0].position);
+            touchPos = mainCamera.ScreenToWorldPoint(Input.touches[0].position);
         }
 
         transform.position = new Vector3(touchPos.x, touchPos.y, 0);

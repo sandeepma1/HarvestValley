@@ -6787,13 +6787,37 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114526029668099132, guid: 264c98dac541b7e4ba97e6bceb2b0773,
+        type: 2}
+      propertyPath: coinsUIText
+      value: 
+      objectReference: {fileID: 2025323632}
+    - target: {fileID: 114526029668099132, guid: 264c98dac541b7e4ba97e6bceb2b0773,
+        type: 2}
+      propertyPath: gemsUIText
+      value: 
+      objectReference: {fileID: 1551974595}
+    - target: {fileID: 114526029668099132, guid: 264c98dac541b7e4ba97e6bceb2b0773,
+        type: 2}
+      propertyPath: staminaUIText
+      value: 
+      objectReference: {fileID: 613281264}
+    - target: {fileID: 114526029668099132, guid: 264c98dac541b7e4ba97e6bceb2b0773,
+        type: 2}
+      propertyPath: levelUIText
+      value: 
+      objectReference: {fileID: 1676319911}
+    - target: {fileID: 114526029668099132, guid: 264c98dac541b7e4ba97e6bceb2b0773,
+        type: 2}
+      propertyPath: XPPointsUIText
+      value: 
+      objectReference: {fileID: 367107387}
     - target: {fileID: 114759121109180948, guid: 264c98dac541b7e4ba97e6bceb2b0773,
         type: 2}
       propertyPath: ScrollListGO
       value: 
       objectReference: {fileID: 1562034912}
-    m_RemovedComponents:
-    - {fileID: 114084501453809250, guid: 264c98dac541b7e4ba97e6bceb2b0773, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 264c98dac541b7e4ba97e6bceb2b0773, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1772203842
@@ -7865,7 +7889,6 @@ GameObject:
   - component: {fileID: 2066556070}
   - component: {fileID: 2066556069}
   - component: {fileID: 2066556068}
-  - component: {fileID: 2066556072}
   m_Layer: 5
   m_Name: HUD
   m_TagString: MainCanvas
@@ -7967,22 +7990,6 @@ Canvas:
   m_SortingLayerID: 9448515
   m_SortingOrder: 100
   m_TargetDisplay: 0
---- !u!114 &2066556072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2066556066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45a69780fb206c741a340d17878aa15e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinsUIText: {fileID: 2025323632}
-  gemsUIText: {fileID: 1551974595}
-  staminaUIText: {fileID: 613281264}
-  levelUIText: {fileID: 1676319911}
-  XPPointsUIText: {fileID: 367107387}
 --- !u!1 &2066662367
 GameObject:
   m_ObjectHideFlags: 0

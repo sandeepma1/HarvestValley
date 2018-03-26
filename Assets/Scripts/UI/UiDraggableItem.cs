@@ -31,7 +31,7 @@ namespace HarvestValley.Ui
         private UiDraggableItemHelper helper;
         #endregion
 
-        protected override void Awake()
+        protected override void Start()
         {
             helper = GetComponent<UiDraggableItemHelper>();
             itemNameText = helper.itemNameText;
@@ -44,8 +44,10 @@ namespace HarvestValley.Ui
 
         public void ItemUnlocked()
         {
+            isItemUnlocked = true;
             itemImage.color = ColorConstants.NormalUiItem;
             itemNameText.text = itemName;
+            print(itemImage.color + " " + itemNameText.text);
         }
 
         private void _OnBeginDrag()

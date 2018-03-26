@@ -38,12 +38,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4853374488713074}
   - component: {fileID: 114377816364355028}
-  - component: {fileID: 114084501453809250}
   - component: {fileID: 114063862326420810}
   - component: {fileID: 114759121109180948}
   - component: {fileID: 114072758492999254}
   - component: {fileID: 114770785557096028}
   - component: {fileID: 114187831897214272}
+  - component: {fileID: 114526029668099132}
   m_Layer: 0
   m_Name: 00GameLogic
   m_TagString: Untagged
@@ -102,24 +102,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSwipeLength: 50
   minSwipeDuration: 0.3
---- !u!114 &114084501453809250
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811772467946392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e76054f5f19f9b418eee09625833670, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  guiAtlas: {fileID: 4343727234628468602, guid: e16acd9cdbc691d4eb5c9c1a4dbb6516,
-    type: 2}
-  farmingAtlas: {fileID: 4343727234628468602, guid: a6f9fd5479ff6d942a3bcb25ae07b4f8,
-    type: 2}
-  buildingAtlas: {fileID: 4343727234628468602, guid: 4f77a449cdf44fe46a8dea119bba6e8f,
-    type: 2}
-  missingSprite: {fileID: 21300000, guid: c44d54f5f270dbb418e836a2d425a282, type: 3}
 --- !u!114 &114187831897214272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,6 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b0fe2685fff2a49881ca1994349f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 6
+  y: 4
+  gap: 2
 --- !u!114 &114399196169527098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,6 +139,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sources: []
+--- !u!114 &114526029668099132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811772467946392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45a69780fb206c741a340d17878aa15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinsUIText: {fileID: 0}
+  gemsUIText: {fileID: 0}
+  staminaUIText: {fileID: 0}
+  levelUIText: {fileID: 0}
+  XPPointsUIText: {fileID: 0}
+  playerProfile:
+    name: Player
+    farmName: Farm
+    level: 1
+    XPPoints: 0
+    coins: 1000
+    gems: 10
+    stamina: 100
+    staminaMaxDateTime: 
 --- !u!114 &114546689231345156
 MonoBehaviour:
   m_ObjectHideFlags: 1

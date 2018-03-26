@@ -7,18 +7,42 @@ namespace HarvestValley.Managers
 {
     public class BuildingManager : ManagerBase<BuildingManager>
     {
-        private List<Buildings> buildings = new List<Buildings>();
         [SerializeField]
         private ClickableBuilding buildingPrefab;
+
         public ClickableBuilding[] BuildingsGO;
+        private List<Buildings> buildings = new List<Buildings>();
 
         private void Start()
         {
-            //ClickableBuilding.OnBuildingClicked += OnBuildingClickedEventHandler;
-            OneTimeOnly();
             Init();
-            //ToggleFieldSelector(false);
         }
+
+        #region Creating buildings from save
+        private void Init()
+        {
+            buildings = ES2.LoadList<Buildings>("AllBuildings");
+            BuildingsGO = new ClickableBuilding[buildings.Count];
+            for (int i = 0; i < buildings.Count; i++)
+            {
+                InitBuildings(buildings[i]);
+            }
+        }
+
+        private void InitBuildings(Buildings building)
+        {
+            BuildingsGO[building.id] = Instantiate(buildingPrefab, transform);
+            BuildingsGO[building.id].gameObject.name = "Building" + building.id;
+            BuildingsGO[building.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.Instance.sources[building.buildingID].slug, AtlasType.Buildings);
+            BuildingsGO[building.id].buildingId = building.id;
+            BuildingsGO[building.id].sourceId = building.buildingID;
+
+            BuildingsGO[building.id].PopulateBuildingQueueFromSave(building.itemID, building.dateTime);
+            BuildingsGO[building.id].unlockedQueueSlots = building.unlockedQueueSlots;
+
+            BuildingsGO[building.id].state = (BuildingState)building.state;
+        }
+        #endregion
 
         public override void OnBuildingClicked(int buildingID, int sourceID)
         {
@@ -42,58 +66,9 @@ namespace HarvestValley.Managers
 
         }
 
-        #region Creating buildings from save
-        private void Init()
-        {
-            buildings = ES2.LoadList<Buildings>("AllBuildings");
-            BuildingsGO = new ClickableBuilding[buildings.Count];
-            for (int i = 0; i < buildings.Count; i++)
-            {
-                InitBuildings(buildings[i]);
-            }
-            //InvokeRepeating("SaveBuildings", 0, 1);
-            //InvokeRepeating("CheckForHarvest", 0, 1);
-        }
-
-        private void InitBuildings(Buildings building)
-        {
-            BuildingsGO[building.id] = Instantiate(buildingPrefab, transform);
-            BuildingsGO[building.id].gameObject.name = "Building" + building.id;
-            BuildingsGO[building.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.Instance.sources[building.buildingID].slug, AtlasType.Buildings);
-            BuildingsGO[building.id].buildingId = building.id;
-            BuildingsGO[building.id].sourceId = building.buildingID;
-
-            BuildingsGO[building.id].PopulateBuildingQueueFromSave(building.itemID, building.dateTime);
-            BuildingsGO[building.id].unlockedQueueSlots = building.unlockedQueueSlots;
-
-            BuildingsGO[building.id].state = (BuildingState)building.state;
-        }
-        #endregion
-
         public void ItemDroppedInZone(int itemId)
         {
             BuildingsGO[currentSelectedBuildingID].AddItemToProductionQueue(itemId);
-        }
-
-        private void OneTimeOnly()
-        {
-            if (PlayerPrefs.GetInt("firstBuilding") == 0)
-            {
-                ES2.Delete("AllBuildings");
-
-                string[] nowTime = new string[GEM.maxQCount];
-                int[] ids = new int[GEM.maxQCount];
-                for (int i = 0; i < GEM.maxQCount; i++)
-                {
-                    nowTime[i] = DateTime.UtcNow.ToString();
-                    ids[i] = -1;
-                }
-
-                buildings.Add(new Buildings(0, 2, "Building", 0, 2, ids, nowTime));
-
-                ES2.Save(buildings, "AllBuildings");
-                PlayerPrefs.SetInt("firstBuilding", 1);
-            }
         }
 
         public void SaveBuildings()

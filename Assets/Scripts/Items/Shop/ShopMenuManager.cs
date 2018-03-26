@@ -14,7 +14,7 @@ namespace HarvestValley.Ui
         public GameObject[] shopItemsGO;
         bool showShop = false;
 
-        void Awake()
+        void Start()
         {
             Instance = this;
             PopulateScrollListAtStart();

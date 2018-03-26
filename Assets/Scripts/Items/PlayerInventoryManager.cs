@@ -12,11 +12,9 @@ public class PlayerInventoryManager : Singleton<PlayerInventoryManager>
 
     List<GameObject> listItems = new List<GameObject>();
 
-    void Awake()
+    void Start()
     {
-        NewGameStart();
-        //playerItems = ES2.LoadList<FarmItems> ("playerInventory");
-        playerInventory = ES2.LoadList<FarmItems>("playerInventory");
+        playerInventory = ES2.LoadList<FarmItems>("PlayerInventory");
         PopulateScrollListAtStart();
         InvokeRepeating("SavePlayerInventory", 3, 3);
     }
@@ -68,24 +66,8 @@ public class PlayerInventoryManager : Singleton<PlayerInventoryManager>
 
     void SavePlayerInventory()
     {
-        ES2.Save(playerInventory, "playerInventory");
+        ES2.Save(playerInventory, "PlayerInventory");
     }
-
-    #region Init FarmStorage
-
-    void NewGameStart()
-    {
-        if (PlayerPrefs.GetInt("playerInventory") <= 0)
-        {
-            ES2.Delete("playerInventory");
-            playerInventory.Add(new FarmItems(0, 9)); //addding Wheat for the first level
-                                                      //playerInventory.Add (new FarmItems (1, 3));
-            ES2.Save(playerInventory, "playerInventory");
-            PlayerPrefs.SetInt("playerInventory", 1);
-        }
-    }
-
-    #endregion
 }
 
 public class FarmItems
