@@ -115,9 +115,9 @@ namespace HarvestValley.Ui
         {
             for (int i = 0; i < unlockedItemCount; i++)
             {
-                menuItems[i].transform.GetChild(1).GetComponent<TextMeshPro>().text = PlayerInventoryManager.Instance.playerInventory[i].count.ToString();
+                menuItems[i].transform.GetChild(1).GetComponent<TextMeshPro>().text = UiInventoryMenu.Instance.playerInventory[i].count.ToString();
             }
-            PlayerInventoryManager.Instance.UpdateScrollListItemCount();
+            UiInventoryMenu.Instance.UpdateScrollListItemCount();
         }
 
         public void ToggleMenuPages()

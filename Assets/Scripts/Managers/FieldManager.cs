@@ -192,7 +192,7 @@ namespace HarvestValley.Managers
 
             if (ItemDatabase.Instance.items[itemSelectedID].needID1 >= 0)
             {
-                if (PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID1].count >=
+                if (UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID1].count >=
                     ItemDatabase.Instance.items[itemSelectedID].needAmount1)
                 {
                     needItems1 = 0;
@@ -205,7 +205,7 @@ namespace HarvestValley.Managers
             }
             if (ItemDatabase.Instance.items[itemSelectedID].needID2 >= 0)
             {
-                if (PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID2].count >=
+                if (UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID2].count >=
                     ItemDatabase.Instance.items[itemSelectedID].needAmount2)
                 {
                     needItems2 = 0;
@@ -218,7 +218,7 @@ namespace HarvestValley.Managers
             }
             if (ItemDatabase.Instance.items[itemSelectedID].needID3 >= 0)
             {
-                if (PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID3].count >=
+                if (UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID3].count >=
                     ItemDatabase.Instance.items[itemSelectedID].needAmount3)
                 {
                     needItems3 = 0;
@@ -231,7 +231,7 @@ namespace HarvestValley.Managers
             }
             if (ItemDatabase.Instance.items[itemSelectedID].needID4 >= 0)
             {
-                if (PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID4].count >=
+                if (UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID4].count >=
                     ItemDatabase.Instance.items[itemSelectedID].needAmount4)
                 {
                     needItems4 = 0;
@@ -256,26 +256,26 @@ namespace HarvestValley.Managers
         public void DecrementItemsFromInventory()
         {
             if (ItemDatabase.Instance.items[itemSelectedID].needID1 >= 0)
-                PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID1].count =
-                PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID1].count - ItemDatabase.Instance.items[itemSelectedID].needAmount1;
+                UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID1].count =
+                UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID1].count - ItemDatabase.Instance.items[itemSelectedID].needAmount1;
 
             if (ItemDatabase.Instance.items[itemSelectedID].needID2 >= 0)
-                PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID2].count =
-                PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID2].count - ItemDatabase.Instance.items[itemSelectedID].needAmount2;
+                UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID2].count =
+                UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID2].count - ItemDatabase.Instance.items[itemSelectedID].needAmount2;
 
             if (ItemDatabase.Instance.items[itemSelectedID].needID3 >= 0)
-                PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID3].count =
-                PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID3].count - ItemDatabase.Instance.items[itemSelectedID].needAmount3;
+                UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID3].count =
+                UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID3].count - ItemDatabase.Instance.items[itemSelectedID].needAmount3;
 
             if (ItemDatabase.Instance.items[itemSelectedID].needID4 >= 0)
-                PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID4].count =
-                PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID4].count - ItemDatabase.Instance.items[itemSelectedID].needAmount4;
+                UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID4].count =
+                UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID4].count - ItemDatabase.Instance.items[itemSelectedID].needAmount4;
 
         }
 
         public void CollectItemsOnFields(int fieldID) //Collecting Items on fields
         {
-            PlayerInventoryManager.Instance.UpdateFarmItems(FieldGO[fieldID].itemId, 1);
+            UiInventoryMenu.Instance.UpdateFarmItems(FieldGO[fieldID].itemId, 1);
             PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.Instance.items[FieldGO[fieldID].itemId].XPperYield);
             FieldGO[fieldID].state = BuildingState.IDLE;
             FieldGO[fieldID].dateTime = new System.DateTime();

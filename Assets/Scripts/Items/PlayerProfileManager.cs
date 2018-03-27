@@ -77,7 +77,7 @@ public class PlayerProfileManager : MonoBehaviour
             IncrementPlayerLevel();
             if (LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemUnlockID >= 0)
             {
-                PlayerInventoryManager.Instance.AddNewFarmItem(LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemUnlockID,
+                UiInventoryMenu.Instance.AddNewFarmItem(LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemUnlockID,
                     LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemRewardCount);
                 UiSeedListMenu.Instance.AddUnlockedItemsToList();
                 UiBuildingMenu.Instance.AddUnlockedItemsToList();

@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class PlayerInventoryManager : Singleton<PlayerInventoryManager>
+public class UiInventoryMenu : Singleton<UiInventoryMenu>
 {
     public GameObject ListPrefab, ScrollListGO;
     public List<FarmItems> playerInventory = new List<FarmItems>();

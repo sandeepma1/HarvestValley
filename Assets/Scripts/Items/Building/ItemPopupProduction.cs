@@ -27,8 +27,8 @@ public class ItemPopupProduction : MonoBehaviour
         if (ItemDatabase.Instance.items[itemID].needID1 >= 0)
         {
             item1Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[ItemDatabase.Instance.items[itemID].needID1].name);
-            item1Costing.text = PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID1].count.ToString() + "/" + ItemDatabase.Instance.items[itemID].needAmount1.ToString();
-            if (QuickCheckItemAvaliable(PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID1].count, ItemDatabase.Instance.items[itemID].needAmount1))
+            item1Costing.text = UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID1].count.ToString() + "/" + ItemDatabase.Instance.items[itemID].needAmount1.ToString();
+            if (QuickCheckItemAvaliable(UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID1].count, ItemDatabase.Instance.items[itemID].needAmount1))
             {
                 item1Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
             }
@@ -40,8 +40,8 @@ public class ItemPopupProduction : MonoBehaviour
         if (ItemDatabase.Instance.items[itemID].needID2 >= 0)
         {
             item2Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[ItemDatabase.Instance.items[itemID].needID2].name);
-            item2Costing.text = PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID2].count.ToString() + "/" + ItemDatabase.Instance.items[itemID].needAmount2.ToString();
-            if (QuickCheckItemAvaliable(PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID2].count, ItemDatabase.Instance.items[itemID].needAmount2))
+            item2Costing.text = UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID2].count.ToString() + "/" + ItemDatabase.Instance.items[itemID].needAmount2.ToString();
+            if (QuickCheckItemAvaliable(UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID2].count, ItemDatabase.Instance.items[itemID].needAmount2))
             {
                 item2Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
             }
@@ -53,8 +53,8 @@ public class ItemPopupProduction : MonoBehaviour
         if (ItemDatabase.Instance.items[itemID].needID3 >= 0)
         {
             item3Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[ItemDatabase.Instance.items[itemID].needID3].name);
-            item3Costing.text = PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID3].count.ToString() + "/" + ItemDatabase.Instance.items[itemID].needAmount3.ToString();
-            if (QuickCheckItemAvaliable(PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID3].count, ItemDatabase.Instance.items[itemID].needAmount3))
+            item3Costing.text = UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID3].count.ToString() + "/" + ItemDatabase.Instance.items[itemID].needAmount3.ToString();
+            if (QuickCheckItemAvaliable(UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID3].count, ItemDatabase.Instance.items[itemID].needAmount3))
             {
                 item3Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
             }
@@ -66,8 +66,8 @@ public class ItemPopupProduction : MonoBehaviour
         if (ItemDatabase.Instance.items[itemID].needID4 >= 0)
         {
             item4Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[ItemDatabase.Instance.items[itemID].needID4].name);
-            item4Costing.text = PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID4].count.ToString() + "/" + ItemDatabase.Instance.items[itemID].needAmount4.ToString();
-            if (QuickCheckItemAvaliable(PlayerInventoryManager.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID4].count, ItemDatabase.Instance.items[itemID].needAmount4))
+            item4Costing.text = UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID4].count.ToString() + "/" + ItemDatabase.Instance.items[itemID].needAmount4.ToString();
+            if (QuickCheckItemAvaliable(UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID4].count, ItemDatabase.Instance.items[itemID].needAmount4))
             {
                 item4Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
             }
