@@ -39,11 +39,9 @@ GameObject:
   - component: {fileID: 4853374488713074}
   - component: {fileID: 114377816364355028}
   - component: {fileID: 114063862326420810}
-  - component: {fileID: 114759121109180948}
   - component: {fileID: 114072758492999254}
-  - component: {fileID: 114770785557096028}
   - component: {fileID: 114187831897214272}
-  - component: {fileID: 114526029668099132}
+  - component: {fileID: 114795710951991630}
   m_Layer: 0
   m_Name: 00GameLogic
   m_TagString: Untagged
@@ -139,31 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sources: []
---- !u!114 &114526029668099132
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811772467946392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45a69780fb206c741a340d17878aa15e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinsUIText: {fileID: 0}
-  gemsUIText: {fileID: 0}
-  staminaUIText: {fileID: 0}
-  levelUIText: {fileID: 0}
-  XPPointsUIText: {fileID: 0}
-  playerProfile:
-    name: Player
-    farmName: Farm
-    level: 1
-    XPPoints: 0
-    coins: 1000
-    gems: 10
-    stamina: 100
-    staminaMaxDateTime: 
 --- !u!114 &114546689231345156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,20 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
---- !u!114 &114759121109180948
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811772467946392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ae5aa20b3e84944589b2445c6f936ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ListPrefab: {fileID: 1448895405002990, guid: c3c6457f7ecbf65499df460e6facfb41, type: 2}
-  ScrollListGO: {fileID: 0}
---- !u!114 &114770785557096028
+--- !u!114 &114795710951991630
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -216,7 +176,7 @@ MonoBehaviour:
   enableDrag: 1
   gapBetweenScreens: 16
   numberOfScreens: 5
-  dragSpeed: 0.015
-  minDragLength: 7
-  snapEase: 9
-  easeDuration: 0.25
+  dragSpeed: 0.03
+  minDragLength: 3
+  snapEase: 6
+  easeDuration: 0.35

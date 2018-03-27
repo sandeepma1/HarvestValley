@@ -46,8 +46,9 @@ namespace HarvestValley.Ui
 
         private Stack<GameObject> openMenusStack = new Stack<GameObject>();
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             levelUpMenu.SetActive(true);
             buildingUpgradeMenu.SetActive(true);
             inventoryMenu.SetActive(true);
@@ -258,6 +259,7 @@ namespace HarvestValley.Ui
         {
             go.SetActive(false);
         }
+
         public void OpenMenu(GameObject go)
         {
             go.SetActive(true);

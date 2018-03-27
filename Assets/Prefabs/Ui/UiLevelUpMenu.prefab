@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114903822151187396}
   - component: {fileID: 225641468229567630}
   m_Layer: 5
-  m_Name: LevelUpMenu
+  m_Name: UiLevelUpMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

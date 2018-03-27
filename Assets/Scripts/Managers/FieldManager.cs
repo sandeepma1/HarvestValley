@@ -7,8 +7,9 @@ using HarvestValley.Ui;
 
 namespace HarvestValley.Managers
 {
-    public class FieldManager : ManagerBase<FieldManager>
+    public class FieldManager : ManagerBase
     {
+        public static FieldManager Instance = null;
         [SerializeField]
         private Transform fieldSelector;
         [SerializeField]
@@ -22,6 +23,11 @@ namespace HarvestValley.Managers
         private bool isInPlantingMode;
 
         private List<Fields> fields = new List<Fields>();
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void Start()
         {

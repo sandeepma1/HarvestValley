@@ -22,7 +22,7 @@ namespace HarvestValley.Ui
             {
                 int unlockedId = LevelUpDatabase.Instance.gameLevels[i].itemUnlockID;
 
-                if (unlockedId >= 0)
+                if (unlockedId >= 0 && !unlockedItemIDs.Contains(unlockedId))
                 {
                     unlockedItemIDs.Add(unlockedId);
                 }

@@ -38,8 +38,6 @@ namespace HarvestValley.Ui
             imageImageTransform = helper.itemImage.GetComponent<Transform>();
             itemImage = imageImageTransform.GetComponent<Image>();
             selectedItemID = -1;
-            itemImage.color = ColorConstants.DehighlightedUiItem;
-            itemNameText.text = "Locked";
         }
 
         public void ItemUnlocked()
@@ -47,7 +45,6 @@ namespace HarvestValley.Ui
             isItemUnlocked = true;
             itemImage.color = ColorConstants.NormalUiItem;
             itemNameText.text = itemName;
-            print(itemImage.color + " " + itemNameText.text);
         }
 
         private void _OnBeginDrag()

@@ -5,12 +5,18 @@ using TMPro;
 using System;
 using HarvestValley.Ui;
 
-public class PlayerProfileManager : Singleton<PlayerProfileManager>
+public class PlayerProfileManager : MonoBehaviour
 {
+    public static PlayerProfileManager Instance = null;
     [SerializeField]
     public TextMeshProUGUI coinsUIText, gemsUIText, staminaUIText, levelUIText, XPPointsUIText;
     public PlayersProfile playerProfile;
     private bool isLevelUpReady;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {

@@ -39,13 +39,14 @@ GameObject:
   - component: {fileID: 114257183335143016}
   - component: {fileID: 114837209515049482}
   - component: {fileID: 225254071590449652}
+  - component: {fileID: 114320485932119972}
   m_Layer: 5
-  m_Name: InventoryMenu
+  m_Name: UiInventoryMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1332201234378340
 GameObject:
   m_ObjectHideFlags: 1
@@ -162,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.29411766}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.309}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -273,6 +274,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114320485932119972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1166008405752360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae5aa20b3e84944589b2445c6f936ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListPrefab: {fileID: 1448895405002990, guid: c3c6457f7ecbf65499df460e6facfb41, type: 2}
+  ScrollListGO: {fileID: 1019282813362152}
 --- !u!114 &114373720801861888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -438,7 +452,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 1
   m_subTextObjects:
@@ -776,7 +790,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -77.799805, y: -70.69922}
+  m_AnchoredPosition: {x: -77.75, y: -71}
   m_SizeDelta: {x: 94.11, y: 94.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &225254071590449652

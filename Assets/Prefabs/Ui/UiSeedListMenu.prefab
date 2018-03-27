@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 225875060000792210}
   - component: {fileID: 114641032092406512}
   m_Layer: 5
-  m_Name: SeedListMenu
+  m_Name: UiSeedListMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
