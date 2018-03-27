@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace HarvestValley.Ui
 {
-    public class UiSeedListMenu : BuildingMenuBase<UiSeedListMenu>
+    public class UiSeedListMenu : UiMenuBase<UiSeedListMenu>
     {
         //public Canvas mainCanvas;
         [SerializeField]
@@ -18,33 +18,17 @@ namespace HarvestValley.Ui
         private Transform topInfoParentTransform;
         private List<UiClickableItems> menuItems = new List<UiClickableItems>();
 
-        public override void Start()
+        protected override void Start()
         {
             CreateSeedItems();
             base.Start();
-        }
-
-        internal void EnableMenu()
-        {
-            //if (BuildingManager.Instance == null)
-            //{
-            //    selectedBuildingID = -1;
-            //    selectedSourceID = -1;
-            //    return;
-            //}
-
-            //selectedBuildingID = BuildingManager.Instance.currentSelectedBuildingID;
-            //selectedSourceID = BuildingManager.Instance.currentlSelectedSourceID;
-
-            //if (FieldManager.Instance == null || selectedBuildingID == -1 || selectedSourceID == -1)
-            //{
-            //    return;
-            //}
+            AddUnlockedItemsToList();
         }
 
         public override void AddUnlockedItemsToList()  // call on level change & game start only
         {
             base.AddUnlockedItemsToList();
+            UpdateSeedItems();
         }
 
         private void CreateSeedItems()
@@ -66,7 +50,7 @@ namespace HarvestValley.Ui
             }
         }
 
-        public override void UpdateSeedItems()
+        public void UpdateSeedItems()
         {
             for (int i = 0; i < menuItems.Count; i++)
             {

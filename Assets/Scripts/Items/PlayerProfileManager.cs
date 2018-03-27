@@ -60,16 +60,6 @@ public class PlayerProfileManager : MonoBehaviour
             return true;
     }
 
-    //public int CurrentPlayerLevel()
-    //{
-    //    return playerProfile.level;
-    //}
-
-    //public int CurrentPlayerXP()
-    //{
-    //    return playerProfile.XPPoints;
-    //}
-
     public void CheckForLevelUp()
     {
         if (playerProfile.XPPoints >= LevelUpDatabase.Instance.gameLevels[playerProfile.level].XPforNextLevel)

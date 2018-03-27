@@ -5,19 +5,13 @@ using HarvestValley.Ui;
 
 namespace HarvestValley.Managers
 {
-    public class BuildingManager : ManagerBase
+    public class BuildingManager : ManagerBase<BuildingManager>
     {
-        public static BuildingManager Instance = null;
         [SerializeField]
         private ClickableBuilding buildingPrefab;
 
         public ClickableBuilding[] BuildingsGO;
         private List<Buildings> buildings = new List<Buildings>();
-
-        private void Awake()
-        {
-            Instance = this;
-        }
 
         private void Start()
         {

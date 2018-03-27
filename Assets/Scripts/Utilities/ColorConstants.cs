@@ -29,8 +29,8 @@ namespace HarvestValley.Ui
         private Color fieldNormal = new Color(1, 1, 1);
         public static Color FieldNormal { get { return Instance.fieldNormal; } }
 
-        #region Menu UI
-        //Menu UI
+
+        #region Menu UI        
         [SerializeField]
         private Color dehighlightedUiItem = new Color(0.25f, 0.25f, 0.25f);
         public static Color DehighlightedUiItem { get { return Instance.dehighlightedUiItem; } }
@@ -38,6 +38,10 @@ namespace HarvestValley.Ui
         [SerializeField]
         private Color normalUiItem = new Color(1, 1, 1);
         public static Color NormalUiItem { get { return Instance.normalUiItem; } }
+
+        [SerializeField]
+        private Color closeButtonBackground = new Color(0, 0, 0, 0.5f);
+        public static Color CloseButtonBackground { get { return Instance.closeButtonBackground; } }
         #endregion
     }
 }

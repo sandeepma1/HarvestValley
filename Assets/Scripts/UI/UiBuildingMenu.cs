@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace HarvestValley.Ui
 {
-    public class UiBuildingMenu : BuildingMenuBase<UiBuildingMenu>
+    public class UiBuildingMenu : UiMenuBase<UiBuildingMenu>
     {
         [SerializeField]
         private UiDraggableItem uiDraggableItemPrefab;
@@ -34,18 +34,25 @@ namespace HarvestValley.Ui
         private bool showTimer;
         BuildingQueue[] buildingQueue;
 
-        public override void Start()
+        protected override void Start()
         {
             menuItems = new UiDraggableItem[GEM.maxQCount];
             CreateItems();
             base.Start();
             mainCanvas = GetComponent<Canvas>();
             unlockNewSlotButton.onClick.AddListener(UnlockNewSlotButtonPressed);
+            AddUnlockedItemsToList();
         }
 
         private void Update()
         {
             if (showTimer) { UpdateTimer(); }
+        }
+
+        public override void AddUnlockedItemsToList()  // call on level change & game start only
+        {
+            base.AddUnlockedItemsToList();
+            PopulateBuildingItems();
         }
 
         internal void EnableMenu()
@@ -77,7 +84,7 @@ namespace HarvestValley.Ui
             AddNewSlotForPurchase();
         }
 
-        public override void PopulateBuildingItems()
+        private void PopulateBuildingItems()
         {
             unlockedBuildingItemID.Clear();
 
@@ -185,7 +192,6 @@ namespace HarvestValley.Ui
 
         private void CreateItems()
         {
-            print("CreateItems");
             for (int i = 0; i < GEM.maxQCount; i++)
             {
                 menuItems[i] = Instantiate(uiDraggableItemPrefab, itemParent);

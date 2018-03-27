@@ -1,19 +1,41 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine.UI;
 
 namespace HarvestValley.Ui
 {
-    public abstract class BuildingMenuBase<T> : Singleton<T> where T : BuildingMenuBase<T>
+    public abstract class UiMenuBase<T> : Singleton<T> where T : UiMenuBase<T>
     {
         internal List<int> unlockedItemIDs = new List<int>();
         internal int selectedBuildingID = -1;
         internal int selectedSourceID = -1;
+        private Button closeButton;
+        private Image closeButtonBackGround;
 
-        public virtual void Start()
+        protected virtual void Start()
         {
-            AddUnlockedItemsToList();
+            CreateCloseButton();
+        }
+
+        /// <summary>
+        /// Setting Close button and background color of every menu inherated from this
+        /// </summary>
+        private void CreateCloseButton()
+        {
+            if (transform.GetChild(0).GetChild(0).GetComponent<Button>())
+            {
+                print(transform.name);
+                closeButton = transform.GetChild(0).GetChild(0).GetComponent<Button>();
+                closeButton.onClick.AddListener(CloseMenuButtonEventHandler);
+
+                closeButtonBackGround = transform.GetChild(0).GetChild(0).GetComponent<Image>();
+                closeButtonBackGround.color = ColorConstants.CloseButtonBackground;
+            }
+        }
+
+        private void CloseMenuButtonEventHandler()
+        {
+            MenuManager.Instance.CloseMenu();
         }
 
         public virtual void AddUnlockedItemsToList()  // call on level change & game start only
@@ -27,15 +49,7 @@ namespace HarvestValley.Ui
                     unlockedItemIDs.Add(unlockedId);
                 }
             }
-            UpdateSeedItems();
-            PopulateBuildingItems();
         }
-
-        public virtual void UpdateSeedItems()
-        { }
-
-        public virtual void PopulateBuildingItems()
-        { }
 
         protected string TimeRemaining(DateTime dateTime)
         {
