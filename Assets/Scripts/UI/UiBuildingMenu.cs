@@ -17,7 +17,7 @@ namespace HarvestValley.Ui
         [SerializeField]
         private Image buildingImage;
         [SerializeField]
-        private Transform itemParent;
+        private Transform itemScrollListContentTransform;
         [SerializeField]
         private TextMeshProUGUI currentTimerText;
         [SerializeField]
@@ -225,7 +225,7 @@ namespace HarvestValley.Ui
         {
             for (int i = 0; i < GEM.maxQCount; i++)
             {
-                menuItems[i] = Instantiate(uiDraggableItemPrefab, itemParent);
+                menuItems[i] = Instantiate(uiDraggableItemPrefab, itemScrollListContentTransform);
                 menuItems[i].name = "DraggableUIItem" + i;
                 menuItems[i].itemID = -1;
                 menuItems[i].itemImage.sprite = null;
@@ -272,15 +272,7 @@ namespace HarvestValley.Ui
 
                 requiredItems[i].haveCount.text = UiInventoryMenu.Instance.GetItemCountFromInventory(needItem.itemID).ToString();
                 requiredItems[i].requireCount.text = "/" + neededAmount.ToString();
-                print(needItem.needAmount[i]);
             }
-
-            //Item needItem1 = ItemDatabase.Instance.items[item.needID1];
-            //requiredItems[0].gameObject.SetActive(true);
-            //requiredItems[0].itemImage.sprite = AtlasBank.Instance.GetSprite(item.slug, AtlasType.GUI);
-            //requiredItems[0].haveCount.text = UiInventoryMenu.Instance.GetItemCountFromInventory(needItem1.itemID).ToString();
-            //requiredItems[0].requireCount.text = "/" + needItem1.needAmount1.ToString();
-
         }
     }
 }
