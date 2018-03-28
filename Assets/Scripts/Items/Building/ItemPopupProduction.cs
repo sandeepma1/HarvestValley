@@ -20,62 +20,62 @@ namespace HarvestValley.Ui
 
         public void DisplayItemPopupProduction_DOWN(int itemID, Vector2 pos)
         {
-            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y + popupOffset, 10));
+            //transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y + popupOffset, 10));
 
-            itemName.text = ItemDatabase.Instance.items[itemID].name;
-            itemDuration.text = ItemDatabase.Instance.items[itemID].timeRequiredInSeconds.ToString();
-            if (ItemDatabase.Instance.items[itemID].needID1 >= 0)
-            {
-                item1Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[ItemDatabase.Instance.items[itemID].needID1].name);
-                item1Costing.text = UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID1].count.ToString() + "/" + ItemDatabase.Instance.items[itemID].needAmount1.ToString();
-                if (QuickCheckItemAvaliable(UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID1].count, ItemDatabase.Instance.items[itemID].needAmount1))
-                {
-                    item1Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
-                }
-                else
-                {
-                    item1Costing.GetComponent<TextMeshPro>().color = Color.red;
-                }
-            }
-            if (ItemDatabase.Instance.items[itemID].needID2 >= 0)
-            {
-                item2Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[ItemDatabase.Instance.items[itemID].needID2].name);
-                item2Costing.text = UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID2].count.ToString() + "/" + ItemDatabase.Instance.items[itemID].needAmount2.ToString();
-                if (QuickCheckItemAvaliable(UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID2].count, ItemDatabase.Instance.items[itemID].needAmount2))
-                {
-                    item2Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
-                }
-                else
-                {
-                    item2Costing.GetComponent<TextMeshPro>().color = Color.red;
-                }
-            }
-            if (ItemDatabase.Instance.items[itemID].needID3 >= 0)
-            {
-                item3Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[ItemDatabase.Instance.items[itemID].needID3].name);
-                item3Costing.text = UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID3].count.ToString() + "/" + ItemDatabase.Instance.items[itemID].needAmount3.ToString();
-                if (QuickCheckItemAvaliable(UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID3].count, ItemDatabase.Instance.items[itemID].needAmount3))
-                {
-                    item3Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
-                }
-                else
-                {
-                    item3Costing.GetComponent<TextMeshPro>().color = Color.red;
-                }
-            }
-            if (ItemDatabase.Instance.items[itemID].needID4 >= 0)
-            {
-                item4Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[ItemDatabase.Instance.items[itemID].needID4].name);
-                item4Costing.text = UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID4].count.ToString() + "/" + ItemDatabase.Instance.items[itemID].needAmount4.ToString();
-                if (QuickCheckItemAvaliable(UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID4].count, ItemDatabase.Instance.items[itemID].needAmount4))
-                {
-                    item4Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
-                }
-                else
-                {
-                    item4Costing.GetComponent<TextMeshPro>().color = Color.red;
-                }
-            }
+            //itemName.text = ItemDatabase.Instance.items[itemID].name;
+            //itemDuration.text = ItemDatabase.Instance.items[itemID].timeRequiredInSeconds.ToString();
+            //if (ItemDatabase.Instance.items[itemID].needID1 >= 0)
+            //{
+            //    item1Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[ItemDatabase.Instance.items[itemID].needID1].name);
+            //    item1Costing.text = UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID1].count.ToString() + "/" + ItemDatabase.Instance.items[itemID].needAmount1.ToString();
+            //    if (QuickCheckItemAvaliable(UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID1].count, ItemDatabase.Instance.items[itemID].needAmount1))
+            //    {
+            //        item1Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
+            //    }
+            //    else
+            //    {
+            //        item1Costing.GetComponent<TextMeshPro>().color = Color.red;
+            //    }
+            //}
+            //if (ItemDatabase.Instance.items[itemID].needID2 >= 0)
+            //{
+            //    item2Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[ItemDatabase.Instance.items[itemID].needID2].name);
+            //    item2Costing.text = UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID2].count.ToString() + "/" + ItemDatabase.Instance.items[itemID].needAmount2.ToString();
+            //    if (QuickCheckItemAvaliable(UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID2].count, ItemDatabase.Instance.items[itemID].needAmount2))
+            //    {
+            //        item2Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
+            //    }
+            //    else
+            //    {
+            //        item2Costing.GetComponent<TextMeshPro>().color = Color.red;
+            //    }
+            //}
+            //if (ItemDatabase.Instance.items[itemID].needID3 >= 0)
+            //{
+            //    item3Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[ItemDatabase.Instance.items[itemID].needID3].name);
+            //    item3Costing.text = UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID3].count.ToString() + "/" + ItemDatabase.Instance.items[itemID].needAmount3.ToString();
+            //    if (QuickCheckItemAvaliable(UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID3].count, ItemDatabase.Instance.items[itemID].needAmount3))
+            //    {
+            //        item3Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
+            //    }
+            //    else
+            //    {
+            //        item3Costing.GetComponent<TextMeshPro>().color = Color.red;
+            //    }
+            //}
+            //if (ItemDatabase.Instance.items[itemID].needID4 >= 0)
+            //{
+            //    item4Icon.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Items/" + ItemDatabase.Instance.items[ItemDatabase.Instance.items[itemID].needID4].name);
+            //    item4Costing.text = UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID4].count.ToString() + "/" + ItemDatabase.Instance.items[itemID].needAmount4.ToString();
+            //    if (QuickCheckItemAvaliable(UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemID].needID4].count, ItemDatabase.Instance.items[itemID].needAmount4))
+            //    {
+            //        item4Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
+            //    }
+            //    else
+            //    {
+            //        item4Costing.GetComponent<TextMeshPro>().color = Color.red;
+            //    }
+            //}
         }
 
         bool QuickCheckItemAvaliable(int has, int required)

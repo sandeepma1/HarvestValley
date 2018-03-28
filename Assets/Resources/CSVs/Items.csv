@@ -2,7 +2,7 @@ id,name,description,unlocksAtLevel,timeRequiredInMins,XP,type,coinCost,gemCost,s
 0,Wheat,Descriptions,0,2,150,Crops,25,2,0,3,2,4,20,30,2,0,1,-1,0,-1,0,-1,0,wheat
 1,Bread,Descriptions,1,25,25,Products,26,3,2,-1,1,1,21,31,-1,0,2,-1,0,-1,0,-1,0,bread
 2,Corn,Descriptions,2,5,35,Crops,26,3,0,4,2,4,21,31,3,1,1,-1,0,-1,0,-1,0,corn
-3,Butter,Descriptions,3,5,45,Products,27,4,2,5,1,1,50,60,4,0,3,-1,0,-1,0,-1,0,butter
+3,Corn Bread,Descriptions,3,5,45,Products,27,4,2,5,1,1,50,60,4,0,3,2,2,-1,0,-1,0,cornbread
 4,Green Cabbage,Descriptions,4,15,55,Crops,28,5,0,6,1,1,51,61,5,0,2,1,3,-1,0,-1,0,greencabbage
 5,Red Cabbage,Descriptions,5,20,65,Crops,29,4,0,7,2,4,24,34,4,4,1,-1,0,-1,0,-1,0,redcabbage
 6,Savoy Cabbage,Descriptions,6,25,75,Crops,30,4,0,7,2,4,25,35,4,5,1,-1,0,-1,0,-1,0,savoycabbage

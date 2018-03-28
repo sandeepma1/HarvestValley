@@ -42,14 +42,11 @@ namespace HarvestValley.IO
                     IntParse(chars[13]),
                     IntParse(chars[14]),
                     IntParse(chars[15]),
-                    IntParse(chars[16]),
-                    IntParse(chars[17]),
-                    IntParse(chars[18]),
-                    IntParse(chars[19]),
-                    IntParse(chars[20]),
-                    IntParse(chars[21]),
-                    IntParse(chars[22]),
-                    IntParse(chars[23]),
+
+                    new int[] { IntParse(chars[16]), IntParse(chars[18]), IntParse(chars[20]), IntParse(chars[22]) },
+
+                    new int[] { IntParse(chars[17]), IntParse(chars[19]), IntParse(chars[21]), IntParse(chars[23]) },
+
                     chars[24]);
             }
         }
@@ -79,22 +76,16 @@ public class Item
     public int sellValueMax;
     public int noOfFertilizer;
 
-    public int needID1;                 //16
-    public int needAmount1;
-    public int needID2;
-    public int needAmount2;
-    public int needID3;
-    public int needAmount3;
-    public int needID4;
-    public int needAmount4;
+    //16
+    public int[] needID;
+    public int[] needAmount;
 
     public string slug;
 
     public Item(int itemId, string itemName, string itemDescription, int itemUnlocksAtLevel,
                  float itemTimeRequiredInSeconds, int itemXP, ItemType itemType, int itemCoinCost, int itemGemCost, int itemSourceID,
                  int itemNoOfWatering, int itemBaseYieldMin, int itemBaseYieldMax, int itemSellValueMin, int itemSellValueMax,
-                 int itemNoOfFertilizer, int itemNeedID1, int itemNeedAmount1, int itemNeedID2, int itemNeedAmount2,
-                 int itemNeedID3, int itemNeedAmount3, int itemNeedID4, int itemNeedAmount4, string itemSlug)
+                 int itemNoOfFertilizer, int[] itemNeedID, int[] itemNeedAmount, string itemSlug)
     {
         itemID = itemId;
         name = itemName;
@@ -115,14 +106,8 @@ public class Item
         noOfFertilizer = itemNoOfFertilizer;
 
         sellValueMax = itemSellValueMax;
-        needID1 = itemNeedID1;
-        needAmount1 = itemNeedAmount1;
-        needID2 = itemNeedID2;
-        needAmount2 = itemNeedAmount2;
-        needID3 = itemNeedID3;
-        needAmount3 = itemNeedAmount3;
-        needID4 = itemNeedID4;
-        needAmount4 = itemNeedAmount4;
+        needID = itemNeedID;
+        needAmount = itemNeedAmount;
 
         slug = itemSlug;
     }

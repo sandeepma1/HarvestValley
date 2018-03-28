@@ -185,58 +185,58 @@ namespace HarvestValley.Managers
             int needItems3 = -1;
             int needItems4 = -1;
 
-            if (ItemDatabase.Instance.items[itemSelectedID].needID1 >= 0)
-            {
-                if (UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID1].count >=
-                    ItemDatabase.Instance.items[itemSelectedID].needAmount1)
-                {
-                    needItems1 = 0;
-                    print("1 ok");
-                }
-                else
-                {
-                    needItems1 = -2;
-                }
-            }
-            if (ItemDatabase.Instance.items[itemSelectedID].needID2 >= 0)
-            {
-                if (UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID2].count >=
-                    ItemDatabase.Instance.items[itemSelectedID].needAmount2)
-                {
-                    needItems2 = 0;
-                    print("1 ok");
-                }
-                else
-                {
-                    needItems2 = -2;
-                }
-            }
-            if (ItemDatabase.Instance.items[itemSelectedID].needID3 >= 0)
-            {
-                if (UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID3].count >=
-                    ItemDatabase.Instance.items[itemSelectedID].needAmount3)
-                {
-                    needItems3 = 0;
-                    print("1 ok");
-                }
-                else
-                {
-                    needItems3 = -2;
-                }
-            }
-            if (ItemDatabase.Instance.items[itemSelectedID].needID4 >= 0)
-            {
-                if (UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID4].count >=
-                    ItemDatabase.Instance.items[itemSelectedID].needAmount4)
-                {
-                    needItems4 = 0;
-                    print("1 ok");
-                }
-                else
-                {
-                    needItems4 = -2;
-                }
-            }
+            //if (ItemDatabase.Instance.items[itemSelectedID].needID1 >= 0)
+            //{
+            //    if (UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID1].count >=
+            //        ItemDatabase.Instance.items[itemSelectedID].needAmount1)
+            //    {
+            //        needItems1 = 0;
+            //        print("1 ok");
+            //    }
+            //    else
+            //    {
+            //        needItems1 = -2;
+            //    }
+            //}
+            //if (ItemDatabase.Instance.items[itemSelectedID].needID2 >= 0)
+            //{
+            //    if (UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID2].count >=
+            //        ItemDatabase.Instance.items[itemSelectedID].needAmount2)
+            //    {
+            //        needItems2 = 0;
+            //        print("1 ok");
+            //    }
+            //    else
+            //    {
+            //        needItems2 = -2;
+            //    }
+            //}
+            //if (ItemDatabase.Instance.items[itemSelectedID].needID3 >= 0)
+            //{
+            //    if (UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID3].count >=
+            //        ItemDatabase.Instance.items[itemSelectedID].needAmount3)
+            //    {
+            //        needItems3 = 0;
+            //        print("1 ok");
+            //    }
+            //    else
+            //    {
+            //        needItems3 = -2;
+            //    }
+            //}
+            //if (ItemDatabase.Instance.items[itemSelectedID].needID4 >= 0)
+            //{
+            //    if (UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID4].count >=
+            //        ItemDatabase.Instance.items[itemSelectedID].needAmount4)
+            //    {
+            //        needItems4 = 0;
+            //        print("1 ok");
+            //    }
+            //    else
+            //    {
+            //        needItems4 = -2;
+            //    }
+            //}
 
             if (needItems1 >= -1 && needItems2 >= -1 && needItems3 >= -1 && needItems4 >= -1)
             {
@@ -250,21 +250,21 @@ namespace HarvestValley.Managers
 
         public void DecrementItemsFromInventory()
         {
-            if (ItemDatabase.Instance.items[itemSelectedID].needID1 >= 0)
-                UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID1].count =
-                UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID1].count - ItemDatabase.Instance.items[itemSelectedID].needAmount1;
+            //if (ItemDatabase.Instance.items[itemSelectedID].needID1 >= 0)
+            //    UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID1].count =
+            //    UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID1].count - ItemDatabase.Instance.items[itemSelectedID].needAmount1;
 
-            if (ItemDatabase.Instance.items[itemSelectedID].needID2 >= 0)
-                UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID2].count =
-                UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID2].count - ItemDatabase.Instance.items[itemSelectedID].needAmount2;
+            //if (ItemDatabase.Instance.items[itemSelectedID].needID2 >= 0)
+            //    UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID2].count =
+            //    UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID2].count - ItemDatabase.Instance.items[itemSelectedID].needAmount2;
 
-            if (ItemDatabase.Instance.items[itemSelectedID].needID3 >= 0)
-                UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID3].count =
-                UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID3].count - ItemDatabase.Instance.items[itemSelectedID].needAmount3;
+            //if (ItemDatabase.Instance.items[itemSelectedID].needID3 >= 0)
+            //    UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID3].count =
+            //    UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID3].count - ItemDatabase.Instance.items[itemSelectedID].needAmount3;
 
-            if (ItemDatabase.Instance.items[itemSelectedID].needID4 >= 0)
-                UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID4].count =
-                UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID4].count - ItemDatabase.Instance.items[itemSelectedID].needAmount4;
+            //if (ItemDatabase.Instance.items[itemSelectedID].needID4 >= 0)
+            //    UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID4].count =
+            //    UiInventoryMenu.Instance.playerInventory[ItemDatabase.Instance.items[itemSelectedID].needID4].count - ItemDatabase.Instance.items[itemSelectedID].needAmount4;
 
         }
 
