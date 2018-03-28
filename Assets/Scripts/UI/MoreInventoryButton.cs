@@ -1,12 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 using System.IO;
-using UnityEngine.SceneManagement;
 
-public class MoreInventoryButton : MonoBehaviour
+public class MoreInventoryButton : Singleton<MoreInventoryButton>
 {
-    public static MoreInventoryButton Instance = null;
     public bool useLeftAnalogStick = false;
     public RectTransform mainUIWindow;
     public GameObject mainCanvas, inventoryMenu;
@@ -20,18 +17,10 @@ public class MoreInventoryButton : MonoBehaviour
     int tabIndex = 0;
     Hashtable linearEase = new Hashtable();
 
-    // = FindObjectsOfType (typeof(Devdog.InventorySystem.InventoryUIItemWrapper)) as Devdog.InventorySystem.InventoryUIItemWrapper[];
-    void Awake()
-    {
-        Instance = this;
-        linearEase.Add("ease", LeanTweenType.easeOutQuad);
-        //Camera.main.transform.position =
-    }
-
     void Start()
     {
+        linearEase.Add("ease", LeanTweenType.easeOutQuad);
         tabIndex = inventoryMenu.GetComponent<RectTransform>().GetSiblingIndex();
-        //		print (Screen.height);
         heightAdjuster = Screen.height * 2;
         ToggleInventorySize(true);
     }

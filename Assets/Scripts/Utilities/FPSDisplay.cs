@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using HarvestValley.Ui;
 
 public class FPSDisplay : MonoBehaviour
 {
@@ -41,7 +41,7 @@ public class FPSDisplay : MonoBehaviour
         rect = new Rect(0, 0, w, h);
         style = new GUIStyle();
         style.fontSize = 30;
-        style.normal.textColor = Color.magenta;
+        style.normal.textColor = ColorConstants.FpsColor;
         style.fontStyle = FontStyle.Bold;
         style.alignment = TextAnchor.LowerCenter;
     }

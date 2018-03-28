@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 222363868434439406}
   - component: {fileID: 114741747432739616}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: InventoryName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -565,8 +565,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Farm Storage 45/50
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 42bedf34e5e53d6428cfddddfc54328a, type: 2}
-  m_sharedMaterial: {fileID: 21793386529141184, guid: 42bedf34e5e53d6428cfddddfc54328a,
+  m_fontAsset: {fileID: 11400000, guid: c123f7039e8399445979fee1b39baf3a, type: 2}
+  m_sharedMaterial: {fileID: 21203534490202188, guid: c123f7039e8399445979fee1b39baf3a,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -591,8 +591,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -600,7 +600,7 @@ MonoBehaviour:
   m_fontStyle: 0
   m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
-  m_characterSpacing: -5
+  m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -639,13 +639,13 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -945,7 +945,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1059, y: 138.3}
+  m_SizeDelta: {x: 631.05, y: 138.3}
   m_Pivot: {x: 0.5, y: 1.0000012}
 --- !u!224 &224463867691112450
 RectTransform:

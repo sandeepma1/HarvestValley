@@ -3,6 +3,7 @@ using DG.Tweening;
 using HarvestValley.Managers;
 using System;
 using HarvestValley.Ui;
+using HarvestValley.IO;
 
 public class ClickableField : ClickableBase
 {

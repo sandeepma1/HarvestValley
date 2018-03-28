@@ -1,27 +1,26 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
 using HarvestValley.Ui;
+using HarvestValley.IO;
 
-public class PlayerProfileManager : MonoBehaviour
+public class PlayerProfileManager : Singleton<PlayerProfileManager>
 {
-    public static PlayerProfileManager Instance = null;
     [SerializeField]
     public TextMeshProUGUI coinsUIText, gemsUIText, staminaUIText, levelUIText, XPPointsUIText;
     public PlayersProfile playerProfile;
     private bool isLevelUpReady;
 
-    private void Awake()
+    protected override void Awake()
     {
-        Instance = this;
+        base.Awake();
+        playerProfile = ES2.Load<PlayersProfile>("PlayerProfile");
+        InitPlayerProfile();
     }
 
     private void Start()
     {
-        playerProfile = ES2.Load<PlayersProfile>("PlayerProfile");
-        InitPlayerProfile();
         UpdateAll();
     }
 
@@ -123,7 +122,7 @@ public class PlayerProfileManager : MonoBehaviour
         UpdateAll();
     }
 
-    void UpdateAll()
+    private void UpdateAll()
     {
         coinsUIText.text = String.Format("{0:###,###,###,###,###}", playerProfile.coins);
         gemsUIText.text = String.Format("{0:###,###,###,###,###}", playerProfile.gems);

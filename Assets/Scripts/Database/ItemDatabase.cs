@@ -1,77 +1,58 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using System;
 using System.Text.RegularExpressions;
 
-public class ItemDatabase : MonoBehaviour
+namespace HarvestValley.IO
 {
-    public static ItemDatabase Instance = null;
-    //public List<Item> items = new List<Item> ();
-    public Item[] items;
-    string folderName = "Items";
-
-    void Awake()
+    public class ItemDatabase : DatabaseBase<ItemDatabase>
     {
-        Instance = this;
-        Initialize();
-    }
+        public Item[] items;
+        string folderName = "Items";
 
-    void Initialize()
-    {
-        string[] lines = new string[100];
-        string[] chars = new string[100];
-        TextAsset itemCSV = Resources.Load("CSVs/" + folderName) as TextAsset;
-        lines = Regex.Split(itemCSV.text, "\r\n");
-        items = new Item[lines.Length - 2];
-        for (int i = 1; i < items.Length; i++)
+        protected override void Awake()
         {
-            chars = Regex.Split(lines[i], ",");
-            items[i - 1] = new Item(
-                IntParse(chars[0]),
-                chars[1],
-                chars[2],
-                IntParse(chars[3]),
-                FloatParse(chars[4]),
-                IntParse(chars[5]),
-                (ItemType)Enum.Parse(typeof(ItemType), chars[6]),
-                IntParse(chars[7]),
-                IntParse(chars[8]),
-                IntParse(chars[9]),
-                IntParse(chars[10]),
-                IntParse(chars[11]),
-                IntParse(chars[12]),
-                IntParse(chars[13]),
-                IntParse(chars[14]),
-                IntParse(chars[15]),
-                IntParse(chars[16]),
-                IntParse(chars[17]),
-                IntParse(chars[18]),
-                IntParse(chars[19]),
-                IntParse(chars[20]),
-                IntParse(chars[21]),
-                IntParse(chars[22]),
-                IntParse(chars[23]),
-                chars[24]);
+            base.Awake();
+            Initialize();
         }
-    }
 
-    int IntParse(string text)
-    {
-        int num;
-        if (int.TryParse(text, out num))
+        private void Initialize()
         {
-            return num;
+            string[] lines = new string[100];
+            string[] chars = new string[100];
+            TextAsset itemCSV = Resources.Load("CSVs/" + folderName) as TextAsset;
+            lines = Regex.Split(itemCSV.text, "\r\n");
+            items = new Item[lines.Length - 2];
+            for (int i = 1; i < items.Length; i++)
+            {
+                chars = Regex.Split(lines[i], ",");
+                items[i - 1] = new Item(
+                    IntParse(chars[0]),
+                    chars[1],
+                    chars[2],
+                    IntParse(chars[3]),
+                    FloatParse(chars[4]),
+                    IntParse(chars[5]),
+                    (ItemType)Enum.Parse(typeof(ItemType), chars[6]),
+                    IntParse(chars[7]),
+                    IntParse(chars[8]),
+                    IntParse(chars[9]),
+                    IntParse(chars[10]),
+                    IntParse(chars[11]),
+                    IntParse(chars[12]),
+                    IntParse(chars[13]),
+                    IntParse(chars[14]),
+                    IntParse(chars[15]),
+                    IntParse(chars[16]),
+                    IntParse(chars[17]),
+                    IntParse(chars[18]),
+                    IntParse(chars[19]),
+                    IntParse(chars[20]),
+                    IntParse(chars[21]),
+                    IntParse(chars[22]),
+                    IntParse(chars[23]),
+                    chars[24]);
+            }
         }
-        else
-            return 0;
-    }
-
-    float FloatParse(string text)
-    {
-        float result = 0.01f;
-        float.TryParse(text, out result);
-        return result;
     }
 }
 

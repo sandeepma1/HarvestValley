@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using TMPro;
+using HarvestValley.IO;
 
 namespace HarvestValley.Ui
 {
-    public class ItemPopupProduction : MonoBehaviour
+    public class ItemPopupProduction : Singleton<ItemPopupProduction>
     {
-        public static ItemPopupProduction Instance = null;
         public TextMeshPro itemName;
         public TextMeshPro itemDuration;
         public GameObject item1Icon, item2Icon, item3Icon, item4Icon;
@@ -16,7 +16,6 @@ namespace HarvestValley.Ui
         // Use this for initialization
         void Start()
         {
-            Instance = this;
             HideItemPopupProduction();
         }
 

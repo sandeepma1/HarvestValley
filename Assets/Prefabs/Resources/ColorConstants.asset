@@ -11,4 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe562f2ab2b0c7b4d9a875fa024ff836, type: 3}
   m_Name: ColorConstants
   m_EditorClassIdentifier: 
+  white: {r: 1, g: 1, b: 1, a: 1}
   fieldGlow: {r: 0.75, g: 1, b: 0, a: 1}
+  fieldNormal: {r: 1, g: 1, b: 1, a: 1}
+  dehighlightedUiItem: {r: 0.25, g: 0.25, b: 0.25, a: 1}
+  normalUiItem: {r: 1, g: 1, b: 1, a: 1}
+  closeButtonBackground: {r: 0, g: 0, b: 0, a: 0.5}
+  fpsColor: {r: 0, g: 0, b: 0, a: 1}

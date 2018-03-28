@@ -2,15 +2,12 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class DebugTextHandler : MonoBehaviour
+public class DebugTextHandler : Singleton<DebugTextHandler>
 {
-
-    public static DebugTextHandler Instance = null;
     Text debugText;
 
-    void Awake()
+    void Start()
     {
-        Instance = this;
         debugText = transform.GetComponent<Text>();
     }
 

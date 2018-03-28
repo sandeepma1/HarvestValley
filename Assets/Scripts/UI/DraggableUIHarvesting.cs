@@ -1,14 +1,9 @@
-﻿using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
+﻿using UnityEngine.EventSystems;
 
-public class DraggableUIHarvesting : DraggableUIBase
+public class DraggableUIHarvesting : DraggableUIBase<DraggableUIHarvesting>
 {
-    public static DraggableUIHarvesting Instance = null;
-
     public override void OnEndDrag(PointerEventData eventData)
     {
-
         base.OnEndDrag(eventData);
     }
 }

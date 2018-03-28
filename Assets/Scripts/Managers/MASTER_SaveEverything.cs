@@ -1,16 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
-
-public class MASTER_SaveEverything : MonoBehaviour
+﻿public class MASTER_SaveEverything : Singleton<MASTER_SaveEverything>
 {
-    public static MASTER_SaveEverything Instance = null;
-
-    void Awake()
-    {
-        Instance = this;
-    }
-
     public void SaveAll()
     {
 

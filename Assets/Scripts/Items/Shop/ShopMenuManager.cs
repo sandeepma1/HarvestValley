@@ -2,12 +2,12 @@
 using UnityEngine.UI;
 using TMPro;
 using HarvestValley.Managers;
+using HarvestValley.IO;
 
 namespace HarvestValley.Ui
 {
-    public class ShopMenuManager : MonoBehaviour
+    public class ShopMenuManager : Singleton<ShopMenuManager>
     {
-        public static ShopMenuManager Instance = null;
         public GameObject shopUIMenu, shopToggleButton, shopitemPrefab, UIList;
         public GameObject PlaceHolderSprite;
 
@@ -16,7 +16,6 @@ namespace HarvestValley.Ui
 
         void Start()
         {
-            Instance = this;
             PopulateScrollListAtStart();
         }
 

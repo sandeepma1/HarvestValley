@@ -1,9 +1,8 @@
 ﻿using UnityEngine.U2D;
 using UnityEngine;
 
-public class AtlasBank : MonoBehaviour
+public class AtlasBank : Singleton<AtlasBank>
 {
-    public static AtlasBank Instance = null;
     [SerializeField]
     private SpriteAtlas guiAtlas;
     [SerializeField]
@@ -12,9 +11,8 @@ public class AtlasBank : MonoBehaviour
     private SpriteAtlas buildingAtlas;
     private Sprite missingSprite;
 
-    private void Awake()
+    private void Start()
     {
-        Instance = this;
         missingSprite = GetSprite("Blockx100", AtlasType.Buildings);
     }
 

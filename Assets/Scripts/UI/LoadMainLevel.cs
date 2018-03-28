@@ -1,16 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class LoadMainLevel : MonoBehaviour
+public class LoadMainLevel : Singleton<LoadMainLevel>
 {
     public GameObject loadingScreen;
-    public static LoadMainLevel Instance = null;
-
-    void Awake()
-    {
-        Instance = this;
-    }
 
     public void LoadMainScene_SandBox()
     {

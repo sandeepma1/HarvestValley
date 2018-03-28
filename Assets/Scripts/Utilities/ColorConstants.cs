@@ -42,6 +42,10 @@ namespace HarvestValley.Ui
         [SerializeField]
         private Color closeButtonBackground = new Color(0, 0, 0, 0.5f);
         public static Color CloseButtonBackground { get { return Instance.closeButtonBackground; } }
+
+        [SerializeField]
+        private Color fpsColor = new Color(0, 0, 0, 1f);
+        public static Color FpsColor { get { return Instance.fpsColor; } }
         #endregion
     }
 }

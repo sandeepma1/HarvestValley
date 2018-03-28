@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d1d0e7cf41db32f409cd5d9824628433
-timeCreated: 1522255650
+guid: 2b5a849e414a83049b59aacc8cd8a722
+timeCreated: 1522257227
 licenseType: Free
 TrueTypeFontImporter:
   externalObjects: {}
@@ -10,9 +10,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Francois One
+  fontName: PT Sans Narrow
   fontNames:
-  - Francois One
+  - PT Sans Narrow
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
