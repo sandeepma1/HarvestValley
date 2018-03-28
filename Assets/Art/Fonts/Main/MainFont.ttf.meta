@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 21bea8f52779c5942879a0d236a131d6
-timeCreated: 1522250905
+guid: 08ebadee53a3c7b49895809596bff345
+timeCreated: 1522252916
 licenseType: Free
 TrueTypeFontImporter:
   externalObjects: {}
@@ -10,9 +10,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Adumu
+  fontName: Mouse Memoirs
   fontNames:
-  - Adumu
+  - Mouse Memoirs
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

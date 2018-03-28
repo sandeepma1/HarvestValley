@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 423cab0f5cda8fc4bbda9deb4a501a5a
-timeCreated: 1515682056
+guid: d1d0e7cf41db32f409cd5d9824628433
+timeCreated: 1522255650
 licenseType: Free
 TrueTypeFontImporter:
   externalObjects: {}
@@ -10,9 +10,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Fredoka One
+  fontName: Francois One
   fontNames:
-  - Fredoka One
+  - Francois One
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
