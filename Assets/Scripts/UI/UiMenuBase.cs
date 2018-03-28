@@ -25,7 +25,6 @@ namespace HarvestValley.Ui
         {
             if (transform.GetChild(0).GetChild(0).GetComponent<Button>())
             {
-                print(transform.name);
                 closeButton = transform.GetChild(0).GetChild(0).GetComponent<Button>();
                 closeButton.onClick.AddListener(CloseMenuButtonEventHandler);
 
@@ -54,10 +53,19 @@ namespace HarvestValley.Ui
 
         protected string TimeRemaining(DateTime dateTime)
         {
-            string timeRemaining = "";
             TimeSpan timeSpan;
             timeSpan = dateTime.Subtract(DateTime.UtcNow);
+            return TimeSpanToDuration(timeSpan);
+        }
 
+        protected string SecondsToDuration(int seconds)
+        {
+            return TimeSpanToDuration(new TimeSpan(0, 0, seconds));
+        }
+
+        private string TimeSpanToDuration(TimeSpan timeSpan)
+        {
+            string timeRemaining = "";
             if (timeSpan <= new TimeSpan(360, 0, 0, 0))
             { //> 1year
                 timeRemaining = timeSpan.Days.ToString() + "d " + timeSpan.Hours.ToString() + "h";

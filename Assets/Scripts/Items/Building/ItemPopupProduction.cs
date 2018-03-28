@@ -10,7 +10,6 @@ namespace HarvestValley.Ui
         public TextMeshPro itemDuration;
         public GameObject item1Icon, item2Icon, item3Icon, item4Icon;
         public TextMeshPro item1Costing, item2Costing, item3Costing, item4Costing;
-        //public TextMeshPro item1Required, item2Required, item3Required, item4Required;
 
         int popupOffset = 135;
         // Use this for initialization

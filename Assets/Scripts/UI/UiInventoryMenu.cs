@@ -44,7 +44,7 @@ namespace HarvestValley.Ui
         {
             for (int i = 0; i < playerInventory.Count; i++)
             {
-                listItems[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = playerInventory[i].count.ToString();
+                listItems[i].itemCountText.text = playerInventory[i].count.ToString();
             }
         }
 
@@ -70,6 +70,11 @@ namespace HarvestValley.Ui
         private void SavePlayerInventory()
         {
             ES2.Save(playerInventory, "PlayerInventory");
+        }
+
+        public int GetItemCountFromInventory(int itemID)
+        {
+            return playerInventory[itemID].count;
         }
     }
 }

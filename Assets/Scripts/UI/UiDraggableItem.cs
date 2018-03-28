@@ -9,7 +9,7 @@ using TMPro;
 /// </summary>
 namespace HarvestValley.Ui
 {
-    public class UiDraggableItem : ScrollRect
+    public class UiDraggableItem : ScrollRect, IPointerDownHandler
     {
         [SerializeField]
         private TextMeshProUGUI itemNameText;
@@ -22,7 +22,7 @@ namespace HarvestValley.Ui
         internal bool isItemUnlocked;
 
         public int selectedItemID;
-
+        public Action<int> ItemClickedDragged;
         #region Drag Variables
         private bool routeToParent = false;
         private Transform imageImageTransform;
@@ -45,6 +45,11 @@ namespace HarvestValley.Ui
             isItemUnlocked = true;
             itemImage.color = ColorConstants.NormalUiItem;
             itemNameText.text = itemName;
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            ItemClickedDragged.Invoke(itemID);
         }
 
         private void _OnBeginDrag()

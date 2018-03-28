@@ -4,6 +4,7 @@ using TMPro;
 using HarvestValley.Managers;
 using System.Collections.Generic;
 using HarvestValley.IO;
+using System;
 
 namespace HarvestValley.Ui
 {
@@ -28,17 +29,36 @@ namespace HarvestValley.Ui
         [SerializeField]
         private UiQueueItem[] queueItems;
 
+        // Require items to make item
+        [SerializeField]
+        private GameObject requiredItemsWindow;
+        [SerializeField]
+        private UiRequireItem uiRequireItemPrefab;
+        [SerializeField]
+        private Transform requiredListParent;
+        [SerializeField]
+        private TextMeshProUGUI itemNameText;
+        [SerializeField]
+        private TextMeshProUGUI itemTimeToMakeText;
+        [SerializeField]
+        private TextMeshProUGUI itemCountInInventoryText;
+
         internal Canvas mainCanvas;
-        private UiDraggableItem[] menuItems; // making this array as not more than 9 items will be in building menu       
+        private UiDraggableItem[] menuItems; // making this array as not more than 9 items will be in building menu  
+        private UiRequireItem[] requiredItems; // making this array as not more than 4 items will be in building menu 
+        private const int maxRequiredItems = 4;
         private List<int> unlockedBuildingItemID = new List<int>();
         private int selectedBuilUnlQuSlots;
         private bool showTimer;
         BuildingQueue[] buildingQueue;
 
+
         protected override void Start()
         {
             menuItems = new UiDraggableItem[GEM.maxQCount];
+            requiredItems = new UiRequireItem[maxRequiredItems];
             CreateItems();
+            CreateRequiredItems();
             base.Start();
             mainCanvas = GetComponent<Canvas>();
             unlockNewSlotButton.onClick.AddListener(UnlockNewSlotButtonPressed);
@@ -73,6 +93,7 @@ namespace HarvestValley.Ui
                 return;
             }
             PopulateBuildingItems();
+            PopulateRequiredItems();
             PopulateBuildingQueue();
             AddNewSlotForPurchase();
             UpdateUiBuildingQueue();
@@ -112,6 +133,15 @@ namespace HarvestValley.Ui
                 menuItems[i].itemName = item.name;
                 menuItems[i].ItemUnlocked();
             }
+        }
+
+        private void PopulateRequiredItems()
+        {
+            for (int i = 0; i < requiredItems.Length; i++)
+            {
+                requiredItems[i].gameObject.SetActive(false);
+            }
+            requiredItemsWindow.SetActive(false);
         }
 
         private void PopulateBuildingQueue()
@@ -202,7 +232,69 @@ namespace HarvestValley.Ui
                 menuItems[i].itemName = "Locked";
                 menuItems[i].isItemUnlocked = false;
                 menuItems[i].gameObject.SetActive(false);
+                menuItems[i].ItemClickedDragged += ItemClickedDraggedEventHandler;
             }
+        }
+
+        private void CreateRequiredItems()
+        {
+            for (int i = 0; i < maxRequiredItems; i++)
+            {
+                requiredItems[i] = Instantiate(uiRequireItemPrefab, requiredListParent);
+                requiredItems[i].name = "RequiredItem" + i;
+                requiredItems[i].itemImage.sprite = null;
+                requiredItems[i].haveCount.text = "1";
+                requiredItems[i].requireCount.text = "/2";
+                requiredItems[i].gameObject.SetActive(false);
+            }
+        }
+
+        private void ItemClickedDraggedEventHandler(int itemID)
+        {
+            requiredItemsWindow.SetActive(true);
+            Item item = ItemDatabase.Instance.items[itemID];
+
+            itemTimeToMakeText.text = SecondsToDuration((int)item.timeRequiredInSeconds);
+            itemCountInInventoryText.text = UiInventoryMenu.Instance.GetItemCountFromInventory(item.itemID).ToString();
+            itemNameText.text = item.name;
+
+            for (int i = 0; i < requiredItems.Length; i++)
+            {
+                requiredItems[i].gameObject.SetActive(false);
+            }
+
+            Item needItem1 = ItemDatabase.Instance.items[item.needID1];
+            requiredItems[0].gameObject.SetActive(true);
+            requiredItems[0].itemImage.sprite = AtlasBank.Instance.GetSprite(item.slug, AtlasType.GUI);
+            requiredItems[0].haveCount.text = UiInventoryMenu.Instance.GetItemCountFromInventory(needItem1.itemID).ToString();
+            requiredItems[0].requireCount.text = "/" + needItem1.needAmount1.ToString();
+
+            Item needItem2 = ItemDatabase.Instance.items[item.needID2];
+            requiredItems[0].gameObject.SetActive(true);
+            requiredItems[0].itemImage.sprite = AtlasBank.Instance.GetSprite(item.slug, AtlasType.GUI);
+            requiredItems[0].haveCount.text = UiInventoryMenu.Instance.GetItemCountFromInventory(needItem2.itemID).ToString();
+            requiredItems[0].requireCount.text = "/" + needItem2.needAmount2.ToString();
+
+            Item needItem3 = ItemDatabase.Instance.items[item.needID3];
+            requiredItems[0].gameObject.SetActive(true);
+            requiredItems[0].itemImage.sprite = AtlasBank.Instance.GetSprite(item.slug, AtlasType.GUI);
+            requiredItems[0].haveCount.text = UiInventoryMenu.Instance.GetItemCountFromInventory(needItem3.itemID).ToString();
+            requiredItems[0].requireCount.text = "/" + needItem1.needAmount3.ToString();
+
+            Item needItem4 = ItemDatabase.Instance.items[item.needID4];
+            requiredItems[0].gameObject.SetActive(true);
+            requiredItems[0].itemImage.sprite = AtlasBank.Instance.GetSprite(item.slug, AtlasType.GUI);
+            requiredItems[0].haveCount.text = UiInventoryMenu.Instance.GetItemCountFromInventory(needItem4.itemID).ToString();
+            requiredItems[0].requireCount.text = "/" + needItem1.needAmount4.ToString();
+        }
+
+        private void ShowRequiredItems(int id, int needID)
+        {
+            Item needItem = ItemDatabase.Instance.items[needID];
+            requiredItems[id].gameObject.SetActive(true);
+            requiredItems[id].itemImage.sprite = AtlasBank.Instance.GetSprite(needItem.slug, AtlasType.GUI);
+            requiredItems[id].haveCount.text = UiInventoryMenu.Instance.GetItemCountFromInventory(needItem.itemID).ToString();
+            requiredItems[id].requireCount.text = "/" + needItem.needAmount1.ToString();
         }
     }
 }
