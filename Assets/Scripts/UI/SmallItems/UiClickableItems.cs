@@ -4,7 +4,7 @@ using TMPro;
 
 namespace HarvestValley.Ui
 {
-    public class UiClickableItems : MonoBehaviour
+    public class UiClickableItems : UiSmallItemBase
     {
         [SerializeField]
         private TextMeshProUGUI itemCostText;
@@ -19,6 +19,12 @@ namespace HarvestValley.Ui
         internal bool isItemUnlocked;
 
         private Button button;
+
+        private void Awake()
+        {
+            ChangeUiTextColor(ref itemCostText);
+            ChangeUiTextColor(ref itemNameText);
+        }
 
         private void Start()
         {

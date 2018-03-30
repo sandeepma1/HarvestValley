@@ -60,6 +60,10 @@ namespace HarvestValley.Ui
             {
                 ItemClickedDragged.Invoke(itemID);
             }
+            else
+            {
+                ItemClickedDragged.Invoke(-1);
+            }
         }
 
         private void _OnBeginDrag()

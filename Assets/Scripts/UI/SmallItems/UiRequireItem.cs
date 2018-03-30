@@ -2,9 +2,18 @@
 using UnityEngine.UI;
 using TMPro;
 
-public class UiRequireItem : MonoBehaviour
+namespace HarvestValley.Ui
 {
-    public Image itemImage;
-    public TextMeshProUGUI haveCount;
-    public TextMeshProUGUI requireCount;
+    public class UiRequireItem : UiSmallItemBase
+    {
+        public Image itemImage;
+        public TextMeshProUGUI haveCountText;
+        public TextMeshProUGUI requireCountText;
+
+        private void Awake()
+        {
+            ChangeUiTextColor(ref haveCountText);
+            ChangeUiTextColor(ref requireCountText);
+        }
+    }
 }

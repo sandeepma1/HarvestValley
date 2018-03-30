@@ -267,15 +267,22 @@ namespace HarvestValley.Ui
                 requiredItems[i] = Instantiate(uiRequireItemPrefab, requiredListParent);
                 requiredItems[i].name = "RequiredItem" + i;
                 requiredItems[i].itemImage.sprite = null;
-                requiredItems[i].haveCount.text = "1";
-                requiredItems[i].requireCount.text = "/2";
+                requiredItems[i].haveCountText.text = "1";
+                requiredItems[i].requireCountText.text = "/2";
                 requiredItems[i].gameObject.SetActive(false);
             }
         }
 
         private void ItemClickedDraggedEventHandler(int itemID)
         {
-            UpdateRequiredItemsSection(itemID);
+            if (itemID == -1)
+            {
+                requiredItemsWindow.SetActive(false);
+            }
+            else
+            {
+                UpdateRequiredItemsSection(itemID);
+            }
         }
 
         private void UpdateRequiredItemsSection(int itemID)
@@ -300,17 +307,9 @@ namespace HarvestValley.Ui
                 requiredItems[i].itemImage.sprite = AtlasBank.Instance.GetSprite(needItem.slug, AtlasType.GUI);
 
                 int itemAmountInInventory = UiInventoryMenu.Instance.GetItemAmountFromInventory(needItem.itemID);
-                requiredItems[i].haveCount.text = itemAmountInInventory.ToString();
-
-                if (itemAmountInInventory < neededAmount)
-                {
-                    requiredItems[i].haveCount.color = ColorConstants.InsufficientItemAmount;
-                }
-                else
-                {
-                    requiredItems[i].haveCount.color = ColorConstants.NormalItemAmount;
-                }
-                requiredItems[i].requireCount.text = "/" + neededAmount.ToString();
+                requiredItems[i].haveCountText.text = itemAmountInInventory.ToString();
+                requiredItems[i].haveCountText.color = (itemAmountInInventory < neededAmount) ? ColorConstants.InsufficientItemAmount : ColorConstants.NormalSecondaryText;
+                requiredItems[i].requireCountText.text = "/" + neededAmount.ToString();
             }
         }
 

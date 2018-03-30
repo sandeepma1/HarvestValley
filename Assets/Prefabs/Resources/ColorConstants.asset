@@ -19,4 +19,4 @@ MonoBehaviour:
   closeButtonBackground: {r: 0, g: 0, b: 0, a: 0.5}
   fpsColor: {r: 0, g: 0, b: 0, a: 1}
   insufficientItemAmount: {r: 0.8308824, g: 0.13440742, b: 0.13440742, a: 1}
-  normalItemAmount: {r: 0.2205882, g: 0.0405493, b: 0.0405493, a: 1}
+  normalItemAmount: {r: 0.54901963, g: 0.38431376, b: 0.17254902, a: 1}

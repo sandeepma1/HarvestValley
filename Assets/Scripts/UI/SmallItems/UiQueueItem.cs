@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class UiQueueItem : MonoBehaviour
+namespace HarvestValley.Ui
 {
-    [SerializeField]
-    internal Image itemImage;
+    public class UiQueueItem : UiSmallItemBase
+    {
+        [SerializeField]
+        internal Image itemImage;
+    }
 }

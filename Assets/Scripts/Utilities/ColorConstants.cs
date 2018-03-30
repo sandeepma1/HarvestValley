@@ -20,7 +20,7 @@ namespace HarvestValley.Ui
         public static Color White { get { return Instance.white; } }
         #endregion
 
-        //Feild
+        #region Feild
         [SerializeField]
         private Color fieldGlow = new Color(0.75f, 1, 0);
         public static Color FieldGlow { get { return Instance.fieldGlow; } }
@@ -28,7 +28,7 @@ namespace HarvestValley.Ui
         [SerializeField]
         private Color fieldNormal = new Color(1, 1, 1);
         public static Color FieldNormal { get { return Instance.fieldNormal; } }
-
+        #endregion
 
         #region Menu UI        
         [SerializeField]
@@ -55,7 +55,7 @@ namespace HarvestValley.Ui
 
         [SerializeField]
         private Color normalItemAmount = new Color(0, 0, 0, 1f);
-        public static Color NormalItemAmount { get { return Instance.normalItemAmount; } }
+        public static Color NormalSecondaryText { get { return Instance.normalItemAmount; } }
         #endregion
     }
 }

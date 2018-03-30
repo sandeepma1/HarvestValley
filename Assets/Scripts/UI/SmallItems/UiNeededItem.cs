@@ -4,7 +4,7 @@ using TMPro;
 
 namespace HarvestValley.Ui
 {
-    public class UiNeededItem : MonoBehaviour
+    public class UiNeededItem : UiSmallItemBase
     {
         [SerializeField]
         private Image itemImage;
@@ -24,6 +24,11 @@ namespace HarvestValley.Ui
             {
                 amountText.text = value;
             }
+        }
+
+        private void Awake()
+        {
+            ChangeUiTextColor(ref amountText);
         }
     }
 }
