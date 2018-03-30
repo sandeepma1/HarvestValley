@@ -37,7 +37,8 @@ namespace HarvestValley.Managers
             BuildingsGO[building.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.GetSourceInfoById(building.buildingID).slug, AtlasType.Buildings);
             BuildingsGO[building.id].buildingId = building.id;
             BuildingsGO[building.id].sourceId = building.buildingID;
-
+            BuildingsGO[building.id].transform.localPosition = building.position;
+            BuildingsGO[building.id].position = building.position;
             BuildingsGO[building.id].PopulateBuildingQueueFromSave(building.itemID, building.dateTime);
             BuildingsGO[building.id].unlockedQueueSlots = building.unlockedQueueSlots;
 
@@ -77,7 +78,7 @@ namespace HarvestValley.Managers
                 //item.level = buildingsGO[item.id].level;
                 item.state = (sbyte)BuildingsGO[item.id].state;
                 item.unlockedQueueSlots = BuildingsGO[item.id].unlockedQueueSlots;
-
+                item.position = BuildingsGO[item.id].position;
                 BuildingQueue[] currentQueue = BuildingsGO[item.id].CurrentItemsInQueue();
 
                 for (int i = 0; i < currentQueue.Length; i++)
@@ -105,6 +106,7 @@ public class Buildings  // iLIST
     public string name;
     public int state;
     public int unlockedQueueSlots;
+    public Vector2 position;
     public int[] itemID;
     public string[] dateTime;
 
@@ -112,13 +114,15 @@ public class Buildings  // iLIST
     {
     }
 
-    public Buildings(int f_id, int f_buildingID, string f_name, int f_state, int f_unlockedQueueSlots, int[] f_itemID, string[] f_dateTime)//, Queue <int>  f_itemID, Queue <string>  f_dateTime)
+    public Buildings(int f_id, int f_buildingID, string f_name, int f_state, int f_unlockedQueueSlots, Vector2 f_position,
+        int[] f_itemID, string[] f_dateTime)//, Queue <int>  f_itemID, Queue <string>  f_dateTime)
     {
         id = f_id;
         buildingID = f_buildingID;
         name = f_name;
         state = f_state;
         unlockedQueueSlots = f_unlockedQueueSlots;
+        position = f_position;
         itemID = f_itemID;
         dateTime = f_dateTime;
     }

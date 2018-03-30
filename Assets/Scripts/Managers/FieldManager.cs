@@ -45,12 +45,12 @@ namespace HarvestValley.Managers
         private void InitFields(Fields field)
         {
             FieldGO[field.id] = Instantiate(fieldPrefab, transform);
-            FieldGO[field.id].transform.localPosition = field.pos;
+            FieldGO[field.id].transform.localPosition = field.position;
             FieldGO[field.id].gameObject.name = "Field" + field.id;
             FieldGO[field.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.GetSourceInfoById(field.fieldID).slug, AtlasType.Buildings);
             FieldGO[field.id].buildingId = field.id;
             FieldGO[field.id].sourceId = field.fieldID;
-            FieldGO[field.id].pos = field.pos;
+            FieldGO[field.id].position = field.position;
             FieldGO[field.id].level = field.level;
             FieldGO[field.id].itemId = field.itemID;
             FieldGO[field.id].state = (BuildingState)field.state;
@@ -263,7 +263,7 @@ namespace HarvestValley.Managers
         {
             foreach (var item in fields)
             {
-                item.pos = FieldGO[item.id].transform.localPosition;
+                item.position = FieldGO[item.id].transform.localPosition;
                 item.id = FieldGO[item.id].buildingId;
                 item.fieldID = FieldGO[item.id].sourceId;
                 item.level = FieldGO[item.id].level;
@@ -288,7 +288,7 @@ public class Fields  // iLIST
     public int id;
     public int fieldID;
     public string name;
-    public Vector2 pos;
+    public Vector2 position;
     public int level;
     public int state;
     public int itemID;
@@ -298,12 +298,12 @@ public class Fields  // iLIST
     {
     }
 
-    public Fields(int f_id, int f_fieldID, string f_name, Vector2 f_pos, int f_level, int f_state, int f_itemID, string f_dateTime)//, Queue <int>  f_itemID, Queue <string>  f_dateTime)
+    public Fields(int f_id, int f_fieldID, string f_name, Vector2 f_position, int f_level, int f_state, int f_itemID, string f_dateTime)//, Queue <int>  f_itemID, Queue <string>  f_dateTime)
     {
         id = f_id;
         fieldID = f_fieldID;
         name = f_name;
-        pos = f_pos;
+        position = f_position;
         level = f_level;
         state = f_state;
         itemID = f_itemID;

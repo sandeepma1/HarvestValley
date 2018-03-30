@@ -37,7 +37,6 @@ namespace HarvestValley.Ui
                 {
                     closeGroundButton.GetComponent<Button>().onClick.AddListener(CloseMenuButtonEventHandler);
                     closeGroundButton.GetComponent<Image>().color = ColorConstants.NormalUiItem;
-                    print("add " + transform.name);
                 }
             }
         }

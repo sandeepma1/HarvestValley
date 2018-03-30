@@ -6,6 +6,7 @@ using System;
 
 public class FirstScript : MonoBehaviour
 {
+    public static FirstScript Instance = null;
     [SerializeField]
     private int x = 6, y = 4, gap = 2;
 
@@ -17,13 +18,18 @@ public class FirstScript : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+        IsNewGameStarted();
+    }
+
+    private void Start()
+    {
         mainCamera = Camera.main;
         canvas = FindObjectsOfType<Canvas>();
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].worldCamera = mainCamera;
         }
-        IsNewGameStarted();
     }
 
     private void LateUpdate()
@@ -65,7 +71,7 @@ public class FirstScript : MonoBehaviour
 
     private void CreateNewInventory()
     {
-        playerInventory.Add(new InventoryItems(0, 1)); //addding Wheat for the first level
+        playerInventory.Add(new InventoryItems(0, 1)); //addding Wheat for the first level       
         ES2.Save(playerInventory, "PlayerInventory");
     }
 
@@ -99,7 +105,8 @@ public class FirstScript : MonoBehaviour
             ids[i] = -1;
         }
 
-        buildings.Add(new Buildings(0, 2, "Building", 0, 2, ids, nowTime));
+        buildings.Add(new Buildings(0, 2, "Bakery", 0, 2, new Vector2(0, 0), ids, nowTime));
+        buildings.Add(new Buildings(1, 3, "Dairy", 0, 2, new Vector2(3, 0), ids, nowTime));
 
         ES2.Save(buildings, "AllBuildings");
     }

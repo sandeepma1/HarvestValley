@@ -5,7 +5,7 @@ public class ClickableBase : MouseUpBase
     public SpriteRenderer buildingSprite;
     public int buildingId;
     public int sourceId;
-    public Vector2 pos;
+    public Vector2 position;
     public int level;
     public BuildingState state;
 
