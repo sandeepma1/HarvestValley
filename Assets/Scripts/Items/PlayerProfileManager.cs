@@ -21,7 +21,7 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
 
     private void Start()
     {
-        UpdateAll();
+        UpdateHudUi();
     }
 
     public int CurrentPlayerLevel
@@ -64,78 +64,75 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
         if (playerProfile.XPPoints >= LevelUpDatabase.GetLevelById(playerProfile.level).XPforNextLevel)
         {
             IncrementPlayerLevel();
-            if (LevelUpDatabase.GetLevelById(playerProfile.level).itemUnlockID >= 0)
+            Level currentUnlockedLevel = LevelUpDatabase.GetLevelById(playerProfile.level);
+            if (currentUnlockedLevel.itemUnlockID >= 0)
             {
-                UiInventoryMenu.Instance.AddNewFarmItem(LevelUpDatabase.GetLevelById(playerProfile.level).itemUnlockID,
-                    LevelUpDatabase.GetLevelById(playerProfile.level).itemRewardCount);
+                UiInventoryMenu.Instance.AddNewItem(currentUnlockedLevel.itemUnlockID, currentUnlockedLevel.itemRewardCount);
                 UiSeedListMenu.Instance.AddUnlockedItemsToList();
                 UiBuildingMenu.Instance.AddUnlockedItemsToList();
-
-                PlayerGems(LevelUpDatabase.GetLevelById(playerProfile.level).gemsRewardCount);
+                PlayerGems(currentUnlockedLevel.gemsRewardCount);
             }
             PlayerXPPointsAdd(-CurrentPlayerXP);
             isLevelUpReady = true;
         }
-        UpdateAll();
+        UpdateHudUi();
     }
 
     public void PlayerName(string value)
     {
         playerProfile.name = value;
-        UpdateAll();
+        UpdateHudUi();
     }
 
     public void FarmName(string value)
     {
         playerProfile.farmName = value;
-        UpdateAll();
+        UpdateHudUi();
     }
 
     public void PlayerCoins(int value)
     {
         playerProfile.coins += value;
-        UpdateAll();
+        UpdateHudUi();
     }
 
     public void PlayerGems(int value)
     {
         playerProfile.gems += value;
-        UpdateAll();
+        UpdateHudUi();
     }
 
     public void IncrementPlayerLevel()
     {
         playerProfile.level++;
-        UpdateAll();
+        UpdateHudUi();
     }
 
     public void PlayerXPPointsAdd(int value)
     {
         playerProfile.XPPoints += value;
         CheckForLevelUp();
-        UpdateAll();
+        UpdateHudUi();
     }
 
     public void PlayerStamina(int value)
     {
         playerProfile.stamina += value;
-        UpdateAll();
+        UpdateHudUi();
     }
 
-    private void UpdateAll()
+    private void UpdateHudUi()
     {
         coinsUIText.text = String.Format("{0:###,###,###,###,###}", playerProfile.coins);
         gemsUIText.text = String.Format("{0:###,###,###,###,###}", playerProfile.gems);
         staminaUIText.text = playerProfile.stamina.ToString();
         levelUIText.text = playerProfile.level.ToString();
         XPPointsUIText.text = playerProfile.XPPoints.ToString() + "/" + LevelUpDatabase.GetLevelById(playerProfile.level).XPforNextLevel.ToString();
-        StopCoroutine("SavePlayerProfile");
-        StartCoroutine("SavePlayerProfile");
+        SavePlayerProfile();
     }
 
-    IEnumerator SavePlayerProfile()
+    private void SavePlayerProfile()
     {
-        yield return new WaitForSeconds(1f);
         ES2.Save(playerProfile, "PlayerProfile");
     }
 

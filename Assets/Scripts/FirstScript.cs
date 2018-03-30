@@ -13,7 +13,7 @@ public class FirstScript : MonoBehaviour
     private Camera mainCamera;
     private List<Fields> fields = new List<Fields>();
     private List<Buildings> buildings = new List<Buildings>();
-    public List<FarmItems> playerInventory = new List<FarmItems>();
+    public List<InventoryItems> playerInventory = new List<InventoryItems>();
 
     private void Awake()
     {
@@ -65,7 +65,7 @@ public class FirstScript : MonoBehaviour
 
     private void CreateNewInventory()
     {
-        playerInventory.Add(new FarmItems(0, 9)); //addding Wheat for the first level
+        playerInventory.Add(new InventoryItems(0, 1)); //addding Wheat for the first level
         ES2.Save(playerInventory, "PlayerInventory");
     }
 

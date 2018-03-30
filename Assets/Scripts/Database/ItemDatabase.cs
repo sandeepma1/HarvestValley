@@ -51,6 +51,11 @@ namespace HarvestValley.IO
             return items[itemId];
         }
 
+        public static string GetItemNameById(int itemId)
+        {
+            return items[itemId].slug;
+        }
+
         public static int GetItemslength()
         {
             return items.Length;

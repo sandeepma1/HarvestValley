@@ -47,33 +47,51 @@ namespace HarvestValley.Ui
             itemNameText.text = itemName;
         }
 
+        public void ItemLocked()
+        {
+            isItemUnlocked = false;
+            itemImage.color = ColorConstants.DehighlightedUiItem;
+            itemNameText.text = "Locked";
+        }
+
         public void OnPointerDown(PointerEventData eventData)
         {
-            ItemClickedDragged.Invoke(itemID);
+            if (isItemUnlocked)
+            {
+                ItemClickedDragged.Invoke(itemID);
+            }
         }
 
         private void _OnBeginDrag()
         {
-            itemImage.raycastTarget = false;
-            initialPosition = imageImageTransform.position;
-            selectedItemID = itemID;
+            if (isItemUnlocked)
+            {
+                itemImage.raycastTarget = false;
+                initialPosition = imageImageTransform.position;
+                selectedItemID = itemID;
+            }
         }
 
         private void _OnDrag()
         {
-            if (Input.touchCount > 1) { return; }
+            if (isItemUnlocked)
+            {
+                if (Input.touchCount > 1) { return; }
 
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(UiBuildingMenu.Instance.mainCanvas.transform as RectTransform,
-                Input.mousePosition, UiBuildingMenu.Instance.mainCanvas.worldCamera, out pos);
-            imageImageTransform.position = UiBuildingMenu.Instance.mainCanvas.transform.TransformPoint(pos);
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(UiBuildingMenu.Instance.mainCanvas.transform as RectTransform,
+                    Input.mousePosition, UiBuildingMenu.Instance.mainCanvas.worldCamera, out pos);
+                imageImageTransform.position = UiBuildingMenu.Instance.mainCanvas.transform.TransformPoint(pos);
+            }
         }
 
         private void _OnEndDrag()
         {
-            itemImage.raycastTarget = true;
-            imageImageTransform.position = initialPosition;
-            //SeedListMenu.Instance.OnDragComplete(selectedItemID);
-            selectedItemID = -1;
+            if (isItemUnlocked)
+            {
+                itemImage.raycastTarget = true;
+                imageImageTransform.position = initialPosition;
+                selectedItemID = -1;
+            }
         }
 
         #region ScrollRect Stuff DO NOT EDIT
@@ -136,7 +154,10 @@ namespace HarvestValley.Ui
             else
             {
                 _OnBeginDrag();
-                base.OnBeginDrag(eventData);
+                if (isItemUnlocked)
+                {
+                    base.OnBeginDrag(eventData);
+                }
             }
         }
 

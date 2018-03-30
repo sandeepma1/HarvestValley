@@ -112,15 +112,6 @@ namespace HarvestValley.Ui
             this.gameObject.SetActive(true);
         }
 
-        public void UpdateSeedValue()
-        {
-            for (int i = 0; i < unlockedItemCount; i++)
-            {
-                menuItems[i].transform.GetChild(1).GetComponent<TextMeshPro>().text = UiInventoryMenu.Instance.playerInventory[i].count.ToString();
-            }
-            UiInventoryMenu.Instance.UpdateScrollListItemCount();
-        }
-
         public void ToggleMenuPages()
         {
             for (int i = 0; i < menuItems.Length; i++)

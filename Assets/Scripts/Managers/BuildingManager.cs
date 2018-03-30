@@ -67,11 +67,6 @@ namespace HarvestValley.Managers
 
         }
 
-        public void ItemDroppedInZone(int itemId)
-        {
-            BuildingsGO[currentSelectedBuildingID].AddItemToProductionQueue(itemId);
-        }
-
         public void SaveBuildings()
         {
             foreach (var item in buildings)
@@ -87,7 +82,7 @@ namespace HarvestValley.Managers
 
                 for (int i = 0; i < currentQueue.Length; i++)
                 {
-                    item.itemID[i] = currentQueue[i].id;
+                    item.itemID[i] = currentQueue[i].itemId;
                     item.dateTime[i] = currentQueue[i].dateTime.ToString();
                 }
 
@@ -147,6 +142,6 @@ public enum BuildingStage
 [Serializable]
 public struct BuildingQueue
 {
-    public int id;
+    public int itemId;
     public DateTime dateTime;
 }

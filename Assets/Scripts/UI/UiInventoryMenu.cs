@@ -11,16 +11,15 @@ namespace HarvestValley.Ui
         private UiInventoryListItem listPrefab;
         [SerializeField]
         private GameObject scrollListContent;
-        public List<FarmItems> playerInventory = new List<FarmItems>();
+        public List<InventoryItems> playerInventory = new List<InventoryItems>();
 
         List<UiInventoryListItem> listItems = new List<UiInventoryListItem>();
 
         protected override void Start()
         {
             base.Start();
-            playerInventory = ES2.LoadList<FarmItems>("PlayerInventory");
+            playerInventory = ES2.LoadList<InventoryItems>("PlayerInventory");
             PopulateScrollListAtStart();
-            InvokeRepeating("SavePlayerInventory", 3, 3);
         }
 
         private void PopulateScrollListAtStart()
@@ -34,7 +33,7 @@ namespace HarvestValley.Ui
         private void AddOneItemInScrollList(int scrollListID)
         {
             listItems.Add(Instantiate(listPrefab, scrollListContent.transform));
-            listItems[scrollListID].itemCountText.text = playerInventory[scrollListID].count.ToString();
+            listItems[scrollListID].itemCountText.text = playerInventory[scrollListID].itemCount.ToString();
             string itemSlug = ItemDatabase.GetItemById(scrollListID).slug;
             listItems[scrollListID].itemImage.sprite = AtlasBank.Instance.GetSprite(itemSlug, AtlasType.GUI);
             listItems[scrollListID].name = "InventoryListItem" + scrollListID;
@@ -44,26 +43,51 @@ namespace HarvestValley.Ui
         {
             for (int i = 0; i < playerInventory.Count; i++)
             {
-                listItems[i].itemCountText.text = playerInventory[i].count.ToString();
+                if (playerInventory[i].itemCount == 0)
+                {
+                    listItems[i].gameObject.SetActive(false);
+                }
+                else
+                {
+                    listItems[i].gameObject.SetActive(true);
+                    listItems[i].itemCountText.text = playerInventory[i].itemCount.ToString();
+                }
             }
+            SavePlayerInventory();
         }
 
-        public void UpdateFarmItems(int id, int value)
+        public void UpdateItems(int itemId, int itemValue)
         {
             foreach (var item in playerInventory)
             {
-                if (item.id == id)
+                if (item.itemId == itemId)
                 {
-                    item.count += value;
+                    item.itemCount += itemValue;
+                    break;
+                }
+                else
+                {
+                    AddNewItem(itemId, itemValue);
+                    break;
                 }
             }
             UpdateScrollListItemCount();
         }
 
-        public void AddNewFarmItem(int id, int value)
+        public void AddNewItem(int itemId, int itemValue)
         {
-            playerInventory.Add(new FarmItems(id, value));
+            if (itemValue == 0)
+            {
+                return;
+            }
+            playerInventory.Add(new InventoryItems(itemId, itemValue));
             AddOneItemInScrollList(playerInventory.Count - 1);
+            UpdateScrollListItemCount();
+        }
+
+        public void RemoveItem(int id, int value)
+        {
+            playerInventory[id].itemCount -= value;
             UpdateScrollListItemCount();
         }
 
@@ -72,24 +96,32 @@ namespace HarvestValley.Ui
             ES2.Save(playerInventory, "PlayerInventory");
         }
 
-        public int GetItemCountFromInventory(int itemID)
+        public int GetItemAmountFromInventory(int itemID)
         {
-            return playerInventory[itemID].count;
+            for (int i = 0; i < playerInventory.Count; i++)
+            {
+                if (playerInventory[i].itemId == itemID)
+                {
+                    return playerInventory[itemID].itemCount;
+                    break;
+                }
+            }
+            return 0;
         }
     }
 }
-public class FarmItems
+public class InventoryItems
 {
-    public int id;
-    public int count;
+    public int itemId;
+    public int itemCount;
 
-    public FarmItems(int i_id, int i_count)
+    public InventoryItems(int i_itemId, int i_itemCount)
     {
-        id = i_id;
-        count = i_count;
+        itemId = i_itemId;
+        itemCount = i_itemCount;
     }
 
-    public FarmItems()
+    public InventoryItems()
     {
 
     }

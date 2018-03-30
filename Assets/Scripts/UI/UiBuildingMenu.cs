@@ -137,17 +137,26 @@ namespace HarvestValley.Ui
 
         private void AddNextLockedItem()
         {
-            Item[] items = ItemDatabase.GetAllItemsBySourceId(selectedSourceID);
-            for (int i = 0; i < items.Length; i++)
+            Item[] allItemsForThisBuilding = ItemDatabase.GetAllItemsBySourceId(selectedSourceID);
+
+            //Unlocked all items for this building
+            if (unlockedThisBuildingItemIds.Count + 1 > allItemsForThisBuilding.Length)
             {
-                print(items[i].name);
+                return;
             }
-            //Item item = ItemDatabase.Instance.items[unlockedBuildingItemID[i]];
-            //menuItems[i].gameObject.SetActive(true);
-            //menuItems[i].itemImage.sprite = AtlasBank.Instance.GetSprite(item.slug, AtlasType.GUI);
-            //menuItems[i].itemID = item.itemID;
-            //menuItems[i].itemName = item.name;
-            //menuItems[i].ItemUnlocked();
+
+            Item nextLockedItem = allItemsForThisBuilding[unlockedThisBuildingItemIds.Count];
+
+            if (unlockedThisBuildingItemIds.Count <= allItemsForThisBuilding.Length)
+            {
+                menuItems[unlockedThisBuildingItemIds.Count].gameObject.SetActive(true);
+                menuItems[unlockedThisBuildingItemIds.Count].itemImage.sprite = AtlasBank.Instance.GetSprite(nextLockedItem.slug, AtlasType.GUI);
+                menuItems[unlockedThisBuildingItemIds.Count].itemID = nextLockedItem.itemID;
+                menuItems[unlockedThisBuildingItemIds.Count].itemName = nextLockedItem.name;
+                menuItems[unlockedThisBuildingItemIds.Count].ItemLocked();
+
+                print(allItemsForThisBuilding[unlockedThisBuildingItemIds.Count].name);
+            }
         }
 
         private void PopulateRequiredItems()
@@ -208,7 +217,7 @@ namespace HarvestValley.Ui
 
             for (int i = 0; i < buildingQueue.Length; i++)
             {
-                queueItems[i].itemImage.sprite = AtlasBank.Instance.GetSprite(ItemDatabase.GetItemById(buildingQueue[i].id).slug, AtlasType.GUI);
+                queueItems[i].itemImage.sprite = AtlasBank.Instance.GetSprite(ItemDatabase.GetItemById(buildingQueue[i].itemId).slug, AtlasType.GUI);
             }
 
             if (buildingQueue.Length > 0)
@@ -266,11 +275,16 @@ namespace HarvestValley.Ui
 
         private void ItemClickedDraggedEventHandler(int itemID)
         {
+            UpdateRequiredItemsSection(itemID);
+        }
+
+        private void UpdateRequiredItemsSection(int itemID)
+        {
             requiredItemsWindow.SetActive(true);
             Item selectedItem = ItemDatabase.GetItemById(itemID);
 
             itemTimeToMakeText.text = SecondsToDuration((int)selectedItem.timeRequiredInSeconds);
-            itemCountInInventoryText.text = UiInventoryMenu.Instance.GetItemCountFromInventory(selectedItem.itemID).ToString();
+            itemCountInInventoryText.text = UiInventoryMenu.Instance.GetItemAmountFromInventory(selectedItem.itemID).ToString();
             itemNameText.text = selectedItem.name;
 
             for (int i = 0; i < requiredItems.Length; i++)
@@ -285,9 +299,58 @@ namespace HarvestValley.Ui
                 requiredItems[i].gameObject.SetActive(true);
                 requiredItems[i].itemImage.sprite = AtlasBank.Instance.GetSprite(needItem.slug, AtlasType.GUI);
 
-                requiredItems[i].haveCount.text = UiInventoryMenu.Instance.GetItemCountFromInventory(needItem.itemID).ToString();
+                int itemAmountInInventory = UiInventoryMenu.Instance.GetItemAmountFromInventory(needItem.itemID);
+                requiredItems[i].haveCount.text = itemAmountInInventory.ToString();
+
+                if (itemAmountInInventory < neededAmount)
+                {
+                    requiredItems[i].haveCount.color = ColorConstants.InsufficientItemAmount;
+                }
+                else
+                {
+                    requiredItems[i].haveCount.color = ColorConstants.NormalItemAmount;
+                }
                 requiredItems[i].requireCount.text = "/" + neededAmount.ToString();
             }
+        }
+
+        public void ItemDroppedInZone(int itemId)
+        {
+            // Return if production is full
+            if (BuildingManager.Instance.BuildingsGO[selectedBuildingID].isProductionQueueFull)
+            {
+                return;
+            }
+            List<InventoryItems> itemsNeeded = CheckForItemsNeededInInventory(itemId);
+
+            if (itemsNeeded.Count == 0) // Add to production queue
+            {
+                BuildingManager.Instance.BuildingsGO[selectedBuildingID].AddItemToProductionQueue(itemId);
+                UpdateRequiredItemsSection(itemId);
+            }
+            else
+            {
+                //dont have items, SHOW RESOURVE NEEDED MENU
+                MenuManager.Instance.DisplayMenu(MenuNames.BuyResourcesMenu, MenuOpeningType.OnTop);
+                UiBuyResourceMenu.Instance.ShowNeededItems(itemsNeeded.ToArray());
+            }
+        }
+
+        private List<InventoryItems> CheckForItemsNeededInInventory(int itemId)
+        {
+            List<InventoryItems> requiredItems = new List<InventoryItems>();
+            Item item = ItemDatabase.GetItemById(itemId);
+            for (int i = 0; i < item.needID.Length; i++)
+            {
+                if (item.needID[i] == -1) { return requiredItems; }   //Return as next items will be none                    
+
+                int itemsAmountInInventory = UiInventoryMenu.Instance.GetItemAmountFromInventory(item.needID[i]);
+                if (item.needAmount[i] > itemsAmountInInventory)
+                {
+                    requiredItems.Add(new InventoryItems(item.needID[i], item.needAmount[i] - itemsAmountInInventory));
+                }
+            }
+            return requiredItems;
         }
     }
 }

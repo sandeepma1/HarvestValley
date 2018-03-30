@@ -13,6 +13,8 @@ public class ClickableBuilding : ClickableBase
     private DateTime topInQueue = DateTime.UtcNow;
     private DateTime lastInQueue = DateTime.UtcNow;
 
+    public bool isProductionQueueFull = false;
+
     private DateTime TopInQueueDateTime
     {
         get
@@ -37,7 +39,9 @@ public class ClickableBuilding : ClickableBase
         timeCompareResult = DateTime.Compare(topInQueue, DateTime.UtcNow);
         if (timeCompareResult <= 0)
         {
+            UiInventoryMenu.Instance.UpdateItems(buildingQueue.Peek().itemId, 1);
             buildingQueue.Dequeue();
+            isProductionQueueFull = false;
             if (buildingQueue.Count != 0)
             {
                 TopInQueueDateTime = buildingQueue.Peek().dateTime;
@@ -57,31 +61,51 @@ public class ClickableBuilding : ClickableBase
     {
         base.AddItemToProductionQueue(itemIdToAdd);
 
-        if (buildingQueue.Count >= unlockedQueueSlots)
+        if (isProductionQueueFull)
         {
-            print("Queue slots are full unlock slots by gems!!");//TODO: Gems window popup
             return;
         }
 
         BuildingQueue queueItem = new BuildingQueue();
 
-        queueItem.id = itemIdToAdd;
+        queueItem.itemId = itemIdToAdd;
+        Item item = ItemDatabase.GetItemById(itemIdToAdd);
 
         if (buildingQueue.Count != 0)
         {
-            queueItem.dateTime = lastInQueue.AddSeconds(ItemDatabase.GetItemById(itemIdToAdd).timeRequiredInSeconds);
+            queueItem.dateTime = lastInQueue.AddSeconds(item.timeRequiredInSeconds);
         }
         else
         {
-            queueItem.dateTime = DateTime.UtcNow.AddSeconds(ItemDatabase.GetItemById(itemIdToAdd).timeRequiredInSeconds);
+            queueItem.dateTime = DateTime.UtcNow.AddSeconds(item.timeRequiredInSeconds);
         }
 
         buildingQueue.Enqueue(queueItem);
+        print("added item " + queueItem.itemId);
         lastInQueue = queueItem.dateTime;
+        if (buildingQueue.Count >= unlockedQueueSlots)
+        {
+            isProductionQueueFull = true;
+        }
+        else
+        {
+            isProductionQueueFull = false;
+        }
+
         if (GEM.ShowDebugInfo) print("item added, in queue " + " NOW " + DateTime.UtcNow + " ADD " + queueItem.dateTime + " CNT " + buildingQueue.Count);
         state = BuildingState.WORKING;
         TopInQueueDateTime = buildingQueue.Peek().dateTime;
         ChangedInBuilding();
+        for (int i = 0; i < item.needID.Length; i++)
+        {
+            if (item.needID[i] == -1)
+            {
+                break;
+            }
+            UiInventoryMenu.Instance.RemoveItem(item.needID[i], item.needAmount[i]);
+        }
+
+
         //TODO: minus products required for this item not coins       
     }
 
@@ -91,7 +115,7 @@ public class ClickableBuilding : ClickableBase
         {
             if (ids[i] != -1)
             {
-                BuildingQueue queueItem = new BuildingQueue() { id = ids[i], dateTime = DateTime.Parse(dateTimes[i]) };
+                BuildingQueue queueItem = new BuildingQueue() { itemId = ids[i], dateTime = DateTime.Parse(dateTimes[i]) };
                 buildingQueue.Enqueue(queueItem);
             }
         }

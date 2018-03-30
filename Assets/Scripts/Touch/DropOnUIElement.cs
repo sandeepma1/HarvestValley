@@ -12,9 +12,9 @@ namespace HarvestValley.Ui
         {
             item = eventData.pointerDrag.gameObject.GetComponent<UiDraggableItem>();
 
-            if (item == null) { return; }
+            if (item == null || !item.isItemUnlocked) { return; }
 
-            BuildingManager.Instance.ItemDroppedInZone(item.itemID);
+            UiBuildingMenu.Instance.ItemDroppedInZone(item.itemID);
         }
     }
 }

@@ -13,7 +13,8 @@ public enum MenuNames
     Navigation,
     FieldProgress,
     FieldUpgrade,
-    BuildingMenu
+    BuildingMenu,
+    BuyResourcesMenu
 }
 
 public enum MenuOpeningType
@@ -43,6 +44,8 @@ namespace HarvestValley.Ui
         private GameObject fieldUpgradePopup;
         [SerializeField]
         private GameObject buildingMenu;
+        [SerializeField]
+        private GameObject buyResourcesMenu;
 
         private Stack<GameObject> openMenusStack = new Stack<GameObject>();
 
@@ -56,6 +59,7 @@ namespace HarvestValley.Ui
             fieldProgressPopup.SetActive(true);
             fieldUpgradePopup.SetActive(true);
             buildingMenu.SetActive(true);
+            buyResourcesMenu.SetActive(true);
         }
 
         private void Start()
@@ -67,6 +71,7 @@ namespace HarvestValley.Ui
             fieldProgressPopup.transform.GetChild(0).gameObject.SetActive(false);
             fieldUpgradePopup.transform.GetChild(0).gameObject.SetActive(false);
             buildingMenu.transform.GetChild(0).gameObject.SetActive(false);
+            buyResourcesMenu.transform.GetChild(0).gameObject.SetActive(false);
         }
 
         #region Stack Stuff
@@ -114,6 +119,9 @@ namespace HarvestValley.Ui
                     break;
                 case MenuNames.BuildingMenu:
                     AddMenuInStack(buildingMenu);
+                    break;
+                case MenuNames.BuyResourcesMenu:
+                    AddMenuInStack(buyResourcesMenu);
                     break;
                 default:
                     break;

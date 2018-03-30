@@ -47,5 +47,15 @@ namespace HarvestValley.Ui
         private Color fpsColor = new Color(0, 0, 0, 1f);
         public static Color FpsColor { get { return Instance.fpsColor; } }
         #endregion
+
+        #region UiBuildingMenu
+        [SerializeField]
+        private Color insufficientItemAmount = new Color(0, 0, 0, 1f);
+        public static Color InsufficientItemAmount { get { return Instance.insufficientItemAmount; } }
+
+        [SerializeField]
+        private Color normalItemAmount = new Color(0, 0, 0, 1f);
+        public static Color NormalItemAmount { get { return Instance.normalItemAmount; } }
+        #endregion
     }
 }
