@@ -15,6 +15,7 @@ namespace HarvestValley.Ui
 
         protected override void Start()
         {
+            base.Start();
             CreateNeededItems();
         }
 

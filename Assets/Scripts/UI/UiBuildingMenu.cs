@@ -154,8 +154,6 @@ namespace HarvestValley.Ui
                 menuItems[unlockedThisBuildingItemIds.Count].itemID = nextLockedItem.itemID;
                 menuItems[unlockedThisBuildingItemIds.Count].itemName = nextLockedItem.name;
                 menuItems[unlockedThisBuildingItemIds.Count].ItemLocked();
-
-                print(allItemsForThisBuilding[unlockedThisBuildingItemIds.Count].name);
             }
         }
 

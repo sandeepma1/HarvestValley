@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using HarvestValley.IO;
+using UnityEngine;
 
 namespace HarvestValley.Ui
 {
@@ -10,8 +11,6 @@ namespace HarvestValley.Ui
         internal List<int> allUnlockedItemIDs = new List<int>();
         internal int selectedBuildingID = -1;
         internal int selectedSourceID = -1;
-        private Button closeButton;
-        private Image closeButtonBackGround;
 
         protected virtual void Start()
         {
@@ -19,18 +18,33 @@ namespace HarvestValley.Ui
         }
 
         /// <summary>
-        /// Setting Close button and background color of every menu inherated from this
+        /// Setting Close button and background color of every menu inherated from this.
         /// </summary>
         private void CreateCloseButton()
         {
-            if (transform.GetChild(0).GetChild(0).GetComponent<Button>())
+            Transform backGroundButton = transform.GetChild(0).GetChild(0);
+            if (backGroundButton.GetComponent<Button>())
             {
-                closeButton = transform.GetChild(0).GetChild(0).GetComponent<Button>();
-                closeButton.onClick.AddListener(CloseMenuButtonEventHandler);
-
-                closeButtonBackGround = transform.GetChild(0).GetChild(0).GetComponent<Image>();
-                closeButtonBackGround.color = ColorConstants.CloseButtonBackground;
+                backGroundButton.GetComponent<Button>().onClick.AddListener(CloseMenuButtonEventHandler);
+                backGroundButton.GetComponent<Image>().color = ColorConstants.CloseButtonBackground;
             }
+
+            //Assign event to close for X close button
+            if (transform.GetChild(0).GetChild(1).childCount > 1)
+            {
+                Transform closeGroundButton = transform.GetChild(0).GetChild(1).GetChild(0);
+                if (closeGroundButton.GetComponent<Button>())
+                {
+                    closeGroundButton.GetComponent<Button>().onClick.AddListener(CloseMenuButtonEventHandler);
+                    closeGroundButton.GetComponent<Image>().color = ColorConstants.NormalUiItem;
+                }
+            }
+        }
+
+        private void AssignCloseButtonEvent(Transform button)
+        {
+            button.GetComponent<Button>().onClick.AddListener(CloseMenuButtonEventHandler);
+            button.GetComponent<Image>().color = ColorConstants.CloseButtonBackground;
         }
 
         private void CloseMenuButtonEventHandler()
