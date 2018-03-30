@@ -69,11 +69,11 @@ public class ClickableBuilding : ClickableBase
 
         if (buildingQueue.Count != 0)
         {
-            queueItem.dateTime = lastInQueue.AddSeconds(ItemDatabase.Instance.items[itemIdToAdd].timeRequiredInSeconds);
+            queueItem.dateTime = lastInQueue.AddSeconds(ItemDatabase.GetItemById(itemIdToAdd).timeRequiredInSeconds);
         }
         else
         {
-            queueItem.dateTime = DateTime.UtcNow.AddSeconds(ItemDatabase.Instance.items[itemIdToAdd].timeRequiredInSeconds);
+            queueItem.dateTime = DateTime.UtcNow.AddSeconds(ItemDatabase.GetItemById(itemIdToAdd).timeRequiredInSeconds);
         }
 
         buildingQueue.Enqueue(queueItem);

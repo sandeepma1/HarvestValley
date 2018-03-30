@@ -34,9 +34,9 @@ namespace HarvestValley.Ui
         private void AddOneItemInScrollList(int scrollListID)
         {
             listItems.Add(Instantiate(listPrefab, scrollListContent.transform));
-            //listItems[scrollListID].GetComponent<RectTransform>().localScale = Vector3.one; //fixed some scaling bug
             listItems[scrollListID].itemCountText.text = playerInventory[scrollListID].count.ToString();
-            listItems[scrollListID].itemImage.sprite = AtlasBank.Instance.GetSprite(ItemDatabase.Instance.items[scrollListID].slug, AtlasType.GUI);
+            string itemSlug = ItemDatabase.GetItemById(scrollListID).slug;
+            listItems[scrollListID].itemImage.sprite = AtlasBank.Instance.GetSprite(itemSlug, AtlasType.GUI);
             listItems[scrollListID].name = "InventoryListItem" + scrollListID;
         }
 

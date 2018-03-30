@@ -47,7 +47,7 @@ namespace HarvestValley.Managers
             FieldGO[field.id] = Instantiate(fieldPrefab, transform);
             FieldGO[field.id].transform.localPosition = field.pos;
             FieldGO[field.id].gameObject.name = "Field" + field.id;
-            FieldGO[field.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.Instance.sources[field.fieldID].slug, AtlasType.Buildings);
+            FieldGO[field.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.GetSourceInfoById(field.fieldID).slug, AtlasType.Buildings);
             FieldGO[field.id].buildingId = field.id;
             FieldGO[field.id].sourceId = field.fieldID;
             FieldGO[field.id].pos = field.pos;
@@ -89,7 +89,7 @@ namespace HarvestValley.Managers
 
             TimeSpan timeElapsed = field.dateTime - DateTime.UtcNow;
             float timeElapsedInSeconds = (float)timeElapsed.TotalSeconds;
-            float divisionFactor = (ItemDatabase.Instance.items[field.sourceId].timeRequiredInSeconds) / 4;
+            float divisionFactor = (ItemDatabase.GetItemById(field.sourceId).timeRequiredInSeconds) / 4;
 
             if (timeElapsedInSeconds >= divisionFactor * 3) //22.5 seed
             {
@@ -113,7 +113,7 @@ namespace HarvestValley.Managers
 
         private void ChangeFarmPlantSprite(ClickableField field, PlantStage stages)
         {
-            string itemSlug = ItemDatabase.Instance.items[field.itemId].slug;
+            string itemSlug = ItemDatabase.GetItemById(field.itemId).slug;
             switch (stages)
             {
                 case PlantStage.SEED:
@@ -271,17 +271,17 @@ namespace HarvestValley.Managers
         public void CollectItemsOnFields(int fieldID) //Collecting Items on fields
         {
             UiInventoryMenu.Instance.UpdateFarmItems(FieldGO[fieldID].itemId, 1);
-            PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.Instance.items[FieldGO[fieldID].itemId].XPperYield);
+            PlayerProfileManager.Instance.PlayerXPPointsAdd(ItemDatabase.GetItemById(FieldGO[fieldID].itemId).XPperYield);
             FieldGO[fieldID].state = BuildingState.IDLE;
-            FieldGO[fieldID].dateTime = new System.DateTime();
+            FieldGO[fieldID].dateTime = new DateTime();
             FieldGO[fieldID].itemId = -1;
             FieldGO[fieldID].plantsSprite.sprite = new Sprite();
         }
 
         public void AddNewField(Vector2 pos, int fieldID)
         {
-            fields.Add(new Fields(fields.Count + 1, fieldID, SourceDatabase.Instance.sources[fieldID].sourceID.ToString(), pos,
-                1, 0, -1, System.DateTime.UtcNow.ToString()));
+            fields.Add(new Fields(fields.Count + 1, fieldID, SourceDatabase.GetSourceInfoById(fieldID).sourceID.ToString(), pos,
+                1, 0, -1, DateTime.UtcNow.ToString()));
             ES2.Save(fields, "AllFields");
             InitFields(fields[fields.Count - 1]);
         }

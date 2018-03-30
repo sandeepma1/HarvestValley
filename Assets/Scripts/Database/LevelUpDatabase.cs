@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace HarvestValley.IO
 {
     public class LevelUpDatabase : DatabaseBase<LevelUpDatabase>
     {
-        public Level[] gameLevels;
-        private string folderName = "LevelUp";
+        private static Level[] gameLevels;
+        private const string fileName = "LevelUp";
 
         protected override void Awake()
         {
@@ -16,20 +17,23 @@ namespace HarvestValley.IO
 
         private void Initialize()
         {
-            string[] lines = new string[100];
-            string[] chars = new string[100];
-            TextAsset itemCSV = Resources.Load("CSVs/" + folderName) as TextAsset;
-            lines = Regex.Split(itemCSV.text, "\r\n");
-            gameLevels = new Level[lines.Length - 2];
-            for (int i = 1; i < lines.Length - 1; i++)
+            List<string> linesList = GetAllLinesFromCSV(fileName);
+            gameLevels = new Level[linesList.Count];
+            for (int i = 0; i < gameLevels.Length; i++)
             {
-                chars = Regex.Split(lines[i], ",");
-                gameLevels[i - 1] = new Level(IntParse(chars[0]), IntParse(chars[1]), IntParse(chars[2]),
+                string[] chars = Regex.Split(linesList[i], ",");
+                gameLevels[i] = new Level(IntParse(chars[0]), IntParse(chars[1]), IntParse(chars[2]),
                     IntParse(chars[3]), IntParse(chars[4]), IntParse(chars[5]), IntParse(chars[6]));
             }
         }
+
+        public static Level GetLevelById(int Id)
+        {
+            return gameLevels[Id];
+        }
     }
 }
+
 [System.Serializable]
 public class Level
 {
@@ -41,13 +45,13 @@ public class Level
     public int buildingUnlockID;
     public int gemsRewardCount;
     /*public int coinsRewardCount;
-	public int animalsUnlockID;
-	public int animalsRewardCount;
-	public int productsUnlockID;
-	public int productsRewardCount;
-	public int productionBuildingUnlockID;
-	public int productionBuildingRewardCount;
-	public int decorID;*/
+    public int animalsUnlockID;
+    public int animalsRewardCount;
+    public int productsUnlockID;
+    public int productsRewardCount;
+    public int productionBuildingUnlockID;
+    public int productionBuildingRewardCount;
+    public int decorID;*/
 
     public Level(int id, int xp, int field, int itemID, int buildingID, int itemCount, int gem)
     {

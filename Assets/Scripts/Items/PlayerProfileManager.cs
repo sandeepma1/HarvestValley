@@ -61,17 +61,17 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
 
     public void CheckForLevelUp()
     {
-        if (playerProfile.XPPoints >= LevelUpDatabase.Instance.gameLevels[playerProfile.level].XPforNextLevel)
+        if (playerProfile.XPPoints >= LevelUpDatabase.GetLevelById(playerProfile.level).XPforNextLevel)
         {
             IncrementPlayerLevel();
-            if (LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemUnlockID >= 0)
+            if (LevelUpDatabase.GetLevelById(playerProfile.level).itemUnlockID >= 0)
             {
-                UiInventoryMenu.Instance.AddNewFarmItem(LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemUnlockID,
-                    LevelUpDatabase.Instance.gameLevels[playerProfile.level].itemRewardCount);
+                UiInventoryMenu.Instance.AddNewFarmItem(LevelUpDatabase.GetLevelById(playerProfile.level).itemUnlockID,
+                    LevelUpDatabase.GetLevelById(playerProfile.level).itemRewardCount);
                 UiSeedListMenu.Instance.AddUnlockedItemsToList();
                 UiBuildingMenu.Instance.AddUnlockedItemsToList();
 
-                PlayerGems(LevelUpDatabase.Instance.gameLevels[playerProfile.level].gemsRewardCount);
+                PlayerGems(LevelUpDatabase.GetLevelById(playerProfile.level).gemsRewardCount);
             }
             PlayerXPPointsAdd(-CurrentPlayerXP);
             isLevelUpReady = true;
@@ -128,7 +128,7 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
         gemsUIText.text = String.Format("{0:###,###,###,###,###}", playerProfile.gems);
         staminaUIText.text = playerProfile.stamina.ToString();
         levelUIText.text = playerProfile.level.ToString();
-        XPPointsUIText.text = playerProfile.XPPoints.ToString() + "/" + LevelUpDatabase.Instance.gameLevels[playerProfile.level].XPforNextLevel.ToString();
+        XPPointsUIText.text = playerProfile.XPPoints.ToString() + "/" + LevelUpDatabase.GetLevelById(playerProfile.level).XPforNextLevel.ToString();
         StopCoroutine("SavePlayerProfile");
         StartCoroutine("SavePlayerProfile");
     }

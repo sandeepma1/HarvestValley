@@ -34,7 +34,7 @@ namespace HarvestValley.Managers
         {
             BuildingsGO[building.id] = Instantiate(buildingPrefab, transform);
             BuildingsGO[building.id].gameObject.name = "Building" + building.id;
-            BuildingsGO[building.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.Instance.sources[building.buildingID].slug, AtlasType.Buildings);
+            BuildingsGO[building.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.GetSourceInfoById(building.buildingID).slug, AtlasType.Buildings);
             BuildingsGO[building.id].buildingId = building.id;
             BuildingsGO[building.id].sourceId = building.buildingID;
 
@@ -91,7 +91,7 @@ namespace HarvestValley.Managers
                     item.dateTime[i] = currentQueue[i].dateTime.ToString();
                 }
 
-                for (int i = currentQueue.Length; i < GEM.maxQCount; i++)
+                for (int i = currentQueue.Length; i < GEM.maxBuildingQueueCount; i++)
                 {
                     item.itemID[i] = -1;
                     item.dateTime[i] = DateTime.UtcNow.ToString();

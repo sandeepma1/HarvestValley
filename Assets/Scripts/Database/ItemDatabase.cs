@@ -1,13 +1,13 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace HarvestValley.IO
 {
     public class ItemDatabase : DatabaseBase<ItemDatabase>
     {
-        public Item[] items;
-        string folderName = "Items";
+        private static Item[] items;
+        private const string fileName = "Items";
 
         protected override void Awake()
         {
@@ -17,15 +17,13 @@ namespace HarvestValley.IO
 
         private void Initialize()
         {
-            string[] lines = new string[100];
-            string[] chars = new string[100];
-            TextAsset itemCSV = Resources.Load("CSVs/" + folderName) as TextAsset;
-            lines = Regex.Split(itemCSV.text, "\r\n");
-            items = new Item[lines.Length - 2];
-            for (int i = 1; i < items.Length; i++)
+            List<string> linesList = GetAllLinesFromCSV(fileName);
+
+            items = new Item[linesList.Count];
+            for (int i = 0; i < items.Length; i++)
             {
-                chars = Regex.Split(lines[i], ",");
-                items[i - 1] = new Item(
+                string[] chars = Regex.Split(linesList[i], ",");
+                items[i] = new Item(
                     IntParse(chars[0]),
                     chars[1],
                     chars[2],
@@ -42,13 +40,34 @@ namespace HarvestValley.IO
                     IntParse(chars[13]),
                     IntParse(chars[14]),
                     IntParse(chars[15]),
-
                     new int[] { IntParse(chars[16]), IntParse(chars[18]), IntParse(chars[20]), IntParse(chars[22]) },
-
                     new int[] { IntParse(chars[17]), IntParse(chars[19]), IntParse(chars[21]), IntParse(chars[23]) },
-
                     chars[24]);
             }
+        }
+
+        public static Item GetItemById(int itemId)
+        {
+            return items[itemId];
+        }
+
+        public static int GetItemslength()
+        {
+            return items.Length;
+        }
+
+        public static Item[] GetAllItemsBySourceId(int sourceId)
+        {
+
+            List<Item> tempItems = new List<Item>();
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i].sourceID == sourceId)
+                {
+                    tempItems.Add(items[i]);
+                }
+            }
+            return tempItems.ToArray();
         }
     }
 }

@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Text.RegularExpressions;
 using System;
+using System.Collections.Generic;
 
 namespace HarvestValley.IO
 {
     public class SourceDatabase : DatabaseBase<SourceDatabase>
     {
-        public SourceInfo[] sources;
-        string folderName = "Source";
+        private static SourceInfo[] sources;
+        private const string fileName = "Source";
 
         protected override void Awake()
         {
@@ -17,25 +18,33 @@ namespace HarvestValley.IO
 
         private void Initialize()
         {
-            string[] lines = new string[100];
-            string[] chars = new string[100];
-            TextAsset itemCSV = Resources.Load("CSVs/" + folderName) as TextAsset;
-            lines = Regex.Split(itemCSV.text, "\r\n");
-            sources = new SourceInfo[lines.Length - 2];
-            for (int i = 1; i < lines.Length - 1; i++)
+            List<string> linesList = GetAllLinesFromCSV(fileName);
+
+            sources = new SourceInfo[linesList.Count];
+            for (int i = 0; i < sources.Length; i++)
             {
-                chars = Regex.Split(lines[i], ",");
-                sources[i - 1] = new SourceInfo(
-                    IntParse(chars[0]),
-                    chars[1],
-                    chars[2],
-                    (ItemType)Enum.Parse(typeof(ItemType), chars[3]),
-                    IntParse(chars[4]),
-                    IntParse(chars[5]),
-                    IntParse(chars[6]),
-                    IntParse(chars[7]),
-                    chars[8]);
+                string[] chars = Regex.Split(linesList[i], ",");
+                sources[i] = new SourceInfo(
+                IntParse(chars[0]),
+                chars[1],
+                chars[2],
+                (ItemType)Enum.Parse(typeof(ItemType), chars[3]),
+                IntParse(chars[4]),
+                IntParse(chars[5]),
+                IntParse(chars[6]),
+                IntParse(chars[7]),
+                chars[8]);
             }
+        }
+
+        public static SourceInfo GetSourceInfoById(int itemId)
+        {
+            return sources[itemId];
+        }
+
+        public static int GetSourceInfolength()
+        {
+            return sources.Length;
         }
     }
 }

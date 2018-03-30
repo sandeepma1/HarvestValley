@@ -91,9 +91,9 @@ public class FirstScript : MonoBehaviour
 
     private void CreateNewBuildings()
     {
-        string[] nowTime = new string[GEM.maxQCount];
-        int[] ids = new int[GEM.maxQCount];
-        for (int i = 0; i < GEM.maxQCount; i++)
+        string[] nowTime = new string[GEM.maxBuildingQueueCount];
+        int[] ids = new int[GEM.maxBuildingQueueCount];
+        for (int i = 0; i < GEM.maxBuildingQueueCount; i++)
         {
             nowTime[i] = DateTime.UtcNow.ToString();
             ids[i] = -1;

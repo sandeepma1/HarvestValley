@@ -7,7 +7,7 @@ namespace HarvestValley.Ui
 {
     public abstract class UiMenuBase<T> : Singleton<T> where T : UiMenuBase<T>
     {
-        internal List<int> unlockedItemIDs = new List<int>();
+        internal List<int> allUnlockedItemIDs = new List<int>();
         internal int selectedBuildingID = -1;
         internal int selectedSourceID = -1;
         private Button closeButton;
@@ -42,11 +42,11 @@ namespace HarvestValley.Ui
         {
             for (int i = 0; i <= PlayerProfileManager.Instance.CurrentPlayerLevel; i++)
             {
-                int unlockedId = LevelUpDatabase.Instance.gameLevels[i].itemUnlockID;
+                int unlockedId = LevelUpDatabase.GetLevelById(i).itemUnlockID;
 
-                if (unlockedId >= 0 && !unlockedItemIDs.Contains(unlockedId))
+                if (unlockedId >= 0 && !allUnlockedItemIDs.Contains(unlockedId))
                 {
-                    unlockedItemIDs.Add(unlockedId);
+                    allUnlockedItemIDs.Add(unlockedId);
                 }
             }
         }

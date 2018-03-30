@@ -53,9 +53,9 @@ namespace HarvestValley.Ui
             unlockedItemIDs.Clear();
             for (int i = 0; i <= PlayerProfileManager.Instance.CurrentPlayerLevel; i++)
             {
-                if (LevelUpDatabase.Instance.gameLevels[i].itemUnlockID >= 0)
+                if (LevelUpDatabase.GetLevelById(i).itemUnlockID >= 0)
                 {
-                    unlockedItemIDs.Add(LevelUpDatabase.Instance.gameLevels[i].itemUnlockID);
+                    unlockedItemIDs.Add(LevelUpDatabase.GetLevelById(i).itemUnlockID);
                 }
             }
 
@@ -88,13 +88,13 @@ namespace HarvestValley.Ui
             //isMasterMenuUp = true;
             for (int i = 0; i < unlockedItemIDs.Count; i++)
             {
-                if (ItemDatabase.Instance.items[i] != null && ItemDatabase.Instance.items[i].sourceID == SourceDatabase.Instance.sources[fieldID].sourceID)
+                Item item = ItemDatabase.GetItemById(i);
+                if (item != null && item.sourceID == SourceDatabase.GetSourceInfoById(fieldID).sourceID)
                 {
-                    menuItems[unlockedItemCount].itemID = ItemDatabase.Instance.items[i].itemID;
+                    menuItems[unlockedItemCount].itemID = item.itemID;
                     menuItems[unlockedItemCount].transform.localPosition = itemPos[posCount];
-                    menuItems[unlockedItemCount].ItemIcon.sprite = itemAtlas.GetSprite(ItemDatabase.Instance.items[i].name);
-                    //menuItems[unlockedItemCount].ItemAmountText = PlayerInventoryManager.Instance.playerInventory[i].count.ToString();
-                    menuItems[unlockedItemCount].ItemAmountText = ItemDatabase.Instance.items[i].coinCost.ToString();
+                    menuItems[unlockedItemCount].ItemIcon.sprite = itemAtlas.GetSprite(item.name);
+                    menuItems[unlockedItemCount].ItemAmountText = item.coinCost.ToString();
                     posCount++;
                     unlockedItemCount++;
                     if (posCount > itemPos.Length - 1)

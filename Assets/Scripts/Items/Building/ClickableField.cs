@@ -31,12 +31,12 @@ public class ClickableField : ClickableBase
     {
         base.AddItemToProductionQueue(itemId);
         this.itemId = itemId;
-        dateTime = DateTime.UtcNow.AddSeconds(ItemDatabase.Instance.items[itemId].timeRequiredInSeconds);
+        dateTime = DateTime.UtcNow.AddSeconds(ItemDatabase.GetItemById(itemId).timeRequiredInSeconds);
         state = BuildingState.WORKING;
 
-        string plantName = ItemDatabase.Instance.items[itemId].slug + "_0";
+        string plantName = ItemDatabase.GetItemById(itemId).slug + "_0";
         plantsSprite.sprite = AtlasBank.Instance.GetSprite(plantName, AtlasType.Farming);
-        PlayerProfileManager.Instance.PlayerCoins(-ItemDatabase.Instance.items[itemId].coinCost);
+        PlayerProfileManager.Instance.PlayerCoins(-ItemDatabase.GetItemById(itemId).coinCost);
         StopPlantingMode();
     }
 

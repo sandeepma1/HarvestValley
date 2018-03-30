@@ -46,17 +46,16 @@ namespace HarvestValley.Ui
         internal Canvas mainCanvas;
         private UiDraggableItem[] menuItems; // making this array as not more than 9 items will be in building menu  
         private UiRequireItem[] requiredItems; // making this array as not more than 4 items will be in building menu 
-        private const int maxRequiredItems = 4;
-        private List<int> unlockedBuildingItemID = new List<int>();
+
+        private List<int> unlockedThisBuildingItemIds = new List<int>();
         private int selectedBuilUnlQuSlots;
         private bool showTimer;
         BuildingQueue[] buildingQueue;
 
-
         protected override void Start()
         {
-            menuItems = new UiDraggableItem[GEM.maxQCount];
-            requiredItems = new UiRequireItem[maxRequiredItems];
+            menuItems = new UiDraggableItem[GEM.maxBuildingQueueCount];
+            requiredItems = new UiRequireItem[GEM.maxRequiredItems];
             CreateItems();
             CreateRequiredItems();
             base.Start();
@@ -93,6 +92,7 @@ namespace HarvestValley.Ui
                 return;
             }
             PopulateBuildingItems();
+            AddNextLockedItem();
             PopulateRequiredItems();
             PopulateBuildingQueue();
             AddNewSlotForPurchase();
@@ -108,31 +108,46 @@ namespace HarvestValley.Ui
 
         private void PopulateBuildingItems()
         {
-            unlockedBuildingItemID.Clear();
+            unlockedThisBuildingItemIds.Clear();
 
-            for (int i = 0; i < unlockedItemIDs.Count; i++)
+            for (int i = 0; i < allUnlockedItemIDs.Count; i++)
             {
-                Item item = ItemDatabase.Instance.items[unlockedItemIDs[i]];
+                Item item = ItemDatabase.GetItemById(allUnlockedItemIDs[i]);
                 if (item != null && item.sourceID == selectedSourceID)
                 {
-                    unlockedBuildingItemID.Add(item.itemID);
+                    unlockedThisBuildingItemIds.Add(item.itemID);
                 }
             }
 
-            for (int i = 0; i < GEM.maxQCount; i++)
+            for (int i = 0; i < GEM.maxBuildingQueueCount; i++)
             {
                 menuItems[i].gameObject.SetActive(false);
             }
 
-            for (int i = 0; i < unlockedBuildingItemID.Count; i++)
+            for (int i = 0; i < unlockedThisBuildingItemIds.Count; i++)
             {
-                Item item = ItemDatabase.Instance.items[unlockedBuildingItemID[i]];
+                Item item = ItemDatabase.GetItemById(unlockedThisBuildingItemIds[i]);
                 menuItems[i].gameObject.SetActive(true);
                 menuItems[i].itemImage.sprite = AtlasBank.Instance.GetSprite(item.slug, AtlasType.GUI);
                 menuItems[i].itemID = item.itemID;
                 menuItems[i].itemName = item.name;
                 menuItems[i].ItemUnlocked();
             }
+        }
+
+        private void AddNextLockedItem()
+        {
+            Item[] items = ItemDatabase.GetAllItemsBySourceId(selectedSourceID);
+            for (int i = 0; i < items.Length; i++)
+            {
+                print(items[i].name);
+            }
+            //Item item = ItemDatabase.Instance.items[unlockedBuildingItemID[i]];
+            //menuItems[i].gameObject.SetActive(true);
+            //menuItems[i].itemImage.sprite = AtlasBank.Instance.GetSprite(item.slug, AtlasType.GUI);
+            //menuItems[i].itemID = item.itemID;
+            //menuItems[i].itemName = item.name;
+            //menuItems[i].ItemUnlocked();
         }
 
         private void PopulateRequiredItems()
@@ -148,7 +163,7 @@ namespace HarvestValley.Ui
         {
             selectedBuilUnlQuSlots = BuildingManager.Instance.BuildingsGO[selectedBuildingID].unlockedQueueSlots;
 
-            for (int i = 0; i < GEM.maxQCount; i++)
+            for (int i = 0; i < GEM.maxBuildingQueueCount; i++)
             {
                 queueItems[i].gameObject.SetActive(false);
             }
@@ -164,7 +179,7 @@ namespace HarvestValley.Ui
         {
             selectedBuilUnlQuSlots = BuildingManager.Instance.BuildingsGO[selectedBuildingID].unlockedQueueSlots;
 
-            if (selectedBuilUnlQuSlots == GEM.maxQCount)
+            if (selectedBuilUnlQuSlots == GEM.maxBuildingQueueCount)
             {
                 unlockNewSlotButton.transform.SetParent(this.transform);
                 unlockNewSlotButton.gameObject.SetActive(false);
@@ -193,7 +208,7 @@ namespace HarvestValley.Ui
 
             for (int i = 0; i < buildingQueue.Length; i++)
             {
-                queueItems[i].itemImage.sprite = AtlasBank.Instance.GetSprite(ItemDatabase.Instance.items[buildingQueue[i].id].slug, AtlasType.GUI);
+                queueItems[i].itemImage.sprite = AtlasBank.Instance.GetSprite(ItemDatabase.GetItemById(buildingQueue[i].id).slug, AtlasType.GUI);
             }
 
             if (buildingQueue.Length > 0)
@@ -223,7 +238,7 @@ namespace HarvestValley.Ui
 
         private void CreateItems()
         {
-            for (int i = 0; i < GEM.maxQCount; i++)
+            for (int i = 0; i < GEM.maxBuildingQueueCount; i++)
             {
                 menuItems[i] = Instantiate(uiDraggableItemPrefab, itemScrollListContentTransform);
                 menuItems[i].name = "DraggableUIItem" + i;
@@ -238,7 +253,7 @@ namespace HarvestValley.Ui
 
         private void CreateRequiredItems()
         {
-            for (int i = 0; i < maxRequiredItems; i++)
+            for (int i = 0; i < GEM.maxRequiredItems; i++)
             {
                 requiredItems[i] = Instantiate(uiRequireItemPrefab, requiredListParent);
                 requiredItems[i].name = "RequiredItem" + i;
@@ -252,7 +267,7 @@ namespace HarvestValley.Ui
         private void ItemClickedDraggedEventHandler(int itemID)
         {
             requiredItemsWindow.SetActive(true);
-            Item selectedItem = ItemDatabase.Instance.items[itemID];
+            Item selectedItem = ItemDatabase.GetItemById(itemID);
 
             itemTimeToMakeText.text = SecondsToDuration((int)selectedItem.timeRequiredInSeconds);
             itemCountInInventoryText.text = UiInventoryMenu.Instance.GetItemCountFromInventory(selectedItem.itemID).ToString();
@@ -266,7 +281,7 @@ namespace HarvestValley.Ui
                 if (neededItemId == -1) { continue; }
 
                 int neededAmount = selectedItem.needAmount[i];
-                Item needItem = ItemDatabase.Instance.items[neededItemId];
+                Item needItem = ItemDatabase.GetItemById(neededItemId);
                 requiredItems[i].gameObject.SetActive(true);
                 requiredItems[i].itemImage.sprite = AtlasBank.Instance.GetSprite(needItem.slug, AtlasType.GUI);
 

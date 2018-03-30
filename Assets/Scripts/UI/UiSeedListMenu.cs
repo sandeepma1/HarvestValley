@@ -34,9 +34,9 @@ namespace HarvestValley.Ui
 
         private void CreateSeedItems()
         {
-            for (int i = 0; i < ItemDatabase.Instance.items.Length; i++)
+            for (int i = 0; i < ItemDatabase.GetItemslength(); i++)
             {
-                Item item = ItemDatabase.Instance.items[i];
+                Item item = ItemDatabase.GetItemById(i);
                 if (item != null && item.sourceID == 0)
                 {
                     UiClickableItems menuItem = Instantiate(scrollListItemPrefab, scrollListParent);
@@ -55,7 +55,7 @@ namespace HarvestValley.Ui
         {
             for (int i = 0; i < menuItems.Count; i++)
             {
-                if (unlockedItemIDs.Contains(menuItems[i].itemID))
+                if (allUnlockedItemIDs.Contains(menuItems[i].itemID))
                 {
                     menuItems[i].UnlockItem();
                 }
@@ -71,7 +71,7 @@ namespace HarvestValley.Ui
         public void StartPlantingMode(int itemID)
         {
             ToggleTopInfoAndUpgradeButton(true);
-            topInfoText.text = "Planting " + ItemDatabase.Instance.items[itemID].name + "\n Click on the tile to plant select seed";
+            topInfoText.text = "Planting " + ItemDatabase.GetItemById(itemID).name + "\n Click on the tile to plant select seed";
             FieldManager.Instance.StartPlantingMode(itemID);
             //ToggleList(false);
         }

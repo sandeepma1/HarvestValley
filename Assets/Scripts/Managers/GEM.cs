@@ -20,7 +20,8 @@ public static class GEM
     #endregion
 
     #region Building Variables
-    public static int maxQCount = 9;
+    public static int maxBuildingQueueCount = 9;
+    public static int maxRequiredItems = 4;
     #endregion
 
     public static int numberOfRocksInLevel = 0;

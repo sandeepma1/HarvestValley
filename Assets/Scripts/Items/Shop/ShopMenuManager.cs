@@ -22,23 +22,23 @@ namespace HarvestValley.Ui
         public void PopulateScrollListAtStart()
         {
             // Image, background, name, desc
-            shopItemsGO = new GameObject[SourceDatabase.Instance.sources.Length];
-            for (int i = 0; i < SourceDatabase.Instance.sources.Length; i++)
+            shopItemsGO = new GameObject[SourceDatabase.GetSourceInfolength()];
+            for (int i = 0; i < SourceDatabase.GetSourceInfolength(); i++)
             {
-                shopItemsGO[i] = Instantiate(shopitemPrefab, UIList.transform);
-                shopItemsGO[i].transform.GetChild(0).GetComponent<DraggableItemShopUIItem>().shopItemID = i;
-                shopItemsGO[i].transform.GetChild(0).GetComponent<Image>().overrideSprite = Resources.Load<Sprite>("Textures/Buildings/" + SourceDatabase.Instance.sources[i].sourceID);
-                shopItemsGO[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = SourceDatabase.Instance.sources[i].sourceID.ToString();
-                shopItemsGO[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = SourceDatabase.Instance.sources[i].desc.ToString();
-                shopItemsGO[i].transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = SourceDatabase.Instance.sources[i].cost.ToString();
+                //shopItemsGO[i] = Instantiate(shopitemPrefab, UIList.transform);
+                //shopItemsGO[i].transform.GetChild(0).GetComponent<DraggableItemShopUIItem>().shopItemID = i;
+                //shopItemsGO[i].transform.GetChild(0).GetComponent<Image>().overrideSprite = Resources.Load<Sprite>("Textures/Buildings/" + SourceDatabase.Instance.sources[i].sourceID);
+                //shopItemsGO[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = SourceDatabase.Instance.sources[i].sourceID.ToString();
+                //shopItemsGO[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = SourceDatabase.Instance.sources[i].desc.ToString();
+                //shopItemsGO[i].transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = SourceDatabase.Instance.sources[i].cost.ToString();
             }
         }
 
         public void ChildCallingOnMouseDrag(int shopItemID)
         {
-            PlaceHolderSprite.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Buildings/" + SourceDatabase.Instance.sources[shopItemID].sourceID);
-            PlaceHolderSprite.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
-            PlaceHolderSprite.transform.position = new Vector3(Mathf.RoundToInt(PlaceHolderSprite.transform.position.x), Mathf.RoundToInt(PlaceHolderSprite.transform.position.y));
+            //PlaceHolderSprite.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Buildings/" + SourceDatabase.Instance.sources[shopItemID].sourceID);
+            //PlaceHolderSprite.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+            //PlaceHolderSprite.transform.position = new Vector3(Mathf.RoundToInt(PlaceHolderSprite.transform.position.x), Mathf.RoundToInt(PlaceHolderSprite.transform.position.y));
         }
 
         public void ChildCallingOnMouseUp(int shopItemID, Vector2 pos)
