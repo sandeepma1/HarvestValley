@@ -1,6 +1,7 @@
 ﻿using HarvestValley.Managers;
 using UnityEngine;
 using HarvestValley.IO;
+using HarvestValley.Ui;
 
 public class ClickableGrass : MonoBehaviour
 {
@@ -27,18 +28,20 @@ public class ClickableGrass : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
-    {
-        GrassLandManager.Instance.isPlantingMode = !GrassLandManager.Instance.isPlantingMode;
+    //private void OnMouseDown()
+    //{
+    //    GrassLandManager.Instance.isPlantingMode = !GrassLandManager.Instance.isPlantingMode;
 
-        if (GrassLandManager.Instance.isPlantingMode)
-        {
-            InputController.Instance.SetDragSwipe(false);
-        }
-        else
-        {
-            InputController.Instance.SetDragSwipe(true);
-            GrassLandManager.Instance.ChangedSometingSaveGrass();
-        }
-    }
+    //    if (GrassLandManager.Instance.isPlantingMode)
+    //    {
+    //        InputController.Instance.SetDragSwipe(false);
+    //        UiGrassListMenu.Instance.StartPlantingMode(grass.itemId);
+    //    }
+    //    else
+    //    {
+    //        InputController.Instance.SetDragSwipe(true);
+    //        UiGrassListMenu.Instance.StopPlantingMode();
+    //        GrassLandManager.Instance.ChangedSometingSaveGrass();
+    //    }
+    //}
 }

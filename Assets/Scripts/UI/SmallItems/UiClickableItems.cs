@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 namespace HarvestValley.Ui
 {
     public class UiClickableItems : UiSmallItemBase
     {
+        public Action<int> OnClickableItemClicked;
         [SerializeField]
         private TextMeshProUGUI itemCostText;
         [SerializeField]
         private TextMeshProUGUI itemNameText;
-
         public Image itemImage;
 
         internal int itemID;
@@ -44,7 +45,8 @@ namespace HarvestValley.Ui
         {
             if (isItemUnlocked)
             {
-                UiSeedListMenu.Instance.StartPlantingMode(itemID);
+                OnClickableItemClicked.Invoke(itemID);
+                //UiSeedListMenu.Instance.StartPlantingMode(itemID);
             }
         }
     }

@@ -37,10 +37,11 @@ namespace HarvestValley.Ui
                     UiClickableItems menuItem = Instantiate(scrollListItemPrefab, scrollListParent);
                     menuItem.name = "UIItemListClick" + i;
                     menuItem.itemID = item.itemID;
-                    menuItem.itemImage.sprite = AtlasBank.Instance.GetSprite(item.slug, AtlasType.GUI);
+                    menuItem.itemImage.sprite = AtlasBank.Instance.GetSprite(item.slug, AtlasType.Lifestock);
                     menuItem.itemName = item.name;
                     menuItem.itemCost = item.coinCost;
                     menuItem.isItemUnlocked = false;
+                    menuItem.OnClickableItemClicked += StartPlantingMode;
                     menuItems.Add(menuItem);
                 }
             }
@@ -74,8 +75,8 @@ namespace HarvestValley.Ui
         public void StartPlantingMode(int itemID)
         {
             ToggleTopInfoAndUpgradeButton(true);
-            topInfoText.text = "Planting " + ItemDatabase.GetItemById(itemID).name + "\n Click on the tile to plant select seed";
-            FieldManager.Instance.StartPlantingMode(itemID);
+            topInfoText.text = "Planting " + ItemDatabase.GetItemById(itemID).name + "\n Click and drag on the ground to add grass";
+            GrassLandManager.Instance.StartPlantingMode();
         }
 
         // Finish planting mode
@@ -83,9 +84,9 @@ namespace HarvestValley.Ui
         {
             topInfoText.text = "";
             ToggleTopInfoAndUpgradeButton(false);
-            if (FieldManager.Instance != null)
+            if (GrassLandManager.Instance != null)
             {
-                FieldManager.Instance.StopPlantingMode();
+                GrassLandManager.Instance.StopPlantingMode();
             }
         }
 

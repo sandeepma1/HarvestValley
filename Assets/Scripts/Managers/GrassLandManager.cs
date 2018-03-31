@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using HarvestValley.Ui;
 
 namespace HarvestValley.Managers
 {
@@ -13,6 +14,7 @@ namespace HarvestValley.Managers
 
         private ClickableGrass[] grassGO;
         private List<Grass> grass = new List<Grass>();
+        private bool isInPlantingMode;
 
         private void Start()
         {
@@ -32,6 +34,26 @@ namespace HarvestValley.Managers
             grassGO[grass.grassId].transform.localPosition = grass.position;
             grassGO[grass.grassId].gameObject.name = "Grass" + grass.grassId;
         }
+
+        #region Planting Mode
+
+        public void StartPlantingMode()
+        {
+            isInPlantingMode = true;
+        }
+
+        public void StopPlantingMode()
+        {
+            if (!isInPlantingMode)
+            {
+                return;
+            }
+
+            isInPlantingMode = false;
+            UiGrassListMenu.Instance.StopPlantingMode();
+        }
+
+        #endregion
 
         public void ChangedSometingSaveGrass()
         {

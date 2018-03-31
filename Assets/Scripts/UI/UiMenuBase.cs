@@ -25,7 +25,7 @@ namespace HarvestValley.Ui
             Transform backGroundButton = transform.GetChild(0).GetChild(0);
             if (backGroundButton.GetComponent<Button>())
             {
-                backGroundButton.GetComponent<Button>().onClick.AddListener(CloseMenuButtonEventHandler);
+                backGroundButton.GetComponent<Button>().onClick.AddListener(MenuManager.Instance.CloseMenu);
                 backGroundButton.GetComponent<Image>().color = ColorConstants.CloseButtonBackground;
             }
 
@@ -35,21 +35,10 @@ namespace HarvestValley.Ui
                 Transform closeGroundButton = transform.GetChild(0).GetChild(1).GetChild(0);
                 if (closeGroundButton.GetComponent<Button>())
                 {
-                    closeGroundButton.GetComponent<Button>().onClick.AddListener(CloseMenuButtonEventHandler);
+                    closeGroundButton.GetComponent<Button>().onClick.AddListener(MenuManager.Instance.CloseMenu);
                     closeGroundButton.GetComponent<Image>().color = ColorConstants.NormalUiItem;
                 }
             }
-        }
-
-        private void AssignCloseButtonEvent(Transform button)
-        {
-            button.GetComponent<Button>().onClick.AddListener(CloseMenuButtonEventHandler);
-            button.GetComponent<Image>().color = ColorConstants.CloseButtonBackground;
-        }
-
-        private void CloseMenuButtonEventHandler()
-        {
-            MenuManager.Instance.CloseMenu();
         }
 
         public virtual void AddUnlockedItemsToList()  // call on level change & game start only

@@ -74,6 +74,7 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
                 UiInventoryMenu.Instance.AddNewItem(currentUnlockedLevel.itemUnlockID, currentUnlockedLevel.itemRewardCount);
                 UiSeedListMenu.Instance.AddUnlockedItemsToList();
                 UiBuildingMenu.Instance.AddUnlockedItemsToList();
+                UiGrassListMenu.Instance.AddUnlockedItemsToList();
                 PlayerGems(currentUnlockedLevel.gemsRewardCount);
             }
             PlayerXPPointsAdd(-CurrentPlayerXP);

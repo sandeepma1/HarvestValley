@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using HarvestValley.IO;
+using System;
 
 namespace HarvestValley.Ui
 {
@@ -46,6 +47,7 @@ namespace HarvestValley.Ui
                     menuItem.itemName = item.name;
                     menuItem.itemCost = item.coinCost;
                     menuItem.isItemUnlocked = false;
+                    menuItem.OnClickableItemClicked += StartPlantingMode;
                     menuItems.Add(menuItem);
                 }
             }
