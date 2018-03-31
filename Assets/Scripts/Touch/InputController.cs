@@ -65,6 +65,12 @@ public class InputController : Singleton<InputController>
         DragCamera();
     }
 
+    public void SetDragSwipe(bool flag)
+    {
+        enableDrag = enableSwipe = flag;
+    }
+
+
     private void CreateCameraPositions()
     {
         if (!Camera.main.CompareTag("MainCamera"))

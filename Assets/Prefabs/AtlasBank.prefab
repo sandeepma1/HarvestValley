@@ -57,4 +57,5 @@ MonoBehaviour:
     type: 2}
   buildingAtlas: {fileID: 4343727234628468602, guid: 4f77a449cdf44fe46a8dea119bba6e8f,
     type: 2}
-  missingSprite: {fileID: 21300000, guid: c44d54f5f270dbb418e836a2d425a282, type: 3}
+  lifestockAtlas: {fileID: 4343727234628468602, guid: bfb7238a7ff74c14f9cbb40436f25c56,
+    type: 2}

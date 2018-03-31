@@ -271,9 +271,9 @@ namespace HarvestValley.Managers
                 item.itemID = FieldGO[item.id].itemId;
                 item.dateTime = FieldGO[item.id].dateTime.ToString();
             }
+
             ES2.Save(fields, "AllFields");
         }
-
         IEnumerator RestartGame()
         {
             yield return new WaitForSeconds(5);

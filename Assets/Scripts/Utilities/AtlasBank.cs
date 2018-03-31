@@ -9,6 +9,8 @@ public class AtlasBank : Singleton<AtlasBank>
     private SpriteAtlas farmingAtlas;
     [SerializeField]
     private SpriteAtlas buildingAtlas;
+    [SerializeField]
+    private SpriteAtlas lifestockAtlas;
     private Sprite missingSprite;
 
     private void Start()
@@ -31,7 +33,8 @@ public class AtlasBank : Singleton<AtlasBank>
             case AtlasType.Buildings:
                 sprite = buildingAtlas.GetSprite(name);
                 break;
-            default:
+            case AtlasType.Lifestock:
+                sprite = lifestockAtlas.GetSprite(name);
                 break;
         }
 
@@ -48,5 +51,6 @@ public enum AtlasType
 {
     GUI,
     Farming,
-    Buildings
+    Buildings,
+    Lifestock
 }

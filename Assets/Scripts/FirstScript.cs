@@ -8,11 +8,14 @@ public class FirstScript : MonoBehaviour
 {
     public static FirstScript Instance = null;
     [SerializeField]
-    private int x = 6, y = 4, gap = 2;
+    private int xField = 6, yField = 4, gapField = 2;
+    private int xGrass = 12, yGrass = 12, gapGrass = 1;
+
 
     private Canvas[] canvas;
     private Camera mainCamera;
     private List<Fields> fields = new List<Fields>();
+    private List<Grass> grass = new List<Grass>();
     private List<Buildings> buildings = new List<Buildings>();
     public List<InventoryItems> playerInventory = new List<InventoryItems>();
 
@@ -43,6 +46,7 @@ public class FirstScript : MonoBehaviour
     private void IsNewGameStarted()
     {
         if (!ES2.Exists("AllFields") ||
+            !ES2.Exists("AllGrass") ||
             !ES2.Exists("AllBuildings") ||
             !ES2.Exists("PlayerInventory") ||
            !ES2.Exists("PlayerProfile"))
@@ -55,6 +59,7 @@ public class FirstScript : MonoBehaviour
     {
         CreateNewProfile();
         CreateNewFields();
+        CreateNewGrass();
         CreateNewBuildings();
         CreateNewInventory();
         print("new game");
@@ -84,15 +89,29 @@ public class FirstScript : MonoBehaviour
     private void CreateNewFields()
     {
         int counter = 0;
-        for (int i = 0; i < x; i++)
+        for (int i = 0; i < xField; i++)
         {
-            for (int j = 0; j < y; j++)
+            for (int j = 0; j < yField; j++)
             {
-                fields.Add(new Fields(counter, 0, "Field", new Vector2(i * gap, -j * gap), 1, 0, -1, DateTime.UtcNow.ToString()));
+                fields.Add(new Fields(counter, 0, "Field", new Vector2(i * gapField, -j * gapField), 1, 0, -1, DateTime.UtcNow.ToString()));
                 counter++;
             }
         }
         ES2.Save(fields, "AllFields");
+    }
+
+    private void CreateNewGrass()
+    {
+        int id = 0;
+        for (int i = 0; i < xGrass; i++)
+        {
+            for (int j = 0; j < yGrass; j++)
+            {
+                grass.Add(new Grass(id, -1, new Vector2(i * gapGrass, -j * gapGrass)));
+                id++;
+            }
+        }
+        ES2.Save(grass, "AllGrass");
     }
 
     private void CreateNewBuildings()
