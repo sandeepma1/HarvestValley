@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections.Generic;
 using HarvestValley.IO;
 using System;
+using UnityEngine.UI;
 
 namespace HarvestValley.Ui
 {
@@ -18,6 +19,9 @@ namespace HarvestValley.Ui
         private TextMeshProUGUI topInfoText;
         [SerializeField]
         private Transform topInfoParentTransform;
+        [SerializeField]
+        private Button closeButton;
+
         private List<UiClickableItems> menuItems = new List<UiClickableItems>();
 
         protected override void Start()
@@ -25,6 +29,7 @@ namespace HarvestValley.Ui
             CreateGrassItems();
             base.Start();
             AddUnlockedItemsToList();
+            closeButton.onClick.AddListener(StopPlantingMode);
         }
 
         private void CreateGrassItems()
@@ -76,7 +81,7 @@ namespace HarvestValley.Ui
         {
             ToggleTopInfoAndUpgradeButton(true);
             topInfoText.text = "Planting " + ItemDatabase.GetItemById(itemID).name + "\n Click and drag on the ground to add grass";
-            GrassLandManager.Instance.StartPlantingMode();
+            GrassLandManager.Instance.StartPlantingMode(itemID);
         }
 
         // Finish planting mode

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using HarvestValley.Ui;
+using System;
 
 namespace HarvestValley.Managers
 {
@@ -10,11 +11,11 @@ namespace HarvestValley.Managers
         private ClickableGrass clickableGrassPrefab;
         [SerializeField]
         private int x = 12, y = 12;
-        public bool isPlantingMode = false;
+        public bool isinPlantingMode = false;
 
         private ClickableGrass[] grassGO;
         private List<Grass> grass = new List<Grass>();
-        private bool isInPlantingMode;
+        public int selectedItemIdInMenu;
 
         private void Start()
         {
@@ -33,23 +34,37 @@ namespace HarvestValley.Managers
             grassGO[grass.grassId].grass = grass;
             grassGO[grass.grassId].transform.localPosition = grass.position;
             grassGO[grass.grassId].gameObject.name = "Grass" + grass.grassId;
+            grassGO[grass.grassId].ClickableGrasssClicked += ClickableGrasssClickedEventHandler;
+        }
+
+        private void ClickableGrasssClickedEventHandler(int itemId)
+        {
+            if (itemId == -1)
+            {
+                MenuManager.Instance.DisplayMenu(MenuNames.GrassListMenu, MenuOpeningType.CloseAll);
+            }
+            else
+            {
+                // nothing at moment
+            }
         }
 
         #region Planting Mode
 
-        public void StartPlantingMode()
+        public void StartPlantingMode(int itemId)
         {
-            isInPlantingMode = true;
+            selectedItemIdInMenu = itemId;
+            isinPlantingMode = true;
         }
 
         public void StopPlantingMode()
         {
-            if (!isInPlantingMode)
+            if (!isinPlantingMode)
             {
                 return;
             }
-
-            isInPlantingMode = false;
+            selectedItemIdInMenu = -1;
+            isinPlantingMode = false;
             UiGrassListMenu.Instance.StopPlantingMode();
         }
 

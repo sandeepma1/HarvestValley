@@ -134,6 +134,7 @@ namespace HarvestValley.Ui
             DisableAllItemsInStack();
             FieldManager.Instance.DeselectField();
             FieldManager.Instance.StopPlantingMode();
+            GrassLandManager.Instance.StopPlantingMode();
         }
 
         private void AddMenuInStack(GameObject menu)

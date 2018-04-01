@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections.Generic;
 using HarvestValley.IO;
 using System;
+using UnityEngine.UI;
 
 namespace HarvestValley.Ui
 {
@@ -18,6 +19,9 @@ namespace HarvestValley.Ui
         private TextMeshProUGUI topInfoText;
         [SerializeField]
         private Transform topInfoParentTransform;
+        [SerializeField]
+        private Button closeButton;
+
         private List<UiClickableItems> menuItems = new List<UiClickableItems>();
 
         protected override void Start()
@@ -25,6 +29,7 @@ namespace HarvestValley.Ui
             CreateSeedItems();
             base.Start();
             AddUnlockedItemsToList();
+            closeButton.onClick.AddListener(StopPlantingMode);
         }
 
         public override void AddUnlockedItemsToList()  // call on level change & game start only
