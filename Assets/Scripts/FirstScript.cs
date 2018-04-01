@@ -18,6 +18,7 @@ public class FirstScript : MonoBehaviour
     private List<Grass> grass = new List<Grass>();
     private List<Buildings> buildings = new List<Buildings>();
     public List<InventoryItems> playerInventory = new List<InventoryItems>();
+    public List<LivestockClass> livestock = new List<LivestockClass>();
 
     private void Awake()
     {
@@ -47,6 +48,7 @@ public class FirstScript : MonoBehaviour
     {
         if (!ES2.Exists("AllFields") ||
             !ES2.Exists("AllGrass") ||
+            !ES2.Exists("AllLivestock") ||
             !ES2.Exists("AllBuildings") ||
             !ES2.Exists("PlayerInventory") ||
            !ES2.Exists("PlayerProfile"))
@@ -60,6 +62,7 @@ public class FirstScript : MonoBehaviour
         CreateNewProfile();
         CreateNewFields();
         CreateNewGrass();
+        CreateNewLivestock();
         CreateNewBuildings();
         CreateNewInventory();
         print("new game");
@@ -114,6 +117,12 @@ public class FirstScript : MonoBehaviour
         ES2.Save(grass, "AllGrass");
     }
 
+    private void CreateNewLivestock()
+    {
+        livestock.Add(new LivestockClass(0, 4, 10, LivestockType.Chicken, LivestockState.Idle, DateTime.UtcNow.ToString()));
+        ES2.Save(livestock, "AllLivestock");
+    }
+
     private void CreateNewBuildings()
     {
         string[] nowTime = new string[GEM.maxBuildingQueueCount];
@@ -125,7 +134,7 @@ public class FirstScript : MonoBehaviour
         }
 
         buildings.Add(new Buildings(0, 2, "Bakery", 0, 2, new Vector2(0, 0), ids, nowTime));
-        buildings.Add(new Buildings(1, 3, "Dairy", 0, 2, new Vector2(3, 0), ids, nowTime));
+        buildings.Add(new Buildings(1, 4, "Dairy", 0, 2, new Vector2(3, 0), ids, nowTime));
 
         ES2.Save(buildings, "AllBuildings");
     }

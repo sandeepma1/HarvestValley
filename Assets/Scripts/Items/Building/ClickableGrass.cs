@@ -15,7 +15,7 @@ public class ClickableGrass : ClickableBase
 
         if (grass.itemId != -1) // 
         {
-            spriteRenderer.sprite = AtlasBank.Instance.GetSprite(ItemDatabase.GetItemNameById(grass.itemId), AtlasType.Lifestock);
+            spriteRenderer.sprite = AtlasBank.Instance.GetSprite(ItemDatabase.GetItemNameById(grass.itemId), AtlasType.Livestock);
         }
     }
 
@@ -24,8 +24,14 @@ public class ClickableGrass : ClickableBase
         if (GrassLandManager.Instance.isinPlantingMode && grass.itemId == -1)
         {
             grass.itemId = GrassLandManager.Instance.selectedItemIdInMenu;
-            spriteRenderer.sprite = AtlasBank.Instance.GetSprite(ItemDatabase.GetItemNameById(grass.itemId), AtlasType.Lifestock);
+            spriteRenderer.sprite = AtlasBank.Instance.GetSprite(ItemDatabase.GetItemNameById(grass.itemId), AtlasType.Livestock);
         }
+    }
+
+    public void RemovedGrass()
+    {
+        spriteRenderer.sprite = null;
+        grass.itemId = -1;
     }
 
     public override void OnMouseTouchUp()

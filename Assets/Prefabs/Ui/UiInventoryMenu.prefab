@@ -453,7 +453,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listPrefab: {fileID: 114418212995703734, guid: c3c6457f7ecbf65499df460e6facfb41,
     type: 2}
-  scrollListContent: {fileID: 1877806742203630}
+  contentParent: {fileID: 224278457095550144}
+  listItems: []
 --- !u!114 &114380585987293026
 MonoBehaviour:
   m_ObjectHideFlags: 1

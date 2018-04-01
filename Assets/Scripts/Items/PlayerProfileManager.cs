@@ -71,7 +71,7 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
             Level currentUnlockedLevel = LevelUpDatabase.GetLevelById(playerProfile.level);
             if (currentUnlockedLevel.itemUnlockID >= 0)
             {
-                UiInventoryMenu.Instance.AddNewItem(currentUnlockedLevel.itemUnlockID, currentUnlockedLevel.itemRewardCount);
+                UiInventoryMenu.Instance.UpdateItems(currentUnlockedLevel.itemUnlockID, currentUnlockedLevel.itemRewardCount);
                 UiSeedListMenu.Instance.AddUnlockedItemsToList();
                 UiBuildingMenu.Instance.AddUnlockedItemsToList();
                 UiGrassListMenu.Instance.AddUnlockedItemsToList();

@@ -2,10 +2,11 @@ sourceID,name,desc,type,cost,deployTime,slotsUnlocked,limit,slug
 0,Field,grow crops,Crops,5,0.1,-1,6,field
 1,GrassTile,grow grass,Grass,-1,0.1,2,-1,grasstile
 2,Bakery,Production buildings,Products,20,0.1,2,1,bakery
-3,Dairy,Production buildings,Products,50,0.4,2,1,dairy
-4,FeedMill,Production buildings,Products,50,160,2,1,feedmill
-5,SugarMill,Production buildings,Products,350,360,2,1,sugarmill
-6,PopcornPot,Production buildings,Products,650,480,2,1,popcornpot
-7,BBQGrill,Production buildings,Products,730,480,2,1,bbqgrill
-8,PieOven,Production buildings,Products,2200,720,2,1,pieoven
-9,Loom,Production buildings,Products,3200,1440,2,1,loom
+3,Chicken,Animals,Products,20,0.1,-1,1,chicken
+4,Dairy,Production buildings,Products,50,0.4,2,1,dairy
+5,FeedMill,Production buildings,Products,50,160,2,1,feedmill
+6,SugarMill,Production buildings,Products,350,360,2,1,sugarmill
+7,PopcornPot,Production buildings,Products,650,480,2,1,popcornpot
+8,BBQGrill,Production buildings,Products,730,480,2,1,bbqgrill
+9,PieOven,Production buildings,Products,2200,720,2,1,pieoven
+10,Loom,Production buildings,Products,3200,1440,2,1,loom

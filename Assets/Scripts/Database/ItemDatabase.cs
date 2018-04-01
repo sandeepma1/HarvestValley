@@ -9,6 +9,14 @@ namespace HarvestValley.IO
         private static Item[] items;
         private const string fileName = "Items";
 
+        public static int AllItemCount
+        {
+            get
+            {
+                return items.Length;
+            }
+        }
+
         protected override void Awake()
         {
             base.Awake();
@@ -60,6 +68,8 @@ namespace HarvestValley.IO
         {
             return items.Length;
         }
+
+
 
         public static Item[] GetAllItemsBySourceId(int sourceId)
         {

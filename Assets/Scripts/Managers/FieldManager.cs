@@ -38,8 +38,8 @@ namespace HarvestValley.Managers
             {
                 InitFields(fields[i]);
             }
-            InvokeRepeating("SaveFields", 5, 5);
-            InvokeRepeating("CheckForHarvest", 5, 1);
+            InvokeRepeating("SaveFields", 1, 5);
+            InvokeRepeating("CheckForHarvest", 1, 1);
         }
 
         private void InitFields(Fields field)
