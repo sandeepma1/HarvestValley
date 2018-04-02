@@ -36,7 +36,7 @@ namespace HarvestValley.IO
                     chars[1],
                     chars[2],
                     IntParse(chars[3]),
-                    FloatParse(chars[4]),
+                    IntParse(chars[4]),
                     IntParse(chars[5]),
                     (ItemType)Enum.Parse(typeof(ItemType), chars[6]),
                     IntParse(chars[7]),
@@ -96,7 +96,7 @@ public class Item
     public string name;                 //1
     public string description;
     public int unlocksAtLevel;
-    public float timeRequiredInSeconds;
+    public int timeRequiredInSeconds;
     public int XPperYield;
     public ItemType type;
     public int coinCost;
@@ -117,7 +117,7 @@ public class Item
     public string slug;
 
     public Item(int itemId, string itemName, string itemDescription, int itemUnlocksAtLevel,
-                 float itemTimeRequiredInSeconds, int itemXP, ItemType itemType, int itemCoinCost, int itemGemCost, int itemSourceID,
+                 int itemTimeRequiredInSeconds, int itemXP, ItemType itemType, int itemCoinCost, int itemGemCost, int itemSourceID,
                  int itemNoOfWatering, int itemBaseYieldMin, int itemBaseYieldMax, int itemSellValueMin, int itemSellValueMax,
                  int itemNoOfFertilizer, int[] itemNeedID, int[] itemNeedAmount, string itemSlug)
     {

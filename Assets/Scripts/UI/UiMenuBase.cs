@@ -57,7 +57,7 @@ namespace HarvestValley.Ui
         protected string TimeRemaining(DateTime dateTime)
         {
             TimeSpan timeSpan;
-            timeSpan = dateTime.Subtract(DateTime.UtcNow);
+            timeSpan = dateTime.Subtract(DateTime.Now);
             return TimeSpanToDuration(timeSpan);
         }
 

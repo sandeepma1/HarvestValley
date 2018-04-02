@@ -11,101 +11,76 @@ public class ClickableLivestock : MouseUpBase
     public DateTime dateTime;
 
     //temp variables to get faster from livestock above declared
-    private int itemId = -1;
-    private int itemNeeded = -1;
+    private int grassIdToEat = -1;
+    private int grassAmountToEat = -1;
     private Item itemCanProduce;
+    private int timeperBiteInSeconds;
+
+    public event Action SaveLivestock;
 
     private void Start()
     {
         itemCanProduce = ItemDatabase.GetItemById(livestock.canProduceItemId);
-        itemId = itemCanProduce.needID[0];
-        itemNeeded = itemCanProduce.needAmount[0];
-        InitLivestock();
-        InvokeRepeating("CheckForHatching", 2, 1);
-        print(livestock.livestockType + " created");
-    }
+        grassIdToEat = itemCanProduce.needID[0];
+        grassAmountToEat = itemCanProduce.needAmount[0];
+        timeperBiteInSeconds = itemCanProduce.timeRequiredInSeconds;
 
-    private void InitLivestock()
-    {
-        switch (livestock.livestockState)
+        for (int i = 0; i < GrassLandManager.Instance.GetGrassCountBuyId(grassIdToEat); i++) // Todo: Maintain counter in GrassLandManager
         {
-            case LivestockState.Idle:
-                StartEating();
-                break;
-            case LivestockState.WaitingForGrass:
-                WaitingForGrass();
-                break;
-            case LivestockState.Eating:
-                break;
-            case LivestockState.WaitingForHatch:
-                break;
+            CheckForRegularUpdates();
         }
+        InvokeRepeating("CheckForRegularUpdates", 0, 1f);
     }
 
-    private void CheckForHatching()
+    private void CheckForRegularUpdates()
     {
-        if (livestock.livestockState == LivestockState.Eating)
+        DateTime tempDateTime = dateTime.AddSeconds(timeperBiteInSeconds);
+        if (tempDateTime <= DateTime.Now)
         {
-            if (dateTime <= DateTime.UtcNow)
+            print("tick");
+            dateTime = tempDateTime;
+            //save datetime
+            if (livestock.hatched < livestock.maxHatchCount)
             {
-                ReadyForHatch();
+                if (GrassLandManager.Instance.GetGrassCountBuyId(grassIdToEat) > 0)
+                {
+                    GrassLandManager.Instance.RemoveGrass(grassIdToEat);
+                    livestock.biteCount++;
+                }
+                if (livestock.biteCount >= grassAmountToEat)// Wola!! lay eggs/milk etc
+                {
+                    livestock.hatched++;
+                    livestock.biteCount = 0;
+                    print("egglayed");
+                }
             }
+            SaveLivestock.Invoke();
         }
     }
 
-    private void ReadyForHatch()
-    {
-        livestock.livestockState = LivestockState.WaitingForHatch;
-        print("Ready to hatch");
-    }
-
-    private void StartEating()
-    {
-        if (GrassLandManager.Instance.IsAvailableGrassCount(itemId, itemNeeded)) // This will check and remove grass if true
-        {
-            dateTime = DateTime.UtcNow.AddSeconds(itemCanProduce.timeRequiredInSeconds);
-            livestock.livestockState = LivestockState.Eating;
-        }
-        else
-        {
-            livestock.livestockState = LivestockState.WaitingForGrass;
-            WaitingForGrass();
-        }
-    }
-
-    private void WaitingForGrass()
-    {
-        StartCoroutine(CheckForAvailableGrass());
-    }
-
-    IEnumerator CheckForAvailableGrass() // Waiting for grass
-    {
-        print("Waiting for grass");
-        yield return new WaitForSeconds(2);
-        if (GrassLandManager.Instance.IsAvailableGrassCount(itemId, itemNeeded))
-        {
-            StartEating();
-        }
-        else
-        {
-            StartCoroutine(CheckForAvailableGrass());
-        }
-    }
 
     public override void OnMouseTouchUp()
     {
         base.OnMouseTouchUp();
-        if (livestock.livestockState == LivestockState.WaitingForHatch)
+        if (livestock.hatched == 0)
         {
-            livestock.livestockState = LivestockState.Idle;
-            UiInventoryMenu.Instance.UpdateItems(livestock.canProduceItemId, 1);
-            StartEating();
-            print("egg added in inventory");
-            //TODO: check if inventory is full or not
+            print("no eggs");
+            return;
         }
-        else
-        {
-            //TODO: On any livestock click like making happy
-        }
+        print("added eggs in inventory " + livestock.hatched);
+        UiInventoryMenu.Instance.UpdateItems(livestock.canProduceItemId, livestock.hatched);
+        livestock.hatched = 0;
+        //if (livestock.livestockState == LivestockState.WaitingForHatch)
+        //{
+        //    CheckForGrass();
+        //    UiInventoryMenu.Instance.UpdateItems(livestock.canProduceItemId, 1);
+        //    LivestockManager.Instance.SomethingChangedSaveLivestock();
+        //    print("egg added in inventory");
+        //    //TODO: check if inventory is full or not
+        //}
+        //else
+        //{
+        //    //TODO: On any livestock click like making happy
+        //}
     }
 }

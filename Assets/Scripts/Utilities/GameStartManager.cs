@@ -4,44 +4,30 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System;
 
-public class FirstScript : MonoBehaviour
+public class GameStartManager : MonoBehaviour
 {
-    public static FirstScript Instance = null;
     [SerializeField]
     private int xField = 6, yField = 4, gapField = 2;
     private int xGrass = 12, yGrass = 12, gapGrass = 1;
 
-
-    private Canvas[] canvas;
-    private Camera mainCamera;
-    private List<Fields> fields = new List<Fields>();
-    private List<Grass> grass = new List<Grass>();
-    private List<Buildings> buildings = new List<Buildings>();
-    public List<InventoryItems> playerInventory = new List<InventoryItems>();
-    public List<LivestockClass> livestock = new List<LivestockClass>();
-
-    private void Awake()
-    {
-        Instance = this;
-        IsNewGameStarted();
-    }
-
     private void Start()
     {
-        mainCamera = Camera.main;
-        canvas = FindObjectsOfType<Canvas>();
-        for (int i = 0; i < canvas.Length; i++)
-        {
-            canvas[i].worldCamera = mainCamera;
-        }
-    }
-
-    private void LateUpdate()
-    {
-        if (Input.GetMouseButtonDown(2) || Input.GetKeyUp(KeyCode.R))
+        int gameStatus = PlayerPrefs.GetInt("gameStatus", 0);
+        if (gameStatus == 0)
         {
             ResetGame();
         }
+        IsNewGameStarted();
+    }
+
+    public void ResetGame()
+    {
+        StopAllCoroutines();
+        //Note: This method will not work on WP8 or Metro.
+        ES2.DeleteDefaultFolder();
+        CreateNewGameSaves();
+        print("Game Reset Started");
+        StartCoroutine("RestartGame");
     }
 
     private void IsNewGameStarted()
@@ -60,43 +46,36 @@ public class FirstScript : MonoBehaviour
     private void CreateNewGameSaves()
     {
         CreateNewProfile();
+        CreateNewInventory();
         CreateNewFields();
         CreateNewGrass();
         CreateNewLivestock();
         CreateNewBuildings();
-        CreateNewInventory();
-        print("new game");
-    }
-
-    public void ResetGame()
-    {
-        //Note: This method will not work on WP8 or Metro.
-        ES2.DeleteDefaultFolder();
-        CreateNewGameSaves();
-        print("rest game");
-        StartCoroutine("RestartGame");
+        print("New game save created!!");
     }
 
     private void CreateNewInventory()
     {
+        List<InventoryItems> playerInventory = new List<InventoryItems>();
         playerInventory.Add(new InventoryItems(0, 1)); //addding Wheat for the first level       
         ES2.Save(playerInventory, "PlayerInventory");
     }
 
     private void CreateNewProfile()
     {
-        PlayerProfileManager.Instance.playerProfile = new PlayersProfile("PlayerName", "MyFarm", 1, 0, 1000, 10, 50, DateTime.UtcNow.ToString());
-        ES2.Save(PlayerProfileManager.Instance.playerProfile, "PlayerProfile");
+        PlayersProfile playerProfile = new PlayersProfile("PlayerName", "MyFarm", 1, 0, 1000, 10, 50, DateTime.Now.ToString());
+        ES2.Save(playerProfile, "PlayerProfile");
     }
 
     private void CreateNewFields()
     {
+        List<Fields> fields = new List<Fields>();
         int counter = 0;
         for (int i = 0; i < xField; i++)
         {
             for (int j = 0; j < yField; j++)
             {
-                fields.Add(new Fields(counter, 0, "Field", new Vector2(i * gapField, -j * gapField), 1, 0, -1, DateTime.UtcNow.ToString()));
+                fields.Add(new Fields(counter, 0, "Field", new Vector2(i * gapField, -j * gapField), 1, 0, -1, DateTime.Now.ToString()));
                 counter++;
             }
         }
@@ -105,6 +84,7 @@ public class FirstScript : MonoBehaviour
 
     private void CreateNewGrass()
     {
+        List<Grass> grass = new List<Grass>();
         int id = 0;
         for (int i = 0; i < xGrass; i++)
         {
@@ -119,17 +99,20 @@ public class FirstScript : MonoBehaviour
 
     private void CreateNewLivestock()
     {
-        livestock.Add(new LivestockClass(0, 4, 10, LivestockType.Chicken, LivestockState.Idle, DateTime.UtcNow.ToString()));
+        List<LivestockClass> livestock = new List<LivestockClass>();
+        livestock.Add(new LivestockClass(0, 4, 0, 0, 100, LivestockType.Chicken, DateTime.Now.ToString()));
         ES2.Save(livestock, "AllLivestock");
     }
 
     private void CreateNewBuildings()
     {
+        List<Buildings> buildings = new List<Buildings>();
+
         string[] nowTime = new string[GEM.maxBuildingQueueCount];
         int[] ids = new int[GEM.maxBuildingQueueCount];
         for (int i = 0; i < GEM.maxBuildingQueueCount; i++)
         {
-            nowTime[i] = DateTime.UtcNow.ToString();
+            nowTime[i] = DateTime.Now.ToString();
             ids[i] = -1;
         }
 
@@ -141,7 +124,9 @@ public class FirstScript : MonoBehaviour
 
     IEnumerator RestartGame()
     {
+        PlayerPrefs.SetInt("gameStatus", 1);
         yield return new WaitForSeconds(1);
+        print("Loading Main");
         SceneManager.LoadScene("Main");
     }
 }

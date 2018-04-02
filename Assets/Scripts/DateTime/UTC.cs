@@ -6,11 +6,11 @@ public class UTC : MonoBehaviour
 
     void Awake()
     {
-        liveDateTime = System.DateTime.UtcNow;
+        liveDateTime = System.DateTime.Now;
     }
 
     void FixedUpdate()
     {
-        liveDateTime = System.DateTime.UtcNow;
+        liveDateTime = System.DateTime.Now;
     }
 }

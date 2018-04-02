@@ -87,9 +87,9 @@ namespace HarvestValley.Managers
                 return;
             }
 
-            TimeSpan timeElapsed = field.dateTime - DateTime.UtcNow;
+            TimeSpan timeElapsed = field.dateTime - DateTime.Now;
             float timeElapsedInSeconds = (float)timeElapsed.TotalSeconds;
-            float divisionFactor = (ItemDatabase.GetItemById(field.sourceId).timeRequiredInSeconds) / 4;
+            float divisionFactor = (ItemDatabase.GetItemById(field.itemId).timeRequiredInSeconds) / 4;
 
             if (timeElapsedInSeconds >= divisionFactor * 3) //22.5 seed
             {
@@ -159,6 +159,7 @@ namespace HarvestValley.Managers
             }
             SaveFields();
             ToggleFieldSelector(false);
+            InputController.Instance.DisableDragSwipe();
         }
 
         public void StopPlantingMode()
@@ -174,6 +175,7 @@ namespace HarvestValley.Managers
                 FieldGO[i].StopPlantingMode();
             }
             UiSeedListMenu.Instance.StopPlantingMode();
+            InputController.Instance.EnableDragSwipe();
         }
 
         #endregion
@@ -191,7 +193,7 @@ namespace HarvestValley.Managers
         public void AddNewField(Vector2 pos, int fieldID)
         {
             fields.Add(new Fields(fields.Count + 1, fieldID, SourceDatabase.GetSourceInfoById(fieldID).sourceID.ToString(), pos,
-                1, 0, -1, DateTime.UtcNow.ToString()));
+                1, 0, -1, DateTime.Now.ToString()));
             ES2.Save(fields, "AllFields");
             InitFields(fields[fields.Count - 1]);
         }

@@ -12,9 +12,10 @@ public class ES2UserType_LivestockClass : ES2Type
 		// Add your writer.Write calls here.
 		writer.Write(data.livestockId);
 		writer.Write(data.canProduceItemId);
-		writer.Write(data.alreadyAteGrassCount);
+		writer.Write(data.biteCount);
+		writer.Write(data.hatched);
+		writer.Write(data.maxHatchCount);
 		writer.Write(data.livestockType);
-		writer.Write(data.livestockState);
 		writer.Write(data.dateTime);
 
 	}
@@ -32,9 +33,10 @@ public class ES2UserType_LivestockClass : ES2Type
 		// Add your reader.Read calls here to read the data into the object.
 		data.livestockId = reader.Read<System.Int32>();
 		data.canProduceItemId = reader.Read<System.Int32>();
-		data.alreadyAteGrassCount = reader.Read<System.Int32>();
+		data.biteCount = reader.Read<System.Int32>();
+		data.hatched = reader.Read<System.Int32>();
+		data.maxHatchCount = reader.Read<System.Int32>();
 		data.livestockType = reader.Read<LivestockType>();
-		data.livestockState = reader.Read<LivestockState>();
 		data.dateTime = reader.Read<System.String>();
 
 	}

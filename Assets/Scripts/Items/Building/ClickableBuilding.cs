@@ -10,8 +10,8 @@ public class ClickableBuilding : ClickableBase
 
     private int timeCompareResult;
     internal Queue<BuildingQueue> buildingQueue = new Queue<BuildingQueue>();
-    private DateTime topInQueue = DateTime.UtcNow;
-    private DateTime lastInQueue = DateTime.UtcNow;
+    private DateTime topInQueue = DateTime.Now;
+    private DateTime lastInQueue = DateTime.Now;
 
     public bool isProductionQueueFull = false;
 
@@ -36,7 +36,7 @@ public class ClickableBuilding : ClickableBase
         {
             return;
         }
-        timeCompareResult = DateTime.Compare(topInQueue, DateTime.UtcNow);
+        timeCompareResult = DateTime.Compare(topInQueue, DateTime.Now);
         if (timeCompareResult <= 0)
         {
             UiInventoryMenu.Instance.UpdateItems(buildingQueue.Peek().itemId, 1);
@@ -77,7 +77,7 @@ public class ClickableBuilding : ClickableBase
         }
         else
         {
-            queueItem.dateTime = DateTime.UtcNow.AddSeconds(item.timeRequiredInSeconds);
+            queueItem.dateTime = DateTime.Now.AddSeconds(item.timeRequiredInSeconds);
         }
 
         buildingQueue.Enqueue(queueItem);
@@ -92,7 +92,7 @@ public class ClickableBuilding : ClickableBase
             isProductionQueueFull = false;
         }
 
-        if (GEM.ShowDebugInfo) print("item added, in queue " + " NOW " + DateTime.UtcNow + " ADD " + queueItem.dateTime + " CNT " + buildingQueue.Count);
+        if (GEM.ShowDebugInfo) print("item added, in queue " + " NOW " + DateTime.Now + " ADD " + queueItem.dateTime + " CNT " + buildingQueue.Count);
         state = BuildingState.WORKING;
         TopInQueueDateTime = buildingQueue.Peek().dateTime;
         ChangedInBuilding();

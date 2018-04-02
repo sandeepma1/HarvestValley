@@ -49,7 +49,7 @@ public static class GEM
         e_inventory
     };
 
-    public static System.DateTime dateTime = System.DateTime.UtcNow;
+    public static System.DateTime dateTime = System.DateTime.Now;
 
     static E_MenuState m_menuState = E_MenuState.e_menuDown;
     public static void SetMenuState(E_MenuState state)

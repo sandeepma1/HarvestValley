@@ -31,7 +31,7 @@ public class ClickableField : ClickableBase
     {
         base.AddItemToProductionQueue(itemId);
         this.itemId = itemId;
-        dateTime = DateTime.UtcNow.AddSeconds(ItemDatabase.GetItemById(itemId).timeRequiredInSeconds);
+        dateTime = DateTime.Now.AddSeconds(ItemDatabase.GetItemById(itemId).timeRequiredInSeconds);
         state = BuildingState.WORKING;
 
         string plantName = ItemDatabase.GetItemById(itemId).slug + "_0";

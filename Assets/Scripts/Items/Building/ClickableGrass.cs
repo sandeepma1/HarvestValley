@@ -30,6 +30,10 @@ public class ClickableGrass : ClickableBase
 
     public void RemovedGrass()
     {
+        if (spriteRenderer == null)  //TODO: what is this remove it
+        {
+            Start();
+        }
         spriteRenderer.sprite = null;
         grass.itemId = -1;
     }

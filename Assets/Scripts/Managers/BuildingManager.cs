@@ -90,7 +90,7 @@ namespace HarvestValley.Managers
                 for (int i = currentQueue.Length; i < GEM.maxBuildingQueueCount; i++)
                 {
                     item.itemID[i] = -1;
-                    item.dateTime[i] = DateTime.UtcNow.ToString();
+                    item.dateTime[i] = DateTime.Now.ToString();
                 }
             }
             ES2.Save(buildings, "AllBuildings");

@@ -15,10 +15,6 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
     protected override void Awake()
     {
         base.Awake();
-        if (!ES2.Exists("PlayerProfile"))
-        {
-            FirstScript.Instance.ResetGame();
-        }
         playerProfile = ES2.Load<PlayersProfile>("PlayerProfile");
         InitPlayerProfile();
     }

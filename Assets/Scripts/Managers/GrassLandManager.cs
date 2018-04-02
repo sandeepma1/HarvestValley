@@ -49,42 +49,17 @@ namespace HarvestValley.Managers
             }
         }
 
-        public bool IsAvailableGrassCount(int itemId, int amount)
+        public bool IsGrassAvailable(int itemId)
         {
-            int count = 0;
             for (int i = 0; i < grassGO.Length; i++)
             {
                 if (grassGO[i].grass.itemId == itemId) // Check for grass as livestock needs it
                 {
-                    count++;
-                    if (count >= amount)                //If grass is available then start removing it
-                    {
-                        RemoveGrass(itemId, amount);
-                        return true;
-                    }
+                    grassGO[i].RemovedGrass();
+                    return true;
                 }
             }
             return false;
-        }
-
-        // Removed grass as livestock ate it
-        private void RemoveGrass(int itemId, int amount)
-        {
-            int count = 0;
-            for (int j = 0; j < grassGO.Length; j++)
-            {
-                if (count >= amount)
-                {
-                    ChangedSometingSaveGrass();
-                    return;
-                }
-                if (grassGO[j].grass.itemId == itemId)
-                {
-                    grassGO[j].RemovedGrass();
-                    count++;
-                }
-            }
-            print(amount + " grass removed");
         }
 
         #region Planting Mode 
@@ -93,6 +68,7 @@ namespace HarvestValley.Managers
         {
             selectedItemIdInMenu = itemId;
             isinPlantingMode = true;
+            InputController.Instance.DisableDragSwipe();
         }
 
         public void StopPlantingMode()
@@ -105,9 +81,40 @@ namespace HarvestValley.Managers
             isinPlantingMode = false;
             UiGrassListMenu.Instance.StopPlantingMode();
             ChangedSometingSaveGrass();
+            InputController.Instance.EnableDragSwipe();
         }
 
         #endregion
+
+        public int GetGrassCountBuyId(int itemId)
+        {
+            if (grassGO == null)
+            {
+                Start();
+            }
+            int counter = 0;
+            for (int i = 0; i < grassGO.Length; i++)
+            {
+                if (grassGO[i].grass.itemId == itemId)
+                {
+                    counter++;
+                }
+            }
+            return counter;
+        }
+
+        public void RemoveGrass(int itemId) // will remove grass by one
+        {
+            for (int i = 0; i < grassGO.Length; i++)
+            {
+                if (grassGO[i].grass.itemId == itemId)
+                {
+                    grassGO[i].RemovedGrass(); // Todo: dont sequentially remove grass, it should be removed where livestock is standing
+                    ChangedSometingSaveGrass();
+                    return;
+                }
+            }
+        }
 
         public void ChangedSometingSaveGrass()
         {

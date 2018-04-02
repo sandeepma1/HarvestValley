@@ -56,7 +56,7 @@ namespace AStar_2D.Threading
             this.callback = callback;
 
             // Create a time stamp
-            timeStamp = DateTime.UtcNow.Ticks;
+            timeStamp = DateTime.Now.Ticks;
         }
 
         public AsyncPathRequest(SearchGrid grid, Index start, Index end, bool allowDiagonal, PathRequestDelegate callback)
@@ -68,7 +68,7 @@ namespace AStar_2D.Threading
             this.callback = callback;
 
             // Create a time stamp
-            timeStamp = DateTime.UtcNow.Ticks;
+            timeStamp = DateTime.Now.Ticks;
         }
     }
 }
