@@ -24,7 +24,7 @@ public class ClickableLivestock : MouseUpBase
         grassIdToEat = itemCanProduce.needID[0];
         grassAmountToEat = itemCanProduce.needAmount[0];
         timeperBiteInSeconds = itemCanProduce.timeRequiredInSeconds;
-
+        print("timeperBiteInSeconds" + timeperBiteInSeconds);
         for (int i = 0; i < GrassLandManager.Instance.GetGrassCountBuyId(grassIdToEat); i++) // Todo: Maintain counter in GrassLandManager
         {
             CheckForRegularUpdates();
@@ -70,17 +70,5 @@ public class ClickableLivestock : MouseUpBase
         print("added eggs in inventory " + livestock.hatched);
         UiInventoryMenu.Instance.UpdateItems(livestock.canProduceItemId, livestock.hatched);
         livestock.hatched = 0;
-        //if (livestock.livestockState == LivestockState.WaitingForHatch)
-        //{
-        //    CheckForGrass();
-        //    UiInventoryMenu.Instance.UpdateItems(livestock.canProduceItemId, 1);
-        //    LivestockManager.Instance.SomethingChangedSaveLivestock();
-        //    print("egg added in inventory");
-        //    //TODO: check if inventory is full or not
-        //}
-        //else
-        //{
-        //    //TODO: On any livestock click like making happy
-        //}
     }
 }

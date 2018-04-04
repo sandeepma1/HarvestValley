@@ -16,8 +16,17 @@ public class GameStartManager : MonoBehaviour
         if (gameStatus == 0)
         {
             ResetGame();
+            return;
         }
-        IsNewGameStarted();
+        else if (IsSavedFilesAvailable())
+        {
+            ResetGame();
+            return;
+        }
+        else
+        {
+            LoadMainLevel();
+        }
     }
 
     public void ResetGame()
@@ -30,18 +39,19 @@ public class GameStartManager : MonoBehaviour
         StartCoroutine("RestartGame");
     }
 
-    private void IsNewGameStarted()
+    private bool IsSavedFilesAvailable()
     {
-        if (!ES2.Exists("AllFields") ||
-            !ES2.Exists("AllGrass") ||
-            !ES2.Exists("AllLivestock") ||
-            !ES2.Exists("AllBuildings") ||
-            !ES2.Exists("PlayerInventory") ||
-           !ES2.Exists("PlayerProfile"))
+        if (!ES2.Exists("AllFields") || !ES2.Exists("AllGrass") || !ES2.Exists("AllLivestock") || !ES2.Exists("AllBuildings") ||
+            !ES2.Exists("PlayerInventory") || !ES2.Exists("PlayerProfile"))
         {
-            CreateNewGameSaves();
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
+
 
     private void CreateNewGameSaves()
     {
@@ -53,6 +63,21 @@ public class GameStartManager : MonoBehaviour
         CreateNewBuildings();
         print("New game save created!!");
     }
+
+    IEnumerator RestartGame()
+    {
+        PlayerPrefs.SetInt("gameStatus", 1);
+        yield return new WaitForSeconds(1);
+        LoadMainLevel();
+    }
+
+    private void LoadMainLevel()
+    {
+        print("Loading Main");
+        SceneManager.LoadScene("Main");
+    }
+
+    #region Create New files for all types
 
     private void CreateNewInventory()
     {
@@ -122,11 +147,6 @@ public class GameStartManager : MonoBehaviour
         ES2.Save(buildings, "AllBuildings");
     }
 
-    IEnumerator RestartGame()
-    {
-        PlayerPrefs.SetInt("gameStatus", 1);
-        yield return new WaitForSeconds(1);
-        print("Loading Main");
-        SceneManager.LoadScene("Main");
-    }
+    #endregion
+
 }
