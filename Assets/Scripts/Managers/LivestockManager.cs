@@ -19,6 +19,14 @@ public class LivestockManager : Singleton<LivestockManager>
         SomethingChangedSaveLivestock();
     }
 
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            SomethingChangedSaveLivestock();
+        }
+    }
+
     private void Init()
     {
         List<LivestockClass> livestock = ES2.LoadList<LivestockClass>("AllLivestock");
@@ -27,14 +35,7 @@ public class LivestockManager : Singleton<LivestockManager>
         {
             livestockGO[i] = Instantiate(clickableLivestockPrefab, this.transform);
             livestockGO[i].livestock = livestock[i];
-            livestockGO[i].dateTime = DateTime.Parse(livestock[i].dateTime);
-            livestockGO[i].SaveLivestock += SaveLivestockEventTrigger;
         }
-    }
-
-    private void SaveLivestockEventTrigger()
-    {
-        SomethingChangedSaveLivestock();
     }
 
     public void SomethingChangedSaveLivestock()
@@ -49,7 +50,6 @@ public class LivestockManager : Singleton<LivestockManager>
         {
             livestock.Add(new LivestockClass());
             livestock[i] = livestockGO[i].livestock;
-            livestock[i].dateTime = livestockGO[i].dateTime.ToString();
         }
         ES2.Save(livestock, "AllLivestock");
     }

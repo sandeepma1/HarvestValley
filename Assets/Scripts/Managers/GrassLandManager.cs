@@ -17,6 +17,8 @@ namespace HarvestValley.Managers
         public List<Grass> grass = new List<Grass>();
         public int selectedItemIdInMenu;
 
+        public InventoryItems[] grassItemDatabase;
+
         private void Start()
         {
             grass = ES2.LoadList<Grass>("AllGrass");
@@ -34,19 +36,22 @@ namespace HarvestValley.Managers
             grassGO[grass.grassId].grass = grass;
             grassGO[grass.grassId].transform.localPosition = grass.position;
             grassGO[grass.grassId].gameObject.name = "Grass" + grass.grassId;
-            grassGO[grass.grassId].ClickableGrasssClicked += ClickableGrasssClickedEventHandler;
+            grassGO[grass.grassId].OnClickOpenMenu += ClickableGrasssClickedEventHandler;
+            grassGO[grass.grassId].ClickableGrassAddedItem += ClickableGrassAddedItemEventHandler;
         }
 
-        private void ClickableGrasssClickedEventHandler(int itemId)
+        //Todo: Need to implement grass's all items and counts
+        private void ClickableGrassAddedItemEventHandler(int itemId)
         {
-            if (itemId == -1)
+            for (int i = 0; i < grassItemDatabase.Length; i++)
             {
-                MenuManager.Instance.DisplayMenu(MenuNames.GrassListMenu, MenuOpeningType.CloseAll);
+
             }
-            else
-            {
-                // nothing at moment
-            }
+        }
+
+        private void ClickableGrasssClickedEventHandler()
+        {
+            MenuManager.Instance.DisplayMenu(MenuNames.GrassListMenu, MenuOpeningType.CloseAll);
         }
 
         public bool IsGrassAvailable(int itemId)

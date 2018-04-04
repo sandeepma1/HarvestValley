@@ -19,6 +19,16 @@ public class ClickableField : ClickableBase
     public override void OnMouseTouchUp()
     {
         base.OnMouseTouchUp();
+        SomeSeedPlanted();
+    }
+
+    public override void OnMouseTouchEnter()
+    {
+        SomeSeedPlanted();
+    }
+
+    private void SomeSeedPlanted()
+    {
         if (inPlantingMode && state == BuildingState.IDLE)
         {
             AddItemToProductionQueue(itemIDToBePlaced);

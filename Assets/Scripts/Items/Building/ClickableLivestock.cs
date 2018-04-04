@@ -8,53 +8,68 @@ using HarvestValley.Ui;
 public class ClickableLivestock : MouseUpBase
 {
     public LivestockClass livestock;
-    public DateTime dateTime;
 
     //temp variables to get faster from livestock above declared
     private int grassIdToEat = -1;
     private int grassAmountToEat = -1;
     private Item itemCanProduce;
-    private int timeperBiteInSeconds;
-
-    public event Action SaveLivestock;
+    private int timePerBiteInSeconds;
+    private bool isThisAtStart;
+    private DateTime tempDateTime;
 
     private void Start()
     {
         itemCanProduce = ItemDatabase.GetItemById(livestock.canProduceItemId);
         grassIdToEat = itemCanProduce.needID[0];
         grassAmountToEat = itemCanProduce.needAmount[0];
-        timeperBiteInSeconds = itemCanProduce.timeRequiredInSeconds;
-        print("timeperBiteInSeconds" + timeperBiteInSeconds);
+        timePerBiteInSeconds = itemCanProduce.timeRequiredInSeconds;
+        isThisAtStart = true;
         for (int i = 0; i < GrassLandManager.Instance.GetGrassCountBuyId(grassIdToEat); i++) // Todo: Maintain counter in GrassLandManager
         {
+
             CheckForRegularUpdates();
         }
-        InvokeRepeating("CheckForRegularUpdates", 0, 1f);
+        isThisAtStart = false;
+        tempDateTime = DateTime.Parse(livestock.dateTime);
+        tempDateTime.AddSeconds(timePerBiteInSeconds);
+        InvokeRepeating("CheckForRegularUpdates", 0, 0.5f);
     }
 
     private void CheckForRegularUpdates()
     {
-        DateTime tempDateTime = dateTime.AddSeconds(timeperBiteInSeconds);
+        if (livestock.hatched > livestock.maxHatchCount)
+        {
+            return;
+        }
+
+        if (GrassLandManager.Instance.GetGrassCountBuyId(grassIdToEat) <= 0)
+        {
+            return;
+        }
+
         if (tempDateTime <= DateTime.Now)
         {
             print("tick");
-            dateTime = tempDateTime;
-            //save datetime
-            if (livestock.hatched < livestock.maxHatchCount)
+
+            GrassLandManager.Instance.RemoveGrass(grassIdToEat);
+            livestock.biteCount++;
+
+            if (isThisAtStart)
             {
-                if (GrassLandManager.Instance.GetGrassCountBuyId(grassIdToEat) > 0)
-                {
-                    GrassLandManager.Instance.RemoveGrass(grassIdToEat);
-                    livestock.biteCount++;
-                }
-                if (livestock.biteCount >= grassAmountToEat)// Wola!! lay eggs/milk etc
-                {
-                    livestock.hatched++;
-                    livestock.biteCount = 0;
-                    print("egglayed");
-                }
+                tempDateTime.AddSeconds(timePerBiteInSeconds);
             }
-            SaveLivestock.Invoke();
+            else
+            {
+                tempDateTime = DateTime.Now.AddSeconds(timePerBiteInSeconds); // Add next bite time in seconds   
+            }
+
+            if (livestock.biteCount >= grassAmountToEat)// Wola!! lay eggs/milk etc
+            {
+                livestock.hatched++;
+                livestock.biteCount = 0;
+                print("egglayed");
+            }
+
         }
     }
 
