@@ -2,21 +2,49 @@
 using UnityEngine;
 using HarvestValley.IO;
 using System;
+using DG.Tweening;
 
 public class ClickableGrass : ClickableBase
 {
     public Grass grass;
-    private SpriteRenderer spriteRenderer;
     public Action OpenUiGrassMenu;
     public Action<int> ClickableGrassAddedItem;
+    private Transform[] childrenTransform;
+    private SpriteRenderer[] childrenSpriteRenderer;
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        // childrenTransform = GetComponentsInChildren<Transform>(); Fucking Unity takes parent if this is called, bunch of fools.
 
-        if (grass.itemId != -1) // 
+        childrenTransform = new Transform[transform.childCount];
+        for (int i = 0; i < transform.childCount; i++)
         {
-            spriteRenderer.sprite = AtlasBank.Instance.GetSprite(ItemDatabase.GetItemNameById(grass.itemId), AtlasType.Livestock);
+            childrenTransform[i] = transform.GetChild(i);
+        }
+
+        childrenSpriteRenderer = GetComponentsInChildren<SpriteRenderer>();
+
+        if (grass.itemId != -1)
+        {
+            SetChildGrassLeavesSprite(grass.itemId);
+        }
+    }
+
+    private void SetChildGrassLeavesSprite(int itemId)
+    {
+        for (int i = 0; i < childrenTransform.Length; i++)
+        {
+            if (itemId == -1)
+            {
+                childrenSpriteRenderer[i].sprite = null;
+            }
+            else
+            {
+                string grassName = ItemDatabase.GetItemNameById(itemId) + "" + i;
+                childrenTransform[i].localPosition = UnityEngine.Random.insideUnitCircle / 3;
+                childrenSpriteRenderer[i].sortingOrder = (int)(transform.localPosition.y * -10);
+                childrenSpriteRenderer[i].sprite = AtlasBank.Instance.GetSprite(grassName, AtlasType.Livestock);
+            }
         }
     }
 
@@ -26,17 +54,17 @@ public class ClickableGrass : ClickableBase
         {
             grass.itemId = GrassLandManager.Instance.selectedItemIdInMenu;
             ClickableGrassAddedItem.Invoke(grass.itemId);
-            spriteRenderer.sprite = AtlasBank.Instance.GetSprite(ItemDatabase.GetItemNameById(grass.itemId), AtlasType.Livestock);
+            SetChildGrassLeavesSprite(grass.itemId);
         }
     }
 
     public void RemovedGrass()
     {
-        if (spriteRenderer == null)  //TODO: what is this remove it
+        if (transform == null)  //TODO: what is this remove it
         {
             Start();
         }
-        spriteRenderer.sprite = null;
+        SetChildGrassLeavesSprite(-1);
         grass.itemId = -1;
     }
 
@@ -46,6 +74,22 @@ public class ClickableGrass : ClickableBase
         if (grass.itemId == -1)
         {
             OpenUiGrassMenu.Invoke();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (grass.itemId == -1)
+        {
+            return;
+        }
+        if (childrenTransform == null)
+        {
+            Start();
+        }
+        for (int i = 0; i < childrenTransform.Length; i++)
+        {
+            childrenTransform[i].DOShakeRotation(0.5f, new Vector3(0, 0, 25), 4);
         }
     }
 }
