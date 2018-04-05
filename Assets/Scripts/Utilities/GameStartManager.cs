@@ -52,7 +52,6 @@ public class GameStartManager : MonoBehaviour
         }
     }
 
-
     private void CreateNewGameSaves()
     {
         CreateNewProfile();

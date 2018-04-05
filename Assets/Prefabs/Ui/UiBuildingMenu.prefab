@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 222932714734772408}
   - component: {fileID: 114658602021021706}
   m_Layer: 5
-  m_Name: BuildingName
+  m_Name: BuildingNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -968,7 +968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDraggableItemPrefab: {fileID: 114605468589363126, guid: 35f03df1bb145d04988de738109171be,
     type: 2}
-  buildingName: {fileID: 114658602021021706}
+  buildingNameText: {fileID: 114658602021021706}
   buildingImage: {fileID: 114814343490272568}
   itemScrollListContentTransform: {fileID: 224140654026687488}
   currentTimerText: {fileID: 114510904312163296}

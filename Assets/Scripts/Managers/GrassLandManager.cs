@@ -138,7 +138,6 @@ namespace HarvestValley.Managers
             {
                 grass[i] = grassGO[i].grass;
             }
-            print("all grass saved");
             ES2.Save(grass, "AllGrass");
         }
     }

@@ -4,7 +4,6 @@ using TMPro;
 using HarvestValley.Managers;
 using System.Collections.Generic;
 using HarvestValley.IO;
-using System;
 
 namespace HarvestValley.Ui
 {
@@ -13,7 +12,7 @@ namespace HarvestValley.Ui
         [SerializeField]
         private UiDraggableItem uiDraggableItemPrefab;
         [SerializeField]
-        private TextMeshProUGUI buildingName;
+        private TextMeshProUGUI buildingNameText;
         [SerializeField]
         private Image buildingImage;
         [SerializeField]
@@ -91,6 +90,7 @@ namespace HarvestValley.Ui
             {
                 return;
             }
+            PopulateBuildingImageName();
             PopulateBuildingItems();
             AddNextLockedItem();
             PopulateRequiredItems();
@@ -104,6 +104,13 @@ namespace HarvestValley.Ui
             print("Unlock new slot");
             BuildingManager.Instance.BuildingsGO[selectedBuildingID].NewQueueSlotButtonPressed();
             AddNewSlotForPurchase();
+        }
+
+        private void PopulateBuildingImageName()
+        {
+            string buildingName = SourceDatabase.GetSourceInfoById(selectedSourceID).slug;
+            buildingNameText.text = SourceDatabase.GetSourceInfoById(selectedSourceID).name;
+            buildingImage.sprite = AtlasBank.Instance.GetSprite(buildingName, AtlasType.Buildings);
         }
 
         private void PopulateBuildingItems()
