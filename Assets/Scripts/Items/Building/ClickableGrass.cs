@@ -7,7 +7,7 @@ public class ClickableGrass : ClickableBase
 {
     public Grass grass;
     private SpriteRenderer spriteRenderer;
-    public Action OnClickOpenMenu;
+    public Action OpenUiGrassMenu;
     public Action<int> ClickableGrassAddedItem;
 
     private void Start()
@@ -25,7 +25,7 @@ public class ClickableGrass : ClickableBase
         if (GrassLandManager.Instance.isinPlantingMode && grass.itemId == -1)
         {
             grass.itemId = GrassLandManager.Instance.selectedItemIdInMenu;
-            //ClickableGrassAddedItem.Invoke(grass.itemId);
+            ClickableGrassAddedItem.Invoke(grass.itemId);
             spriteRenderer.sprite = AtlasBank.Instance.GetSprite(ItemDatabase.GetItemNameById(grass.itemId), AtlasType.Livestock);
         }
     }
@@ -45,7 +45,7 @@ public class ClickableGrass : ClickableBase
         base.OnMouseTouchUp();
         if (grass.itemId == -1)
         {
-            OnClickOpenMenu.Invoke();
+            OpenUiGrassMenu.Invoke();
         }
     }
 }

@@ -38,7 +38,6 @@ namespace HarvestValley.Managers
             {
                 InitFields(fields[i]);
             }
-            InvokeRepeating("SaveFields", 1, 5);
             InvokeRepeating("CheckForHarvest", 1, 1);
         }
 
@@ -157,7 +156,6 @@ namespace HarvestValley.Managers
                     FieldGO[i].StartPlantingMode(itemID);
                 }
             }
-            SaveFields();
             ToggleFieldSelector(false);
             InputController.Instance.DisableDragSwipe();
         }

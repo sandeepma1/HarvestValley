@@ -129,10 +129,9 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
         staminaUIText.text = playerProfile.stamina.ToString();
         levelUIText.text = playerProfile.level.ToString();
         XPPointsUIText.text = playerProfile.XPPoints.ToString() + "/" + LevelUpDatabase.GetLevelById(playerProfile.level).XPforNextLevel.ToString();
-        SavePlayerProfile();
     }
 
-    private void SavePlayerProfile()
+    public void SavePlayerProfile()
     {
         ES2.Save(playerProfile, "PlayerProfile");
     }

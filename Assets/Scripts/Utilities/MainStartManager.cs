@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using HarvestValley.Managers;
+using HarvestValley.Ui;
 
 public class MainStartManager : MonoBehaviour
 {
@@ -25,5 +26,26 @@ public class MainStartManager : MonoBehaviour
             PlayerPrefs.SetInt("gameStatus", 0);
             SceneManager.LoadScene("Start");
         }
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveAllGame();
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+            SaveAllGame();
+    }
+
+    private void SaveAllGame()
+    {
+        PlayerProfileManager.Instance.SavePlayerProfile();
+        UiInventoryMenu.Instance.SavePlayerInventory();
+        GrassLandManager.Instance.SaveGrass();
+        FieldManager.Instance.SaveFields();
+        BuildingManager.Instance.SaveBuildings();
+        LivestockManager.Instance.SaveLivestock();
     }
 }

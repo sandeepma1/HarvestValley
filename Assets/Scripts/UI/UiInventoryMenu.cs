@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using HarvestValley.IO;
-using System;
 
 namespace HarvestValley.Ui
 {
@@ -51,7 +48,6 @@ namespace HarvestValley.Ui
                     InventoryListItems[i].itemCountText.text = InventoryListItems[i].item.itemCount.ToString();
                 }
             }
-            SavePlayerInventory();
         }
 
         public void UpdateItems(int itemId, int itemValue)
@@ -105,7 +101,7 @@ namespace HarvestValley.Ui
             return 0;
         }
 
-        private void SavePlayerInventory()
+        public void SavePlayerInventory()
         {
             List<InventoryItems> playerInventory = new List<InventoryItems>();
             for (int i = 0; i < InventoryListItems.Count; i++)

@@ -2,6 +2,7 @@
 using UnityEngine;
 using HarvestValley.Ui;
 using System;
+using System.Collections;
 
 namespace HarvestValley.Managers
 {
@@ -17,17 +18,23 @@ namespace HarvestValley.Managers
         public List<Grass> grass = new List<Grass>();
         public int selectedItemIdInMenu;
 
-        public InventoryItems[] grassItemDatabase;
+        private Dictionary<int, int> grassItemDatabase;
 
         private void Start()
         {
             grass = ES2.LoadList<Grass>("AllGrass");
             grassGO = new ClickableGrass[grass.Count];
-
             for (int i = 0; i < grass.Count; i++)
             {
                 InitGrassPatches(grass[i]);
             }
+            StartCoroutine("WaitForEndOfFrame");
+        }
+
+        public IEnumerator WaitForEndOfFrame()
+        {
+            yield return new WaitForEndOfFrame();
+            GetAllGrassItemIds();
         }
 
         private void InitGrassPatches(Grass grass)
@@ -36,20 +43,37 @@ namespace HarvestValley.Managers
             grassGO[grass.grassId].grass = grass;
             grassGO[grass.grassId].transform.localPosition = grass.position;
             grassGO[grass.grassId].gameObject.name = "Grass" + grass.grassId;
-            grassGO[grass.grassId].OnClickOpenMenu += ClickableGrasssClickedEventHandler;
+            grassGO[grass.grassId].OpenUiGrassMenu += OpenUiGrassMenuEventHandler;
             grassGO[grass.grassId].ClickableGrassAddedItem += ClickableGrassAddedItemEventHandler;
         }
 
-        //Todo: Need to implement grass's all items and counts
-        private void ClickableGrassAddedItemEventHandler(int itemId)
+        private void GetAllGrassItemIds()
         {
-            for (int i = 0; i < grassItemDatabase.Length; i++)
+            int[] grassItemIds = UiGrassListMenu.Instance.GetAllGrassItemIds();
+            grassItemDatabase = new Dictionary<int, int>();// new InventoryItems[grassItemIds.Length];          
+            for (int i = 0; i < grassItemIds.Length; i++)
             {
-
+                grassItemDatabase.Add(grassItemIds[i], 0);
+            }
+            if (grass.Count == 0)
+            {
+                Start();
+            }
+            for (int i = 0; i < grass.Count; i++)
+            {
+                if (grassItemDatabase.ContainsKey(grass[i].itemId))
+                {
+                    grassItemDatabase[grass[i].itemId]++;
+                }
             }
         }
 
-        private void ClickableGrasssClickedEventHandler()
+        private void ClickableGrassAddedItemEventHandler(int itemId)
+        {
+            grassItemDatabase[itemId]++;
+        }
+
+        private void OpenUiGrassMenuEventHandler()
         {
             MenuManager.Instance.DisplayMenu(MenuNames.GrassListMenu, MenuOpeningType.CloseAll);
         }
@@ -85,7 +109,6 @@ namespace HarvestValley.Managers
             selectedItemIdInMenu = -1;
             isinPlantingMode = false;
             UiGrassListMenu.Instance.StopPlantingMode();
-            ChangedSometingSaveGrass();
             InputController.Instance.EnableDragSwipe();
         }
 
@@ -93,19 +116,7 @@ namespace HarvestValley.Managers
 
         public int GetGrassCountBuyId(int itemId)
         {
-            if (grassGO == null)
-            {
-                Start();
-            }
-            int counter = 0;
-            for (int i = 0; i < grassGO.Length; i++)
-            {
-                if (grassGO[i].grass.itemId == itemId)
-                {
-                    counter++;
-                }
-            }
-            return counter;
+            return grassItemDatabase[itemId];
         }
 
         public void RemoveGrass(int itemId) // will remove grass by one
@@ -114,19 +125,14 @@ namespace HarvestValley.Managers
             {
                 if (grassGO[i].grass.itemId == itemId)
                 {
-                    grassGO[i].RemovedGrass(); // Todo: dont sequentially remove grass, it should be removed where livestock is standing
-                    ChangedSometingSaveGrass();
+                    grassItemDatabase[itemId]--;
+                    grassGO[i].RemovedGrass(); // Todo: dont sequentially remove grass, it should be removed where livestock is standing                    
                     return;
                 }
             }
         }
 
-        public void ChangedSometingSaveGrass()
-        {
-            SaveGrass();
-        }
-
-        private void SaveGrass()
+        public void SaveGrass()
         {
             for (int i = 0; i < grass.Count; i++)
             {

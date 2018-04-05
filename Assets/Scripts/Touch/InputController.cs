@@ -19,7 +19,7 @@ public class InputController : Singleton<InputController>
     private int numberOfScreens = 5;
 
     [Range(0.001f, 0.05f), SerializeField]
-    private float dragSpeed = 0.01f;
+    private float dragSpeed = 0.015f;
 
     //To avoid minor drags and check click
     [Range(1f, 10f), SerializeField]

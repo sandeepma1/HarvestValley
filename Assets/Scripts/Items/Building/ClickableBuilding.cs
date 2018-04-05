@@ -138,7 +138,6 @@ public class ClickableBuilding : ClickableBase
 
     private void ChangedInBuilding()
     {
-        BuildingManager.Instance.SaveBuildings();
         UiBuildingMenu.Instance.UpdateUiBuildingQueue();
     }
 }

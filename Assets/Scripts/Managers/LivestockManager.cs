@@ -9,22 +9,10 @@ public class LivestockManager : Singleton<LivestockManager>
     private ClickableLivestock clickableLivestockPrefab;
 
     private ClickableLivestock[] livestockGO;
+
     private void Start()
     {
         Init();
-    }
-
-    private void OnApplicationQuit()
-    {
-        SomethingChangedSaveLivestock();
-    }
-
-    private void OnApplicationPause(bool pause)
-    {
-        if (pause)
-        {
-            SomethingChangedSaveLivestock();
-        }
     }
 
     private void Init()
@@ -38,12 +26,7 @@ public class LivestockManager : Singleton<LivestockManager>
         }
     }
 
-    public void SomethingChangedSaveLivestock()
-    {
-        SaveLivestock();
-    }
-
-    private void SaveLivestock()
+    public void SaveLivestock()
     {
         List<LivestockClass> livestock = new List<LivestockClass>();
         for (int i = 0; i < livestockGO.Length; i++)

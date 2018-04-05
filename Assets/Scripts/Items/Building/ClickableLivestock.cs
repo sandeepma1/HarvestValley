@@ -19,19 +19,24 @@ public class ClickableLivestock : MouseUpBase
 
     private void Start()
     {
+        tempDateTime = DateTime.Parse(livestock.dateTime);
         itemCanProduce = ItemDatabase.GetItemById(livestock.canProduceItemId);
         grassIdToEat = itemCanProduce.needID[0];
         grassAmountToEat = itemCanProduce.needAmount[0];
         timePerBiteInSeconds = itemCanProduce.timeRequiredInSeconds;
+        StartCoroutine("WaitForEndOfFrame");
+    }
+
+    public IEnumerator WaitForEndOfFrame()
+    {
+        yield return new WaitForEndOfFrame();
         isThisAtStart = true;
         for (int i = 0; i < GrassLandManager.Instance.GetGrassCountBuyId(grassIdToEat); i++) // Todo: Maintain counter in GrassLandManager
         {
-
             CheckForRegularUpdates();
         }
         isThisAtStart = false;
-        tempDateTime = DateTime.Parse(livestock.dateTime);
-        tempDateTime.AddSeconds(timePerBiteInSeconds);
+
         InvokeRepeating("CheckForRegularUpdates", 0, 0.5f);
     }
 
@@ -49,14 +54,12 @@ public class ClickableLivestock : MouseUpBase
 
         if (tempDateTime <= DateTime.Now)
         {
-            print("tick");
-
             GrassLandManager.Instance.RemoveGrass(grassIdToEat);
             livestock.biteCount++;
 
             if (isThisAtStart)
             {
-                tempDateTime.AddSeconds(timePerBiteInSeconds);
+                tempDateTime = tempDateTime.AddSeconds(timePerBiteInSeconds);
             }
             else
             {
@@ -67,12 +70,9 @@ public class ClickableLivestock : MouseUpBase
             {
                 livestock.hatched++;
                 livestock.biteCount = 0;
-                print("egglayed");
             }
-
         }
     }
-
 
     public override void OnMouseTouchUp()
     {

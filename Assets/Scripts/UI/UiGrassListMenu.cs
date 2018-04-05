@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using HarvestValley.IO;
 using System;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace HarvestValley.Ui
 {
@@ -22,7 +23,7 @@ namespace HarvestValley.Ui
         [SerializeField]
         private Button closeButton;
 
-        private List<UiClickableItems> menuItems = new List<UiClickableItems>();
+        private List<UiClickableItems> menuItems;
 
         protected override void Start()
         {
@@ -34,6 +35,7 @@ namespace HarvestValley.Ui
 
         private void CreateGrassItems()
         {
+            menuItems = new List<UiClickableItems>();
             for (int i = 0; i < ItemDatabase.GetItemslength(); i++)
             {
                 Item item = ItemDatabase.GetItemById(i);
@@ -50,6 +52,16 @@ namespace HarvestValley.Ui
                     menuItems.Add(menuItem);
                 }
             }
+        }
+
+        public int[] GetAllGrassItemIds()
+        {
+            int[] grassItemIds = new int[menuItems.Count];
+            for (int i = 0; i < menuItems.Count; i++)
+            {
+                grassItemIds[i] = menuItems[i].itemID;
+            }
+            return grassItemIds;
         }
 
         public override void AddUnlockedItemsToList()  // call on level change & game start only
