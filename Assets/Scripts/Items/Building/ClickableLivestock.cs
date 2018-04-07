@@ -13,6 +13,13 @@ public class ClickableLivestock : MouseUpBase
     private int moveMaxX;
     [SerializeField]
     private int moveMaxY;
+    [SerializeField]
+    private float maxMoveAmount = 2;
+    [SerializeField]
+    private float minReactionTime = 0.5f;
+    [SerializeField]
+    private float maxReactionTime = 2;
+
     //temp variables to get faster from livestock above declared
     private int grassIdToEat = -1;
     private int grassAmountToEat = -1;
@@ -20,10 +27,15 @@ public class ClickableLivestock : MouseUpBase
     private int timePerBiteInSeconds;
     private bool isThisAtStart;
     private DateTime tempDateTime;
-    private int randDir = 1;
-    private float moveSpeed = 2f;
+    private int randomDirection;
     private SpriteRenderer livestockSprite;
-    private Vector2 iniPosition;
+    private SourceInfo sourceInfo;
+
+    //Images of every direction
+    private Sprite livestockLeft;
+    private Sprite livestockRight;
+    private Sprite livestockUp;
+    private Sprite livestockDown;
 
     private void Start()
     {
@@ -33,7 +45,7 @@ public class ClickableLivestock : MouseUpBase
         grassIdToEat = itemCanProduce.needID[0];
         grassAmountToEat = itemCanProduce.needAmount[0];
         timePerBiteInSeconds = itemCanProduce.timeRequiredInSeconds;
-        StartCoroutine("WaitForEndOfFrame");
+        StartCoroutine("WaitEndOfFrame");
     }
 
     private void LateUpdate()
@@ -41,50 +53,116 @@ public class ClickableLivestock : MouseUpBase
         livestockSprite.sortingOrder = (int)(transform.localPosition.y * -10) + 11;
     }
 
-    public IEnumerator WaitForEndOfFrame()
+    private IEnumerator WaitEndOfFrame()
     {
         yield return new WaitForEndOfFrame();
+        SlowStart();
+    }
+
+    private void SlowStart()
+    {
         isThisAtStart = true;
         for (int i = 0; i < GrassLandManager.Instance.GetGrassCountBuyId(grassIdToEat); i++) // Todo: Maintain counter in GrassLandManager
         {
             CheckForRegularUpdates();
         }
         isThisAtStart = false;
+
+        sourceInfo = SourceDatabase.GetSourceInfoById(livestock.sourceId);
+        GetAllImages();
+        SetCircleColliderSize();
         SetSpwanPosition();
-        InvokeRepeating("CheckForRegularUpdates", 0, 0.5f);
         StartCoroutine("StartWandering");
+        InvokeRepeating("CheckForRegularUpdates", 0, 0.5f);
+    }
+
+    private void SetCircleColliderSize()
+    {
+        CircleCollider2D circleCollider2D = GetComponent<CircleCollider2D>();
+        switch (sourceInfo.sourceID)
+        {
+            case 3: //chicken
+                circleCollider2D.radius = 0.5f;
+                break;
+            case 5: // cow
+                circleCollider2D.radius = 1f;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void GetAllImages()
+    {
+        livestockLeft = AtlasBank.Instance.GetSprite(sourceInfo.slug + "_left", AtlasType.Livestock);
+        livestockRight = AtlasBank.Instance.GetSprite(sourceInfo.slug + "_right", AtlasType.Livestock);
+        livestockUp = AtlasBank.Instance.GetSprite(sourceInfo.slug + "_up", AtlasType.Livestock);
+        livestockDown = AtlasBank.Instance.GetSprite(sourceInfo.slug + "_down", AtlasType.Livestock);
+        livestockSprite.sprite = livestockDown;
     }
 
     private void SetSpwanPosition()
     {
-        iniPosition = new Vector2(3, 2);
+        transform.localPosition = new Vector2(5, -7);
     }
+
     private IEnumerator StartWandering()
     {
-        // transform.localPosition = GetNextMove();
-        transform.DOLocalMove(GetNextMove(), 1.5f);
-        yield return new WaitForSeconds(3);
-        StartCoroutine("WaitForEndOfFrame");
+        float reactionTime = UnityEngine.Random.Range(minReactionTime, maxReactionTime);
+        transform.DOLocalMove(GetNextMove(), 0.45f).SetEase(Ease.Linear);
+        yield return new WaitForSeconds(reactionTime);
+        StartCoroutine("StartWandering");
     }
 
     private Vector2 GetNextMove()
     {
-        float randomRange = 1.5f;
-        float x = UnityEngine.Random.Range(iniPosition.x - randomRange, iniPosition.x + randomRange);
-        float y = UnityEngine.Random.Range(iniPosition.y - randomRange, iniPosition.y + randomRange);
-        if (x < 1 || y < 1)
+        Vector2 targetPos = Vector2.one;
+        float randomDirectionX = transform.localPosition.x;
+        float randomDirectionY = transform.localPosition.y;
+
+        randomDirection = UnityEngine.Random.Range(0, 2);
+
+        if (randomDirection == 0)
         {
-            iniPosition = Vector2.one;
-            return iniPosition;
+            randomDirectionX = UnityEngine.Random.Range(randomDirectionX + maxMoveAmount, randomDirectionX - maxMoveAmount);
+            if (randomDirectionX < 1)
+            {
+                randomDirectionX = 2;
+            }
+            else if (randomDirectionX > moveMaxX - 1) // for safer distance
+            {
+                randomDirectionX = moveMaxX - 2;
+            }
+            livestockSprite.sprite = randomDirectionX > transform.localPosition.x ? livestockRight : livestockLeft;
+        }
+        else
+        {
+            randomDirectionY = UnityEngine.Random.Range(randomDirectionY + maxMoveAmount, randomDirectionY - maxMoveAmount);
+            if (randomDirectionY >= 0)
+            {
+                randomDirectionY = -2;
+            }
+            else if (randomDirectionY < moveMaxY + 1) // for safer distance
+            {
+                randomDirectionY = moveMaxY + 2;
+            }
+            livestockSprite.sprite = randomDirectionY > transform.localPosition.y ? livestockUp : livestockDown;
         }
 
-        if (x > moveMaxX || y > moveMaxY)
-        {
-            iniPosition = new Vector2(iniPosition.x - 1, iniPosition.y - 1);
-            return iniPosition;
-        }
-        iniPosition = new Vector2(x, -y);
-        return iniPosition;
+        //if (randomDirectionX <= 0 || randomDirectionY >= 0)
+        //{
+        //    targetPos = new Vector3(2, -2);
+        //    return targetPos;
+        //}
+
+        //if (randomDirectionX > moveMaxX || randomDirectionY < moveMaxY)
+        //{
+        //    targetPos = new Vector3(moveMaxX - 2, moveMaxY + 2);
+        //    return targetPos;
+        //}
+
+        targetPos = new Vector3(randomDirectionX, randomDirectionY);
+        return targetPos;
     }
 
     private void CheckForRegularUpdates()

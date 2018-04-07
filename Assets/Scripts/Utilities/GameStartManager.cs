@@ -124,7 +124,8 @@ public class GameStartManager : MonoBehaviour
     private void CreateNewLivestock()
     {
         List<LivestockClass> livestock = new List<LivestockClass>();
-        livestock.Add(new LivestockClass(0, 4, 0, 0, 20, LivestockType.Chicken, DateTime.Now.ToString()));
+        livestock.Add(new LivestockClass(3, 4, 0, 0, 3, DateTime.Now.ToString()));
+        livestock.Add(new LivestockClass(5, 6, 0, 0, 5, DateTime.Now.ToString()));
         ES2.Save(livestock, "AllLivestock");
     }
 

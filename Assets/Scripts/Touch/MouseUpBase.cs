@@ -29,6 +29,11 @@ public class MouseUpBase : MonoBehaviour
         }
     }
 
+    public virtual void OnMouseTouchUp()
+    {
+
+    }
+
     private void OnMouseEnter()
     {
         var touch = InputHelper.GetTouches();
@@ -60,8 +65,4 @@ public class MouseUpBase : MonoBehaviour
 
     }
 
-    public virtual void OnMouseTouchUp()
-    {
-
-    }
 }

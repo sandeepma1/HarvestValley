@@ -116,7 +116,17 @@ namespace HarvestValley.Managers
 
         public int GetGrassCountBuyId(int itemId)
         {
-            return grassItemDatabase[itemId];
+            if (grassItemDatabase == null)
+            {
+                return 0;
+            }
+
+            if (grassItemDatabase.ContainsKey(itemId))
+            {
+                return grassItemDatabase[itemId];
+            }
+
+            return 0;
         }
 
         public void RemoveGrass(int itemId) // will remove grass by one

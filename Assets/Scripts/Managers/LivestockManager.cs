@@ -41,26 +41,24 @@ public class LivestockManager : Singleton<LivestockManager>
 [System.Serializable]
 public class LivestockClass  // iLIST
 {
-    public int livestockId;
+    public int sourceId;
     public int canProduceItemId;
     public int biteCount;
     public int hatched;
     public int maxHatchCount;
-    public LivestockType livestockType;
     public string dateTime;
 
     public LivestockClass()
     {
     }
 
-    public LivestockClass(int l_livestockId, int l_canProduceItemId, int l_biteCount, int l_hatched, int l_maxHatchCount, LivestockType l_livestockTyped, string l_dateTime)
+    public LivestockClass(int l_sourceId, int l_canProduceItemId, int l_biteCount, int l_hatched, int l_maxHatchCount, string l_dateTime)
     {
-        livestockId = l_livestockId;
+        sourceId = l_sourceId;
         canProduceItemId = l_canProduceItemId;
         biteCount = l_biteCount;
         hatched = l_hatched;
         maxHatchCount = l_maxHatchCount;
-        livestockType = l_livestockTyped;
         dateTime = l_dateTime;
     }
 }

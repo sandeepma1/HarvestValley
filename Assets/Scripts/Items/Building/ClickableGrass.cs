@@ -41,8 +41,8 @@ public class ClickableGrass : ClickableBase
             else
             {
                 string grassName = ItemDatabase.GetItemNameById(itemId) + "" + i;
-                childrenTransform[i].localPosition = UnityEngine.Random.insideUnitCircle / 3;
-                childrenSpriteRenderer[i].sortingOrder = (int)(transform.localPosition.y * -10);
+                childrenTransform[i].localPosition = UnityEngine.Random.insideUnitCircle / 2.5f;
+                childrenSpriteRenderer[i].sortingOrder = ((int)(childrenTransform[i].localPosition.y * -10)) + (int)transform.localPosition.y * -10;
                 childrenSpriteRenderer[i].sprite = AtlasBank.Instance.GetSprite(grassName, AtlasType.Livestock);
             }
         }
