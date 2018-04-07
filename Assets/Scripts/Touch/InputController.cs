@@ -47,7 +47,7 @@ public class InputController : Singleton<InputController>
     private Vector3 tempCameraPosition;
 
     private Transform mainCameraTransform;
-    private Camera mainCamera;
+    public Camera mainCamera;
     private Canvas[] canvas;
     Hashtable ease = new Hashtable();
 

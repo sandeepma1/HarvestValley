@@ -8,7 +8,7 @@ public class DraggableBase : MonoBehaviour
 
     private void Start()
     {
-        mainCamera = Camera.main;
+        mainCamera = InputController.Instance.mainCamera;
     }
 
     private void OnMouseDown()
