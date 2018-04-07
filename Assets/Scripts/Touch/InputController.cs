@@ -14,7 +14,6 @@ public class InputController : Singleton<InputController>
 
     [SerializeField]
     private int gapBetweenScreens = 16;
-
     [SerializeField]
     private int numberOfScreens = 5;
 
@@ -49,10 +48,12 @@ public class InputController : Singleton<InputController>
 
     private Transform mainCameraTransform;
     private Camera mainCamera;
+    private Canvas[] canvas;
     Hashtable ease = new Hashtable();
 
     private void Start()
     {
+        AssignCameraToAllCanvas();
         CreateCameraPositions();
         SwipeManager swipeManager = GetComponent<SwipeManager>();
         swipeManager.onSwipeEvent += SwipeEventHandler;
@@ -63,6 +64,16 @@ public class InputController : Singleton<InputController>
     private void Update()
     {
         DragCamera();
+    }
+
+    private void AssignCameraToAllCanvas()
+    {
+        mainCamera = Camera.main;
+        canvas = FindObjectsOfType<Canvas>();
+        for (int i = 0; i < canvas.Length; i++)
+        {
+            canvas[i].worldCamera = mainCamera;
+        }
     }
 
     public void EnableDragSwipe()
@@ -81,11 +92,11 @@ public class InputController : Singleton<InputController>
         {
             Debug.LogError("@@-NO camera in scene or MainCamera tag not assigned");
         }
-        mainCameraTransform = Camera.main.transform;
-        mainCamera = Camera.main;
 
+        mainCameraTransform = mainCamera.transform;
         mainCameraTransform.position = new Vector3(0, 0, mainCameraTransform.position.z);
         cameraPositions = new float[numberOfScreens];
+
         for (int i = 0; i < numberOfScreens; i++)
         {
             cameraPositions[i] = gapBetweenScreens * i;
@@ -143,7 +154,7 @@ public class InputController : Singleton<InputController>
                     }
                 }
             }
-
+            UiDebugTextHandler.DebugText(t.phase.ToString());
             if (t.phase == TouchPhase.Ended)
             {
                 if (!isTouchingUI)

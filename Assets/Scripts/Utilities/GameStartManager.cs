@@ -148,5 +148,4 @@ public class GameStartManager : MonoBehaviour
     }
 
     #endregion
-
 }

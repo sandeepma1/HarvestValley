@@ -6,19 +6,6 @@ using HarvestValley.Ui;
 
 public class MainStartManager : MonoBehaviour
 {
-    private Canvas[] canvas;
-    private Camera mainCamera;
-
-    private void Start()
-    {
-        mainCamera = Camera.main;
-        canvas = FindObjectsOfType<Canvas>();
-        for (int i = 0; i < canvas.Length; i++)
-        {
-            canvas[i].worldCamera = mainCamera;
-        }
-    }
-
     private void LateUpdate()
     {
         if (Input.GetMouseButtonDown(2) || Input.GetKeyUp(KeyCode.R))

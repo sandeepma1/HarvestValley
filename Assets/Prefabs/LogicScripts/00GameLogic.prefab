@@ -37,7 +37,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4853374488713074}
-  - component: {fileID: 114377816364355028}
   - component: {fileID: 114063862326420810}
   - component: {fileID: 114072758492999254}
   - component: {fileID: 114187831897214272}
@@ -111,20 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e13a9337b38073459e7588198c38f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114377816364355028
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811772467946392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3b0fe2685fff2a49881ca1994349f78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  x: 6
-  y: 4
-  gap: 2
 --- !u!114 &114399196169527098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,7 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faac9e7452a738e478218e9a4f38d1d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sources: []
 --- !u!114 &114546689231345156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,7 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed1382df94c2ae488bc22c00dc09a1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameLevels: []
 --- !u!114 &114756185081136598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,7 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61b069bc2c94494991ac74c4f163c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
 --- !u!114 &114795710951991630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,7 +158,7 @@ MonoBehaviour:
   enableDrag: 1
   gapBetweenScreens: 16
   numberOfScreens: 5
-  dragSpeed: 0.03
+  dragSpeed: 0.015
   minDragLength: 3
   snapEase: 6
   easeDuration: 0.35
