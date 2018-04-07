@@ -61,7 +61,7 @@ public class InputController : Singleton<InputController>
         ease.Add("ease", LeanTweenType.easeOutSine);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         DragCamera();
     }
@@ -154,7 +154,7 @@ public class InputController : Singleton<InputController>
                     }
                 }
             }
-            UiDebugTextHandler.DebugText(t.phase.ToString());
+
             if (t.phase == TouchPhase.Ended)
             {
                 if (!isTouchingUI)
