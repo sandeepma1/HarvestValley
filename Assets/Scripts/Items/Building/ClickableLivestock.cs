@@ -129,9 +129,9 @@ public class ClickableLivestock : MouseUpBase
             {
                 randomDirectionX = 2;
             }
-            else if (randomDirectionX > moveMaxX - 1) // for safer distance
+            else if (randomDirectionX > moveMaxX - 2) // for safer distance
             {
-                randomDirectionX = moveMaxX - 2;
+                randomDirectionX = moveMaxX - 3;
             }
             livestockSprite.sprite = randomDirectionX > transform.localPosition.x ? livestockRight : livestockLeft;
         }
@@ -142,9 +142,9 @@ public class ClickableLivestock : MouseUpBase
             {
                 randomDirectionY = -2;
             }
-            else if (randomDirectionY < moveMaxY + 1) // for safer distance
+            else if (randomDirectionY < moveMaxY + 2) // for safer distance
             {
-                randomDirectionY = moveMaxY + 2;
+                randomDirectionY = moveMaxY + 3;
             }
             livestockSprite.sprite = randomDirectionY > transform.localPosition.y ? livestockUp : livestockDown;
         }

@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 665f9ea1e6e9c314e8273e7bbcb35d42
-timeCreated: 1522943256
+guid: 5f272f77fac7d0047ab2f4db253d8850
+timeCreated: 1523107125
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: basicgrass_0
-    21300002: basicgrass_1
-    21300004: basicgrass_2
+    21300000: thickgrass_0
+    21300002: thickgrass_1
+    21300004: thickgrass_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -93,7 +93,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: basicgrass_0
+      name: thickgrass_0
       rect:
         serializedVersion: 2
         x: 0
@@ -101,13 +101,13 @@ TextureImporter:
         width: 100
         height: 100
       alignment: 9
-      pivot: {x: 0.5017636, y: 0.09259261}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: basicgrass_1
+      name: thickgrass_1
       rect:
         serializedVersion: 2
         x: 100
@@ -115,13 +115,13 @@ TextureImporter:
         width: 100
         height: 100
       alignment: 9
-      pivot: {x: 0.49118164, y: 0.106701955}
+      pivot: {x: 0.49118164, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: basicgrass_2
+      name: thickgrass_2
       rect:
         serializedVersion: 2
         x: 200
@@ -129,7 +129,7 @@ TextureImporter:
         width: 100
         height: 100
       alignment: 9
-      pivot: {x: 0.5035272, y: 0.13668431}
+      pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

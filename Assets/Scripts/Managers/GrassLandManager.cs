@@ -26,7 +26,7 @@ namespace HarvestValley.Managers
             grassGO = new ClickableGrass[grass.Count];
             for (int i = 0; i < grass.Count; i++)
             {
-                InitGrassPatches(grass[i]);
+                grassGO[i] = InitGrassPatches(grass[i]);
             }
             StartCoroutine("WaitForEndOfFrame");
         }
@@ -37,14 +37,14 @@ namespace HarvestValley.Managers
             GetAllGrassItemIds();
         }
 
-        private void InitGrassPatches(Grass grass)
+        private ClickableGrass InitGrassPatches(Grass grass)
         {
-            grassGO[grass.grassId] = Instantiate(clickableGrassPrefab, transform);
-            grassGO[grass.grassId].grass = grass;
-            grassGO[grass.grassId].transform.localPosition = grass.position;
-            grassGO[grass.grassId].gameObject.name = "Grass" + grass.grassId;
-            grassGO[grass.grassId].OpenUiGrassMenu += OpenUiGrassMenuEventHandler;
-            grassGO[grass.grassId].ClickableGrassAddedItem += ClickableGrassAddedItemEventHandler;
+            ClickableGrass clickableGrass = Instantiate(clickableGrassPrefab, transform);
+            clickableGrass.grass = grass;
+            clickableGrass.transform.localPosition = grass.position;
+            clickableGrass.OpenUiGrassMenu += OpenUiGrassMenuEventHandler;
+            clickableGrass.ClickableGrassAddedItem += ClickableGrassAddedItemEventHandler;
+            return clickableGrass;
         }
 
         private void GetAllGrassItemIds()
@@ -76,19 +76,6 @@ namespace HarvestValley.Managers
         private void OpenUiGrassMenuEventHandler()
         {
             MenuManager.Instance.DisplayMenu(MenuNames.GrassListMenu, MenuOpeningType.CloseAll);
-        }
-
-        public bool IsGrassAvailable(int itemId)
-        {
-            for (int i = 0; i < grassGO.Length; i++)
-            {
-                if (grassGO[i].grass.itemId == itemId) // Check for grass as livestock needs it
-                {
-                    grassGO[i].RemovedGrass();
-                    return true;
-                }
-            }
-            return false;
         }
 
         #region Planting Mode 
@@ -131,6 +118,26 @@ namespace HarvestValley.Managers
 
         public void RemoveGrass(int itemId) // will remove grass by one
         {
+            //int tempId = grassGO.RandomItem().grass.itemId;
+            //print(tempId);
+            //if (tempId == -1)
+            //{
+            //    //RemoveGrass(itemId);
+            //}
+
+            //if (grassGO[tempId].grass.itemId == itemId)
+            //{
+            //    print("got it removed");
+            //    grassItemDatabase[itemId]--;
+            //    grassGO[tempId].RemovedGrass();
+            //    return;
+            //}
+            //else
+            //{
+            //    print("going again");
+            //    RemoveGrass(itemId);
+            //}
+
             for (int i = 0; i < grassGO.Length; i++)
             {
                 if (grassGO[i].grass.itemId == itemId)
@@ -140,6 +147,11 @@ namespace HarvestValley.Managers
                     return;
                 }
             }
+        }
+
+        private void RemoveGrassRandomly()
+        {
+
         }
 
         public void SaveGrass()
@@ -153,10 +165,18 @@ namespace HarvestValley.Managers
     }
 }
 
+public static class ArrayExtensions
+{
+    // This is an extension method. RandomItem() will now exist on all arrays.
+    public static T RandomItem<T>(this T[] array)
+    {
+        return array[UnityEngine.Random.Range(0, array.Length)];
+    }
+}
+
 [System.Serializable]
 public class Grass  // iLIST
 {
-    public int grassId;
     public int itemId;
     public Vector2 position;
 
@@ -164,10 +184,9 @@ public class Grass  // iLIST
     {
     }
 
-    public Grass(int g_id, int g_itemId, Vector2 pos)
+    public Grass(int g_itemId, Vector2 pos)
     {
         itemId = g_itemId;
-        grassId = g_id;
         position = pos;
     }
 }

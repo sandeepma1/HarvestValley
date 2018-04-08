@@ -44,7 +44,7 @@ namespace HarvestValley.Ui
                     UiClickableItems menuItem = Instantiate(scrollListItemPrefab, scrollListParent);
                     menuItem.name = "UIItemListClick" + i;
                     menuItem.itemID = item.itemID;
-                    menuItem.itemImage.sprite = AtlasBank.Instance.GetSprite(item.slug, AtlasType.Livestock);
+                    menuItem.itemImage.sprite = AtlasBank.Instance.GetSprite("ui" + item.slug, AtlasType.Livestock);
                     menuItem.itemName = item.name;
                     menuItem.itemCost = item.coinCost;
                     menuItem.isItemUnlocked = false;

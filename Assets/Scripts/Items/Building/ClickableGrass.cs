@@ -14,8 +14,6 @@ public class ClickableGrass : ClickableBase
 
     private void Start()
     {
-        // childrenTransform = GetComponentsInChildren<Transform>(); Fucking Unity takes parent if this is called, bunch of fools.
-
         childrenTransform = new Transform[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -40,7 +38,7 @@ public class ClickableGrass : ClickableBase
             }
             else
             {
-                string grassName = ItemDatabase.GetItemNameById(itemId) + "" + i;
+                string grassName = ItemDatabase.GetItemNameById(itemId) + "_" + i;
                 childrenTransform[i].localPosition = UnityEngine.Random.insideUnitCircle / 2.5f;
                 childrenSpriteRenderer[i].sortingOrder = ((int)(childrenTransform[i].localPosition.y * -10)) + (int)transform.localPosition.y * -10;
                 childrenSpriteRenderer[i].sprite = AtlasBank.Instance.GetSprite(grassName, AtlasType.Livestock);
@@ -62,6 +60,7 @@ public class ClickableGrass : ClickableBase
     {
         if (transform == null)  //TODO: what is this remove it
         {
+            print("ClickableGrass still not instanciated");
             Start();
         }
         SetChildGrassLeavesSprite(-1);
