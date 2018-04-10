@@ -13,6 +13,7 @@ public class Grid : MonoBehaviour
 
     float nodeDiameter;
     int gridSizeX, gridSizeY;
+    public Vector3 worldBottomLeft;
 
     void Start()
     {
@@ -33,8 +34,7 @@ public class Grid : MonoBehaviour
     void CreateGrid()
     {
         grid = new Node[gridSizeX, gridSizeY];
-        Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.up * gridWorldSize.y / 2;
-        print(worldBottomLeft);
+        worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.up * gridWorldSize.y / 2;
         for (int x = 0; x < gridSizeX; x++)
         {
             for (int y = 0; y < gridSizeY; y++)

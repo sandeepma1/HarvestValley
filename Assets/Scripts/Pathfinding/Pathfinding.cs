@@ -59,7 +59,7 @@ public class Pathfinding : MonoBehaviour
                         openSet.Add(neighbour);
                     else
                     {
-                        //openSet.UpdateItem(neighbour);
+                        openSet.UpdateItem(neighbour);
                     }
                 }
             }
@@ -78,10 +78,9 @@ public class Pathfinding : MonoBehaviour
             currentNode = currentNode.parent;
         }
         path.Reverse();
-        foreach (var item in path)
+        for (int i = 0; i < path.Count; i++)
         {
-            Debug.Log(item.gridX + " " + item.gridY);
-            seeker.transform.localPosition = new Vector3(item.gridX, item.gridY);
+            seeker.transform.localPosition = new Vector3(grid.worldBottomLeft.x + path[i].gridX, grid.worldBottomLeft.y + path[i].gridY);
         }
         grid.path = path;
 

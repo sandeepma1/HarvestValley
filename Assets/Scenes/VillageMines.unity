@@ -261,7 +261,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 791840026}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 4, z: 0}
+  m_LocalPosition: {x: 3.5, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1117537717}
@@ -276,6 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1117537717}
   - component: {fileID: 1117537716}
+  - component: {fileID: 1117537718}
   m_Layer: 0
   m_Name: Pathfinding
   m_TagString: Untagged
@@ -294,9 +295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0502f41f221bb0e48a958e59abe5ad2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seeker: {fileID: 2092180988}
+  seeker: {fileID: 1181749203}
   target: {fileID: 791840028}
-  grid: {fileID: 2123108374}
 --- !u!4 &1117537717
 Transform:
   m_ObjectHideFlags: 0
@@ -304,13 +304,60 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1117537715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1181749203}
+  - {fileID: 791840028}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1117537718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117537715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2960c1cc3abd640abf15525aa5fb8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyDisplayPathGizmos: 0
+  unwalkableMask:
+    serializedVersion: 2
+    m_Bits: 0
+  gridWorldSize: {x: 10, y: 15}
+  nodeRadius: 0.5
+  worldBottomLeft: {x: 0, y: 0, z: 0}
+--- !u!1 &1181749202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1181749203}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1181749203
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1181749202}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2092180988}
-  - {fileID: 791840028}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 1117537717}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2092180986
 GameObject:
@@ -322,7 +369,7 @@ GameObject:
   - component: {fileID: 2092180988}
   - component: {fileID: 2092180987}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -379,55 +426,9 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2092180986}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.036, y: 0.371, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1117537717}
+  m_Father: {fileID: 1181749203}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2123108373
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2123108375}
-  - component: {fileID: 2123108374}
-  m_Layer: 0
-  m_Name: Grid
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2123108374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2123108373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f2960c1cc3abd640abf15525aa5fb8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onlyDisplayPathGizmos: 0
-  unwalkableMask:
-    serializedVersion: 2
-    m_Bits: 0
-  gridWorldSize: {x: 10, y: 15}
-  nodeRadius: 0.5
---- !u!4 &2123108375
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2123108373}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

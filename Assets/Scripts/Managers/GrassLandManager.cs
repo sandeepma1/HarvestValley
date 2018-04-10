@@ -14,7 +14,7 @@ namespace HarvestValley.Managers
         private int x = 12, y = 12;
         public bool isinPlantingMode = false;
 
-        private ClickableGrass[] grassGO;
+        private ClickableGrass[,] grassGO;
         public List<Grass> grass = new List<Grass>();
         public int selectedItemIdInMenu;
 
@@ -23,10 +23,19 @@ namespace HarvestValley.Managers
         private void Start()
         {
             grass = ES2.LoadList<Grass>("AllGrass");
-            grassGO = new ClickableGrass[grass.Count];
-            for (int i = 0; i < grass.Count; i++)
+            Vector2 grassLandDimension = grass[grass.Count - 1].position;
+            int xBound = (int)grassLandDimension.x + 1;
+            int yBound = (int)-grassLandDimension.y + 1;
+            grassGO = new ClickableGrass[xBound, xBound]; // the - thing is due to the level goes down by Y
+
+            int counter = 0;
+            for (int i = 0; i < xBound; i++)
             {
-                grassGO[i] = InitGrassPatches(grass[i]);
+                for (int j = 0; j < yBound; j++)
+                {
+                    grassGO[i, j] = InitGrassPatches(grass[counter]);
+                    counter++;
+                }
             }
             StartCoroutine("WaitForEndOfFrame");
         }
@@ -116,35 +125,58 @@ namespace HarvestValley.Managers
             return 0;
         }
 
+
+        //DO NOT DELETE
+        //Good to find the nearest grass and remove it
+        public Vector2 GetNearestGrass(int itemId, Vector3 currentPos)
+        {
+            int posX = (int)currentPos.x;
+            int posY = (int)currentPos.y;
+
+            Vector2 grassLandDimension = grass[grass.Count - 1].position;
+            int xBound = (int)grassLandDimension.x + 1;
+            int yBound = (int)-grassLandDimension.y + 1;
+            Vector2 tMin = Vector2.one;
+            float minDist = Mathf.Infinity;
+
+            List<Vector2> nearest = new List<Vector2>();
+            for (int i = 0; i < xBound; i++)
+            {
+                for (int j = 0; j < yBound; j++)
+                {
+                    if (grassGO[i, j].grass.itemId == itemId)
+                    {
+                        Vector2 pos = new Vector2(i, j);
+                        float dist = Vector3.Distance(pos, currentPos);
+                        if (dist < minDist)
+                        {
+                            tMin = pos;
+                            minDist = dist;
+                        }
+                    }
+                }
+            }
+            Vector2 newPos = new Vector2(tMin.x, -tMin.y);
+            grassGO[(int)tMin.x, (int)tMin.y].RemovedGrass();
+            return newPos;
+        }
+
         public void RemoveGrass(int itemId) // will remove grass by one
         {
-            //int tempId = grassGO.RandomItem().grass.itemId;
-            //print(tempId);
-            //if (tempId == -1)
-            //{
-            //    //RemoveGrass(itemId);
-            //}
+            Vector2 grassLandDimension = grass[grass.Count - 1].position;
+            int xBound = (int)grassLandDimension.x + 1;
+            int yBound = (int)-grassLandDimension.y + 1;
 
-            //if (grassGO[tempId].grass.itemId == itemId)
-            //{
-            //    print("got it removed");
-            //    grassItemDatabase[itemId]--;
-            //    grassGO[tempId].RemovedGrass();
-            //    return;
-            //}
-            //else
-            //{
-            //    print("going again");
-            //    RemoveGrass(itemId);
-            //}
-
-            for (int i = 0; i < grassGO.Length; i++)
+            for (int i = 0; i < xBound; i++)
             {
-                if (grassGO[i].grass.itemId == itemId)
+                for (int j = 0; j < yBound; j++)
                 {
-                    grassItemDatabase[itemId]--;
-                    grassGO[i].RemovedGrass(); // Todo: dont sequentially remove grass, it should be removed where livestock is standing                    
-                    return;
+                    if (grassGO[i, j].grass.itemId == itemId)
+                    {
+                        grassItemDatabase[itemId]--;
+                        grassGO[i, j].RemovedGrass(); // Todo: dont sequentially remove grass, it should be removed where livestock is standing                    
+                        return;
+                    }
                 }
             }
         }
@@ -156,11 +188,31 @@ namespace HarvestValley.Managers
 
         public void SaveGrass()
         {
-            for (int i = 0; i < grass.Count; i++)
+            Vector2 grassLandDimension = grass[grass.Count - 1].position;
+            int xBound = (int)grassLandDimension.x + 1;
+            int yBound = (int)-grassLandDimension.y + 1;
+            int counter = 0;
+            for (int i = 0; i < xBound; i++)
             {
-                grass[i] = grassGO[i].grass;
+                for (int j = 0; j < yBound; j++)
+                {
+                    grass[counter] = grassGO[i, j].grass;
+                    counter++;
+                }
             }
+
             ES2.Save(grass, "AllGrass");
+        }
+
+        private void Resize2DArray<T>(ref T[,] original, int newCoNum, int newRoNum)
+        {
+            var newArray = new T[newCoNum, newRoNum];
+            int columnCount = original.GetLength(1);
+            int columnCount2 = newRoNum;
+            int columns = original.GetUpperBound(0);
+            for (int co = 0; co <= columns; co++)
+                Array.Copy(original, co * columnCount, newArray, co * columnCount2, columnCount);
+            original = newArray;
         }
     }
 }

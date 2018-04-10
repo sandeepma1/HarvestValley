@@ -179,6 +179,10 @@ public class ClickableLivestock : MouseUpBase
 
         if (tempDateTime <= DateTime.Now)
         {
+            //Good for removing and eating grass closest to the livestock
+            //Vector2 nearestFoodPos = GrassLandManager.Instance.GetNearestGrass(grassIdToEat, transform.localPosition); 
+            //transform.DOLocalMove(nearestFoodPos, 0.45f).SetEase(Ease.Linear);
+
             GrassLandManager.Instance.RemoveGrass(grassIdToEat);
             livestock.biteCount++;
 

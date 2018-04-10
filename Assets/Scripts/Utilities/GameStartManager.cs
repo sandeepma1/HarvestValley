@@ -114,7 +114,7 @@ public class GameStartManager : MonoBehaviour
         {
             for (int j = 0; j < yGrass; j++)
             {
-                grass.Add(new Grass(-1, new Vector2(i * gapGrass, -j * gapGrass)));
+                grass.Add(new Grass(-1, new Vector2(i, -j)));
                 id++;
             }
         }
