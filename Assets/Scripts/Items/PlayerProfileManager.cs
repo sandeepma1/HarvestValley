@@ -18,6 +18,8 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
     private TextMeshProUGUI levelUIText;
     [SerializeField]
     private TextMeshProUGUI XPPointsUIText;
+    [SerializeField]
+    private Transform XpProgressBar;
 
     public PlayersProfile playerProfile;
     private bool isLevelUpReady;
@@ -147,7 +149,12 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
         gemsUIText.text = String.Format("{0:###,###,###,###,###}", playerProfile.gems);
         staminaUIText.text = playerProfile.stamina.ToString();
         levelUIText.text = playerProfile.level.ToString();
-        XPPointsUIText.text = playerProfile.XPPoints.ToString() + "/" + LevelUpDatabase.GetLevelById(playerProfile.level).XPforNextLevel.ToString();
+        // XPPointsUIText.text = playerProfile.XPPoints.ToString() + "/" + LevelUpDatabase.GetLevelById(playerProfile.level).XPforNextLevel.ToString();
+
+        float differenceInXp = playerProfile.XPPoints / (float)LevelUpDatabase.GetLevelById(playerProfile.level).XPforNextLevel;
+        XpProgressBar.localScale = new Vector3(differenceInXp, XpProgressBar.localScale.y, XpProgressBar.localScale.z);
+        float percentage = differenceInXp * 100f;
+        XPPointsUIText.text = percentage.ToString("F0") + "%";
     }
 
     public void SavePlayerProfile()
