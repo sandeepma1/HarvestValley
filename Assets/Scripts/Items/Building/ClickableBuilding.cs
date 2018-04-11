@@ -3,16 +3,20 @@ using HarvestValley.Ui;
 using HarvestValley.IO;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class ClickableBuilding : ClickableBase
 {
+    [SerializeField]
+    private Transform producedItemParent;
+    public Queue<int> producedItemIdList;
+    public Queue<GameObject> producedItemGO = new Queue<GameObject>();
     public int unlockedQueueSlots;
-
     private int timeCompareResult;
     internal Queue<BuildingQueue> buildingQueue = new Queue<BuildingQueue>();
     private DateTime topInQueue = DateTime.Now;
     private DateTime lastInQueue = DateTime.Now;
-
+    private GameObject producedItemPrefab;
     public bool isProductionQueueFull = false;
 
     private DateTime TopInQueueDateTime
@@ -30,6 +34,15 @@ public class ClickableBuilding : ClickableBase
         }
     }
 
+    private void Start()
+    {
+        producedItemPrefab = Resources.Load("ProducedItem") as GameObject;
+        foreach (var item in producedItemIdList)
+        {
+            AddNewProducedItem(item);
+        }
+    }
+
     private void Update()
     {
         if (buildingQueue.Count <= 0)
@@ -39,7 +52,7 @@ public class ClickableBuilding : ClickableBase
         timeCompareResult = DateTime.Compare(topInQueue, DateTime.Now);
         if (timeCompareResult <= 0)
         {
-            UiInventoryMenu.Instance.UpdateItems(buildingQueue.Peek().itemId, 1);
+            ItemProductionCompleted();
             buildingQueue.Dequeue();
             isProductionQueueFull = false;
             if (buildingQueue.Count != 0)
@@ -51,10 +64,35 @@ public class ClickableBuilding : ClickableBase
         }
     }
 
+    private void ItemProductionCompleted()
+    {
+        producedItemIdList.Enqueue(buildingQueue.Peek().itemId);
+        AddNewProducedItem(producedItemIdList.Peek());
+    }
+
+    private void AddNewProducedItem(int itemId)
+    {
+        GameObject itemProduced = Instantiate(producedItemPrefab, producedItemParent);
+        itemProduced.GetComponent<SpriteRenderer>().sprite = AtlasBank.Instance.GetSprite(ItemDatabase.GetItemSlugById(itemId), AtlasType.GUI);
+        producedItemGO.Enqueue(itemProduced);
+    }
+
     public override void OnMouseTouchUp()
     {
         base.OnMouseTouchUp();
-        BuildingManager.Instance.OnBuildingClicked(buildingId, sourceId);
+        if (producedItemIdList.Count == 0)
+        {
+            BuildingManager.Instance.OnBuildingClicked(buildingId, sourceId);
+        }
+        else
+        {
+            //Todo: check if inventory is not full;=
+            UiInventoryMenu.Instance.UpdateItems(producedItemIdList.Peek(), 1);
+            print("added item " + producedItemIdList.Peek());
+            producedItemIdList.Dequeue();
+            Destroy(producedItemGO.Peek());
+            producedItemGO.Dequeue();
+        }
     }
 
     public override void AddItemToProductionQueue(int itemIdToAdd)
@@ -105,9 +143,6 @@ public class ClickableBuilding : ClickableBase
             }
             UiInventoryMenu.Instance.RemoveItem(item.needID[i], item.needAmount[i]);
         }
-
-
-        //TODO: minus products required for this item not coins       
     }
 
     public void PopulateBuildingQueueFromSave(int[] ids, string[] dateTimes)

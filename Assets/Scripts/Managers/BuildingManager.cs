@@ -41,7 +41,7 @@ namespace HarvestValley.Managers
             BuildingsGO[building.id].position = building.position;
             BuildingsGO[building.id].PopulateBuildingQueueFromSave(building.itemID, building.dateTime);
             BuildingsGO[building.id].unlockedQueueSlots = building.unlockedQueueSlots;
-
+            BuildingsGO[building.id].producedItemIdList = building.producedItemIdList;
             BuildingsGO[building.id].state = (BuildingState)building.state;
         }
         #endregion
@@ -80,7 +80,7 @@ namespace HarvestValley.Managers
                 item.unlockedQueueSlots = BuildingsGO[item.id].unlockedQueueSlots;
                 item.position = BuildingsGO[item.id].position;
                 BuildingQueue[] currentQueue = BuildingsGO[item.id].CurrentItemsInQueue();
-
+                item.producedItemIdList = BuildingsGO[item.id].producedItemIdList;
                 for (int i = 0; i < currentQueue.Length; i++)
                 {
                     item.itemID[i] = currentQueue[i].itemId;
@@ -109,13 +109,14 @@ public class Buildings  // iLIST
     public Vector2 position;
     public int[] itemID;
     public string[] dateTime;
+    public Queue<int> producedItemIdList;
 
     public Buildings()
     {
     }
 
     public Buildings(int f_id, int f_buildingID, string f_name, int f_state, int f_unlockedQueueSlots, Vector2 f_position,
-        int[] f_itemID, string[] f_dateTime)//, Queue <int>  f_itemID, Queue <string>  f_dateTime)
+        int[] f_itemID, string[] f_dateTime, Queue<int> _producedItemIdList)//, Queue <int>  f_itemID, Queue <string>  f_dateTime)
     {
         id = f_id;
         buildingID = f_buildingID;
@@ -125,6 +126,7 @@ public class Buildings  // iLIST
         position = f_position;
         itemID = f_itemID;
         dateTime = f_dateTime;
+        producedItemIdList = _producedItemIdList;
     }
 }
 

@@ -141,8 +141,8 @@ public class GameStartManager : MonoBehaviour
             ids[i] = -1;
         }
 
-        buildings.Add(new Buildings(0, 2, "Bakery", 0, 2, new Vector2(0, 0), ids, nowTime));
-        buildings.Add(new Buildings(1, 4, "Dairy", 0, 2, new Vector2(3, 0), ids, nowTime));
+        buildings.Add(new Buildings(0, 2, "Bakery", 0, 2, new Vector2(0, 0), ids, nowTime, new Queue<int>()));
+        buildings.Add(new Buildings(1, 4, "Dairy", 0, 2, new Vector2(3, 0), ids, nowTime, new Queue<int>()));
 
         ES2.Save(buildings, "AllBuildings");
     }
