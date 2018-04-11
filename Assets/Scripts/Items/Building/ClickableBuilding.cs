@@ -63,6 +63,7 @@ public class ClickableBuilding : ClickableBase
 
         if (isProductionQueueFull)
         {
+            print("This will never trigger");//Todo remove if never trigger
             return;
         }
 

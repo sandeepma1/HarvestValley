@@ -41,7 +41,6 @@ namespace HarvestValley.Ui
                 {
                     Destroy(InventoryListItems[i].gameObject);
                     InventoryListItems.RemoveAt(i);
-                    Debug.LogError("Debug this need to remove list index");
                 }
                 else
                 {
@@ -50,9 +49,9 @@ namespace HarvestValley.Ui
             }
         }
 
-        public void UpdateItems(int itemId, int itemValue)
+        public void UpdateItems(int itemId, int itemCount)
         {
-            if (itemValue == 0)
+            if (itemCount == 0)
             {
                 return;
             }
@@ -61,7 +60,7 @@ namespace HarvestValley.Ui
             {
                 if (InventoryListItems[i].item.itemId == itemId)
                 {
-                    InventoryListItems[i].item.itemCount += itemValue;
+                    InventoryListItems[i].item.itemCount += itemCount;
                     //TODO: if item count is less than 0 then delete item
                     isItemInInventory = true;
                     break;
@@ -70,19 +69,20 @@ namespace HarvestValley.Ui
 
             if (!isItemInInventory)
             {
-                AddNewOneItemInScrollList(new InventoryItems(itemId, itemValue));
+                AddNewOneItemInScrollList(new InventoryItems(itemId, itemCount));
             }
 
             UpdateScrollListItemCount();
         }
 
-        public void RemoveItem(int itemId, int value)
+        public void RemoveItem(int itemId, int itemCount)
         {
+            print("Remove Item from Inv " + itemId + " count " + itemCount);
             for (int i = 0; i < InventoryListItems.Count; i++)
             {
                 if (InventoryListItems[i].item.itemId == itemId)
                 {
-                    InventoryListItems[i].item.itemCount -= value;
+                    InventoryListItems[i].item.itemCount -= itemCount;
                     break;
                 }
             }
@@ -95,7 +95,7 @@ namespace HarvestValley.Ui
             {
                 if (InventoryListItems[i].item.itemId == itemID)
                 {
-                    return InventoryListItems[itemID].item.itemCount;
+                    return InventoryListItems[i].item.itemCount;
                 }
             }
             return 0;
