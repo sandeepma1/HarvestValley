@@ -28,7 +28,7 @@ namespace HarvestValley.Ui
             for (int i = 0; i < items.Length; i++)
             {
                 neededItems[i].gameObject.SetActive(true);
-                neededItems[i].ItemImage = AtlasBank.Instance.GetSprite(ItemDatabase.GetItemNameById(items[i].itemId), AtlasType.GUI);
+                neededItems[i].ItemImage = AtlasBank.Instance.GetSprite(ItemDatabase.GetItemSlugById(items[i].itemId), AtlasType.GUI);
                 neededItems[i].amountNeeded = items[i].itemCount.ToString();
             }
         }

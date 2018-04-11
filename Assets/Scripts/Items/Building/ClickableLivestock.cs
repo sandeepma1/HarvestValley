@@ -198,9 +198,19 @@ public class ClickableLivestock : MouseUpBase
             if (livestock.biteCount >= grassAmountToEat)// Wola!! lay eggs/milk etc
             {
                 livestock.hatched++;
+                LayHatchedOutput();
                 livestock.biteCount = 0;
             }
         }
+    }
+
+    private void LayHatchedOutput()
+    {
+        GameObject output = Instantiate(Resources.Load("LivestockOutput") as GameObject);
+
+        output.transform.parent = LivestockManager.Instance.transform;
+        output.transform.localPosition = transform.localPosition;
+        output.GetComponent<LivestockOutput>().CreateOutput(itemCanProduce.itemID);
     }
 
     public override void OnMouseTouchUp()

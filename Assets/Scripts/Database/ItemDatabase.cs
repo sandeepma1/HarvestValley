@@ -59,7 +59,7 @@ namespace HarvestValley.IO
             return items[itemId];
         }
 
-        public static string GetItemNameById(int itemId)
+        public static string GetItemSlugById(int itemId)
         {
             return items[itemId].slug;
         }
