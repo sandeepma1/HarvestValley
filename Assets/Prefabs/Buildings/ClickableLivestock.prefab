@@ -98,9 +98,11 @@ MonoBehaviour:
     dateTime: 
   moveMaxX: 10
   moveMaxY: -12
-  maxMoveAmount: 2
+  minMoveAmount: 1.5
+  maxMoveAmount: 3.5
   minReactionTime: 1
   maxReactionTime: 2
+  movingSpeed: 0.75
 --- !u!212 &212938573297744856
 SpriteRenderer:
   m_ObjectHideFlags: 1

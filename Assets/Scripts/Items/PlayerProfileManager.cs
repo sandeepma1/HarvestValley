@@ -4,13 +4,26 @@ using TMPro;
 using System;
 using HarvestValley.Ui;
 using HarvestValley.IO;
+using UnityEngine.UI;
 
 public class PlayerProfileManager : Singleton<PlayerProfileManager>
 {
     [SerializeField]
-    public TextMeshProUGUI coinsUIText, gemsUIText, staminaUIText, levelUIText, XPPointsUIText;
+    private TextMeshProUGUI coinsUIText;
+    [SerializeField]
+    private TextMeshProUGUI gemsUIText;
+    [SerializeField]
+    private TextMeshProUGUI staminaUIText;
+    [SerializeField]
+    private TextMeshProUGUI levelUIText;
+    [SerializeField]
+    private TextMeshProUGUI XPPointsUIText;
+
     public PlayersProfile playerProfile;
     private bool isLevelUpReady;
+
+    [SerializeField]
+    private Button CheatLevelAdd;
 
     protected override void Awake()
     {
@@ -22,6 +35,12 @@ public class PlayerProfileManager : Singleton<PlayerProfileManager>
     private void Start()
     {
         UpdateHudUi();
+        CheatLevelAdd.onClick.AddListener(AddXP);
+    }
+
+    private void AddXP()
+    {
+        PlayerXPPointsAdd(CurrentPlayerLevel * 50);
     }
 
     public int CurrentPlayerLevel

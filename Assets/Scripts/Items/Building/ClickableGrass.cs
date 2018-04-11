@@ -48,7 +48,7 @@ public class ClickableGrass : ClickableBase
 
     public override void OnMouseTouchEnter()
     {
-        if (GrassLandManager.Instance.isinPlantingMode && grass.itemId == -1)
+        if (GrassLandManager.Instance.isInPlantingMode && grass.itemId == -1)
         {
             grass.itemId = GrassLandManager.Instance.selectedItemIdInMenu;
             ClickableGrassAddedItem.Invoke(grass.itemId);

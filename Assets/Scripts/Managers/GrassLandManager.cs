@@ -12,7 +12,8 @@ namespace HarvestValley.Managers
         private ClickableGrass clickableGrassPrefab;
         [SerializeField]
         private int x = 12, y = 12;
-        public bool isinPlantingMode = false;
+        [HideInInspector]
+        public bool isInPlantingMode = false;
 
         private ClickableGrass[,] grassGO;
         public List<Grass> grass = new List<Grass>();
@@ -92,18 +93,18 @@ namespace HarvestValley.Managers
         public void StartPlantingMode(int itemId)
         {
             selectedItemIdInMenu = itemId;
-            isinPlantingMode = true;
+            isInPlantingMode = true;
             InputController.Instance.DisableDragSwipe();
         }
 
         public void StopPlantingMode()
         {
-            if (!isinPlantingMode)
+            if (!isInPlantingMode)
             {
                 return;
             }
             selectedItemIdInMenu = -1;
-            isinPlantingMode = false;
+            isInPlantingMode = false;
             UiGrassListMenu.Instance.StopPlantingMode();
             InputController.Instance.EnableDragSwipe();
         }

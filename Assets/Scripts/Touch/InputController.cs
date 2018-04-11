@@ -61,7 +61,7 @@ public class InputController : Singleton<InputController>
         ease.Add("ease", LeanTweenType.easeOutSine);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         DragCamera();
     }

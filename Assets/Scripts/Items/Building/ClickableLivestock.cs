@@ -14,11 +14,15 @@ public class ClickableLivestock : MouseUpBase
     [SerializeField]
     private int moveMaxY;
     [SerializeField]
-    private float maxMoveAmount = 2;
+    private float minMoveAmount = 1.5f;
+    [SerializeField]
+    private float maxMoveAmount = 3.5f;
     [SerializeField]
     private float minReactionTime = 0.5f;
     [SerializeField]
     private float maxReactionTime = 2;
+    [SerializeField]
+    private float movingSpeed = 1;
 
     //temp variables to get faster from livestock above declared
     private int grassIdToEat = -1;
@@ -30,7 +34,7 @@ public class ClickableLivestock : MouseUpBase
     private int randomDirection;
     private SpriteRenderer livestockSprite;
     private SourceInfo sourceInfo;
-
+    private Rect rect;
     //Images of every direction
     private Sprite livestockLeft;
     private Sprite livestockRight;
@@ -45,6 +49,7 @@ public class ClickableLivestock : MouseUpBase
         grassIdToEat = itemCanProduce.needID[0];
         grassAmountToEat = itemCanProduce.needAmount[0];
         timePerBiteInSeconds = itemCanProduce.timeRequiredInSeconds;
+        rect = new Rect(0, 0, moveMaxX - 2, moveMaxY + 2);
         StartCoroutine("WaitEndOfFrame");
     }
 
@@ -65,6 +70,14 @@ public class ClickableLivestock : MouseUpBase
         for (int i = 0; i < GrassLandManager.Instance.GetGrassCountBuyId(grassIdToEat); i++) // Todo: Maintain counter in GrassLandManager
         {
             CheckForRegularUpdates();
+        }
+        //lay hatched eggs again in-case user has not picked it.
+        if (livestock.maxHatchCount > 1)
+        {
+            for (int i = 0; i < livestock.hatched; i++)
+            {
+                LayHatchedOutput();
+            }
         }
         isThisAtStart = false;
 
@@ -109,65 +122,61 @@ public class ClickableLivestock : MouseUpBase
     private IEnumerator StartWandering()
     {
         float reactionTime = UnityEngine.Random.Range(minReactionTime, maxReactionTime);
-        transform.DOLocalMove(GetNextMove(), 0.45f).SetEase(Ease.Linear);
+        transform.DOLocalMove(GetNextMove(), movingSpeed).SetEase(Ease.Linear);
         yield return new WaitForSeconds(reactionTime);
         StartCoroutine("StartWandering");
     }
 
     private Vector2 GetNextMove()
     {
+        int recursiveCounter = 5;
         Vector2 targetPos = Vector2.one;
         float randomDirectionX = transform.localPosition.x;
         float randomDirectionY = transform.localPosition.y;
+        Vector2 localPos = transform.localPosition;
 
-        randomDirection = UnityEngine.Random.Range(0, 2);
-
-        if (randomDirection == 0)
+        randomDirection = UnityEngine.Random.Range(0, 5);
+        float randomSteps = UnityEngine.Random.Range(minMoveAmount, maxMoveAmount);
+        switch (randomDirection)
         {
-            randomDirectionX = UnityEngine.Random.Range(randomDirectionX + maxMoveAmount, randomDirectionX - maxMoveAmount);
-            if (randomDirectionX < 1)
-            {
-                randomDirectionX = 2;
-            }
-            else if (randomDirectionX > moveMaxX - 2) // for safer distance
-            {
-                randomDirectionX = moveMaxX - 3;
-            }
-            livestockSprite.sprite = randomDirectionX > transform.localPosition.x ? livestockRight : livestockLeft;
+            case 0: //left
+                localPos = new Vector3(transform.localPosition.x - randomSteps, transform.localPosition.y);
+                livestockSprite.sprite = livestockLeft;
+                break;
+            case 1: //right
+                localPos = new Vector3(transform.localPosition.x + randomSteps, transform.localPosition.y);
+                livestockSprite.sprite = livestockRight;
+                break;
+            case 2://up
+                localPos = new Vector3(transform.localPosition.x, transform.localPosition.y + randomSteps);
+                livestockSprite.sprite = livestockUp;
+                break;
+            case 3://down
+                localPos = new Vector3(transform.localPosition.x, transform.localPosition.y - randomSteps);
+                livestockSprite.sprite = livestockDown;
+                break;
+            default:
+                break;
+        }
+        if (rect.Contains(localPos, true))
+        {
+            return localPos;
         }
         else
         {
-            randomDirectionY = UnityEngine.Random.Range(randomDirectionY + maxMoveAmount, randomDirectionY - maxMoveAmount);
-            if (randomDirectionY >= 0)
+            recursiveCounter--;
+            if (recursiveCounter < 0)
             {
-                randomDirectionY = -2;
+                return transform.localPosition;
             }
-            else if (randomDirectionY < moveMaxY + 2) // for safer distance
-            {
-                randomDirectionY = moveMaxY + 3;
-            }
-            livestockSprite.sprite = randomDirectionY > transform.localPosition.y ? livestockUp : livestockDown;
+            GetNextMove();
         }
-
-        //if (randomDirectionX <= 0 || randomDirectionY >= 0)
-        //{
-        //    targetPos = new Vector3(2, -2);
-        //    return targetPos;
-        //}
-
-        //if (randomDirectionX > moveMaxX || randomDirectionY < moveMaxY)
-        //{
-        //    targetPos = new Vector3(moveMaxX - 2, moveMaxY + 2);
-        //    return targetPos;
-        //}
-
-        targetPos = new Vector3(randomDirectionX, randomDirectionY);
-        return targetPos;
+        return transform.localPosition;
     }
 
     private void CheckForRegularUpdates()
     {
-        if (livestock.hatched > livestock.maxHatchCount)
+        if (livestock.hatched >= livestock.maxHatchCount)
         {
             return;
         }
@@ -198,7 +207,14 @@ public class ClickableLivestock : MouseUpBase
             if (livestock.biteCount >= grassAmountToEat)// Wola!! lay eggs/milk etc
             {
                 livestock.hatched++;
-                LayHatchedOutput();
+                if (livestock.maxHatchCount > 1)
+                {
+                    LayHatchedOutput();
+                }
+                else
+                {
+                    print("Grow fat to milk you");
+                }
                 livestock.biteCount = 0;
             }
         }
@@ -209,20 +225,24 @@ public class ClickableLivestock : MouseUpBase
         GameObject output = Instantiate(Resources.Load("LivestockOutput") as GameObject);
 
         output.transform.parent = LivestockManager.Instance.transform;
-        output.transform.localPosition = transform.localPosition;
+        output.transform.localPosition = transform.localPosition; // Todo place at random at game load
         output.GetComponent<LivestockOutput>().CreateOutput(itemCanProduce.itemID);
+        output.GetComponent<LivestockOutput>().ItemCollected += ItemCollectedEventHandler;
+    }
+
+    private void ItemCollectedEventHandler()
+    {
+        livestock.hatched--;
     }
 
     public override void OnMouseTouchUp()
     {
         base.OnMouseTouchUp();
-        if (livestock.hatched == 0)
+        if (livestock.maxHatchCount == 1 && livestock.hatched == 1)
         {
-            print("no eggs");
-            return;
+            UiInventoryMenu.Instance.UpdateItems(livestock.canProduceItemId, livestock.hatched);
+            livestock.hatched = 0;
+            print("added milk in inventory " + livestock.hatched);
         }
-        print("added eggs in inventory " + livestock.hatched);
-        UiInventoryMenu.Instance.UpdateItems(livestock.canProduceItemId, livestock.hatched);
-        livestock.hatched = 0;
     }
 }

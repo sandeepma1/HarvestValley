@@ -62,16 +62,3 @@ public class LivestockClass  // iLIST
         dateTime = l_dateTime;
     }
 }
-
-public enum LivestockType
-{
-    Chicken,
-    Cow
-}
-
-public enum LivestockState
-{
-    Idle,
-    Eating,
-    WaitingForHatch
-}
