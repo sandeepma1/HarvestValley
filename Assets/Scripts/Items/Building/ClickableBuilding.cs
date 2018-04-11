@@ -4,10 +4,10 @@ using HarvestValley.IO;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ClickableBuilding : ClickableBase
 {
-    [SerializeField]
     private Transform producedItemParent;
     public Queue<int> producedItemIdList;
     public Queue<GameObject> producedItemGO = new Queue<GameObject>();
@@ -36,10 +36,14 @@ public class ClickableBuilding : ClickableBase
 
     private void Start()
     {
+        producedItemParent = transform.GetChild(0); // Todo: Carefuly about this
         producedItemPrefab = Resources.Load("ProducedItem") as GameObject;
-        foreach (var item in producedItemIdList)
+        if (producedItemIdList != null)
         {
-            AddNewProducedItem(item);
+            foreach (var item in producedItemIdList.Reverse())
+            {
+                AddNewProducedItem(item);
+            }
         }
     }
 
@@ -88,7 +92,6 @@ public class ClickableBuilding : ClickableBase
         {
             //Todo: check if inventory is not full;=
             UiInventoryMenu.Instance.UpdateItems(producedItemIdList.Peek(), 1);
-            print("added item " + producedItemIdList.Peek());
             producedItemIdList.Dequeue();
             Destroy(producedItemGO.Peek());
             producedItemGO.Dequeue();
@@ -120,7 +123,6 @@ public class ClickableBuilding : ClickableBase
         }
 
         buildingQueue.Enqueue(queueItem);
-        print("added item " + queueItem.itemId);
         lastInQueue = queueItem.dateTime;
         if (buildingQueue.Count >= unlockedQueueSlots)
         {

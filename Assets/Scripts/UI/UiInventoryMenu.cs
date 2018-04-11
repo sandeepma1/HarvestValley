@@ -77,7 +77,6 @@ namespace HarvestValley.Ui
 
         public void RemoveItem(int itemId, int itemCount)
         {
-            print("Remove Item from Inv " + itemId + " count " + itemCount);
             for (int i = 0; i < InventoryListItems.Count; i++)
             {
                 if (InventoryListItems[i].item.itemId == itemId)

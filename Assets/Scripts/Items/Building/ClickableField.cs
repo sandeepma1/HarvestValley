@@ -22,10 +22,14 @@ public class ClickableField : ClickableBase
         SomeSeedPlanted();
     }
 
-    //public override void OnMouseTouchEnter()
-    //{
-    //    SomeSeedPlanted();
-    //}
+    public override void OnMouseTouchEnter()
+    {
+        base.OnMouseTouchEnter();
+        if (inPlantingMode)
+        {
+            SomeSeedPlanted();
+        }
+    }
 
     private void SomeSeedPlanted()
     {
