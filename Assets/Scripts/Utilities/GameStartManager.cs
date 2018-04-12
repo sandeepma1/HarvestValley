@@ -60,6 +60,7 @@ public class GameStartManager : MonoBehaviour
         CreateNewGrass();
         CreateNewLivestock();
         CreateNewBuildings();
+        CreateNewFishes();
         print("New game save created!!");
     }
 
@@ -145,6 +146,13 @@ public class GameStartManager : MonoBehaviour
         buildings.Add(new Buildings(1, 4, "Dairy", 0, 2, new Vector2(3, 0), ids, nowTime, new Queue<int>()));
 
         ES2.Save(buildings, "AllBuildings");
+    }
+
+    private void CreateNewFishes()
+    {
+        List<Fishes> fishes = new List<Fishes>();
+        fishes.Add(new Fishes(10, 2.5f, DateTime.Now.ToString()));
+        ES2.Save(fishes, "AllFishes");
     }
 
     #endregion

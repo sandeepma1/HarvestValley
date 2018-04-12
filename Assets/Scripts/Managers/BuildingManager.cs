@@ -9,7 +9,7 @@ namespace HarvestValley.Managers
     public class BuildingManager : ManagerBase<BuildingManager>
     {
         [SerializeField]
-        private ClickableBuilding buildingPrefab;
+        private ClickableBuilding clickableBuildingPrefab;
 
         public ClickableBuilding[] BuildingsGO;
         private List<Buildings> buildings = new List<Buildings>();
@@ -32,7 +32,7 @@ namespace HarvestValley.Managers
 
         private void InitBuildings(Buildings building)
         {
-            BuildingsGO[building.id] = Instantiate(buildingPrefab, transform);
+            BuildingsGO[building.id] = Instantiate(clickableBuildingPrefab, transform);
             BuildingsGO[building.id].gameObject.name = "Building" + building.id;
             BuildingsGO[building.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.GetSourceInfoById(building.buildingID).slug, AtlasType.Buildings);
             BuildingsGO[building.id].buildingId = building.id;

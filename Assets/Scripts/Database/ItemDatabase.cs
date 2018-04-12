@@ -153,7 +153,8 @@ public enum ItemType
     AnimalGoods,
     Suppliers,
     Products,
-    Grass
+    Grass,
+    Fish
 }
 
 public enum ItemSource

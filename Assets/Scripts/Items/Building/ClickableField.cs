@@ -13,8 +13,14 @@ public class ClickableField : ClickableBase
     public SpriteRenderer plantsSprite;
     public bool isCrowPresent;
 
+    private SpriteRenderer fieldSprite;
     private bool inPlantingMode;
     private Tweener glowingTweener = null;
+
+    private void Start()
+    {
+        fieldSprite = GetComponent<SpriteRenderer>();
+    }
 
     public override void OnMouseTouchUp()
     {
@@ -73,7 +79,7 @@ public class ClickableField : ClickableBase
 
     private void StartGlowing()
     {
-        glowingTweener = buildingSprite.DOColor(ColorConstants.FieldGlow, 0.5f).SetLoops(-1, LoopType.Yoyo);
+        glowingTweener = fieldSprite.DOColor(ColorConstants.FieldGlow, 0.5f).SetLoops(-1, LoopType.Yoyo);
     }
 
     private void StopGlowing()
@@ -82,6 +88,6 @@ public class ClickableField : ClickableBase
 
         glowingTweener.Kill();
         glowingTweener = null;
-        buildingSprite.color = ColorConstants.FieldNormal;
+        fieldSprite.color = ColorConstants.FieldNormal;
     }
 }

@@ -8,15 +8,17 @@ id,name,description,unlocksAtLevel,timeRequiredInMins,XP,type,coinCost,gemCost,s
 6,Milk,Descriptions,6,5,75,AnimalGoods,30,4,5,-1,2,4,25,35,-1,8,5,-1,-1,-1,-1,-1,-1,milk
 7,Butter,Descriptions,7,30,85,Products,31,4,4,-1,1,1,26,36,-1,6,2,-1,-1,-1,-1,-1,-1,butter
 8,Basic Grass,Descriptions,8,60,145,Grass,37,4,1,-1,1,1,32,42,1,11,1,-1,0,-1,0,-1,0,basicgrass
-9,Thick Grass,Descriptions,9,65,155,Grass,38,4,1,-1,1,1,33,43,1,11,1,-1,0,-1,0,-1,0,thickgrass
-10,Red Cabbage,Descriptions,10,45,115,Crops,39,4,0,3,2,4,29,39,6,-1,-1,-1,-1,-1,-1,-1,-1,redcabbage
-11,Potatoes,Descriptions,11,50,125,Crops,40,4,0,5,2,4,30,40,7,-1,-1,-1,-1,-1,-1,-1,-1,potatoes
-12,Tomato,Descriptions,12,55,135,Crops,41,4,0,6,2,4,31,41,7,-1,-1,-1,-1,-1,-1,-1,-1,tomato
-13,Strawberry,Descriptions,13,35,145,Crops,42,4,0,6,2,4,27,37,5,-1,-1,-1,-1,-1,-1,-1,-1,strawberry
-14,Pumpkin,Descriptions,14,15,155,Crops,43,4,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,pumpkin
-15,Carrot,Descriptions,15,-5,165,Crops,44,4,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,carrot
-16,Soybean,Descriptions,16,-25,175,Crops,45,4,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,soybean
-17,Sugarcane,Descriptions,17,-45,185,Crops,46,4,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,sugarcane
-18,Indigo,Descriptions,18,-65,195,Crops,47,4,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,indigo
-19,Cotton,Descriptions,19,-85,205,Crops,48,4,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,cotton
-20,Chili Pepper,Descriptions,20,-105,215,Crops,49,4,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,chilipepper
+9,Fish Fillet,Descriptions,9,65,155,AnimalGoods,38,4,12,-1,1,1,33,43,-1,-1,-1,-1,-1,-1,-1,-1,-1,fishfillet
+10,Golden Fish,Descriptions,10,45,115,Fish,39,4,12,-1,1,1,29,39,-1,-1,-1,-1,-1,-1,-1,-1,-1,goldenfish
+11,Red Cabbage,Descriptions,11,45,115,Crops,39,4,0,3,2,4,29,39,6,-1,-1,-1,-1,-1,-1,-1,-1,redcabbage
+12,Potatoes,Descriptions,12,50,125,Crops,40,4,0,5,2,4,30,40,7,-1,-1,-1,-1,-1,-1,-1,-1,potatoes
+13,Tomato,Descriptions,13,55,135,Crops,41,4,0,6,2,4,31,41,7,-1,-1,-1,-1,-1,-1,-1,-1,tomato
+14,Strawberry,Descriptions,14,35,145,Crops,42,4,0,6,2,4,27,37,5,-1,-1,-1,-1,-1,-1,-1,-1,strawberry
+15,Pumpkin,Descriptions,15,15,155,Crops,43,4,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,pumpkin
+16,Carrot,Descriptions,16,-5,165,Crops,44,4,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,carrot
+17,Soybean,Descriptions,17,-25,175,Crops,45,4,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,soybean
+18,Sugarcane,Descriptions,18,-45,185,Crops,46,4,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,sugarcane
+19,Indigo,Descriptions,19,-65,195,Crops,47,4,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,indigo
+20,Cotton,Descriptions,20,-85,205,Crops,48,4,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,cotton
+21,Thick Grass,Descriptions,21,65,155,Grass,38,4,1,-1,1,1,33,43,1,11,1,-1,0,-1,0,-1,0,thickgrass
+22,Chili Pepper,Descriptions,22,-105,215,Crops,49,4,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,chilipepper

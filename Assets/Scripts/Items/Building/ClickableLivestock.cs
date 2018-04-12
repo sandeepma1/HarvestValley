@@ -130,9 +130,6 @@ public class ClickableLivestock : MouseUpBase
     private Vector2 GetNextMove()
     {
         int recursiveCounter = 5;
-        Vector2 targetPos = Vector2.one;
-        float randomDirectionX = transform.localPosition.x;
-        float randomDirectionY = transform.localPosition.y;
         Vector2 localPos = transform.localPosition;
 
         randomDirection = UnityEngine.Random.Range(0, 5);

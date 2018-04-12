@@ -17,6 +17,7 @@ TagManager:
   - Harvest
   - MainCanvas
   - DragableUiItem
+  - FlappyFish
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - 
   - Dragger
   - Unwalkable
-  - 
+  - CollisionTwoD
   - 
   - 
   - 

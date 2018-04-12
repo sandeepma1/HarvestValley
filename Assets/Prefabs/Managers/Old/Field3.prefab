@@ -229,17 +229,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingSprite: {fileID: 0}
-  plantsSprite: {fileID: 0}
-  crowGO: {fileID: 0}
-  isSelected: 0
-  isDraggable: 0
-  buildingID: 0
-  sourceID: 0
-  pos: {x: 0, y: 0}
+  buildingId: 0
+  sourceId: 0
+  position: {x: 0, y: 0}
   level: 0
   state: 0
-  unlockedQueueSlots: 0
-  itemID: 0
+  itemId: 0
+  plantsSprite: {fileID: 0}
   isCrowPresent: 0
 --- !u!212 &212178413899637102
 SpriteRenderer:

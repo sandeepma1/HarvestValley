@@ -13,7 +13,7 @@ namespace HarvestValley.Managers
         [SerializeField]
         private Transform fieldSelector;
         [SerializeField]
-        private ClickableField fieldPrefab;
+        private ClickableField clickableFieldPrefab;
 
         public bool plantedOnSelectedfield = false;
         public int fieldSelectedID = -1;
@@ -43,7 +43,7 @@ namespace HarvestValley.Managers
 
         private void InitFields(Fields field)
         {
-            FieldGO[field.id] = Instantiate(fieldPrefab, transform);
+            FieldGO[field.id] = Instantiate(clickableFieldPrefab, transform);
             FieldGO[field.id].transform.localPosition = field.position;
             FieldGO[field.id].gameObject.name = "Field" + field.id;
             FieldGO[field.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.GetSourceInfoById(field.fieldID).slug, AtlasType.Buildings);
