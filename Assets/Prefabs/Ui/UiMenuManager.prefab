@@ -88,6 +88,7 @@ MonoBehaviour:
   buildingMenu: {fileID: 0}
   buyResourcesMenu: {fileID: 0}
   grassListMenu: {fileID: 0}
+  fishingMenu: {fileID: 0}
 --- !u!212 &212776953670521646
 SpriteRenderer:
   m_ObjectHideFlags: 1
