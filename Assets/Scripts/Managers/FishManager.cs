@@ -35,7 +35,7 @@ namespace HarvestValley.Managers
         private void OnFishClickedEventHandler(int fishId)
         {
             MenuManager.Instance.DisplayMenu(MenuNames.FishingMenu, MenuOpeningType.CloseAll);
-            UiFishingMenu.Instance.StartFishingMode();
+            UiFishingMenu.Instance.StartFishingMode(fishId);
         }
         #endregion
 

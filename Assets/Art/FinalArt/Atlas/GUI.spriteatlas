@@ -66,6 +66,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: cd021f79b7c11584c9204690aedb6b55, type: 3}
     - {fileID: 2800000, guid: b7f433f5be62b624fb02261ec7ab6cbb, type: 3}
     - {fileID: 2800000, guid: cd346031d7d16074580e74b39c182db3, type: 3}
+    - {fileID: 2800000, guid: b9177d11032ea9c41912b38524aebdb7, type: 3}
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -81,6 +82,7 @@ SpriteAtlas:
   - {fileID: 21300010, guid: 69d1fbf9cbf8faa4a9c54e08dbb9c308, type: 3}
   - {fileID: 21300012, guid: 69d1fbf9cbf8faa4a9c54e08dbb9c308, type: 3}
   - {fileID: 21300000, guid: 19edc2c91e3846849a8fc2b3413e9bc6, type: 3}
+  - {fileID: 21300000, guid: b9177d11032ea9c41912b38524aebdb7, type: 3}
   - {fileID: 21300000, guid: 9561687ffd60bf04eb4ed931ffd9a396, type: 3}
   - {fileID: 21300000, guid: 69d1fbf9cbf8faa4a9c54e08dbb9c308, type: 3}
   - {fileID: 21300006, guid: 69d1fbf9cbf8faa4a9c54e08dbb9c308, type: 3}
@@ -127,6 +129,7 @@ SpriteAtlas:
   - greencabbage
   - watermelon
   - bread
+  - fishfillet
   - butter
   - wheat
   - carrot
