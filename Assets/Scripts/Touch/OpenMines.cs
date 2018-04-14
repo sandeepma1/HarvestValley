@@ -3,6 +3,6 @@
     public override void OnMouseTouchUp()
     {
         base.OnMouseTouchUp();
-        MySceneManager.LoadScene("Mines");
+        SceneChanger.Instance.LoadScene("Mines");
     }
 }

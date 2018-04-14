@@ -273,11 +273,6 @@ namespace HarvestValley.Managers
 
             ES2.Save(fields, "AllFields");
         }
-        IEnumerator RestartGame()
-        {
-            yield return new WaitForSeconds(5);
-            MySceneManager.LoadScene("Main");
-        }
     }
 }
 

@@ -254,7 +254,7 @@ namespace HarvestValley.Ui
 
         public void LoadScene(string sceneName)
         {
-            MySceneManager.LoadScene(sceneName);
+            SceneChanger.Instance.LoadScene(sceneName);
         }
 
         public void QuitGame()

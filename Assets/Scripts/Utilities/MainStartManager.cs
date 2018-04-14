@@ -10,7 +10,7 @@ public class MainStartManager : MonoBehaviour
         if (Input.GetMouseButtonDown(2) || Input.GetKeyUp(KeyCode.R))
         {
             PlayerPrefs.SetInt("gameStatus", 0);
-            MySceneManager.LoadScene("Start");
+            SceneChanger.Instance.LoadScene("Start");
         }
     }
 

@@ -73,7 +73,7 @@ public class GameStartManager : MonoBehaviour
     private void LoadMainLevel()
     {
         print("Loading Main");
-        MySceneManager.LoadScene("Main");
+        SceneChanger.Instance.LoadScene("Main");
     }
 
     #region Create New files for all types

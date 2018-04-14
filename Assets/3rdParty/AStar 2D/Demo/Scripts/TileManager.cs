@@ -196,7 +196,7 @@ namespace AStar_2D.Demo
                 Agent[] agents = Component.FindObjectsOfType<Agent>();
                 if (tile.IsLadder)
                 {
-                    MySceneManager.LoadScene("Mines");
+                    SceneChanger.Instance.LoadScene("Mines");
                 }
                 if (!tile.IsWalkable)
                 {
@@ -226,7 +226,7 @@ namespace AStar_2D.Demo
             {
                 // Toggle the walkable status
                 //tile.toggleWalkable ();
-                MySceneManager.LoadScene("Mines");
+                SceneChanger.Instance.LoadScene("Mines");
             }
         }
 

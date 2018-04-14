@@ -10,8 +10,6 @@ namespace HarvestValley.Ui
     public class UiFishingMenu : UiMenuBase<UiFishingMenu>
     {
         [SerializeField]
-        private Image backgroundButton;
-        [SerializeField]
         private GameObject miniFishingGameGO;
         [SerializeField]
         private GameObject fishCapturedUiGO;
@@ -81,16 +79,10 @@ namespace HarvestValley.Ui
             holdBarRigidBody = holdBarRectTransform.GetComponent<Rigidbody2D>();
             holdBarScript = holdBarRectTransform.GetComponent<FishingHoldBarCollider>();
             holdBarRectTransform.GetComponent<BoxCollider2D>().size = holdBarRectTransform.sizeDelta;
+
+            clickerButton.onClick.AddListener(OnClickerButtonEventHandler);
             releaseFishButton.onClick.AddListener(OnReleaseFishButtonPressedEventHandler);
             catchFishButton.onClick.AddListener(OnCatchFishButtonPressedEventHandler);
-        }
-
-        private void Update()
-        {
-            if (isInFishingMode && isClicked)
-            {
-                OnButtonClickAndHoldEventHandler();
-            }
         }
 
         public void StartFishingMode(int fishId)
@@ -99,7 +91,6 @@ namespace HarvestValley.Ui
             tempfishId = fishId;
             miniFishingGameGO.SetActive(true);
             fishCapturedUiGO.SetActive(false);
-            backgroundButton.gameObject.SetActive(false);
             StartCoroutine("StartWandering");
             isInFishingMode = true;
         }
@@ -108,7 +99,6 @@ namespace HarvestValley.Ui
         {
             isInFishingMode = false;
             StopCoroutine("StartWandering");
-            backgroundButton.gameObject.SetActive(true);
             dummyFishMove.Kill();
             miniFishingGameGO.SetActive(false);
             if (isFishCaught)
@@ -182,21 +172,7 @@ namespace HarvestValley.Ui
             dummyFishRectTransform.anchoredPosition = dummyFishDefaultPosition;
         }
 
-        public void DetectTapAndHold(bool flag)
-        {
-            if (isInFishingMode)
-            {
-                isClicked = flag;
-            }
-        }
-
-        private void OnButtonClickAndHoldEventHandler()
-        {
-            holdBarRigidBody.velocity = Vector2.zero;
-            holdBarRigidBody.AddForce(new Vector2(0, upForce));
-        }
-
-        public void OnButtonClickEventHandler()
+        private void OnClickerButtonEventHandler()
         {
             holdBarRigidBody.velocity = Vector2.zero;
             holdBarRigidBody.AddForce(new Vector2(0, upForce));
