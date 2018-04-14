@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 using HarvestValley.Ui;
 using HarvestValley.IO;
 
@@ -277,7 +276,7 @@ namespace HarvestValley.Managers
         IEnumerator RestartGame()
         {
             yield return new WaitForSeconds(5);
-            SceneManager.LoadScene("Main");
+            MySceneManager.LoadScene("Main");
         }
     }
 }

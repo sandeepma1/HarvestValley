@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 6a59af1d15e76b746a8583bc650d1fe3
+  - enabled: 1
+    path: Assets/Scenes/Mines.unity
+    guid: 3f6cb1cb5b110ae41ae6e3511b8614fd

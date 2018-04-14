@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using HarvestValley.Managers;
 
@@ -255,7 +254,7 @@ namespace HarvestValley.Ui
 
         public void LoadScene(string sceneName)
         {
-            SceneManager.LoadScene(sceneName);
+            MySceneManager.LoadScene(sceneName);
         }
 
         public void QuitGame()

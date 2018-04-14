@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System;
 
@@ -74,7 +73,7 @@ public class GameStartManager : MonoBehaviour
     private void LoadMainLevel()
     {
         print("Loading Main");
-        SceneManager.LoadScene("Main");
+        MySceneManager.LoadScene("Main");
     }
 
     #region Create New files for all types

@@ -107,7 +107,7 @@ namespace AStar_2D.Demo
             ladderTop = Random.Range(2, GEM.numberOfRocksInLevel / 2);
             ladderBottom = Random.Range(GEM.numberOfRocksInLevel / 2, GEM.numberOfRocksInLevel);
             ladderSpecific = Random.Range(2, GEM.numberOfRocksInLevel);
-            print(GEM.numberOfRocksInLevel + " Tiles**");
+            //print(GEM.numberOfRocksInLevel + " Tiles**");
             //************************
         }
 
@@ -124,7 +124,7 @@ namespace AStar_2D.Demo
                     LadderLogic_BOTTOM();
                     break;
                 case 2:
-                    print("Specific");
+                    //print("Specific");
                     LadderLogic_SPECIFIC();
                     break;
                 case 3:
@@ -156,7 +156,7 @@ namespace AStar_2D.Demo
 
         void LadderLogic_SPECIFIC()
         {
-            print(ladderSpecific);
+            //print(ladderSpecific);
             if (tileRemovedCount == ladderSpecific)
             {
                 CreateLadder();
@@ -182,7 +182,8 @@ namespace AStar_2D.Demo
             if (!tile.IsWalkable)
             {
                 selectedTile = tile;
-            } else
+            }
+            else
             {
                 selectedTile = null;
             }
@@ -195,7 +196,7 @@ namespace AStar_2D.Demo
                 Agent[] agents = Component.FindObjectsOfType<Agent>();
                 if (tile.IsLadder)
                 {
-                    SceneManager.LoadScene("Mines");
+                    MySceneManager.LoadScene("Mines");
                 }
                 if (!tile.IsWalkable)
                 {
@@ -206,7 +207,8 @@ namespace AStar_2D.Demo
                     }
                     StopCoroutine(EnableTile(tile));
                     StartCoroutine(EnableTile(tile));
-                } else
+                }
+                else
                 {
                     foreach (Agent agent in agents)
                     {
@@ -219,11 +221,12 @@ namespace AStar_2D.Demo
                     agent.setDestination(tile.WorldPosition);
                 }
 
-            } else if (mouseButton == 2)
+            }
+            else if (mouseButton == 2)
             {
                 // Toggle the walkable status
                 //tile.toggleWalkable ();
-                SceneManager.LoadScene("Mines");
+                MySceneManager.LoadScene("Mines");
             }
         }
 
@@ -250,7 +253,7 @@ namespace AStar_2D.Demo
             selectedTile.gameObject.GetComponent<SpriteRenderer>().sprite = tileSheet[5];
             tileRemovedCount += 1;
             LadderLogic();
-            print("removed");
+            //print("removed");
         }
 
         private void onTileHover(Tile tile)

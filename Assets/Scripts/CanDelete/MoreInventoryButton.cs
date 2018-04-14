@@ -32,7 +32,7 @@ public class MoreInventoryButton : Singleton<MoreInventoryButton>
 
     public void LoadMainScene()
     {
-        // SceneManager.LoadScene("Main");
+        MySceneManager.LoadScene("Main");
     }
 
     public void ToggleInventorySize(bool isInventoryDown)

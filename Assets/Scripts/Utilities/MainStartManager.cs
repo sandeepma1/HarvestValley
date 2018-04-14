@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using HarvestValley.Managers;
 using HarvestValley.Ui;
 
@@ -11,7 +10,7 @@ public class MainStartManager : MonoBehaviour
         if (Input.GetMouseButtonDown(2) || Input.GetKeyUp(KeyCode.R))
         {
             PlayerPrefs.SetInt("gameStatus", 0);
-            SceneManager.LoadScene("Start");
+            MySceneManager.LoadScene("Start");
         }
     }
 
