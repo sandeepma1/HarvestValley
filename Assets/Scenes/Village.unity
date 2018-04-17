@@ -207,7 +207,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 22872248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.86, y: 4.52, z: -10}
+  m_LocalPosition: {x: 6.86, y: 13.1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -959,6 +959,7 @@ GameObject:
   - component: {fileID: 231434225}
   - component: {fileID: 231434224}
   - component: {fileID: 231434223}
+  - component: {fileID: 231434226}
   m_Layer: 5
   m_Name: Home
   m_TagString: Untagged
@@ -1024,7 +1025,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 877911973}
+      - m_Target: {fileID: 231434226}
         m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
@@ -1070,6 +1071,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 231434221}
+--- !u!114 &231434226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 231434221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b556d03c6ac83a4fa96d75e1672c175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &253584260
 GameObject:
   m_ObjectHideFlags: 0
@@ -2062,14 +2074,13 @@ GameObject:
   - component: {fileID: 877911971}
   - component: {fileID: 877911972}
   - component: {fileID: 877911970}
-  - component: {fileID: 877911973}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &877911969
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2150,17 +2161,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &877911973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 877911968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b556d03c6ac83a4fa96d75e1672c175, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &888044318
 GameObject:
   m_ObjectHideFlags: 0
@@ -3242,7 +3242,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1282476442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -44.5, y: 41, z: -0.01}
+  m_LocalPosition: {x: -50, y: 19, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1490445685}
@@ -4269,9 +4269,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1320726301497856, guid: ffa4155b13c18ab4b8a569859f6daf19, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 223976557586773776, guid: ffa4155b13c18ab4b8a569859f6daf19,
+        type: 2}
+      propertyPath: m_RenderMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 223976557586773776, guid: ffa4155b13c18ab4b8a569859f6daf19,
         type: 2}

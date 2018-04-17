@@ -3,16 +3,30 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using DG.Tweening;
 
 public class SceneChanger : Singleton<SceneChanger>
 {
     static Image circleImage;
     static Vector3 maxSize = new Vector3(30, 30, 30);
+    static Material irisMaterial;
+    static Vector2 irisShrinkTilling = new Vector2(300, 300);
+    static Vector2 irisShrinkOffset = new Vector2(-149.5f, -149.5f);
+    static Vector2 irisExpandTilling = new Vector2(0.35f, 0.35f);
+    static Vector2 irisExpandOffset = new Vector2(0.35f, 0.35f);
+    static float effectSpeed = 1;
+    static Ease shrinkEase = Ease.InExpo;
+    static Ease expandEase = Ease.OutExpo;
+    private Canvas thisCanvas;
 
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
         circleImage = transform.GetChild(0).GetComponent<Image>();
+        irisMaterial = circleImage.material;
+        irisMaterial.mainTextureScale = irisExpandTilling;
+        irisMaterial.mainTextureOffset = irisExpandTilling;
+        thisCanvas = GetComponent<Canvas>();
     }
 
     private void Update()
@@ -25,6 +39,18 @@ public class SceneChanger : Singleton<SceneChanger>
         {
             FadeOut();
         }
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        StartCoroutine("WaitForEndOfFrameForCamera");
+    }
+
+    IEnumerator WaitForEndOfFrameForCamera()
+    {
+        yield return new WaitForEndOfFrame();
+        thisCanvas.worldCamera = Camera.main;
+        FadeOut();
     }
 
     public void LoadScene(string sceneName)
@@ -45,8 +71,10 @@ public class SceneChanger : Singleton<SceneChanger>
     /// </summary>
     public static void FadeIn()
     {
-        circleImage.transform.localScale = Vector3.zero;
-        circleImage.transform.DOScale(maxSize, 1);
+        irisMaterial.mainTextureScale = irisExpandTilling;
+        irisMaterial.mainTextureOffset = irisExpandTilling;
+        irisMaterial.DOTiling(irisShrinkTilling, effectSpeed).SetEase(shrinkEase);
+        irisMaterial.DOOffset(irisShrinkOffset, effectSpeed).SetEase(shrinkEase);
     }
 
     /// <summary>
@@ -54,7 +82,9 @@ public class SceneChanger : Singleton<SceneChanger>
     /// </summary>
     public static void FadeOut()
     {
-        circleImage.transform.localScale = maxSize;
-        circleImage.transform.DOScale(0, 1);
+        irisMaterial.mainTextureScale = irisShrinkTilling;
+        irisMaterial.mainTextureOffset = irisShrinkOffset;
+        irisMaterial.DOTiling(irisExpandTilling, effectSpeed).SetEase(expandEase);
+        irisMaterial.DOOffset(irisExpandOffset, effectSpeed).SetEase(expandEase);
     }
 }

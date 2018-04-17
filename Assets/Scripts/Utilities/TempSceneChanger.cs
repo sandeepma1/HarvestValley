@@ -1,10 +1,9 @@
-﻿using UnityEngine.SceneManagement;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TempSceneChanger : MonoBehaviour
 {
     public void ChangeScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        SceneChanger.Instance.LoadScene(sceneName);
     }
 }
