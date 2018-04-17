@@ -65,7 +65,11 @@ namespace AStar_2D.Demo
         public bool IsWalkable
         {
             get { return walkable; } // Only need to implement the get but set is useful
-            set { walkable = value; }
+            set
+            {
+                GetComponent<SpriteRenderer>().color = Color.clear; //use this to debug
+                walkable = value;
+            }
         }
 
         public bool IsLadder
