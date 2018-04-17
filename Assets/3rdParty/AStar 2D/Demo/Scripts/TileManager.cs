@@ -1,11 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
-
-// Import the AStar_2D namespace
-using AStar_2D;
-using AStar_2D.Pathfinding;
 
 // Namespace
 namespace AStar_2D.Demo
@@ -78,10 +72,10 @@ namespace AStar_2D.Demo
                     obj.transform.SetParent(transform);
 
                     int random = Random.Range(0, 4);
-                    if (random < 1)
+                    if (random < -1)
                     {
                         tiles[i, j].IsWalkable = false;
-                        tiles[i, j].gameObject.GetComponent<SpriteRenderer>().sprite = tileSheet[Random.Range(0, 4)];
+                        tiles[i, j].gameObject.GetComponent<SpriteRenderer>().sprite = tileSheet[Random.Range(0, tileSheet.Length)];
                         rockTilesTemp[GEM.numberOfRocksInLevel] = tiles[i, j];
                         GEM.numberOfRocksInLevel = GEM.numberOfRocksInLevel + 1;
                     }
@@ -147,7 +141,6 @@ namespace AStar_2D.Demo
 
         void LadderLogic_BOTTOM()
         {
-            print(ladderBottom);
             if (tileRemovedCount == ladderBottom)
             {
                 CreateLadder();
@@ -250,7 +243,7 @@ namespace AStar_2D.Demo
         {
             yield return new WaitForSeconds(1f);
             selectedTile.toggleWalkable();
-            selectedTile.gameObject.GetComponent<SpriteRenderer>().sprite = tileSheet[5];
+            selectedTile.gameObject.GetComponent<SpriteRenderer>().sprite = null;
             tileRemovedCount += 1;
             LadderLogic();
             //print("removed");
@@ -258,6 +251,7 @@ namespace AStar_2D.Demo
 
         private void onTileHover(Tile tile)
         {
+            print("onTileHover");
             // Find the first agent
             Agent agent = Component.FindObjectOfType<Agent>();
 
