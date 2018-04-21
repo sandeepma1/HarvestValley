@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 08ebadee53a3c7b49895809596bff345
+timeCreated: 1522252916
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Mouse Memoirs
+  fontNames:
+  - Mouse Memoirs
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

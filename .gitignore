@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+*.ide-wal
+*.ide-shm
+=======
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -32,3 +36,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+>>>>>>> 596b545e9fd1d7e9631df027438d26a35d962f16

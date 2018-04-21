@@ -1,26 +1,60 @@
 ﻿using UnityEngine;
-using System.Collections;
-using TMPro;
+using HarvestValley.Ui;
 
 public class FPSDisplay : MonoBehaviour
 {
-	public bool enableFPS = true;
-	public TextMeshProUGUI fpsText;
-	float deltaTime = 0.0f;
-	float msec;
-	float fps;
-	string text;
+    //string label = "";
+    //float count;
 
- 
-	void LateUpdate ()
-	{
-		if (enableFPS) {
-			deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
-			//msec = deltaTime * 1000.0f;
-			fps = 1.0f / deltaTime;
-			//text = string.Format ("{0:0.0} ms ({1:0.} fps)", msec, fps);
-			//fpsText.text = text;
-			fpsText.text = fps.ToString ("F0");
-		}
-	}
+    //IEnumerator Start()
+    //{
+    //    GUI.depth = 2;
+    //    while (true)
+    //    {
+    //        if (Time.timeScale == 1)
+    //        {
+    //            yield return new WaitForSeconds(0.1f);
+    //            count = (1 / Time.deltaTime);
+    //            label = "" + (Mathf.Round(count));
+    //        } else
+    //        {
+    //            label = "Pause";
+    //        }
+    //        text.text = label;
+    //        yield return new WaitForSeconds(0.5f);
+    //    }
+    //}
+    float deltaTime;
+    int w, h;
+    GUIStyle style;
+    Rect rect;
+    float msec;
+    float fps;
+    string text;
+
+    void Start()
+    {
+        deltaTime = 0.0f;
+
+        w = Screen.width;
+        h = Screen.height;
+        rect = new Rect(0, 0, w, h);
+        style = new GUIStyle();
+        style.fontSize = 30;
+        style.normal.textColor = ColorConstants.FpsColor;
+        style.fontStyle = FontStyle.Bold;
+        style.alignment = TextAnchor.LowerCenter;
+    }
+    void Update()
+    {
+        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+    }
+
+    void OnGUI()
+    {
+        msec = deltaTime * 1000.0f;
+        fps = 1.0f / deltaTime;
+        text = (msec.ToString("F0") + "ms " + fps.ToString("F0"));
+        GUI.Label(rect, text, style);
+    }
 }

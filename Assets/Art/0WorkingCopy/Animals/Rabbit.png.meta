@@ -32,14 +32,17 @@ TextureImporter:
     21300050: Rabbit_25
     21300052: Rabbit_26
     21300054: Rabbit_27
-  serializedVersion: 2
+  externalObjects: {}
+  serializedVersion: 4
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -49,36 +52,73 @@ TextureImporter:
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -3
   maxTextureSize: 512
   textureSettings:
+    serializedVersion: 2
     filterMode: 0
     aniso: 16
     mipBias: -1
-    wrapMode: 1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 16
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: Rabbit_0
+    - serializedVersion: 2
+      name: Rabbit_0
       rect:
         serializedVersion: 2
         x: 0
@@ -89,7 +129,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_1
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_1
       rect:
         serializedVersion: 2
         x: 16
@@ -100,7 +143,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_2
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_2
       rect:
         serializedVersion: 2
         x: 32
@@ -111,7 +157,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_3
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_3
       rect:
         serializedVersion: 2
         x: 48
@@ -122,7 +171,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_4
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_4
       rect:
         serializedVersion: 2
         x: 0
@@ -133,7 +185,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_5
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_5
       rect:
         serializedVersion: 2
         x: 16
@@ -144,7 +199,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_6
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_6
       rect:
         serializedVersion: 2
         x: 32
@@ -155,7 +213,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_7
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_7
       rect:
         serializedVersion: 2
         x: 48
@@ -166,7 +227,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_8
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_8
       rect:
         serializedVersion: 2
         x: 0
@@ -177,7 +241,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_9
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_9
       rect:
         serializedVersion: 2
         x: 16
@@ -188,7 +255,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_10
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_10
       rect:
         serializedVersion: 2
         x: 32
@@ -199,7 +269,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_11
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_11
       rect:
         serializedVersion: 2
         x: 48
@@ -210,7 +283,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_12
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_12
       rect:
         serializedVersion: 2
         x: 0
@@ -221,7 +297,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_13
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_13
       rect:
         serializedVersion: 2
         x: 16
@@ -232,7 +311,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_14
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_14
       rect:
         serializedVersion: 2
         x: 32
@@ -243,7 +325,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_15
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_15
       rect:
         serializedVersion: 2
         x: 48
@@ -254,7 +339,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_16
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_16
       rect:
         serializedVersion: 2
         x: 0
@@ -265,7 +353,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_17
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_17
       rect:
         serializedVersion: 2
         x: 16
@@ -276,7 +367,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_18
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_18
       rect:
         serializedVersion: 2
         x: 32
@@ -287,7 +381,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_19
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_19
       rect:
         serializedVersion: 2
         x: 48
@@ -298,7 +395,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_20
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_20
       rect:
         serializedVersion: 2
         x: 0
@@ -309,7 +409,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_21
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_21
       rect:
         serializedVersion: 2
         x: 16
@@ -320,7 +423,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_22
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_22
       rect:
         serializedVersion: 2
         x: 32
@@ -331,7 +437,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_23
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_23
       rect:
         serializedVersion: 2
         x: 48
@@ -342,7 +451,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_24
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_24
       rect:
         serializedVersion: 2
         x: 0
@@ -353,7 +465,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_25
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_25
       rect:
         serializedVersion: 2
         x: 16
@@ -364,7 +479,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_26
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_26
       rect:
         serializedVersion: 2
         x: 32
@@ -375,7 +493,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: Rabbit_27
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Rabbit_27
       rect:
         serializedVersion: 2
         x: 48
@@ -386,7 +507,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
+      tessellationDetail: -1
     outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

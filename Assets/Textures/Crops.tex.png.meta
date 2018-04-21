@@ -1,0 +1,4102 @@
+fileFormatVersion: 2
+guid: 19fa75170ff88be4aa8fb789eb7ed7bc
+timeCreated: 1515259144
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Crops.tex_0
+    21300002: Crops.tex_1
+    21300004: Crops.tex_2
+    21300006: Crops.tex_3
+    21300008: Crops.tex_4
+    21300010: Crops.tex_5
+    21300012: Crops.tex_6
+    21300014: Crops.tex_7
+    21300016: Crops.tex_8
+    21300018: Crops.tex_9
+    21300020: Crops.tex_10
+    21300022: Crops.tex_11
+    21300024: Crops.tex_12
+    21300026: Crops.tex_13
+    21300028: Crops.tex_14
+    21300030: Crops.tex_15
+    21300032: Crops.tex_16
+    21300034: Crops.tex_17
+    21300036: Crops.tex_18
+    21300038: Crops.tex_19
+    21300040: Crops.tex_20
+    21300042: Crops.tex_21
+    21300044: Crops.tex_22
+    21300046: Crops.tex_23
+    21300048: Crops.tex_24
+    21300050: Crops.tex_25
+    21300052: Crops.tex_26
+    21300054: Crops.tex_27
+    21300056: Crops.tex_28
+    21300058: Crops.tex_29
+    21300060: Crops.tex_30
+    21300062: Crops.tex_31
+    21300064: Crops.tex_32
+    21300066: Crops.tex_33
+    21300068: Crops.tex_34
+    21300070: Crops.tex_35
+    21300072: Crops.tex_36
+    21300074: Crops.tex_37
+    21300076: Crops.tex_38
+    21300078: Crops.tex_39
+    21300080: Crops.tex_40
+    21300082: Crops.tex_41
+    21300084: Crops.tex_42
+    21300086: Crops.tex_43
+    21300088: Crops.tex_44
+    21300090: Crops.tex_45
+    21300092: Crops.tex_46
+    21300094: Crops.tex_47
+    21300096: Crops.tex_48
+    21300098: Crops.tex_49
+    21300100: Crops.tex_50
+    21300102: Crops.tex_51
+    21300104: Crops.tex_52
+    21300106: Crops.tex_53
+    21300108: Crops.tex_54
+    21300110: Crops.tex_55
+    21300112: Crops.tex_56
+    21300114: Crops.tex_57
+    21300116: Crops.tex_58
+    21300118: Crops.tex_59
+    21300120: Crops.tex_60
+    21300122: Crops.tex_61
+    21300124: Crops.tex_62
+    21300126: Crops.tex_63
+    21300128: Crops.tex_64
+    21300130: Crops.tex_65
+    21300132: Crops.tex_66
+    21300134: Crops.tex_67
+    21300136: Crops.tex_68
+    21300138: Crops.tex_69
+    21300140: Crops.tex_70
+    21300142: Crops.tex_71
+    21300144: Crops.tex_72
+    21300146: Crops.tex_73
+    21300148: Crops.tex_74
+    21300150: Crops.tex_75
+    21300152: Crops.tex_76
+    21300154: Crops.tex_77
+    21300156: Crops.tex_78
+    21300158: Crops.tex_79
+    21300160: Crops.tex_80
+    21300162: Crops.tex_81
+    21300164: Crops.tex_82
+    21300166: Crops.tex_83
+    21300168: Crops.tex_84
+    21300170: Crops.tex_85
+    21300172: Crops.tex_86
+    21300174: Crops.tex_87
+    21300176: Crops.tex_88
+    21300178: Crops.tex_89
+    21300180: Crops.tex_90
+    21300182: Crops.tex_91
+    21300184: Crops.tex_92
+    21300186: Crops.tex_93
+    21300188: Crops.tex_94
+    21300190: Crops.tex_95
+    21300192: Crops.tex_96
+    21300194: Crops.tex_97
+    21300196: Crops.tex_98
+    21300198: Crops.tex_99
+    21300200: Crops.tex_100
+    21300202: Crops.tex_101
+    21300204: Crops.tex_102
+    21300206: Crops.tex_103
+    21300208: Crops.tex_104
+    21300210: Crops.tex_105
+    21300212: Crops.tex_106
+    21300214: Crops.tex_107
+    21300216: Crops.tex_108
+    21300218: Crops.tex_109
+    21300220: Crops.tex_110
+    21300222: Crops.tex_111
+    21300224: Crops.tex_112
+    21300226: Crops.tex_113
+    21300228: Crops.tex_114
+    21300230: Crops.tex_115
+    21300232: Crops.tex_116
+    21300234: Crops.tex_117
+    21300236: Crops.tex_118
+    21300238: Crops.tex_119
+    21300240: Crops.tex_120
+    21300242: Crops.tex_121
+    21300244: Crops.tex_122
+    21300246: Crops.tex_123
+    21300248: Crops.tex_124
+    21300250: Crops.tex_125
+    21300252: Crops.tex_126
+    21300254: Crops.tex_127
+    21300256: Crops.tex_128
+    21300258: Crops.tex_129
+    21300260: Crops.tex_130
+    21300262: Crops.tex_131
+    21300264: Crops.tex_132
+    21300266: Crops.tex_133
+    21300268: Crops.tex_134
+    21300270: Crops.tex_135
+    21300272: Crops.tex_136
+    21300274: Crops.tex_137
+    21300276: Crops.tex_138
+    21300278: Crops.tex_139
+    21300280: Crops.tex_140
+    21300282: Crops.tex_141
+    21300284: Crops.tex_142
+    21300286: Crops.tex_143
+    21300288: Crops.tex_144
+    21300290: Crops.tex_145
+    21300292: Crops.tex_146
+    21300294: Crops.tex_147
+    21300296: Crops.tex_148
+    21300298: Crops.tex_149
+    21300300: Crops.tex_150
+    21300302: Crops.tex_151
+    21300304: Crops.tex_152
+    21300306: Crops.tex_153
+    21300308: Crops.tex_154
+    21300310: Crops.tex_155
+    21300312: Crops.tex_156
+    21300314: Crops.tex_157
+    21300316: Crops.tex_158
+    21300318: Crops.tex_159
+    21300320: Crops.tex_160
+    21300322: Crops.tex_161
+    21300324: Crops.tex_162
+    21300326: Crops.tex_163
+    21300328: Crops.tex_164
+    21300330: Crops.tex_165
+    21300332: Crops.tex_166
+    21300334: Crops.tex_167
+    21300336: Crops.tex_168
+    21300338: Crops.tex_169
+    21300340: Crops.tex_170
+    21300342: Crops.tex_171
+    21300344: Crops.tex_172
+    21300346: Crops.tex_173
+    21300348: Crops.tex_174
+    21300350: Crops.tex_175
+    21300352: Crops.tex_176
+    21300354: Crops.tex_177
+    21300356: Crops.tex_178
+    21300358: Crops.tex_179
+    21300360: Crops.tex_180
+    21300362: Crops.tex_181
+    21300364: Crops.tex_182
+    21300366: Crops.tex_183
+    21300368: Crops.tex_184
+    21300370: Crops.tex_185
+    21300372: Crops.tex_186
+    21300374: Crops.tex_187
+    21300376: Crops.tex_188
+    21300378: Crops.tex_189
+    21300380: Crops.tex_190
+    21300382: Crops.tex_191
+    21300384: Crops.tex_192
+    21300386: Crops.tex_193
+    21300388: Crops.tex_194
+    21300390: Crops.tex_195
+    21300392: Crops.tex_196
+    21300394: Crops.tex_197
+    21300396: Crops.tex_198
+    21300398: Crops.tex_199
+    21300400: Crops.tex_200
+    21300402: Crops.tex_201
+    21300404: Crops.tex_202
+    21300406: Crops.tex_203
+    21300408: Crops.tex_204
+    21300410: Crops.tex_205
+    21300412: Crops.tex_206
+    21300414: Crops.tex_207
+    21300416: Crops.tex_208
+    21300418: Crops.tex_209
+    21300420: Crops.tex_210
+    21300422: Crops.tex_211
+    21300424: Crops.tex_212
+    21300426: Crops.tex_213
+    21300428: Crops.tex_214
+    21300430: Crops.tex_215
+    21300432: Crops.tex_216
+    21300434: Crops.tex_217
+    21300436: Crops.tex_218
+    21300438: Crops.tex_219
+    21300440: Crops.tex_220
+    21300442: Crops.tex_221
+    21300444: Crops.tex_222
+    21300446: Crops.tex_223
+    21300448: Crops.tex_224
+    21300450: Crops.tex_225
+    21300452: Crops.tex_226
+    21300454: Crops.tex_227
+    21300456: Crops.tex_228
+    21300458: Crops.tex_229
+    21300460: Crops.tex_230
+    21300462: Crops.tex_231
+    21300464: Crops.tex_232
+    21300466: Crops.tex_233
+    21300468: Crops.tex_234
+    21300470: Crops.tex_235
+    21300472: Crops.tex_236
+    21300474: Crops.tex_237
+    21300476: Crops.tex_238
+    21300478: Crops.tex_239
+    21300480: Crops.tex_240
+    21300482: Crops.tex_241
+    21300484: Crops.tex_242
+    21300486: Crops.tex_243
+    21300488: Crops.tex_244
+    21300490: Crops.tex_245
+    21300492: Crops.tex_246
+    21300494: Crops.tex_247
+    21300496: Crops.tex_248
+    21300498: Crops.tex_249
+    21300500: Crops.tex_250
+    21300502: Crops.tex_251
+    21300504: Crops.tex_252
+    21300506: Crops.tex_253
+    21300508: Crops.tex_254
+    21300510: Crops.tex_255
+    21300512: Crops.tex_256
+    21300514: Crops.tex_257
+    21300516: Crops.tex_258
+    21300518: Crops.tex_259
+    21300520: Crops.tex_260
+    21300522: Crops.tex_261
+    21300524: Crops.tex_262
+    21300526: Crops.tex_263
+    21300528: Crops.tex_264
+    21300530: Crops.tex_265
+    21300532: Crops.tex_266
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 50
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Crops.tex_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 898
+        width: 187
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_1
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 959
+        width: 73
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_2
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 959
+        width: 65
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_3
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 959
+        width: 66
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_4
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 980
+        width: 62
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_5
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 974
+        width: 60
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_6
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 979
+        width: 56
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_7
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 982
+        width: 51
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_8
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 931
+        width: 49
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_9
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 958
+        width: 43
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_10
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 990
+        width: 38
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_11
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 946
+        width: 33
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_12
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 894
+        width: 69
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_13
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 895
+        width: 66
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_14
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 878
+        width: 64
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_15
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 911
+        width: 62
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_16
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 930
+        width: 59
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_17
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 906
+        width: 53
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_18
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 923
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_19
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 934
+        width: 42
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_20
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 946
+        width: 40
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_21
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 863
+        width: 36
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_22
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 856
+        width: 62
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_23
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 846
+        width: 57
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_24
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 864
+        width: 56
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_25
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 865
+        width: 52
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_26
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 852
+        width: 49
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_27
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 883
+        width: 42
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_28
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 900
+        width: 39
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 776
+        width: 121
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_30
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 854
+        width: 74
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_31
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 854
+        width: 64
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_32
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 820
+        width: 65
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_33
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 883
+        width: 23
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_34
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 784
+        width: 69
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_35
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 787
+        width: 67
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_36
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 780
+        width: 64
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_37
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 787
+        width: 62
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_38
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 782
+        width: 58
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_39
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 796
+        width: 53
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_40
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 807
+        width: 52
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_41
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 812
+        width: 47
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_42
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 832
+        width: 46
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_43
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 835
+        width: 38
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_44
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 835
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_45
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 792
+        width: 49
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_46
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 815
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_47
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 780
+        width: 44
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_48
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 779
+        width: 33
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_49
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 760
+        width: 22
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 688
+        width: 115
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_51
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 644
+        width: 75
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_52
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 716
+        width: 74
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_53
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 697
+        width: 68
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_54
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 712
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_55
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 742
+        width: 60
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_56
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 748
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_57
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 718
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_58
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 740
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_59
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 736
+        width: 49
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_60
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 732
+        width: 45
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_61
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 729
+        width: 44
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_62
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 679
+        width: 33
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_63
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 702
+        width: 21
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_64
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 716
+        width: 29
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_65
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 672
+        width: 60
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_66
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 720
+        width: 36
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_67
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 719
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_68
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 679
+        width: 52
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_69
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 660
+        width: 45
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_70
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 678
+        width: 44
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_71
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 651
+        width: 67
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_72
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 650
+        width: 53
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_73
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 675
+        width: 54
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_74
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 712
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_75
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 698
+        width: 30
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_76
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 664
+        width: 62
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_77
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 596
+        width: 95
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_78
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 660
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_79
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 651
+        width: 45
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_80
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 583
+        width: 62
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_81
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 675
+        width: 4
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_82
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 681
+        width: 23
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_83
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 586
+        width: 67
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_84
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 616
+        width: 60
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_85
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 628
+        width: 60
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_86
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 628
+        width: 35
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_87
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 619
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_88
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 604
+        width: 49
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_89
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 579
+        width: 45
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_90
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 623
+        width: 41
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_91
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 644
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_92
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 603
+        width: 72
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_93
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 604
+        width: 64
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_94
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 614
+        width: 28
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_95
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 614
+        width: 28
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_96
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 568
+        width: 48
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_97
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 566
+        width: 41
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_98
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 618
+        width: 37
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_99
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 543
+        width: 88
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_100
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 464
+        width: 73
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_101
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 451
+        width: 75
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_102
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 584
+        width: 49
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_103
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 570
+        width: 60
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_104
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 560
+        width: 53
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_105
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 535
+        width: 49
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_106
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 583
+        width: 36
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_107
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 590
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_108
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 521
+        width: 67
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_109
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 543
+        width: 64
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_110
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 512
+        width: 62
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_111
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 526
+        width: 58
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_112
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 536
+        width: 46
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_113
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 566
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_114
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 522
+        width: 15
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_115
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 6
+        width: 4
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_116
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 490
+        width: 88
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_117
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 525
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_118
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 524
+        width: 29
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_119
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 508
+        width: 48
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_120
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 509
+        width: 52
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_121
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 472
+        width: 49
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_122
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 439
+        width: 46
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_123
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 499
+        width: 40
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_124
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 512
+        width: 39
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_125
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 464
+        width: 68
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_126
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 439
+        width: 129
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_127
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 482
+        width: 58
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_128
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 483
+        width: 40
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_129
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 488
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_130
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 468
+        width: 56
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_131
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 455
+        width: 40
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_132
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 458
+        width: 39
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_133
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 436
+        width: 88
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_134
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 468
+        width: 30
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_135
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 424
+        width: 55
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_136
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 331
+        width: 76
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_137
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 384
+        width: 71
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_138
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 370
+        width: 69
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_139
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 438
+        width: 47
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_140
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 423
+        width: 59
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_141
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 442
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_142
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 447
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_143
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 409
+        width: 49
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_144
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 422
+        width: 36
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_145
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 384
+        width: 22
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_146
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 377
+        width: 88
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_147
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 377
+        width: 56
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_148
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 369
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_149
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 430
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_150
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 410
+        width: 43
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_151
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 388
+        width: 43
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_152
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 378
+        width: 61
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_153
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 364
+        width: 48
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_154
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 408
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_155
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 413
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_156
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 370
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_157
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 322
+        width: 88
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_158
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 316
+        width: 73
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_159
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 324
+        width: 60
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_160
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 302
+        width: 65
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_161
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 301
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_162
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 330
+        width: 61
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_163
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 304
+        width: 48
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_164
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 358
+        width: 54
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_165
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 339
+        width: 50
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_166
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 313
+        width: 47
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_167
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 339
+        width: 43
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_168
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 343
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_169
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 340
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_170
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 278
+        width: 79
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_171
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 284
+        width: 74
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_172
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 282
+        width: 61
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_173
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 315
+        width: 54
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_174
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 271
+        width: 50
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_175
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 318
+        width: 25
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_176
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 275
+        width: 38
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_177
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 286
+        width: 49
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_178
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 251
+        width: 69
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_179
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 232
+        width: 69
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_180
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 232
+        width: 66
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_181
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 247
+        width: 55
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_182
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 272
+        width: 54
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_183
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 281
+        width: 46
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_184
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 278
+        width: 41
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_185
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 228
+        width: 77
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_186
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 232
+        width: 72
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_187
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 216
+        width: 73
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_188
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 234
+        width: 61
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_189
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 229
+        width: 54
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_190
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 237
+        width: 49
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_191
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 254
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_192
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 260
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_193
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 252
+        width: 38
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_194
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 242
+        width: 38
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_195
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 257
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_196
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 186
+        width: 67
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_197
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 190
+        width: 57
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_198
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 242
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_199
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 213
+        width: 23
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_200
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 178
+        width: 77
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_201
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 186
+        width: 71
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_202
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 187
+        width: 49
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_203
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 150
+        width: 65
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_204
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 166
+        width: 69
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_205
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 190
+        width: 57
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_206
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 193
+        width: 49
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_207
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 171
+        width: 51
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_208
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 178
+        width: 46
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_209
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 178
+        width: 42
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_210
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 186
+        width: 33
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_211
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 188
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_212
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 46
+        width: 72
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_213
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 122
+        width: 76
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_214
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 54
+        width: 73
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_215
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 121
+        width: 67
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_216
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 166
+        width: 43
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_217
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 130
+        width: 55
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_218
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 117
+        width: 52
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_219
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 140
+        width: 37
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_220
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 89
+        width: 46
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_221
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 136
+        width: 44
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_222
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 136
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_223
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 100
+        width: 27
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_224
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 64
+        width: 64
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_225
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 122
+        width: 62
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_226
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 118
+        width: 61
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_227
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 80
+        width: 56
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_228
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 124
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_229
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 86
+        width: 41
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_230
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 92
+        width: 42
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_231
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 64
+        width: 76
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_232
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 56
+        width: 67
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_233
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 67
+        width: 62
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_234
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 76
+        width: 61
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_235
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 82
+        width: 41
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_236
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 59
+        width: 52
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_237
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 26
+        width: 49
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_238
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 36
+        width: 41
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_239
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 39
+        width: 39
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_240
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 55
+        width: 25
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_241
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 18
+        width: 74
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_242
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 60
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_243
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 19
+        width: 57
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_244
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 24
+        width: 56
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_245
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 126
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_246
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 7
+        width: 66
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_247
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 0
+        width: 65
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_248
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 16
+        width: 64
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_249
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 25
+        width: 64
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_250
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 0
+        width: 61
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_251
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 0
+        width: 51
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_252
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 0
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_253
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 0
+        width: 39
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_254
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 0
+        width: 31
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_255
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 3
+        width: 38
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_256
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 4
+        width: 30
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_257
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 7
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_258
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 0
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_259
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 0
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_260
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 10
+        width: 30
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_261
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 0
+        width: 28
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_262
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 4
+        width: 30
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_263
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 0
+        width: 29
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_264
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 6
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_265
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 0
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Crops.tex_266
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 9
+        width: 23
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,7773 @@
+fileFormatVersion: 2
+guid: a8fa860033cecf44ca77c847d831fb76
+timeCreated: 1513268218
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: MPF02_00_CP_1.tex_0
+    21300002: MPF02_00_CP_1.tex_1
+    21300004: MPF02_00_CP_1.tex_2
+    21300006: MPF02_00_CP_1.tex_3
+    21300008: MPF02_00_CP_1.tex_4
+    21300010: MPF02_00_CP_1.tex_5
+    21300012: MPF02_00_CP_1.tex_6
+    21300014: MPF02_00_CP_1.tex_7
+    21300016: MPF02_00_CP_1.tex_8
+    21300018: MPF02_00_CP_1.tex_9
+    21300020: MPF02_00_CP_1.tex_10
+    21300022: MPF02_00_CP_1.tex_11
+    21300024: MPF02_00_CP_1.tex_12
+    21300026: MPF02_00_CP_1.tex_13
+    21300028: MPF02_00_CP_1.tex_14
+    21300030: MPF02_00_CP_1.tex_15
+    21300032: MPF02_00_CP_1.tex_16
+    21300034: MPF02_00_CP_1.tex_17
+    21300036: MPF02_00_CP_1.tex_18
+    21300038: MPF02_00_CP_1.tex_19
+    21300040: MPF02_00_CP_1.tex_20
+    21300042: MPF02_00_CP_1.tex_21
+    21300044: MPF02_00_CP_1.tex_22
+    21300046: MPF02_00_CP_1.tex_23
+    21300048: MPF02_00_CP_1.tex_24
+    21300050: MPF02_00_CP_1.tex_25
+    21300052: MPF02_00_CP_1.tex_26
+    21300054: MPF02_00_CP_1.tex_27
+    21300056: MPF02_00_CP_1.tex_28
+    21300058: MPF02_00_CP_1.tex_29
+    21300060: MPF02_00_CP_1.tex_30
+    21300062: MPF02_00_CP_1.tex_31
+    21300064: MPF02_00_CP_1.tex_32
+    21300066: MPF02_00_CP_1.tex_33
+    21300068: MPF02_00_CP_1.tex_34
+    21300070: MPF02_00_CP_1.tex_35
+    21300072: MPF02_00_CP_1.tex_36
+    21300074: MPF02_00_CP_1.tex_37
+    21300076: MPF02_00_CP_1.tex_38
+    21300078: MPF02_00_CP_1.tex_39
+    21300080: MPF02_00_CP_1.tex_40
+    21300082: MPF02_00_CP_1.tex_41
+    21300084: MPF02_00_CP_1.tex_42
+    21300086: MPF02_00_CP_1.tex_43
+    21300088: MPF02_00_CP_1.tex_44
+    21300090: MPF02_00_CP_1.tex_45
+    21300092: MPF02_00_CP_1.tex_46
+    21300094: MPF02_00_CP_1.tex_47
+    21300096: MPF02_00_CP_1.tex_48
+    21300098: MPF02_00_CP_1.tex_49
+    21300100: MPF02_00_CP_1.tex_50
+    21300102: MPF02_00_CP_1.tex_51
+    21300104: MPF02_00_CP_1.tex_52
+    21300106: MPF02_00_CP_1.tex_53
+    21300108: MPF02_00_CP_1.tex_54
+    21300110: MPF02_00_CP_1.tex_55
+    21300112: MPF02_00_CP_1.tex_56
+    21300114: MPF02_00_CP_1.tex_57
+    21300116: MPF02_00_CP_1.tex_58
+    21300118: MPF02_00_CP_1.tex_59
+    21300120: MPF02_00_CP_1.tex_60
+    21300122: MPF02_00_CP_1.tex_61
+    21300124: MPF02_00_CP_1.tex_62
+    21300126: MPF02_00_CP_1.tex_63
+    21300128: MPF02_00_CP_1.tex_64
+    21300130: MPF02_00_CP_1.tex_65
+    21300132: MPF02_00_CP_1.tex_66
+    21300134: MPF02_00_CP_1.tex_67
+    21300136: MPF02_00_CP_1.tex_68
+    21300138: MPF02_00_CP_1.tex_69
+    21300140: MPF02_00_CP_1.tex_70
+    21300142: MPF02_00_CP_1.tex_71
+    21300144: MPF02_00_CP_1.tex_72
+    21300146: MPF02_00_CP_1.tex_73
+    21300148: MPF02_00_CP_1.tex_74
+    21300150: MPF02_00_CP_1.tex_75
+    21300152: MPF02_00_CP_1.tex_76
+    21300154: MPF02_00_CP_1.tex_77
+    21300156: MPF02_00_CP_1.tex_78
+    21300158: MPF02_00_CP_1.tex_79
+    21300160: MPF02_00_CP_1.tex_80
+    21300162: MPF02_00_CP_1.tex_81
+    21300164: MPF02_00_CP_1.tex_82
+    21300166: MPF02_00_CP_1.tex_83
+    21300168: MPF02_00_CP_1.tex_84
+    21300170: MPF02_00_CP_1.tex_85
+    21300172: MPF02_00_CP_1.tex_86
+    21300174: MPF02_00_CP_1.tex_87
+    21300176: MPF02_00_CP_1.tex_88
+    21300178: MPF02_00_CP_1.tex_89
+    21300180: MPF02_00_CP_1.tex_90
+    21300182: MPF02_00_CP_1.tex_91
+    21300184: MPF02_00_CP_1.tex_92
+    21300186: MPF02_00_CP_1.tex_93
+    21300188: MPF02_00_CP_1.tex_94
+    21300190: MPF02_00_CP_1.tex_95
+    21300192: MPF02_00_CP_1.tex_96
+    21300194: MPF02_00_CP_1.tex_97
+    21300196: MPF02_00_CP_1.tex_98
+    21300198: MPF02_00_CP_1.tex_99
+    21300200: MPF02_00_CP_1.tex_100
+    21300202: MPF02_00_CP_1.tex_101
+    21300204: MPF02_00_CP_1.tex_102
+    21300206: MPF02_00_CP_1.tex_103
+    21300208: MPF02_00_CP_1.tex_104
+    21300210: MPF02_00_CP_1.tex_105
+    21300212: MPF02_00_CP_1.tex_106
+    21300214: MPF02_00_CP_1.tex_107
+    21300216: MPF02_00_CP_1.tex_108
+    21300218: MPF02_00_CP_1.tex_109
+    21300220: MPF02_00_CP_1.tex_110
+    21300222: MPF02_00_CP_1.tex_111
+    21300224: MPF02_00_CP_1.tex_112
+    21300226: MPF02_00_CP_1.tex_113
+    21300228: MPF02_00_CP_1.tex_114
+    21300230: MPF02_00_CP_1.tex_115
+    21300232: MPF02_00_CP_1.tex_116
+    21300234: MPF02_00_CP_1.tex_117
+    21300236: MPF02_00_CP_1.tex_118
+    21300238: MPF02_00_CP_1.tex_119
+    21300240: MPF02_00_CP_1.tex_120
+    21300242: MPF02_00_CP_1.tex_121
+    21300244: MPF02_00_CP_1.tex_122
+    21300246: MPF02_00_CP_1.tex_123
+    21300248: MPF02_00_CP_1.tex_124
+    21300250: MPF02_00_CP_1.tex_125
+    21300252: MPF02_00_CP_1.tex_126
+    21300254: MPF02_00_CP_1.tex_127
+    21300256: MPF02_00_CP_1.tex_128
+    21300258: MPF02_00_CP_1.tex_129
+    21300260: MPF02_00_CP_1.tex_130
+    21300262: MPF02_00_CP_1.tex_131
+    21300264: MPF02_00_CP_1.tex_132
+    21300266: MPF02_00_CP_1.tex_133
+    21300268: MPF02_00_CP_1.tex_134
+    21300270: MPF02_00_CP_1.tex_135
+    21300272: MPF02_00_CP_1.tex_136
+    21300274: MPF02_00_CP_1.tex_137
+    21300276: MPF02_00_CP_1.tex_138
+    21300278: MPF02_00_CP_1.tex_139
+    21300280: MPF02_00_CP_1.tex_140
+    21300282: MPF02_00_CP_1.tex_141
+    21300284: MPF02_00_CP_1.tex_142
+    21300286: MPF02_00_CP_1.tex_143
+    21300288: MPF02_00_CP_1.tex_144
+    21300290: MPF02_00_CP_1.tex_145
+    21300292: MPF02_00_CP_1.tex_146
+    21300294: MPF02_00_CP_1.tex_147
+    21300296: MPF02_00_CP_1.tex_148
+    21300298: MPF02_00_CP_1.tex_149
+    21300300: MPF02_00_CP_1.tex_150
+    21300302: MPF02_00_CP_1.tex_151
+    21300304: MPF02_00_CP_1.tex_152
+    21300306: MPF02_00_CP_1.tex_153
+    21300308: MPF02_00_CP_1.tex_154
+    21300310: MPF02_00_CP_1.tex_155
+    21300312: MPF02_00_CP_1.tex_156
+    21300314: MPF02_00_CP_1.tex_157
+    21300316: MPF02_00_CP_1.tex_158
+    21300318: MPF02_00_CP_1.tex_159
+    21300320: MPF02_00_CP_1.tex_160
+    21300322: MPF02_00_CP_1.tex_161
+    21300324: MPF02_00_CP_1.tex_162
+    21300326: MPF02_00_CP_1.tex_163
+    21300328: MPF02_00_CP_1.tex_164
+    21300330: MPF02_00_CP_1.tex_165
+    21300332: MPF02_00_CP_1.tex_166
+    21300334: MPF02_00_CP_1.tex_167
+    21300336: MPF02_00_CP_1.tex_168
+    21300338: MPF02_00_CP_1.tex_169
+    21300340: MPF02_00_CP_1.tex_170
+    21300342: MPF02_00_CP_1.tex_171
+    21300344: MPF02_00_CP_1.tex_172
+    21300346: MPF02_00_CP_1.tex_173
+    21300348: MPF02_00_CP_1.tex_174
+    21300350: MPF02_00_CP_1.tex_175
+    21300352: MPF02_00_CP_1.tex_176
+    21300354: MPF02_00_CP_1.tex_177
+    21300356: MPF02_00_CP_1.tex_178
+    21300358: MPF02_00_CP_1.tex_179
+    21300360: MPF02_00_CP_1.tex_180
+    21300362: MPF02_00_CP_1.tex_181
+    21300364: MPF02_00_CP_1.tex_182
+    21300366: MPF02_00_CP_1.tex_183
+    21300368: MPF02_00_CP_1.tex_184
+    21300370: MPF02_00_CP_1.tex_185
+    21300372: MPF02_00_CP_1.tex_186
+    21300374: MPF02_00_CP_1.tex_187
+    21300376: MPF02_00_CP_1.tex_188
+    21300378: MPF02_00_CP_1.tex_189
+    21300380: MPF02_00_CP_1.tex_190
+    21300382: MPF02_00_CP_1.tex_191
+    21300384: MPF02_00_CP_1.tex_192
+    21300386: MPF02_00_CP_1.tex_193
+    21300388: MPF02_00_CP_1.tex_194
+    21300390: MPF02_00_CP_1.tex_195
+    21300392: MPF02_00_CP_1.tex_196
+    21300394: MPF02_00_CP_1.tex_197
+    21300396: MPF02_00_CP_1.tex_198
+    21300398: MPF02_00_CP_1.tex_199
+    21300400: MPF02_00_CP_1.tex_200
+    21300402: MPF02_00_CP_1.tex_201
+    21300404: MPF02_00_CP_1.tex_202
+    21300406: MPF02_00_CP_1.tex_203
+    21300408: MPF02_00_CP_1.tex_204
+    21300410: MPF02_00_CP_1.tex_205
+    21300412: MPF02_00_CP_1.tex_206
+    21300414: MPF02_00_CP_1.tex_207
+    21300416: MPF02_00_CP_1.tex_208
+    21300418: MPF02_00_CP_1.tex_209
+    21300420: MPF02_00_CP_1.tex_210
+    21300422: MPF02_00_CP_1.tex_211
+    21300424: MPF02_00_CP_1.tex_212
+    21300426: MPF02_00_CP_1.tex_213
+    21300428: MPF02_00_CP_1.tex_214
+    21300430: MPF02_00_CP_1.tex_215
+    21300432: MPF02_00_CP_1.tex_216
+    21300434: MPF02_00_CP_1.tex_217
+    21300436: MPF02_00_CP_1.tex_218
+    21300438: MPF02_00_CP_1.tex_219
+    21300440: MPF02_00_CP_1.tex_220
+    21300442: MPF02_00_CP_1.tex_221
+    21300444: MPF02_00_CP_1.tex_222
+    21300446: MPF02_00_CP_1.tex_223
+    21300448: MPF02_00_CP_1.tex_224
+    21300450: MPF02_00_CP_1.tex_225
+    21300452: MPF02_00_CP_1.tex_226
+    21300454: MPF02_00_CP_1.tex_227
+    21300456: MPF02_00_CP_1.tex_228
+    21300458: MPF02_00_CP_1.tex_229
+    21300460: MPF02_00_CP_1.tex_230
+    21300462: MPF02_00_CP_1.tex_231
+    21300464: MPF02_00_CP_1.tex_232
+    21300466: MPF02_00_CP_1.tex_233
+    21300468: MPF02_00_CP_1.tex_234
+    21300470: MPF02_00_CP_1.tex_235
+    21300472: MPF02_00_CP_1.tex_236
+    21300474: MPF02_00_CP_1.tex_237
+    21300476: MPF02_00_CP_1.tex_238
+    21300478: MPF02_00_CP_1.tex_239
+    21300480: MPF02_00_CP_1.tex_240
+    21300482: MPF02_00_CP_1.tex_241
+    21300484: MPF02_00_CP_1.tex_242
+    21300486: MPF02_00_CP_1.tex_243
+    21300488: MPF02_00_CP_1.tex_244
+    21300490: MPF02_00_CP_1.tex_245
+    21300492: MPF02_00_CP_1.tex_246
+    21300494: MPF02_00_CP_1.tex_247
+    21300496: MPF02_00_CP_1.tex_248
+    21300498: MPF02_00_CP_1.tex_249
+    21300500: MPF02_00_CP_1.tex_250
+    21300502: MPF02_00_CP_1.tex_251
+    21300504: MPF02_00_CP_1.tex_252
+    21300506: MPF02_00_CP_1.tex_253
+    21300508: MPF02_00_CP_1.tex_254
+    21300510: MPF02_00_CP_1.tex_255
+    21300512: MPF02_00_CP_1.tex_256
+    21300514: MPF02_00_CP_1.tex_257
+    21300516: MPF02_00_CP_1.tex_258
+    21300518: MPF02_00_CP_1.tex_259
+    21300520: MPF02_00_CP_1.tex_260
+    21300522: MPF02_00_CP_1.tex_261
+    21300524: MPF02_00_CP_1.tex_262
+    21300526: MPF02_00_CP_1.tex_263
+    21300528: MPF02_00_CP_1.tex_264
+    21300530: MPF02_00_CP_1.tex_265
+    21300532: MPF02_00_CP_1.tex_266
+    21300534: MPF02_00_CP_1.tex_267
+    21300536: MPF02_00_CP_1.tex_268
+    21300538: MPF02_00_CP_1.tex_269
+    21300540: MPF02_00_CP_1.tex_270
+    21300542: MPF02_00_CP_1.tex_271
+    21300544: MPF02_00_CP_1.tex_272
+    21300546: MPF02_00_CP_1.tex_273
+    21300548: MPF02_00_CP_1.tex_274
+    21300550: MPF02_00_CP_1.tex_275
+    21300552: MPF02_00_CP_1.tex_276
+    21300554: MPF02_00_CP_1.tex_277
+    21300556: MPF02_00_CP_1.tex_278
+    21300558: MPF02_00_CP_1.tex_279
+    21300560: MPF02_00_CP_1.tex_280
+    21300562: MPF02_00_CP_1.tex_281
+    21300564: MPF02_00_CP_1.tex_282
+    21300566: MPF02_00_CP_1.tex_283
+    21300568: MPF02_00_CP_1.tex_284
+    21300570: MPF02_00_CP_1.tex_285
+    21300572: MPF02_00_CP_1.tex_286
+    21300574: MPF02_00_CP_1.tex_287
+    21300576: MPF02_00_CP_1.tex_288
+    21300578: MPF02_00_CP_1.tex_289
+    21300580: MPF02_00_CP_1.tex_290
+    21300582: MPF02_00_CP_1.tex_291
+    21300584: MPF02_00_CP_1.tex_292
+    21300586: MPF02_00_CP_1.tex_293
+    21300588: MPF02_00_CP_1.tex_294
+    21300590: MPF02_00_CP_1.tex_295
+    21300592: MPF02_00_CP_1.tex_296
+    21300594: MPF02_00_CP_1.tex_297
+    21300596: MPF02_00_CP_1.tex_298
+    21300598: MPF02_00_CP_1.tex_299
+    21300600: MPF02_00_CP_1.tex_300
+    21300602: MPF02_00_CP_1.tex_301
+    21300604: MPF02_00_CP_1.tex_302
+    21300606: MPF02_00_CP_1.tex_303
+    21300608: MPF02_00_CP_1.tex_304
+    21300610: MPF02_00_CP_1.tex_305
+    21300612: MPF02_00_CP_1.tex_306
+    21300614: MPF02_00_CP_1.tex_307
+    21300616: MPF02_00_CP_1.tex_308
+    21300618: MPF02_00_CP_1.tex_309
+    21300620: MPF02_00_CP_1.tex_310
+    21300622: MPF02_00_CP_1.tex_311
+    21300624: MPF02_00_CP_1.tex_312
+    21300626: MPF02_00_CP_1.tex_313
+    21300628: MPF02_00_CP_1.tex_314
+    21300630: MPF02_00_CP_1.tex_315
+    21300632: MPF02_00_CP_1.tex_316
+    21300634: MPF02_00_CP_1.tex_317
+    21300636: MPF02_00_CP_1.tex_318
+    21300638: MPF02_00_CP_1.tex_319
+    21300640: MPF02_00_CP_1.tex_320
+    21300642: MPF02_00_CP_1.tex_321
+    21300644: MPF02_00_CP_1.tex_322
+    21300646: MPF02_00_CP_1.tex_323
+    21300648: MPF02_00_CP_1.tex_324
+    21300650: MPF02_00_CP_1.tex_325
+    21300652: MPF02_00_CP_1.tex_326
+    21300654: MPF02_00_CP_1.tex_327
+    21300656: MPF02_00_CP_1.tex_328
+    21300658: MPF02_00_CP_1.tex_329
+    21300660: MPF02_00_CP_1.tex_330
+    21300662: MPF02_00_CP_1.tex_331
+    21300664: MPF02_00_CP_1.tex_332
+    21300666: MPF02_00_CP_1.tex_333
+    21300668: MPF02_00_CP_1.tex_334
+    21300670: MPF02_00_CP_1.tex_335
+    21300672: MPF02_00_CP_1.tex_336
+    21300674: MPF02_00_CP_1.tex_337
+    21300676: MPF02_00_CP_1.tex_338
+    21300678: MPF02_00_CP_1.tex_339
+    21300680: MPF02_00_CP_1.tex_340
+    21300682: MPF02_00_CP_1.tex_341
+    21300684: MPF02_00_CP_1.tex_342
+    21300686: MPF02_00_CP_1.tex_343
+    21300688: MPF02_00_CP_1.tex_344
+    21300690: MPF02_00_CP_1.tex_345
+    21300692: MPF02_00_CP_1.tex_346
+    21300694: MPF02_00_CP_1.tex_347
+    21300696: MPF02_00_CP_1.tex_348
+    21300698: MPF02_00_CP_1.tex_349
+    21300700: MPF02_00_CP_1.tex_350
+    21300702: MPF02_00_CP_1.tex_351
+    21300704: MPF02_00_CP_1.tex_352
+    21300706: MPF02_00_CP_1.tex_353
+    21300708: MPF02_00_CP_1.tex_354
+    21300710: MPF02_00_CP_1.tex_355
+    21300712: MPF02_00_CP_1.tex_356
+    21300714: MPF02_00_CP_1.tex_357
+    21300716: MPF02_00_CP_1.tex_358
+    21300718: MPF02_00_CP_1.tex_359
+    21300720: MPF02_00_CP_1.tex_360
+    21300722: MPF02_00_CP_1.tex_361
+    21300724: MPF02_00_CP_1.tex_362
+    21300726: MPF02_00_CP_1.tex_363
+    21300728: MPF02_00_CP_1.tex_364
+    21300730: MPF02_00_CP_1.tex_365
+    21300732: MPF02_00_CP_1.tex_366
+    21300734: MPF02_00_CP_1.tex_367
+    21300736: MPF02_00_CP_1.tex_368
+    21300738: MPF02_00_CP_1.tex_369
+    21300740: MPF02_00_CP_1.tex_370
+    21300742: MPF02_00_CP_1.tex_371
+    21300744: MPF02_00_CP_1.tex_372
+    21300746: MPF02_00_CP_1.tex_373
+    21300748: MPF02_00_CP_1.tex_374
+    21300750: MPF02_00_CP_1.tex_375
+    21300752: MPF02_00_CP_1.tex_376
+    21300754: MPF02_00_CP_1.tex_377
+    21300756: MPF02_00_CP_1.tex_378
+    21300758: MPF02_00_CP_1.tex_379
+    21300760: MPF02_00_CP_1.tex_380
+    21300762: MPF02_00_CP_1.tex_381
+    21300764: MPF02_00_CP_1.tex_382
+    21300766: MPF02_00_CP_1.tex_383
+    21300768: MPF02_00_CP_1.tex_384
+    21300770: MPF02_00_CP_1.tex_385
+    21300772: MPF02_00_CP_1.tex_386
+    21300774: MPF02_00_CP_1.tex_387
+    21300776: MPF02_00_CP_1.tex_388
+    21300778: MPF02_00_CP_1.tex_389
+    21300780: MPF02_00_CP_1.tex_390
+    21300782: MPF02_00_CP_1.tex_391
+    21300784: MPF02_00_CP_1.tex_392
+    21300786: MPF02_00_CP_1.tex_393
+    21300788: MPF02_00_CP_1.tex_394
+    21300790: MPF02_00_CP_1.tex_395
+    21300792: MPF02_00_CP_1.tex_396
+    21300794: MPF02_00_CP_1.tex_397
+    21300796: MPF02_00_CP_1.tex_398
+    21300798: MPF02_00_CP_1.tex_399
+    21300800: MPF02_00_CP_1.tex_400
+    21300802: MPF02_00_CP_1.tex_401
+    21300804: MPF02_00_CP_1.tex_402
+    21300806: MPF02_00_CP_1.tex_403
+    21300808: MPF02_00_CP_1.tex_404
+    21300810: MPF02_00_CP_1.tex_405
+    21300812: MPF02_00_CP_1.tex_406
+    21300814: MPF02_00_CP_1.tex_407
+    21300816: MPF02_00_CP_1.tex_408
+    21300818: MPF02_00_CP_1.tex_409
+    21300820: MPF02_00_CP_1.tex_410
+    21300822: MPF02_00_CP_1.tex_411
+    21300824: MPF02_00_CP_1.tex_412
+    21300826: MPF02_00_CP_1.tex_413
+    21300828: MPF02_00_CP_1.tex_414
+    21300830: MPF02_00_CP_1.tex_415
+    21300832: MPF02_00_CP_1.tex_416
+    21300834: MPF02_00_CP_1.tex_417
+    21300836: MPF02_00_CP_1.tex_418
+    21300838: MPF02_00_CP_1.tex_419
+    21300840: MPF02_00_CP_1.tex_420
+    21300842: MPF02_00_CP_1.tex_421
+    21300844: MPF02_00_CP_1.tex_422
+    21300846: MPF02_00_CP_1.tex_423
+    21300848: MPF02_00_CP_1.tex_424
+    21300850: MPF02_00_CP_1.tex_425
+    21300852: MPF02_00_CP_1.tex_426
+    21300854: MPF02_00_CP_1.tex_427
+    21300856: MPF02_00_CP_1.tex_428
+    21300858: MPF02_00_CP_1.tex_429
+    21300860: MPF02_00_CP_1.tex_430
+    21300862: MPF02_00_CP_1.tex_431
+    21300864: MPF02_00_CP_1.tex_432
+    21300866: MPF02_00_CP_1.tex_433
+    21300868: MPF02_00_CP_1.tex_434
+    21300870: MPF02_00_CP_1.tex_435
+    21300872: MPF02_00_CP_1.tex_436
+    21300874: MPF02_00_CP_1.tex_437
+    21300876: MPF02_00_CP_1.tex_438
+    21300878: MPF02_00_CP_1.tex_439
+    21300880: MPF02_00_CP_1.tex_440
+    21300882: MPF02_00_CP_1.tex_441
+    21300884: MPF02_00_CP_1.tex_442
+    21300886: MPF02_00_CP_1.tex_443
+    21300888: MPF02_00_CP_1.tex_444
+    21300890: MPF02_00_CP_1.tex_445
+    21300892: MPF02_00_CP_1.tex_446
+    21300894: MPF02_00_CP_1.tex_447
+    21300896: MPF02_00_CP_1.tex_448
+    21300898: MPF02_00_CP_1.tex_449
+    21300900: MPF02_00_CP_1.tex_450
+    21300902: MPF02_00_CP_1.tex_451
+    21300904: MPF02_00_CP_1.tex_452
+    21300906: MPF02_00_CP_1.tex_453
+    21300908: MPF02_00_CP_1.tex_454
+    21300910: MPF02_00_CP_1.tex_455
+    21300912: MPF02_00_CP_1.tex_456
+    21300914: MPF02_00_CP_1.tex_457
+    21300916: MPF02_00_CP_1.tex_458
+    21300918: MPF02_00_CP_1.tex_459
+    21300920: MPF02_00_CP_1.tex_460
+    21300922: MPF02_00_CP_1.tex_461
+    21300924: MPF02_00_CP_1.tex_462
+    21300926: MPF02_00_CP_1.tex_463
+    21300928: MPF02_00_CP_1.tex_464
+    21300930: MPF02_00_CP_1.tex_465
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 64, y: 0, z: 0, w: 64}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_4
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_5
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_6
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_7
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_8
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_10
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_11
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_12
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_13
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_14
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_15
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_16
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_17
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_18
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_19
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_20
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_21
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_22
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1984
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_23
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_24
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_25
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_26
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_27
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_28
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_29
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_30
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_31
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_32
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_33
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_34
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_35
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_36
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_37
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_38
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_39
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_40
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_41
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_42
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_43
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1920
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_45
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_46
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_47
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_48
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_49
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_50
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_51
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_52
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_53
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_54
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_55
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_56
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_57
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_58
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_59
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_60
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_61
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_62
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_63
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_64
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_65
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_66
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_67
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_68
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_69
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_70
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_71
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_72
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_73
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 1856
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_74
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_75
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_76
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_77
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_78
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_79
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_80
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_81
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_82
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_83
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_84
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_85
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_86
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_87
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_88
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_89
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_90
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_91
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_92
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_93
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_94
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_95
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_96
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_97
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_98
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_99
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_100
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 1792
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_101
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_102
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_103
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_104
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_105
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_106
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_107
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_108
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_109
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_110
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_111
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_112
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_113
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_114
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_115
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_116
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_117
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_118
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_119
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_120
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_121
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_122
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_123
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_124
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_125
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_126
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_127
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_128
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_129
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_130
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 1728
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_131
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_132
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_133
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_134
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_135
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_136
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_137
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_138
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_139
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_140
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_141
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_142
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_143
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_144
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_145
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_146
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_147
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_148
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_149
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_150
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_151
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1664
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_152
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1600
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_153
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1600
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_154
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1600
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_155
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1600
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_156
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1600
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_157
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1600
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_158
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1600
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_159
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1600
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_160
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1600
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_161
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 1600
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_162
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1600
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_163
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_164
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1536
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_165
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1536
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_166
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1536
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_167
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_168
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1536
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_169
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1536
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_170
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_171
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1536
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_172
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 1536
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_173
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1536
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_174
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1536
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_175
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 1536
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_176
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1536
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_177
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_178
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_179
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_180
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_181
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_182
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_183
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_184
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_185
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_186
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_187
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_188
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_189
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_190
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_191
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_192
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_193
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1472
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_194
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1408
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_195
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1408
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_196
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1408
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_197
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1408
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_198
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 1408
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_199
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1408
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_200
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1408
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_201
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 1408
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_202
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1408
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_203
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1408
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_204
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 1408
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_205
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1408
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_206
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1344
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_207
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1344
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_208
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1344
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_209
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1344
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_210
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 1344
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_211
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1344
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_212
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1344
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_213
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1344
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_214
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1344
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_215
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 1344
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_216
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1344
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_217
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1280
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_218
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 1280
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_219
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_220
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1280
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_221
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1280
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_222
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1280
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_223
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 1280
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_224
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1280
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_225
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_226
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_227
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_228
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_229
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_230
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_231
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_232
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_233
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_234
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_235
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_236
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_237
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_238
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_239
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_240
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_241
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_242
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_243
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_244
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_245
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_246
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_247
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_248
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_249
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_250
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_251
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_252
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_253
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_254
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_255
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_256
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_257
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_258
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_259
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_260
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_261
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_262
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_263
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_264
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_265
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_266
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_267
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_268
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_269
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_270
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_271
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_272
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_273
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_274
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_275
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_276
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_277
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_278
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_279
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_280
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_281
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_282
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_283
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_284
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_285
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_286
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_287
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_288
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_289
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_290
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_291
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_292
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_293
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_294
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_295
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_296
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_297
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_298
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_299
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_300
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_301
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_302
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_303
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_304
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_305
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_306
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_307
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_308
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_309
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_310
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_311
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_312
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_313
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_314
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_315
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_316
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_317
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_318
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_319
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_320
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_321
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_322
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_323
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_324
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_325
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_326
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_327
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_328
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_329
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_330
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_331
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_332
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_333
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_334
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_335
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_336
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_337
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_338
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_339
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_340
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_341
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_342
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_343
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_344
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_345
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_346
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_347
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_348
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_349
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_350
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_351
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_352
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_353
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_354
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_355
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_356
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_357
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_358
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_359
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_360
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_361
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_362
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_363
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_364
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_365
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_366
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_367
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_368
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_369
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_370
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_371
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_372
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_373
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_374
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_375
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_376
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_377
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_378
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_379
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_380
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_381
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_382
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_383
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_384
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_385
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_386
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_387
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_388
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_389
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_390
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_391
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_392
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_393
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_394
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_395
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_396
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_397
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_398
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_399
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_400
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_401
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_402
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_403
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_404
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_405
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_406
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_407
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_408
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_409
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_410
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_411
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_412
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_413
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_414
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_415
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_416
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_417
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_418
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_419
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_420
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_421
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_422
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_423
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_424
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_425
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_426
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_427
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_428
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_429
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_430
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_431
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_432
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_433
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_434
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_435
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_436
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_437
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_438
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_439
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_440
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_441
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_442
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_443
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_444
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_445
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_446
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_447
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_448
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_449
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_450
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_451
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_452
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_453
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_454
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_455
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_456
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_457
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_458
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_459
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_460
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_461
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_462
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_463
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_464
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MPF02_00_CP_1.tex_465
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline:
+    - - {x: -156, y: -582}
+      - {x: -179, y: -599}
+      - {x: -188, y: -579}
+      - {x: -192, y: -578}
+      - {x: -204, y: -578}
+      - {x: -217, y: -581}
+      - {x: -243, y: -595}
+      - {x: -253, y: -579}
+      - {x: -256, y: -578}
+      - {x: -272, y: -578}
+      - {x: -289, y: -581}
+      - {x: -302, y: -589}
+      - {x: -317, y: -607}
+      - {x: -318, y: -580}
+      - {x: -320, y: -578}
+      - {x: -348, y: -578}
+      - {x: -361, y: -581}
+      - {x: -380, y: -598}
+      - {x: -382, y: -608}
+      - {x: -382, y: -616}
+      - {x: -382, y: -578}
+      - {x: -128, y: -578}
+      - {x: -126, y: -576}
+      - {x: -126, y: -324}
+      - {x: -128, y: -322}
+      - {x: -156, y: -322}
+      - {x: -158, y: -324}
+      - {x: -164, y: -322}
+      - {x: -168, y: -322}
+      - {x: -170, y: -323}
+      - {x: -180, y: -322}
+      - {x: -220, y: -322}
+      - {x: -222, y: -324}
+      - {x: -228, y: -322}
+      - {x: -232, y: -322}
+      - {x: -234, y: -323}
+      - {x: -244, y: -322}
+      - {x: -284, y: -322}
+      - {x: -286, y: -324}
+      - {x: -292, y: -322}
+      - {x: -296, y: -322}
+      - {x: -298, y: -323}
+      - {x: -308, y: -322}
+      - {x: -348, y: -322}
+      - {x: -350, y: -324}
+      - {x: -356, y: -322}
+      - {x: -360, y: -322}
+      - {x: -362, y: -323}
+      - {x: -372, y: -322}
+      - {x: -412, y: -322}
+      - {x: -414, y: -324}
+      - {x: -420, y: -322}
+      - {x: -424, y: -322}
+      - {x: -426, y: -323}
+      - {x: -436, y: -322}
+      - {x: -476, y: -322}
+      - {x: -478, y: -324}
+      - {x: -484, y: -322}
+      - {x: -508, y: -322}
+      - {x: -126, y: -322}
+      - {x: -126, y: 4}
+      - {x: -207, y: 66}
+      - {x: -1024, y: 66}
+      - {x: -1024, y: -322}
+      - {x: -668, y: -322}
+      - {x: -670, y: -324}
+      - {x: -676, y: -322}
+      - {x: -732, y: -322}
+      - {x: -734, y: -324}
+      - {x: -740, y: -322}
+      - {x: -744, y: -322}
+      - {x: -746, y: -323}
+      - {x: -756, y: -322}
+      - {x: -796, y: -322}
+      - {x: -798, y: -324}
+      - {x: -804, y: -322}
+      - {x: -808, y: -322}
+      - {x: -810, y: -323}
+      - {x: -820, y: -322}
+      - {x: -860, y: -322}
+      - {x: -862, y: -324}
+      - {x: -868, y: -322}
+      - {x: -872, y: -322}
+      - {x: -874, y: -323}
+      - {x: -884, y: -322}
+      - {x: -924, y: -322}
+      - {x: -926, y: -324}
+      - {x: -932, y: -322}
+      - {x: -936, y: -322}
+      - {x: -938, y: -323}
+      - {x: -948, y: -322}
+      - {x: -988, y: -322}
+      - {x: -990, y: -324}
+      - {x: -996, y: -322}
+      - {x: -1000, y: -322}
+      - {x: -1002, y: -323}
+      - {x: -1012, y: -322}
+      - {x: -1024, y: -322}
+      - {x: -1024, y: -578}
+      - {x: -748, y: -578}
+      - {x: -753, y: -581}
+      - {x: -768, y: -578}
+      - {x: -796, y: -578}
+      - {x: -798, y: -580}
+      - {x: -808, y: -582}
+      - {x: -813, y: -585}
+      - {x: -825, y: -597}
+      - {x: -830, y: -608}
+      - {x: -830, y: -616}
+      - {x: -830, y: -580}
+      - {x: -832, y: -578}
+      - {x: -848, y: -578}
+      - {x: -865, y: -581}
+      - {x: -887, y: -596}
+      - {x: -893, y: -579}
+      - {x: -896, y: -578}
+      - {x: -908, y: -578}
+      - {x: -916, y: -580}
+      - {x: -929, y: -586}
+      - {x: -945, y: -597}
+      - {x: -949, y: -605}
+      - {x: -954, y: -616}
+      - {x: -957, y: -579}
+      - {x: -960, y: -578}
+      - {x: -980, y: -578}
+      - {x: -1024, y: -584}
+      - {x: -1024, y: -1024}
+      - {x: -126, y: -1024}
+      - {x: -126, y: -580}
+      - {x: -128, y: -578}
+      - {x: -140, y: -578}
+    - - {x: 896, y: -986}
+      - {x: 896, y: -972}
+      - {x: 892, y: -961}
+      - {x: 873, y: -961}
+      - {x: 866, y: -968}
+      - {x: 855, y: -961}
+      - {x: 845, y: -961}
+      - {x: 837, y: -963}
+      - {x: 832, y: -971}
+      - {x: 832, y: -985}
+      - {x: 839, y: -1023}
+      - {x: 841, y: -1024}
+      - {x: 890, y: -1024}
+      - {x: 893, y: -1015}
+      - {x: 895, y: -1008}
+      - {x: 886, y: -998}
+    - - {x: 949, y: -964}
+      - {x: 918, y: -964}
+      - {x: 903, y: -982}
+      - {x: 903, y: -1009}
+      - {x: 905, y: -1016}
+      - {x: 914, y: -1021}
+      - {x: 939, y: -1021}
+      - {x: 945, y: -1020}
+      - {x: 955, y: -1009}
+      - {x: 955, y: -971}
+    - - {x: 894, y: -830}
+      - {x: 852, y: -830}
+      - {x: 836, y: -831}
+      - {x: 835, y: -831}
+      - {x: 835, y: -898}
+      - {x: 894, y: -898}
+      - {x: 896, y: -896}
+      - {x: 896, y: -852}
+    - - {x: 954, y: -769}
+      - {x: 899, y: -769}
+      - {x: 899, y: -834}
+      - {x: 959, y: -834}
+      - {x: 959, y: -771}
+    - - {x: 969, y: -769}
+      - {x: 963, y: -770}
+      - {x: 963, y: -834}
+      - {x: 1023, y: -834}
+      - {x: 1023, y: -772}
+      - {x: 1020, y: -769}
+    - - {x: 875, y: -769}
+      - {x: 851, y: -769}
+      - {x: 838, y: -776}
+      - {x: 838, y: -828}
+      - {x: 841, y: -832}
+      - {x: 887, y: -832}
+      - {x: 890, y: -826}
+      - {x: 890, y: -784}
+      - {x: 888, y: -778}
+    - - {x: 590, y: 256}
+      - {x: 605, y: 261}
+      - {x: 621, y: 273}
+      - {x: 634, y: 288}
+      - {x: 636, y: 302}
+      - {x: 642, y: 305}
+      - {x: 643, y: 313}
+      - {x: 640, y: 328}
+      - {x: 643, y: 344}
+      - {x: 642, y: 374}
+      - {x: 643, y: 383}
+      - {x: 645, y: 430}
+      - {x: 644, y: 445}
+      - {x: 668, y: 445}
+      - {x: 682, y: 448}
+      - {x: 697, y: 445}
+      - {x: 702, y: 447}
+      - {x: 702, y: 256}
+      - {x: 704, y: 254}
+      - {x: 960, y: 254}
+      - {x: 962, y: 256}
+      - {x: 962, y: 548}
+      - {x: 960, y: 556}
+      - {x: 943, y: 578}
+      - {x: 940, y: 578}
+      - {x: 925, y: 581}
+      - {x: 941, y: 593}
+      - {x: 954, y: 608}
+      - {x: 956, y: 622}
+      - {x: 962, y: 625}
+      - {x: 963, y: 633}
+      - {x: 960, y: 648}
+      - {x: 963, y: 664}
+      - {x: 962, y: 694}
+      - {x: 963, y: 703}
+      - {x: 965, y: 750}
+      - {x: 964, y: 765}
+      - {x: 1017, y: 765}
+      - {x: 1024, y: 767}
+      - {x: 1024, y: 856}
+      - {x: 1011, y: 856}
+      - {x: 988, y: 858}
+      - {x: 963, y: 863}
+      - {x: 962, y: 888}
+      - {x: 963, y: 913}
+      - {x: 950, y: 937}
+      - {x: 940, y: 958}
+      - {x: 928, y: 965}
+      - {x: 915, y: 981}
+      - {x: 905, y: 988}
+      - {x: 899, y: 986}
+      - {x: 898, y: 1011}
+      - {x: 896, y: 1013}
+      - {x: 770, y: 1019}
+      - {x: 769, y: 1021}
+      - {x: 760, y: 1022}
+      - {x: 755, y: 1022}
+      - {x: 754, y: 1020}
+      - {x: 747, y: 1011}
+      - {x: 725, y: 994}
+      - {x: 701, y: 970}
+      - {x: 702, y: 896}
+      - {x: 703, y: 893}
+      - {x: 765, y: 849}
+      - {x: 781, y: 845}
+      - {x: 816, y: 846}
+      - {x: 859, y: 848}
+      - {x: 892, y: 848}
+      - {x: 894, y: 849}
+      - {x: 894, y: 670}
+      - {x: 887, y: 677}
+      - {x: 877, y: 695}
+      - {x: 865, y: 703}
+      - {x: 867, y: 713}
+      - {x: 857, y: 724}
+      - {x: 840, y: 730}
+      - {x: 834, y: 728}
+      - {x: 834, y: 790}
+      - {x: 832, y: 792}
+      - {x: 825, y: 792}
+      - {x: 819, y: 790}
+      - {x: 799, y: 778}
+      - {x: 779, y: 755}
+      - {x: 774, y: 744}
+      - {x: 770, y: 736}
+      - {x: 770, y: 732}
+      - {x: 770, y: 832}
+      - {x: 768, y: 834}
+      - {x: 704, y: 834}
+      - {x: 702, y: 832}
+      - {x: 702, y: 716}
+      - {x: 704, y: 713}
+      - {x: 701, y: 659}
+      - {x: 703, y: 656}
+      - {x: 702, y: 627}
+      - {x: 720, y: 594}
+      - {x: 728, y: 586}
+      - {x: 745, y: 578}
+      - {x: 717, y: 578}
+      - {x: 706, y: 563}
+      - {x: 691, y: 536}
+      - {x: 668, y: 538}
+      - {x: 647, y: 541}
+      - {x: 643, y: 543}
+      - {x: 642, y: 568}
+      - {x: 643, y: 593}
+      - {x: 630, y: 617}
+      - {x: 620, y: 638}
+      - {x: 608, y: 645}
+      - {x: 595, y: 661}
+      - {x: 585, y: 667}
+      - {x: 575, y: 665}
+      - {x: 574, y: 662}
+      - {x: 574, y: 350}
+      - {x: 567, y: 357}
+      - {x: 557, y: 375}
+      - {x: 545, y: 383}
+      - {x: 547, y: 393}
+      - {x: 537, y: 404}
+      - {x: 520, y: 410}
+      - {x: 514, y: 408}
+      - {x: 514, y: 470}
+      - {x: 512, y: 472}
+      - {x: 505, y: 472}
+      - {x: 499, y: 470}
+      - {x: 479, y: 458}
+      - {x: 459, y: 435}
+      - {x: 454, y: 424}
+      - {x: 450, y: 416}
+      - {x: 450, y: 412}
+      - {x: 450, y: 512}
+      - {x: 448, y: 514}
+      - {x: 384, y: 514}
+      - {x: 382, y: 512}
+      - {x: 382, y: 396}
+      - {x: 384, y: 393}
+      - {x: 382, y: 352}
+      - {x: 382, y: 338}
+      - {x: 383, y: 336}
+      - {x: 382, y: 312}
+      - {x: 382, y: 307}
+      - {x: 400, y: 274}
+      - {x: 408, y: 266}
+      - {x: 428, y: 254}
+      - {x: 577, y: 254}
+    - - {x: -962, y: 336}
+      - {x: -973, y: 344}
+      - {x: -1004, y: 355}
+      - {x: -1008, y: 356}
+      - {x: -1022, y: 356}
+      - {x: -1023, y: 354}
+      - {x: -1023, y: 345}
+      - {x: -1017, y: 333}
+      - {x: -997, y: 327}
+      - {x: -991, y: 320}
+      - {x: -972, y: 320}
+      - {x: -965, y: 322}
+      - {x: -960, y: 327}
+      - {x: -960, y: 332}
+    - - {x: -886, y: 321}
+      - {x: -845, y: 321}
+      - {x: -830, y: 330}
+      - {x: -830, y: 349}
+      - {x: -831, y: 351}
+      - {x: -847, y: 367}
+      - {x: -864, y: 370}
+      - {x: -874, y: 367}
+      - {x: -892, y: 354}
+      - {x: -899, y: 367}
+      - {x: -922, y: 373}
+      - {x: -935, y: 380}
+      - {x: -940, y: 382}
+      - {x: -945, y: 382}
+      - {x: -952, y: 375}
+      - {x: -952, y: 361}
+      - {x: -949, y: 357}
+      - {x: -945, y: 355}
+      - {x: -931, y: 355}
+      - {x: -943, y: 353}
+      - {x: -957, y: 345}
+      - {x: -958, y: 342}
+      - {x: -958, y: 331}
+      - {x: -957, y: 326}
+      - {x: -947, y: 322}
+      - {x: -933, y: 321}
+      - {x: -915, y: 321}
+      - {x: -906, y: 336}
+      - {x: -897, y: 334}
+    - - {x: -976, y: 373}
+      - {x: -982, y: 376}
+      - {x: -971, y: 381}
+      - {x: -957, y: 387}
+      - {x: -958, y: 392}
+      - {x: -960, y: 394}
+      - {x: -960, y: 400}
+      - {x: -961, y: 405}
+      - {x: -967, y: 409}
+      - {x: -981, y: 416}
+      - {x: -968, y: 429}
+      - {x: -968, y: 437}
+      - {x: -971, y: 442}
+      - {x: -975, y: 446}
+      - {x: -962, y: 437}
+      - {x: -964, y: 425}
+      - {x: -956, y: 413}
+      - {x: -960, y: 404}
+      - {x: -960, y: 397}
+      - {x: -957, y: 390}
+      - {x: -926, y: 388}
+      - {x: -922, y: 380}
+      - {x: -895, y: 382}
+      - {x: -894, y: 394}
+      - {x: -898, y: 415}
+      - {x: -884, y: 395}
+      - {x: -865, y: 383}
+      - {x: -842, y: 387}
+      - {x: -831, y: 394}
+      - {x: -830, y: 405}
+      - {x: -839, y: 423}
+      - {x: -856, y: 431}
+      - {x: -864, y: 424}
+      - {x: -869, y: 436}
+      - {x: -878, y: 444}
+      - {x: -887, y: 441}
+      - {x: -898, y: 436}
+      - {x: -912, y: 446}
+      - {x: -916, y: 446}
+      - {x: -926, y: 445}
+      - {x: -934, y: 446}
+      - {x: -768, y: 446}
+      - {x: -766, y: 448}
+      - {x: -766, y: 576}
+      - {x: -768, y: 578}
+      - {x: -830, y: 578}
+      - {x: -829, y: 645}
+      - {x: -843, y: 655}
+      - {x: -868, y: 658}
+      - {x: -907, y: 660}
+      - {x: -928, y: 663}
+      - {x: -939, y: 663}
+      - {x: -959, y: 659}
+      - {x: -974, y: 663}
+      - {x: -988, y: 663}
+      - {x: -994, y: 662}
+      - {x: -1019, y: 651}
+      - {x: -1024, y: 646}
+      - {x: -1024, y: 446}
+      - {x: -1007, y: 440}
+      - {x: -1024, y: 429}
+      - {x: -1024, y: 411}
+      - {x: -1017, y: 401}
+      - {x: -1004, y: 400}
+      - {x: -998, y: 387}
+      - {x: -1011, y: 385}
+      - {x: -1017, y: 379}
+      - {x: -1024, y: 370}
+      - {x: -1024, y: 362}
+      - {x: -1017, y: 357}
+      - {x: -1003, y: 358}
+      - {x: -991, y: 355}
+      - {x: -984, y: 352}
+      - {x: -967, y: 352}
+      - {x: -959, y: 360}
+      - {x: -960, y: 365}
+      - {x: -962, y: 367}
+    - - {x: -574, y: 702}
+      - {x: -555, y: 701}
+      - {x: -533, y: 683}
+      - {x: -518, y: 678}
+      - {x: -505, y: 676}
+      - {x: -452, y: 676}
+      - {x: -424, y: 678}
+      - {x: -375, y: 677}
+      - {x: -363, y: 681}
+      - {x: -337, y: 699}
+      - {x: -338, y: 704}
+      - {x: -340, y: 706}
+      - {x: -353, y: 712}
+      - {x: -350, y: 731}
+      - {x: -355, y: 756}
+      - {x: -360, y: 766}
+      - {x: -276, y: 766}
+      - {x: -284, y: 761}
+      - {x: -289, y: 728}
+      - {x: -286, y: 715}
+      - {x: -277, y: 706}
+      - {x: -309, y: 706}
+      - {x: -315, y: 705}
+      - {x: -318, y: 696}
+      - {x: -315, y: 691}
+      - {x: -299, y: 681}
+      - {x: -249, y: 680}
+      - {x: -227, y: 682}
+      - {x: -203, y: 680}
+      - {x: -194, y: 695}
+      - {x: -195, y: 701}
+      - {x: -172, y: 702}
+      - {x: -165, y: 706}
+      - {x: -163, y: 718}
+      - {x: -155, y: 720}
+      - {x: -140, y: 730}
+      - {x: -130, y: 750}
+      - {x: -129, y: 762}
+      - {x: -112, y: 764}
+      - {x: -111, y: 751}
+      - {x: -128, y: 751}
+      - {x: -130, y: 749}
+      - {x: -130, y: 704}
+      - {x: -129, y: 701}
+      - {x: -81, y: 701}
+      - {x: -66, y: 712}
+      - {x: -66, y: 768}
+      - {x: -68, y: 770}
+      - {x: -66, y: 777}
+      - {x: -66, y: 809}
+      - {x: -68, y: 814}
+      - {x: -79, y: 815}
+      - {x: -80, y: 829}
+      - {x: -68, y: 830}
+      - {x: -66, y: 832}
+      - {x: -66, y: 870}
+      - {x: -78, y: 874}
+      - {x: -80, y: 891}
+      - {x: -83, y: 895}
+      - {x: -109, y: 895}
+      - {x: -111, y: 893}
+      - {x: -111, y: 879}
+      - {x: -147, y: 895}
+      - {x: -173, y: 895}
+      - {x: -175, y: 893}
+      - {x: -175, y: 879}
+      - {x: -211, y: 895}
+      - {x: -237, y: 895}
+      - {x: -240, y: 894}
+      - {x: -240, y: 829}
+      - {x: -239, y: 728}
+      - {x: -238, y: 706}
+      - {x: -254, y: 706}
+      - {x: -253, y: 785}
+      - {x: -262, y: 794}
+      - {x: -279, y: 799}
+      - {x: -298, y: 803}
+      - {x: -314, y: 796}
+      - {x: -327, y: 784}
+      - {x: -340, y: 781}
+      - {x: -357, y: 779}
+      - {x: -371, y: 784}
+      - {x: -388, y: 781}
+      - {x: -387, y: 771}
+      - {x: -399, y: 770}
+      - {x: -405, y: 751}
+      - {x: -403, y: 731}
+      - {x: -402, y: 714}
+      - {x: -400, y: 706}
+      - {x: -491, y: 716}
+      - {x: -495, y: 736}
+      - {x: -493, y: 753}
+      - {x: -495, y: 768}
+      - {x: -508, y: 772}
+      - {x: -510, y: 894}
+      - {x: -448, y: 894}
+      - {x: -446, y: 896}
+      - {x: -446, y: 1024}
+      - {x: -962, y: 1024}
+      - {x: -1024, y: 899}
+      - {x: -1024, y: 702}
+      - {x: -770, y: 702}
+      - {x: -770, y: 640}
+      - {x: -768, y: 638}
+      - {x: -642, y: 638}
+      - {x: -642, y: 448}
+      - {x: -640, y: 446}
+      - {x: -448, y: 446}
+      - {x: -446, y: 448}
+      - {x: -446, y: 640}
+      - {x: -448, y: 642}
+    - - {x: -678, y: 519}
+      - {x: -680, y: 528}
+      - {x: -690, y: 538}
+      - {x: -721, y: 538}
+      - {x: -730, y: 533}
+      - {x: -730, y: 498}
+      - {x: -729, y: 490}
+      - {x: -724, y: 486}
+      - {x: -685, y: 486}
+      - {x: -677, y: 495}
+      - {x: -677, y: 511}
+    - - {x: 640, y: 702}
+      - {x: 642, y: 703}
+      - {x: 642, y: 941}
+      - {x: 621, y: 965}
+      - {x: 593, y: 962}
+      - {x: 587, y: 974}
+      - {x: 562, y: 977}
+      - {x: 558, y: 962}
+      - {x: 572, y: 956}
+      - {x: 571, y: 882}
+      - {x: 559, y: 898}
+      - {x: 528, y: 916}
+      - {x: 497, y: 917}
+      - {x: 470, y: 910}
+      - {x: 450, y: 888}
+      - {x: 450, y: 958}
+      - {x: 462, y: 958}
+      - {x: 466, y: 959}
+      - {x: 459, y: 975}
+      - {x: 434, y: 979}
+      - {x: 431, y: 966}
+      - {x: 397, y: 962}
+      - {x: 382, y: 949}
+      - {x: 381, y: 860}
+      - {x: 377, y: 863}
+      - {x: 331, y: 863}
+      - {x: 258, y: 858}
+      - {x: 258, y: 958}
+      - {x: 384, y: 958}
+      - {x: 388, y: 959}
+      - {x: 386, y: 988}
+      - {x: 371, y: 992}
+      - {x: 331, y: 991}
+      - {x: 320, y: 986}
+      - {x: 260, y: 986}
+      - {x: 253, y: 984}
+      - {x: 252, y: 963}
+      - {x: 213, y: 966}
+      - {x: 234, y: 972}
+      - {x: 260, y: 999}
+      - {x: 258, y: 1024}
+      - {x: -2, y: 1024}
+      - {x: -3, y: 997}
+      - {x: 39, y: 962}
+      - {x: 0, y: 962}
+      - {x: -2, y: 960}
+      - {x: -2, y: 898}
+      - {x: -64, y: 898}
+      - {x: -66, y: 896}
+      - {x: -66, y: 728}
+      - {x: -44, y: 702}
+      - {x: -22, y: 699}
+      - {x: -19, y: 724}
+      - {x: 4, y: 727}
+      - {x: 10, y: 728}
+      - {x: 46, y: 702}
+      - {x: 63, y: 700}
+      - {x: 197, y: 700}
+      - {x: 233, y: 717}
+      - {x: 244, y: 727}
+      - {x: 261, y: 741}
+      - {x: 266, y: 752}
+      - {x: 265, y: 769}
+      - {x: 259, y: 771}
+      - {x: 258, y: 830}
+      - {x: 382, y: 706}
+      - {x: 320, y: 706}
+      - {x: 318, y: 704}
+      - {x: 316, y: 677}
+      - {x: 352, y: 646}
+      - {x: 367, y: 640}
+      - {x: 376, y: 638}
+      - {x: 522, y: 638}
+      - {x: 554, y: 652}
+      - {x: 580, y: 679}
+      - {x: 578, y: 702}
+    - - {x: -1018, y: 664}
+      - {x: -1017, y: 662}
+      - {x: -1014, y: 662}
+      - {x: -1010, y: 665}
+      - {x: -1010, y: 668}
+      - {x: -1011, y: 670}
+      - {x: -1014, y: 670}
+      - {x: -1018, y: 668}
+    - - {x: -462, y: 846}
+      - {x: -463, y: 839}
+      - {x: -463, y: 825}
+      - {x: -455, y: 814}
+      - {x: -439, y: 814}
+      - {x: -432, y: 821}
+      - {x: -432, y: 836}
+      - {x: -437, y: 846}
+    - - {x: -256, y: 903}
+      - {x: -258, y: 996}
+      - {x: -260, y: 998}
+      - {x: -272, y: 1001}
+      - {x: -272, y: 1019}
+      - {x: -275, y: 1023}
+      - {x: -301, y: 1023}
+      - {x: -304, y: 1022}
+      - {x: -304, y: 957}
+      - {x: -302, y: 900}
+      - {x: -301, y: 898}
+      - {x: -384, y: 898}
+      - {x: -386, y: 896}
+      - {x: -386, y: 883}
+      - {x: -382, y: 877}
+      - {x: -372, y: 877}
+      - {x: -349, y: 878}
+      - {x: -323, y: 872}
+      - {x: -317, y: 871}
+      - {x: -308, y: 862}
+      - {x: -285, y: 862}
+      - {x: -279, y: 863}
+      - {x: -263, y: 865}
+      - {x: -254, y: 874}
+      - {x: -254, y: 900}
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

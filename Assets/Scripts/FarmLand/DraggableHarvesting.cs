@@ -4,24 +4,40 @@ using UnityEngine;
 
 public class DraggableHarvesting : MonoBehaviour
 {
-	Vector3 intialPosition;
+    private Vector2 touchPos;
+    private Camera mainCamera;
+    private Vector3 iniPosition;
 
-	void OnMouseDown ()
-	{
-		intialPosition = transform.localPosition;
-	}
+    private void Awake()
+    {
+        mainCamera = InputController.Instance.mainCamera;
+    }
 
-	void OnMouseDrag ()
-	{
-		HarvestMenuManager.m_instance.isScytheSelected = true;
-		transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y + 10, 10));
-		GetComponent <BoxCollider2D> ().enabled = false;
-	}
+    private void OnMouseDown()
+    {
+        iniPosition = transform.position;
+    }
 
-	void OnMouseUp ()
-	{		
-		transform.localPosition = intialPosition;
-		HarvestMenuManager.m_instance.isScytheSelected = false;
-		GetComponent <BoxCollider2D> ().enabled = true;	
-	}
+    private void OnMouseUp()
+    {
+        transform.position = iniPosition;
+    }
+
+    private void OnMouseDrag()
+    {
+        if (InputController.Instance.IsDragging)
+        {
+            return;
+        }
+        if (Application.isEditor)
+        {
+            touchPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        }
+        else
+        {
+            touchPos = mainCamera.ScreenToWorldPoint(Input.touches[0].position);
+        }
+
+        transform.position = new Vector3(touchPos.x, touchPos.y, 0);
+    }
 }

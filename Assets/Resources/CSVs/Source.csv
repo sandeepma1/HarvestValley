@@ -1,0 +1,14 @@
+sourceID,name,desc,type,cost,deployTime,slotsUnlocked,limit,slug
+0,Field,grow crops,Crops,5,0.1,-1,6,field
+1,GrassTile,grow grass,Grass,-1,0.1,2,-1,grasstile
+2,Bakery,Production buildings,Products,20,0.1,2,1,bakery
+3,Chicken,Animals,AnimalGoods,20,0.1,-1,1,chicken
+4,Dairy,Production buildings,Products,50,0.4,2,1,dairy
+5,Cow,Animals,Products,20,0.1,-1,1,cow
+6,FeedMill,Production buildings,Products,50,160,2,1,feedmill
+7,SugarMill,Production buildings,Products,350,360,2,1,sugarmill
+8,PopcornPot,Production buildings,Products,650,480,2,1,popcornpot
+9,BBQGrill,Production buildings,Products,730,480,2,1,bbqgrill
+10,PieOven,Production buildings,Products,2200,720,2,1,pieoven
+11,Loom,Production buildings,Products,3200,1440,2,1,loom
+12,Fish,fish,AnimalGoods,3200,1440,2,1,fish
