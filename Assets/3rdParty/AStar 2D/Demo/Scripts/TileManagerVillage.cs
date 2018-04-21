@@ -11,6 +11,8 @@ namespace AStar_2D.Demo
     public class TileManagerVillage : AStarGrid
     {
         [SerializeField]
+        private bool showDebugPath;
+        [SerializeField]
         private Transform allPropsParent;
         // Private
         private Tile[,] tiles;
@@ -50,7 +52,10 @@ namespace AStar_2D.Demo
                     // Create the tile at its location
                     //GameObject obj = MonoBehaviour.Instantiate(tilePrefab, new Vector3((i - (gridX / 2) + 0.5f), (j - (gridY / 2) + 0.5f)), Quaternion.identity) as GameObject;
                     GameObject obj = MonoBehaviour.Instantiate(tilePrefab, new Vector3(i, j), Quaternion.identity) as GameObject;
-
+                    if (showDebugPath)
+                    {
+                        obj.GetComponent<SpriteRenderer>().color = Color.white;
+                    }
                     // Add the tile script
                     tiles[i, j] = obj.GetComponent<Tile>();
                     tiles[i, j].index = new Index(i, j);
@@ -74,11 +79,11 @@ namespace AStar_2D.Demo
 
         private void ConstructProps()
         {
-            Transform[] allProps = allPropsParent.GetComponentsInChildren<Transform>();
+            SpriteRenderer[] allProps = allPropsParent.GetComponentsInChildren<SpriteRenderer>();
 
             for (int i = 1; i < allProps.Length; i++)
             {
-                FindSurrounding(allProps[i].GetComponent<SpriteRenderer>().bounds.size, allProps[i].localPosition);
+                FindSurrounding(allProps[i].bounds.size, allProps[i].transform.localPosition);
             }
         }
         private void FindSurrounding(Vector2 bounds, Vector2 position)
@@ -92,15 +97,6 @@ namespace AStar_2D.Demo
                     tiles[i + xPos, j + yPos].IsWalkable = false;
                 }
             }
-        }
-
-        /// <summary>
-        /// Called by Unity.
-        /// Left blank for demonstration.
-        /// </summary>
-        public void Update()
-        {
-            // Do stuff
         }
 
         private void onTileSelected(Tile tile, int mouseButton)
