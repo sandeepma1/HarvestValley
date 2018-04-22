@@ -11,6 +11,8 @@ public class InputController : Singleton<InputController>
     private bool enableSwipe = true;
     [SerializeField]
     private bool enableDrag = true;
+    [SerializeField]
+    private bool snapCamera = true;
 
     [SerializeField]
     private int gapBetweenScreens = 16;
@@ -61,7 +63,7 @@ public class InputController : Singleton<InputController>
         ease.Add("ease", LeanTweenType.easeOutSine);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         DragCamera();
     }
@@ -159,7 +161,10 @@ public class InputController : Singleton<InputController>
             {
                 if (!isTouchingUI)
                 {
-                    SnapCamera();
+                    if (snapCamera)
+                    {
+                        SnapCamera();
+                    }
                     if (!IsDragging)
                     {
                         // print("not touching UI and touch on GO");

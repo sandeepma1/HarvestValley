@@ -11,7 +11,6 @@ namespace AStar_2D.Demo
     /// </summary>
     public class TileManager : AStarGrid
     {
-
         // Private
         private Tile[,] tiles;
         private Tile selectedTile = null;
