@@ -16,13 +16,13 @@ public class MainStartManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SaveAllGame();
+        // SaveAllGame();
     }
 
     private void OnApplicationPause(bool pause)
     {
-        if (pause)
-            SaveAllGame();
+        // if (pause)
+        //     SaveAllGame();
     }
 
     private void SaveAllGame()
