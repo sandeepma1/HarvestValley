@@ -4,8 +4,20 @@ timeCreated: 18446744011573954816
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
+    100000: Diamond
+    100002: //RootNode
+    400000: Diamond
+    400002: //RootNode
+    2300000: Diamond
+    3300000: Diamond
     4300000: Diamond
-  externalObjects: {}
+    11100000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: null
+    second: {fileID: 2100000, guid: be7b5a3e72d88a1428b36f0130ce0703, type: 2}
   materials:
     importMaterials: 1
     materialName: 3
