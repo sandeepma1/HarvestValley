@@ -42,7 +42,6 @@ public class SimpleAI2D : Pathfinding2D
                     FindPath(transform.position, Player.position);
                 }
             }
-            UiDebugTextHandler.DebugText(Path.Count.ToString());
             //Make sure that we actually got a path! then call the new movement method
             if (Path.Count > 1)
             {

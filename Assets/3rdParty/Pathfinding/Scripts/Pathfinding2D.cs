@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class Pathfinding2D : MonoBehaviour
 {
@@ -23,24 +24,19 @@ public class Pathfinding2D : MonoBehaviour
     //A test move function, can easily be replaced
     public void Move()
     {
-        if (Path.Count > 0)
+        UiDebugTextHandler.DebugText(transform.position + " " + Path[0]);
+        transform.position = Vector3.MoveTowards(transform.position, Path[0], Time.deltaTime * 10F);
+        //Path[0] = new Vector3(Mathf.Round(Path[0].x), Mathf.Round(Path[0].y), Mathf.Round(Path[0].z));
+        //transform.DOMove(Path[0], 1f);
+        if (Vector3.Distance(transform.position, Path[0]) < 0.1F)
         {
-            //transform.position = Vector3.MoveTowards(transform.position, Path[0], Time.deltaTime * 30F);
-            transform.position = Path[0];
-            if (Vector3.Distance(transform.position, Path[0]) < 1F)
-            {
-                Path.RemoveAt(0);
-                transform.position = new Vector3(RoundToNearestHalfSafer(transform.position.x), RoundToNearestHalfSafer(transform.position.y), Mathf.Round(transform.position.z));
-            }
+            //if (Path.Count > 1)
+            //{
+            //    transform.DOMove(Path[1], 0.25f);
+            //}
+            Path.RemoveAt(0);
+            //transform.position = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), Mathf.Round(transform.position.z));
         }
-    }
-
-    public static float RoundToNearestHalfSafer(float a)
-    {
-        a *= 2;
-        a = Mathf.Round(a);
-        a = a / 2;
-        return a;
     }
 
     protected virtual void SetList(List<Vector3> path)
@@ -56,6 +52,19 @@ public class Pathfinding2D : MonoBehaviour
             Path = path;
             Path[0] = new Vector3(Path[0].x, Path[0].y, Path[0].z);
             Path[Path.Count - 1] = new Vector3(Path[Path.Count - 1].x, Path[Path.Count - 1].y, Path[Path.Count - 1].z);
+            int last = Path.Count - 1;
+            //if (Path[last].x % 2 == 0 || Path[last].y % 2 == 0)
+            //{
+            //    Path.RemoveAt(Path.Count - 1);
+            //    Path.RemoveAt(Path.Count - 1);
+            //}
+            //else
+            //{
+            //    Path.RemoveAt(Path.Count - 1);
+            //    Path.RemoveAt(Path.Count - 1);
+            //}
+            Path.RemoveAt(Path.Count - 1);
+            Path.RemoveAt(Path.Count - 1);
         }
         else
         {

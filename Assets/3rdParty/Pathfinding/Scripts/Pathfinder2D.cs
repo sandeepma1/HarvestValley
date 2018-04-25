@@ -275,7 +275,7 @@ public class Pathfinder2D : MonoBehaviour
 
             while (currentNode.parent != null)
             {
-                returnPath.Add(new Vector3(currentNode.xCoord, currentNode.yCoord, currentNode.zCoord));
+                returnPath.Add(new Vector3((int)currentNode.xCoord, (int)currentNode.yCoord, (int)currentNode.zCoord));
                 currentNode = currentNode.parent;
             }
 
