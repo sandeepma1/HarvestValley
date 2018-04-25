@@ -384,6 +384,11 @@ public class Pathfinder2D : MonoBehaviour
         }
     }
 
+    public bool IsEndNodeWalkable(Vector2 position)
+    {
+        return Map[(int)position.x, (int)position.y].walkable;
+    }
+
     private List<Node> EndNodeNeighbourCheck(int x, int z, int r)
     {
         List<Node> nodes = new List<Node>();

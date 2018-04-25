@@ -70,6 +70,7 @@ public class DynamicGridObject2D : MonoBehaviour
         }
 
         checkList = DynamicSetupList(minX, maxX, minY, maxY);
+        //checkList = DynamicSetupList(bR.min.x, bR.max.x, bR.min.y, bR.max.y);
         Pathfinder2D.Instance.DynamicMapEdit(checkList, UpdateList);
     }
 

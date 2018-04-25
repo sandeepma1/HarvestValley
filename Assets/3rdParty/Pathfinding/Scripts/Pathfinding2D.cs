@@ -7,6 +7,7 @@ public class Pathfinding2D : MonoBehaviour
 {
     public List<Vector3> Path = new List<Vector3>();
     public bool JS = false;
+    public Vector3 clickPoint;
 
     public void FindPath(Vector3 startPosition, Vector3 endPosition)
     {
@@ -25,16 +26,9 @@ public class Pathfinding2D : MonoBehaviour
     public void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, Path[0], Time.deltaTime * 10F);
-        //Path[0] = new Vector3(Mathf.Round(Path[0].x), Mathf.Round(Path[0].y), Mathf.Round(Path[0].z));
-        //transform.DOMove(Path[0], 1f);
         if (Vector3.Distance(transform.position, Path[0]) < 0.1F)
         {
-            //if (Path.Count > 1)
-            //{
-            //    transform.DOMove(Path[1], 0.25f);
-            //}
             Path.RemoveAt(0);
-            //transform.position = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), Mathf.Round(transform.position.z));
         }
     }
 
@@ -52,18 +46,12 @@ public class Pathfinding2D : MonoBehaviour
             Path[0] = new Vector3(Path[0].x, Path[0].y, Path[0].z);
             Path[Path.Count - 1] = new Vector3(Path[Path.Count - 1].x, Path[Path.Count - 1].y, Path[Path.Count - 1].z);
             int last = Path.Count - 1;
-            //if (Path[last].x % 2 == 0 || Path[last].y % 2 == 0)
-            //{
-            //    Path.RemoveAt(Path.Count - 1);
-            //    Path.RemoveAt(Path.Count - 1);
-            //}
-            //else
-            //{
-            //    Path.RemoveAt(Path.Count - 1);
-            //    Path.RemoveAt(Path.Count - 1);
-            //}
-            Path.RemoveAt(Path.Count - 1);
-            Path.RemoveAt(Path.Count - 1);
+            UiDebugTextHandler.DebugText(Pathfinder2D.Instance.IsEndNodeWalkable(clickPoint).ToString());
+            if (Pathfinder2D.Instance.IsEndNodeWalkable(clickPoint))
+            {
+                Path.RemoveAt(Path.Count - 1);
+                Path.RemoveAt(Path.Count - 1);
+            }
         }
         else
         {
