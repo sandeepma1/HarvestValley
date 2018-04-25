@@ -24,7 +24,6 @@ public class Pathfinding2D : MonoBehaviour
     //A test move function, can easily be replaced
     public void Move()
     {
-        UiDebugTextHandler.DebugText(transform.position + " " + Path[0]);
         transform.position = Vector3.MoveTowards(transform.position, Path[0], Time.deltaTime * 10F);
         //Path[0] = new Vector3(Mathf.Round(Path[0].x), Mathf.Round(Path[0].y), Mathf.Round(Path[0].z));
         //transform.DOMove(Path[0], 1f);

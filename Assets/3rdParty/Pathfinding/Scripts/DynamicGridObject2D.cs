@@ -1,10 +1,10 @@
-using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+using UnityEngine;
 
-public class DynamicTDGridObject : MonoBehaviour
+public class DynamicGridObject2D : MonoBehaviour
 {
+
     private List<Vector2> IDs = new List<Vector2>();
 
     public float lowestY = 0F;
@@ -40,19 +40,44 @@ public class DynamicTDGridObject : MonoBehaviour
 
     public void UpdateMap()
     {
-        List<Vector3> checkList = new List<Vector3>();
+        List<Vector2> checkList = new List<Vector2>();
         Bounds bR = GetComponent<Renderer>().bounds;
-        Bounds bM = gameObject.GetComponent<MeshFilter>().mesh.bounds;
-        checkList = DynamicSetupList(bR.min.x, bR.max.x, bR.min.z, bR.max.z, bR, bM);
 
-        Pathfinder.Instance.DynamicMapEdit(checkList, UpdateList);
+        float minX = 0;
+        float maxX = 0;
+        float minY = 0;
+        float maxY = 0;
+
+        if (transform.localScale.x % 2 == 0)
+        {
+            minX = bR.min.x - 1;
+            maxX = bR.max.x + 1;
+        }
+        else
+        {
+            minX = bR.min.x;
+            maxX = bR.max.x + 1;
+        }
+        if (transform.localScale.y % 2 == 0)
+        {
+            minY = bR.min.y - 1;
+            maxY = bR.max.y + 1;
+        }
+        else
+        {
+            minY = bR.min.y;
+            maxY = bR.max.y + 1;
+        }
+
+        checkList = DynamicSetupList(minX, maxX, minY, maxY);
+        Pathfinder2D.Instance.DynamicMapEdit(checkList, UpdateList);
     }
 
     public void RemoveFromMap()
     {
         if (IDs != null)
         {
-            Pathfinder.Instance.DynamicRedoMapEdit(IDs);
+            Pathfinder2D.Instance.DynamicRedoMapEdit(IDs);
         }
     }
 
@@ -61,27 +86,15 @@ public class DynamicTDGridObject : MonoBehaviour
         IDs = ids;
     }
 
-    private List<Vector3> DynamicSetupList(float minX, float maxX, float minZ, float maxZ, Bounds bR, Bounds bM)
+    private List<Vector2> DynamicSetupList(float minX, float maxX, float minY, float maxY)
     {
-        List<Vector3> checkList = new List<Vector3>();
-        float Tilesize = Pathfinder.Instance.Tilesize;
-
-        for (float i = minZ; i < maxZ; i += Tilesize / 2)
+        List<Vector2> checkList = new List<Vector2>();
+        float Tilesize = Pathfinder2D.Instance.Tilesize;
+        for (float i = minX; i < maxX; i++)
         {
-            for (float j = minX; j < maxX; j += Tilesize / 2)
+            for (float j = minY; j < maxY; j++)
             {
-                for (float k = bR.min.y; k < bR.max.y; k += Tilesize)
-                {
-                    if (k > lowestY)
-                    {
-                        Vector3 local = transform.InverseTransformPoint(new Vector3(j, k, i));
-
-                        if (bM.Contains(local))
-                        {
-                            checkList.Add(new Vector3(j, k, i));
-                        }
-                    }
-                }
+                checkList.Add(new Vector2(i, j));
             }
         }
         return checkList;

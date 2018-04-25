@@ -779,7 +779,7 @@ public class Pathfinder2D : MonoBehaviour
 
     #region DynamicSupport
 
-    public void DynamicMapEdit(List<Vector3> checkList, Action<List<Vector2>> listMethod)
+    public void DynamicMapEdit(List<Vector2> checkList, Action<List<Vector2>> listMethod)
     {
         listMethod.Invoke(DynamicFindClosestNodes(checkList));
     }
@@ -792,10 +792,10 @@ public class Pathfinder2D : MonoBehaviour
         }
     }
 
-    private List<Vector2> DynamicFindClosestNodes(List<Vector3> vList)
+    private List<Vector2> DynamicFindClosestNodes(List<Vector2> vList)
     {
         List<Vector2> returnList = new List<Vector2>();
-        foreach (Vector3 pos in vList)
+        foreach (Vector2 pos in vList)
         {
             int x = (MapStartPosition.x < 0F) ? Mathf.FloorToInt(((pos.x + Mathf.Abs(MapStartPosition.x)) / Tilesize)) : Mathf.FloorToInt((pos.x - MapStartPosition.x) / Tilesize);
             int y = (MapStartPosition.y < 0F) ? Mathf.FloorToInt(((pos.y + Mathf.Abs(MapStartPosition.y)) / Tilesize)) : Mathf.FloorToInt((pos.y - MapStartPosition.y) / Tilesize);
