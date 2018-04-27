@@ -212,7 +212,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 225608066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.47, y: 41.4, z: 0}
+  m_LocalPosition: {x: 2, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -498,7 +498,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 289350956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -25.07, y: -38.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1356,7 +1356,6 @@ GameObject:
   - component: {fileID: 1131721120}
   - component: {fileID: 1131721122}
   - component: {fileID: 1131721123}
-  - component: {fileID: 1131721121}
   - component: {fileID: 1131721124}
   m_Layer: 0
   m_Name: Pathfinding2d
@@ -1378,40 +1377,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &1131721121
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1131721119}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!33 &1131721122
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1444,12 +1409,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f110ba1981c74334cbc9521881f06d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpeed: 5
   Tilesize: 1
   HeuristicAggression: 1
-  zStart: -10
-  zEnd: 10
   MapStartPosition: {x: 0, y: 0}
-  MapEndPosition: {x: 63, y: 63}
+  MapEndPosition: {x: 32, y: 32}
   DisallowedTags:
   - Wall
   IgnoreTags:
@@ -1544,11 +1508,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4626258157065774, guid: f0d18d141616dac47b993eadd507401e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 38.2
+      value: 6.973267
       objectReference: {fileID: 0}
     - target: {fileID: 4626258157065774, guid: f0d18d141616dac47b993eadd507401e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 42.5
+      value: 12.447488
       objectReference: {fileID: 0}
     - target: {fileID: 4626258157065774, guid: f0d18d141616dac47b993eadd507401e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1577,7 +1541,7 @@ Prefab:
     - target: {fileID: 20208373369253770, guid: f0d18d141616dac47b993eadd507401e,
         type: 2}
       propertyPath: orthographic size
-      value: 8.65
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 20208373369253770, guid: f0d18d141616dac47b993eadd507401e,
         type: 2}
@@ -1626,8 +1590,8 @@ MonoBehaviour:
   Camera: {fileID: 0}
   IgnoreGuiFingers: 1
   RequiredFingerCount: 0
-  WheelSensitivity: 0
-  Zoom: 8.65
+  WheelSensitivity: -0.1
+  Zoom: 12
   ZoomClamp: 0
   ZoomMin: 10
   ZoomMax: 60
@@ -2021,7 +1985,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1450490290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40, y: 40, z: 0}
+  m_LocalPosition: {x: 7, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 2.9999995}
   m_Children: []
   m_Father: {fileID: 0}

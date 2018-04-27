@@ -50,23 +50,23 @@ public class DynamicGridObject2D : MonoBehaviour
 
         if (transform.localScale.x % 2 == 0)
         {
-            minX = bR.min.x - 1;
-            maxX = bR.max.x + 1;
+            minX = bR.min.x;
+            maxX = bR.max.x;
         }
         else
         {
             minX = bR.min.x;
-            maxX = bR.max.x + 1;
+            maxX = bR.max.x;
         }
         if (transform.localScale.y % 2 == 0)
         {
-            minY = bR.min.y - 1;
-            maxY = bR.max.y + 1;
+            minY = bR.min.y;
+            maxY = bR.max.y;
         }
         else
         {
             minY = bR.min.y;
-            maxY = bR.max.y + 1;
+            maxY = bR.max.y;
         }
 
         checkList = DynamicSetupList(minX, maxX, minY, maxY);

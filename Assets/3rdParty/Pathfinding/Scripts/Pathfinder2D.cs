@@ -11,11 +11,12 @@ public class Pathfinder2D : MonoBehaviour
     public static Pathfinder2D Instance { get { return instance; } private set { } }
 
     //Variables
+    public float playerSpeed = 5;
     private Node[,] Map = null;
     public float Tilesize = 1;
     public int HeuristicAggression;
-    public float zStart = -10F;
-    public float zEnd = 10F;
+    //public float zStart = -10F;
+    //public float zEnd = 10F;
 
     public Vector2 MapStartPosition;
     public Vector2 MapEndPosition;
@@ -123,7 +124,7 @@ public class Pathfinder2D : MonoBehaviour
 
                 float dist = 20;
 
-                RaycastHit[] hit = Physics.SphereCastAll(new Vector3(x, y, zStart), Tilesize / 4, Vector3.forward, dist);
+                RaycastHit[] hit = Physics.SphereCastAll(new Vector3(x, y), Tilesize / 4, Vector3.forward, dist);
                 bool free = true;
                 float maxZ = Mathf.Infinity;
 
@@ -768,13 +769,18 @@ public class Pathfinder2D : MonoBehaviour
                             if (y < 0 || x < 0 || y >= Map.GetLength(1) || x >= Map.GetLength(0))
                                 continue;
 
-                            if (!Map[x, y].walkable)
-                                continue;
-
+                            //Vector3 start = new Vector3(Map[j, i].xCoord, Map[j, i].yCoord, Map[j, i].zCoord - 0.1f);
+                            //Vector3 end = new Vector3(Map[x, y].xCoord, Map[x, y].yCoord, Map[x, y].zCoord - 0.1f);
                             Vector3 start = new Vector3(Map[j, i].xCoord, Map[j, i].yCoord, Map[j, i].zCoord - 0.1f);
                             Vector3 end = new Vector3(Map[x, y].xCoord, Map[x, y].yCoord, Map[x, y].zCoord - 0.1f);
-
-                            UnityEngine.Debug.DrawLine(start, end, Color.green);
+                            if (!Map[x, y].walkable)
+                            {
+                                UnityEngine.Debug.DrawLine(start, end, Color.red);
+                            }
+                            else
+                            {
+                                UnityEngine.Debug.DrawLine(start, end, Color.green);
+                            }
                         }
                     }
                 }
@@ -802,8 +808,8 @@ public class Pathfinder2D : MonoBehaviour
         List<Vector2> returnList = new List<Vector2>();
         foreach (Vector2 pos in vList)
         {
-            int x = (MapStartPosition.x < 0F) ? Mathf.FloorToInt(((pos.x + Mathf.Abs(MapStartPosition.x)) / Tilesize)) : Mathf.FloorToInt((pos.x - MapStartPosition.x) / Tilesize);
-            int y = (MapStartPosition.y < 0F) ? Mathf.FloorToInt(((pos.y + Mathf.Abs(MapStartPosition.y)) / Tilesize)) : Mathf.FloorToInt((pos.y - MapStartPosition.y) / Tilesize);
+            int x = (MapStartPosition.x < 0F) ? Mathf.RoundToInt(((pos.x + Mathf.Abs(MapStartPosition.x)) / Tilesize)) : Mathf.RoundToInt((pos.x - MapStartPosition.x) / Tilesize);
+            int y = (MapStartPosition.y < 0F) ? Mathf.RoundToInt(((pos.y + Mathf.Abs(MapStartPosition.y)) / Tilesize)) : Mathf.RoundToInt((pos.y - MapStartPosition.y) / Tilesize);
 
             if (x >= 0 && x < Map.GetLength(0) && y >= 0 && y < Map.GetLength(1))
             {

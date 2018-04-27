@@ -9,6 +9,7 @@ public class Pathfinding2D : MonoBehaviour
     public bool JS = false;
     public Vector3 clickPoint;
 
+
     public void FindPath(Vector3 startPosition, Vector3 endPosition)
     {
         Pathfinder2D.Instance.InsertInQueue(startPosition, endPosition, SetList);
@@ -25,7 +26,7 @@ public class Pathfinding2D : MonoBehaviour
     //A test move function, can easily be replaced
     public void Move()
     {
-        transform.position = Vector3.MoveTowards(transform.position, Path[0], Time.deltaTime * 10F);
+        transform.position = Vector3.MoveTowards(transform.position, Path[0], Time.deltaTime * Pathfinder2D.Instance.playerSpeed);
         if (Vector3.Distance(transform.position, Path[0]) < 0.1F)
         {
             Path.RemoveAt(0);
@@ -45,11 +46,10 @@ public class Pathfinding2D : MonoBehaviour
             Path = path;
             Path[0] = new Vector3(Path[0].x, Path[0].y, Path[0].z);
             Path[Path.Count - 1] = new Vector3(Path[Path.Count - 1].x, Path[Path.Count - 1].y, Path[Path.Count - 1].z);
-            int last = Path.Count - 1;
             UiDebugTextHandler.DebugText(Pathfinder2D.Instance.IsEndNodeWalkable(clickPoint).ToString());
+
             if (Pathfinder2D.Instance.IsEndNodeWalkable(clickPoint))
             {
-                Path.RemoveAt(Path.Count - 1);
                 Path.RemoveAt(Path.Count - 1);
             }
         }
