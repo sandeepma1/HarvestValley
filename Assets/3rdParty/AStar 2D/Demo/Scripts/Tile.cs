@@ -121,68 +121,6 @@ namespace AStar_2D.Demo
         }
 
         /// <summary>
-        /// Called by Unity.
-        /// Left blank for demonstration.
-        /// </summary>
-        public void Update()
-        {
-            // Update tile specific properties or modify the IsWalkable / Weighting values at runtime
-        }
-
-        /// <summary>
-        /// Called by Unity.
-        /// </summary>
-        public void LateUpdate()
-        {
-            //if (Time.time > (lastTime + 0.2f)) {
-            //	canSend = true;
-            //	lastTime = Time.time;
-            //}
-
-        }
-
-        public void OnMouseEnter()
-        {
-            // Trigger the hover event
-            if (onTileHover != null)
-                onTileHover(this);
-        }
-
-        /// <summary>
-        /// Called by Unity.
-        /// </summary>
-        public void OnMouseOver()
-        {
-            if (Input.GetMouseButtonDown(0) == true && onTileSelected != null)
-            {
-                onTileSelected(this, 0);
-            }
-            //// Make sure events can be sent
-            //if (canSend == false)
-            //    return;
-
-            //// Check for mouse button
-            //if (Input.GetMouseButtonDown(0) == true)
-            //{
-            //    // Block message sending
-            //    canSend = false;
-
-            //    // Trigger the event
-            //    if (onTileSelected != null)
-            //        onTileSelected(this, 0);
-            //}
-            //else if (Input.GetMouseButtonDown(1) == true)
-            //{
-            //    // Block message sending
-            //    canSend = false;
-
-            //    // Trigger the event
-            //    if (onTileSelected != null)
-            //        onTileSelected(this, 1);
-            //}
-        }
-
-        /// <summary>
         /// Toggle the walkable state of this tile.
         /// </summary>
         public void toggleWalkable()

@@ -14,8 +14,12 @@ namespace AStar_2D.Demo
         private bool showDebugPath;
         [SerializeField]
         private Transform allPropsParent;
+        [SerializeField]
+        private Agent player;
         // Private
         private Tile[,] tiles;
+        Camera mainCamera;
+        Vector3 p = new Vector3();
         // Public
         /// <summary>
         /// How many tiles to create in the X axis.
@@ -77,6 +81,10 @@ namespace AStar_2D.Demo
             ConstructProps();
         }
 
+        private void Start()
+        {
+            mainCamera = Camera.main;
+        }
         private void ConstructProps()
         {
             SpriteRenderer[] allProps = allPropsParent.GetComponentsInChildren<SpriteRenderer>();
@@ -102,20 +110,23 @@ namespace AStar_2D.Demo
         private void onTileSelected(Tile tile, int mouseButton)
         {
             // Check for button
-            if (mouseButton == 0)
-            {
-                // Set the destination
-                Agent[] agents = Component.FindObjectsOfType<Agent>();
-
-                // Set the target for all agents
-                foreach (Agent agent in agents)
-                    agent.setDestination(tile.WorldPosition);
-            }
+            //if (mouseButton == 0)
+            //{
+            //    player.setDestination(tile.WorldPosition);
+            //}
             //else if (mouseButton == 1)
             //{
             //    // Toggle the walkable status
             //    tile.toggleWalkable();
             //}
+        }
+
+        private void Update()
+        {
+            if (Input.GetMouseButtonUp(0))
+            {
+                player.setDestination(mainCamera.ScreenToWorldPoint(Input.mousePosition));
+            }
         }
 
         private void onTileHover(Tile tile)
@@ -135,5 +146,6 @@ namespace AStar_2D.Demo
                 });
             }
         }
+
     }
 }

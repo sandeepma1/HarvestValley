@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 22872252}
   - component: {fileID: 22872251}
   - component: {fileID: 22872249}
+  - component: {fileID: 22872254}
   - component: {fileID: 22872250}
   m_Layer: 0
   m_Name: MainCamera
@@ -293,16 +294,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 22872248}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bcf93fe99647e140a7b000fcc2e6725, type: 3}
+  m_Script: {fileID: 11500000, guid: 0092a8db70c45584e9628a5ffb6aca1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 109975407}
-  cameraSmooth: 20
-  CameraClamp: 1
-  minX: 6
-  maxX: 24
-  minY: 14
-  maxY: 46
+  IgnoreGuiFingers: 1
+  RequiredFingerCount: 0
+  WheelSensitivity: 0
+  Zoom: 10
+  ZoomClamp: 1
+  ZoomMin: 10
+  ZoomMax: 20
+  Dampening: 10
 --- !u!124 &22872251
 Behaviour:
   m_ObjectHideFlags: 0
@@ -330,7 +332,7 @@ Camera:
   far clip plane: 100
   field of view: 60
   orthographic: 1
-  orthographic size: 12.5
+  orthographic size: 10
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -353,12 +355,27 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 22872248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.86, y: 44.06, z: -10}
+  m_LocalPosition: {x: 4.1, y: 44, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &22872254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 22872248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e278200a08f9b9f419a13f87e9559ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IgnoreGuiFingers: 1
+  RequiredFingerCount: 0
+  Distance: 1
+  Sensitivity: 1
 --- !u!1 &48746321
 GameObject:
   m_ObjectHideFlags: 0
@@ -2405,11 +2422,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4095973816872946, guid: 65122b52dfbeeb1418660722cb9fa06c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: -1.76
       objectReference: {fileID: 0}
     - target: {fileID: 4095973816872946, guid: 65122b52dfbeeb1418660722cb9fa06c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 44
+      value: 43.94
       objectReference: {fileID: 0}
     - target: {fileID: 4095973816872946, guid: 65122b52dfbeeb1418660722cb9fa06c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2452,7 +2469,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1107340754575112, guid: 65122b52dfbeeb1418660722cb9fa06c, type: 2}
       propertyPath: m_Name
-      value: AnimatedAgent
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65122b52dfbeeb1418660722cb9fa06c, type: 2}
@@ -4819,7 +4836,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1282476442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: 47, z: -0.01}
+  m_LocalPosition: {x: -130, y: 69, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1016939459}
@@ -4932,6 +4949,12 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &1327370101 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114322114288398512, guid: 65122b52dfbeeb1418660722cb9fa06c,
+    type: 2}
+  m_PrefabInternal: {fileID: 584095006}
+  m_Script: {fileID: 11500000, guid: 026457dbda74e144787ee00cd02e5c9b, type: 3}
 --- !u!1 &1349147529
 GameObject:
   m_ObjectHideFlags: 0
@@ -8266,6 +8289,10 @@ Prefab:
       propertyPath: m_tileDataList.Array.data[2841]
       value: 268763171
       objectReference: {fileID: 0}
+    - target: {fileID: 1305109742063428, guid: 6f07105934c755a46ae05f3e46d9800a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f07105934c755a46ae05f3e46d9800a, type: 2}
   m_IsPrefabParent: 0
@@ -8530,6 +8557,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1759330749}
   - component: {fileID: 1759330750}
+  - component: {fileID: 1759330747}
   m_Layer: 0
   m_Name: GAMESCRIPTS
   m_TagString: Untagged
@@ -8537,6 +8565,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1759330747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1759330746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fc98219a83dff145947365dc914d06e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TapThreshold: 0.5
+  SwipeThreshold: 50
+  ReferenceDpi: 200
+  GuiLayers:
+    serializedVersion: 2
+    m_Bits: 4294967291
+  RecordFingers: 1
+  RecordThreshold: 5
+  RecordLimit: 10
+  SimulateMultiFingers: 1
+  PinchTwistKey: 306
+  MultiDragKey: 308
+  FingerTexture: {fileID: 2800000, guid: 25c48be3a87ea0f489a6d41c9c9a2194, type: 3}
 --- !u!4 &1759330749
 Transform:
   m_ObjectHideFlags: 0
@@ -9411,24 +9463,15 @@ Prefab:
       objectReference: {fileID: 1906576558}
     - target: {fileID: 114337768968605950, guid: 3d79a4eeb158b28439ac00bab3362724,
         type: 2}
-      propertyPath: showPreviewPath
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1327370101}
     - target: {fileID: 114337768968605950, guid: 3d79a4eeb158b28439ac00bab3362724,
         type: 2}
-      propertyPath: gridX
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 114337768968605950, guid: 3d79a4eeb158b28439ac00bab3362724,
+      propertyPath: tilePrefab
+      value: 
+      objectReference: {fileID: 1281777568528062, guid: 5dcfd04ae8a977540bface2d622ee731,
         type: 2}
-      propertyPath: gridY
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 114337768968605950, guid: 3d79a4eeb158b28439ac00bab3362724,
-        type: 2}
-      propertyPath: showDebugPath
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d79a4eeb158b28439ac00bab3362724, type: 2}
   m_IsPrefabParent: 0

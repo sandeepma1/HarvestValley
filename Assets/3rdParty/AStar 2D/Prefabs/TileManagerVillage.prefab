@@ -54,8 +54,10 @@ MonoBehaviour:
   allowThreading: 1
   allowDiagonal: 1
   nodeSpacing: 1
+  showDebugPath: 0
   allPropsParent: {fileID: 0}
-  gridX: 7
-  gridY: 7
+  player: {fileID: 0}
+  gridX: 60
+  gridY: 60
   tilePrefab: {fileID: 187808, guid: ab64bacedd9885d47b44d615b3adf42b, type: 2}
-  showPreviewPath: 1
+  showPreviewPath: 0
