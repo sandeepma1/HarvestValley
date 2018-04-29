@@ -9,8 +9,6 @@ namespace AStar_2D.Demo
         private bool showDebugPath;
         [SerializeField]
         private Transform allPropsParent;
-        [SerializeField]
-        private bool showDebugTiles;
         // Private
         private Tile[,] tiles;
         Camera mainCamera;
@@ -145,7 +143,6 @@ namespace AStar_2D.Demo
         {
             if (Input.GetMouseButtonUp(0) && !isClickedForBuilding)
             {
-                print("from update");
                 player.SetDestination(mainCamera.ScreenToWorldPoint(Input.mousePosition));
             }
         }
@@ -172,6 +169,5 @@ namespace AStar_2D.Demo
                 });
             }
         }
-
     }
 }

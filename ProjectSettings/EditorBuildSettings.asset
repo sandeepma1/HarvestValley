@@ -10,7 +10,7 @@ EditorBuildSettings:
     guid: 853d77338e074c2419ac9fedc49a8fef
   - enabled: 1
     path: Assets/Scenes/Main.unity
-    guid: 6a59af1d15e76b746a8583bc650d1fe3
+    guid: 8ea8da49c3be7934d91bbc2ac517850b
   - enabled: 1
     path: Assets/Scenes/Mines.unity
     guid: 3f6cb1cb5b110ae41ae6e3511b8614fd

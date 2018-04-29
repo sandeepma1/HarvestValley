@@ -70,9 +70,13 @@ namespace AStar_2D.Demo
             set
             {
                 walkable = value;
-                if (!walkable && showDebug)
+                if (showDebug)
                 {
-                    GetComponent<SpriteRenderer>().color = Color.white;
+                    GetComponent<SpriteRenderer>().color = walkable ? Color.white : Color.clear;
+                }
+                else
+                {
+                    Destroy(GetComponent<SpriteRenderer>());
                 }
             }
         }
