@@ -211,7 +211,7 @@ namespace AStar_2D.Demo
                 // Set the target for all agents
                 foreach (Agent agent in agents)
                 {
-                    agent.setDestination(tile.WorldPosition);
+                    agent.SetDestination(tile.WorldPosition);
                 }
 
             }

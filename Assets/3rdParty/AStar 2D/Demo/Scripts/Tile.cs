@@ -44,6 +44,8 @@ namespace AStar_2D.Demo
         public event TileHoverDelegate onTileHover;
 
         // Private
+        [HideInInspector]
+        public bool showDebug = false;
         [SerializeField]
         private bool walkable = true;
         private bool canSend = true;
@@ -67,8 +69,11 @@ namespace AStar_2D.Demo
             get { return walkable; } // Only need to implement the get but set is useful
             set
             {
-                GetComponent<SpriteRenderer>().color = Color.clear; //use this to debug
                 walkable = value;
+                if (!walkable && showDebug)
+                {
+                    GetComponent<SpriteRenderer>().color = Color.white;
+                }
             }
         }
 
@@ -108,17 +113,17 @@ namespace AStar_2D.Demo
         /// Called by Unity.
         /// Left blank for demonstration.
         /// </summary>
-        public void Start()
-        {
-            /*int random = Random.Range (0, 4);
-			if (random < 1) {
-				walkable = false;
-				this.gameObject.GetComponent <SpriteRenderer> ().sprite = tileSheet [Random.Range (0, 4)];
-				GameEventManager.numberOfRocksInLevel = GameEventManager.numberOfRocksInLevel + 1;
-				//this.gameObject.GetComponent <SpriteRenderer> ().color = new Color (1, 0, 0, 0.5f);
-			}*/
-            // DO setup code for the tile
-        }
+        //public void Start()
+        //{
+        /*int random = Random.Range (0, 4);
+        if (random < 1) {
+            walkable = false;
+            this.gameObject.GetComponent <SpriteRenderer> ().sprite = tileSheet [Random.Range (0, 4)];
+            GameEventManager.numberOfRocksInLevel = GameEventManager.numberOfRocksInLevel + 1;
+            //this.gameObject.GetComponent <SpriteRenderer> ().color = new Color (1, 0, 0, 0.5f);
+        }*/
+        // DO setup code for the tile
+        //}
 
         /// <summary>
         /// Toggle the walkable state of this tile.

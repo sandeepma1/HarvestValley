@@ -51,7 +51,7 @@ public class FollowAgent : AnimatedAgent
 
         // Set the agents target index
         // This is the main method that starts the agent moving towards a location using A*
-        setDestination(targetIndex);
+        SetDestination(targetIndex);
     }
 
     /// <summary>

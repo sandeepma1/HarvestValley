@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchingPathFlag: 0
+  showDebug: 0
   walkable: 1
 --- !u!212 &212488511162550708
 SpriteRenderer:

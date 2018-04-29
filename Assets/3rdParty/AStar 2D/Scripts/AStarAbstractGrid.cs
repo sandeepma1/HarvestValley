@@ -24,7 +24,7 @@ namespace AStar_2D
         /// The spaicing between the nodes. 
         /// </summary>
         public int nodeSpacing = 1;
-
+        public Agent player;
         // Properties
         /// <summary>
         /// Access a node at the specified index.

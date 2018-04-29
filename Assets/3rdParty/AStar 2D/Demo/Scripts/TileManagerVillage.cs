@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine;
 
-// Import the AStar_2D namespace
-using AStar_2D;
-using AStar_2D.Pathfinding;
-using UnityEngine;
 namespace AStar_2D.Demo
 {
     public class TileManagerVillage : AStarGrid
     {
+        public static TileManagerVillage Instance = null;
         [SerializeField]
         private bool showDebugPath;
         [SerializeField]
         private Transform allPropsParent;
         [SerializeField]
-        private Agent player;
+        private bool showDebugTiles;
         // Private
         private Tile[,] tiles;
         Camera mainCamera;
@@ -37,7 +32,7 @@ namespace AStar_2D.Demo
         /// When true, a preview path will be shown when the mouse hovers over a tile.
         /// </summary>
         public bool showPreviewPath = false;
-
+        public bool isClickedForBuilding;
         // Methods
         /// <summary>
         /// Called by Unity.
@@ -45,6 +40,7 @@ namespace AStar_2D.Demo
         /// </summary>
         public override void Awake()
         {
+            Instance = this;
             base.Awake();
 
             tiles = new Tile[gridX, gridY];
@@ -55,24 +51,18 @@ namespace AStar_2D.Demo
                 {
                     // Create the tile at its location
                     //GameObject obj = MonoBehaviour.Instantiate(tilePrefab, new Vector3((i - (gridX / 2) + 0.5f), (j - (gridY / 2) + 0.5f)), Quaternion.identity) as GameObject;
-                    GameObject obj = MonoBehaviour.Instantiate(tilePrefab, new Vector3(i, j), Quaternion.identity) as GameObject;
-                    if (showDebugPath)
-                    {
-                        obj.GetComponent<SpriteRenderer>().color = Color.white;
-                    }
+                    GameObject obj = MonoBehaviour.Instantiate(tilePrefab, new Vector3(i + 0.5f, j + 0.5f), Quaternion.identity, transform) as GameObject;
+
                     // Add the tile script
                     tiles[i, j] = obj.GetComponent<Tile>();
                     tiles[i, j].index = new Index(i, j);
-
                     // Add an event listener
                     tiles[i, j].onTileSelected += onTileSelected;
-
+                    tiles[i, j].showDebug = showDebugPath;
+                    //tiles[i, j].gameObject.isStatic = true;
                     // Check for preview
                     if (showPreviewPath == true)
-                        tiles[i, j].onTileHover += onTileHover;
-
-                    // Add the tile as a child to keep the scene view clean
-                    obj.transform.SetParent(transform);
+                        tiles[i, j].onTileHover += OnTileHover;
                 }
             }
 
@@ -85,15 +75,31 @@ namespace AStar_2D.Demo
         {
             mainCamera = Camera.main;
         }
+
         private void ConstructProps()
         {
             SpriteRenderer[] allProps = allPropsParent.GetComponentsInChildren<SpriteRenderer>();
 
             for (int i = 1; i < allProps.Length; i++)
             {
-                FindSurrounding(allProps[i].bounds.size, allProps[i].transform.localPosition);
+                if (allProps[i].CompareTag("AStarOclude"))
+                {
+                    BoxCollider2D boxCollider2D = allProps[i].GetComponent<BoxCollider2D>();
+
+                    if (boxCollider2D == null)
+                    {
+                        // Use Sprite bonds
+                        FindSurrounding(allProps[i].bounds.size, allProps[i].transform.localPosition);
+                    }
+                    else
+                    {
+                        //Use collider bonds
+                        FindSurroundingOnCollision(boxCollider2D, allProps[i].transform.localPosition);
+                    }
+                }
             }
         }
+
         private void FindSurrounding(Vector2 bounds, Vector2 position)
         {
             int xPos = Mathf.RoundToInt(position.x - bounds.x / 2);
@@ -103,6 +109,20 @@ namespace AStar_2D.Demo
                 for (int j = 0; j < bounds.y; j++)
                 {
                     tiles[i + xPos, j + yPos].IsWalkable = false;
+                }
+            }
+        }
+
+        private void FindSurroundingOnCollision(BoxCollider2D boxCollider2D, Vector2 position)
+        {
+            float xPos = (position.x - boxCollider2D.bounds.size.x / 2) + boxCollider2D.offset.x;
+            float yPos = (position.y - boxCollider2D.bounds.size.y / 2) + boxCollider2D.offset.y;
+            for (int i = 0; i < boxCollider2D.bounds.size.x; i++)
+            {
+                for (int j = 0; j < boxCollider2D.bounds.size.y; j++)
+                {
+                    tiles[i + (int)xPos, j + (int)yPos].IsWalkable = false;
+
                 }
             }
         }
@@ -123,13 +143,19 @@ namespace AStar_2D.Demo
 
         private void Update()
         {
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0) && !isClickedForBuilding)
             {
-                player.setDestination(mainCamera.ScreenToWorldPoint(Input.mousePosition));
+                print("from update");
+                player.SetDestination(mainCamera.ScreenToWorldPoint(Input.mousePosition));
             }
         }
 
-        private void onTileHover(Tile tile)
+        public void SetPlayerDestination(Vector3 position)
+        {
+            player.SetDestination(position);
+        }
+
+        private void OnTileHover(Tile tile)
         {
             // Find the first agent
             Agent agent = Component.FindObjectOfType<Agent>();

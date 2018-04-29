@@ -182,7 +182,7 @@ public class EditorTilemap : AStarGrid
 
             // Set the target for all agents
             foreach (Agent agent in agents)
-                agent.setDestination(tile.WorldPosition);
+                agent.SetDestination(tile.WorldPosition);
         }
         else if(mouseButton == 1)
         {

@@ -22,6 +22,6 @@ namespace AStar_2D.Pathfinding.Algorithm
 
             // Skip sqrt
             return x + y;
-        }   
+        }
     }
 }

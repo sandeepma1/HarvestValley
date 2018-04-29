@@ -214,10 +214,11 @@ namespace AStar_2D.Pathfinding
                     Path result = constructPath(searchGrid[endNode.Index.X, endNode.Index.Y]);
 
                     // Last node
-                    result.push(endNode, endNode.Index); //Sandy edit
-                                                         //Debug.Log (endNode.Index);
-                                                         //Debug.Log (result.NodeCount);
-                                                         // Trigger the delegate with success
+                    result.push(endNode, endNode.Index);
+                    //Sandy edit
+                    //Debug.Log(endNode.Index);
+                    //Debug.Log (result.NodeCount);
+                    // Trigger the delegate with success
                     callback(result, PathRequestStatus.PathFound);
 
                     // Exit the method

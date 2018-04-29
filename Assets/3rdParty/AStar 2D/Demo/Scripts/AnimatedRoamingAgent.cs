@@ -39,7 +39,7 @@ namespace AStar_2D.Demo
             int y = Random.Range(0, height - 1);
 
             // Random destination
-            setDestination(new Index(x, y));
+            SetDestination(new Index(x, y));
         }
     }
 }

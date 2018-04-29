@@ -17,7 +17,7 @@ namespace AStar_2D.Pathfinding.Algorithm
         /// <summary>
         /// Cached value representing the default Euclidean heuristic provide.
         /// </summary>
-        public static readonly HeuristicProvider defaultProvider = new EuclideanProvider();
+        public static readonly HeuristicProvider defaultProvider = new MyProvider();
 
         // Methods
         /// <summary>
@@ -40,7 +40,7 @@ namespace AStar_2D.Pathfinding.Algorithm
             int x = Mathf.Abs(start.Index.X - end.Index.X);
             int y = Mathf.Abs(start.Index.Y - end.Index.Y);
 
-            switch(x + y)
+            switch (x + y)
             {
                 default:
                 case 0:
