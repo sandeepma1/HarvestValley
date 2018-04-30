@@ -242,10 +242,10 @@ namespace HarvestValley.Ui
                     return;
                 }
 
-                if (!InputController.Instance.IsDragging)
-                {
-                    OnEmptyClicked();
-                }
+                //if (!InputController.Instance.IsDragging)
+                //{
+                OnEmptyClicked();
+                //}
             }
         }
         #endregion

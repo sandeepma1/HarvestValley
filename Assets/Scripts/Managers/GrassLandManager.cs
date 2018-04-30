@@ -3,6 +3,7 @@ using UnityEngine;
 using HarvestValley.Ui;
 using System;
 using System.Collections;
+using HarvestValley.Controls;
 
 namespace HarvestValley.Managers
 {
@@ -94,7 +95,11 @@ namespace HarvestValley.Managers
         {
             selectedItemIdInMenu = itemId;
             isInPlantingMode = true;
-            InputController.Instance.DisableDragSwipe();
+            if (InputController.Instance != null)
+            {
+                InputController.Instance.DisableDragSwipe();
+            }
+            LeanTouchController.Instance.DisableLeanTouch();
         }
 
         public void StopPlantingMode()
@@ -106,7 +111,11 @@ namespace HarvestValley.Managers
             selectedItemIdInMenu = -1;
             isInPlantingMode = false;
             UiGrassListMenu.Instance.StopPlantingMode();
-            InputController.Instance.EnableDragSwipe();
+            if (InputController.Instance != null)
+            {
+                InputController.Instance.EnableDragSwipe();
+            }
+            LeanTouchController.Instance.EnableLeanTouch();
         }
 
         #endregion

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Lean.Touch;
 
 namespace HarvestValley.Managers
 {

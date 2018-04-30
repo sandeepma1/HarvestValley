@@ -19,6 +19,8 @@ namespace Lean.Touch
         [Tooltip("The sensitivity of the movement, use -1 to invert")]
         public float Sensitivity = 1.0f;
 
+        public float minX, maxX, minY, maxY;
+
         private void Start()
         {
             mainCamera = Camera.main;
@@ -37,9 +39,17 @@ namespace Lean.Touch
                 // Get the world delta of all the fingers
                 var worldDelta = LeanGesture.GetWorldDelta(fingers, Distance, mainCamera);
 
-                // Pan the camera based on the world delta
-                transform.position -= worldDelta * Sensitivity;
+                ClampCamera(worldDelta * Sensitivity);
             }
+        }
+
+        private void ClampCamera(Vector3 position)
+        {
+            // Pan the camera based on the world delta
+            transform.position -= position;
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, minX, maxX),
+                                                Mathf.Clamp(transform.position.y, minY, maxY),
+                                                transform.position.z);
         }
     }
 }
