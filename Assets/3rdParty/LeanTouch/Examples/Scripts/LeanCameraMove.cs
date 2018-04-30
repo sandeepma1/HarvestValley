@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Lean.Touch
@@ -6,6 +7,7 @@ namespace Lean.Touch
     public class LeanCameraMove : MonoBehaviour
     {
         private Camera mainCamera;
+        public Bounds screenBounds;
 
         [Tooltip("Ignore fingers with StartedOverGui?")]
         public bool IgnoreGuiFingers = true;
@@ -21,23 +23,36 @@ namespace Lean.Touch
 
         public float minX, maxX, minY, maxY;
 
+        private LeanCameraZoomSmooth leanZoom;
+        private float deltaZoom;
+        private float tempDeltaZoom;
+        private List<LeanFinger> leanFinger;
+        private Vector3 worldDelta;
+        private Vector3 tempWorldDelta;
+
         private void Start()
         {
-            mainCamera = Camera.main;
+            leanZoom = GetComponent<LeanCameraZoomSmooth>();
+            mainCamera = LeanTouch.GetCamera(mainCamera, gameObject);
+            tempWorldDelta = worldDelta;
         }
 
         protected virtual void LateUpdate()
         {
-            // Make sure the camera exists
-            //var camera = LeanTouch.GetCamera(mainCamera, gameObject);
-
             if (mainCamera != null)
             {
+                ChangeBounds();
                 // Get the fingers we want to use
-                var fingers = LeanTouch.GetFingers(IgnoreGuiFingers, RequiredFingerCount);
+                leanFinger = LeanTouch.GetFingers(IgnoreGuiFingers, RequiredFingerCount);
 
                 // Get the world delta of all the fingers
-                var worldDelta = LeanGesture.GetWorldDelta(fingers, Distance, mainCamera);
+                worldDelta = LeanGesture.GetWorldDelta(leanFinger, Distance, mainCamera);
+
+                //if (tempWorldDelta == worldDelta)
+                //{
+                //    return;
+                //}
+                //tempWorldDelta = worldDelta;
 
                 ClampCamera(worldDelta * Sensitivity);
             }
@@ -47,9 +62,28 @@ namespace Lean.Touch
         {
             // Pan the camera based on the world delta
             transform.position -= position;
+
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, minX, maxX),
-                                                Mathf.Clamp(transform.position.y, minY, maxY),
-                                                transform.position.z);
+                                    Mathf.Clamp(transform.position.y, minY, maxY),
+                                    transform.position.z);
+        }
+
+        private void ChangeBounds()
+        {
+            deltaZoom = leanZoom.Zoom - leanZoom.ZoomMin;
+
+            if (tempDeltaZoom == deltaZoom)
+            {
+                return;
+            }
+            tempDeltaZoom = deltaZoom;
+            print(deltaZoom);
+
+            float horzExtent = leanZoom.Zoom * Screen.width / Screen.height;
+            minX = (float)(horzExtent);
+            maxX = (float)(60 - horzExtent);
+            minY = (float)(leanZoom.Zoom);
+            maxY = (float)(60 - leanZoom.Zoom);
         }
     }
 }

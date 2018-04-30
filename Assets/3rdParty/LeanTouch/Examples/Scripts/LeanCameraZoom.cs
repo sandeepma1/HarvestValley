@@ -21,6 +21,7 @@ namespace Lean.Touch
 
         [Tooltip("The current FOV/Size")]
         public float Zoom = 50.0f;
+        private float tempZoom;
 
         [Tooltip("Limit the FOV/Size?")]
         public bool ZoomClamp;
@@ -33,7 +34,8 @@ namespace Lean.Touch
 
         private void Start()
         {
-            mainCamera = Camera.main;
+            mainCamera = LeanTouch.GetCamera(mainCamera, gameObject);
+            tempZoom = Zoom;
         }
 
         protected virtual void LateUpdate()
@@ -47,13 +49,19 @@ namespace Lean.Touch
             // Modify the zoom value
             Zoom *= pinchRatio;
 
+            if (tempZoom == Zoom)
+            {
+                return;
+            }
+            tempZoom = Zoom;
+            SetZoom(Zoom);
+
             if (ZoomClamp == true)
             {
                 Zoom = Mathf.Clamp(Zoom, ZoomMin, ZoomMax);
             }
 
-            // Set the new zoom
-            SetZoom(Zoom);
+
         }
 
         protected void SetZoom(float current)
