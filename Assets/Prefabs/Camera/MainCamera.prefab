@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e278200a08f9b9f419a13f87e9559ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenWidth: 60
+  screenHight: 60
   IgnoreGuiFingers: 1
   RequiredFingerCount: 0
   Distance: 1

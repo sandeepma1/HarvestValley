@@ -7,7 +7,10 @@ namespace Lean.Touch
     public class LeanCameraMove : MonoBehaviour
     {
         private Camera mainCamera;
-        public Bounds screenBounds;
+        [SerializeField]
+        public float screenWidth = 60;
+        [SerializeField]
+        public float screenHight = 60;
 
         [Tooltip("Ignore fingers with StartedOverGui?")]
         public bool IgnoreGuiFingers = true;
@@ -48,6 +51,7 @@ namespace Lean.Touch
                 // Get the world delta of all the fingers
                 worldDelta = LeanGesture.GetWorldDelta(leanFinger, Distance, mainCamera);
 
+                //Uncomment tis to upade move only when it is moved
                 //if (tempWorldDelta == worldDelta)
                 //{
                 //    return;
@@ -81,9 +85,9 @@ namespace Lean.Touch
 
             float horzExtent = leanZoom.Zoom * Screen.width / Screen.height;
             minX = (float)(horzExtent);
-            maxX = (float)(60 - horzExtent);
+            maxX = (float)(screenWidth - horzExtent);
             minY = (float)(leanZoom.Zoom);
-            maxY = (float)(60 - leanZoom.Zoom);
+            maxY = (float)(screenHight - leanZoom.Zoom);
         }
     }
 }
