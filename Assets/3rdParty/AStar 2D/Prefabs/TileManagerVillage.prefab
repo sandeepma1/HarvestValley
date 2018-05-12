@@ -20,12 +20,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4673704435809534}
   - component: {fileID: 114337768968605950}
+  - component: {fileID: 114980146139972208}
+  - component: {fileID: 114691854601576658}
   m_Layer: 0
   m_Name: TileManagerVillage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4673704435809534
 Transform:
@@ -52,12 +54,64 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowThreading: 1
-  allowDiagonal: 1
+  allowDiagonal: 0
   nodeSpacing: 1
+  player: {fileID: 0}
   showDebugPath: 0
   allPropsParent: {fileID: 0}
-  player: {fileID: 0}
   gridX: 60
   gridY: 60
-  tilePrefab: {fileID: 187808, guid: ab64bacedd9885d47b44d615b3adf42b, type: 2}
+  tilePrefab: {fileID: 1281777568528062, guid: 5dcfd04ae8a977540bface2d622ee731, type: 2}
   showPreviewPath: 0
+  isClickedForBuilding: 0
+--- !u!114 &114691854601576658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1506959958191352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c1c71d8ad5da9438de3b2e5990763f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IgnoreIfOverGui: 1
+  IgnoreIfStartedOverGui: 1
+  RequiredTapCount: 1
+  RequiredTapInterval: 0
+  OnFingerTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Lean.Touch.LeanFingerTap+LeanFingerEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114980146139972208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1506959958191352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c1c71d8ad5da9438de3b2e5990763f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IgnoreIfOverGui: 1
+  IgnoreIfStartedOverGui: 1
+  RequiredTapCount: 1
+  RequiredTapInterval: 0
+  OnFingerTap:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114337768968605950}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Lean.Touch.LeanFingerTap+LeanFingerEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

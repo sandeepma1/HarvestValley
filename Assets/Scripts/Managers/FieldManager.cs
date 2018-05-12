@@ -249,12 +249,12 @@ namespace HarvestValley.Managers
             {
                 case BuildingState.IDLE:
                     MenuManager.Instance.DisplayMenu(MenuNames.SeedList, MenuOpeningType.CloseAll);
-                    MenuManager.Instance.DisplayMenu(MenuNames.FieldUpgrade, MenuOpeningType.OnTop);
+                    //MenuManager.Instance.DisplayMenu(MenuNames.FieldUpgrade, MenuOpeningType.OnTop);
                     break;
                 case BuildingState.WORKING:
                     MenuManager.Instance.DisplayMenu(MenuNames.FieldProgress, MenuOpeningType.CloseAll);
                     UiFieldProgress.Instance.EnableMenu();
-                    MenuManager.Instance.DisplayMenu(MenuNames.FieldUpgrade, MenuOpeningType.OnTop);
+                    //MenuManager.Instance.DisplayMenu(MenuNames.FieldUpgrade, MenuOpeningType.OnTop);
                     break;
                 case BuildingState.DONE:
                     MenuManager.Instance.CloseAllMenu();

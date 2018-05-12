@@ -29,17 +29,17 @@ public class SceneChanger : Singleton<SceneChanger>
         thisCanvas = GetComponent<Canvas>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            FadeIn();
-        }
-        if (Input.GetKeyUp(KeyCode.B))
-        {
-            FadeOut();
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyUp(KeyCode.A))
+    //    {
+    //        FadeIn();
+    //    }
+    //    if (Input.GetKeyUp(KeyCode.B))
+    //    {
+    //        FadeOut();
+    //    }
+    //}
 
     private void OnLevelWasLoaded(int level)
     {

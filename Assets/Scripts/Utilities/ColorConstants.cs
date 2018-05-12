@@ -54,8 +54,8 @@ namespace HarvestValley.Ui
         public static Color InsufficientItemAmount { get { return Instance.insufficientItemAmount; } }
 
         [SerializeField]
-        private Color normalItemAmount = new Color(0, 0, 0, 1f);
-        public static Color NormalSecondaryText { get { return Instance.normalItemAmount; } }
+        private Color normalSecondaryText = new Color(0, 0, 0, 1f);
+        public static Color NormalSecondaryText { get { return Instance.normalSecondaryText; } }
         #endregion
     }
 }

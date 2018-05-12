@@ -12,7 +12,7 @@ namespace HarvestValley.Ui
 
         protected void ChangeUiTextColor(ref TextMeshProUGUI text)
         {
-            text.color = ColorConstants.NormalSecondaryText;
+            text.color = ColorConstants.NormalUiItem;
         }
     }
 }

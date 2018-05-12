@@ -16,7 +16,7 @@ MonoBehaviour:
   fieldNormal: {r: 1, g: 1, b: 1, a: 1}
   dehighlightedUiItem: {r: 0.25, g: 0.25, b: 0.25, a: 1}
   normalUiItem: {r: 1, g: 1, b: 1, a: 1}
-  closeButtonBackground: {r: 0, g: 0, b: 0, a: 0.5}
+  closeButtonBackground: {r: 0, g: 0, b: 0, a: 0.153}
   fpsColor: {r: 0, g: 0, b: 0, a: 1}
   insufficientItemAmount: {r: 0.8308824, g: 0.13440742, b: 0.13440742, a: 1}
-  normalItemAmount: {r: 0.54901963, g: 0.38431376, b: 0.17254902, a: 1}
+  normalSecondaryText: {r: 0.64705884, g: 0.46855986, b: 0.24264707, a: 1}

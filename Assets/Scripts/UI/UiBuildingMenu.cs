@@ -313,7 +313,7 @@ namespace HarvestValley.Ui
 
                 int itemAmountInInventory = UiInventoryMenu.Instance.GetItemAmountFromInventory(needItem.itemID);
                 requiredItems[i].haveCountText.text = itemAmountInInventory.ToString();
-                requiredItems[i].haveCountText.color = (itemAmountInInventory < neededAmount) ? ColorConstants.InsufficientItemAmount : ColorConstants.NormalSecondaryText;
+                requiredItems[i].haveCountText.color = (itemAmountInInventory < neededAmount) ? ColorConstants.InsufficientItemAmount : ColorConstants.NormalUiItem;
                 requiredItems[i].requireCountText.text = "/" + neededAmount.ToString();
             }
         }

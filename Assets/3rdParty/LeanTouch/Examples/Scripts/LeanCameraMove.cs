@@ -81,7 +81,6 @@ namespace Lean.Touch
                 return;
             }
             tempDeltaZoom = deltaZoom;
-            print(deltaZoom);
 
             float horzExtent = leanZoom.Zoom * Screen.width / Screen.height;
             minX = (float)(horzExtent);

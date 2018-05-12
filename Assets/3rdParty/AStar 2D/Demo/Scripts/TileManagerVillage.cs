@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using Lean.Touch;
+using System;
 
 namespace AStar_2D.Demo
 {
@@ -31,6 +33,8 @@ namespace AStar_2D.Demo
         /// </summary>
         public bool showPreviewPath = false;
         public bool isClickedForBuilding;
+
+        private LeanFingerTap leanFingerTap;
         // Methods
         /// <summary>
         /// Called by Unity.
@@ -72,6 +76,15 @@ namespace AStar_2D.Demo
         private void Start()
         {
             mainCamera = Camera.main;
+            leanFingerTap = GetComponent<LeanFingerTap>();
+            leanFingerTap.OnFingerTap.AddListener(OnFingerTap);
+        }
+        private void OnFingerTap(LeanFinger arg0)
+        {
+            if (!isClickedForBuilding)
+            {
+                player.SetDestination(arg0.GetStartWorldPosition(0));
+            }
         }
 
         private void ConstructProps()
@@ -137,14 +150,6 @@ namespace AStar_2D.Demo
             //    // Toggle the walkable status
             //    tile.toggleWalkable();
             //}
-        }
-
-        private void Update()
-        {
-            if (Input.GetMouseButtonUp(0) && !isClickedForBuilding)
-            {
-                player.SetDestination(mainCamera.ScreenToWorldPoint(Input.mousePosition));
-            }
         }
 
         public void SetPlayerDestination(Vector3 position)

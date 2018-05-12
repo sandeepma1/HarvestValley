@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 20208373369253770}
   - component: {fileID: 81296815723479888}
   - component: {fileID: 114610695555574744}
-  - component: {fileID: 114136140115572642}
+  - component: {fileID: 114323062547150420}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1005587451817388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.5, y: 46, z: -10}
+  m_LocalPosition: {x: 33, y: 50, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,7 +63,7 @@ Camera:
   far clip plane: 100
   field of view: 60
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 6
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -86,7 +86,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1005587451817388}
   m_Enabled: 1
---- !u!114 &114136140115572642
+--- !u!114 &114323062547150420
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -94,19 +94,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1005587451817388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e278200a08f9b9f419a13f87e9559ab1, type: 3}
+  m_Script: {fileID: 11500000, guid: a4a42cdcf8bc5264bb3e3036ed4f52d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   screenWidth: 60
   screenHight: 60
   IgnoreGuiFingers: 1
-  RequiredFingerCount: 0
+  RequiredFingerCount: 1
   Distance: 1
   Sensitivity: 1
   minX: 7
   maxX: 53
   minY: 14
   maxY: 48
+  Dampening: 4
 --- !u!114 &114610695555574744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,8 +122,8 @@ MonoBehaviour:
   IgnoreGuiFingers: 1
   RequiredFingerCount: 0
   WheelSensitivity: -0.1
-  Zoom: 12
+  Zoom: 6
   ZoomClamp: 1
-  ZoomMin: 12
-  ZoomMax: 20
-  Dampening: 10
+  ZoomMin: 4
+  ZoomMax: 10
+  Dampening: 5
