@@ -100,16 +100,16 @@ namespace HarvestValley.Ui
             transform.position = new Vector3(-500, -500, 0);
             itemName.text = "";
             itemDuration.text = "";
-            item1Icon.GetComponent<SpriteRenderer>().sprite = new Sprite();
+            //item1Icon.GetComponent<SpriteRenderer>().sprite = new Sprite();
             item1Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
             item1Costing.text = "";
-            item2Icon.GetComponent<SpriteRenderer>().sprite = new Sprite();
+            //item2Icon.GetComponent<SpriteRenderer>().sprite = new Sprite();
             item2Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
             item2Costing.text = "";
-            item3Icon.GetComponent<SpriteRenderer>().sprite = new Sprite();
+            //item3Icon.GetComponent<SpriteRenderer>().sprite = new Sprite();
             item3Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
             item3Costing.text = "";
-            item4Icon.GetComponent<SpriteRenderer>().sprite = new Sprite();
+            //item4Icon.GetComponent<SpriteRenderer>().sprite = new Sprite();
             item4Costing.GetComponent<TextMeshPro>().color = HexToColor("A7630DFF");
             item4Costing.text = "";
         }

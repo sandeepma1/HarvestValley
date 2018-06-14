@@ -193,7 +193,7 @@ namespace HarvestValley.Managers
             FieldGO[fieldID].state = BuildingState.IDLE;
             FieldGO[fieldID].dateTime = new DateTime();
             FieldGO[fieldID].itemId = -1;
-            FieldGO[fieldID].plantsSprite.sprite = new Sprite();
+            //FieldGO[fieldID].plantsSprite.sprite = new Sprite();
         }
 
         public void AddNewField(Vector2 pos, int fieldID)
