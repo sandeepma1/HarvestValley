@@ -5,7 +5,7 @@ using System;
 using HarvestValley.Ui;
 using HarvestValley.IO;
 
-public class ClickableField : ClickableBase
+public class ClickableField : MonoBehaviour
 {
     public int itemId;
     public DateTime dateTime;
@@ -13,31 +13,24 @@ public class ClickableField : ClickableBase
     public SpriteRenderer plantsSprite;
     public bool isCrowPresent;
 
-    private SpriteRenderer fieldSprite;
+    public SpriteRenderer fieldSprite;
     private bool inPlantingMode;
     private Tweener glowingTweener = null;
+
+    public int buildingId;
+    public int sourceId;
+    public Vector2 position;
+    public int level;
+    public BuildingState state;
+
+    protected int itemIDToBePlaced = -1;
 
     private void Start()
     {
         fieldSprite = GetComponent<SpriteRenderer>();
     }
 
-    public override void OnMouseTouchUp()
-    {
-        base.OnMouseTouchUp();
-        SomeSeedPlanted();
-    }
-
-    public override void OnMouseTouchEnter()
-    {
-        base.OnMouseTouchEnter();
-        if (inPlantingMode)
-        {
-            SomeSeedPlanted();
-        }
-    }
-
-    private void SomeSeedPlanted()
+    public void SomeSeedPlanted()
     {
         if (inPlantingMode && state == BuildingState.IDLE)
         {
@@ -47,9 +40,8 @@ public class ClickableField : ClickableBase
         FieldManager.Instance.OnBuildingClicked(buildingId, sourceId);
     }
 
-    public override void AddItemToProductionQueue(int itemId)
+    public void AddItemToProductionQueue(int itemId)
     {
-        base.AddItemToProductionQueue(itemId);
         this.itemId = itemId;
         dateTime = DateTime.Now.AddSeconds(ItemDatabase.GetItemById(itemId).timeRequiredInSeconds);
         state = BuildingState.WORKING;

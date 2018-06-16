@@ -21,7 +21,7 @@ public class SmoothFollow : MonoBehaviour
         if (target)
         {
             transform.position = Vector3.Lerp(transform.position, target.position, cameraSmooth);
-            // transform.position = target.position + new Vector3(0, 0, -10);
+            transform.position = target.position + new Vector3(0, 0, -10);
         }
         if (CameraClamp)
         {

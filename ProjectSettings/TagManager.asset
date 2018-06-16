@@ -18,7 +18,8 @@ TagManager:
   - MainCanvas
   - DragableUiItem
   - FlappyFish
-  - AStarOclude
+  - TriggerCollider
+  - Enterence
   layers:
   - Default
   - TransparentFX

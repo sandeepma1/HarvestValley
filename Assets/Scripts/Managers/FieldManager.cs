@@ -46,7 +46,7 @@ namespace HarvestValley.Managers
             FieldGO[field.id] = Instantiate(clickableFieldPrefab, transform);
             FieldGO[field.id].transform.localPosition = field.position;
             FieldGO[field.id].gameObject.name = "Field" + field.id;
-            FieldGO[field.id].buildingSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.GetSourceInfoById(field.fieldID).slug, AtlasType.Buildings);
+            FieldGO[field.id].fieldSprite.sprite = AtlasBank.Instance.GetSprite(SourceDatabase.GetSourceInfoById(field.fieldID).slug, AtlasType.Buildings);
             FieldGO[field.id].buildingId = field.id;
             FieldGO[field.id].sourceId = field.fieldID;
             FieldGO[field.id].position = field.position;

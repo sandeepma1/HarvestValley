@@ -70,6 +70,7 @@ SpriteAtlas:
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: ca9cf7da1399f0b48a3b39bb95978662, type: 3}
   - {fileID: 21300000, guid: 83610861c89df9d4d97b8e92df267b44, type: 3}
   - {fileID: 21300000, guid: d54fb0326145bfd4f9da73ba33ba313a, type: 3}
   - {fileID: 21300000, guid: 50d030b2ba96e6d4f9d18554642cc56c, type: 3}
@@ -100,7 +101,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 50a37c96fbc7e434aabe51ebd952b0b2, type: 3}
   - {fileID: 21300000, guid: 1071336710b212e4896e7d9d866e24bc, type: 3}
   - {fileID: 21300000, guid: 1f9b774fc57b53f42805376876acbd97, type: 3}
-  - {fileID: 21300000, guid: ca9cf7da1399f0b48a3b39bb95978662, type: 3}
   - {fileID: 21300000, guid: 60726f580300e34479f26adc2acfb926, type: 3}
   - {fileID: 21300000, guid: cd7d41a654796a7488a87ee0057a90c2, type: 3}
   - {fileID: 21300000, guid: 9138713bb8274d44d87fb922c4d59501, type: 3}
@@ -117,6 +117,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c62e9dce4c746134291bb99a98904685, type: 3}
   - {fileID: 21300000, guid: b2d693e5c82e09c419d50aef305aaf9d, type: 3}
   m_PackedSpriteNamesToIndex:
+  - EmbosedBoxBackground
   - Button_256px
   - PopupMenuBackground
   - egg
@@ -147,7 +148,6 @@ SpriteAtlas:
   - Experience
   - CloseButton
   - SeedOptionsBackground
-  - EmbosedBoxBackground
   - Diamond
   - infoButton
   - Additional
