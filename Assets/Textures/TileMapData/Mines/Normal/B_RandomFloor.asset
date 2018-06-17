@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5656c5e200a31c945b469abda4211525, type: 3}
-  m_Name: MinesRedRandom
+  m_Name: B_RandomFloor
   m_EditorClassIdentifier: 
-  Tileset: {fileID: 11400000, guid: b221fb5a87ea0484dbb511ee7da651c6, type: 2}
+  Tileset: {fileID: 11400000, guid: e2b6890d6f98fca4e8773c0027c49733, type: 2}
   Params:
     m_paramList: []
   m_group: 0
   m_autotilingMode: 1
-  RandomTiles: 5a0000005b0000005c0000005d0000006a0000006b0000006c0000006d0000007a000000
+  RandomTiles: 990000009a000000ab0000009c0000009b0000009a0000009a000000a900000099000000

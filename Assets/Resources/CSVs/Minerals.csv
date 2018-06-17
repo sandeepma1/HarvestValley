@@ -1,0 +1,4 @@
+id,name,description,outputId,min,max,hits,XP,slug
+0,Enterance,Mine Spawn position,-1,,,-1,-1,enterance
+1,Basic Boulder,Basic Boulder,23,1,1,2,1,basicboulder
+2,Basic Boulder Dark,Basic Boulder Dark,23,1,1,2,1,basicboulderdark

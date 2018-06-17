@@ -4,22 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Toucher
-  - DisableAllMenus
-  - Fader
-  - Grass
   - Field
-  - SpriteLights
-  - FarmLand
-  - MapChunks
-  - PlacableTiles
-  - MasterMenuItem
-  - Harvest
-  - MainCanvas
-  - DragableUiItem
-  - FlappyFish
-  - TriggerCollider
   - Enterence
+  - MainCanvas
+  - Pickaxe
+  - Pickable
+  - FlappyFish
+  - DragableUiItem
+  - Grass
+  - SpriteLights
   layers:
   - Default
   - TransparentFX
@@ -29,9 +22,9 @@ TagManager:
   - UI
   - 
   - 
-  - Dragger
-  - Unwalkable
-  - CollisionTwoD
+  - Player
+  - 
+  - 
   - 
   - 
   - 

@@ -100,7 +100,6 @@ namespace HarvestValley.Ui
             UiMessage.Instance.SetTopMessage(topMessage);
             ClearSeedDescription();
             MenuManager.Instance.CloseMenu();
-            PlayerJoystick.Instance.StartPlantingMode(selectedSeedID);
             selectedSeedID = -1;
         }
 

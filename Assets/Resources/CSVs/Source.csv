@@ -12,3 +12,4 @@ sourceID,name,desc,type,cost,deployTime,slotsUnlocked,limit,slug
 10,PieOven,Production buildings,Products,2200,720,2,1,pieoven
 11,Loom,Production buildings,Products,3200,1440,2,1,loom
 12,Fish,fish,AnimalGoods,3200,1440,2,1,fish
+13,Mines,Mines,Minerals,-1,-1,-1,-1,mines

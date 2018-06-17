@@ -154,7 +154,8 @@ public enum ItemType
     Suppliers,
     Products,
     Grass,
-    Fish
+    Fish,
+    Minerals
 }
 
 public enum ItemSource
@@ -177,7 +178,7 @@ public enum ItemSource
     SewingMachine,
     CakeOven,
     CherryTree,
-    Mine,
+    Mines,
     Smelter,
     BlackberryBush,
     JuicePress,

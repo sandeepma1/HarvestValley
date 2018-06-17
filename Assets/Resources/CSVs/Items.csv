@@ -22,3 +22,4 @@ id,name,description,unlocksAtLevel,timeRequiredInMins,XP,type,coinCost,gemCost,s
 20,Cotton,Descriptions,20,-85,205,Crops,48,4,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,cotton
 21,Thick Grass,Descriptions,21,65,155,Grass,38,4,1,-1,1,1,33,43,1,11,1,-1,0,-1,0,-1,0,thickgrass
 22,Chili Pepper,Descriptions,22,-105,215,Crops,49,4,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,chilipepper
+23,Stone,Descriptions,0,-1,1,Minerals,1,1,0,8,2,4,28,38,6,-1,-1,-1,-1,-1,-1,-1,-1,stone

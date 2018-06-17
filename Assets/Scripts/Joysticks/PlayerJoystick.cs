@@ -1,24 +1,31 @@
 ﻿using HarvestValley.Managers;
 using System;
 using UnityEngine;
+using HarvestValley.IO;
 
 public class PlayerJoystick : Singleton<PlayerJoystick>
 {
     [SerializeField]
+    private LayerMask layerMask;
+    [SerializeField]
+    private float radius = 1;
+    [SerializeField]
     private float moveSpeed;
+
     private FloatingJoystick Joystick;
     private Animator anim;
     private Vector3 moveVector;
-    private Vector3 moveVectorTemp;
     private bool isMoving;
-    private string actionTriggerColliderName;
-    private string actionTagName;
+    public string actionTriggerColliderName;
+    public string actionTagName;
     private Collider2D currentCollider2D;
-    private bool inPlantingMode;
-    private int selectedID = -1;
+    private Transform hitBox;
+    private Transform nearestObject;
 
+    #region Unity Default
     private void Start()
     {
+        hitBox = transform.GetChild(0);
         anim = GetComponent<Animator>();
         Joystick = FindObjectOfType<FloatingJoystick>();
         Joystick.OnJoystickClick += OnJoystickClickEventHandler;
@@ -36,7 +43,9 @@ public class PlayerJoystick : Singleton<PlayerJoystick>
         Joystick.OnActionButtonClick -= OnActionButtonClickEventHandler;
         Joystick.OnActionButtonClick -= OnSecondaryButtonClickEventHandler;
     }
+    #endregion
 
+    #region Playermovement
     private void OnJoystickClickEventHandler()
     {
         isMoving = true;
@@ -62,7 +71,9 @@ public class PlayerJoystick : Singleton<PlayerJoystick>
             anim.SetBool("isMoving", false);
         }
     }
+    #endregion
 
+    #region Action Secondary Buttons Functions
     private void ActionButtonSetActive(bool flag)
     {
         Joystick.ActionButtonVisiblilty = flag;
@@ -82,52 +93,57 @@ public class PlayerJoystick : Singleton<PlayerJoystick>
     {
         Joystick.SecondaryString = text;
     }
-    // ----------------
+    #endregion
 
-    private void OnActionButtonClickEventHandler()
+    #region Nearest Object Detection
+    private void LateUpdate()
     {
-        if (inPlantingMode)
+        if (isMoving)
         {
-            FieldManager.Instance.StopPlantingMode();     //Cancel planting.
-            inPlantingMode = false;
-            return;
-        }
-        ActionButtonSetActive(false);
-        switch (actionTagName)
-        {
-            case "Enterence":
-                SetEnterence(actionTriggerColliderName);
-                break;
-            case "Field":
-                SetField();
-                break;
-            default:
-                break;
+            Collider2D[] groundOverlap = new Collider2D[4];
+            Physics2D.OverlapCircleNonAlloc(transform.position, radius, groundOverlap, layerMask);
+            if (GetClosestEnemy(groundOverlap) != null)
+            {
+                nearestObject = GetClosestEnemy(groundOverlap);
+                hitBox.transform.position = nearestObject.position;
+                NearestObject(nearestObject);
+
+            }
+            else
+            {
+                nearestObject = null;
+                hitBox.transform.position = Vector3.zero;
+                NoNearObject();
+            }
         }
     }
 
-    private void OnSecondaryButtonClickEventHandler()
+    Transform GetClosestEnemy(Collider2D[] groundOverlap)
     {
-        if (inPlantingMode)
-        {
-            SetField();     //Select seed menu open.
-        }
-        SecondaryButtonSetActive(false);
-    }
+        Transform bestTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
 
-    #region All Trigger Collision
-    private void OnTriggerStay2D(Collider2D collision)
+        for (int i = 0; i < groundOverlap.Length; i++)
+        {
+            if (groundOverlap[i] == null)
+            {
+                continue;
+            }
+            Vector3 directionToTarget = groundOverlap[i].transform.position - transform.position;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if (dSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = dSqrToTarget;
+                bestTarget = groundOverlap[i].transform;
+            }
+        }
+        return bestTarget;
+    }
+    #endregion
+
+    #region Display Data on Action Secondary Buttons
+    private void NearestObject(Transform collision)
     {
-        if (inPlantingMode)
-        {
-            ActionButtonSetActive(true);
-            ActionButtonText("Cancel Planting");
-            return;
-        }
-        if (currentCollider2D == null)
-        {
-            currentCollider2D = collision;
-        }
         actionTagName = collision.tag;
         actionTriggerColliderName = collision.name;
         ActionButtonSetActive(true);
@@ -136,8 +152,8 @@ public class PlayerJoystick : Singleton<PlayerJoystick>
             case "Enterence":
                 ActionButtonText("Enter " + actionTriggerColliderName);
                 break;
-            case "Field":
-                ActionButtonText("Plant");
+            case "Pickaxe":
+                ActionButtonText("Pickaxe");
                 break;
             default:
                 ActionButtonSetActive(false);
@@ -145,45 +161,43 @@ public class PlayerJoystick : Singleton<PlayerJoystick>
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void NoNearObject()
     {
-        if (inPlantingMode)
-        {
-            return;
-        }
         ActionButtonSetActive(false);
-        currentCollider2D = null;
+        SecondaryButtonSetActive(false);
+    }
+    #endregion
+
+    #region Action Secondary buttons pressed
+    private void OnActionButtonClickEventHandler()
+    {
+        ActionButtonSetActive(false);
+        switch (actionTagName)
+        {
+            case "Enterence":
+                SetEnterence(actionTriggerColliderName);
+                break;
+            case "Pickaxe":
+                UsePickaxe();
+                break;
+            default:
+                break;
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnSecondaryButtonClickEventHandler()
     {
-        if (!inPlantingMode)
-        {
-            return;
-        }
-
+        SecondaryButtonSetActive(false);
     }
     #endregion
 
     #region Other Functions
-    public void StartPlantingMode(int itemID = -1)
+    private void UsePickaxe()
     {
-        selectedID = itemID;
-        inPlantingMode = true;
-        SecondaryButtonSetActive(true);
-        SecondaryButtonText("Select Seed");
-    }
-
-    public void StopPlantingMode()
-    {
-        selectedID = -1;
-    }
-
-    private void SetField()
-    {
-        ClickableField clickableField = currentCollider2D.GetComponent<ClickableField>();
-        clickableField.ShowCropMenu();
-        inPlantingMode = true;
+        int itemId = int.Parse(nearestObject.name);
+        int hit = MineralsDatabase.GetMineralsInfoById(itemId).hits;
+        int output = MineralsDatabase.GetMineralsInfoById(itemId).outputId;
+        print(itemId + " " + hit + " " + output);
     }
 
     private void SetEnterence(string enteranceName)

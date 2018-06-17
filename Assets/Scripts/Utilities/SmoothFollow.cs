@@ -2,26 +2,25 @@
 
 public class SmoothFollow : MonoBehaviour
 {
-    public Transform target;
     public float cameraSmooth = 0.1f;
     public bool CameraClamp = false;
     public float minX, maxX = 0;
     public float minY, maxY = 0;
+    private Transform player;
 
     // Use this for initialization
     void Start()
     {
-        transform.position = target.transform.position;
-        //mainCamera = GetComponent<Camera>();
-
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        transform.position = player.transform.position;
     }
 
     void Update()
     {
-        if (target)
+        if (player)
         {
-            transform.position = Vector3.Lerp(transform.position, target.position, cameraSmooth);
-            transform.position = target.position + new Vector3(0, 0, -10);
+            transform.position = Vector3.Lerp(transform.position, player.position, cameraSmooth);
+            transform.position = player.position + new Vector3(0, 0, -10);
         }
         if (CameraClamp)
         {

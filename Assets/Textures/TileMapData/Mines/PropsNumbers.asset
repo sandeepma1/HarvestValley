@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0d98f5be51926f46bc797504da5ad22, type: 3}
-  m_Name: Mines
+  m_Name: PropsNumbers
   m_EditorClassIdentifier: 
-  AtlasTexture: {fileID: 2800000, guid: b8880481f590f9a448c4c384dc91270f, type: 3}
+  AtlasTexture: {fileID: 2800000, guid: 7381deb7de7bfb14bb89c3576d2d796f, type: 3}
   TilePxSize: {x: 64, y: 64}
   SliceOffset: {x: 0, y: 0}
   SlicePadding: {x: 0, y: 0}
@@ -112,7 +112,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -128,7 +128,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -144,7 +144,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -272,7 +272,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -400,7 +400,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -480,7 +480,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -496,7 +496,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -528,7 +528,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -608,7 +608,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -624,7 +624,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -640,7 +640,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -656,7 +656,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -736,7 +736,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -752,7 +752,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -768,7 +768,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -784,7 +784,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -864,7 +864,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -880,7 +880,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -896,7 +896,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:
@@ -912,7 +912,7 @@ MonoBehaviour:
       height: 0.125
     collData:
       vertices: []
-      type: 1
+      type: 0
     paramContainer:
       m_paramList: []
     prefabData:

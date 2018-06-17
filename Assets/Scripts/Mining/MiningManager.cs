@@ -1,32 +1,83 @@
-﻿using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine;
 using CreativeSpore.SuperTilemapEditor;
 
 public class MiningManager : MonoBehaviour
 {
-    public Tilemap tileMap;
-    // Use this for initialization
-    void Start()
+    [SerializeField]
+    private Tilemap tileMap;
+    private List<MineItems> propsCells = new List<MineItems>();
+    private float totalCells;
+    private GameObject player;
+
+    private void Start()
     {
-        float totalCells = tileMap.GridHeight * tileMap.GridWidth;
+        player = GameObject.FindGameObjectWithTag("Player");
+        tileMap.IsVisible = false;
+        ReadPropsCells();
+        GenerateProps();
+    }
+
+    private void ReadPropsCells()
+    {
+        totalCells = tileMap.GridHeight * tileMap.GridWidth;
         for (int i = 0; i < tileMap.GridHeight; i++)
         {
             for (int j = 0; j < tileMap.GridWidth; j++)
             {
                 if (tileMap.GetTileData(i, j) <= totalCells)
                 {
-                    print(tileMap.GetTileData(i, j));
+                    propsCells.Add(new MineItems(tileMap.GetTileData(i, j), i, j));
                 }
-                //print(tileMap.GetTileData(i, j));
             }
         }
+    }
+
+    private void GenerateProps()
+    {
+        int ran;
+        for (int i = 0; i < propsCells.Count; i++)
+        {
+            if (propsCells[i].id == 0) // Spawn Player
+            {
+                SpawnPlayer(propsCells[i]);
+                continue;
+            }
+            ran = UnityEngine.Random.Range(0, 5);
+            if (ran == 0 && propsCells[i].id != 0)
+            {
+                SpawnMinerals(propsCells[i]);  // Spawn Minerals
+            }
+        }
+    }
+
+    private void SpawnMinerals(MineItems mineral)
+    {
+        GameObject go = Instantiate(Resources.Load("Rock1"), new Vector3(mineral.xPos, mineral.yPos), Quaternion.identity, this.transform) as GameObject;
+        go.name = mineral.id.ToString();
+    }
+
+    private void SpawnPlayer(MineItems mineral)
+    {
+        player.transform.position = new Vector3(mineral.xPos, mineral.yPos);
+    }
+}
+[System.Serializable]
+public class MineItems
+{
+    public uint id;
+    public int xPos;
+    public int yPos;
+
+    public MineItems()
+    {
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public MineItems(uint _id, int _xPos, int _yPos)
     {
-
+        id = _id;
+        xPos = _xPos;
+        yPos = _yPos;
     }
 }
