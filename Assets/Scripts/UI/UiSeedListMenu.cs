@@ -12,15 +12,27 @@ namespace HarvestValley.Ui
     {
         //public Canvas mainCanvas;
         [SerializeField]
+        private GameObject seedListWindow;
+        [SerializeField]
         private UiClickableItems scrollListItemPrefab;
         [SerializeField]
         private Transform scrollListParent;
         [SerializeField]
-        private TextMeshProUGUI topInfoText;
-        [SerializeField]
-        private Transform topInfoParentTransform;
-        [SerializeField]
         private Button closeButton;
+        [SerializeField]
+        private TextMeshProUGUI seedNameText;
+        [SerializeField]
+        private TextMeshProUGUI descriptionText;
+        [SerializeField]
+        private TextMeshProUGUI durationText;
+        [SerializeField]
+        private TextMeshProUGUI yieldText;
+        [SerializeField]
+        private Button plantButton;
+
+        private int selectedSeedID = -1;
+
+        private string topMessage;
 
         private List<UiClickableItems> menuItems = new List<UiClickableItems>();
 
@@ -29,7 +41,14 @@ namespace HarvestValley.Ui
             CreateSeedItems();
             base.Start();
             AddUnlockedItemsToList();
-            closeButton.onClick.AddListener(StopPlantingMode);
+            closeButton.onClick.AddListener(CloseButtonPressed);
+            plantButton.onClick.AddListener(PlantButtonClicked);
+            ClearSeedDescription();
+        }
+
+        private void OnEnable()
+        {
+            seedListWindow.SetActive(true);
         }
 
         public override void AddUnlockedItemsToList()  // call on level change & game start only
@@ -52,7 +71,7 @@ namespace HarvestValley.Ui
                     menuItem.itemName = item.name;
                     menuItem.itemCost = item.coinCost;
                     menuItem.isItemUnlocked = false;
-                    menuItem.OnClickableItemClicked += StartPlantingMode;
+                    menuItem.OnClickableItemClicked += OnClickableItemClickedEventHandler;
                     menuItems.Add(menuItem);
                 }
             }
@@ -69,18 +88,51 @@ namespace HarvestValley.Ui
             }
         }
 
+        private void CloseButtonPressed()
+        {
+            StopPlantingMode();
+        }
+
         #region Planting Mode Stuff
+
+        private void PlantButtonClicked()
+        {
+            UiMessage.Instance.SetTopMessage(topMessage);
+            ClearSeedDescription();
+            MenuManager.Instance.CloseMenu();
+            PlayerJoystick.Instance.StartPlantingMode(selectedSeedID);
+            selectedSeedID = -1;
+        }
 
         /// <summary>
         /// Start Planting Mode.. Callback after any plant seed is selected from the UI scroll list
         /// </summary>
         /// <param name="itemID"></param>
-        public void StartPlantingMode(int itemID)
+        public void OnClickableItemClickedEventHandler(int itemID)
         {
-            ToggleTopInfoAndUpgradeButton(true);
-            topInfoText.text = "Planting " + ItemDatabase.GetItemById(itemID).name + "\n Click on the tile to plant select seed";
+            selectedSeedID = itemID;
+            topMessage = "Planting " + ItemDatabase.GetItemById(itemID).name + "\n Walk around the field to plant select seed";
             FieldManager.Instance.StartPlantingMode(itemID);
-            //ToggleList(false);
+            FillSeedDescription(itemID);
+        }
+
+        private void FillSeedDescription(int itemID)
+        {
+            plantButton.gameObject.SetActive(true);
+            Item selectedSeed = ItemDatabase.GetItemById(itemID);
+            seedNameText.text = selectedSeed.name;
+            descriptionText.text = selectedSeed.description;
+            durationText.text = "Duration: " + selectedSeed.timeRequiredInSeconds;
+            yieldText.text = "Base Yield: " + selectedSeed.baseYieldMin + " - " + selectedSeed.baseYieldMax;
+        }
+
+        private void ClearSeedDescription()
+        {
+            plantButton.gameObject.SetActive(false);
+            seedNameText.text = "";
+            descriptionText.text = "";
+            durationText.text = "";
+            yieldText.text = "";
         }
 
         /// <summary>
@@ -88,21 +140,11 @@ namespace HarvestValley.Ui
         /// </summary>
         internal void StopPlantingMode()
         {
-            topInfoText.text = "";
-            ToggleTopInfoAndUpgradeButton(false);
+            UiMessage.Instance.HideClearTopMessageText();
             if (FieldManager.Instance != null)
             {
                 FieldManager.Instance.StopPlantingMode();
             }
-        }
-
-        #endregion
-
-        #region Toggle different UI Menus parts
-
-        private void ToggleTopInfoAndUpgradeButton(bool flag)
-        {
-            topInfoParentTransform.gameObject.SetActive(flag);
         }
 
         #endregion

@@ -416,7 +416,8 @@ namespace CreativeSpore.SuperTilemapEditor
                 if (IsUndoEnabled)
                 {
                     Undo.DestroyObjectImmediate(transform.GetChild(0).gameObject);
-                } else
+                }
+                else
                 {
                     DestroyImmediate(transform.GetChild(0).gameObject);
                 }
@@ -490,7 +491,8 @@ namespace CreativeSpore.SuperTilemapEditor
             if (chunk == null)
             {
                 return Tileset.k_TileData_Empty;
-            } else
+            }
+            else
             {
                 int chunkGridX = (gridX < 0 ? -gridX - 1 : gridX) % k_chunkSize;
                 int chunkGridY = (gridY < 0 ? -gridY - 1 : gridY) % k_chunkSize;
@@ -531,14 +533,16 @@ namespace CreativeSpore.SuperTilemapEditor
                         if (IsUndoEnabled)
                         {
                             Undo.DestroyObjectImmediate(chunk.gameObject);
-                        } else
+                        }
+                        else
                         {
                             DestroyImmediate(chunk.gameObject);
                         }
 #else
                         DestroyImmediate(chunk.gameObject);
 #endif
-                    } else
+                    }
+                    else
                     {
                         //chunk.UpdateColliderMesh();
                         chunkList.Add(chunk);
@@ -681,7 +685,8 @@ namespace CreativeSpore.SuperTilemapEditor
                         if (!rot90)
                         {
                             flippedTileData ^= Tileset.k_TileFlag_Rot90;
-                        } else
+                        }
+                        else
                         {
                             flippedTileData ^= Tileset.k_TileFlag_Rot90;
                             flippedTileData ^= Tileset.k_TileFlag_FlipH;

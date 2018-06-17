@@ -6,13 +6,21 @@ public class FloatingJoystick : Joystick
 {
     public event Action OnJoystickClick;
     public event Action OnActionButtonClick;
+    public event Action OnSecondaryButtonClick;
     public event Action OnJoystickUp;
     Vector2 joystickCenter = Vector2.zero;
 
-    void Start()
+    private void Start()
     {
         actionButton.onClick.AddListener(OnActionButtonClickEventHandler);
+        secondaryButton.onClick.AddListener(OnSecondaryButtonClickEventHandler);
         background.gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        actionButton.onClick.RemoveListener(OnActionButtonClickEventHandler);
+        secondaryButton.onClick.RemoveListener(OnSecondaryButtonClickEventHandler);
     }
 
     private void OnActionButtonClickEventHandler()
@@ -20,6 +28,14 @@ public class FloatingJoystick : Joystick
         if (OnActionButtonClick != null)
         {
             OnActionButtonClick.Invoke();
+        }
+    }
+
+    private void OnSecondaryButtonClickEventHandler()
+    {
+        if (OnSecondaryButtonClick != null)
+        {
+            OnSecondaryButtonClick.Invoke();
         }
     }
 
@@ -33,7 +49,10 @@ public class FloatingJoystick : Joystick
 
     public override void OnPointerDown(PointerEventData eventData)
     {
-        OnJoystickClick.Invoke();
+        if (OnJoystickClick != null)
+        {
+            OnJoystickClick.Invoke();
+        }
         background.gameObject.SetActive(true);
         background.position = eventData.position;
         handle.anchoredPosition = Vector2.zero;
@@ -42,7 +61,10 @@ public class FloatingJoystick : Joystick
 
     public override void OnPointerUp(PointerEventData eventData)
     {
-        OnJoystickUp.Invoke();
+        if (OnJoystickUp != null)
+        {
+            OnJoystickUp.Invoke();
+        }
         background.gameObject.SetActive(false);
         inputVector = Vector2.zero;
     }

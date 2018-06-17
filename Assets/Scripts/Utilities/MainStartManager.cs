@@ -2,6 +2,7 @@
 using UnityEngine;
 using HarvestValley.Managers;
 using HarvestValley.Ui;
+using UnityEngine.SceneManagement;
 
 public class MainStartManager : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class MainStartManager : MonoBehaviour
 
     private void SaveAllGame()
     {
+        if (SceneManager.GetActiveScene().name != "Main")
+        {
+            return;
+        }
         PlayerProfileManager.Instance.SavePlayerProfile();
         UiInventoryMenu.Instance.SavePlayerInventory();
         GrassLandManager.Instance.SaveGrass();

@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using DG.Tweening;
 
 public class SceneChanger : Singleton<SceneChanger>
 {
@@ -27,6 +26,7 @@ public class SceneChanger : Singleton<SceneChanger>
         irisMaterial.mainTextureScale = irisExpandTilling;
         irisMaterial.mainTextureOffset = irisExpandTilling;
         thisCanvas = GetComponent<Canvas>();
+        thisCanvas.worldCamera = Camera.main;
     }
 
     //private void Update()

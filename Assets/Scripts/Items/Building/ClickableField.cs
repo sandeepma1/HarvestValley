@@ -25,9 +25,15 @@ public class ClickableField : MonoBehaviour
 
     protected int itemIDToBePlaced = -1;
 
-    private void Start()
+    private void Awake()
     {
         fieldSprite = GetComponent<SpriteRenderer>();
+    }
+
+    public void ShowCropMenu()
+    {
+        FieldManager.Instance.OnBuildingClicked(buildingId, sourceId);
+        print(state);
     }
 
     public void SomeSeedPlanted()

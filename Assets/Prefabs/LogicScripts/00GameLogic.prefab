@@ -37,10 +37,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4853374488713074}
-  - component: {fileID: 114063862326420810}
-  - component: {fileID: 114072758492999254}
   - component: {fileID: 114187831897214272}
-  - component: {fileID: 114795710951991630}
+  - component: {fileID: 114942576808071388}
+  - component: {fileID: 114510844968029676}
   m_Layer: 0
   m_Name: 00GameLogic
   m_TagString: Untagged
@@ -75,30 +74,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114063862326420810
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811772467946392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afc8fc297ba5dbb44bae910e45b23e23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114072758492999254
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811772467946392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09ddbfc751ea6d543ae8b8f0195cbaa2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minSwipeLength: 50
-  minSwipeDuration: 0.3
 --- !u!114 &114187831897214272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,6 +94,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: faac9e7452a738e478218e9a4f38d1d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114510844968029676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811772467946392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf88acf2c4abe4d44a72100fa4ad22d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114546689231345156
@@ -143,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61b069bc2c94494991ac74c4f163c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114795710951991630
+--- !u!114 &114942576808071388
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -151,14 +137,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1811772467946392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffa49af098d3b90458ca1643cb3385f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e76054f5f19f9b418eee09625833670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSwipe: 1
-  enableDrag: 1
-  gapBetweenScreens: 16
-  numberOfScreens: 5
-  dragSpeed: 0.015
-  minDragLength: 3
-  snapEase: 6
-  easeDuration: 0.35
+  guiAtlas: {fileID: 4343727234628468602, guid: e16acd9cdbc691d4eb5c9c1a4dbb6516,
+    type: 2}
+  farmingAtlas: {fileID: 4343727234628468602, guid: a6f9fd5479ff6d942a3bcb25ae07b4f8,
+    type: 2}
+  buildingAtlas: {fileID: 4343727234628468602, guid: 4f77a449cdf44fe46a8dea119bba6e8f,
+    type: 2}
+  livestockAtlas: {fileID: 4343727234628468602, guid: bfb7238a7ff74c14f9cbb40436f25c56,
+    type: 2}

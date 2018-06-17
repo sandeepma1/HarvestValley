@@ -9,7 +9,6 @@ public enum MenuNames
     BuldingUpgrade,
     Inventory,
     SeedList,
-    Navigation,
     FieldProgress,
     FieldUpgrade,
     BuildingMenu,
@@ -37,8 +36,6 @@ namespace HarvestValley.Ui
         private GameObject inventoryMenu;
         [SerializeField]
         private GameObject seedListMenu;
-        [SerializeField]
-        private GameObject navigationBar;
         [SerializeField]
         private GameObject fieldProgressPopup;
         [SerializeField]
@@ -111,9 +108,6 @@ namespace HarvestValley.Ui
                     break;
                 case MenuNames.SeedList:
                     AddMenuInStack(seedListMenu);
-                    break;
-                case MenuNames.Navigation:
-                    AddMenuInStack(navigationBar);
                     break;
                 case MenuNames.FieldProgress:
                     AddMenuInStack(fieldProgressPopup);
