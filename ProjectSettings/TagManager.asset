@@ -7,12 +7,10 @@ TagManager:
   - Field
   - Enterence
   - MainCanvas
-  - Pickaxe
   - Pickable
   - FlappyFish
   - DragableUiItem
   - Grass
-  - SpriteLights
   layers:
   - Default
   - TransparentFX

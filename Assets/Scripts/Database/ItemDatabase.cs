@@ -50,7 +50,9 @@ namespace HarvestValley.IO
                     IntParse(chars[15]),
                     new int[] { IntParse(chars[16]), IntParse(chars[18]), IntParse(chars[20]), IntParse(chars[22]) },
                     new int[] { IntParse(chars[17]), IntParse(chars[19]), IntParse(chars[21]), IntParse(chars[23]) },
-                    chars[24]);
+                     IntParse(chars[24]),
+                     IntParse(chars[25]),
+                    chars[26]);
             }
         }
 
@@ -69,11 +71,8 @@ namespace HarvestValley.IO
             return items.Length;
         }
 
-
-
         public static Item[] GetAllItemsBySourceId(int sourceId)
         {
-
             List<Item> tempItems = new List<Item>();
             for (int i = 0; i < items.Length; i++)
             {
@@ -113,13 +112,15 @@ public class Item
     //16
     public int[] needID;
     public int[] needAmount;
-
+    public int durability;
+    public int stackAmount;
     public string slug;
+    public Item() { itemID = -1; }
 
     public Item(int itemId, string itemName, string itemDescription, int itemUnlocksAtLevel,
                  int itemTimeRequiredInSeconds, int itemXP, ItemType itemType, int itemCoinCost, int itemGemCost, int itemSourceID,
                  int itemNoOfWatering, int itemBaseYieldMin, int itemBaseYieldMax, int itemSellValueMin, int itemSellValueMax,
-                 int itemNoOfFertilizer, int[] itemNeedID, int[] itemNeedAmount, string itemSlug)
+                 int itemNoOfFertilizer, int[] itemNeedID, int[] itemNeedAmount, int _durability, int _stackAmount, string itemSlug)
     {
         itemID = itemId;
         name = itemName;
@@ -142,7 +143,8 @@ public class Item
         sellValueMax = itemSellValueMax;
         needID = itemNeedID;
         needAmount = itemNeedAmount;
-
+        durability = _durability;
+        stackAmount = _stackAmount;
         slug = itemSlug;
     }
 }
@@ -155,7 +157,8 @@ public enum ItemType
     Products,
     Grass,
     Fish,
-    Minerals
+    Minerals,
+    Armor
 }
 
 public enum ItemSource

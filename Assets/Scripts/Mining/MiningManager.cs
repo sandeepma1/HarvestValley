@@ -38,13 +38,18 @@ public class MiningManager : MonoBehaviour
         int ran;
         for (int i = 0; i < propsCells.Count; i++)
         {
-            if (propsCells[i].id == 0) // Spawn Player
+            if (propsCells[i].id == 0) // Spawn Exit Mines collider
+            {
+                SpawnExitMines(propsCells[i]);
+                continue;
+            }
+            if (propsCells[i].id == 1) // Spawn Player
             {
                 SpawnPlayer(propsCells[i]);
                 continue;
             }
             ran = UnityEngine.Random.Range(0, 5);
-            if (ran == 0 && propsCells[i].id != 0)
+            if (ran == 0)//  && propsCells[i].id != 0 && propsCells[i].id != 1)
             {
                 SpawnMinerals(propsCells[i]);  // Spawn Minerals
             }
@@ -60,6 +65,12 @@ public class MiningManager : MonoBehaviour
     private void SpawnPlayer(MineItems mineral)
     {
         player.transform.position = new Vector3(mineral.xPos, mineral.yPos);
+    }
+
+    private void SpawnExitMines(MineItems mineral)
+    {
+        GameObject go = Instantiate(Resources.Load("ExitMines"), new Vector3(mineral.xPos, mineral.yPos), Quaternion.identity, this.transform) as GameObject;
+        go.name = "ExitMines";
     }
 }
 [System.Serializable]

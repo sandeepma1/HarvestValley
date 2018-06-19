@@ -1,75 +1,48 @@
-﻿using HarvestValley.Managers;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 using HarvestValley.IO;
+using System;
 
-public class PlayerJoystick : Singleton<PlayerJoystick>
+public class PlayerController : Singleton<PlayerController>
 {
+    private FloatingJoystick Joystick;
+    public event Action<int> OnPickaxeClicked;
+    public event Action<string> OnEnteranceClicked;
     [SerializeField]
     private LayerMask layerMask;
     [SerializeField]
     private float radius = 1;
-    [SerializeField]
-    private float moveSpeed;
 
-    private FloatingJoystick Joystick;
-    private Animator anim;
-    private Vector3 moveVector;
     private bool isMoving;
     public string actionTriggerColliderName;
     public string actionTagName;
     private Collider2D currentCollider2D;
     private Transform hitBox;
     private Transform nearestObject;
+    private PlayerMovement playerMovement;
 
     #region Unity Default
     private void Start()
     {
         hitBox = transform.GetChild(0);
-        anim = GetComponent<Animator>();
         Joystick = FindObjectOfType<FloatingJoystick>();
-        Joystick.OnJoystickClick += OnJoystickClickEventHandler;
-        Joystick.OnJoystickUp += OnJoystickUpEventHandler;
         Joystick.OnActionButtonClick += OnActionButtonClickEventHandler;
         Joystick.OnActionButtonClick += OnSecondaryButtonClickEventHandler;
         ActionButtonSetActive(false);
         SecondaryButtonSetActive(false);
+        playerMovement = GetComponent<PlayerMovement>();
+        playerMovement.IfPlayerMoving += IfPlayerMovingEventhandler;
+    }
+
+    private void IfPlayerMovingEventhandler(bool flag)
+    {
+        isMoving = flag;
     }
 
     protected override void OnDestroy()
     {
-        Joystick.OnJoystickClick -= OnJoystickClickEventHandler;
-        Joystick.OnJoystickUp -= OnJoystickUpEventHandler;
         Joystick.OnActionButtonClick -= OnActionButtonClickEventHandler;
         Joystick.OnActionButtonClick -= OnSecondaryButtonClickEventHandler;
-    }
-    #endregion
-
-    #region Playermovement
-    private void OnJoystickClickEventHandler()
-    {
-        isMoving = true;
-    }
-
-    private void OnJoystickUpEventHandler()
-    {
-        isMoving = false;
-    }
-
-    private void FixedUpdate()
-    {
-        if (isMoving)
-        {
-            anim.SetBool("isMoving", true);
-            moveVector = (transform.right * Joystick.Horizontal + transform.up * Joystick.Vertical).normalized;
-            transform.Translate(moveVector * moveSpeed * Time.deltaTime);
-            anim.SetFloat("Player_Forward", Joystick.Vertical);
-            anim.SetFloat("Player_Left", Joystick.Horizontal);
-        }
-        else
-        {
-            anim.SetBool("isMoving", false);
-        }
+        playerMovement.IfPlayerMoving -= IfPlayerMovingEventhandler;
     }
     #endregion
 
@@ -107,7 +80,6 @@ public class PlayerJoystick : Singleton<PlayerJoystick>
                 nearestObject = GetClosestEnemy(groundOverlap);
                 hitBox.transform.position = nearestObject.position;
                 NearestObject(nearestObject);
-
             }
             else
             {
@@ -146,6 +118,7 @@ public class PlayerJoystick : Singleton<PlayerJoystick>
     {
         actionTagName = collision.tag;
         actionTriggerColliderName = collision.name;
+        UiDebugTextHandler.DebugText(actionTriggerColliderName);
         ActionButtonSetActive(true);
         switch (actionTagName)
         {
@@ -175,10 +148,11 @@ public class PlayerJoystick : Singleton<PlayerJoystick>
         switch (actionTagName)
         {
             case "Enterence":
-                SetEnterence(actionTriggerColliderName);
+                OnEnteranceClicked.Invoke(actionTriggerColliderName);
                 break;
             case "Pickaxe":
-                UsePickaxe();
+                int itemId = int.Parse(nearestObject.name);
+                OnPickaxeClicked.Invoke(itemId);
                 break;
             default:
                 break;
@@ -188,28 +162,6 @@ public class PlayerJoystick : Singleton<PlayerJoystick>
     private void OnSecondaryButtonClickEventHandler()
     {
         SecondaryButtonSetActive(false);
-    }
-    #endregion
-
-    #region Other Functions
-    private void UsePickaxe()
-    {
-        int itemId = int.Parse(nearestObject.name);
-        int hit = MineralsDatabase.GetMineralsInfoById(itemId).hits;
-        int output = MineralsDatabase.GetMineralsInfoById(itemId).outputId;
-        print(itemId + " " + hit + " " + output);
-    }
-
-    private void SetEnterence(string enteranceName)
-    {
-        switch (enteranceName)
-        {
-            case "Mines":
-                SceneChanger.Instance.LoadScene("Mines");
-                break;
-            default:
-                break;
-        }
     }
     #endregion
 }

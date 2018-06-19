@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114546689231345156}
   - component: {fileID: 114399196169527098}
   - component: {fileID: 114809067863690428}
+  - component: {fileID: 114965709136347260}
   m_Layer: 0
   m_Name: Database
   m_TagString: Untagged
@@ -41,8 +42,6 @@ GameObject:
   - component: {fileID: 114187831897214272}
   - component: {fileID: 114942576808071388}
   - component: {fileID: 114510844968029676}
-  - component: {fileID: 114434315270011428}
-  - component: {fileID: 114120749951567150}
   m_Layer: 0
   m_Name: 00GameLogic
   m_TagString: Untagged
@@ -77,18 +76,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114120749951567150
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811772467946392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f7792c94051d264cb3f6c142b919e4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leanTouch: {fileID: 114434315270011428}
 --- !u!114 &114187831897214272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,30 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faac9e7452a738e478218e9a4f38d1d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114434315270011428
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811772467946392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fc98219a83dff145947365dc914d06e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TapThreshold: 0.5
-  SwipeThreshold: 50
-  ReferenceDpi: 200
-  GuiLayers:
-    serializedVersion: 2
-    m_Bits: 4294967291
-  RecordFingers: 1
-  RecordThreshold: 5
-  RecordLimit: 10
-  SimulateMultiFingers: 1
-  PinchTwistKey: 306
-  MultiDragKey: 308
-  FingerTexture: {fileID: 2800000, guid: 25c48be3a87ea0f489a6d41c9c9a2194, type: 3}
 --- !u!114 &114510844968029676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -198,3 +161,15 @@ MonoBehaviour:
     type: 2}
   livestockAtlas: {fileID: 4343727234628468602, guid: bfb7238a7ff74c14f9cbb40436f25c56,
     type: 2}
+--- !u!114 &114965709136347260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1496426417507922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85195e6b8bd84d4aa8fb0d4ffa7f17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  database: []
