@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -52,6 +50,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isMoving)
         {
+            if (PlayerController.Instance.isPlayerInAction)
+            {
+                return;
+            }
             anim.SetBool("isMoving", true);
             moveVector = (transform.right * Joystick.Horizontal + transform.up * Joystick.Vertical).normalized;
             transform.Translate(moveVector * moveSpeed * Time.deltaTime);

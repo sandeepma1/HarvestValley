@@ -1,85 +1,89 @@
 ﻿using HarvestValley.IO;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
+public class Inventory : Singleton<Inventory>
 {
-    public static Inventory m_instance = null;
-    public GameObject inventorySlotPanel, armourSlotPanel, chestSlotPanel;
-    public GameObject inventorySlot, armorSlot, chestSlot;
-    public GameObject inventoryItem;
+    public Transform inventorySlotPanel, armourSlotPanel, backpackSlotPanel;
+    [SerializeField]
+    private InventorySlot inventorySlotPrefab;
+    [SerializeField]
+    private TextMeshProUGUI itemName;
+    [SerializeField]
+    private TextMeshProUGUI itemDescription;
     public int inventorySlotAmount = 10, armourSlotAmount = 4, chestSlotAmount = 6;
-    public Image slotSelectedImage;
-    public List<Item> items = new List<Item>();
-    public List<GameObject> slotsGO = new List<GameObject>();
-    public Item selectedItem = null;
-    public int selectedSlotID = -1;
-    public int maxStackAmount = 10;
-    public Text debug;
+    public Transform slotSelector;
+    public List<InventorySlot> InventorySlotsGO = new List<InventorySlot>();
 
-    int inputFeildID = -1, inputFeildAmount = -1;
-    InventoryItem[] myInventory;
+    private int inputFeildID = -1, inputFeildAmount = -1;
+    private InventoryItem[] myInventory;
 
-    void Awake()
-    {
-        m_instance = this;
-    }
-
-    void Start()
+    private void Start()
     {
         for (int i = 0; i < inventorySlotAmount; i++)
         {
-            items.Add(new Item());
-            slotsGO.Add(Instantiate(inventorySlot, inventorySlotPanel.transform));
-            slotsGO[i].GetComponent<InventorySlot>().id = i;
-            slotsGO[i].GetComponent<RectTransform>().localScale = Vector3.one;
+            SpawnInventorySlot(i, SlotType.Inventory, inventorySlotPanel);
         }
         for (int i = inventorySlotAmount; i < inventorySlotAmount + armourSlotAmount; i++)
         {
-            items.Add(new Item());
-            slotsGO.Add(Instantiate(armorSlot, armourSlotPanel.transform));
-            slotsGO[i].GetComponent<ArmourSlot>().id = i;
-            slotsGO[i].GetComponent<RectTransform>().localScale = Vector3.one;
+            SpawnInventorySlot(i, SlotType.Armor, armourSlotPanel);
         }
         for (int i = inventorySlotAmount + armourSlotAmount; i < inventorySlotAmount + armourSlotAmount + chestSlotAmount; i++)
         {
-            items.Add(new Item());
-            slotsGO.Add(Instantiate(chestSlot, chestSlotPanel.transform));
-            slotsGO[i].GetComponent<ChestSlot>().id = i;
-            slotsGO[i].GetComponent<RectTransform>().localScale = Vector3.one;
+            SpawnInventorySlot(i, SlotType.Backpack, backpackSlotPanel);
         }
 
-        myInventory = new InventoryItem[slotsGO.Count];
-
-        AddItem(3);
-        AddItem(3);
-        AddItem(3);
-        AddItem(5);
-        AddItem(2);
-        AddItem(2);
-        AddItem(2);
-        AddItem(2);
-        AddItem(2);
-        AddItem(1);
-        AddItem(1);
-        AddItem(1);
-        AddItem(9);
-        AddItem(7);
-        Crafting.m_instance.CheckHighlight_ALL_CraftableItems();
+        myInventory = new InventoryItem[InventorySlotsGO.Count];
+        AddItem(22);
+        //AddItem(3); AddItem(3); AddItem(5); AddItem(2); AddItem(2); AddItem(2);
+        //AddItem(2); AddItem(2); AddItem(1); AddItem(1); AddItem(1); AddItem(9); AddItem(7);
+        //Crafting.m_instance.CheckHighlight_ALL_CraftableItems();
     }
 
-    public void AddItem(int id)
+    private void SpawnInventorySlot(int id, SlotType slotType, Transform panelTransform)
+    {
+        InventorySlotsGO.Add(Instantiate(inventorySlotPrefab, panelTransform));
+        InventorySlotsGO[id].slotId = id;
+        InventorySlotsGO[id].slotType = slotType;
+        InventorySlotsGO[id].ItemId = -1;
+        InventorySlotsGO[id].OnSlotClicked += OnSlotClickedEventhandler;
+        //InventorySlotsGO[id].GetComponent<RectTransform>().localScale = Vector3.one;
+    }
+
+    private void OnSlotClickedEventhandler(int slotId)
+    {
+        slotSelector.position = InventorySlotsGO[slotId].transform.position;
+        ShowSelectedSlotDetails(slotId);
+    }
+
+    private void ShowSelectedSlotDetails(int slotId)
+    {
+        if (InventorySlotsGO[slotId].ItemId > 0)
+        {
+            Item item = ItemDatabase.GetItemById(InventorySlotsGO[slotId].ItemId);
+            itemName.text = item.name;
+            itemDescription.text = item.description;
+        }
+        else
+        {
+            itemName.text = "";
+            itemDescription.text = "";
+        }
+
+    }
+
+    public void AddItem(int itemId)
     {
         List<int> occurance = new List<int>();
-        Item itemsToAdd = ItemDatabase.GetItemById(id);
-        if (itemsToAdd.stackAmount > 0)
+        int itemStackAmount = ItemDatabase.GetItemStackAmountById(itemId);
+
+        if (itemStackAmount > 0)
         {
-            for (int i = 0; i < items.Count - (armourSlotAmount + chestSlotAmount); i++)
+            for (int i = 0; i < InventorySlotsGO.Count - (armourSlotAmount + chestSlotAmount); i++) // adding only in inventory!!
             {
-                if (items[i].itemID == id)
+                if (InventorySlotsGO[i].ItemId == itemId)
                 {
                     occurance.Add(i);
                 }
@@ -88,12 +92,11 @@ public class Inventory : MonoBehaviour
             {
                 for (int i = 0; i < occurance.Count; i++)
                 {
-                    InventoryItemData data = slotsGO[occurance[i]].transform.GetChild(0).GetComponent<InventoryItemData>();
-                    if (data.amount >= maxStackAmount)
+                    if (InventorySlotsGO[occurance[i]].Amount >= itemStackAmount)
                     {
                         if (i == occurance.Count - 1)
                         {
-                            AddNewItemInUI(itemsToAdd);
+                            AddNewItemInUI(itemId);
                         }
                         else
                         {
@@ -102,77 +105,54 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
-                        data.amount++;
-                        data.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = data.amount.ToString();
+                        InventorySlotsGO[occurance[i]].Amount++;
                         break;
                     }
                 }
             }
             else
             {
-                AddNewItemInUI(itemsToAdd);
+                AddNewItemInUI(itemId);
             }
         }
         else
         {
-            AddNewItemInUI(itemsToAdd);
+            AddNewItemInUI(itemId);
         }
-        SaveInventoryItems();
-        Crafting.m_instance.CheckHighlight_ALL_CraftableItems();
+        //SaveInventoryItems();
+        //Crafting.m_instance.CheckHighlight_ALL_CraftableItems();
     }
 
-    void AddNewItemInUI(Item itemsToAdd)
+    private void AddNewItemInUI(int itemId)
     {
-        if (CheckInventoryHasAtleastOneSpace())
+        int emptySlotId = GetEmptySlotId();
+        if (emptySlotId == -1)
         {
-            for (int i = 0; i < items.Count - (armourSlotAmount + chestSlotAmount); i++)
-            {
-                if (items[i].itemID == -1)
-                {
-                    items[i] = itemsToAdd;
-                    GameObject itemsGO = Instantiate(inventoryItem, slotsGO[i].transform);
-                    itemsGO.transform.SetAsFirstSibling();
-                    itemsGO.GetComponent<RectTransform>().localScale = Vector3.one;
-                    itemsGO.GetComponent<InventoryItemData>().slotID = i;
-                    itemsGO.GetComponent<InventoryItemData>().type = itemsToAdd.type;
-                    if (itemsToAdd.durability > 0)
-                    {
-                        itemsGO.GetComponent<InventoryItemData>().durability = itemsToAdd.durability;
-                        itemsGO.transform.GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(90, 10);
-                    }
-                    else
-                    {
-                        itemsGO.GetComponent<InventoryItemData>().durability = -1;
-                        itemsGO.transform.GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(0, 10);
-                    }
-                    itemsGO.GetComponent<InventoryItemData>().item = itemsToAdd;
-                    itemsGO.GetComponent<Image>().sprite = AtlasBank.Instance.GetSprite(items[i].slug, AtlasType.GUI);
-                    itemsGO.GetComponent<RectTransform>().anchoredPosition = Vector3.one;
-                    break;
-                }
-            }
+            print("All slots full");
+            return;
+        }
+        else
+        {
+            InventorySlotsGO[emptySlotId].ItemId = itemId;
         }
     }
 
-    public void RemoveItem(int id)
+    public void RemoveItem(int itemId)
     {
-        Item itemsToRemove = ItemDatabase.GetItemById(id);
-        //print ("removed " + itemsToRemove.Name);
-        if (itemsToRemove.stackAmount > 0)
+        int itemStackAmount = ItemDatabase.GetItemStackAmountById(itemId);
+        if (itemStackAmount > 0)
         {
-            for (int i = 0; i < items.Count - (armourSlotAmount + chestSlotAmount); i++)
+            for (int i = 0; i < InventorySlotsGO.Count - (armourSlotAmount + chestSlotAmount); i++)
             {
-                if (items[i].itemID == id)
+                if (InventorySlotsGO[i].ItemId == itemId)
                 {
-                    InventoryItemData data = slotsGO[i].transform.GetChild(0).GetComponent<InventoryItemData>();
-                    if (data.amount > 1)
+                    if (InventorySlotsGO[i].Amount > 1)
                     {
-                        data.amount--;
-                        data.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = data.amount.ToString();
+                        InventorySlotsGO[i].Amount--;
                     }
                     else
                     {
-                        DestroyItem(i);
+                        InventorySlotsGO[i].EmptySlot();
                     }
                     break;
                 }
@@ -180,107 +160,17 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < items.Count; i++)
+            for (int i = 0; i < InventorySlotsGO.Count - (armourSlotAmount + chestSlotAmount); i++)
             {
-                if (items[i].itemID == id)
+                if (InventorySlotsGO[i].ItemId == itemId)
                 {
-                    slotsGO[i].transform.GetChild(0).GetComponent<InventoryItemData>().amount--;
-                    DestroyItem(i);
+                    InventorySlotsGO[i].Amount--;
                     break;
                 }
             }
         }
         //SaveInventoryItems ();
-        Crafting.m_instance.CheckHighlight_ALL_CraftableItems();
-    }
-
-    public void DeleteSelectedItem()
-    {
-        /*if (selectedSlotID >= 0 && slotsGO [selectedSlotID].transform.childCount > 0 && slotsGO [selectedSlotID].transform.GetChild (0).CompareTag ("Item")) {
-			l_items [selectedSlotID] = new MyItem ();
-			Destroy (slotsGO [selectedSlotID].transform.GetChild (0).gameObject);
-		}*/
-        DestroyItem(selectedSlotID);
-    }
-
-    public void DestroyItem(int id)
-    {
-        for (int i = 0; i < slotsGO[id].transform.childCount; i++)
-        {
-            if (slotsGO[id].transform.GetChild(i).CompareTag("Item"))
-            {
-                DestroyImmediate(slotsGO[id].transform.GetChild(i).gameObject); // Be careful used DestroyImmediate, come here if there is any issue
-                break;
-            }
-        }
-        items[id] = new Item();
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            for (int i = 0; i < slotsGO.Count; i++)
-            {
-                if (slotsGO[i].GetComponent<InventorySlot>())
-                {
-                    if (CheckIfSlotHasItem(i))
-                    {
-                        print("inv>>>>> " + slotsGO[i].GetComponent<InventorySlot>().id + " " + items[i].itemID + " " +
-                        slotsGO[i].GetComponent<InventorySlot>().transform.GetChild(0).GetComponent<InventoryItemData>().amount);
-                    }
-                    else
-                    {
-                        print("inv>>>>> " + slotsGO[i].GetComponent<InventorySlot>().id + " " + items[i].itemID + " 0");
-                    }
-                }
-                if (slotsGO[i].GetComponent<ArmourSlot>())
-                {
-                    if (CheckIfSlotHasItem(i))
-                    {
-                        print("arm  " + slotsGO[i].GetComponent<ArmourSlot>().id + " " + items[i].itemID + " " +
-                        slotsGO[i].GetComponent<ArmourSlot>().transform.GetChild(0).GetComponent<InventoryItemData>().amount);
-                    }
-                    else
-                    {
-                        print("arm  " + slotsGO[i].GetComponent<ArmourSlot>().id + " " + items[i].itemID + " 0");
-                    }
-                }
-                if (slotsGO[i].GetComponent<ChestSlot>())
-                {
-                    if (CheckIfSlotHasItem(i))
-                    {
-                        print("che0000000" + slotsGO[i].GetComponent<ChestSlot>().id + " " + items[i].itemID + " " +
-                        slotsGO[i].GetComponent<ChestSlot>().transform.GetChild(0).GetComponent<InventoryItemData>().amount);
-                    }
-                    else
-                    {
-                        print("che0000000 " + slotsGO[i].GetComponent<ChestSlot>().id + " " + items[i].itemID + " 0");
-                    }
-                }
-            }
-        }
-    }
-
-    bool CheckItemInInventory(Item item)
-    {
-        for (int i = 0; i < inventorySlotAmount; i++)
-        {
-            if (items[i].itemID == item.itemID)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    bool CheckIfSlotHasItem(int slotID)
-    {
-        if (slotsGO[slotID].transform.childCount > 0 && slotsGO[slotID].transform.GetChild(0).CompareTag("Item"))
-        {
-            return true;
-        }
-        return false;
+        //Crafting.m_instance.CheckHighlight_ALL_CraftableItems();
     }
 
     public int CheckItemAmountInInventory(int id) //do this by slots or items saved
@@ -288,76 +178,25 @@ public class Inventory : MonoBehaviour
         int amount = 0;
         for (int i = 0; i < inventorySlotAmount; i++)
         {
-            if (slotsGO[i].transform.childCount > 0 && slotsGO[i].transform.GetChild(0).CompareTag("Item") && slotsGO[i].transform.GetChild(0).GetComponent<InventoryItemData>().item.itemID == id)
+            if (InventorySlotsGO[i].ItemId == id)
             {
-                amount += slotsGO[i].transform.GetChild(0).GetComponent<InventoryItemData>().amount;
+                amount += InventorySlotsGO[i].Amount;
             }
         }
         return amount;
     }
 
-    public bool CheckInventoryHasAtleastOneSpace()
+    public int GetEmptySlotId()
     {
-        for (int i = 0; i < inventorySlotAmount; i++)
+        for (int i = 0; i < InventorySlotsGO.Count - (armourSlotAmount + chestSlotAmount); i++) // adding only in inventory!!
         {
-            if (slotsGO[i].transform.childCount <= 0)
+            if (InventorySlotsGO[i].ItemId == -1)
             {
-                return true;
-            }
-            else if (!slotsGO[i].transform.GetChild(0).CompareTag("Item"))
-            {
-                return true;
+                return i;
             }
         }
         print("unable to add inventory full");
-        return false;
-    }
-
-    void SaveInventoryItems()
-    {
-        for (int i = 0; i < slotsGO.Count; i++)
-        {
-            if (slotsGO[i].transform.childCount > 0 && slotsGO[i].transform.GetChild(0).CompareTag("Item"))
-            {
-                myInventory[i] = new InventoryItem(slotsGO[i].transform.GetChild(0).GetComponent<InventoryItemData>().item.itemID,
-                    slotsGO[i].transform.GetChild(0).GetComponent<InventoryItemData>().amount,
-                    slotsGO[i].transform.GetChild(0).GetComponent<InventoryItemData>().slotID,
-                    slotsGO[i].transform.GetChild(0).GetComponent<InventoryItemData>().item.durability);
-            }
-            else
-            {
-                myInventory[i] = new InventoryItem();
-            }
-        }
-    }
-
-    void LoadInventoryItems()
-    {
-        InventoryItem[] myInventory = new InventoryItem[slotsGO.Count];// = new InventoryItems ();
-        for (int i = 0; i < slotsGO.Count; i++)
-        {
-            if (slotsGO[i].transform.childCount > 0 && slotsGO[i].transform.GetChild(0).CompareTag("Item"))
-            {
-                myInventory[i].ID = slotsGO[i].transform.GetChild(0).GetComponent<InventoryItemData>().item.itemID;
-                myInventory[i].Amount = slotsGO[i].transform.GetChild(0).GetComponent<InventoryItemData>().amount;
-                myInventory[i].SlotID = slotsGO[i].transform.GetChild(0).GetComponent<InventoryItemData>().slotID;
-                myInventory[i].Health = slotsGO[i].transform.GetChild(0).GetComponent<InventoryItemData>().item.durability;
-            }
-            else
-            {
-                myInventory[i] = new InventoryItem();
-            }
-        }
-    }
-
-    public void DecreseWeaponDurability(int amount)
-    {
-        if (selectedSlotID >= 0 && slotsGO[selectedSlotID].transform.childCount > 0 &&
-            slotsGO[selectedSlotID].transform.GetChild(0).CompareTag("Item") &&
-            slotsGO[selectedSlotID].transform.GetChild(0).GetComponent<InventoryItemData>().durability >= 0)
-        {
-            slotsGO[selectedSlotID].transform.GetChild(0).GetComponent<InventoryItemData>().DecreaseItemDurability(amount);
-        }
+        return -1;
     }
 
     public void AddItemButton()
@@ -369,7 +208,6 @@ public class Inventory : MonoBehaviour
     {
         RemoveItem(inputFeildID);
     }
-
 
     public void InputFeildID(string text)
     {
@@ -386,7 +224,6 @@ public class Inventory : MonoBehaviour
     }
 }
 
-
 [System.Serializable]
 public class InventoryItem
 {
@@ -398,19 +235,27 @@ public class InventoryItem
 
     public int Health { get; set; }
 
-    public InventoryItem(int id, int amount, int slotID, int health)
+    public SlotType SlotType { get; set; }
+
+    public InventoryItem(int id, int amount, int slotID, int health, SlotType slotType)
     {
-        this.ID = id;
-        this.Amount = amount;
-        this.SlotID = slotID;
-        this.Health = health;
+        ID = id;
+        Amount = amount;
+        SlotID = slotID;
+        Health = health;
+        SlotType = slotType;
     }
 
     public InventoryItem()
     {
-        this.ID = -1;
-        this.Amount = -1;
-        this.SlotID = -1;
-        this.Health = -1;
+        ID = -1;
+        Amount = -1;
+        SlotID = -1;
+        Health = -1;
     }
+}
+
+public enum SlotType
+{
+    Backpack, Inventory, Armor, Crafting
 }

@@ -1,74 +1,65 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using HarvestValley.IO;
+using System;
 
-public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler, IPointerDownHandler
+public class InventorySlot : MonoBehaviour, IPointerClickHandler
 {
-    public int id;
+    public event Action<int> OnSlotClicked;
+    public int slotId;
+    public SlotType slotType;
+    private int amount;
+    private int itemId;
+    [SerializeField]
+    private TextMeshProUGUI amountText;
+    [SerializeField]
+    private Image itemImage;
 
-    public void OnDrop(PointerEventData eventData)
+    public int Amount
     {
-        InventoryItemData droppedItem = eventData.pointerDrag.GetComponent<InventoryItemData>();
-
-        if (Inventory.m_instance.items[id].itemID == -1)
+        get
         {
-            Inventory.m_instance.items[droppedItem.slotID] = new Item();
-            Inventory.m_instance.items[id] = droppedItem.item;
-            droppedItem.slotID = id;
+            return amount;
         }
-        else
+
+        set
         {
-            if (droppedItem.slotID >= Inventory.m_instance.inventorySlotAmount && droppedItem.slotID < Inventory.m_instance.armourSlotAmount + Inventory.m_instance.inventorySlotAmount)
+            amount = value;
+            if (amount <= 0)
             {
-                return;
+                EmptySlot();
             }
-            Transform item = null;
-            foreach (Transform transforms in this.transform)
+            else if (amount == 1)
             {
-                if (transforms.CompareTag("Item"))
-                {
-                    item = transforms;
-                }
+                amountText.text = "";
             }
-            if (item != null)
+            else
             {
-                if (item.GetComponent<InventoryItemData>().item.itemID == droppedItem.item.itemID && droppedItem.item.stackAmount > 0)
-                {   //if item is dropped on	same item
-                    if (item.GetComponent<InventoryItemData>().amount + droppedItem.amount > Inventory.m_instance.maxStackAmount)
-                    { //if both item sum is grater tahn max stack amount
-                        droppedItem.amount = (item.GetComponent<InventoryItemData>().amount + droppedItem.amount) - Inventory.m_instance.maxStackAmount;
-                        droppedItem.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = droppedItem.amount.ToString();
-                        item.GetComponent<InventoryItemData>().amount = Inventory.m_instance.maxStackAmount;
-                        item.GetComponent<InventoryItemData>().transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = item.GetComponent<InventoryItemData>().amount.ToString();
-                    }
-                    else
-                    {
-                        item.GetComponent<InventoryItemData>().amount += droppedItem.amount;
-                        item.GetComponent<InventoryItemData>().transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = item.GetComponent<InventoryItemData>().amount.ToString();
-                        Inventory.m_instance.items[droppedItem.slotID] = new Item();
-                        DestroyImmediate(droppedItem.gameObject);
-                        print("added and deleted down item " + droppedItem.GetComponent<InventoryItemData>().item.name);
-                    }
-                }
-                else
-                {//swap if not same item
-                    item.GetComponent<InventoryItemData>().slotID = droppedItem.slotID;
-                    item.transform.SetParent(Inventory.m_instance.slotsGO[droppedItem.slotID].transform);
-                    item.transform.position = Inventory.m_instance.slotsGO[droppedItem.slotID].transform.position;
-
-                    Inventory.m_instance.items[droppedItem.slotID] = item.GetComponent<InventoryItemData>().item;
-                    Inventory.m_instance.items[id] = droppedItem.item;
-
-                    droppedItem.slotID = id;
-                    droppedItem.transform.SetParent(this.transform);
-                    droppedItem.transform.position = this.transform.position;
-                }
+                amountText.text = amount.ToString();
             }
         }
-        SelectSlot();
+    }
+
+    public int ItemId
+    {
+        get
+        {
+            return itemId;
+        }
+        set
+        {
+            itemId = value;
+            if (itemId == -1)
+            {
+                EmptySlot();
+            }
+            else
+            {
+                SetItemImage();
+            }
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -76,15 +67,20 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler, 
         SelectSlot();
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        SelectSlot();
-    }
-
     public void SelectSlot()
     {
-        Inventory.m_instance.selectedSlotID = id;
-        Inventory.m_instance.slotSelectedImage.transform.parent = this.transform;
-        Inventory.m_instance.slotSelectedImage.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+        OnSlotClicked.Invoke(slotId);
+    }
+
+    public void SetItemImage()
+    {
+        Amount = 1;
+        itemImage.sprite = AtlasBank.Instance.GetSprite(ItemDatabase.GetItemSlugById(itemId), AtlasType.GUI);
+    }
+
+    public void EmptySlot()
+    {
+        amount = 0;
+        itemImage.sprite = null;
     }
 }

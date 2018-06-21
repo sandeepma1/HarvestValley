@@ -67,6 +67,20 @@ SpriteAtlas:
     - {fileID: 2800000, guid: b7f433f5be62b624fb02261ec7ab6cbb, type: 3}
     - {fileID: 2800000, guid: cd346031d7d16074580e74b39c182db3, type: 3}
     - {fileID: 2800000, guid: b9177d11032ea9c41912b38524aebdb7, type: 3}
+    - {fileID: 2800000, guid: f462f7aa2c183a34ea506ac0ee0ad45d, type: 3}
+    - {fileID: 2800000, guid: 67a6261219d6abe41a83ad84c1e26a8f, type: 3}
+    - {fileID: 2800000, guid: c0832b808a13f57438eed5555b6fc6a7, type: 3}
+    - {fileID: 2800000, guid: 6f34e309bb4f34a4e9fe02f877eff5a4, type: 3}
+    - {fileID: 2800000, guid: c6537aa5b97d6464db67d5d4cb389a1b, type: 3}
+    - {fileID: 2800000, guid: 682ec4e1577e78449ab045816ffacacf, type: 3}
+    - {fileID: 2800000, guid: 3dcb8ca814a4cc2469c4a713270bf036, type: 3}
+    - {fileID: 2800000, guid: 62c76715b6bf36b41981f9b649b56747, type: 3}
+    - {fileID: 2800000, guid: 223df34928a0589448d4d46561e80f14, type: 3}
+    - {fileID: 2800000, guid: 50e9e875777dfdb4ab5c84addc30a97c, type: 3}
+    - {fileID: 2800000, guid: b64c2f347b3e7b04da7701b5c8d6e134, type: 3}
+    - {fileID: 2800000, guid: ffac04dc21da7a24ab0c554046e1b5d5, type: 3}
+    - {fileID: 2800000, guid: c9b8cc255916b5740bb88feff1f429ab, type: 3}
+    - {fileID: 2800000, guid: b83884fe544de394daba1e13115c3b79, type: 3}
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -93,21 +107,35 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 4fe94901adc9c96449b9f6f066ba98a6, type: 3}
   - {fileID: 21300000, guid: 440a56f4b4549904b999817f0c9fddfd, type: 3}
   - {fileID: 21300000, guid: 724435812d1714e4c8ca00f76640666c, type: 3}
+  - {fileID: 21300000, guid: b83884fe544de394daba1e13115c3b79, type: 3}
   - {fileID: 21300000, guid: 4f58e4c7747650a4cade516e0e19ca9f, type: 3}
   - {fileID: 21300000, guid: 22dc97134aaaf3647846774338e9bb8e, type: 3}
   - {fileID: 21300008, guid: 69d1fbf9cbf8faa4a9c54e08dbb9c308, type: 3}
+  - {fileID: 21300000, guid: 50e9e875777dfdb4ab5c84addc30a97c, type: 3}
   - {fileID: 21300000, guid: f791e5215db20ed44b7d5335aa9420b0, type: 3}
+  - {fileID: 21300000, guid: 6f34e309bb4f34a4e9fe02f877eff5a4, type: 3}
   - {fileID: 21300000, guid: 7630432e87ac47d48ab98f6d08eb4e67, type: 3}
   - {fileID: 21300000, guid: 50a37c96fbc7e434aabe51ebd952b0b2, type: 3}
+  - {fileID: 21300000, guid: 223df34928a0589448d4d46561e80f14, type: 3}
+  - {fileID: 21300000, guid: c0832b808a13f57438eed5555b6fc6a7, type: 3}
   - {fileID: 21300000, guid: 1071336710b212e4896e7d9d866e24bc, type: 3}
   - {fileID: 21300000, guid: 1f9b774fc57b53f42805376876acbd97, type: 3}
+  - {fileID: 21300000, guid: 3dcb8ca814a4cc2469c4a713270bf036, type: 3}
+  - {fileID: 21300000, guid: 67a6261219d6abe41a83ad84c1e26a8f, type: 3}
   - {fileID: 21300000, guid: 60726f580300e34479f26adc2acfb926, type: 3}
   - {fileID: 21300000, guid: cd7d41a654796a7488a87ee0057a90c2, type: 3}
+  - {fileID: 21300000, guid: 682ec4e1577e78449ab045816ffacacf, type: 3}
   - {fileID: 21300000, guid: 9138713bb8274d44d87fb922c4d59501, type: 3}
+  - {fileID: 21300000, guid: f462f7aa2c183a34ea506ac0ee0ad45d, type: 3}
   - {fileID: 21300000, guid: 4f3c1e9b0eac421458b2e2736b20f40c, type: 3}
   - {fileID: 21300000, guid: c030231671f5d20458020d3678b5825f, type: 3}
   - {fileID: 21300000, guid: caab4c5213945244aa705dc83d58bd68, type: 3}
   - {fileID: 21300000, guid: 9f25c43dd2adce94b9d82ea82b304dbc, type: 3}
+  - {fileID: 21300000, guid: b64c2f347b3e7b04da7701b5c8d6e134, type: 3}
+  - {fileID: 21300000, guid: ffac04dc21da7a24ab0c554046e1b5d5, type: 3}
+  - {fileID: 21300000, guid: 62c76715b6bf36b41981f9b649b56747, type: 3}
+  - {fileID: 21300000, guid: c6537aa5b97d6464db67d5d4cb389a1b, type: 3}
+  - {fileID: 21300000, guid: c9b8cc255916b5740bb88feff1f429ab, type: 3}
   - {fileID: 21300000, guid: 820186dae362d5d4a96f22b7bb17a2fb, type: 3}
   - {fileID: 21300000, guid: 094c4e671ff82b24598a222c83965995, type: 3}
   - {fileID: 21300000, guid: 479e4fbeb0a1c384fa4c8f22e7265850, type: 3}
@@ -140,21 +168,35 @@ SpriteAtlas:
   - milk
   - potatoes
   - pumpkin
+  - apple
   - cornBread
   - tomato
   - corn
+  - wood
   - PlusButton
+  - helmet
   - CoinSmall
   - Experience
+  - torch
+  - grass
   - CloseButton
   - SeedOptionsBackground
+  - stone
+  - flower
   - Diamond
   - infoButton
+  - stick
   - Additional
+  - coal
   - EmbosedRectBackground
   - Stamina
   - EmbosedBoxBackgroundTwoEdge
   - fast-forward-xxl
+  - woodenaxe
+  - woodenpickaxe
+  - table
+  - iron
+  - woodensword
   - Button_128px
   - Gold
   - SwitchButton

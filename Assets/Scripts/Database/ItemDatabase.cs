@@ -71,6 +71,16 @@ namespace HarvestValley.IO
             return items.Length;
         }
 
+        public static int GetItemStackAmountById(int itemId)
+        {
+            return items[itemId].stackAmount;
+        }
+
+        public static int GetItemHitPointsById(int itemId)
+        {
+            return items[itemId].hitPoints;
+        }
+
         public static Item[] GetAllItemsBySourceId(int sourceId)
         {
             List<Item> tempItems = new List<Item>();
@@ -97,7 +107,7 @@ public class Item
     public int unlocksAtLevel;
     public int timeRequiredInSeconds;
     public int XPperYield;
-    public ItemType type;
+    public ItemType itemType;
     public int coinCost;
     public int gemCost;
     public int sourceID;
@@ -112,15 +122,16 @@ public class Item
     //16
     public int[] needID;
     public int[] needAmount;
-    public int durability;
+    public int hitPoints;
     public int stackAmount;
     public string slug;
+
     public Item() { itemID = -1; }
 
     public Item(int itemId, string itemName, string itemDescription, int itemUnlocksAtLevel,
                  int itemTimeRequiredInSeconds, int itemXP, ItemType itemType, int itemCoinCost, int itemGemCost, int itemSourceID,
                  int itemNoOfWatering, int itemBaseYieldMin, int itemBaseYieldMax, int itemSellValueMin, int itemSellValueMax,
-                 int itemNoOfFertilizer, int[] itemNeedID, int[] itemNeedAmount, int _durability, int _stackAmount, string itemSlug)
+                 int itemNoOfFertilizer, int[] itemNeedID, int[] itemNeedAmount, int _hitPoints, int _stackAmount, string itemSlug)
     {
         itemID = itemId;
         name = itemName;
@@ -128,7 +139,7 @@ public class Item
         unlocksAtLevel = itemUnlocksAtLevel;
         timeRequiredInSeconds = itemTimeRequiredInSeconds;
         XPperYield = itemXP;
-        type = itemType;
+        this.itemType = itemType;
         coinCost = itemCoinCost;
         gemCost = itemGemCost;
         sourceID = itemSourceID;
@@ -143,7 +154,7 @@ public class Item
         sellValueMax = itemSellValueMax;
         needID = itemNeedID;
         needAmount = itemNeedAmount;
-        durability = _durability;
+        hitPoints = _hitPoints;
         stackAmount = _stackAmount;
         slug = itemSlug;
     }
@@ -158,7 +169,9 @@ public enum ItemType
     Grass,
     Fish,
     Minerals,
-    Armor
+    Armor,
+    Tools,
+    Weapons
 }
 
 public enum ItemSource

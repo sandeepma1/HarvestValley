@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 222247412452312746}
   - component: {fileID: 114514260031365090}
   m_Layer: 5
-  m_Name: Image
+  m_Name: SlotSelector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +181,6 @@ GameObject:
   - component: {fileID: 4207026104339776}
   - component: {fileID: 114240530950551162}
   - component: {fileID: 114975362501724408}
-  - component: {fileID: 114398928051354984}
   m_Layer: 5
   m_Name: UiBackPackMenu
   m_TagString: Untagged
@@ -1003,23 +1002,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &114398928051354984
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1260850202481016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91edea610a493bb46bc3c0d2e96dceb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  craftPanel: {fileID: 1628302092356652}
-  craftSlot: {fileID: 1281425874784674, guid: 068bdf357c0d1e547b8ed5fca11c840b, type: 2}
-  slotSelectedImage: {fileID: 114514260031365090}
-  craftingItems: 
-  craftingSlotsGO: []
-  selectedItemID: -1
 --- !u!114 &114401604249104874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2386,46 +2368,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf8b287aa13b6b42af13b970416ed19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySlotPanel: {fileID: 1147475284357266}
-  armourSlotPanel: {fileID: 1442576243718342}
-  chestSlotPanel: {fileID: 1172898032848850}
-  inventorySlot: {fileID: 1227225681537826, guid: 7a2540aed356c0a46a5ed0cb0b83bb75,
+  inventorySlotPanel: {fileID: 224277411087128764}
+  armourSlotPanel: {fileID: 224672888048919838}
+  backpackSlotPanel: {fileID: 224401687784614568}
+  inventorySlotPrefab: {fileID: 114867185873327756, guid: a2897a6d2cfbc0744bb2d3c3fa6f3116,
     type: 2}
-  armorSlot: {fileID: 1918245704847330, guid: b013a472877e6d44bba5d2fcb6b22eee, type: 2}
-  chestSlot: {fileID: 1035562151007604, guid: 03895ec65a3a7134ebd6977083717228, type: 2}
-  inventoryItem: {fileID: 1859627682010490, guid: a2897a6d2cfbc0744bb2d3c3fa6f3116,
-    type: 2}
+  itemName: {fileID: 114678436244179032}
+  itemDescription: {fileID: 114225097652020098}
   inventorySlotAmount: 10
   armourSlotAmount: 4
   chestSlotAmount: 6
-  slotSelectedImage: {fileID: 114514260031365090}
-  items: []
-  slotsGO: []
-  selectedItem:
-    itemID: 0
-    name: 
-    description: 
-    unlocksAtLevel: 0
-    timeRequiredInSeconds: 0
-    XPperYield: 0
-    type: 0
-    coinCost: 0
-    gemCost: 0
-    sourceID: 0
-    noOfWatering: 0
-    baseYieldMin: 0
-    baseYieldMax: 0
-    sellValueMin: 0
-    sellValueMax: 0
-    noOfFertilizer: 0
-    needID: 
-    needAmount: 
-    durability: 0
-    stackAmount: 0
-    slug: 
-  selectedSlotID: -1
-  maxStackAmount: 10
-  debug: {fileID: 0}
+  slotSelector: {fileID: 224063983947141910}
+  InventorySlotsGO: []
 --- !u!222 &222025240727170890
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -3021,7 +2975,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 103.90991}
+  m_AnchoredPosition: {x: 0, y: 104}
   m_SizeDelta: {x: -100, y: -1998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224687778492356350
@@ -3095,7 +3049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -549.2}
+  m_AnchoredPosition: {x: 0, y: -549}
   m_SizeDelta: {x: -100, y: -1998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224931954452506002

@@ -25,6 +25,7 @@ public static class GEM
     #endregion
 
     public static int numberOfRocksInLevel = 0;
+    public static int pickaxeHitDuration = 1;
     //public static bool isSeedSelected = false;
     //public static int seedSelectedID = -1;
     public static int[] screensPositions = new int[] { 0, 7, 24, 41, 58, 75, 92 };

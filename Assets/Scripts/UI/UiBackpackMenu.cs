@@ -15,7 +15,7 @@ public class UiBackpackMenu : MonoBehaviour
     private void Start()
     {
         backpackButton.onClick.AddListener(ToggleBackpackCanvas);
-        //backpackCanvas.SetActive(false);
+        backpackCanvas.SetActive(false);
     }
 
     private void OnDestroy()

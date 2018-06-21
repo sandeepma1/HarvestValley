@@ -1,47 +1,34 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class FloatingJoystick : Joystick
 {
     public event Action OnJoystickClick;
-    public event Action OnActionButtonClick;
-    public event Action OnSecondaryButtonClick;
     public event Action OnJoystickUp;
     Vector2 joystickCenter = Vector2.zero;
+    [SerializeField]
+    internal LongPressEventTrigger actionButton;
+    [SerializeField]
+    internal LongPressEventTrigger secondaryButton;
+    [SerializeField]
+    internal TextMeshProUGUI actionText;
+    [SerializeField]
+    internal TextMeshProUGUI secondaryText;
 
     private void Start()
     {
-        actionButton.onClick.AddListener(OnActionButtonClickEventHandler);
-        secondaryButton.onClick.AddListener(OnSecondaryButtonClickEventHandler);
         background.gameObject.SetActive(false);
-    }
-
-    private void OnDestroy()
-    {
-        actionButton.onClick.RemoveListener(OnActionButtonClickEventHandler);
-        secondaryButton.onClick.RemoveListener(OnSecondaryButtonClickEventHandler);
-    }
-
-    private void OnActionButtonClickEventHandler()
-    {
-        if (OnActionButtonClick != null)
-        {
-            OnActionButtonClick.Invoke();
-        }
-    }
-
-    private void OnSecondaryButtonClickEventHandler()
-    {
-        if (OnSecondaryButtonClick != null)
-        {
-            OnSecondaryButtonClick.Invoke();
-        }
     }
 
     public override void OnDrag(PointerEventData eventData)
     {
-        //OnJoystickDrag.Invoke();
+        if (PlayerController.Instance.isPlayerInAction)
+        {
+            return;
+        }
         Vector2 direction = eventData.position - joystickCenter;
         inputVector = (direction.magnitude > background.sizeDelta.x / 2f) ? direction.normalized : direction / (background.sizeDelta.x / 2f);
         handle.anchoredPosition = (inputVector * background.sizeDelta.x / 2f) * handleLimit;

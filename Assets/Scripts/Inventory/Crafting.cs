@@ -22,15 +22,17 @@ public class Crafting : MonoBehaviour
 
     void Start()
     {
+        //CraftingSlot craftingSlot = new CraftingSlot();
         for (int i = 0; i < craftingItems.Length; i++)
         {
             craftingSlotsGO.Add(Instantiate(craftSlot, craftPanel.transform));
             craftingSlotsGO[i].GetComponent<CraftingSlot>().id = i;
             craftingSlotsGO[i].GetComponent<CraftingSlot>().itemID = craftingItems[i];
             craftingSlotsGO[i].GetComponent<RectTransform>().localScale = Vector3.one;
-            //craftingSlotsGO[i].transform.GetChild(0).GetComponent<Image>().sprite = ItemsDatabase.Instance.items[craftingItems[i]].Sprite;
+            craftingSlotsGO[i].transform.GetChild(0).GetComponent<Image>().sprite = AtlasBank.Instance.GetSprite(
+                ItemDatabase.GetItemById(craftingItems[i]).slug, AtlasType.GUI);
         }
-        //CheckHighlight_ALL_CraftableItems ();
+        //CheckHighlight_ALL_CraftableItems();
     }
 
     public void CheckHighlight_ALL_CraftableItems()
@@ -53,10 +55,10 @@ public class Crafting : MonoBehaviour
     {
         if (selectedItemID >= 0)
         {
-            if (CheckForRequiredItemsInInventory(selectedItemID) && Inventory.m_instance.CheckInventoryHasAtleastOneSpace())
+            if (CheckForRequiredItemsInInventory(selectedItemID) && Inventory.Instance.GetEmptySlotId() != -1)
             { //if inventory has all the craftable items
                 RemoveItemsToCreateNewItem();
-                Inventory.m_instance.AddItem(selectedItemID);
+                Inventory.Instance.AddItem(selectedItemID);
                 print("crafted item" + selectedItemID);
             }
             else
@@ -74,28 +76,28 @@ public class Crafting : MonoBehaviour
         {
             for (int i = 0; i < itemToCraft.needAmount[0]; i++)
             {
-                Inventory.m_instance.RemoveItem(itemToCraft.needID[0]);
+                Inventory.Instance.RemoveItem(itemToCraft.needID[0]);
             }
         }
         if (itemToCraft.needID[1] >= 0)
         {
             for (int i = 0; i < itemToCraft.needAmount[1]; i++)
             {
-                Inventory.m_instance.RemoveItem(itemToCraft.needID[1]);
+                Inventory.Instance.RemoveItem(itemToCraft.needID[1]);
             }
         }
         if (itemToCraft.needID[2] >= 0)
         {
             for (int i = 0; i < itemToCraft.needAmount[2]; i++)
             {
-                Inventory.m_instance.RemoveItem(itemToCraft.needID[2]);
+                Inventory.Instance.RemoveItem(itemToCraft.needID[2]);
             }
         }
         if (itemToCraft.needID[3] >= 0)
         {
             for (int i = 0; i < itemToCraft.needAmount[3]; i++)
             {
-                Inventory.m_instance.RemoveItem(itemToCraft.needID[3]);
+                Inventory.Instance.RemoveItem(itemToCraft.needID[3]);
             }
         }
     }
@@ -108,7 +110,7 @@ public class Crafting : MonoBehaviour
 
         for (int i = 0; i < maxItems; i++)
         {
-            if (itemToCraft.needID[i] >= -1 && Inventory.m_instance.CheckItemAmountInInventory(itemToCraft.needID[i]) >= itemToCraft.needAmount[i])
+            if (itemToCraft.needID[i] >= -1 && Inventory.Instance.CheckItemAmountInInventory(itemToCraft.needID[i]) >= itemToCraft.needAmount[i])
             {
                 needItem[i] = true;
             }

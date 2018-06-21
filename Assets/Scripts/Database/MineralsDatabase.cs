@@ -40,35 +40,45 @@ namespace HarvestValley.IO
             return minerals[itemId];
         }
 
-        public static int GetMaterialsInfolength()
+        public static int GetMineralInfolength()
         {
             return minerals.Length;
+        }
+
+        public static int GetMineralHitPointsById(int id)
+        {
+            return minerals[id].hitPoints;
+        }
+
+        public static int GetMineralOutPutIdById(int id)
+        {
+            return minerals[id].outputId;
         }
     }
 }
 [System.Serializable]
 public class MineralsInfo
 {
-    public int id;
+    public int mineralId;
     public string name;
     public string desc;
     public int outputId;
     public int min;
     public int max;
-    public int hits;
+    public int hitPoints;
     public int xp;
     public string slug;
 
-    public MineralsInfo(int _id, string _name, string _desc, int _outputId, int _min,
+    public MineralsInfo(int _mineralId, string _name, string _desc, int _outputId, int _min,
         int _max, int _hits, int _xp, string _slug)
     {
-        id = _id;
+        mineralId = _mineralId;
         name = _name;
         desc = _desc;
         outputId = _outputId;
         min = _min;
         max = _max;
-        hits = _hits;
+        hitPoints = _hits;
         xp = _xp;
         slug = _slug;
     }

@@ -5,7 +5,7 @@ using System;
 public class PlayerController : Singleton<PlayerController>
 {
     private FloatingJoystick Joystick;
-    public event Action<int> OnPickaxeClicked;
+    public event Action<PickaxeAble> OnPickaxeAbleClicked;
     public event Action<string> OnEnteranceClicked;
     [SerializeField]
     private LayerMask layerMask;
@@ -19,18 +19,25 @@ public class PlayerController : Singleton<PlayerController>
     private Transform hitBox;
     private Transform nearestObject;
     private PlayerMovement playerMovement;
+    public bool isPlayerInAction;
+
+    private bool ActionButtonVisiblilty { set { Joystick.actionButton.gameObject.SetActive(value); } }
+    private bool SecondaryButtonVisiblilty { set { Joystick.secondaryButton.gameObject.SetActive(value); } }
+    private string ActionString { set { Joystick.actionText.text = value; } }
+    private string SecondaryString { set { Joystick.secondaryText.text = value; } }
 
     #region Unity Default
     private void Start()
     {
         hitBox = transform.GetChild(0);
         Joystick = FindObjectOfType<FloatingJoystick>();
-        Joystick.OnActionButtonClick += OnActionButtonClickEventHandler;
-        Joystick.OnActionButtonClick += OnSecondaryButtonClickEventHandler;
         ActionButtonSetActive(false);
         SecondaryButtonSetActive(false);
         playerMovement = GetComponent<PlayerMovement>();
         playerMovement.IfPlayerMoving += IfPlayerMovingEventhandler;
+
+        Joystick.actionButton.OnHitComplete += OnActionButtonClickEventHandler;
+        Joystick.secondaryButton.OnHitComplete += OnSecondaryButtonClickEventHandler;
     }
 
     private void IfPlayerMovingEventhandler(bool flag)
@@ -40,8 +47,8 @@ public class PlayerController : Singleton<PlayerController>
 
     protected override void OnDestroy()
     {
-        Joystick.OnActionButtonClick -= OnActionButtonClickEventHandler;
-        Joystick.OnActionButtonClick -= OnSecondaryButtonClickEventHandler;
+        Joystick.actionButton.OnHitComplete -= OnActionButtonClickEventHandler;
+        Joystick.secondaryButton.OnHitComplete -= OnSecondaryButtonClickEventHandler;
         playerMovement.IfPlayerMoving -= IfPlayerMovingEventhandler;
     }
     #endregion
@@ -49,22 +56,22 @@ public class PlayerController : Singleton<PlayerController>
     #region Action Secondary Buttons Functions
     private void ActionButtonSetActive(bool flag)
     {
-        Joystick.ActionButtonVisiblilty = flag;
+        ActionButtonVisiblilty = flag;
     }
 
     private void SecondaryButtonSetActive(bool flag)
     {
-        Joystick.SecondaryButtonVisiblilty = flag;
+        SecondaryButtonVisiblilty = flag;
     }
 
     private void ActionButtonText(string text)
     {
-        Joystick.ActionString = text;
+        ActionString = text;
     }
 
     private void SecondaryButtonText(string text)
     {
-        Joystick.SecondaryString = text;
+        SecondaryString = text;
     }
     #endregion
 
@@ -84,13 +91,13 @@ public class PlayerController : Singleton<PlayerController>
             else
             {
                 nearestObject = null;
-                hitBox.transform.position = Vector3.zero;
+                hitBox.transform.position = new Vector3(500, 500);
                 NoNearObject();
             }
         }
     }
 
-    Transform GetClosestEnemy(Collider2D[] groundOverlap)
+    private Transform GetClosestEnemy(Collider2D[] groundOverlap)
     {
         Transform bestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
@@ -144,15 +151,15 @@ public class PlayerController : Singleton<PlayerController>
     #region Action Secondary buttons pressed
     private void OnActionButtonClickEventHandler()
     {
-        ActionButtonSetActive(false);
+        //ActionButtonSetActive(false);
         switch (actionTagName)
         {
             case "Enterence":
                 OnEnteranceClicked.Invoke(actionTriggerColliderName);
                 break;
             case "Pickaxe":
-                int itemId = int.Parse(nearestObject.name);
-                OnPickaxeClicked.Invoke(itemId);
+                PickaxeAble pickaxeAble = nearestObject.GetComponent<PickaxeAble>();
+                OnPickaxeAbleClicked.Invoke(pickaxeAble);
                 break;
             default:
                 break;

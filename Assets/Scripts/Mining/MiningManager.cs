@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using CreativeSpore.SuperTilemapEditor;
+using HarvestValley.IO;
 
-public class MiningManager : MonoBehaviour
+public class MiningManager : Singleton<MiningManager>
 {
     [SerializeField]
     private Tilemap tileMap;
     private List<MineItems> propsCells = new List<MineItems>();
     private float totalCells;
     private GameObject player;
+    private PickaxeAble mineralPrefab;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        mineralPrefab = Resources.Load("mineral", typeof(PickaxeAble)) as PickaxeAble;
         tileMap.IsVisible = false;
         ReadPropsCells();
         GenerateProps();
@@ -38,12 +41,12 @@ public class MiningManager : MonoBehaviour
         int ran;
         for (int i = 0; i < propsCells.Count; i++)
         {
-            if (propsCells[i].id == 0) // Spawn Exit Mines collider
+            if (propsCells[i].itemId == 0) // Spawn Exit Mines collider
             {
                 SpawnExitMines(propsCells[i]);
                 continue;
             }
-            if (propsCells[i].id == 1) // Spawn Player
+            if (propsCells[i].itemId == 1) // Spawn Player
             {
                 SpawnPlayer(propsCells[i]);
                 continue;
@@ -58,8 +61,11 @@ public class MiningManager : MonoBehaviour
 
     private void SpawnMinerals(MineItems mineral)
     {
-        GameObject go = Instantiate(Resources.Load("Rock1"), new Vector3(mineral.xPos, mineral.yPos), Quaternion.identity, this.transform) as GameObject;
-        go.name = mineral.id.ToString();
+        int mineralId = (int)mineral.itemId;
+        PickaxeAble go = Instantiate(mineralPrefab, new Vector3(mineral.xPos, mineral.yPos), Quaternion.identity, this.transform);
+        go.mineralId = mineralId;
+        go.outputId = MineralsDatabase.GetMineralOutPutIdById(mineralId);
+        go.HitPoints = MineralsDatabase.GetMineralHitPointsById(mineralId);
     }
 
     private void SpawnPlayer(MineItems mineral)
@@ -72,11 +78,16 @@ public class MiningManager : MonoBehaviour
         GameObject go = Instantiate(Resources.Load("ExitMines"), new Vector3(mineral.xPos, mineral.yPos), Quaternion.identity, this.transform) as GameObject;
         go.name = "ExitMines";
     }
+
+    public void SpwanItemAfterBreak(int itemId, Vector2 pos)
+    {
+        Inventory.Instance.AddItem(itemId);
+    }
 }
 [System.Serializable]
 public class MineItems
 {
-    public uint id;
+    public uint itemId;
     public int xPos;
     public int yPos;
 
@@ -87,7 +98,7 @@ public class MineItems
 
     public MineItems(uint _id, int _xPos, int _yPos)
     {
-        id = _id;
+        itemId = _id;
         xPos = _xPos;
         yPos = _yPos;
     }
