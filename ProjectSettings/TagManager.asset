@@ -11,6 +11,7 @@ TagManager:
   - FlappyFish
   - DragableUiItem
   - Grass
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -50,6 +51,9 @@ TagManager:
     locked: 0
   - name: UpperGround
     uniqueID: 25292763
+    locked: 0
+  - name: Player
+    uniqueID: 2556846195
     locked: 0
   - name: WourldUI
     uniqueID: 9448515

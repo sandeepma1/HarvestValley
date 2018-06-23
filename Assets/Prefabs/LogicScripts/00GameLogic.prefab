@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 114546689231345156}
   - component: {fileID: 114399196169527098}
   - component: {fileID: 114809067863690428}
-  - component: {fileID: 114965709136347260}
   m_Layer: 0
   m_Name: Database
   m_TagString: Untagged
@@ -161,15 +160,3 @@ MonoBehaviour:
     type: 2}
   livestockAtlas: {fileID: 4343727234628468602, guid: bfb7238a7ff74c14f9cbb40436f25c56,
     type: 2}
---- !u!114 &114965709136347260
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1496426417507922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d85195e6b8bd84d4aa8fb0d4ffa7f17a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  database: []

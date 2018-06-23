@@ -7,6 +7,10 @@ public class PlayerController : Singleton<PlayerController>
     private FloatingJoystick Joystick;
     public event Action<PickaxeAble> OnPickaxeAbleClicked;
     public event Action<string> OnEnteranceClicked;
+
+    public bool isPlayerInAction;
+    public ActionButtonType actionButtonType;
+
     [SerializeField]
     private LayerMask layerMask;
     [SerializeField]
@@ -19,7 +23,6 @@ public class PlayerController : Singleton<PlayerController>
     private Transform hitBox;
     private Transform nearestObject;
     private PlayerMovement playerMovement;
-    public bool isPlayerInAction;
 
     private bool ActionButtonVisiblilty { set { Joystick.actionButton.gameObject.SetActive(value); } }
     private bool SecondaryButtonVisiblilty { set { Joystick.secondaryButton.gameObject.SetActive(value); } }
@@ -78,23 +81,23 @@ public class PlayerController : Singleton<PlayerController>
     #region Nearest Object Detection
     private void LateUpdate()
     {
-        if (isMoving)
+        //if (isMoving)
+        //{
+        Collider2D[] groundOverlap = new Collider2D[4];
+        Physics2D.OverlapCircleNonAlloc(transform.position, radius, groundOverlap, layerMask);
+        if (GetClosestEnemy(groundOverlap) != null)
         {
-            Collider2D[] groundOverlap = new Collider2D[4];
-            Physics2D.OverlapCircleNonAlloc(transform.position, radius, groundOverlap, layerMask);
-            if (GetClosestEnemy(groundOverlap) != null)
-            {
-                nearestObject = GetClosestEnemy(groundOverlap);
-                hitBox.transform.position = nearestObject.position;
-                NearestObject(nearestObject);
-            }
-            else
-            {
-                nearestObject = null;
-                hitBox.transform.position = new Vector3(500, 500);
-                NoNearObject();
-            }
+            nearestObject = GetClosestEnemy(groundOverlap);
+            hitBox.transform.position = nearestObject.position;
+            NearestObject(nearestObject);
         }
+        else
+        {
+            nearestObject = null;
+            hitBox.transform.position = new Vector3(500, 500);
+            NoNearObject();
+        }
+        //}
     }
 
     private Transform GetClosestEnemy(Collider2D[] groundOverlap)
@@ -125,7 +128,8 @@ public class PlayerController : Singleton<PlayerController>
     {
         actionTagName = collision.tag;
         actionTriggerColliderName = collision.name;
-        UiDebugTextHandler.DebugText(actionTriggerColliderName);
+        actionButtonType = (ActionButtonType)System.Enum.Parse(typeof(ActionButtonType), actionTagName);
+        UiDebugTextHandler.DebugText(actionButtonType.ToString());
         ActionButtonSetActive(true);
         switch (actionTagName)
         {
@@ -151,7 +155,6 @@ public class PlayerController : Singleton<PlayerController>
     #region Action Secondary buttons pressed
     private void OnActionButtonClickEventHandler()
     {
-        //ActionButtonSetActive(false);
         switch (actionTagName)
         {
             case "Enterence":

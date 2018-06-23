@@ -11,5 +11,6 @@ public class Pickaxe : MonoBehaviour
     private void OnPickaxeClickedEventhandler(PickaxeAble pickaxeAble)
     {
         pickaxeAble.HitPoints -= 2;
+        PlayerMovement.Instance.PlayerPickaxeAction(false);
     }
 }

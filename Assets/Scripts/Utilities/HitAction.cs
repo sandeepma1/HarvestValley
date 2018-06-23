@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class LongPressEventTrigger : UIBehaviour, IPointerDownHandler, IPointerUpHandler
+public class HitAction : UIBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public event Action OnHitComplete;
 
@@ -12,10 +12,30 @@ public class LongPressEventTrigger : UIBehaviour, IPointerDownHandler, IPointerU
     private bool isClicked = false;
     private bool isHold = false;
 
+    protected override void OnDisable()
+    {
+        isClicked = false;
+        isHold = false;
+        if (PlayerMovement.Instance != null)
+        {
+            PlayerMovement.Instance.PlayerPickaxeAction(false);
+        }
+    }
+
     private void Update()
     {
+        if (PlayerController.Instance.actionButtonType == ActionButtonType.Enterence)
+        {
+            if (isClicked)
+            {
+                OnHitComplete.Invoke();
+                isClicked = false;
+            }
+            return;
+        }
         if (isClicked || isHold)
         {
+            PlayerMovement.Instance.PlayerPickaxeAction(true);
             PlayerController.Instance.isPlayerInAction = true;
             timer += Time.deltaTime;
             if (timer > hitDuration)
@@ -42,4 +62,19 @@ public class LongPressEventTrigger : UIBehaviour, IPointerDownHandler, IPointerU
     {
         isHold = false;
     }
+}
+
+public enum ActionButtonType
+{
+    Untagged,
+    Enterence,
+    Pickaxe,
+    Sword,
+    Field,
+    MainCanvas,
+    Pickable,
+    FlappyFish,
+    DragableUiItem,
+    Grass,
+    Item
 }

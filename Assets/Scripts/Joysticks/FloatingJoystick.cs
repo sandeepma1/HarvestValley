@@ -10,9 +10,9 @@ public class FloatingJoystick : Joystick
     public event Action OnJoystickUp;
     Vector2 joystickCenter = Vector2.zero;
     [SerializeField]
-    internal LongPressEventTrigger actionButton;
+    internal HitAction actionButton;
     [SerializeField]
-    internal LongPressEventTrigger secondaryButton;
+    internal HitAction secondaryButton;
     [SerializeField]
     internal TextMeshProUGUI actionText;
     [SerializeField]
