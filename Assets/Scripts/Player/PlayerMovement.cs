@@ -56,17 +56,21 @@ public class PlayerMovement : Singleton<PlayerMovement>
             {
                 return;
             }
-            anim.SetBool("isMoving", true);
+
             moveVector = (transform.right * Joystick.Horizontal + transform.up * Joystick.Vertical).normalized;
-            //UiDebugTextHandler.DebugText(Joystick.Vertical + " " + Joystick.Horizontal + " " + moveVector);
+            if (Mathf.Abs(moveVector.x) == 0)
+            {
+                return;
+            }
+            anim.SetBool("isMoving", true);
             transform.Translate(moveVector * moveSpeed * Time.deltaTime);
             if (moveVector.x > 0)
             {
-                FlipPlayer();
+                TurnPlayerRight();
             }
             else
             {
-                NormalPlayer();
+                TurnPlayerLeft();
             }
         }
         else
@@ -75,20 +79,33 @@ public class PlayerMovement : Singleton<PlayerMovement>
         }
     }
 
-    private void FlipPlayer()
+    private void TurnPlayerRight()
     {
         characterRig.eulerAngles = new Vector3(0, 180, 0);
     }
 
-    private void NormalPlayer()
+    private void TurnPlayerLeft()
     {
         characterRig.eulerAngles = Vector3.zero;
     }
 
-    public void PlayerPickaxeAction(bool flag)
+    public void PlayerToolAction(bool flag)
     {
         if (anim != null)
         {
+            switch (PlayerController.Instance.playerToObjectDirection)
+            {
+                case PlayerToObjectDirection.None:
+                    break;
+                case PlayerToObjectDirection.Left:
+                    TurnPlayerLeft();
+                    break;
+                case PlayerToObjectDirection.Right:
+                    TurnPlayerRight();
+                    break;
+                default:
+                    break;
+            }
             anim.SetBool("isPickaxe", flag);
         }
     }

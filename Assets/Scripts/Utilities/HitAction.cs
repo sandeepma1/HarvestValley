@@ -18,37 +18,63 @@ public class HitAction : UIBehaviour, IPointerDownHandler, IPointerUpHandler
         isHold = false;
         if (PlayerMovement.Instance != null)
         {
-            PlayerMovement.Instance.PlayerPickaxeAction(false);
+            PlayerMovement.Instance.PlayerToolAction(false);
         }
     }
 
     private void Update()
     {
-        if (PlayerController.Instance.actionButtonType == ActionButtonType.Enterence)
-        {
-            if (isClicked)
-            {
-                OnHitComplete.Invoke();
-                isClicked = false;
-            }
-            return;
-        }
         if (isClicked || isHold)
         {
-            PlayerMovement.Instance.PlayerPickaxeAction(true);
             PlayerController.Instance.isPlayerInAction = true;
-            timer += Time.deltaTime;
-            if (timer > hitDuration)
+            switch (PlayerController.Instance.actionButtonType)
             {
-                timer = 0;
-                isClicked = false;
-                OnHitComplete.Invoke();
-                PlayerController.Instance.isPlayerInAction = false;
+                case ActionButtonType.Untagged:
+                    break;
+                case ActionButtonType.Field:
+                case ActionButtonType.MainCanvas:
+                case ActionButtonType.Pickable:
+                case ActionButtonType.FlappyFish:
+                case ActionButtonType.DragableUiItem:
+                case ActionButtonType.Grass:
+                case ActionButtonType.Item:
+                case ActionButtonType.Enterence:
+                case ActionButtonType.Ladder:
+                    OneClickEvent();
+                    break;
+                case ActionButtonType.Pickaxe:
+                case ActionButtonType.Sword:
+                    HoldEvent();
+                    break;
+                default:
+                    break;
             }
         }
         else
         {
-            PlayerController.Instance.isPlayerInAction = false;
+            if (PlayerController.Instance.isPlayerInAction == true)
+            {
+                PlayerController.Instance.isPlayerInAction = false;
+            }
+        }
+    }
+
+    private void OneClickEvent()
+    {
+        OnHitComplete.Invoke();
+        isClicked = false;
+        isHold = false;
+    }
+
+    private void HoldEvent()
+    {
+        PlayerMovement.Instance.PlayerToolAction(true);
+        timer += Time.deltaTime;
+        if (timer > hitDuration)
+        {
+            timer = 0;
+            isClicked = false;
+            OnHitComplete.Invoke();
         }
     }
 
@@ -61,6 +87,7 @@ public class HitAction : UIBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         isHold = false;
+        PlayerMovement.Instance.PlayerToolAction(false);
     }
 }
 
@@ -68,6 +95,7 @@ public enum ActionButtonType
 {
     Untagged,
     Enterence,
+    DroppedItem,
     Pickaxe,
     Sword,
     Field,
@@ -76,5 +104,6 @@ public enum ActionButtonType
     FlappyFish,
     DragableUiItem,
     Grass,
-    Item
+    Item,
+    Ladder
 }

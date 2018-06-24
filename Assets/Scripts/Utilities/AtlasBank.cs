@@ -1,5 +1,6 @@
 ﻿using UnityEngine.U2D;
 using UnityEngine;
+using HarvestValley.IO;
 
 public class AtlasBank : Singleton<AtlasBank>
 {
@@ -11,11 +12,18 @@ public class AtlasBank : Singleton<AtlasBank>
     private SpriteAtlas buildingAtlas;
     [SerializeField]
     private SpriteAtlas livestockAtlas;
+    [SerializeField]
+    private SpriteAtlas itemsAtlas;
     private Sprite missingSprite;
 
     private void Start()
     {
         missingSprite = GetSprite("Blockx100", AtlasType.Buildings);
+    }
+
+    public Sprite GetSprite(int itemId, AtlasType type)
+    {
+        return GetSprite(ItemDatabase.GetItemSlugById(itemId), type);
     }
 
     public Sprite GetSprite(string name, AtlasType type)
@@ -36,6 +44,9 @@ public class AtlasBank : Singleton<AtlasBank>
             case AtlasType.Livestock:
                 sprite = livestockAtlas.GetSprite(name);
                 break;
+            case AtlasType.Items:
+                sprite = itemsAtlas.GetSprite(name);
+                break;
         }
 
         if (sprite == null)
@@ -52,5 +63,6 @@ public enum AtlasType
     GUI,
     Farming,
     Buildings,
-    Livestock
+    Livestock,
+    Items
 }

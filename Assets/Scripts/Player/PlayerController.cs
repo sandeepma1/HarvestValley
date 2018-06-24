@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using HarvestValley.IO;
 using System;
+using DG.Tweening;
 
 public class PlayerController : Singleton<PlayerController>
 {
@@ -10,7 +11,7 @@ public class PlayerController : Singleton<PlayerController>
 
     public bool isPlayerInAction;
     public ActionButtonType actionButtonType;
-
+    public PlayerToObjectDirection playerToObjectDirection = PlayerToObjectDirection.None;
     [SerializeField]
     private LayerMask layerMask;
     [SerializeField]
@@ -23,10 +24,11 @@ public class PlayerController : Singleton<PlayerController>
     private Transform hitBox;
     private Transform nearestObject;
     private PlayerMovement playerMovement;
+    private Vector3 direction;
 
     private bool ActionButtonVisiblilty { set { Joystick.actionButton.gameObject.SetActive(value); } }
     private bool SecondaryButtonVisiblilty { set { Joystick.secondaryButton.gameObject.SetActive(value); } }
-    private string ActionString { set { Joystick.actionText.text = value; } }
+    private string ActionString { get { return Joystick.actionText.text; } set { Joystick.actionText.text = value; } }
     private string SecondaryString { set { Joystick.secondaryText.text = value; } }
 
     #region Unity Default
@@ -69,7 +71,10 @@ public class PlayerController : Singleton<PlayerController>
 
     private void ActionButtonText(string text)
     {
-        ActionString = text;
+        if (ActionString != text)
+        {
+            ActionString = text;
+        }
     }
 
     private void SecondaryButtonText(string text)
@@ -88,13 +93,11 @@ public class PlayerController : Singleton<PlayerController>
         if (GetClosestEnemy(groundOverlap) != null)
         {
             nearestObject = GetClosestEnemy(groundOverlap);
-            hitBox.transform.position = nearestObject.position;
             NearestObject(nearestObject);
         }
         else
         {
             nearestObject = null;
-            hitBox.transform.position = new Vector3(500, 500);
             NoNearObject();
         }
         //}
@@ -121,23 +124,46 @@ public class PlayerController : Singleton<PlayerController>
         }
         return bestTarget;
     }
+
+    private void SetPlayerToObjectDirection(Vector3 direction)
+    {
+        if (direction.x > 0)
+        {
+            playerToObjectDirection = PlayerToObjectDirection.Left;
+        }
+        else
+        {
+            playerToObjectDirection = PlayerToObjectDirection.Right;
+        }
+    }
     #endregion
 
     #region Display Data on Action Secondary Buttons
     private void NearestObject(Transform collision)
     {
+        SetPlayerToObjectDirection((transform.position - collision.position).normalized);
+        UiDebugTextHandler.DebugText(playerToObjectDirection.ToString());
         actionTagName = collision.tag;
         actionTriggerColliderName = collision.name;
         actionButtonType = (ActionButtonType)System.Enum.Parse(typeof(ActionButtonType), actionTagName);
-        UiDebugTextHandler.DebugText(actionButtonType.ToString());
         ActionButtonSetActive(true);
         switch (actionTagName)
         {
             case "Enterence":
                 ActionButtonText("Enter " + actionTriggerColliderName);
+                ShowHitLoction(collision.position);
                 break;
             case "Pickaxe":
                 ActionButtonText("Pickaxe");
+                ShowHitLoction(collision.position);
+                break;
+            case "DroppedItem":
+                GetDroppedItem(collision);
+                HideHitLocation();
+                break;
+            case "Ladder":
+                ActionButtonText("Go Down");
+                ShowHitLoction(collision.position);
                 break;
             default:
                 ActionButtonSetActive(false);
@@ -149,12 +175,30 @@ public class PlayerController : Singleton<PlayerController>
     {
         ActionButtonSetActive(false);
         SecondaryButtonSetActive(false);
+        HideHitLocation();
     }
+
+    private void GetDroppedItem(Transform droppedItem)
+    {
+        int itemIdToAdd = droppedItem.GetComponent<DroppedItem>().itemId;
+    }
+
+    private void ShowHitLoction(Vector3 position)
+    {
+        hitBox.transform.position = position;
+    }
+
+    private void HideHitLocation()
+    {
+        hitBox.transform.position = new Vector3(500, 500);
+    }
+
     #endregion
 
     #region Action Secondary buttons pressed
     private void OnActionButtonClickEventHandler()
     {
+        isPlayerInAction = false;
         switch (actionTagName)
         {
             case "Enterence":
@@ -163,6 +207,9 @@ public class PlayerController : Singleton<PlayerController>
             case "Pickaxe":
                 PickaxeAble pickaxeAble = nearestObject.GetComponent<PickaxeAble>();
                 OnPickaxeAbleClicked.Invoke(pickaxeAble);
+                break;
+            case "Ladder":
+                print("next level");
                 break;
             default:
                 break;
@@ -174,4 +221,11 @@ public class PlayerController : Singleton<PlayerController>
         SecondaryButtonSetActive(false);
     }
     #endregion
+}
+
+public enum PlayerToObjectDirection
+{
+    None,
+    Left,
+    Right
 }

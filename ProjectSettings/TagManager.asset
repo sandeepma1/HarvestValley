@@ -12,6 +12,8 @@ TagManager:
   - DragableUiItem
   - Grass
   - Item
+  - DroppedItem
+  - Ladder
   layers:
   - Default
   - TransparentFX

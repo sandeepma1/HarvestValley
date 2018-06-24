@@ -4,6 +4,7 @@ public class PickaxeAble : MonoBehaviour
 {
     public int mineralId;
     public int outputId;
+    public bool hasLadder;
 
     private int hitspoints;
     public int HitPoints
@@ -24,7 +25,14 @@ public class PickaxeAble : MonoBehaviour
 
     private void ItemBroken()
     {
-        MiningManager.Instance.SpwanItemAfterBreak(outputId, Vector2.zero);
+        if (hasLadder)
+        {
+            ItemDropperManager.Instance.SpawnLadder(transform.position);
+        }
+        else
+        {
+            ItemDropperManager.Instance.DropItem(outputId, transform.position);
+        }
         Destroy(this.gameObject);
     }
 }

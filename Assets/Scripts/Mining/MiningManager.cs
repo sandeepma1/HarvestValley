@@ -38,7 +38,6 @@ public class MiningManager : Singleton<MiningManager>
 
     private void GenerateProps()
     {
-        int ran;
         for (int i = 0; i < propsCells.Count; i++)
         {
             if (propsCells[i].itemId == 0) // Spawn Exit Mines collider
@@ -51,8 +50,7 @@ public class MiningManager : Singleton<MiningManager>
                 SpawnPlayer(propsCells[i]);
                 continue;
             }
-            ran = UnityEngine.Random.Range(0, 5);
-            if (ran == 0)//  && propsCells[i].id != 0 && propsCells[i].id != 1)
+            if (RandomBetween(0, 5) == 0)
             {
                 SpawnMinerals(propsCells[i]);  // Spawn Minerals
             }
@@ -66,6 +64,14 @@ public class MiningManager : Singleton<MiningManager>
         go.mineralId = mineralId;
         go.outputId = MineralsDatabase.GetMineralOutPutIdById(mineralId);
         go.HitPoints = MineralsDatabase.GetMineralHitPointsById(mineralId);
+        if (RandomBetween(0, 10) == 0)
+        {
+            go.hasLadder = true;
+        }
+        else
+        {
+            go.hasLadder = false;
+        }
     }
 
     private void SpawnPlayer(MineItems mineral)
@@ -79,11 +85,12 @@ public class MiningManager : Singleton<MiningManager>
         go.name = "ExitMines";
     }
 
-    public void SpwanItemAfterBreak(int itemId, Vector2 pos)
+    private int RandomBetween(int min, int max)
     {
-        Inventory.Instance.AddItem(itemId);
+        return UnityEngine.Random.Range(min, max);
     }
 }
+
 [System.Serializable]
 public class MineItems
 {
