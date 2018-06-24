@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 212757513761731934}
   - component: {fileID: 58007028000728288}
   - component: {fileID: 114291227186694182}
-  m_Layer: 0
+  - component: {fileID: 114547255433018214}
+  m_Layer: 9
   m_Name: mineral
-  m_TagString: Pickaxe
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,8 +69,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 006fcba28b0413944a207cda7c55dae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 0
-  hitsToBreak: 0
+  mineralId: 0
+  outputId: 0
+  hasLadder: 0
+--- !u!114 &114547255433018214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1080297151259302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451d02207f9fa7f498463bd7ec71731f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactiveItemType: 1
+  itemId: -1
+  buildingId: -1
+  enterance: 0
 --- !u!212 &212757513761731934
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -50,13 +50,12 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
     private void FixedUpdate()
     {
+        if (PlayerController.Instance.isPlayerInAction)
+        {
+            return;
+        }
         if (isMoving)
         {
-            if (PlayerController.Instance.isPlayerInAction)
-            {
-                return;
-            }
-
             moveVector = (transform.right * Joystick.Horizontal + transform.up * Joystick.Vertical).normalized;
             if (Mathf.Abs(moveVector.x) == 0)
             {
@@ -89,7 +88,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
         characterRig.eulerAngles = Vector3.zero;
     }
 
-    public void PlayerToolAction(bool flag)
+    public void PlayerPickaxeAction(bool flag)
     {
         if (anim != null)
         {

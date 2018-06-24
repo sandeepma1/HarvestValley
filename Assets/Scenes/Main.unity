@@ -5455,6 +5455,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 224763515654278640, guid: 58f24d3714726254a9ecafd0bba7dc84,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -54.000122
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58f24d3714726254a9ecafd0bba7dc84, type: 2}
   m_IsPrefabParent: 0
@@ -8812,7 +8817,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
 --- !u!33 &690572158
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -11321,9 +11326,9 @@ GameObject:
   - component: {fileID: 873383284}
   - component: {fileID: 873383281}
   - component: {fileID: 873383283}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Home
-  m_TagString: Enterence
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12469,9 +12474,9 @@ GameObject:
   - component: {fileID: 981833746}
   - component: {fileID: 981833749}
   - component: {fileID: 981833748}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Town
-  m_TagString: Enterence
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12654,9 +12659,10 @@ GameObject:
   - component: {fileID: 988275468}
   - component: {fileID: 988275470}
   - component: {fileID: 988275472}
-  m_Layer: 0
+  - component: {fileID: 988275471}
+  m_Layer: 9
   m_Name: Mines
-  m_TagString: Enterence
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12731,6 +12737,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Mines
+--- !u!114 &988275471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 988275467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451d02207f9fa7f498463bd7ec71731f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactiveItemType: 8
+  enterance: 2
+  openMenu: 0
+  itemId: -1
+  buildingId: -1
+  minesLevel: -1
 --- !u!58 &988275472
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -25092,7 +25115,7 @@ MonoBehaviour:
   IsUndoEnabled: 0
   m_sortingLayer: 0
   m_sortingLayerName: Default
-  m_orderInLayer: -1
+  m_orderInLayer: -2
   m_material: {fileID: 1046262564}
   m_isVisible: 0
   m_allowPaintingOutOfBounds: 1
@@ -25112,8 +25135,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2104308058}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14, y: 49, z: -0.01}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10, y: 1, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 690572155}

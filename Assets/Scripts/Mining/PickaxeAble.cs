@@ -2,8 +2,11 @@
 
 public class PickaxeAble : MonoBehaviour
 {
+    //[HideInInspector]
     public int mineralId;
+    //[HideInInspector]
     public int outputId;
+    //[HideInInspector]
     public bool hasLadder;
 
     private int hitspoints;

@@ -5,8 +5,8 @@ using HarvestValley.IO;
 
 public class MiningManager : Singleton<MiningManager>
 {
-    [SerializeField]
-    private Tilemap tileMap;
+    private Tilemap propsTileMap;
+    private TilemapGroup tilemapGroup;
     private List<MineItems> propsCells = new List<MineItems>();
     private float totalCells;
     private GameObject player;
@@ -14,23 +14,42 @@ public class MiningManager : Singleton<MiningManager>
 
     private void Start()
     {
+        SpawnTilemMapGroup();
+        propsTileMap = tilemapGroup.Tilemaps[tilemapGroup.Tilemaps.Count - 1];
         player = GameObject.FindGameObjectWithTag("Player");
         mineralPrefab = Resources.Load("mineral", typeof(PickaxeAble)) as PickaxeAble;
-        tileMap.IsVisible = false;
+        propsTileMap.IsVisible = false;
         ReadPropsCells();
         GenerateProps();
     }
 
+    private void SpawnTilemMapGroup()
+    {
+        print("In Mines Level " + GEM.currentMinesLevel);
+        GameObject currentLevel = Resources.Load("MineLevels/MinesLevel" + GEM.currentMinesLevel) as GameObject;
+        if (currentLevel == null)
+        {
+            // Todo: create new mining levels
+            print("TODO: Create new levels");
+            currentLevel = Instantiate(Resources.Load("MineLevels/MinesLevel2")) as GameObject;
+        }
+        else
+        {
+            currentLevel = Instantiate(currentLevel) as GameObject;
+        }
+        tilemapGroup = currentLevel.GetComponent<TilemapGroup>();
+    }
+
     private void ReadPropsCells()
     {
-        totalCells = tileMap.GridHeight * tileMap.GridWidth;
-        for (int i = 0; i < tileMap.GridHeight; i++)
+        totalCells = propsTileMap.GridHeight * propsTileMap.GridWidth;
+        for (int i = 0; i < propsTileMap.GridHeight; i++)
         {
-            for (int j = 0; j < tileMap.GridWidth; j++)
+            for (int j = 0; j < propsTileMap.GridWidth; j++)
             {
-                if (tileMap.GetTileData(i, j) <= totalCells)
+                if (propsTileMap.GetTileData(i, j) <= totalCells)
                 {
-                    propsCells.Add(new MineItems(tileMap.GetTileData(i, j), i, j));
+                    propsCells.Add(new MineItems(propsTileMap.GetTileData(i, j), i, j));
                 }
             }
         }
@@ -40,21 +59,47 @@ public class MiningManager : Singleton<MiningManager>
     {
         for (int i = 0; i < propsCells.Count; i++)
         {
-            if (propsCells[i].itemId == 0) // Spawn Exit Mines collider
+            switch (propsCells[i].itemId)
             {
-                SpawnExitMines(propsCells[i]);
-                continue;
-            }
-            if (propsCells[i].itemId == 1) // Spawn Player
-            {
-                SpawnPlayer(propsCells[i]);
-                continue;
-            }
-            if (RandomBetween(0, 5) == 0)
-            {
-                SpawnMinerals(propsCells[i]);  // Spawn Minerals
+                case 0:// Load Farm Scene
+                    SpwanItemFromResources("LoadFarm", propsCells[i].xPos, propsCells[i].yPos);
+                    break;
+                case 1:// // Player spawn
+                    SpawnPlayer(propsCells[i]);
+                    break;
+                case 2:// Lift access level selection
+                    SpwanItemFromResources("MineLevelSelector", propsCells[i].xPos, propsCells[i].yPos);
+                    break;
+                case 3://Load Mines Zero level
+                    //LoadMinesZero
+                    SpwanItemFromResources("LoadMinesZero", propsCells[i].xPos, propsCells[i].yPos);
+                    break;
+                case 4:// Mines level 1
+                    SpwanItemFromResources("MiningFirstLevel", propsCells[i].xPos, propsCells[i].yPos);
+                    break;
+                case 5:// Not used
+                    break;
+                case 6:// Not used
+                    break;
+                case 7:// Not used
+                    break;
+                case 8:// Not used
+                    break;
+                case 9:// Not used
+                    break;
+                default: // Spawn Minerals
+                    if (RandomBetween(0, 5) == 0)
+                    {
+                        SpawnMinerals(propsCells[i]);  // Spawn Minerals
+                    }
+                    break;
             }
         }
+    }
+
+    private void SpawnPlayer(MineItems mineral)
+    {
+        player.transform.position = new Vector3(mineral.xPos, mineral.yPos);
     }
 
     private void SpawnMinerals(MineItems mineral)
@@ -74,17 +119,10 @@ public class MiningManager : Singleton<MiningManager>
         }
     }
 
-    private void SpawnPlayer(MineItems mineral)
+    private void SpwanItemFromResources(string name, float posX, float posY)
     {
-        player.transform.position = new Vector3(mineral.xPos, mineral.yPos);
+        GameObject go = Instantiate(Resources.Load(name), new Vector3(posX, posY), Quaternion.identity, this.transform) as GameObject;
     }
-
-    private void SpawnExitMines(MineItems mineral)
-    {
-        GameObject go = Instantiate(Resources.Load("ExitMines"), new Vector3(mineral.xPos, mineral.yPos), Quaternion.identity, this.transform) as GameObject;
-        go.name = "ExitMines";
-    }
-
     private int RandomBetween(int min, int max)
     {
         return UnityEngine.Random.Range(min, max);

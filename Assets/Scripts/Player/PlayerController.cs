@@ -7,42 +7,47 @@ public class PlayerController : Singleton<PlayerController>
 {
     private FloatingJoystick Joystick;
     public event Action<PickaxeAble> OnPickaxeAbleClicked;
-    public event Action<string> OnEnteranceClicked;
+    public event Action<EnteranceType, int> OnEnteranceClicked;
+    public event Action<OpenMenuTypes> OnOpenMenuClicked;
 
-    public bool isPlayerInAction;
-    public ActionButtonType actionButtonType;
     public PlayerToObjectDirection playerToObjectDirection = PlayerToObjectDirection.None;
     [SerializeField]
     private LayerMask layerMask;
     [SerializeField]
     private float radius = 1;
 
+    public bool isPlayerInAction;
     private bool isMoving;
+    private bool isActionButtonOnHold;
     public string actionTriggerColliderName;
-    public string actionTagName;
+    public InteractiveItemType itemType;
     private Collider2D currentCollider2D;
     private Transform hitBox;
-    private Transform nearestObject;
+    private InteractiveItem nearestItem;
     private PlayerMovement playerMovement;
     private Vector3 direction;
 
     private bool ActionButtonVisiblilty { set { Joystick.actionButton.gameObject.SetActive(value); } }
-    private bool SecondaryButtonVisiblilty { set { Joystick.secondaryButton.gameObject.SetActive(value); } }
     private string ActionString { get { return Joystick.actionText.text; } set { Joystick.actionText.text = value; } }
-    private string SecondaryString { set { Joystick.secondaryText.text = value; } }
 
     #region Unity Default
     private void Start()
     {
         hitBox = transform.GetChild(0);
         Joystick = FindObjectOfType<FloatingJoystick>();
-        ActionButtonSetActive(false);
-        SecondaryButtonSetActive(false);
+        ActionButtonStatus(false);
         playerMovement = GetComponent<PlayerMovement>();
         playerMovement.IfPlayerMoving += IfPlayerMovingEventhandler;
 
-        Joystick.actionButton.OnHitComplete += OnActionButtonClickEventHandler;
-        Joystick.secondaryButton.OnHitComplete += OnSecondaryButtonClickEventHandler;
+        Joystick.actionButton.OnClickUp += OnActionButtonUpEventHandler;
+        Joystick.actionButton.OnClickDown += OnActionButtonDownEventHandler;
+    }
+
+    protected override void OnDestroy()
+    {
+        Joystick.actionButton.OnClickUp -= OnActionButtonUpEventHandler;
+        Joystick.actionButton.OnClickDown -= OnActionButtonDownEventHandler;
+        playerMovement.IfPlayerMoving -= IfPlayerMovingEventhandler;
     }
 
     private void IfPlayerMovingEventhandler(bool flag)
@@ -50,62 +55,46 @@ public class PlayerController : Singleton<PlayerController>
         isMoving = flag;
     }
 
-    protected override void OnDestroy()
-    {
-        Joystick.actionButton.OnHitComplete -= OnActionButtonClickEventHandler;
-        Joystick.secondaryButton.OnHitComplete -= OnSecondaryButtonClickEventHandler;
-        playerMovement.IfPlayerMoving -= IfPlayerMovingEventhandler;
-    }
     #endregion
 
-    #region Action Secondary Buttons Functions
-    private void ActionButtonSetActive(bool flag)
+    #region Action Buttons Functions
+    private void ActionButtonStatus(bool flag, string text = "")
     {
         ActionButtonVisiblilty = flag;
-    }
-
-    private void SecondaryButtonSetActive(bool flag)
-    {
-        SecondaryButtonVisiblilty = flag;
-    }
-
-    private void ActionButtonText(string text)
-    {
+        if (!flag)
+        {
+            return;
+        }
         if (ActionString != text)
         {
             ActionString = text;
         }
-    }
-
-    private void SecondaryButtonText(string text)
-    {
-        SecondaryString = text;
     }
     #endregion
 
     #region Nearest Object Detection
     private void LateUpdate()
     {
-        //if (isMoving)
-        //{
         Collider2D[] groundOverlap = new Collider2D[4];
         Physics2D.OverlapCircleNonAlloc(transform.position, radius, groundOverlap, layerMask);
-        if (GetClosestEnemy(groundOverlap) != null)
+        nearestItem = GetClosestItem(groundOverlap);
+        if (nearestItem != null)
         {
-            nearestObject = GetClosestEnemy(groundOverlap);
-            NearestObject(nearestObject);
+            NearestObject();
         }
         else
         {
-            nearestObject = null;
             NoNearObject();
         }
-        //}
+        if (isActionButtonOnHold)
+        {
+            OnActionButtonDownEventHandler();
+        }
     }
 
-    private Transform GetClosestEnemy(Collider2D[] groundOverlap)
+    private InteractiveItem GetClosestItem(Collider2D[] groundOverlap)
     {
-        Transform bestTarget = null;
+        InteractiveItem bestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
 
         for (int i = 0; i < groundOverlap.Length; i++)
@@ -119,7 +108,7 @@ public class PlayerController : Singleton<PlayerController>
             if (dSqrToTarget < closestDistanceSqr)
             {
                 closestDistanceSqr = dSqrToTarget;
-                bestTarget = groundOverlap[i].transform;
+                bestTarget = groundOverlap[i].transform.GetComponent<InteractiveItem>();
             }
         }
         return bestTarget;
@@ -139,48 +128,22 @@ public class PlayerController : Singleton<PlayerController>
     #endregion
 
     #region Display Data on Action Secondary Buttons
-    private void NearestObject(Transform collision)
+    private void NearestObject()
     {
-        SetPlayerToObjectDirection((transform.position - collision.position).normalized);
-        UiDebugTextHandler.DebugText(playerToObjectDirection.ToString());
-        actionTagName = collision.tag;
-        actionTriggerColliderName = collision.name;
-        actionButtonType = (ActionButtonType)System.Enum.Parse(typeof(ActionButtonType), actionTagName);
-        ActionButtonSetActive(true);
-        switch (actionTagName)
+        SetPlayerToObjectDirection((transform.position - nearestItem.transform.position).normalized);
+        itemType = nearestItem.interactiveItemType;
+        UiDebugTextHandler.DebugText(itemType.ToString());
+        if (itemType != InteractiveItemType.Dropped)
         {
-            case "Enterence":
-                ActionButtonText("Enter " + actionTriggerColliderName);
-                ShowHitLoction(collision.position);
-                break;
-            case "Pickaxe":
-                ActionButtonText("Pickaxe");
-                ShowHitLoction(collision.position);
-                break;
-            case "DroppedItem":
-                GetDroppedItem(collision);
-                HideHitLocation();
-                break;
-            case "Ladder":
-                ActionButtonText("Go Down");
-                ShowHitLoction(collision.position);
-                break;
-            default:
-                ActionButtonSetActive(false);
-                break;
+            ShowHitLoction(nearestItem.transform.position);
+            ActionButtonStatus(true, "Enter " + itemType);
         }
     }
 
     private void NoNearObject()
     {
-        ActionButtonSetActive(false);
-        SecondaryButtonSetActive(false);
+        ActionButtonStatus(false);
         HideHitLocation();
-    }
-
-    private void GetDroppedItem(Transform droppedItem)
-    {
-        int itemIdToAdd = droppedItem.GetComponent<DroppedItem>().itemId;
     }
 
     private void ShowHitLoction(Vector3 position)
@@ -192,40 +155,107 @@ public class PlayerController : Singleton<PlayerController>
     {
         hitBox.transform.position = new Vector3(500, 500);
     }
-
     #endregion
 
-    #region Action Secondary buttons pressed
-    private void OnActionButtonClickEventHandler()
+    #region Action buttons pressed and hit complete
+
+    private void OnActionButtonDownEventHandler()
     {
-        isPlayerInAction = false;
-        switch (actionTagName)
+        if (isPlayerInAction)
         {
-            case "Enterence":
-                OnEnteranceClicked.Invoke(actionTriggerColliderName);
+            return;
+        }
+        isActionButtonOnHold = true;
+        switch (itemType)
+        {
+            case InteractiveItemType.None:
                 break;
-            case "Pickaxe":
-                PickaxeAble pickaxeAble = nearestObject.GetComponent<PickaxeAble>();
+            case InteractiveItemType.Pickaxable:
+                PickaxeAble pickaxeAble = nearestItem.GetComponent<PickaxeAble>();
                 OnPickaxeAbleClicked.Invoke(pickaxeAble);
                 break;
-            case "Ladder":
-                print("next level");
+            case InteractiveItemType.Weaponable:
+                break;
+            case InteractiveItemType.Pickable:
+                break;
+            case InteractiveItemType.Axeable:
+                break;
+            case InteractiveItemType.Fishable:
+                break;
+            case InteractiveItemType.Searchable:
+                break;
+            case InteractiveItemType.OpenMenu:
+                OnOpenMenuClicked.Invoke(nearestItem.openMenu);
+                break;
+            case InteractiveItemType.Enterance:
+                OnEnteranceClicked.Invoke(nearestItem.enterance, nearestItem.minesLevel);
+                break;
+            case InteractiveItemType.Dropped:
+                ActionButtonStatus(false);
+                break;
+            case InteractiveItemType.Building:
+                break;
+            case InteractiveItemType.Field:
+                break;
+            case InteractiveItemType.NPC:
+                break;
+            case InteractiveItemType.Livestock:
                 break;
             default:
+                ActionButtonStatus(false);
                 break;
         }
     }
 
-    private void OnSecondaryButtonClickEventHandler()
+    private void OnActionButtonUpEventHandler()
     {
-        SecondaryButtonSetActive(false);
+        isActionButtonOnHold = false;
     }
     #endregion
 }
 
+[System.Serializable]
 public enum PlayerToObjectDirection
 {
     None,
     Left,
     Right
+}
+
+[System.Serializable]
+public enum InteractiveItemType
+{
+    None,
+    Pickaxable,
+    Weaponable,
+    Pickable,
+    Axeable,
+    Fishable,
+    Searchable, // on interaction get some random item
+    OpenMenu,
+    Enterance,
+    Dropped,
+    Building,
+    Field,
+    NPC,
+    Livestock
+}
+
+[System.Serializable]
+public enum EnteranceType
+{
+    None,
+    Home,
+    Mines,
+    MinesLowerLevel,
+    MinesSelectedLevel,
+    Village
+}
+
+[System.Serializable]
+public enum OpenMenuTypes
+{
+    None,
+    MineLevelSelector,
+    SomeXyz
 }

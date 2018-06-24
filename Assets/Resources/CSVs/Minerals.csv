@@ -1,4 +1,17 @@
 id,name,description,outputId,min,max,hitPoints,XP,slug
 0,Enterance,Mine Spawn position,-1,,,-1,-1,enterance
-1,Basic Boulder,Basic Boulder,23,1,1,4,1,basicboulder
-2,Basic Boulder Dark,Basic Boulder Dark,23,1,1,4,1,basicboulderdark
+1,Enterance,Mine Spawn position,-1,,,-1,-1,enterance
+2,Enterance,Mine Spawn position,-1,,,-1,-1,enterance
+3,Enterance,Mine Spawn position,-1,,,-1,-1,enterance
+4,Enterance,Mine Spawn position,-1,,,-1,-1,enterance
+5,Enterance,Mine Spawn position,-1,,,-1,-1,enterance
+6,Enterance,Mine Spawn position,-1,,,-1,-1,enterance
+7,Enterance,Mine Spawn position,-1,,,-1,-1,enterance
+8,Enterance,Mine Spawn position,-1,,,-1,-1,enterance
+9,Enterance,Mine Spawn position,-1,,,-1,-1,enterance
+10,Basic Boulder,Basic Boulder,23,1,1,4,1,basicboulder
+11,Basic Boulder Dark,Basic Boulder Dark,23,1,1,4,1,basicboulderdark
+12,Basic Boulder Dark,Basic Boulder Dark,23,1,1,4,1,basicboulderdark
+13,Basic Boulder Dark,Basic Boulder Dark,23,1,1,4,1,basicboulderdark
+14,Basic Boulder Dark,Basic Boulder Dark,23,1,1,4,1,basicboulderdark
+15,Basic Boulder Dark,Basic Boulder Dark,23,1,1,4,1,basicboulderdark

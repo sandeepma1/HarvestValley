@@ -5,20 +5,42 @@ public class Enterance : MonoBehaviour
     private void Start()
     {
         PlayerController.Instance.OnEnteranceClicked += OnEnteranceClickedEventhandler;
+        UiMinesDecendMenu.Instance.OnYesButtonClicked += OnYesButtonClickedEventHandler;
     }
 
-    private void OnEnteranceClickedEventhandler(string enteranceName)
+    private void OnYesButtonClickedEventHandler()
     {
-        switch (enteranceName)
+        GEM.currentMinesLevel++;
+        SceneChanger.Instance.LoadScene("Mines");
+    }
+
+    private void OnEnteranceClickedEventhandler(EnteranceType enteranceType, int mineLevelNumber)
+    {
+        print("enteranceType " + enteranceType);
+        PlayerController.Instance.isPlayerInAction = true;
+        switch (enteranceType)
         {
-            case "Mines":
-                SceneChanger.Instance.LoadScene("Mines");
+            case EnteranceType.None:
                 break;
-            case "ExitMines":
+            case EnteranceType.Home:
                 SceneChanger.Instance.LoadScene("Main");
                 break;
+            case EnteranceType.Mines:
+                GEM.currentMinesLevel = 0;
+                SceneChanger.Instance.LoadScene("Mines");
+                break;
+            case EnteranceType.MinesLowerLevel:
+                UiMinesDecendMenu.Instance.ShowThisMenu();
+                break;
+            case EnteranceType.MinesSelectedLevel:
+                GEM.currentMinesLevel = mineLevelNumber;
+                SceneChanger.Instance.LoadScene("Mines");
+                break;
+            case EnteranceType.Village:
+                SceneChanger.Instance.LoadScene("Village");
+                break;
             default:
-                print(enteranceName + " might not be implemented");
+                print(enteranceType + " might not be implemented");
                 break;
         }
     }

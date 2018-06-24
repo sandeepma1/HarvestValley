@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Pickaxe : MonoBehaviour
 {
+    private float pickaxeHitDuration = 0.75f;  //Todo make upgradable pickaxe/tools
+    private PickaxeAble thisPickaxeAble = null;
+
     private void Start()
     {
         PlayerController.Instance.OnPickaxeAbleClicked += OnPickaxeClickedEventhandler;
@@ -10,7 +12,16 @@ public class Pickaxe : MonoBehaviour
 
     private void OnPickaxeClickedEventhandler(PickaxeAble pickaxeAble)
     {
-        pickaxeAble.HitPoints -= 2;
-        PlayerMovement.Instance.PlayerToolAction(false);
+        thisPickaxeAble = pickaxeAble;
+        PlayerController.Instance.isPlayerInAction = true;
+        PlayerMovement.Instance.PlayerPickaxeAction(true);
+        Invoke("HitPickaxeAble", pickaxeHitDuration);
+    }
+
+    private void HitPickaxeAble()
+    {
+        thisPickaxeAble.HitPoints -= 2;
+        PlayerMovement.Instance.PlayerPickaxeAction(false);
+        PlayerController.Instance.isPlayerInAction = false;
     }
 }
