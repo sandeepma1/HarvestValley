@@ -5458,7 +5458,7 @@ Prefab:
     - target: {fileID: 224763515654278640, guid: 58f24d3714726254a9ecafd0bba7dc84,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -54.000122
+      value: -54
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58f24d3714726254a9ecafd0bba7dc84, type: 2}
@@ -8817,7 +8817,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -1
 --- !u!33 &690572158
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -25115,7 +25115,7 @@ MonoBehaviour:
   IsUndoEnabled: 0
   m_sortingLayer: 0
   m_sortingLayerName: Default
-  m_orderInLayer: -2
+  m_orderInLayer: -1
   m_material: {fileID: 1046262564}
   m_isVisible: 0
   m_allowPaintingOutOfBounds: 1
@@ -25135,8 +25135,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2104308058}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10, y: 1, z: -0.01}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18, y: -111, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 690572155}
