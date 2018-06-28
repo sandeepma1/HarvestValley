@@ -2,7 +2,7 @@
 
 public class Pickaxe : MonoBehaviour
 {
-    private float pickaxeHitDuration = 0.75f;  //Todo make upgradable pickaxe/tools
+    private float pickaxeHitDuration = 0.25f;  //Todo make upgradable pickaxe/tools
     private PickaxeAble thisPickaxeAble = null;
 
     private void Start()

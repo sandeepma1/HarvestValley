@@ -5,7 +5,10 @@ public class Enterance : MonoBehaviour
     private void Start()
     {
         PlayerController.Instance.OnEnteranceClicked += OnEnteranceClickedEventhandler;
-        UiMinesDecendMenu.Instance.OnYesButtonClicked += OnYesButtonClickedEventHandler;
+        if (UiMinesDecendMenu.Instance == null)
+        {
+            UiMinesDecendMenu.Instance.OnYesButtonClicked += OnYesButtonClickedEventHandler;
+        }
     }
 
     private void OnYesButtonClickedEventHandler()
